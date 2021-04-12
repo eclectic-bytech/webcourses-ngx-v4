@@ -1,6 +1,6 @@
 {
   "name": "webcourses-ngx",
-  "version": "2.7.0",
+  "version": "4.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config=proxy.conf.json --ssl --ssl-key localhost.key --ssl-cert localhost.crt --configuration=dev -o",

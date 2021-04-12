@@ -15,6 +15,8 @@ use Inertia\Inertia;
 |
 */
 
+Route::any('/{any}', [AngularController::class, 'index'])->where('any', '^(?!api).*$');
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
