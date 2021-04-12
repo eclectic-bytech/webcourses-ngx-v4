@@ -60,6 +60,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "outputPath": "../../../public/artifact/angular",
+              "deployUrl": "/artifact/angular/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -79,6 +81,10 @@
                   "maximumWarning": "6kb"
                 }
               ]
+            },
+            "dev": {
+              "outputPath": "dist/assets/angular",
+              "baseHref": "/assets/angular/"
             }
           }
         },
@@ -90,6 +96,9 @@
           "configurations": {
             "production": {
               "browserTarget": "webcourses-ng:build:production"
+            },
+            "dev": {
+              "browserTarget": "angular:build:dev"
             }
           }
         },
