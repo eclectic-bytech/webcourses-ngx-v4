@@ -98,7 +98,7 @@
               "browserTarget": "webcourses-ng:build:production"
             },
             "dev": {
-              "browserTarget": "angular:build:dev"
+              "browserTarget": "webcourses-ng:build:dev"
             }
           }
         },
