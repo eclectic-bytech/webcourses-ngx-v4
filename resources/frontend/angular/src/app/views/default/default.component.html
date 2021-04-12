@@ -1,0 +1,13 @@
+<!-- API progress loader bar and top right corner spinner -->
+<ng-progress></ng-progress>
+
+<header *ngIf="this.themeService.activeTheme$ | async as theme" class="fixed-top">
+  <link *ngIf="theme.headerBar"
+    rel="stylesheet" [href]="this.sanitiser.bypassSecurityTrustResourceUrl(theme.headerBar)"
+  >
+  <app-header-bar [theme]="theme"></app-header-bar>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

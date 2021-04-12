@@ -1,0 +1,104 @@
+<div class="container-fluid" id="activities-global">
+  <div class="row">
+    <div class="col-lg-5 px-0 sticky-top" style="background-color: transparent;">
+      <div id="activity-menu" class="py-2 container-fluid shadow-sm">
+        <ul ngbNav #nav="ngbNav" class="nav-pills" id="menu">
+          <li ngbNavItem>
+            <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
+              <fa-icon [icon]="faUserGraduate" size="lg" class="d-block text-center"></fa-icon>
+
+              <!--
+                Combo of none/block classes supports up to six icons on most resolutions,
+                with a likely exception for widths of ~1200 through 1250px.
+                At xs, despite being full width, screen is too small for labels.
+                At sm & md, menu is full width, with room for labels.
+                At lg the sidebar appears, the menu now spanning only its width:
+                No room for labels until xl.
+              -->
+
+              <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+                <small>Progress</small>
+              </div>
+            </a>
+            <ng-template ngbNavContent>
+              <app-selected></app-selected>
+            </ng-template>
+          </li>
+          <li ngbNavItem>
+            <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
+              <fa-icon [icon]="faList" size="lg" class="d-block text-center"></fa-icon>
+              <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+                <small>Index</small>
+              </div>
+            </a>
+            <ng-template ngbNavContent>
+              <app-chapter-index></app-chapter-index>
+            </ng-template>
+          </li>
+          <li ngbNavItem>
+            <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
+              <fa-icon [icon]="faLeaf" size="lg" class="d-block text-center"></fa-icon>
+              <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+                <small>Publisher</small>
+              </div>
+            </a>
+            <ng-template ngbNavContent>
+              <app-publisher-info></app-publisher-info>
+            </ng-template>
+          </li>
+          <!-- <li ngbNavItem>
+            <a ngbNavLink>
+              <fa-icon [icon]="faInfoCircle" size="lg" class="d-block text-center"></fa-icon>
+              <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+                <small>About</small>
+              </div>
+            </a>
+            <ng-template ngbNavContent>
+              <p class="mt-3 px-4">Course Enrol / Welcome message is visible here. The user initially sees it
+              full screen when entering an access code. Later they can come back to it here.</p>
+            </ng-template>
+          </li> -->
+          <li ngbNavItem>
+            <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
+              <fa-icon [icon]="faQuestionCircle" size="lg" class="d-block text-center"></fa-icon>
+              <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+                <small>Help</small>
+              </div>
+            </a>
+            <ng-template ngbNavContent>
+              <app-activity-help></app-activity-help>
+            </ng-template>
+          </li>
+          <!-- <li ngbNavItem [disabled]='true'>
+            <a ngbNavLink>Bookmarks</a>
+            <ng-template ngbNavContent>
+              <p class="text-light mt-3">Coming Summer 2020.</p>
+            </ng-template>
+          </li> -->
+        </ul>
+      </div>
+
+      <div id="activity-menu-outlet">
+        <div *ngIf="this.activitiesService.showSideMenu" [ngbNavOutlet]="nav"></div>
+      </div>
+
+      <!-- Roll-up button for hiding ngbNavOutlet. Displayed when sidebar is hidden due to lack of space. -->
+      <div class="d-lg-none">
+        <div class="border-top border-warning text-center">
+          <fa-icon
+            [icon]="this.activitiesService.showSideMenu ? faChevronUp : faChevronDown"
+            (click)="this.activitiesService.showSideMenu = !this.activitiesService.showSideMenu"
+            class="handy text-warning"
+            size="sm"
+          ></fa-icon>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-lg-7 bg-light" id="workareaContent">
+      <app-workarea></app-workarea>
+    </div>
+
+  </div>
+</div>

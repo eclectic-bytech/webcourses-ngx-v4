@@ -1,0 +1,12 @@
+<div class="text-center eoch-container" @fadeInOut>
+  <p class="font-weight-bold">End of chapter.</p>
+
+  <div *ngIf="nextChapter" class="next-chapter">
+    <p class="h5 next-chapter-label">Next Chapter</p>
+    <p class="h4">{{ nextChapter.title }}</p>
+  </div>
+
+  <button class="btn btn-primary mt-3" (click)="continueButton()">
+    CONTINUE
+  </button>
+</div>

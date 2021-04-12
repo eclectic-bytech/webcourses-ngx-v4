@@ -1,0 +1,49 @@
+<!-- REVIEW MODE -->
+<div *ngIf="activity.user_answers; else activeMode" @fadeInOut>
+  <div class="dnd container">
+    <div *ngFor="let option of activity.answers; let i = index" class="row row-{{i}}">
+      <div class="dnd-box dnd-col-0 dnd-static px-3 py-2 col mr-1 font-weight-bold" *ngIf="activity.meta.type === 'dnd-match'" [innerHtml]="dndMatchDataStatic[i]"></div>
+      <div
+        [innerHtml]="(activity.meta.type === 'dnd-match') ? option.caption.sortable : option.caption"
+        class="dnd-box px-3 py-2 col dnd-col-1"
+        [ngClass]="(markOrder) ? (option.correct === i) ? 'dnd-correct' : 'dnd-wrong' : ''"
+      >
+      </div>
+    </div>
+    <div class="mt-2">
+      <span class="mr-2">Order:</span>
+      <div class="btn-group btn-group-toggle" (click)="orderButtons($event)">
+        <!-- !!! NOTE: Name property is used in orderButtons function. -->
+        <button
+          class="btn btn-info btn-sm py-0 active"
+          type="button"
+          name="yours"
+          aria-pressed="true"
+          (click)="this.dndService.showUserOrder(activity)"
+        >Yours</button>
+        <button
+          class="btn btn-info btn-sm py-0"
+          type="button"
+          name="correct"
+          (click)="showCorrectOrder()"
+        >Correct</button>
+        <button
+          class="btn btn-info btn-sm py-0"
+          type="button"
+          name="initial"
+          (click)="showInitialOrder()"
+        >Initial</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVE MODE -->
+<ng-template #activeMode>
+  <div cdkDropList (cdkDropListDropped)="drop($event)" class="dnd dnd-active container" @fadeInOut>
+    <div *ngFor="let option of activity.answers; let i = index" class="row row-{{i}}">
+      <div class="dnd-box dnd-col-0 dnd-static px-3 py-2 col mr-1 font-weight-bold" *ngIf="activity.meta.type === 'dnd-match'" [innerHtml]="dndMatchDataStatic[i]"></div>
+      <div class="dnd-box dnd-col-1 px-3 py-2 col" cdkDrag [innerHtml]="(activity.meta.type === 'dnd-match') ? option.caption.sortable : option.caption"></div>
+    </div>
+  </div>
+</ng-template>

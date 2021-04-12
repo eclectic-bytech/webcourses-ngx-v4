@@ -1,0 +1,49 @@
+<div class="card m-1 mb-3" style="width: 22rem;">
+
+  <img [routerLink]="['/catalogue', 'course', course.cid]"
+    class="card-img-top handy" style="min-height: 10rem"
+    [ngStyle]="{'pointer-events': course.private ? 'none' : null}"
+    src="/publisher-files/{{course.publisher_id}}/courses/{{course.cid}}/images/{{course.cover}}" alt="{{course.cover_alt}}"
+    >
+  <div class="progress" style="height: 6px">
+    <div class="progress-bar progress-bar-striped"
+      role="progressbar"
+      [style.width.%]="(100 / course.ta * liveTac(course))"
+      [attr.aria-valuenow]="course.tac"
+      aria-valuemin="0"
+      [attr.aria-valuemax]="course.ta">
+    </div>
+  </div>
+  <small class="text-secondary text-uppercase mt-1">
+    {{
+      liveTac(course) / course.ta * 100 | number:'1.0-0'
+    }}
+    % Completed
+  </small>
+  <div class="card-body text-center">
+
+    <a [routerLink]="['/catalogue', 'course', course.cid]" [ngStyle]="{'pointer-events': course.private ? 'none' : null}">
+      <h5 class="card-title" style="height:3.5rem;">{{course.title}}</h5>
+    </a>
+
+    <p style="max-height:125px; min-height: 50px; overflow-y:auto; line-height:.9">
+      <small class="text-secondary">{{ course.short_desc }}</small>
+    </p>
+
+    <button
+      class="btn btn-success text-center mt-1 mt-md-3 handy"
+      (click)="goToActivity(
+        course.pid,
+        liveTac(course) == course.ta || liveTac(course) == 0 ? true : false
+      )"
+      >
+      <span *ngIf="liveTac(course) == 0">Start</span>
+      <span *ngIf="liveTac(course) > 0 && liveTac(course) < course.ta">Resume</span>
+      <span *ngIf="liveTac(course) == course.ta">Review</span>
+    </button>
+
+  </div>
+  <div class="text-right mr-2">
+    <small class="text-secondary">Course #{{course.cid}}</small>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div *ngIf="(courseStudents$ | async) as courseStudents" id="fullMainContent" @fadeInOut>
+  <div *ngIf="(courseStudentGroups$ | async) as studentsGroups">
+    <div *ngIf="(publisherInfo$ | async) as publisherInfo" [appThemeSet]="publisherInfo.theme">
+
+      <div class="card mx-2">
+
+        <div class="card-header">
+          <div class="d-flex justify-content-between">
+            <div class="align-self-top">
+              <h1 class="common-heading mb-0">Student Progress</h1>
+              <small
+                class="text-dark text-uppercase"
+                *ngIf="(publisherCourseInfo$ | async) as courseInfo"
+                >{{courseInfo[0].title}}</small>
+              <div class="m-0 mt-md-1 mt-lg-3 text-uppercase">
+                <small class="font-weight-bold">Students: {{ (courseStudents | filter : group.value.id).length}} / {{courseStudents.length}}</small>
+              </div>
+            </div>
+            <div class="align-self-center">
+
+              <form novalidate #group="ngForm" class="form-group">
+                <select [(ngModel)]="this.studentReportService.selectedGroup" class="form-control" name="id">
+                  <option [value]="0">Lone Wolf</option>
+                  <option
+                    *ngFor="let group of studentsGroups; let i = index"
+                    [value]="group.gid"
+                    >
+                    {{group.label }}
+                  </option>
+                </select>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="list-group">
+
+            <div class="row mb-2 pb-3 font-weight-bold text-uppercase text-dark border-bottom">
+              <div class="col-1">#</div>
+              <div class="col-5">User</div>
+              <div class="col-2">Started</div>
+              <div class="col-2">Last Accessed</div>
+              <div class="col-1">Done</div>
+              <div class="col-1"></div>
+            </div>
+
+            <div
+              class="row my-2 handy"
+              *ngFor="let student of courseStudents | filter : group.value.id; let i = index"
+              >
+              <div class="col-1 text-nowrap" [title]="'ID: ' + student.user_id">{{ i+1 }}</div>
+              <div class="col-5 text-nowrap">
+                <a target="_blank" [href]="'mailto:' + student.email">
+                  <span
+                    class="font-weight-bold" title="{{ student.email }}"
+                    [innerHtml]="(student.first_name && student.last_name)
+                      ? student.first_name + ' ' + student.last_name
+                      : student.username"
+                  >
+                  </span>
+                </a>
+              </div>
+              <div class="col-2 text-nowrap">{{ student.start_time }}</div>
+              <div class="col-2 text-nowrap">{{ student.last_access }}</div>
+              <div class="col-1 text-nowrap">{{ student.tac / student.ta * 100 | number:'1.0-0' }}%</div>
+              <div class="col-1">
+                <fa-icon
+                  [icon]="faBook"
+                  style="font-size: 125%; color: cornflowerblue"
+                  [routerLink]="['/publisher', this.route.snapshot.paramMap.get('pub_id'), 'webcourse', this.route.snapshot.paramMap.get('cid'), 'student', student.user_id]"
+                  >
+                </fa-icon>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

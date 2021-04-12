@@ -1,0 +1,207 @@
+<nav
+  id="header-menu"
+  class="navbar navbar-expand-lg bg-dark"
+  [ngClass]="theme.bootstrap_nav"
+>
+  <button class="navbar-toggler" type="button"
+    (click)="menuCollapsed = !menuCollapsed"
+    data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+    >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a [routerLink]="(theme.path == 'default') ? '/catalogue' : '/catalogue/publisher/' + theme.path">
+    <img class="navbar-brand ml-2 ml-lg-0 mr-0 mr-lg-5"
+      *ngIf="theme.logo"
+      [src]="this.sanit.bypassSecurityTrustResourceUrl(theme.logo)"
+    >
+  </a>
+
+  <button class="navbar-toggler" type="button" (click)="menuCollapsed2 = !menuCollapsed2" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+    <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.profile.email)" [size]='36'>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="menuCollapsed">
+    <ul class="navbar-nav">
+
+      <ng-container *ngIf="theme.path == 'default'; else PublisherHome">
+        <li
+          [routerLink]="['/']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="nav-item handy px-2 py-1 mx-0 mx-lg-2 mt-3 mt-lg-0"
+          >
+          <a class="nav-link text-light" (click)="collapseMenus()">Home</a>
+        </li>
+        <li
+          [routerLink]="['/catalogue']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="nav-item handy px-2 py-1 mx-0 mx-lg-2 mt-3 mt-lg-0"
+          >
+          <a class="nav-link text-light" (click)="collapseMenus()">Webcourses</a>
+        </li>
+        <li
+          [routerLink]="['/help']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="nav-item handy px-2 py-1 mx-0 mx-lg-2 mt-3 mt-lg-0"
+          >
+          <a class="nav-link text-light" (click)="collapseMenus()">Help</a>
+        </li>
+
+        <!-- <li
+          [routerLink]="['/catalogue', 'publishers']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="nav-item handy px-2 py-1 mx-0 mx-lg-2"
+          >
+          <a class="nav-link text-light" (click)="collapseMenus()">Publishers</a>
+        </li>
+        <li
+          [routerLink]="['/about']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="nav-item handy px-2 py-1 mx-0 mx-lg-2"
+          >
+          <a class="nav-link text-light" (click)="collapseMenus()">About us</a>
+        </li> -->
+      </ng-container>
+
+      <ng-template #PublisherHome>
+        <li
+          [routerLink]="['/catalogue', 'publisher', theme.path]"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="nav-item handy px-2 py-1 mx-2 mt-3 mt-lg-0"
+          >
+          <a class="nav-link" (click)="collapseMenus()">{{ theme.label }} Webcourses</a>
+        </li>
+        <li
+          [routerLink]="['/help', (theme.path != 'default') ? theme.path : '']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="nav-item handy px-2 py-1 mx-0 mx-lg-2 mt-3 mt-lg-0"
+          >
+          <a class="nav-link" (click)="collapseMenus()">Help</a>
+        </li>
+        <li [routerLink]="'/catalogue'" class="nav-item handy px-2 py-1 mx-2">
+          <a class="nav-link" style="opacity:.52" (click)="collapseMenus()">Exit {{ theme.label }}</a>
+        </li>
+      </ng-template>
+
+    </ul>
+  </div>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent2" [ngbCollapse]="menuCollapsed2">
+    <ul class="navbar-nav" style="min-width:190px">
+      <li
+        *ngIf="auth2.loggedIn"
+        [routerLink]="['/user', 'webcourses']"
+        (click)="collapseMenus()"
+        class="nav-item btn-group d-xs-block d-lg-none text-light handy mt-4 mb-2 justify-content-end">
+        My Webcourses
+      </li>
+      <li
+        *ngIf="this.user.roles.includes('publisher')"
+        [routerLink]="['/publisher', this.user.profile.publisherId, 'webcourses']"
+        (click)="collapseMenus()"
+        class="nav-item btn-group d-xs-block d-lg-none text-light handy my-2 justify-content-end">
+        Publisher
+      </li>
+      <li
+        *ngIf="this.user.roles.includes('sysop')"
+        [routerLink]="['/admin', 'dashboard']"
+        (click)="collapseMenus()"
+        class="nav-item btn-group d-xs-block d-lg-none text-light handy my-2 justify-content-end">
+        Admin
+      </li>
+      <li
+        *ngIf="auth2.userProfile$ | async as profile; else Login"
+        class="nav-item btn-group mt-3 mt-lg-0 justify-content-end"
+        >
+        <a class="nav-link handy" id="logoutButton" (click)="auth2.logout()">
+          <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.profile.email)"
+            class="mr-2 float-left" [size]='36'>
+          <div class="float-left">
+            <div id="log-in-out">Sign out</div>
+            <div id="user-name">
+              <small class="activity-menu-label" [innerHtml]="profile.nickname"></small>
+            </div>
+          </div>
+        </a>
+      </li>
+      <ng-template #Login>
+        <li class="nav-item btn-group mt-3 mt-lg-0 justify-content-end">
+          <a class="nav-link handy" id="logoutButton" (click)="auth2.login()">
+            <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.profile.email)"
+              class="mr-2 float-left" [size]='36'>
+            <div class="float-left">
+              <div id="log-in-out">Sign in</div>
+              <div id="user-name">
+                <small class="activity-menu-label">Guest</small>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ng-template>
+
+      <div *ngIf="auth2.loggedIn"
+        ngbDropdown
+        role="group"
+        aria-label="User Menu"
+        placement="bottom-right"
+        display="dynamic"
+        class="align-self-center"
+      >
+        <div id="dropdown-icon">
+          <button ngbDropdownToggle
+            class="btn dropdown-toggle-split"
+            id="headbar-user-dropdown"
+            >
+          </button>
+        </div>
+
+        <div class="dropdown-menu mt-2" ngbDropdownMenu>
+
+          <button
+            ngbDropdownItem
+            [routerLink]="['/user', 'webcourses']"
+            (click)="collapseMenus()"
+            class="nav-item handy p-3"
+            >
+            <fa-icon [icon]="faGraduationCap" class="py-3 px-2 text-warning"></fa-icon>
+            My Webcourses
+          </button>
+
+          <button *ngIf="this.user.roles.includes('publisher')"
+            ngbDropdownItem
+            [routerLink]="['/publisher', this.user.profile.publisherId, 'webcourses']"
+            [routerLinkActive]="['active2']"
+            (click)="collapseMenus()"
+            class="nav-item handy p-3"
+            >
+            <fa-icon [icon]="faGem" class="py-3 px-2 text-warning"></fa-icon>
+            Publisher
+          </button>
+
+          <button *ngIf="this.user.roles.includes('sysop')"
+            ngbDropdownItem
+            [routerLink]="['/admin', 'dashboard']"
+            [routerLinkActive]="['active2']"
+            (click)="collapseMenus()"
+            class="nav-item handy p-3"
+            >
+            <fa-icon [icon]="faWrench" class="py-3 px-2 text-warning"></fa-icon>
+            Admin
+          </button>
+
+        </div>
+      </div>
+
+    </ul>
+
+  </div>
+
+</nav>

@@ -1,0 +1,40 @@
+<div>
+
+  <div class="text-center">
+    <h2>All Courses</h2>
+    <small class="text-uppercase">{{this.adminCoursesService?.courses?.length}} Courses</small>
+
+    <p class="mb-2 mt-3">Welcome, Admin.</p>
+
+  </div>
+
+  <div class="container-fluid p-4" id="bytech">
+
+    <div *ngFor="let course of this.adminCoursesService.courses, let i = index, let l = last" class="d-inline-block">
+
+      <div class="card handy m-2" style="width: 18rem;" [routerLink]="['/publisher', 'reports', 'course', course.cid, 'students']">
+
+        <img class="card-img-top" src="./assets/courses/images/{{course.cid}}/{{course.cover}}" alt="{{course.cover_alt}}">
+
+        <div class="card-body text-center">
+          <h5 class="card-title">{{course.title}}</h5>
+
+          <div class="card-text">
+
+            <div>
+              <fa-icon [icon]="faUsers" class="mr-2 text-secondary"></fa-icon>STUDENTS: <span class="font-weight-bold">{{course.students}}</span><br>
+              <fa-icon [icon]="faThLarge" class="mx-2 text-secondary"></fa-icon>ACTIVITIES: <span class="font-weight-bold">{{course.activities}}</span><br>
+              <small class="text-secondary">COURSE #{{course.cid}}</small>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div> <!-- End of Card -->
+
+    </div> <!-- End of ngFor looping through all publisher's courses -->
+
+  </div> <!-- End of main area's container -->
+
+</div> <!-- 'Animated' FadeIn -->
