@@ -1,11 +1,11 @@
 {
   "name": "webcourses-ngx",
-  "version": "4.0.0",
+  "version": "3.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config=proxy.conf.json --ssl --ssl-key localhost.key --ssl-cert localhost.crt --configuration=dev -o",
     "build": "ng build",
-    "build:prod": "ng build --prod && cp ../../../public/artifact/angular/index.html ../../views/angular.blade.php",
+    "build:prod": "ng build --prod && cp ../../../public/webcourses-ngx/index.html ../../views/angular.blade.php",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
