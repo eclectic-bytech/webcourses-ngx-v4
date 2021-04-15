@@ -25,6 +25,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+	            "src/config.json",
               "src/assets",
               {
                 "glob": "**/*",
@@ -60,8 +61,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputPath": "../../../public/artifact/angular",
-              "deployUrl": "/artifact/angular/",
+              "outputPath": "../../../public/webcourses-ngx",
+              "deployUrl": "/webcourses-ngx/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -83,8 +84,8 @@
               ]
             },
             "dev": {
-              "outputPath": "dist/assets/angular",
-              "baseHref": "/assets/angular/"
+              "outputPath": "dist/webcourses-ngx",
+              "baseHref": "/webcourses-ngx/"
             }
           }
         },
@@ -118,6 +119,7 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
+              "src/config.json",
               "src/assets"
             ],
             "styles": [
