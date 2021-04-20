@@ -1,0 +1,50 @@
+.clickActivity {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.clickActivity li {
+  margin: 3px 3px 3px 0;
+  float: left;
+  font-size: 1em;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.clickSelected {
+  border: 1px solid #aed0ea;
+  background: papayawhip;
+  color: #2779aa;
+}
+
+.clickFalse {
+  border: 1px solid #aed0ea;
+  background: transparent;
+  color: #2779aa;
+}
+
+.clickActivity label {
+  margin: 0;
+  padding: 5px;
+}
+
+.clickCorrect {
+  border: 1px solid #25a00d;
+  background: #97dd97;
+  color: #1f2a30;
+}
+
+.clickWrong {
+  border: 1px solid #bd3d27;
+  background: #cc5f5f;
+  color: #e6eaec;
+}
+
+.clickMissed {
+  border: 1px solid #666666;
+  background: #bbbaba;
+  color: #555555;
+}
+

@@ -1,0 +1,22 @@
+<div *ngIf="enrolMessage$ | async as enrolMessage" id="fullMainContent" @fadeInOut>
+
+  <div class="container-fluid" style="max-width:976px;">
+    <div class="card m-2">
+
+      <img class="card-img-top" style="min-height: 25rem;" src="/publisher-files/{{enrolMessage.publisher_id}}/courses/{{enrolMessage.course_id}}/images/{{enrolMessage.cover}}" alt="{{enrolMessage.cover_alt}}">
+      <div class="card-body" style="min-height: 13rem;">
+        <h4 class="card-title common-heading">{{enrolMessage.title}}</h4>
+
+        <small class="text-secondary text-uppercase">{{enrolMessage.short_desc}}</small><br>
+        <small class="text-secondary mt-2">Published by {{enrolMessage.publisher}}</small>
+
+        <div class="my-3">
+          <p>{{ enrolMessage.message }}</p>
+          <button class="btn btn-success mt-5" [routerLink]="['/webcourse', 'activities', enrolMessage.start_aid]">Let's start the course!</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,45 @@
+<div id="fullMainContent" class="text-center">
+  <div class="text-center mb-3">
+    <h1 class="common-heading mb-2">My Webcourses</h1>
+
+    <div *ngIf="this.user.userCourses$ | async as userCourses; else loading" @fadeInOut>
+      <small class="text-dark text-uppercase">{{userCourses.length}} Courses</small>
+        <div *ngIf="userCourses.length > 0; else noCoursesForYou">
+          <div class="mt-4">
+            <div *ngFor="let course of userCourses, let i = index, let l = last" class="d-inline-block">
+              <app-my-courses-card [course]="course"></app-my-courses-card>
+            </div>
+            <app-group-join-card></app-group-join-card>
+          </div>
+        </div>
+    </div>
+    <ng-template #loading>
+      <app-loading-spinner></app-loading-spinner>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template #noCoursesForYou>
+  <h1 class="common-heading mb-2 text-success">You've not yet enrolled in any courses.</h1>
+  <p class="text-dark">Start improving your skills by using a <span class="font-weight-bold">Group Code</span> below.<br>
+  Visit the <a [routerLink]="['/catalogue']" class="text-nowrap">Webcourse Catalogue</a> to buy a course,
+  or use a <span class="font-weight-bold">Course Access Code</span>.</p>
+  <app-group-join-card></app-group-join-card>
+</ng-template>
+
+<ng-template #printDialog>
+  <div class="text-center">
+    <p class="font-weight-bold">Print all completed activities</p>
+    <p class="small font-italic">You can print individual activities using the print icon at the bottom of each activity.</p>
+  </div>
+</ng-template>
+
+<ng-template #pdfDialog>
+  <div class="text-center">
+    <p class="font-weight-bold">Make a PDF of the course</p>
+    <p class="small font-italic">
+      You can generate a PDF of the course using the standard <u>Print</u> option.
+      Click here for the standard Print method with instructions for creating a PDF.
+    </p>
+  </div>
+</ng-template>

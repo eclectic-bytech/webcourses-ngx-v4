@@ -1,0 +1,17 @@
+/* Printer Styles */
+
+/* FOR SOME REASON THIS FILE IS NOT GETTING IMPORTED / HAVING EFFECT
+FOR NOW THE STYLES HAVE BEEN COPIES INTO STYLESS.SCSS, WHICH IS WORKING FINE */
+
+@media print {
+
+  .no-print {
+    display: none !important;
+  }
+
+  #main-content-area {
+    margin-left: 3rem !important;
+    font-size: 135%;
+  }
+
+}

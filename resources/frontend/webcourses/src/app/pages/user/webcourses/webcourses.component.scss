@@ -1,0 +1,25 @@
+.row {
+  display:flex;
+  align-items:center;
+}
+
+.active,
+.courses .active {
+  color: rgb(18, 100, 182);
+  font-weight: 700;
+  font-size:115%;
+  cursor: pointer;
+}
+
+.chapterIndex .active {
+  color: rgb(20, 112, 54)
+}
+
+div.progress{
+  margin:0;
+}
+
+#bytech .list-group-item:hover {
+  background-color: #17a2b833;
+  cursor: pointer;
+}
