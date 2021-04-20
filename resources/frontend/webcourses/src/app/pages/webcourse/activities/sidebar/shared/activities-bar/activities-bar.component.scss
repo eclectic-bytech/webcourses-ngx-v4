@@ -1,0 +1,15 @@
+.default-activity-bar {
+  width: 23px;
+  min-height: 8px;
+  border-right: 2px solid #385f72;
+  display: inline-block;
+}
+
+.locked {
+  background-color: #ddd;
+}
+
+.unlocked {
+  cursor: pointer;
+  background-color: #46769e;
+}

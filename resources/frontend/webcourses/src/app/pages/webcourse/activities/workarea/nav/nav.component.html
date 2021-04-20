@@ -1,0 +1,33 @@
+<div *ngIf="activity" class="py-5 pr-lg-4 pr-md-1 pr-sm-0">
+
+  <button class="btn btn-primary mr-3"
+    (click)="GoToActivity(-1)"
+    [ngClass]="this.navService.waitingForApi || this.navService.firstActivitySet ? 'btn-secondary' : 'btn-primary'"
+    [disabled]="this.navService.waitingForApi || this.navService.firstActivitySet"
+    >
+    <fa-icon [icon]="faStepBackward"></fa-icon>
+  </button>
+
+  <button type="button" class="btn"
+    *ngIf="activity.user_answers"
+    (click)="GoToActivity(1)"
+    [ngClass]="this.navService.waitingForApi ? 'btn-secondary' : 'btn-primary'"
+    [disabled]="this.navService.waitingForApi"
+    >
+    <fa-icon [icon]="faThLarge" class="mr-1" *ngIf="!this.navService.waitingForApi"></fa-icon>
+    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mr-2" *ngIf="this.navService.waitingForApi"></fa-icon>
+    NEXT
+  </button>
+
+  <button type="submit" class="btn"
+    *ngIf="!activity.user_answers"
+    (click)="SaveButton()"
+    [ngClass]="this.navService.waitingForApi ? 'btn-secondary' : 'btn-success'"
+    [disabled]="this.navService.waitingForApi"
+    >
+    <fa-icon [icon]="activity.meta.type === 'info' ? faCheck : faPencilAlt" class="mr-2" *ngIf="!this.navService.waitingForApi"></fa-icon>
+    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mr-2" *ngIf="this.navService.waitingForApi"></fa-icon>
+    {{ activity.meta.type === 'info' ? 'MARK READ' : 'SAVE' }}
+  </button>
+
+</div>

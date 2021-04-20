@@ -1,0 +1,67 @@
+<div class="row" @fadeInOut>
+  <div class="container-fluid"
+    *ngIf="activity.meta.type === 'radio' || activity.meta.type === 'checkbox'">
+
+    <div *ngFor="let option of activity.answers; let l = last;" class="row">
+
+      <!-- MARKED RADIO & CHECKBOX ACTIVITIES -->
+      <div *ngIf="activity.meta.marked" class="col-sm-1 col-2 py-1 text-center">
+        <span *ngIf="option.selected">
+          <fa-icon [icon]="faTimes" size="lg" *ngIf="!option.correct" class="text-danger"></fa-icon>
+          <fa-icon [icon]="faCheck" size="lg" *ngIf="option.correct" class="text-success"></fa-icon>
+        </span>
+
+        <span *ngIf="!option.selected">
+          <fa-icon [icon]="faCheck" size="lg" *ngIf="option.correct" style="color: #c8cacc;"></fa-icon>
+        </span>
+      </div>
+
+      <!-- UNMARKED RADIO & CHECKBOX ACTIVITIES -->
+      <div *ngIf="!activity.meta.marked" class="col-sm-1 col-2 py-1 text-center">
+        <span *ngIf="option.selected">
+          <fa-icon [icon]="faCheck" size="lg" class="text-success"></fa-icon>
+        </span>
+      </div>
+
+      <!-- SELECTION LABEL -->
+      <div class="col-sm-10 col-9 py-1"
+        [ngStyle]="{'border-bottom' : (!l) ? '1px dashed #999' : ''}"
+        [innerHtml]="option.caption  | safehtml: 'html'"
+        >
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TEXTAREA FORM -->
+
+  <div *ngIf="activity.meta.type === 'textarea'" class="container">
+    <textarea
+      cols="66"
+      [rows]="activity.user_answers.length / 78"
+      class="form-control" disabled>{{activity.user_answers}}
+    </textarea>
+  </div>
+
+  <!-- TEXT INPUT FORM -->
+
+  <div *ngIf="activity.meta.type === 'text'" class="container">
+    <input type="text" class="form-control" value="{{activity.user_answers}}" disabled>
+  </div>
+
+  <!-- CLICK ACTIVITY -->
+
+  <div *ngIf="activity.meta.type === 'click'" class="container-fluid">
+    <ul class="clickActivity">
+      <li
+        class="text-left px-3"
+        *ngFor="let option of activity.answers; let i = index"
+        [ngClass]="markColours(option)"
+        [innerHtml]="option.caption"
+      >
+      </li>
+    </ul>
+  </div>
+
+</div>

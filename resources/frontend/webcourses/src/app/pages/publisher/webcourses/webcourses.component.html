@@ -1,0 +1,42 @@
+<div *ngIf="this.publisherCourses$ | async as publisherCourses" id="fullMainContent" @fadeInOut>
+  <div *ngIf="this.publisherInfo$ | async as publisherInfo" [appThemeSet]="publisherInfo.theme">
+
+    <div class="text-center mb-3">
+      <h1 class="common-heading mb-0 mb-lg-2">Published Courses</h1>
+      <small class="text-dark text-uppercase">All {{publisherCourses.length}} webcourses published by you.</small>
+    </div>
+
+    <div class="text-center">
+
+      <div *ngFor="let course of publisherCourses, let i = index, let l = last" class="d-inline-block">
+
+        <div class="card handy m-2" style="width: 18rem;">
+
+          <img class="card-img-top" src="/publisher-files/{{publisherInfo.id}}/courses/{{course.cid}}/images/{{course.cover}}" alt="{{course.cover_alt}}">
+
+          <div class="card-body text-center">
+            <h5 class="card-title">{{course.title}}</h5>
+
+            <div class="card-text">
+
+              <div>
+                <fa-icon [icon]="faUsers" class="mr-2 text-secondary"></fa-icon>STUDENTS: <span class="font-weight-bold">{{course.students}}</span><br>
+                <fa-icon [icon]="faThLarge" class="mx-2 text-secondary"></fa-icon>ACTIVITIES: <span class="font-weight-bold">{{course.activities}}</span><br>
+                <small class="text-secondary">COURSE #{{course.cid}}</small>
+              </div>
+
+              <button class="btn btn-primary text-center mt-3" [routerLink]="['/publisher', publisherInfo.id, 'webcourse', course.cid, 'students']">
+                <span class="font-weight-bold">Student Progress</span>
+              </button>
+
+            </div>
+
+          </div>
+
+        </div> <!-- End of Card -->
+
+      </div> <!-- End of ngFor looping through all publisher's courses -->
+
+    </div> <!-- End of main area's container -->
+  </div>
+</div>

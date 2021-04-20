@@ -1,0 +1,46 @@
+<div class="modal-header" *ngIf="!userFirstName && !waitingForAPI">
+  <h4 class="common-heading my-auto" id="modal-basic-title">Before you continue...</h4>
+</div>
+<div class="modal-body">
+  <form #names="ngForm" (keyup.enter)="names.form.valid ? btnClick(names.value) : ''">
+    <div *ngIf="this.waitingForAPI; else content">
+      <div
+        [innerHtml]="failedUpdate ? 'Update failed. Rebooting session...' : 'Updating your profile...'"
+        [ngClass]="failedUpdate ? 'text-danger' : ''"
+        class="mt-3 lead text-center"
+      >
+      </div>
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <ng-template #content>
+      <div *ngIf="!userFirstName && !this.waitingForAPI; else nameSaved">
+        <p>Please enter your name for the course student reports.</p>
+        <div class="mb-4" class="d-block w-50">
+          <input ngModel type="text" name="firstName" placeholder="First name" class="mr-2" minlength="2" maxlength="50" class="form-control form-control-secondary my-2" required>
+          <input ngModel type="text" name="lastName" placeholder="Last name" minlength="2" maxlength="20" class="form-control form-control-secondary my-2" required>
+        </div>
+        <!-- <p>{{ names.value | json }}</p>
+        <p>{{ names.control.status | json }}</p> -->
+      </div>
+      <ng-template #nameSaved>
+        <div class="lead text-center">
+          <span class="text-success font-weight-bold">Your profile was updated successfully.</span><br>
+          Thank you, <span class="text-capitalize">{{ userFirstName }}</span>.
+        </div>
+      </ng-template>
+    </ng-template>
+  </form>
+</div>
+<div class="modal-footer" *ngIf="!this.waitingForAPI">
+  <button
+    *ngIf="!userFirstName; else returnToCoursee"
+    type="submit" class="btn btn-success"
+    (click)="btnClick(names.value)"
+    [disabled]="names.form.invalid"
+  >
+    Submit
+  </button>
+  <ng-template #returnToCoursee>
+    <button type="button" class="btn btn-primary mx-auto" (click)="close()">Continue</button>
+  </ng-template>
+</div>
