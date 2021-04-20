@@ -14,7 +14,7 @@ export class ThemeService {
     sideBar: false,
     headerBar: false,
     mainArea: false,
-    logo: '/publisher-files/default/theme/logo.png'
+    logo: 'images/logo.png'
   }
 
   public activeTheme$ = new BehaviorSubject<Theme>(
