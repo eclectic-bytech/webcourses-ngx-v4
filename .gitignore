@@ -17,6 +17,7 @@ config.json
 # Ignore compiled version of WNGX
 /public/webcourses-ngx
 /public/webcourses
+/resources/views/angular.blade.php
 
 # Copied from resources/frontend/webcourses:
 # Angular's own .ignore 
