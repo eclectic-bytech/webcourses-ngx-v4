@@ -24,7 +24,12 @@ use App\Http\Controllers\AngularController;
 //   ->where('any', '^(?!teams).*$')
 // ;
 // Route::any('/webcourse', [AngularController::class, 'index']);
-Route::any('/{any}', [AngularController::class, 'index'])->where('any', '^(webcourses).*$');
+
+// THIS IS THE ONE WE'VE KINDA WORKING SO FAR...
+// Route::any('/{any}', [AngularController::class, 'index'])->where('any', '^(webcourses).*$');
+
+// SAME AS ABOVE, BUT ONLY LOGGED IN USERS CAN ACCESS. OTHERS ARE REDIRECTED TO LOGIN.
+Route::middleware(['auth:sanctum', 'verified'])->any('/{any}', [AngularController::class, 'index'])->where('any', '^(webcourses).*$');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -35,6 +40,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/user/webcourses', function () {
+    return Inertia::render('Webcourses');
 })->name('dashboard');
