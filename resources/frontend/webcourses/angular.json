@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "webcourses-ng": {
+    "webcourses-ngx": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "outputPath": "dist/webcourses-ng",
+            "outputPath": "dist/webcourses-ngx",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,6 +62,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "outputPath": "../../../public/webcourses-ngx",
+              "deployUrl": "/webcourses-ngx/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -81,24 +83,31 @@
                   "maximumWarning": "6kb"
                 }
               ]
+            },
+            "dev": {
+              "outputPath": "dist",
+              "baseHref": "/"
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "webcourses-ng:build"
+            "browserTarget": "webcourses-ngx:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "webcourses-ng:build:production"
+              "browserTarget": "webcourses-ngx:build:production"
+            },
+            "dev": {
+              "browserTarget": "webcourses-ngx:build:dev"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "webcourses-ng:build"
+            "browserTarget": "webcourses-ngx:build"
           }
         },
         "test": {
@@ -134,7 +143,7 @@
         }
       }
     },
-    "webcourses-ng-e2e": {
+    "webcourses-ngx-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -143,11 +152,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "webcourses-ng:serve"
+            "devServerTarget": "webcourses-ngx:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "webcourses-ng:serve:production"
+              "devServerTarget": "webcourses-ngx:serve:production"
             }
           }
         },
@@ -163,5 +172,5 @@
       }
     }
   },
-  "defaultProject": "webcourses-ng"
+  "defaultProject": "webcourses-ngx"
 }

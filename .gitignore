@@ -1,4 +1,5 @@
 **/node_modules
+/public/api
 /public/hot
 /public/storage
 /storage/*.key
@@ -15,6 +16,7 @@ config.json
 
 # Ignore compiled version of WNGX
 /public/webcourses-ngx
+/public/webcourses
 
 # Copied from resources/frontend/webcourses:
 # Angular's own .ignore 

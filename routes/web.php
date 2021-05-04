@@ -17,7 +17,14 @@ use App\Http\Controllers\AngularController;
 |
 */
 
-Route::any('/{any}', [AngularController::class, 'index'])->where('any', '^(?!api).*$')->where('any', '^(?!user).*$');
+// Route::any('/{any}', [AngularController::class, 'index'])
+//   ->where('any', '^(?!api).*$')
+//   ->where('any', '^(?!user).*$')
+//   ->where('any', '^(?!dashboard).*$')
+//   ->where('any', '^(?!teams).*$')
+// ;
+// Route::any('/webcourse', [AngularController::class, 'index']);
+Route::any('/{any}', [AngularController::class, 'index'])->where('any', '^(webcourses).*$');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [

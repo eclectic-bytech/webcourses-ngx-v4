@@ -21,7 +21,7 @@ export class ConfigService {
 
 
   loadConfig() {
-    return this.httpBackEnd.get<Config>('assets/config.json')
+    return this.httpBackEnd.get<Config>('config.json')
       .toPromise()
       .then(
         (config: Config) => { this.appConfig = config },
