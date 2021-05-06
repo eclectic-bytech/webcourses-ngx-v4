@@ -26,10 +26,10 @@ use App\Http\Controllers\AngularController;
 // Route::any('/webcourse', [AngularController::class, 'index']);
 
 // THIS IS THE ONE WE'VE KINDA WORKING SO FAR...
-// Route::any('/{any}', [AngularController::class, 'index'])->where('any', '^(webcourses).*$');
+Route::any('/{any}', [AngularController::class, 'index'])->where('any', '^(webcourses).*$');
 
 // SAME AS ABOVE, BUT ONLY LOGGED IN USERS CAN ACCESS. OTHERS ARE REDIRECTED TO LOGIN.
-Route::middleware(['auth:sanctum', 'verified'])->any('/{any}', [AngularController::class, 'index'])->where('any', '^(webcourses).*$');
+// Route::middleware(['auth:sanctum', 'verified'])->any('/{any}', [AngularController::class, 'index'])->where('any', '^(webcourses).*$');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
