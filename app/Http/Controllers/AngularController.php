@@ -8,6 +8,7 @@ class AngularController extends Controller
 {
     public function index()
     {
-        return view('angular');
+        $user = auth()->user();
+        return view('angular', ['user' => $user]);
     }
 }
