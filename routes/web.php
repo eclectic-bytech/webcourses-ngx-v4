@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\AngularController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/user/webcourses', function () {
-    return Inertia::render('Webcourses');
+Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function () {
+    return Inertia::render('Dashboard');
 })->name('dashboard');
