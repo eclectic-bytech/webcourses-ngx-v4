@@ -1,7 +1,17 @@
 {
-	"api": {
-    "v1": { "path": "https://www.example.com/api/v1" },
-    "v2": { "path": "https://www.example.com/api/v2" }
+  "api": {
+    "v1": {
+      "path": "/api/v1",
+      "customDomain": ""
+    },
+    "v3": {
+      "path": "/api/v3/public",
+      "customDomain": ""
+    },
+    "v4": {
+      "path": "",
+      "customDomain": "local.cultivatelearning.ca"      
+    }
   },
   "domain": "COOKIE_DOMAIN",
   "login": "auth0",
