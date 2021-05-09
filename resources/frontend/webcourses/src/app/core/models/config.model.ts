@@ -1,7 +1,8 @@
 export class Config {
   public api: {
     v1: { path: string, customDomain: string },
-    v3: { path: string, customDomain: string }
+    v3: { path: string, customDomain: string },
+    v4: { path: string, customDomain: string }
   }
   public domain: string
   public login: string
