@@ -1,0 +1,24 @@
+{
+	"api": {
+    "v1": { "path": "https://www.example.com/api/v1" },
+    "v2": { "path": "https://www.example.com/api/v2" }
+  },
+  "domain": "COOKIE_DOMAIN",
+  "login": "auth0",
+  "auth0": {
+    "client_id": "",
+    "prompt": "login",
+    "domain": "example.auth0.com",
+    "audience": "https://example.auth0.com/api/v2",
+    "response_type" : "token id_token",
+    "redirect_uri" : "https://example.com",
+    "scope" : "openid email profile"
+  },
+  "auth0_new": {
+    "domain": "<INSTANCE>.auth0.com",
+    "client_id": "client_id_from_api",
+    "redirect_uri": "whitelisted_url_with_HTTPS",
+    "audience": "audience_likely_in_url_format_from_auth0_api"
+  },
+  "stripe": { "key": "STRIPE PUBLIC KEY" }
+}
