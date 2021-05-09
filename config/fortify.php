@@ -62,7 +62,7 @@ return [
     */
 
     // 'home' => RouteServiceProvider::HOME,
-    'home' => '/user/webcourses',
+    'home' => '/user/dashboard',
 
     /*
     |--------------------------------------------------------------------------
