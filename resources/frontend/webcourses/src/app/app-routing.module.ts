@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router'
 import { DefaultComponent } from './views/default/default.component'
 import { LoginRedirectComponent } from './login-redirect.component'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
-import { InterceptorService } from './core/interceptors/auth0-v2.service'
+import { CultivateLearningSessionInterceptor } from './core/interceptors/cultivate-learning-session.interceptor'
 
 const routes: Routes = [
   {
@@ -60,7 +60,7 @@ const routes: Routes = [
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorService,
+      useClass: CultivateLearningSessionInterceptor,
       multi: true
     }
   ]
