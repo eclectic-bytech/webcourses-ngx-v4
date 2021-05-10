@@ -20,9 +20,6 @@ use App\Http\Controllers\UserController;
 
 // Route::any('/{any}', [AngularController::class, 'index'])
 //   ->where('any', '^(?!api).*$')
-//   ->where('any', '^(?!user).*$')
-//   ->where('any', '^(?!dashboard).*$')
-//   ->where('any', '^(?!teams).*$')
 // ;
 // Route::any('/webcourse', [AngularController::class, 'index']);
 
@@ -44,3 +41,5 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+Route::get('/v4/user', [UserController::class, 'loggedInUser']);
