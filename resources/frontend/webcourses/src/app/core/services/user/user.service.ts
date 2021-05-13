@@ -15,17 +15,15 @@ export class UserService {
   userCourses$: Observable<Course[]> = this.getUserCourses$()
 
   user$ = new BehaviorSubject<User>(<User>{
-    profile: {
-      id: 0,
-      email: 'anon@cultivatelearning.ca',
-      emailVerified: 0,
-      firstName: 'NA',
-      lastName: 'NA',
-      username: 'Anon',
-      picture: 'default.jpg',
-      country: 'Canada'
-    },
-    roles: '["learner"]'
+    id: 0,
+    email: '',
+    emailVerified: 0,
+    firstName: '',
+    lastName: '',
+    username: 'Anon',
+    picture: 'default.jpg',
+    country: 'Canada',
+    roles: ['learner']
   })
 
   constructor(
@@ -42,7 +40,7 @@ export class UserService {
 
   getUser() {
     return this.httpClient
-      .get<User>(`${this.configService.params.api.v1.path}/user/`)
+      .get<User>(`/v4/user`)
       .pipe(profile => profile)
   }
 

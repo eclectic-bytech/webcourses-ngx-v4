@@ -19,7 +19,7 @@
   </a>
 
   <button class="navbar-toggler" type="button" (click)="menuCollapsed2 = !menuCollapsed2" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-    <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.profile.email)" [size]='36'>
+    <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.email)" [size]='36'>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="menuCollapsed">
@@ -104,14 +104,12 @@
         My Webcourses
       </li>
       <li
-        *ngIf="this.user.roles.includes('publisher')"
-        [routerLink]="['/publisher', this.user.profile.publisherId, 'webcourses']"
+        [routerLink]="['/publisher', this.user.publisherId, 'webcourses']"
         (click)="collapseMenus()"
         class="nav-item btn-group d-xs-block d-lg-none text-light handy my-2 justify-content-end">
         Publisher
       </li>
       <li
-        *ngIf="this.user.roles.includes('sysop')"
         [routerLink]="['/admin', 'dashboard']"
         (click)="collapseMenus()"
         class="nav-item btn-group d-xs-block d-lg-none text-light handy my-2 justify-content-end">
@@ -122,12 +120,12 @@
         class="nav-item btn-group mt-3 mt-lg-0 justify-content-end"
         >
         <a class="nav-link handy" id="logoutButton" (click)="auth2.logout()">
-          <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.profile.email)"
+          <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(profile.email)"
             class="mr-2 float-left" [size]='36'>
           <div class="float-left">
             <div id="log-in-out">Sign out</div>
             <div id="user-name">
-              <small class="activity-menu-label" [innerHtml]="profile.nickname"></small>
+              <small class="activity-menu-label" [innerHtml]="profile.name"></small>
             </div>
           </div>
         </a>
@@ -135,12 +133,12 @@
       <ng-template #Login>
         <li class="nav-item btn-group mt-3 mt-lg-0 justify-content-end">
           <a class="nav-link handy" id="logoutButton" (click)="auth2.login()">
-            <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.profile.email)"
+            <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.email)"
               class="mr-2 float-left" [size]='36'>
             <div class="float-left">
               <div id="log-in-out">Sign in</div>
               <div id="user-name">
-                <small class="activity-menu-label">Guest</small>
+                <small class="activity-menu-label" [innerHtml]="(user.email) ? user.email : 'Guest'"></small>
               </div>
             </div>
           </a>
@@ -175,9 +173,9 @@
             My Webcourses
           </button>
 
-          <button *ngIf="this.user.roles.includes('publisher')"
+          <button
             ngbDropdownItem
-            [routerLink]="['/publisher', this.user.profile.publisherId, 'webcourses']"
+            [routerLink]="['/publisher', this.user.publisherId, 'webcourses']"
             [routerLinkActive]="['active2']"
             (click)="collapseMenus()"
             class="nav-item handy p-3"
@@ -186,7 +184,7 @@
             Publisher
           </button>
 
-          <button *ngIf="this.user.roles.includes('sysop')"
+          <button
             ngbDropdownItem
             [routerLink]="['/admin', 'dashboard']"
             [routerLinkActive]="['active2']"

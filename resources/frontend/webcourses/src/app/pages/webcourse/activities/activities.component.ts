@@ -56,7 +56,7 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.userService.user$.subscribe(
       (user: User) => {
-        if (!user.profile.firstName) {
+        if (!user.firstName) {
           this.ngbModal.open(CollectUserNamesComponent, this.modalOptions)
         }
       }

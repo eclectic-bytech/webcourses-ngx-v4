@@ -11,7 +11,7 @@ export class TaxStatusService {
   constructor() { }
 
   taxesApply(user: User) {
-    this.gstApplies = (user.profile.country === 'Canada') ? true : false
+    this.gstApplies = (user.country === 'Canada') ? true : false
   }
 
 }
