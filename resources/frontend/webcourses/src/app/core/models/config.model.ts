@@ -5,6 +5,8 @@ export class Config {
     v4: { path: string, customDomain: string }
   }
   public domain: string
+  public publicDirectory: string
+  public logoutRedirectPath: string
   public login: string
   public auth0: {
     client_id: string,
