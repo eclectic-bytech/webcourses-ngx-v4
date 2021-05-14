@@ -6,7 +6,7 @@ export class User {
   firstName: string
   lastName: string
   username: string
-  picture: string
+  profile_photo_url: string
   country: string
   roles: any
 }

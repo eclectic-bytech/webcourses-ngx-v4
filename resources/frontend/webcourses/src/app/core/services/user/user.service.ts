@@ -21,7 +21,7 @@ export class UserService {
     firstName: '',
     lastName: '',
     username: 'Anon',
-    picture: 'default.jpg',
+    profile_photo_url: 'default.jpg',
     country: 'Canada',
     roles: ['learner']
   })
