@@ -97,7 +97,7 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent2" [ngbCollapse]="menuCollapsed2">
     <ul class="navbar-nav" style="min-width:190px">
       <li
-        *ngIf="auth2.loggedIn"
+        *ngIf="user.email"
         [routerLink]="['/user', 'webcourses']"
         (click)="collapseMenus()"
         class="nav-item btn-group d-xs-block d-lg-none text-light handy mt-4 mb-2 justify-content-end">
@@ -115,37 +115,20 @@
         class="nav-item btn-group d-xs-block d-lg-none text-light handy my-2 justify-content-end">
         Admin
       </li>
-      <li
-        *ngIf="auth2.userProfile$ | async as profile; else Login"
-        class="nav-item btn-group mt-3 mt-lg-0 justify-content-end"
-        >
-        <a class="nav-link handy" id="logoutButton" (click)="auth2.logout()">
-          <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(profile.email)"
+      <li class="nav-item btn-group mt-3 mt-lg-0 justify-content-end">
+        <a class="nav-link handy" id="logoutButton" href="/user/dashboard/">
+          <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.email)"
             class="mr-2 float-left" [size]='36'>
           <div class="float-left">
-            <div id="log-in-out">Sign out</div>
+            <div id="log-in-out" [innerHtml]="user.email ? 'Dashboard' : 'Sign in'"></div>
             <div id="user-name">
-              <small class="activity-menu-label" [innerHtml]="profile.name"></small>
+              <small class="activity-menu-label" [innerHtml]="user.email ? user.email : 'Guest'"></small>
             </div>
           </div>
         </a>
       </li>
-      <ng-template #Login>
-        <li class="nav-item btn-group mt-3 mt-lg-0 justify-content-end">
-          <a class="nav-link handy" id="logoutButton" (click)="auth2.login()">
-            <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.email)"
-              class="mr-2 float-left" [size]='36'>
-            <div class="float-left">
-              <div id="log-in-out">Sign in</div>
-              <div id="user-name">
-                <small class="activity-menu-label" [innerHtml]="(user.email) ? user.email : 'Guest'"></small>
-              </div>
-            </div>
-          </a>
-        </li>
-      </ng-template>
 
-      <div *ngIf="auth2.loggedIn"
+      <div *ngIf="user.email"
         ngbDropdown
         role="group"
         aria-label="User Menu"
@@ -195,6 +178,14 @@
             Admin
           </button>
 
+          <button
+            ngbDropdownItem
+            (click)="this.headerbarService.signOut()"
+            class="nav-item handy p-3"
+            >
+            <fa-icon [icon]="faWrench" class="py-3 px-2 text-warning"></fa-icon>
+            Sign out
+          </button>
         </div>
       </div>
 
