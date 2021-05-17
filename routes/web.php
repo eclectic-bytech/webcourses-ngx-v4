@@ -40,8 +40,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::get('/v4/user', [UserController::class, 'loggedInUser']);
-
-// Route::middleware(['auth:sanctum', 'verified'])->any('/user/logout', function () {
-//     route('logout');
-// })->name('logout');
+Route::middleware(['auth:sanctum', 'verified'])->get('/v4/user', [UserController::class, 'loggedInUser']);
