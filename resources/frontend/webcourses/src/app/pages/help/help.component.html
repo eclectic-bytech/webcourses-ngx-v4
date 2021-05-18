@@ -17,7 +17,7 @@
 
         <!-- Hot-linked My Courses. Used when user is logged in. -->
         <ng-template #hotMyCourses>
-          <a [routerLink]="['/user', 'webcourses']" class="font-weight-bold">My courses</a>
+          <a [routerLink]="['/user', 'webcourses']" class="font-weight-bold">My Courses</a>
         </ng-template>
 
         <!-- Leaf divider, used when accessing publisher-free version of help -->
@@ -31,7 +31,7 @@
 
           <p><strong>Course codes</strong> are course specific, and must be entered on a matching course panel.
           <strong>Group codes</strong> should be entered on the <em>"Got a group code?"</em> panel, available on the
-          <strong *ngIf="!auth2.loggedIn; else hotMyCourses">My courses</strong> page. Detailed instructions are available below.</p>
+          <strong *ngIf="!auth2.loggedIn; else hotMyCourses">My Courses</strong> page. Detailed instructions are available below.</p>
 
           <div id="course-code">
             <div class="my-3" *ngIf="this.activatedRoute.snapshot.params.pub_id; else leafDivider">&nbsp;</div>
@@ -81,7 +81,7 @@
 
           <ol class="mt-1 mb-3" style="line-height:2;">
             <li>Click the <strong>Use code</strong> button located on the <em>"Got a Group Access Code?"</em> panel
-              on the <strong *ngIf="!auth2.loggedIn; else hotMyCourses">My courses</strong> page
+              on the <strong *ngIf="!auth2.loggedIn; else hotMyCourses">My Courses</strong> page
               <span *ngIf="auth2.loggedIn">(accessible via the top right corner's <strong>User Menu</strong>)</span>.
             </li>
             <li>Copy and paste the <strong>Course code</strong> you received and click
@@ -96,7 +96,7 @@
           <h4 class="mb-2 mb-sm-3 text-uppercase">Purchased and unlocked courses</h4>
 
           <p>All your courses are available from the the top-right corner's <strong>user menu</strong> dropdown under
-            <strong *ngIf="!auth2.loggedIn; else hotMyCourses">My courses</strong>.
+            <strong *ngIf="!auth2.loggedIn; else hotMyCourses">My Courses</strong>.
             <span *ngIf="!auth2.loggedIn">
               <a [routerLink]="['/login']" target="_blank" class="font-weight-bold">Sign in</a> to access it.
             </span>

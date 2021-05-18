@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core'
+import { Router } from '@angular/router'
 import { UserService } from './../../../core/services/user/user.service'
 import { HeaderBarService } from './header-bar.service'
 import { AuthService2 } from '../../../core/services/auth/auth2.service'
@@ -28,6 +29,7 @@ export class HeaderBarComponent implements OnInit {
   public menuCollapsed2 = true
 
   constructor(
+    private router: Router,
     public sanit: DomSanitizer,
     public userService: UserService,
     public headerbarService: HeaderBarService,
@@ -45,6 +47,21 @@ export class HeaderBarComponent implements OnInit {
 
   collapseMenus() {
     this.menuCollapsed = this.menuCollapsed2 = true
+  }
+
+  logoLink(theme: Theme) {
+    if (theme.path == "default") {
+      // CL logo linked to home page
+      this.router.navigateByUrl('/')
+    } else {
+      if (theme.publisherHome) {
+        // Publisher's logo linked to their website
+        window.open(theme.publisherHome, "_blank")
+      } else {
+        // Publisher's logo linked to their course catalogue (website url not provided)
+        this.router.navigateByUrl(`/catalogue/publisher/${theme.path}`)
+      }
+    }
   }
 
 }

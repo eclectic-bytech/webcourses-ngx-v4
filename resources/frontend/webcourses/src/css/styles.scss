@@ -8,23 +8,23 @@ body, html {
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
-body {
-  background-image: url('../assets/elysium2_768.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-}
+// body {
+//   background-image: url('../assets/elysium2_768.jpg');
+//   background-size: cover;
+//   background-attachment: fixed;
+// }
 
-@media (min-width: 768px) {
-  body {
-    background-image: url('../assets/elysium2_1160.jpg');
-  }
-}
+// @media (min-width: 768px) {
+//   body {
+//     background-image: url('../assets/elysium2_1160.jpg');
+//   }
+// }
 
-@media (min-width: 1160px) {
-  body {
-    background-image: url('../assets/elysium2.jpg');
-  }
-}
+// @media (min-width: 1160px) {
+//   body {
+//     background-image: url('../assets/elysium2.jpg');
+//   }
+// }
 
 a {
   color: #09900d;

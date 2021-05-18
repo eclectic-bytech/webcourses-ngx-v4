@@ -11,12 +11,11 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <a [routerLink]="(theme.path == 'default') ? '/catalogue' : '/catalogue/publisher/' + theme.path">
-    <img class="navbar-brand ml-2 ml-lg-0 mr-0 mr-lg-5"
-      *ngIf="theme.logo"
-      [src]="this.sanit.bypassSecurityTrustResourceUrl(theme.logo)"
-    >
-  </a>
+  <img class="navbar-brand ml-2 ml-lg-0 mr-0 mr-lg-5 handy"
+    *ngIf="theme.logo"
+    (click)="logoLink(theme)"
+    [src]="this.sanit.bypassSecurityTrustResourceUrl(theme.logo)"
+  >
 
   <button class="navbar-toggler" type="button" (click)="menuCollapsed2 = !menuCollapsed2" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
     <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.email)" [size]='36'>
@@ -40,7 +39,7 @@
           [routerLinkActiveOptions]="{exact: true}"
           class="nav-item handy px-2 py-1 mx-0 mx-lg-2 mt-3 mt-lg-0"
           >
-          <a class="nav-link text-light" (click)="collapseMenus()">Webcourses</a>
+          <a class="nav-link text-light" (click)="collapseMenus()">Web Courses</a>
         </li>
         <li
           [routerLink]="['/help']"
@@ -76,7 +75,7 @@
           [routerLinkActiveOptions]="{exact: true}"
           class="nav-item handy px-2 py-1 mx-2 mt-3 mt-lg-0"
           >
-          <a class="nav-link" (click)="collapseMenus()">{{ theme.label }} Webcourses</a>
+          <a class="nav-link" (click)="collapseMenus()">{{ theme.label }} Web Courses</a>
         </li>
         <li
           [routerLink]="['/help', (theme.path != 'default') ? theme.path : '']"
@@ -101,7 +100,7 @@
         [routerLink]="['/user', 'webcourses']"
         (click)="collapseMenus()"
         class="nav-item btn-group d-xs-block d-lg-none text-light handy mt-4 mb-2 justify-content-end">
-        My Webcourses
+        My Courses
       </li>
       <li
         [routerLink]="['/publisher', this.user.publisherId, 'webcourses']"

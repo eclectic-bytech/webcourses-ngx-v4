@@ -6,4 +6,5 @@ export class Theme {
   headerBar: any
   mainArea: any
   logo: any
+  publisherHome: string
 }
