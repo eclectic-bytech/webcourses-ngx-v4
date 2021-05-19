@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Cultivate Learning v3.0</title>
+  <title>Cultivate Learning - Web Courses, Training, Education</title>
   <base href="/webcourses">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,28 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+  <script>
+    var $buoop = {
+      required:{e:-4,f:-3,o:-3,s:-1,c:-3},
+      insecure:true,
+      text: {
+        'msg':'Your web browser ({brow_name}) is out of date.',
+        'msgmore': '<br>It will prevent proper loading of some features.',
+        'bupdate': 'Update browser'
+      },
+      no_permanent_hide: true,
+      noclose: true,
+      reminder: 0,
+      api:2021.05
+    };
+    function $buo_f(){
+     var e = document.createElement("script");
+     e.src = "//browser-update.org/update.min.js";
+     document.body.appendChild(e);
+    };
+    try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+    catch(e){window.attachEvent("onload", $buo_f)}
+  </script>
   <app-root></app-root>
 </body>
 </html>

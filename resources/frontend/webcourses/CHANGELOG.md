@@ -1,5 +1,12 @@
 ### Change Log
 
+#### v2.8.1 May 19, 2021 update
+- Added browser check and notifications with resolution steps on outdated browsers
+
+#### v2.8.0 May 18, 2021 update
+- Publisher logo now links to their home page if one is available.
+- Language consistency improved
+
 #### v2.7.0 March 20, 2021 update
 - Added customised course completion certificates
 

@@ -8,6 +8,10 @@ body, html {
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
+// Browser Update. A script in Angular's index.html for 'outdated browser' user notification
+.buorg {
+  background-color:lightpink!important;
+}
 // body {
 //   background-image: url('../assets/elysium2_768.jpg');
 //   background-size: cover;
