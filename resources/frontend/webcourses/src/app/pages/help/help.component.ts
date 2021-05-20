@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { AuthService2 } from './../../core/services/auth/auth2.service'
+import { UserService } from './../../core/services/user/user.service'
 import { ThemeService } from './../../core/services/theme/theme.service'
 
 @Component({
@@ -11,7 +11,7 @@ import { ThemeService } from './../../core/services/theme/theme.service'
 export class HelpComponent {
 
   constructor(
-    public auth2: AuthService2,
+    public userService: UserService,
     public activatedRoute: ActivatedRoute,
     private themeService: ThemeService,
   ) {
