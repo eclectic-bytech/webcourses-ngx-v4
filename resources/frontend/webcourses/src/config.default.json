@@ -3,6 +3,9 @@
     "domain": "https://local.cultivatelearning.ca/",
     "route": "v4/"
   },
+  "cookies": {
+    "domain": "local.cultivatelearning.ca"
+  },
   "assetsPath": "assets/",
   "logoutRedirectPath": "/user/login"
 }
