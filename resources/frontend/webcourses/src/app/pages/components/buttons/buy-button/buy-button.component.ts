@@ -1,8 +1,9 @@
 import { Component, Input, OnChanges } from '@angular/core'
+import { Router } from '@angular/router'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { CookieService } from 'ngx-cookie-service'
-import { AuthService2 } from '../../../../core/services/auth/auth2.service'
+import { UserService } from './../../../../core/services/user/user.service'
 
 import { ConfigService } from '../../../../core/services/config/config.service'
 import { PurchaseOrderService } from './../../../stripe/payment/purchase-order/purchase-order.service'
@@ -25,10 +26,11 @@ export class BuyButtonComponent implements OnChanges {
   public purchaseStarted = false
 
   constructor(
-    public auth2: AuthService2,
+    private router: Router,
     public poService: PurchaseOrderService,
     private ngbModal: NgbModal,
     private cookieService: CookieService,
+    public userService: UserService,
     private configService: ConfigService
   ) { }
 
@@ -49,7 +51,7 @@ export class BuyButtonComponent implements OnChanges {
         this.cookieService.set(
           'cllhairbiesltliunlee_purchase_course', this.course.cid, 1, '/', this.configService.params.cookies.domain, true, 'None'
         )
-        this.auth2.login()
+        this.router.navigateByUrl('/user/login')
       }
 
     }, (reason) => {
