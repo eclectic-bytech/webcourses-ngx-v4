@@ -62,8 +62,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputPath": "../../../public/webcourses-ngx",
-              "deployUrl": "/webcourses-ngx/",
+              "outputPath": "../../../public/webcourses",
+              "deployUrl": "/webcourses/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
