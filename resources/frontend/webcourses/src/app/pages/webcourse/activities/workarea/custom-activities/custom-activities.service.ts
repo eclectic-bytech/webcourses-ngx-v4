@@ -23,7 +23,7 @@ export class CustomActivitiesService {
 
   beforeAfterCount(aid: number) {
     this.httpClient.get<string>(
-      `${this.configService.params.api.v1.path}/webcourse/activities/custom-activity.php?aid=${aid}`
+      `${this.configService.params.api.route}/webcourse/activities/custom-activity.php?aid=${aid}`
     ).subscribe(
       (count) => { this.count = count },
       (err) => { console.log(err) }

@@ -17,13 +17,13 @@ export class StudentsService {
 
   getCourseProgress(cid) {
     return this.httpClient.get<any[]>(
-      `${this.configService.params.api.v1.path}/publisher/admin/course/students/index.php?cid=` + cid
+      `${this.configService.params.api.route}/publisher/admin/course/students/index.php?cid=` + cid
     ).pipe( activities => activities )
   }
 
   getCourseStudentsGroups(cid) {
     return this.httpClient.get<any[]>(
-      `${this.configService.params.api.v1.path}/publisher/admin/course/students/groups/index.php?cid=` + cid
+      `${this.configService.params.api.route}/publisher/admin/course/students/groups/index.php?cid=` + cid
     ).pipe( courseStudentGroups => courseStudentGroups )
   }
 

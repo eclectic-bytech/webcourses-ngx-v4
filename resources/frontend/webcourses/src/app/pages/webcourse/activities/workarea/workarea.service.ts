@@ -54,7 +54,7 @@ export class WorkareaService {
   getActivities(aid: any) {
     return this.httpClient
       .get<Activity[]>(
-        `${this.configService.params.api.v1.path}/webcourse/activities/?id=${aid}`
+        `${this.configService.params.api.route}/webcourse/activities/?id=${aid}`
       ).pipe(activities => activities)
   }
 

@@ -16,7 +16,7 @@ export class MyCoursesCardService {
     let first = (firstAid) ? '&first=true' : ''
     return this.httpClient
       .get<string>(`
-        ${this.configService.params.api.v1.path}/user/resume_course.php?pid=${pid}${first}
+        ${this.configService.params.api.route}/user/resume_course.php?pid=${pid}${first}
       `).pipe(aid => aid)
   }
 }

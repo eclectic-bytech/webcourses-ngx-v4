@@ -16,7 +16,7 @@ export class AdminCoursesService {
 
   getAllCourses() {
     return this.httpClient.get<any[]>(
-      `${this.configService.params.api.v1.path}/admin/courses/`
+      `${this.configService.params.api.route}/admin/courses/`
     ).pipe( allCourses => allCourses )
   }
 }

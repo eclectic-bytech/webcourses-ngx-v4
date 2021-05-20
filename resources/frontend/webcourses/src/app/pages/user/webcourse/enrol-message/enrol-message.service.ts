@@ -14,7 +14,7 @@ export class EnrolMessageService {
 
   getEnrolMessage(cid: number) {
     return this.http.get<any>(`
-      ${this.config.params.api.v1.path}/courses/enrol_message.php?cid=${cid}
+      ${this.config.params.api.route}/courses/enrol_message.php?cid=${cid}
     `).pipe( message => message )
   }
 

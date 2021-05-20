@@ -16,7 +16,7 @@ export class CourseService {
 
   getCourse(cid: any) {
     return this.http.get<any>(`
-      ${this.config.params.api.v1.path}/course/index.php?cid=${cid}
+      ${this.config.params.api.route}/course/index.php?cid=${cid}
     `).pipe(courses => courses)
   }
 

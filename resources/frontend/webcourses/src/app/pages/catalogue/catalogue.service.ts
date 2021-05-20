@@ -17,7 +17,7 @@ export class CatalogueService {
 
   getWebcourseCatalogue(pub_id: any) {
     return this.http.get<CatalogueModel>(`
-      ${this.config.params.api.v1.path}/courses/index.php?pub_id=${pub_id}
+      ${this.config.params.api.route}/courses/index.php?pub_id=${pub_id}
     `).pipe(courses => courses)
   }
 

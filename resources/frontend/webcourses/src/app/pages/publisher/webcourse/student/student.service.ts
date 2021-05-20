@@ -14,7 +14,7 @@ export class StudentService {
 
   getCompletedActivities(cid, uid) {
     return this.httpClient.get<any[]>(
-      `${this.configService.params.api.v1.path}/print/course.php?cid=${cid}&uid=${uid}`
+      `${this.configService.params.api.route}/print/course.php?cid=${cid}&uid=${uid}`
     ).pipe( activities => activities )
   }
 

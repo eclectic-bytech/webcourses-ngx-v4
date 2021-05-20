@@ -33,7 +33,7 @@ export class UserService {
 
   getUserCourses$(): Observable<Course[]> {
     this.userCourses$ = this.httpClient
-      .get<Course[]>(`${this.configService.params.api.v1.path}/user/courses.php`)
+      .get<Course[]>(`${this.configService.params.api.route}/user/courses.php`)
       .pipe(shareReplay(1))
     return this.userCourses$
   }

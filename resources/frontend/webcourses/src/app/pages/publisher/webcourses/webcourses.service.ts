@@ -16,7 +16,7 @@ export class WebcoursesService {
   getWebcourses(cid: string) {
     let i = (cid) ? `?cid=${cid}` : ''
     return this.httpClient.get<any[]>(
-      `${this.configService.params.api.v1.path}/publisher/admin/courses/index.php${i}`
+      `${this.configService.params.api.route}/publisher/admin/courses/index.php${i}`
     ).pipe( publisherCourses => publisherCourses )
   }
 

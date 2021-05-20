@@ -14,7 +14,7 @@ export class PublisherService {
 
   getPublisher(id: any, type: string) {
     return this.http.get<any>(`
-      ${this.config.params.api.v1.path}/publisher/profile/index.php?id=${id}&type=${type}
+      ${this.config.params.api.route}/publisher/profile/index.php?id=${id}&type=${type}
     `).pipe(publisher => publisher)
   }
 

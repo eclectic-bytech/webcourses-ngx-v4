@@ -92,7 +92,7 @@ export class CouponFieldService {
 
   apiCall(hashedCoupon: string, courseId: string) {
     return this.http.get<any>(
-      `${this.configService.params.api.v1.path}/coupons/apply_coupon.php?coupon=${hashedCoupon}&cid=${courseId}`
+      `${this.configService.params.api.route}/coupons/apply_coupon.php?coupon=${hashedCoupon}&cid=${courseId}`
     )
   }
 

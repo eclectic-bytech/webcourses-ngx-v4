@@ -26,12 +26,12 @@ export class PurchaseOrderService {
     this.cleanUpCodePurchaseCookies()
 
     this.http.post(`
-      ${this.configService.params.api.v1.path}/payments/unified_method.php
+      ${this.configService.params.api.route}/payments/unified_method.php
       `, purchaseData).subscribe(
         (checkout: any) => {
           if (checkout.payment_required) {
             window.location.href = `
-              ${this.configService.params.api.v1.path}/payments/stripe/payment_page.php?sid=${checkout.id}
+              ${this.configService.params.api.route}/payments/stripe/payment_page.php?sid=${checkout.id}
             `
           } else {
             this.router.navigateByUrl('/user/webcourse/' + purchaseData.cid + '/welcome')

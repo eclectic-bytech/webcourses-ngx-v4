@@ -65,7 +65,7 @@ export class ActiveModeService {
 
   userAnswerPOST(user_answers) {
     this.httpClient.post(
-      `${this.configService.params.api.v1.path}/webcourse/activities/index.php?id=${this.lastActivityInSet.meta.aid}`, user_answers
+      `${this.configService.params.api.route}/webcourse/activities/index.php?id=${this.lastActivityInSet.meta.aid}`, user_answers
     ).subscribe(
       (activity_supplemental) => {
         this.completionStatsService.bumpStats(this.lastActivityInSet)
