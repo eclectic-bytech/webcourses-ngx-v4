@@ -1,7 +1,7 @@
 {
   "api": {
-      "domain": "https://local.cultivatelearning.ca/",
-      "route": "v4/"
+    "domain": "https://local.cultivatelearning.ca/",
+    "route": "v4/"
   },
   "assetsPath": "assets/",
   "logoutRedirectPath": "/user/login"
