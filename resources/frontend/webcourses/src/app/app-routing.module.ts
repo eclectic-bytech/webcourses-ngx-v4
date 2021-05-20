@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 import { DefaultComponent } from './views/default/default.component'
-import { LoginRedirectComponent } from './login-redirect.component'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { CultivateLearningSessionInterceptor } from './core/interceptors/cultivate-learning-session.interceptor'
 
@@ -14,10 +13,6 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
         pathMatch: 'full'
-      },
-      {
-        path: 'login',
-        component: LoginRedirectComponent
       },
       {
         path: 'help',
