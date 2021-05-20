@@ -1,5 +1,4 @@
 **/node_modules
-/public/api
 /public/hot
 /public/storage
 /storage/*.key
@@ -14,7 +13,7 @@ npm-debug.log
 yarn-error.log
 config.json
 
-# Ignore compiled version of WNGX
+# Ignore compiled version of WNGX and related items
 /public/webcourses
 /resources/views/angular.blade.php
 /public/publisher-files
