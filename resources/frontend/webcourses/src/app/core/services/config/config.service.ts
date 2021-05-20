@@ -44,4 +44,8 @@ export class ConfigService {
     return this.appConfig.assetsPath + file
   }
 
+  apiEndPoint(endPoint: string) {
+    return this.appConfig.api.domain + this.appConfig.api.route + endPoint
+  }
+
 }
