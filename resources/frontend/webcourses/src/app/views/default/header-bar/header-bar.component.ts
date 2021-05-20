@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { UserService } from './../../../core/services/user/user.service'
 import { HeaderBarService } from './header-bar.service'
-import { AuthService2 } from '../../../core/services/auth/auth2.service'
 import { User } from '../../../core/models/user.model'
 import { GravatarMd5Service } from '../../../core/services/gravatar-md5/gravatar-md5.service'
 import { ThemeService } from '../../../core/services/theme/theme.service'
@@ -33,7 +32,6 @@ export class HeaderBarComponent implements OnInit {
     public sanit: DomSanitizer,
     public userService: UserService,
     public headerbarService: HeaderBarService,
-    public auth2: AuthService2,
     public gravatarMd5: GravatarMd5Service,
     public themeService: ThemeService
   ) { }
