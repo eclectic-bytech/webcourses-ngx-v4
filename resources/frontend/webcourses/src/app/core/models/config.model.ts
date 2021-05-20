@@ -9,6 +9,9 @@ export class Config {
     'domain': string,
     'route': string
   }
+  public cookies: {
+    'domain': string
+  }
   public assetsPath: string
   public logoutRedirectPath: string
 }
