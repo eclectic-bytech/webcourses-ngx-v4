@@ -20,10 +20,10 @@ export class AuthService2 {
   // Create an observable of Auth0 instance of client
   auth0Client$ = (from(
     createAuth0Client({
-      domain: this.config.params.auth0_new.domain,
-      client_id: this.config.params.auth0_new.client_id,
-      redirect_uri: this.config.params.auth0_new.redirect_uri,
-      audience: this.config.params.auth0_new.audience
+      domain: this.config.params.assetsPath,
+      client_id: this.config.params.assetsPath,
+      redirect_uri: this.config.params.assetsPath,
+      audience: this.config.params.assetsPath
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
@@ -83,7 +83,7 @@ export class AuthService2 {
     checkAuth$.subscribe()
   }
 
-  login(redirectPath: string = this.config.params.auth0_new.hack_path) {
+  login(redirectPath: string = this.config.params.assetsPath) {
     // A desired redirect path can be passed to login method
     // (e.g., from a route guard)
     // Ensure Auth0 client instance exists
@@ -91,7 +91,7 @@ export class AuthService2 {
       // Call method to log in
       console.log(`${window.location.origin}`)
       client.loginWithRedirect({
-        redirect_uri: this.config.params.auth0_new.redirect_uri,
+        redirect_uri: this.config.params.assetsPath,
         appState: { target: redirectPath }
       })
     })
@@ -130,8 +130,8 @@ export class AuthService2 {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log out
       client.logout({
-        client_id: this.config.params.auth0_new.client_id,
-        returnTo: this.config.params.auth0_new.return_to
+        client_id: this.config.params.assetsPath,
+        returnTo: this.config.params.assetsPath
       })
     })
   }
