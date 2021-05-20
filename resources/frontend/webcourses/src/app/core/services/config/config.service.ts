@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpBackend } from '@angular/common/http'
 import { Config } from './../../models/config.model'
+import { Theme } from '../../models/theme.model'
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,15 @@ export class ConfigService {
   get params() {
     if (!this.appConfig) { throw Error('Trying to use config, but it was not yet loaded!') }
     return this.appConfig
+  }
+
+  brandLogo(theme: Theme) {
+    return 'publisher-files/0/theme/logo.png'
+    // return this.appConfig.publicDirectory + theme.logo
+  }
+
+  assetsImage(file: string) {
+    return this.appConfig.assetsPath + file
   }
 
 }
