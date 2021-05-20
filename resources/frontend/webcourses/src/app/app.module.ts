@@ -10,7 +10,6 @@ import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-go
 
 import { AppRoutingModule } from './app-routing.module'
 import { CatalogueModule } from './pages/catalogue/catalogue.module'
-import { LoginPromptModule } from './shared/components/login-prompt/login-prompt.module'
 
 import { AppComponent } from './app.component'
 import { DefaultModule } from './views/default/default.module'
@@ -33,7 +32,6 @@ import { ActivitiesService } from './pages/webcourse/activities/activities.servi
     NgxGoogleAnalyticsRouterModule,
     AppRoutingModule,
     CatalogueModule,
-    LoginPromptModule,
     DefaultModule
   ],
   providers: [
