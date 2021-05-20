@@ -47,7 +47,7 @@ export class PurchaseOrderService {
 
     // this.cookieService.delete('cllhairbiesltliunlee_purchase_course','/')
     // this.cookieService.delete('cllhairbiesltliunlee_discount_code','/')
-    this.cookieService.set('cllhairbiesltliunlee_purchase_course', '', new Date('Thu, 01 Jan 1970 00:00:01 GMT'), '/', this.configService.params.domain, true, 'None')
-    this.cookieService.set('cllhairbiesltliunlee_discount_code', '', new Date('Thu, 01 Jan 1970 00:00:01 GMT'), '/', this.configService.params.domain, true, 'None')
+    this.cookieService.set('cllhairbiesltliunlee_purchase_course', '', new Date('Thu, 01 Jan 1970 00:00:01 GMT'), '/', this.configService.params.cookies.domain, true, 'None')
+    this.cookieService.set('cllhairbiesltliunlee_discount_code', '', new Date('Thu, 01 Jan 1970 00:00:01 GMT'), '/', this.configService.params.cookies.domain, true, 'None')
   }
 }

@@ -82,7 +82,7 @@ export class CouponFieldService {
   applyCourseCode() {
     this.listenForPriceAdjustment$.next(this.course.price -= this.coupon.details.course_code.discount)
     this.cookieService.set(
-      'cllhairbiesltliunlee_discount_code', this.hashedCoupon, 1, '/', this.configService.params.domain, true, 'None'
+      'cllhairbiesltliunlee_discount_code', this.hashedCoupon, 1, '/', this.configService.params.cookies.domain, true, 'None'
     )
   }
 

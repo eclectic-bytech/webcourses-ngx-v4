@@ -47,7 +47,7 @@ export class BuyButtonComponent implements OnChanges {
 
       if (result === 'login') {
         this.cookieService.set(
-          'cllhairbiesltliunlee_purchase_course', this.course.cid, 1, '/', this.configService.params.domain, true, 'None'
+          'cllhairbiesltliunlee_purchase_course', this.course.cid, 1, '/', this.configService.params.cookies.domain, true, 'None'
         )
         this.auth2.login()
       }
