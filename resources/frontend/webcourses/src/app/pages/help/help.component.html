@@ -21,8 +21,8 @@
         </ng-template>
 
         <!-- Leaf divider, used when accessing publisher-free version of help -->
-        <ng-template #leafDivider>
-          <img [src]="'/assets/leaf.svg'" class="d-block my-3 my-md-5 mx-auto" width="40" height="40">
+        <ng-template #brandedDivider>
+          <img [src]="this.configService.assetsImage('cl-logo.svg')" class="d-block my-3 my-md-5 mx-auto" width="40" height="40">
         </ng-template>
 
         <div class="mx-2 mx-md-4 mt-3 mt-md-5">
@@ -31,10 +31,10 @@
 
           <p><strong>Course codes</strong> are course specific, and must be entered on a matching course panel.
           <strong>Group codes</strong> should be entered on the <em>"Got a group code?"</em> panel, available on the
-          <strong *ngIf="user.email  ; else hotMyCourses">My Courses</strong> page. Detailed instructions are available below.</p>
+          <strong *ngIf="!user.email; else hotMyCourses">My Courses</strong> page. Detailed instructions are available below.</p>
 
           <div id="course-code">
-            <div class="my-3" *ngIf="this.activatedRoute.snapshot.params.pub_id; else leafDivider">&nbsp;</div>
+            <div class="my-3" *ngIf="this.activatedRoute.snapshot.params.pub_id; else brandedDivider">&nbsp;</div>
           </div>
 
           <h4 class="mb-2 mb-sm-3 text-uppercase">Course codes</h4>
@@ -68,7 +68,7 @@
           <p><span *ngIf="!user.email">Upon sign in you'll be redirected directly to the course.</span></p>
 
           <div id="group-code">
-            <div class="my-3" *ngIf="this.activatedRoute.snapshot.params.pub_id; else leafDivider">&nbsp;</div>
+            <div class="my-3" *ngIf="this.activatedRoute.snapshot.params.pub_id; else brandedDivider">&nbsp;</div>
           </div>
 
           <h4 class="mb-2 mb-sm-3 text-uppercase">Group Codes</h4>
@@ -90,7 +90,7 @@
           </ol>
 
           <div id="course-access">
-            <div class="my-3" *ngIf="this.activatedRoute.snapshot.params.pub_id; else leafDivider">&nbsp;</div>
+            <div class="my-3" *ngIf="this.activatedRoute.snapshot.params.pub_id; else brandedDivider">&nbsp;</div>
           </div>
 
           <h4 class="mb-2 mb-sm-3 text-uppercase">Purchased and unlocked courses</h4>

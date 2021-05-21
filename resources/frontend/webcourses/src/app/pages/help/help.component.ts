@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
+import { ConfigService } from './../../core/services/config/config.service'
 import { UserService } from './../../core/services/user/user.service'
 import { ThemeService } from './../../core/services/theme/theme.service'
 
@@ -11,8 +12,9 @@ import { ThemeService } from './../../core/services/theme/theme.service'
 export class HelpComponent {
 
   constructor(
-    public userService: UserService,
     public activatedRoute: ActivatedRoute,
+    public configService: ConfigService,
+    public userService: UserService,
     private themeService: ThemeService,
   ) {
     this.activatedRoute.data.subscribe(
