@@ -15,7 +15,7 @@ export class HelpComponent {
     public activatedRoute: ActivatedRoute,
     public configService: ConfigService,
     public userService: UserService,
-    private themeService: ThemeService,
+    public themeService: ThemeService,
   ) {
     this.activatedRoute.data.subscribe(
       (data) => {

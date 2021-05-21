@@ -1,6 +1,6 @@
 <div id="fullMainContent" *ngIf="this.userService.user$ | async as user">
   <div class="container-fluid">
-    <div class="row">
+    <div class="row" *ngIf="this.themeService.activeTheme$ | async as theme">
       <div class="col-12 col-sm-10 col-md-9 col-lg-7 mx-1 mx-sm-2 mx-md-5">
         <h4 class="my-2 my-sm-3 mx-2 mx-md-4 text-uppercase">Help section</h4>
 
@@ -21,7 +21,7 @@
         </ng-template>
 
         <!-- Leaf divider, used when accessing publisher-free version of help -->
-        <ng-template #brandedDivider>
+        <ng-template #clDivider>
           <img [src]="this.configService.assetsImage('cl-logo.svg')" class="d-block my-3 my-md-5 mx-auto" width="40" height="40">
         </ng-template>
 
@@ -34,14 +34,14 @@
           <strong *ngIf="!user.email; else hotMyCourses">My Courses</strong> page. Detailed instructions are available below.</p>
 
           <div id="course-code">
-            <div class="my-3" *ngIf="this.activatedRoute.snapshot.params.pub_id; else brandedDivider">&nbsp;</div>
+            <div class="my-3" *ngIf="theme.path !== 'default'; else clDivider">&nbsp;</div>
           </div>
 
           <h4 class="mb-2 mb-sm-3 text-uppercase">Course codes</h4>
 
           <p><strong>Course codes</strong> as the name suggests are course specific.
             Click the <strong>Use access code</strong> link available on course cards in the
-            <span *ngIf="this.activatedRoute.snapshot.params.pub_id; else general">
+            <span *ngIf="theme.path !== 'default'; else general">
               <a class="font-weight-bold"
                 [routerLink]="['/catalogue', 'publisher', this.activatedRoute.snapshot.params.pub_id]"
                 >Course Catalogue</a>.
@@ -68,7 +68,7 @@
           <p><span *ngIf="!user.email">Upon sign in you'll be redirected directly to the course.</span></p>
 
           <div id="group-code">
-            <div class="my-3" *ngIf="this.activatedRoute.snapshot.params.pub_id; else brandedDivider">&nbsp;</div>
+            <div class="my-3" *ngIf="theme.path !== 'default'; else clDivider">&nbsp;</div>
           </div>
 
           <h4 class="mb-2 mb-sm-3 text-uppercase">Group Codes</h4>
@@ -90,7 +90,7 @@
           </ol>
 
           <div id="course-access">
-            <div class="my-3" *ngIf="this.activatedRoute.snapshot.params.pub_id; else brandedDivider">&nbsp;</div>
+            <div class="my-3" *ngIf="theme.path !== 'default'; else clDivider">&nbsp;</div>
           </div>
 
           <h4 class="mb-2 mb-sm-3 text-uppercase">Purchased and unlocked courses</h4>
