@@ -14,10 +14,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::where('published', 1)
-                    ->where('private', 0)
-                    ->get();
-        return $courses;
+        echo Course::where('published', 1)->where('private', 0)->get();
     }
 
     /**
