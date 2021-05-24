@@ -6,6 +6,7 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\AngularController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/v4/user', [UserController::class, 'loggedInUser']);
+
+Route::get('/v4/courses', [CourseController::class, 'index']);
