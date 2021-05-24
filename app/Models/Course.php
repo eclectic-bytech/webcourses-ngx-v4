@@ -9,5 +9,5 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['active_bid'];
+    protected $hidden = ['active_bid', 'published', 'private'];
 }
