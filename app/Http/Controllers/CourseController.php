@@ -14,7 +14,14 @@ class CourseController extends Controller
      */
     public function index()
     {
-        echo Course::where('published', 1)->where('private', 0)->get();
+        $courses =
+            Course::where('published', 1)->where('private', 0)
+                ->leftJoin('publishers', 'courses.publisher_id', '=', 'publishers.id')
+                ->leftJoin('themes', 'courses.publisher_id', '=', 'themes.publisher_id')
+                ->select('courses.*', 'publishers.name AS publisher_name', 'themes.path')
+                ->get();
+
+        return $courses;
     }
 
     /**

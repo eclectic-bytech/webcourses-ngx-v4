@@ -1,5 +1,5 @@
 export class CatalogueModel {
-  cid: number
+  id: number
   title: string
   cover: string
   cover_alt: string
@@ -9,4 +9,6 @@ export class CatalogueModel {
   publisher_id: number
   short_desc: string
   price: number
+  created_at: string
+  updated_at: string
 }
