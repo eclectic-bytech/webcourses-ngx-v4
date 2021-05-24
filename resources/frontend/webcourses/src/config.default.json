@@ -1,7 +1,7 @@
 {
   "api": {
     "domain": "https://local.cultivatelearning.ca/",
-    "route": "v4/"
+    "route": "/v4"
   },
   "cookies": {
     "domain": "local.cultivatelearning.ca"
