@@ -8,26 +8,17 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of published and public courses.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $courses =
-            Course::where('published', 1)->where('private', 0)
-                ->leftJoin('publishers', 'courses.publisher_id', '=', 'publishers.id')
-                ->leftJoin('themes', 'courses.publisher_id', '=', 'themes.publisher_id')
-                ->leftJoin('user_progress', function($join) {
-                    $join
-                        ->on('course_id', '=', 'courses.id')
-                        ->where('user_id', 1)
-                    ;
-                })
-                ->select('courses.*', 'publishers.name AS publisher_name', 'themes.path', 'user_progress.id AS pid')
-                ->get();
-
-        return $courses;
+        return Course::where('published', 1)->where('private', 0)
+            ->leftJoin('publishers', 'courses.publisher_id', '=', 'publishers.id')
+            ->leftJoin('themes', 'courses.publisher_id', '=', 'themes.publisher_id')
+            ->select('courses.*', 'publishers.name AS publisher_name', 'themes.path')
+            ->get();
     }
 
     /**
