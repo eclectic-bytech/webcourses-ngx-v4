@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\AngularController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\UserProgressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,17 +40,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function
 
 Route::group(['prefix' => 'v4'], function() {
 
-    // Web courses directory / index
+    // Web course catalogue
     Route::get('/courses', [CourseController::class, 'index']);
 
     // Paths grouped as /v4/user
     Route::group(['prefix' => 'user', 'auth:sanctum' => 'verified'], function() {
-
         // User profile
         Route::get('/', [UserController::class, 'loggedInUser']);
 
         // User's web courses
-        Route::get('/courses', [CourseController::class, 'index']);
+        Route::get('/courses', [UserProgressController::class, 'index']);
     });
 
 });
