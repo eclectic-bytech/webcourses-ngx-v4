@@ -26,7 +26,11 @@ export class AppService {
   initLogged() {
     this.user.getUser().subscribe(
       (user: User) => {
-        this.user.user$.next(user)
+
+        // Call will return empty response if user is not logged in.
+        // We check for that before overwriting anon user.
+        if (user) this.user.user$.next(user)
+
         this.taxService.taxesApply(user)
         // If purchase_course is set, user logged in after clicking Buy as Anon
         // saw 'Please login' modal, and followed through with the login link
