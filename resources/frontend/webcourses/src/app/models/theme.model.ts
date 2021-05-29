@@ -1,6 +1,6 @@
 export class Theme {
   public id: number
-  public publisher_id
+  public publisher_id: number
   public label: string
   public path: string
   public bootstrap_nav: string
