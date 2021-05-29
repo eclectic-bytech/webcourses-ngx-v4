@@ -17,6 +17,7 @@ class CourseController extends Controller
         return Course::where('published', 1)
                         ->where('private', 0)
                         ->with('publisher')
+                        ->with('theme')
                         ->get();
     }
 

@@ -14,4 +14,8 @@ class Course extends Model
     public function publisher() {
         return $this->belongsTo(Publisher::class);
     }
+
+    public function theme() {
+        return $this->belongsTo(Theme::class, 'publisher_id');
+    }
 }
