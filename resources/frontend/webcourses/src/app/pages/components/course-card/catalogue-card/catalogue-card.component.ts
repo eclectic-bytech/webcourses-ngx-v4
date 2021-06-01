@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { TaxStatusService } from '../../../../core/services/tax-status/tax-status.service'
-import { CatalogueModel } from '../../../catalogue/models/catalogue.model'
+import { Course } from './../../../../models/course.model'
 
 @Component({
   selector: 'app-catalogue-card',
@@ -9,7 +9,7 @@ import { CatalogueModel } from '../../../catalogue/models/catalogue.model'
 })
 export class CatalogueCardComponent implements OnInit {
 
-  @Input() course: CatalogueModel
+  @Input() course: Course
   public showCouponInput: number
 
   constructor(
