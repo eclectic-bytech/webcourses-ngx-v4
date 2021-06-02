@@ -16,7 +16,7 @@
       <div class="d-flex my-3 justify-content-between">
 
         <div class="text-left" style="line-height: 95%;">
-          <small *ngIf="!course.pid">
+          <small>
             <a (click)="showCouponInputToggle(course.id)" class="handy text-success">Use access<br>code</a>
           </small>
         </div>
@@ -24,7 +24,7 @@
         <app-buy-button [course]="course" class="px-2"></app-buy-button>
 
         <div class="text-right" style="line-height: 95%;">
-          <small *ngIf="!course.pid && this.taxService.gstApplies" class="text-secondary">
+          <small class="text-secondary">
             plus GST ${{ course.price / 100 * .05  | number:'1.2-2' }}<br>
             total ${{ course.price / 100 * 1.05 | number:'1.2-2' }}
           </small>
@@ -38,14 +38,14 @@
 
     </div>
 
-    <a class="card-link" *ngIf="course.publisher_name">
+    <a class="card-link" *ngIf="course.publisher.name">
       <small class="text-secondary">
         Publisher:
         <span
-          [routerLink]="['/catalogue', 'publisher', course.path]"
+          [routerLink]="['/catalogue', 'publisher', course.theme.path]"
           class="text-uppercase text-primary handy"
           >
-          {{ course.publisher_name }}
+          {{ course.publisher.name }}
         </span>
       </small>
     </a>

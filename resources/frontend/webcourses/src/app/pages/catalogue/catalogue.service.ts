@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { CatalogueModel } from './models/catalogue.model'
+import { Course } from './../../models/course.model'
 import { ConfigService } from '../../core/services/config/config.service'
 
 @Injectable({
@@ -16,7 +16,7 @@ export class CatalogueService {
   ) { }
 
   getWebcourseCatalogue(pub_id: any) {
-    return this.http.get<CatalogueModel>(`
+    return this.http.get<Course>(`
       ${this.config.params.api.route}/courses?pub_id=${pub_id}
     `).pipe(courses => courses)
   }
