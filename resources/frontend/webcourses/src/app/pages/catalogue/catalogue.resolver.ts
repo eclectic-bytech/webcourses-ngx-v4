@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core'
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router'
 import { Observable } from 'rxjs'
 import { CatalogueService } from './catalogue.service'
-import { CatalogueModel } from './models/catalogue.model'
+import { Course } from './../../models/course.model'
 
 @Injectable()
-export class CatalogueResolver implements Resolve<Observable<CatalogueModel>> {
+export class CatalogueResolver implements Resolve<Observable<Course>> {
 
   constructor(
     public catalogueService: CatalogueService
@@ -13,7 +13,7 @@ export class CatalogueResolver implements Resolve<Observable<CatalogueModel>> {
 
   public resolve(
     route: ActivatedRouteSnapshot
-  ): Observable<CatalogueModel> {
+  ): Observable<Course> {
     return this.catalogueService.getWebcourseCatalogue(route.paramMap.get('pub_id'))
   }
 

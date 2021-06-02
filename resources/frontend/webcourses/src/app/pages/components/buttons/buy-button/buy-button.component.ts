@@ -7,7 +7,6 @@ import { UserService } from './../../../../core/services/user/user.service'
 
 import { ConfigService } from '../../../../core/services/config/config.service'
 import { PurchaseOrderService } from './../../../stripe/payment/purchase-order/purchase-order.service'
-import { CatalogueModel } from './../../../catalogue/models/catalogue.model'
 
 @Component({
   selector: 'app-buy-button',

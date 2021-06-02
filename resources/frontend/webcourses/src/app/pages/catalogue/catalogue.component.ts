@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators'
 import { CatalogueService } from './catalogue.service'
 import { UserService } from './../../core/services/user/user.service'
 import { User } from '../../core/models/user.model'
-import { CatalogueModel } from './models/catalogue.model'
+import { Course } from './../../models/course.model'
 import { TaxStatusService } from '../../core/services/tax-status/tax-status.service'
 import { AppService } from './../../app.service'
 import { ThemeService } from './../../core/services/theme/theme.service'
@@ -20,7 +20,7 @@ import { FadeInOut } from '../../core/animations/fade-in-out.animation'
 })
 export class CatalogueComponent implements OnInit, OnDestroy {
 
-  public webcoursesAll$: Observable<CatalogueModel[]>
+  public webcoursesAll$: Observable<Course[]>
   public user: User
   public themeId: number
 
