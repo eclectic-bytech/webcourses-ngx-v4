@@ -16,6 +16,6 @@ class Course extends Model
     }
 
     public function theme() {
-        return $this->belongsTo(Theme::class, 'publisher_id');
+        return $this->hasOne(Theme::class, 'publisher_id', 'publisher_id');
     }
 }
