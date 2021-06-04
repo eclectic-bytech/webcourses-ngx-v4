@@ -1,26 +1,6 @@
 {
-  "/api": {
-    "target": "https://dev.cultivatelearning.ca/",
-    "secure": true,
-    "changeOrigin": true
-  },
-  "/api/v1": {
-    "target": "https://dev.cultivatelearning.ca/",
-    "secure": true,
-    "changeOrigin": true
-  },
-  "/api/v2": {
-    "target": "https://dev.cultivatelearning.ca/",
-    "secure": true,
-    "changeOrigin": true
-  },
-  "/api/v3/public": {
-    "target": "https://dev.cultivatelearning.ca/",
-    "secure": true,
-    "changeOrigin": true
-  },
-  "/api/v3-laravel/public": {
-    "target": "https://dev.cultivatelearning.ca/",
+  "/v4": {
+    "target": "https://local.cultivatelearning.ca/v4",
     "secure": true,
     "changeOrigin": true
   },
@@ -32,11 +12,6 @@
   "/publisher-files": {
     "target": "https://dev.cultivatelearning.ca/",
     "secure": true,
-    "changeOrigin": true
-  },
-  "/api_disabled": {
-    "target": "http://local.eclectic.ca",
-    "secure": false,
     "changeOrigin": true
   }
 }
