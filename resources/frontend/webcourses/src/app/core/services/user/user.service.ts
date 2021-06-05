@@ -6,6 +6,7 @@ import { shareReplay } from 'rxjs/operators'
 import { User } from '../../models/user.model'
 import { Course } from '../../../models/course.model'
 import { ConfigService } from '../config/config.service'
+import { UserCoursesProgress } from 'src/app/models/user.courses.progress.model'
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ import { ConfigService } from '../config/config.service'
 export class UserService {
 
   userCourses$: Observable<Course[]> = this.getUserCourses$()
+  userCoursesProgress$: Observable<UserCoursesProgress[]> = this.getUserCoursesProgress()
 
   user$ = new BehaviorSubject<User>(<User>{
     id: 0,
@@ -31,6 +33,12 @@ export class UserService {
     private configService: ConfigService
   ) {}
 
+  getUser() {
+    return this.httpClient
+      .get<User>(`/v4/user`)
+      .pipe(profile => profile)
+  }
+
   getUserCourses$(): Observable<Course[]> {
     this.userCourses$ = this.httpClient
       .get<Course[]>(`${this.configService.params.api.route}/user/courses`)
@@ -38,10 +46,10 @@ export class UserService {
     return this.userCourses$
   }
 
-  getUser() {
-    return this.httpClient
-      .get<User>(`/v4/user`)
-      .pipe(profile => profile)
+  getUserCoursesProgress() {
+    this.userCoursesProgress$ = this.httpClient
+      .get<UserCoursesProgress[]>(`${this.configService.params.api.route}/user/courses/progress`)
+      .pipe(shareReplay(1))
+    return this.userCoursesProgress$
   }
-
 }

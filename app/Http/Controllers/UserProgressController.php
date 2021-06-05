@@ -17,4 +17,13 @@ class UserProgressController extends Controller
         $user = auth()->user();
         return UserProgress::where('user_id', $user['id'])->get();
     }
+
+    public function indexWithCourse()
+    {
+        $user = auth()->user();
+        return UserProgress
+            ::where('user_id', $user['id'])
+            ->with('course')
+            ->get();
+    }
 }

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core'
 import { ActivitiesService } from '../../activities.service'
 import { Activity } from '../../workarea/models/activity.model'
 import { Chapter } from '../../models/chapter.model'
-import { Course } from '../../../../../models/course.model'
 import { UserService } from '../../../../../core/services/user/user.service'
 import { CompletionStatsService } from '../../../../../core/services/user/completion-stats.service'
+import { UserCoursesProgress } from 'src/app/models/user.courses.progress.model'
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ import { CompletionStatsService } from '../../../../../core/services/user/comple
 export class SelectedService {
 
   selectedChapter: Chapter
-  selectedCourse: Course
+  selectedCourse: UserCoursesProgress
 
   constructor(
     private completionStatsService: CompletionStatsService,
@@ -35,10 +35,10 @@ export class SelectedService {
   }
 
   updateSelectedCourse(currentActivity: Activity) {
-    this.userService.userCourses$.subscribe(
-      (courses: Course[]) => {
-        this.selectedCourse = this.getSelectedCourse(courses, currentActivity)
-        this.completionStatsService.initCourseCompletionStats(courses)
+    this.userService.userCoursesProgress$.subscribe(
+      (userCourses: UserCoursesProgress[]) => {
+        this.selectedCourse = this.getSelectedCourse(userCourses, currentActivity)
+        this.completionStatsService.initCourseCompletionStats(userCourses)
       }
     )
   }
@@ -51,15 +51,15 @@ export class SelectedService {
     return (i >= 0) ? chapters[i] : null
   }
 
-  getSelectedCourse(courses: Course[], currentActivity: Activity) {
-    let selectedCourse = this.findSelectedCourse(courses, currentActivity)
+  getSelectedCourse(userCourses: UserCoursesProgress[], currentActivity: Activity) {
+    let selectedCourse = this.findSelectedCourse(userCourses, currentActivity)
     if (!selectedCourse) {
       // Normally we want to subscribe to userService.userCourses$ to make use of caching.
       // Subscribing to getUserCourses$ bypasses then updates userCourses$ shareReplay cache
-      this.userService.getUserCourses$().subscribe(
-        (courses: Course[]) => {
-          this.selectedCourse = this.findSelectedCourse(courses, currentActivity)
-          this.completionStatsService.initCourseCompletionStats(courses)
+      this.userService.userCoursesProgress$.subscribe(
+        (userCourses: UserCoursesProgress[]) => {
+          this.selectedCourse = this.findSelectedCourse(userCourses, currentActivity)
+          this.completionStatsService.initCourseCompletionStats(userCourses)
         }
       )
     } else {
@@ -67,9 +67,9 @@ export class SelectedService {
     }
   }
 
-  findSelectedCourse(courses: Course[], currentActivity: Activity) {
+  findSelectedCourse(courses: UserCoursesProgress[], currentActivity: Activity) {
     return courses.find(
-      (course: Course) => course.pid === currentActivity.meta.pid
+      (course: UserCoursesProgress) => course.pid === currentActivity.meta.pid
     )
   }
 

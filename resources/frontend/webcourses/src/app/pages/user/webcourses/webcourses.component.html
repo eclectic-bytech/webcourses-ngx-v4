@@ -2,12 +2,12 @@
   <div class="text-center mb-3">
     <h1 class="common-heading mb-2">My Webcourses</h1>
 
-    <div *ngIf="this.user.userCourses$ | async as userCourses; else loading" @fadeInOut>
+    <div *ngIf="this.user.userCoursesProgress$ | async as userCourses; else loading" @fadeInOut>
       <small class="text-dark text-uppercase">{{userCourses.length}} Courses</small>
         <div *ngIf="userCourses.length > 0; else noCoursesForYou">
           <div class="mt-4">
-            <div *ngFor="let course of userCourses, let i = index, let l = last" class="d-inline-block">
-              <app-my-courses-card [course]="course"></app-my-courses-card>
+            <div *ngFor="let userCourse of userCourses, let i = index, let l = last" class="d-inline-block">
+              <app-my-courses-card [userCourse]="userCourse"></app-my-courses-card>
             </div>
             <app-group-join-card></app-group-join-card>
           </div>

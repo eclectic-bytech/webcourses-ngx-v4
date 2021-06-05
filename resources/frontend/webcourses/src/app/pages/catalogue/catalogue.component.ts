@@ -41,7 +41,16 @@ export class CatalogueComponent implements OnInit, OnDestroy {
     this.webcoursesAll$ = this.route.data.pipe(map(data => data.webcoursesAll))
 
     this.sub = this.userService.user$.subscribe(
-      (user: User) => { this.user = user },
+      (user: User) => {
+        if (user.email) {
+          this.userService.getUserCoursesProgress().subscribe(
+            (uCourses: any) => {
+              console.log(uCourses)
+            }
+          )
+          this.user = user
+        }
+      },
       (err) => { console.log(err) }
     )
   }

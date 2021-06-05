@@ -14,11 +14,11 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return Course::where('published', 1)
-                        ->where('private', 0)
-                        ->with('publisher')
-                        ->with('theme')
-                        ->get();
+        return Course
+            ::where('published', 1)
+            ->where('private', 0)
+            ->with(['publisher', 'theme'])
+            ->get();
     }
 
     /**

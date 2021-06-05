@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { Router } from '@angular/router'
+import { UserCoursesProgress } from 'src/app/models/user.courses.progress.model'
 
 import { CompletionStatsService } from '../../../../core/services/user/completion-stats.service'
-import { Course } from '../../../../models/course.model'
 import { MyCoursesCardService } from './my-courses-card.service'
 
 @Component({
@@ -12,7 +12,7 @@ import { MyCoursesCardService } from './my-courses-card.service'
 })
 export class MyCoursesCardComponent implements OnInit {
 
-  @Input() course: Course
+  @Input() userCourse: UserCoursesProgress
 
   constructor(
     private router: Router,
@@ -23,10 +23,10 @@ export class MyCoursesCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  liveTac(course: Course): number {
-    return (this.completionStatsService.completionStats.inPid[course.pid]) ?
-      this.completionStatsService.completionStats.inPid[course.pid] :
-      course.tac
+  liveTac(userCourse: UserCoursesProgress): number {
+    return (this.completionStatsService.completionStats.inPid[userCourse.pid]) ?
+      this.completionStatsService.completionStats.inPid[userCourse.pid] :
+      userCourse.tac
   }
 
   goToActivity(pid: number, firstAid: boolean) {

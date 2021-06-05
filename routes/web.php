@@ -45,11 +45,21 @@ Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped as /v4/user
     Route::group(['prefix' => 'user', 'auth:sanctum' => 'verified'], function() {
+
         // User profile
         Route::get('/', [UserController::class, 'loggedInUser']);
 
-        // User's web courses
-        Route::get('/courses', [UserProgressController::class, 'index']);
+        // Paths grouped as /v4/user/courses
+        Route::group(['prefix' => 'courses'], function() {
+
+            // Catalogue of courses where the user is a participant
+            Route::get('/', [UserProgressController::class, 'index']);
+
+            // User's web courses progress
+            Route::get('/progress', [UserProgressController::class, 'indexWithCourse']);
+
+        });
+
     });
 
 });

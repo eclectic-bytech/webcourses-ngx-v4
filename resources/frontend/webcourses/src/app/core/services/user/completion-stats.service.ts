@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Chapter } from '../../../pages/webcourse/activities/models/chapter.model';
 import { Activity } from '../../../pages/webcourse/activities/workarea/models/activity.model';
-import { Course } from '../../../models/course.model';
+import { UserCoursesProgress } from 'src/app/models/user.courses.progress.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +19,10 @@ export class CompletionStatsService {
     })
   }
 
-  initCourseCompletionStats(courses: Course[]) {
-    courses.forEach(course => {
-      if (!this.completionStats.inPid[course.pid]) {
-        this.completionStats.inPid[course.pid] = course.tac
+  initCourseCompletionStats(userCourses: UserCoursesProgress[]) {
+    userCourses.forEach(userCourse => {
+      if (!this.completionStats.inPid[userCourse.pid]) {
+        this.completionStats.inPid[userCourse.pid] = userCourse.tac
       }
     })
   }
