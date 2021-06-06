@@ -18,4 +18,8 @@ class Course extends Model
     public function theme() {
         return $this->hasOne(Theme::class, 'publisher_id', 'publisher_id');
     }
+
+    public function userProgress() {
+        return $this->hasOne(UserProgress::class, 'course_id')->where('user_id', 1);
+    }
 }
