@@ -43,11 +43,6 @@ export class CatalogueComponent implements OnInit, OnDestroy {
     this.sub = this.userService.user$.subscribe(
       (user: User) => {
         if (user.email) {
-          this.userService.getUserCourseProgress().subscribe(
-            (uCourses: any) => {
-              console.log(uCourses)
-            }
-          )
           this.user = user
         }
       },
