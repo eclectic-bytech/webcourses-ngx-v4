@@ -20,5 +20,5 @@ export class Course {
   public private: boolean
   public publisher: Publisher
   public theme: Theme
-  public user_progress: UserCourseProgress
+  public user_progress?: UserCourseProgress
 }
