@@ -2,7 +2,7 @@
   <div class="text-center mb-3">
     <h1 class="common-heading mb-2">My Webcourses</h1>
 
-    <div *ngIf="this.user.userCoursesProgress$ | async as userCourses; else loading" @fadeInOut>
+    <div *ngIf="this.user.UserCourseProgress$ | async as userCourses; else loading" @fadeInOut>
       <small class="text-dark text-uppercase">{{userCourses.length}} Courses</small>
         <div *ngIf="userCourses.length > 0; else noCoursesForYou">
           <div class="mt-4">

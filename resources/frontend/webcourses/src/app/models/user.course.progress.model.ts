@@ -1,6 +1,6 @@
 import { Course } from "./course.model"
 
-export class UserCoursesProgress {
+export class UserCourseProgress {
   public id: number
   public user_id: number
   public course_id: number
