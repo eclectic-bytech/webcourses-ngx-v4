@@ -14,10 +14,14 @@ class CourseController extends Controller
      */
     public function index()
     {
+        $loggedInUser = auth()->user();
         return Course
             ::where('published', 1)
             ->where('private', 0)
-            ->with(['publisher', 'theme', 'userProgress'])
+            ->with(['publisher', 'theme'])
+            ->when($loggedInUser, function($query) {
+                return $query->with('userProgress');
+            })
             ->get();
     }
 

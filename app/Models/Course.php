@@ -20,6 +20,7 @@ class Course extends Model
     }
 
     public function userProgress() {
-        return $this->hasOne(UserProgress::class, 'course_id')->where('user_id', 1);
+        $user = auth()->user();
+        return $this->hasOne(UserProgress::class, 'course_id')->where('user_id', $user['id']);
     }
 }
