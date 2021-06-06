@@ -1,5 +1,6 @@
 import { Publisher } from './publisher.model'
 import { Theme } from './theme.model'
+import { UserCoursesProgress } from './user.courses.progress.model'
 
 export class Course {
   public id: number
@@ -16,7 +17,8 @@ export class Course {
   public price: number
   public created_at: string
   public updated_at: string
+  public private: boolean
   public publisher: Publisher
   public theme: Theme
-  public private: boolean
+  public user_progress: UserCoursesProgress
 }
