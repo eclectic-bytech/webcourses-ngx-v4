@@ -1,7 +1,6 @@
 <div *ngIf="this.userService.user$ | async as user">
   <div *ngIf="!this.purchaseStarted; else verifying">
-    <!-- <button *ngIf="this.course.pid === null; else showPurchasedBtn" -->
-    <button
+    <button *ngIf="!this.course.user_progress; else showPurchasedBtn"
       (click)="user.email ? buyButton() : this.loginRequired(content)"
       class="btn btn-success"
       [ngClass]="btnLg ? 'btn-lg' : ''"
@@ -10,14 +9,14 @@
       <span *ngIf="course.price === 0" class="mx-3">Enrol</span>
     </button>
 
-    <!-- <ng-template #showPurchasedBtn>
+    <ng-template #showPurchasedBtn>
       <div class="d-block text-center" style="line-height: 1.2;" [ngClass]="btnLg ? 'btnLg' : ''">
         <small class="text-secondary">
           <span class="text-uppercase text-success font-weight-bold"><u>Enrolled</u></span><br>
           <a routerLink="/user/webcourses">Go to My Webcourses</a>
         </small>
       </div>
-    </ng-template> -->
+    </ng-template>
   </div>
 </div>
 

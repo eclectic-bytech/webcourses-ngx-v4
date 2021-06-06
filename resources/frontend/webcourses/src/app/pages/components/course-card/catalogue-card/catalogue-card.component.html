@@ -15,15 +15,15 @@
 
       <div class="d-flex my-3 justify-content-between">
 
-        <div class="text-left" style="line-height: 95%;">
+        <div class="text-left" style="line-height: 95%;" *ngIf="!course.user_progress">
           <small>
             <a (click)="showCouponInputToggle(course.id)" class="handy text-success">Use access<br>code</a>
           </small>
         </div>
 
-        <app-buy-button [course]="course" class="px-2"></app-buy-button>
+        <app-buy-button [course]="course" class="px-2 mx-auto"></app-buy-button>
 
-        <div class="text-right" style="line-height: 95%;">
+        <div class="text-right" style="line-height: 95%;" *ngIf="!course.user_progress">
           <small class="text-secondary">
             plus GST ${{ course.price / 100 * .05  | number:'1.2-2' }}<br>
             total ${{ course.price / 100 * 1.05 | number:'1.2-2' }}
