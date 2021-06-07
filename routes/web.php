@@ -8,6 +8,7 @@ use App\Http\Controllers\AngularController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserProgressController;
+use App\Http\Controllers\PublisherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function
 Route::group(['prefix' => 'v4'], function() {
 
     // Web course catalogue
-    Route::get('/courses', [CourseController::class, 'index']);
+    Route::get('/courses/{publisherId?}', [CourseController::class, 'index'])->whereNumber('publisherId');
 
     // Paths grouped as /v4/user
     Route::group(['prefix' => 'user', 'auth:sanctum' => 'verified'], function() {
@@ -62,4 +63,10 @@ Route::group(['prefix' => 'v4'], function() {
 
     });
 
+    // Paths grouped as /v4/publisher
+    Route::group(['prefix' => 'publisher'], function() {
+
+        Route::get('/profile/{id}', [PublisherController::class, 'index']);
+
+    });
 });
