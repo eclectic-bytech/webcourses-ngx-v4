@@ -12,14 +12,19 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($publisherId = false)
     {
-        $loggedInUser = auth()->user();
+        $userIsLoggedIn = auth()->check();
         return Course
             ::where('published', 1)
             ->where('private', 0)
-            ->with(['publisher', 'theme'])
-            ->when($loggedInUser, function($query) {
+            ->when($publisherId, function($query, $publisherId) {
+                return $query->where('publisher_id', $publisherId);
+            })
+            ->when(!$publisherId, function($query) {
+                return $query->with(['publisher', 'theme']);
+            })
+            ->when($userIsLoggedIn, function($query) {
                 return $query->with('userProgress');
             })
             ->get();
