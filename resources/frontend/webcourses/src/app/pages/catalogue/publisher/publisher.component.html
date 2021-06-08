@@ -11,7 +11,7 @@
     </div>
 
     <div *ngFor="let course of publisherCourses, let i = index, let l = last" class="d-inline-block">
-      <app-catalogue-card [course]="course"></app-catalogue-card>
+      <app-catalogue-card [course]="course" [publisherInfo]="publisherInfo"></app-catalogue-card>
     </div>
 
   </div>
