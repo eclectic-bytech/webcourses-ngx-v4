@@ -14,7 +14,7 @@ class PublisherController extends Controller
      */
     public function index($id)
     {
-        return Publisher::where('id', $id)->get();
+        return Publisher::where('id', $id)->sole();
     }
 
     /**
