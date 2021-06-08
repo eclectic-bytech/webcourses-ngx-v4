@@ -93,10 +93,10 @@
             <div class="col-12 col-lg-10 mx-auto text-center">
               <div
                 *ngIf="this.publisherInfo$ | async as publisher; else loading"
-                [appThemeSet]="publisher.theme"
+                [appThemeSet]="publisher.settings.theme"
                 >
                 <a [href]="publisher.website" target="_blank">
-                  <img [src]="publisher.theme.logo" alt="{{publisher.name}} Logo" class="mb-3 mt-1">
+                  <img [src]="publisher.settings.theme.logo" alt="{{publisher.name}} Logo" class="mb-3 mt-1">
                   <p class="text-secondary" style="line-height: 1.1">
                     <span class="text-uppercase">{{publisher.name}}</span><br>
                     <span [innerHtml]="publisher.website.substr(8)"></span>

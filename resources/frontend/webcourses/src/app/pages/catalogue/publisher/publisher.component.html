@@ -1,10 +1,9 @@
 <div *ngIf="this.publisherCourses$ | async as publisherCourses" id="fullMainContent" @fadeInOut>
   <div
     *ngIf="this.publisherInfo$ | async as publisherInfo"
-    [appThemeSet]="publisherInfo.theme"
+    [appThemeSet]="publisherInfo.settings.theme"
     class="text-center"
     >
-
     <div class="mb-3">
       <h1 class="common-heading mb-2">{{ publisherInfo.name }} courses</h1>
       <small class="text-dark text-uppercase d-block"><a href="{{publisherInfo.website}}" target="_blank">{{ publisherInfo.website }}</a></small>

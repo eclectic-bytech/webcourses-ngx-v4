@@ -1,6 +1,6 @@
 <div id="fullMainContent"
   *ngIf="(publisherInfo$ | async) as publisherInfo"
-  [appThemeSet]="publisherInfo.theme"
+  [appThemeSet]="publisherInfo.settings.theme"
   @fadeInOut
   >
 
