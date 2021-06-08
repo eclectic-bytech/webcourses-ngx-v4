@@ -11,5 +11,7 @@ export class PublisherModel {
   country: string
   province: string
   city: string
-  theme: Theme
+  settings: Theme
+  created_at: string
+  updated_at: string
 }
