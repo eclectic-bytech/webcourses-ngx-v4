@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Course } from './../../models/course.model'
 import { ConfigService } from '../../core/services/config/config.service'
-import { User } from 'src/app/core/models/user.model'
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +16,10 @@ export class CatalogueService {
   ) { }
 
   getWebcourseCatalogue(pub_id: any) {
-    return this.http.get<Course>(`
-      ${this.config.params.api.route}/courses?pub_id=${pub_id}
-    `).pipe(courses => courses)
+    const path = pub_id ?
+      `${this.config.params.api.route}/courses/${pub_id}` :
+      `${this.config.params.api.route}/courses`
+    return this.http.get<Course>(path).pipe(courses => courses)
   }
 
 }
