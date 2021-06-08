@@ -14,7 +14,7 @@ class AddThemeFieldToPublisherTable extends Migration
     public function up()
     {
         Schema::table('publishers', function (Blueprint $table) {
-            $table->json('theme')->after('city');
+            $table->json('settings')->after('city');
         });
     }
 
