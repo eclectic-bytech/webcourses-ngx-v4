@@ -29,3 +29,14 @@
   background: transparent;
   color: #2779aa;
 }
+
+.click-img {
+  max-width: 150px;
+  border-radius: 1rem;
+}
+
+.imgSelected {
+  // border: .5rem solid rgb(25, 128, 25);
+  box-shadow: 0 0 3px 6px rgb(25, 128, 25);
+}
+

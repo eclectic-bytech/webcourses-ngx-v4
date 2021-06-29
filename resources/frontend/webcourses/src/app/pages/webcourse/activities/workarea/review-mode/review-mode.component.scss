@@ -13,38 +13,56 @@
   padding: 5px;
 }
 
-.clickSelected {
+li.clickSelected {
   border: 1px solid #aed0ea;
   background: papayawhip;
   color: #2779aa;
 }
 
-.clickFalse {
+li.clickFalse {
   border: 1px solid #aed0ea;
   background: transparent;
   color: #2779aa;
 }
 
-.clickActivity label {
+li.clickActivity label {
   margin: 0;
   padding: 5px;
 }
 
-.clickCorrect {
+li.clickCorrect {
   border: 1px solid #25a00d;
   background: #97dd97;
   color: #1f2a30;
 }
 
-.clickWrong {
+li.clickWrong {
   border: 1px solid #bd3d27;
   background: #cc5f5f;
   color: #e6eaec;
 }
 
-.clickMissed {
+li.clickMissed {
   border: 1px solid #666666;
   background: #bbbaba;
   color: #555555;
 }
+
+img.clickCorrect {
+  box-shadow: 0 0 3px 6px rgb(25, 128, 25);
+}
+
+img.clickWrong {
+  box-shadow: 0 0 3px 6px #bd3d27;
+}
+
+img.clickMissed {
+  box-shadow: 0 0 3px 6px #666;
+}
+
+.click-img {
+  max-width: 150px;
+  border-radius: 1rem;
+}
+
 

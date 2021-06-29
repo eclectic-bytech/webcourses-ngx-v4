@@ -29,8 +29,16 @@ export class ActiveModeComponent implements OnInit {
     this.activeModeService.activityForm = this.fb.group({ answer: answerValidators[this.activity.meta.type] })
   }
 
-  updateSelections(i) {
-    this.activity.answers[i].selected = !this.activity.answers[i].selected
+  updateSelections(i, singleSelection?: boolean) {
+    if (singleSelection) {
+      for (let y = 0; y < this.activity.answers.length; y++) {
+        // deselect all previous selections
+        this.activity.answers[y].selected = false
+      }
+      this.activity.answers[i].selected = true
+    } else {
+      this.activity.answers[i].selected = !this.activity.answers[i].selected
+    }
   }
 
 }
