@@ -14,7 +14,7 @@ class AddStyleFieldToCourseSyllabusTable extends Migration
     public function up()
     {
         Schema::table('course_syllabus', function (Blueprint $table) {
-            $table->string('style', 32)->after('default_answer');
+            $table->string('style', 32)->after('default_answer')->nullable();
         });
     }
 
