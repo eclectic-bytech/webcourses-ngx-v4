@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { EnrolMessageRoutingModule } from './enrol-message-routing.module'
 import { EnrolMessageComponent } from './enrol-message.component'
 import { ThemeResetModule } from './../../../../core/directives/theme-reset/theme-reset.module'
+import { PipesModule } from './../../../../shared/pipes/pipes.module'
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { ThemeResetModule } from './../../../../core/directives/theme-reset/them
   imports: [
     CommonModule,
     EnrolMessageRoutingModule,
-    ThemeResetModule
+    ThemeResetModule,
+    PipesModule
   ]
 })
 export class EnrolMessageModule { }

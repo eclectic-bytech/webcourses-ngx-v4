@@ -11,7 +11,7 @@
         <small class="text-secondary mt-2">Published by {{enrolMessage.publisher}}</small>
 
         <div class="my-3">
-          <p>{{ enrolMessage.message }}</p>
+          <p [innerHtml]="enrolMessage.message | safehtml: 'html'"></p>
           <button class="btn btn-success mt-5" [routerLink]="['/webcourse', 'activities', enrolMessage.start_aid]">Let's start the course!</button>
         </div>
       </div>
