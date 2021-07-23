@@ -28,7 +28,7 @@
     </a>
 
     <p style="max-height:125px; min-height: 50px; overflow-y:auto; line-height:.9">
-      <small class="text-secondary">{{ userCourse.course.short_desc }}</small>
+      <small class="text-secondary" [innerHtml="userCourse.course.short_desc | safehtml: html"]></small>
     </p>
 
     <button
