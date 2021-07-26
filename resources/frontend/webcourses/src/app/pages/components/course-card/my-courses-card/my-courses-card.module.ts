@@ -12,6 +12,9 @@ import { PipesModule } from './../../../../shared/pipes/pipes.module'
     CommonModule,
     RouterModule,
     PipesModule
+  ],
+  exports: [
+    MyCoursesCardComponent
   ]
 })
 
