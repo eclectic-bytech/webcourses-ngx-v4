@@ -8,7 +8,7 @@
     <a [routerLink]="['/catalogue', 'course', course.id]"><h5 class="card-title">{{course.title}}</h5></a>
 
     <p style="max-height:125px; min-height: 50px; overflow-y:auto; line-height:.9">
-      <small class="text-secondary">{{ course.short_desc }}</small>
+      <small class="text-secondary" [innerHtml]="course.short_desc | safehtml: 'html'"></small>
     </p>
 
     <div class="mb-3 text-center">

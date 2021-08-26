@@ -48,7 +48,7 @@
           <div class="col-sm-10 col-9 my-1">
             <label class="form-check-label"
               [for]="option.answer_id"
-              [innerHtml]="option.caption  | safehtml: 'html'"
+              [innerHtml]="option.caption | safehtml: 'html'"
               >
             </label>
           </div>
@@ -79,7 +79,7 @@
 
       <!-- CLICK ACTIVITY -->
 
-      <div *ngIf="activity.meta.type === 'click'" class="container-fluid">
+      <div *ngIf="activity.meta.type === 'click' && activity.meta.style != 'image'" class="container-fluid">
         <ul class="clickActivity">
           <li
             *ngFor="let option of activity.answers; let i = index"
@@ -103,6 +103,18 @@
 
           </li>
         </ul>
+      </div>
+
+      <div *ngIf="activity.meta.type === 'click' && activity.meta.style === 'image'" class="container-fluid">
+        <img
+          *ngFor="let image of activity.answers; let i = index"
+          [src]="image.caption.src"
+          [alt]="image.caption.alt"
+          type="button"
+          class="click-img mr-2 mt-2"
+          [ngClass]="activity.answers[i].selected ? 'imgSelected' : 'imgFalse'"
+          (click)="updateSelections(i, true)"
+        >
       </div>
 
   </div>

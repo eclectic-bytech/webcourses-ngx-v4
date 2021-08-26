@@ -52,7 +52,7 @@
 
   <!-- CLICK ACTIVITY -->
 
-  <div *ngIf="activity.meta.type === 'click'" class="container-fluid">
+  <div  *ngIf="activity.meta.type === 'click' && activity.meta.style != 'image'" class="container-fluid">
     <ul class="clickActivity">
       <li
         class="text-left px-3"
@@ -62,6 +62,16 @@
       >
       </li>
     </ul>
+  </div>
+
+  <div *ngIf="activity.meta.type === 'click' && activity.meta.style === 'image'" class="container-fluid">
+    <img
+      *ngFor="let image of activity.answers; let i = index"
+      [src]="image.caption.src"
+      [alt]="image.caption.alt"
+      class="click-img mr-2 mt-2"
+      [ngClass]="markColours(image)"
+    >
   </div>
 
 </div>

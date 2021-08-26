@@ -4,6 +4,7 @@ import { CatalogueCardComponent } from './catalogue-card.component'
 import { RouterModule } from '@angular/router'
 import { CouponOptionModule } from '../../coupon-field/coupon-field.module'
 import { BuyButtonModule } from '../../buttons/buy-button/buy-button.module'
+import { PipesModule } from './../../../../shared/pipes/pipes.module'
 
 @NgModule({
   declarations: [CatalogueCardComponent],
@@ -11,7 +12,8 @@ import { BuyButtonModule } from '../../buttons/buy-button/buy-button.module'
     CommonModule,
     RouterModule,
     CouponOptionModule,
-    BuyButtonModule
+    BuyButtonModule,
+    PipesModule
   ],
   exports: [CatalogueCardComponent]
 })

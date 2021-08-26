@@ -6,6 +6,7 @@ export class ActivityMeta {
     public seq: number,
     public type: string,
     public cont: boolean,
-    public marked: boolean
+    public marked: boolean,
+    public style: string
   ) {}
 }

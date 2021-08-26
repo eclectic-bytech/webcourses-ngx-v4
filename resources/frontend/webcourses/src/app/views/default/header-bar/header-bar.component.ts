@@ -48,18 +48,19 @@ export class HeaderBarComponent implements OnInit {
   }
 
   logoLink(theme: Theme) {
-    if (theme.path == "default") {
-      // CL logo linked to home page
-      this.router.navigateByUrl('/')
-    } else {
-      if (theme.publisherHome) {
-        // Publisher's logo linked to their website
-        window.open(theme.publisherHome, "_blank")
-      } else {
-        // Publisher's logo linked to their course catalogue (website url not provided)
-        this.router.navigateByUrl(`/catalogue/publisher/${theme.path}`)
-      }
-    }
+    this.router.navigateByUrl('/')
+    // if (theme.path == "default") {
+    //   // CL logo linked to home page
+    //   this.router.navigateByUrl('/')
+    // } else {
+    //   if (theme.publisherHome) {
+    //     // Publisher's logo linked to their website
+    //     window.open(theme.publisherHome, "_blank")
+    //   } else {
+    //     // Publisher's logo linked to their course catalogue (website url not provided)
+    //     this.router.navigateByUrl(`/catalogue/publisher/${theme.path}`)
+    //   }
+    // }
   }
 
 }
