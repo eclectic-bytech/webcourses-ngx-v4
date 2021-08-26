@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserProgress;
+use App\Models\UserCourse;
 use Illuminate\Http\Request;
 
-class UserProgressController extends Controller
+class UserCourseController extends Controller
 {
 /**
      * Display a listing of published and public courses.
@@ -21,7 +21,7 @@ class UserProgressController extends Controller
     public function indexWithCourse()
     {
         $user = auth()->user();
-        return UserProgress
+        return UserCourse
             ::where('user_id', $user['id'])
             ->with('course')
             ->get();

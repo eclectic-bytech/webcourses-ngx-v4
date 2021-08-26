@@ -19,8 +19,8 @@ class Course extends Model
         return $this->hasOne(Theme::class, 'publisher_id', 'publisher_id');
     }
 
-    public function userProgress() {
+    public function userCourse() {
         $user = auth()->user();
-        return $this->hasOne(UserProgress::class, 'course_id')->where('user_id', $user['id']);
+        return $this->hasOne(UserCourse::class, 'course_id')->where('user_id', $user['id']);
     }
 }

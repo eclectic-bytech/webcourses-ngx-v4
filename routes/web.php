@@ -7,7 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\AngularController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\UserProgressController;
+use App\Http\Controllers\UserCourseController;
 use App\Http\Controllers\PublisherController;
 
 /*
@@ -54,10 +54,10 @@ Route::group(['prefix' => 'v4'], function() {
         Route::group(['prefix' => 'courses'], function() {
 
             // Catalogue of courses where the user is a participant
-            Route::get('/', [UserProgressController::class, 'index']);
+            Route::get('/', [UserCourseController::class, 'index']);
 
             // User's web courses progress
-            Route::get('/progress', [UserProgressController::class, 'indexWithCourse']);
+            Route::get('/progress', [UserCourseController::class, 'indexWithCourse']);
 
         });
 
