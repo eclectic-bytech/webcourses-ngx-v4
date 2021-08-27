@@ -35,7 +35,7 @@ export class UserService {
 
   getUser() {
     return this.httpClient
-      .get<User>(`/v4/user`)
+      .get<User>(`/v4/user/profile`)
       .pipe(profile => profile)
   }
 

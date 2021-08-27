@@ -48,7 +48,7 @@ Route::group(['prefix' => 'v4'], function() {
     Route::group(['prefix' => 'user', 'auth:sanctum' => 'verified'], function() {
 
         // User profile
-        Route::get('/', [UserController::class, 'loggedInUser']);
+        Route::get('/profile', [UserController::class, 'loggedInUser']);
 
         // Paths grouped as /v4/user/courses
         Route::group(['prefix' => 'courses'], function() {
