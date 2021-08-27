@@ -25,10 +25,25 @@ class CourseController extends Controller
                 return $query->with(['publisher', 'theme']);
             })
             ->when($userIsLoggedIn, function($query) {
-                return $query->with('userProgress');
+                return $query->with('userCourse');
             })
             ->get();
     }
+
+
+    public function indexUser($userId = false)
+    {
+        // Passed userId is intended for admin seeing what courses a user has access to.
+        // Currently unused, added as documentation for future features.
+        $user = auth()->user();
+        return Course
+            ::rightJoin('user_progress', 'user_progress.course_id', '=', 'courses.id')
+            ->where('user_progress.user_id', $user['id'])
+            ->where('published', 1)
+            ->where('private', 0)
+            ->get();
+    }
+
 
     /**
      * Show the form for creating a new resource.

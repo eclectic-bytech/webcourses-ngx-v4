@@ -48,7 +48,7 @@ export class UserService {
 
   getUserCourseProgress() {
     this.UserCourseProgress$ = this.httpClient
-      .get<UserCourseProgress[]>(`${this.configService.params.api.route}/user/courses/progress`)
+      .get<UserCourseProgress[]>(`${this.configService.params.api.route}/courses/user`)
       .pipe(shareReplay(1))
     return this.UserCourseProgress$
   }
