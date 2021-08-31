@@ -37,10 +37,14 @@ class CourseController extends Controller
         // Currently unused, added as documentation for future features.
         $user = auth()->user();
         return Course
-            ::rightJoin('user_progress', 'user_progress.course_id', '=', 'courses.id')
-            ->where('user_progress.user_id', $user['id'])
-            ->where('published', 1)
-            ->where('private', 0)
+            ::where('courses.published', 1)
+            ->where('courses.private', 0)
+            ->whereHas('UserProgress', function($query) use ($user) {
+                $query->where('course_id', 408)->where('user_id', $user['id']);
+            })
+            ->with('UserProgress', function($query) use ($user) {
+                $query->where('course_id', 408)->where('user_id', $user['id']);
+            })
             ->get();
     }
 
