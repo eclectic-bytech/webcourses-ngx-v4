@@ -35,16 +35,11 @@ class CourseController extends Controller
     {
         // Passed userId is intended for admin seeing what courses a user has access to.
         // Currently unused, added as documentation for future features.
-        $user = auth()->user();
         return Course
             ::where('courses.published', 1)
             ->where('courses.private', 0)
-            ->whereHas('UserProgress', function($query) use ($user) {
-                $query->where('course_id', 408)->where('user_id', $user['id']);
-            })
-            ->with('UserProgress', function($query) use ($user) {
-                $query->where('course_id', 408)->where('user_id', $user['id']);
-            })
+            ->whereHas('UserProgress')
+            ->with('UserProgress')
             ->get();
     }
 
