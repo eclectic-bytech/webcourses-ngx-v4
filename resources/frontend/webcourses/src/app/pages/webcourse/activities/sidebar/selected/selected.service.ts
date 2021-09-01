@@ -4,7 +4,7 @@ import { Activity } from '../../workarea/models/activity.model'
 import { Chapter } from '../../models/chapter.model'
 import { UserService } from '../../../../../core/services/user/user.service'
 import { CompletionStatsService } from '../../../../../core/services/user/completion-stats.service'
-import { UserCourseProgress } from 'src/app/models/user.course.progress.model'
+import { Course } from 'src/app/models/course.model'
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ import { UserCourseProgress } from 'src/app/models/user.course.progress.model'
 export class SelectedService {
 
   selectedChapter: Chapter
-  selectedCourse: UserCourseProgress
+  selectedCourse: Course
 
   constructor(
     private completionStatsService: CompletionStatsService,
@@ -35,8 +35,8 @@ export class SelectedService {
   }
 
   updateSelectedCourse(currentActivity: Activity) {
-    this.userService.UserCourseProgress$.subscribe(
-      (userCourses: UserCourseProgress[]) => {
+    this.userService.userCourses$.subscribe(
+      (userCourses: Course[]) => {
         this.selectedCourse = this.getSelectedCourse(userCourses, currentActivity)
         this.completionStatsService.initCourseCompletionStats(userCourses)
       }
@@ -51,13 +51,13 @@ export class SelectedService {
     return (i >= 0) ? chapters[i] : null
   }
 
-  getSelectedCourse(userCourses: UserCourseProgress[], currentActivity: Activity) {
+  getSelectedCourse(userCourses: Course[], currentActivity: Activity) {
     let selectedCourse = this.findSelectedCourse(userCourses, currentActivity)
     if (!selectedCourse) {
       // Normally we want to subscribe to userService.userCourses$ to make use of caching.
       // Subscribing to getUserCourses$ bypasses then updates userCourses$ shareReplay cache
-      this.userService.UserCourseProgress$.subscribe(
-        (userCourses: UserCourseProgress[]) => {
+      this.userService.userCourses$.subscribe(
+        (userCourses: Course[]) => {
           this.selectedCourse = this.findSelectedCourse(userCourses, currentActivity)
           this.completionStatsService.initCourseCompletionStats(userCourses)
         }
@@ -67,9 +67,9 @@ export class SelectedService {
     }
   }
 
-  findSelectedCourse(courses: UserCourseProgress[], currentActivity: Activity) {
+  findSelectedCourse(courses: Course[], currentActivity: Activity) {
     return courses.find(
-      (course: UserCourseProgress) => course.pid === currentActivity.meta.pid
+      (course: Course) => course.id === currentActivity.meta.pid
     )
   }
 
