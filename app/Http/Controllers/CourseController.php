@@ -39,7 +39,7 @@ class CourseController extends Controller
             ::where('courses.published', 1)
             ->where('courses.private', 0)
             ->whereHas('UserProgress')
-            ->with('UserProgress')
+            ->with(['UserProgress', 'publisher', 'theme'])
             ->get();
     }
 
