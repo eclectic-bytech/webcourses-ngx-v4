@@ -1,5 +1,8 @@
 <div *ngIf="course.user_progress; else buyCourse" class="p-2">
-  <button class="btn btn-success">ENTER</button>
+  <button
+    (click)="goToActivity(course.user_progress.id, true)"
+    class="btn btn-success"
+  >ENTER</button>
 </div>
 
 <ng-template #buyCourse>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { CouponFieldService } from './../../../coupon-field/coupon-field.service'
-import { PurchaseOrderService } from './../../../../stripe/payment/purchase-order/purchase-order.service'
+import { CouponFieldService } from '../coupon-field/coupon-field.service'
+import { PurchaseOrderService } from '../../stripe/payment/purchase-order/purchase-order.service'
 
 @Component({
   selector: 'app-group-join-card',
