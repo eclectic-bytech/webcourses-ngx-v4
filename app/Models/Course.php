@@ -19,15 +19,7 @@ class Course extends Model
         return $this->hasOne(Theme::class, 'publisher_id', 'publisher_id');
     }
 
-    // used in main catalogue for now, should be 'merged' with userProgress()
-    public function userCourse() {
-        $user = auth()->user();
-        return $this
-            ->hasOne(UserCourse::class)
-            ->where('user_id', $user['id']);
-    }
-
-    // used in my webcourses catalogue
+    // used in all course catalogues
     public function userProgress() {
         $user = auth()->user();
         return $this

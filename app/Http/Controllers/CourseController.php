@@ -25,7 +25,7 @@ class CourseController extends Controller
                 return $query->with(['publisher', 'theme']);
             })
             ->when($userIsLoggedIn, function($query) {
-                return $query->with('userCourse');
+                return $query->with('userProgress');
             })
             ->get();
     }
