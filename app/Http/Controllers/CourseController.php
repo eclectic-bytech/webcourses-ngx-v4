@@ -21,9 +21,7 @@ class CourseController extends Controller
             ->when($publisherId, function($query, $publisherId) {
                 return $query->where('publisher_id', $publisherId);
             })
-            ->when(!$publisherId, function($query) {
-                return $query->with(['publisher', 'theme']);
-            })
+            ->with(['publisher', 'theme'])
             ->when($userIsLoggedIn, function($query) {
                 return $query->with('userProgress');
             })
