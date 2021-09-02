@@ -1,0 +1,30 @@
+<div *ngIf="course.user_progress; else buyCourse">
+  <button class="btn btn-success p-2">ENTER</button>
+</div>
+
+<ng-template #buyCourse>
+  <div class="mb-3 text-center">
+    <div class="d-flex my-3 justify-content-between">
+      <div class="text-left" style="line-height: 95%;">
+        <small>
+          <a (click)="showCouponInput = !showCouponInput" class="handy text-success">
+            Use access<br>code
+          </a>
+        </small>
+      </div>
+
+      <app-buy-button class="mx-auto" [course]="course"></app-buy-button>
+
+      <div class="text-right" style="line-height: 95%;">
+        <small class="text-secondary">
+          plus GST ${{ course.price / 100 * .05  | number:'1.2-2' }}<br>
+          total ${{ course.price / 100 * 1.05 | number:'1.2-2' }}
+        </small>
+      </div>
+    </div>
+
+    <div *ngIf="this.showCouponInput" class="mb-2">
+      <app-coupon-field [course]="course"></app-coupon-field>
+    </div>
+  </div>
+</ng-template>
