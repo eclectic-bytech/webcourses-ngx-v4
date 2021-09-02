@@ -1,9 +1,9 @@
 <div class="card m-1" style="max-width: 22rem;">
-
   <img [routerLink]="['course', course.id]"
     class="card-img-top handy" style="min-height: 10rem;"
-    src="/publisher-files/{{course.publisher_id}}/courses/{{course.id}}/images/{{course.cover}}" alt="{{course.cover_alt}}"
-    >
+    src="/publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}" alt="{{course.cover_alt}}"
+  >
+
   <div class="card-body" style="min-height: 13rem;">
     <a [routerLink]="['/catalogue', 'course', course.id]"><h5 class="card-title">{{course.title}}</h5></a>
 
@@ -11,45 +11,21 @@
       <small class="text-secondary" [innerHtml]="course.short_desc | safehtml: 'html'"></small>
     </p>
 
-    <div class="mb-3 text-center">
-
-      <div class="d-flex my-3 justify-content-between">
-
-        <div class="text-left" style="line-height: 95%;" *ngIf="!this.myWebcoursesPage">
-          <small>
-            <a (click)="showCouponInputToggle(course.id)" class="handy text-success">Use access<br>code</a>
-          </small>
-        </div>
-
-        <app-buy-button [course]="course" class="px-2 mx-auto"></app-buy-button>
-
-        <div class="text-right" style="line-height: 95%;" *ngIf="!this.myWebcoursesPage">
-          <small class="text-secondary">
-            plus GST ${{ course.price / 100 * .05  | number:'1.2-2' }}<br>
-            total ${{ course.price / 100 * 1.05 | number:'1.2-2' }}
-          </small>
-        </div>
-
-      </div>
-
-      <div *ngIf="this.showCouponInput === this.course.id" class="mb-2">
-        <app-coupon-field [course]="course"></app-coupon-field>
-      </div>
-
-    </div>
+    <app-course-access-block [course]="course"></app-course-access-block>
 
     <a class="card-link">
       <small class="text-secondary">
         Publisher:
         <span
-          [routerLink]="['/catalogue', 'publisher', publisher.id]"
+          [routerLink]="['/catalogue', 'publisher', course.publisher.id]"
           class="text-uppercase text-primary handy"
           >
-          {{ publisher.name }}
+          {{ course.publisher.name }}
         </span>
       </small>
     </a>
   </div>
+
   <div class="text-right mr-2">
     <small class="text-secondary">Course #{{course.id}}</small>
   </div>

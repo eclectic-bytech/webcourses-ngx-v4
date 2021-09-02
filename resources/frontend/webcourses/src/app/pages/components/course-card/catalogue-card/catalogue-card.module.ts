@@ -4,10 +4,11 @@ import { CatalogueCardComponent } from './catalogue-card.component'
 import { RouterModule } from '@angular/router'
 import { CouponOptionModule } from '../../coupon-field/coupon-field.module'
 import { BuyButtonModule } from '../../buttons/buy-button/buy-button.module'
-import { PipesModule } from './../../../../shared/pipes/pipes.module'
+import { PipesModule } from './../../../../shared/pipes/pipes.module';
+import { CourseAccessBlockComponent } from './course-access-block/course-access-block.component'
 
 @NgModule({
-  declarations: [CatalogueCardComponent],
+  declarations: [CatalogueCardComponent, CourseAccessBlockComponent],
   imports: [
     CommonModule,
     RouterModule,

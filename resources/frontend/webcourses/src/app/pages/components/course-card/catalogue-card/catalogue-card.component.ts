@@ -12,7 +12,6 @@ export class CatalogueCardComponent implements OnInit {
 
   @Input() course: Course
   @Input() publisherInfo: Publisher
-  public myWebcoursesPage = false
 
   // why we need this:
   // publisherInfo is only passed in 'my web webcourses' area. see ngOnInit for more info.
@@ -24,11 +23,7 @@ export class CatalogueCardComponent implements OnInit {
     public taxService: TaxStatusService
   ) { }
 
-  ngOnInit() {
-    // My web courses gets publisher info from /publisher/profile, passed to the card via @Input binding
-    // Main & publisher catalogue have different info per course - its source is course.publisher
-    this.myWebcoursesPage = this.publisherInfo ? true : false
-    this.publisher = this.myWebcoursesPage ? this.publisherInfo : this.course.publisher
+  ngOnInit(): void {
   }
 
   showCouponInputToggle(cid: number) {
