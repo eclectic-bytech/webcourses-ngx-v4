@@ -26,4 +26,8 @@ class Course extends Model
             ->belongsTo(UserProgress::class, 'id', 'course_id')
             ->where('user_id', $user['id']);
     }
+
+    public function courseSyllabus() {
+        return $this->hasMany(CourseSyllabus::class);
+    }
 }
