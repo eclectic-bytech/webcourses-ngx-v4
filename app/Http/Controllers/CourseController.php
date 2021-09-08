@@ -21,7 +21,8 @@ class CourseController extends Controller
             ->when($publisherId, function($query, $publisherId) {
                 return $query->where('publisher_id', $publisherId);
             })
-            ->with(['publisher', 'theme', 'courseSyllabus'])
+            ->with(['publisher', 'theme'])
+            ->withCount('courseSyllabus as total_activities')
             ->when($userIsLoggedIn, function($query) {
                 return $query->with('userProgress');
             })
@@ -37,7 +38,8 @@ class CourseController extends Controller
             ::where('courses.published', 1)
             ->where('courses.private', 0)
             ->whereHas('UserProgress')
-            ->with(['UserProgress', 'publisher', 'theme', 'courseSyllabus'])
+            ->with(['UserProgress', 'publisher', 'theme'])
+            ->withCount('courseSyllabus as total_activities')
             ->get();
     }
 
