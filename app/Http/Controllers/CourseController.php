@@ -26,6 +26,9 @@ class CourseController extends Controller
             ->when($userIsLoggedIn, function($query) {
                 return $query->withCount('UserProgress as total_activities_completed');
             })
+            ->when($userIsLoggedIn, function($query) {
+                return $query->with('userProgress');
+            })
             ->get();
     }
 
