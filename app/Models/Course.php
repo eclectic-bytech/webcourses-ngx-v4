@@ -30,4 +30,9 @@ class Course extends Model
     public function courseSyllabus() {
         return $this->hasMany(CourseSyllabus::class);
     }
+
+    public function participants() {
+        return $this->hasMany(UserProgress::class);
+    }
+
 }

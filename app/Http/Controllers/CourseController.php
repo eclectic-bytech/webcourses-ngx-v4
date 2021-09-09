@@ -37,12 +37,13 @@ class CourseController extends Controller
     {
         // Passed userId is intended for admin seeing what courses a user has access to.
         // Currently unused, added as documentation for future features.
+        // return Course
         return Course
             ::where('courses.published', 1)
             ->where('courses.private', 0)
             ->whereHas('UserProgress')
-            ->withCount('UserProgress as total_activities_completed')
             ->withCount('courseSyllabus as total_activities')
+            ->withCount('participants as total_students')
             ->with(['publisher', 'theme', 'UserProgress'])
             ->get();
     }

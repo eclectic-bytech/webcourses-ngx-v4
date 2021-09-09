@@ -20,6 +20,7 @@ export class Course {
   public private: boolean
   public total_activities: number
   public total_activities_completed?: number
+  public total_students: number
   public publisher: Publisher
   public theme: Theme
   public user_progress?: UserCourseProgress
