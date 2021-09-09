@@ -18,6 +18,8 @@ export class Course {
   public created_at: string
   public updated_at: string
   public private: boolean
+  public total_activities: number
+  public total_activities_completed?: number
   public publisher: Publisher
   public theme: Theme
   public user_progress?: UserCourseProgress
