@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserProgress extends Model
 {
     use HasFactory;
-
-    public function UserAnswer() {
-        return $this->hasMany(UserAnswer::class, 'progress_id');
-    }
+    // protected $appends = [UserProgress::class];
+    // protected $withCount = ['UserProgress'];
 }

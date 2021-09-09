@@ -27,7 +27,7 @@ class CourseController extends Controller
                 return $query->withCount('UserProgress as total_activities_completed');
             })
             ->when($userIsLoggedIn, function($query) {
-                return $query->with('userProgress');
+                return $query->with('UserProgress');
             })
             ->get();
     }
@@ -41,9 +41,9 @@ class CourseController extends Controller
             ::where('courses.published', 1)
             ->where('courses.private', 0)
             ->whereHas('UserProgress')
-            ->with(['publisher', 'theme'])
             ->withCount('UserProgress as total_activities_completed')
             ->withCount('courseSyllabus as total_activities')
+            ->with(['publisher', 'theme', 'UserProgress'])
             ->get();
     }
 
