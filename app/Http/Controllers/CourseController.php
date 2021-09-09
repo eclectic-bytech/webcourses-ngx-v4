@@ -23,10 +23,9 @@ class CourseController extends Controller
             })
             ->with(['publisher', 'theme'])
             ->withCount('courseSyllabus as total_activities')
-            ->withCount('UserProgress as total_activities_completed')
-            // ->when($userIsLoggedIn, function($query) {
-            //     return $query->with('userProgress');
-            // })
+            ->when($userIsLoggedIn, function($query) {
+                return $query->withCount('UserProgress as total_activities_completed');
+            })
             ->get();
     }
 
