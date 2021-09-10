@@ -35,4 +35,18 @@ class Course extends Model
         return $this->hasMany(UserProgress::class);
     }
 
+    public function userAnswers() {
+        $user = auth()->user();
+        return $this->hasManyThrough(
+            UserAnswer::class,
+            UserProgress::class,
+            'course_id',
+            'progress_id'
+        )
+        ->where('user_progress.user_id', $user['id'])
+        // ->distinct('user_answers.activity_id')
+        // ->distinct('activity_id')
+        // ->groupBy('activity_id')
+        ;
+    }
 }
