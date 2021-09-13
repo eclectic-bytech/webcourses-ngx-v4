@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use DB;
 
 class CourseController extends Controller
 {
@@ -25,10 +26,11 @@ class CourseController extends Controller
             ->withCount('courseSyllabus as total_activities')
             ->withCount('participants as total_students')
             ->when($userIsLoggedIn, function($query) {
-                return $query
-                    ->with('userAnswers')
-                    // ->groupBy('user_answers.activity_id')
-                    ;
+                return $query->withCount(
+                    ['userAnswers as total_activities_completed' => function($q) {
+                        $q->select(DB::raw('count(distinct(activity_id))'));
+                    }]
+                );
             })
             ->when($userIsLoggedIn, function($query) {
                 return $query->with('UserProgress');
@@ -47,7 +49,11 @@ class CourseController extends Controller
             ->where('courses.private', 0)
             ->whereHas('UserProgress')
             ->withCount('courseSyllabus as total_activities')
-            ->withCount('userAnswers as total_activities_completed')
+            ->withCount(['userAnswers as total_activities_completed' =>
+                function($q) {
+                    $q->select(DB::raw('count(distinct(activity_id))'));
+                }
+            ])
             ->withCount('participants as total_students')
             ->with(['publisher', 'theme', 'UserProgress'])
             ->get();
