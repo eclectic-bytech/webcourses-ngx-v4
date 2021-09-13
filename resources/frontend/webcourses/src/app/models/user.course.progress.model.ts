@@ -11,4 +11,5 @@ export class UserCourseProgress {
   public created_at: string
   public updated_at: string
   public demo: number
+  public total_activities_completed: number
 }
