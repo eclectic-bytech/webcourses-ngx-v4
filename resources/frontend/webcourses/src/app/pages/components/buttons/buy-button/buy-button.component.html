@@ -2,7 +2,7 @@
   <div *ngIf="!this.purchaseStarted; else verifying">
     <button *ngIf="!this.course.user_progress"
       (click)="user.email ? buyButton() : this.loginRequired(content)"
-      class="btn btn-success p-2"
+      class="btn btn-primary p-2"
       [ngClass]="btnLg ? 'btn-lg' : ''"
     >
       <span *ngIf="course.price > 0">${{ course.price / 100 | number:'1.0-2' }} – Buy</span>
