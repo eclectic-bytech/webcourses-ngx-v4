@@ -48,6 +48,19 @@ class CourseController extends Controller
     }
 
 
+    public function course($cid) {
+        // Course details page
+        return course
+            ::where('courses.id', $cid)
+            ->where('courses.published', 1)
+            ->where('courses.private', 0)
+            ->with(['publisher', 'theme'])
+            ->withCount('courseSyllabus as total_activities')
+            ->withCount('participants as total_students')
+            ->get();
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
