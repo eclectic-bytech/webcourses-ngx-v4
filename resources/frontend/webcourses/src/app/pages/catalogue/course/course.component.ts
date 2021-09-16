@@ -6,6 +6,7 @@ import { CourseService } from './course.service'
 import { PublisherService } from '../publisher/publisher.service'
 import { PublisherModel } from '../../catalogue/models/publisher.model'
 import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
+import { Course } from 'src/app/models/course.model'
 
 
 @Component({
@@ -16,8 +17,8 @@ import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
 })
 export class CourseComponent implements OnInit {
 
-  public publisherInfo$: Observable<PublisherModel>
-  public courseInfo$: Observable<any>
+  // public publisherInfo$: Observable<PublisherModel>
+  public courseInfo$: Observable<Course>
 
   constructor(
     private courseService: CourseService,
@@ -28,9 +29,9 @@ export class CourseComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params => {
-        this.publisherInfo$ = this.publisherService.getPublisher(params.cid, 'cid').pipe(
-          ( publisherInfo => publisherInfo)
-        )
+        // this.publisherInfo$ = this.publisherService.getPublisher(params.cid, 'cid').pipe(
+        //   ( publisherInfo => publisherInfo)
+        // )
         this.courseInfo$ = this.courseService.getCourse(params.cid).pipe(
           ( course => course )
         )

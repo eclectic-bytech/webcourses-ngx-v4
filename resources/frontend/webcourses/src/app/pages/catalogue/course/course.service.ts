@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { ConfigService } from '../../../core/services/config/config.service'
+import { Course } from 'src/app/models/course.model'
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class CourseService {
   ) { }
 
   getCourse(cid: any) {
-    return this.http.get<any>(`
-      ${this.config.params.api.route}/course/index.php?cid=${cid}
+    return this.http.get<Course>(`
+      ${this.config.params.api.route}/courses/course/${cid}
     `).pipe(courses => courses)
   }
 
