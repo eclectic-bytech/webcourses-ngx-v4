@@ -57,7 +57,7 @@ class CourseController extends Controller
             ->with(['publisher', 'theme'])
             ->withCount('courseSyllabus as total_activities')
             ->withCount('participants as total_students')
-            ->get();
+            ->first();
     }
 
 
