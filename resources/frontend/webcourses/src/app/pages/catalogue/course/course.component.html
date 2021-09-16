@@ -23,57 +23,56 @@
         </div>
 
         <div class="container">
+          <div class="row justify-content-center my-4">
 
-        <div class="row justify-content-center my-4">
-
-          <div class="col-12 col-md-6 col-lg-4 my-2">
-          <div class="card border-secondary">
-            <div class="card-body text-dark">
-              <div class="d-flex">
-                <div><img [src]="'/assets/tea.svg'" alt="Pencil cup icon" class="icon-set pr-2"></div>
-                <div class="flex-grow-1 my-auto text-center">
-                  <div class="spec-card-title">Number of activities</div>
-                  <div class="lead">{{course.total_activities}}</div>
+            <div class="col-12 col-md-6 col-lg-4 my-2">
+              <div class="card border-secondary">
+                <div class="card-body text-dark">
+                  <div class="d-flex">
+                    <div><img [src]="'/assets/tea.svg'" alt="Pencil cup icon" class="icon-set pr-2"></div>
+                    <div class="flex-grow-1 my-auto text-center">
+                      <div class="spec-card-title">Number of activities</div>
+                      <div class="lead">{{course.total_activities}}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          </div>
 
-          <div class="col-12 col-md-6 col-lg-4 my-2">
-          <div class="card border-secondary">
-            <div class="card-body text-dark">
-              <div class="d-flex">
-                <div><img [src]="'/assets/stopwatch.svg'" alt="Stopwatch graphic icon" class="icon-set"></div>
-                <div class="flex-grow-1 my-auto text-center">
-                  <div class="spec-card-title">Estimated time required</div>
-                  <div class="lead">{{course.completion_time | number:'1.0-0'}} hrs.</div>
+            <div class="col-12 col-md-6 col-lg-4 my-2">
+            <div class="card border-secondary">
+              <div class="card-body text-dark">
+                <div class="d-flex">
+                  <div><img src="assets/stopwatch.svg" alt="Stopwatch graphic icon" class="icon-set"></div>
+                  <div class="flex-grow-1 my-auto text-center">
+                    <div class="spec-card-title">Estimated time required</div>
+                    <div class="lead">{{course.completion_time | number:'1.0-0'}} hrs.</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          </div>
+            </div>
 
-          <div class="col-12 col-md-6 col-lg-4 my-2">
-          <div class="card border-secondary">
-            <div class="card-body text-dark">
-              <div class="d-flex">
-                <div>
-                  <img
-                    class="icon-set" alt="Wrong / right option icon"
-                    [src]="(course.eval_type === 'Online') ? '/assets/feedback.svg' : '/assets/rating.svg'"
-                  >
-                </div>
-                <div class="flex-grow-1 my-auto text-center">
-                  <div class="spec-card-title">Evaluation type</div>
-                  <div class="lead">{{course.eval_type}}</div>
+            <div class="col-12 col-md-6 col-lg-4 my-2">
+            <div class="card border-secondary">
+              <div class="card-body text-dark">
+                <div class="d-flex">
+                  <div>
+                    <img
+                      class="icon-set" alt="Wrong / right option icon"
+                      [src]="(course.eval_type === 'Online') ? '/assets/feedback.svg' : '/assets/rating.svg'"
+                    >
+                  </div>
+                  <div class="flex-grow-1 my-auto text-center">
+                    <div class="spec-card-title">Evaluation type</div>
+                    <div class="lead">{{course.eval_type}}</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          </div>
+            </div>
 
-        </div>
+          </div>
         </div>
 
         <div class="container">
@@ -89,14 +88,15 @@
               <div class="text-secondary" [innerHtml]="course.objective"></div>
             </div>
           </div>
+
           <div class="row mt-5">
             <div class="col-12 col-lg-10 mx-auto text-center">
-              <div
-                *ngIf="this.publisherInfo$ | async as publisher; else loading"
-                [appThemeSet]="course.publisher.settings.theme"
-                >
+              <!-- <div [appThemeSet]="course.publisher.settings.theme"></div> -->
+              <div>
                 <a [href]="course.publisher.website" target="_blank">
-                  <img [src]="course.publisher.settings.theme.logo" alt="{{course.publisher.name}} Logo" class="mb-3 mt-1">
+                  <img src="logo.gif"
+                    [alt]="course.publisher.name + 'logo'"
+                  >
                   <p class="text-secondary" style="line-height: 1.1">
                     <span class="text-uppercase">{{course.publisher.name}}</span><br>
                     <span [innerHtml]="course.publisher.website.substr(8)"></span>
