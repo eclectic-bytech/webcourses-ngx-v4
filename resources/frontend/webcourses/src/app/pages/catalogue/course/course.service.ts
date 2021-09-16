@@ -17,7 +17,7 @@ export class CourseService {
 
   getCourse(cid: any) {
     return this.http.get<Course>(`
-      ${this.config.params.api.route}/courses/course/${cid}
+      ${this.config.params.api.route}/catalogue/course/${cid}
     `).pipe(courses => courses)
   }
 

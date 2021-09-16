@@ -42,8 +42,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function
 Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped /v4/courses: Web course catalogues
-    Route::group(['prefix' => '/courses'], function() {
-        Route::get('/{publisherId?}', [CourseController::class, 'index'])->whereNumber('publisherId');
+    Route::group(['prefix' => '/catalogue'], function() {
+        Route::get('/', [CourseController::class, 'index']);
+        Route::get('/publisher/{publisherId?}', [CourseController::class, 'index'])->whereNumber('publisherId');
         Route::get('/user/{userId?}', [CourseController::class, 'indexUser'])->whereNumber('userId');
         Route::get('/course/{cid}', [CourseController::class, 'course'])->whereNumber('cid');
     });
