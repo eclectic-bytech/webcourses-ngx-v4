@@ -61,8 +61,10 @@ Route::group(['prefix' => 'v4'], function() {
             // Catalogue of courses where the user is a participant
             Route::get('/', [UserCourseController::class, 'index']);
 
-            // User's web courses progress
-            Route::get('/progress', [UserCourseController::class, 'indexWithCourse']);
+            Route::get('/resume/{pid?}', [UserCourseController::class, 'start_aid']);
+
+            // User's web courses progress: Unused?
+            // Route::get('/progress', [UserCourseController::class, 'indexWithCourse']);
 
         });
 

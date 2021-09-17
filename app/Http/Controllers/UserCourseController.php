@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserCourse;
+use App\Models\UserAnswer;
 use Illuminate\Http\Request;
 
 class UserCourseController extends Controller
@@ -18,12 +19,12 @@ class UserCourseController extends Controller
         return UserProgress::where('user_id', $user['id'])->get();
     }
 
-    // public function indexWithCourse()
-    // {
-    //     $user = auth()->user();
-    //     return UserCourse
-    //         ::where('user_id', $user['id'])
-    //         ->with('course')
-    //         ->get();
-    // }
+    // Takes PID, return which aid should be loaded when user decides to work on the course
+    public function start_aid($pid) {
+        return UserAnswer
+            ::where('progress_id', $pid)
+            ->latest()
+            ->first();
+    }
+
 }
