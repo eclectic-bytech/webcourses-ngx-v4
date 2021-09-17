@@ -12,12 +12,11 @@ export class CourseAccessBlockService {
     private configService: ConfigService
   ) { }
 
-  // copied from myCoursesCard. never used in v4, but might be a good example.
   getDestinationAid(pid: number, firstAid: boolean) {
     let first = (firstAid) ? '&first=true' : ''
     return this.httpClient
       .get<string>(`
-        ${this.configService.params.api.route}/user/resume_course.php?pid=${pid}${first}
+        ${this.configService.params.api.route}/user/courses/resume/${pid}${first}
       `).pipe(aid => aid)
   }
 
