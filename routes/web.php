@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserCourseController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\ActivityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,11 @@ Route::group(['prefix' => 'v4'], function() {
 
         });
 
+    });
+
+    // Paths grouped as /v4/webcourse
+    Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
+        Route::get('/activities/{aid?}', [ActivityController::class, 'activity']);
     });
 
     // Paths grouped as /v4/publisher
