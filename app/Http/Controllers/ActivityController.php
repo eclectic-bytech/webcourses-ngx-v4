@@ -9,6 +9,5 @@ class ActivityController extends Controller
 {
     public function activity($aid = false) {
         return Activity::where('id', $aid)->get();
-        // return "Lenoczka";
     }
 }
