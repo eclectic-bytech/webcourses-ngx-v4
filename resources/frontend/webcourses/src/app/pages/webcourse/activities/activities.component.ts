@@ -66,11 +66,11 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
       this.route.snapshot.params.aid
     )
 
-    this.publisherService.getPublisher(this.route.snapshot.params.aid, 'aid').subscribe(
-      (publisherInfo) => {
-        this.themeService.changeTheme(publisherInfo.theme)
-      }
-    )
+    // this.publisherService.getPublisher(this.route.snapshot.params.aid, 'aid').subscribe(
+    //   (publisherInfo) => {
+    //     this.themeService.changeTheme(publisherInfo.theme)
+    //   }
+    // )
   }
 
   ngOnDestroy() {
