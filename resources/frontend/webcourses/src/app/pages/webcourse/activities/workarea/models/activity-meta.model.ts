@@ -1,12 +1,17 @@
 export class ActivityMeta {
   constructor(
-    public pid: number,
-    public chid: number,
-    public aid: number,
+    public activity_id: number,
+    public activity_type: string,
+    public course_id: number,
+    public build_id: number,
+    public chapter_id: number,
     public seq: number,
-    public type: string,
-    public cont: boolean,
     public marked: boolean,
-    public style: string
+    public cont: boolean,
+    public default_answer: boolean,
+    public style: string,
+    public demo: boolean,
+    public created_at: string,
+    public updated_at: string
   ) {}
 }
