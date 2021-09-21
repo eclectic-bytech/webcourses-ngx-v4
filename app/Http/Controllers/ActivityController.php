@@ -8,6 +8,6 @@ use App\Models\Activity;
 class ActivityController extends Controller
 {
     public function activity($aid = false) {
-        return Activity::where('id', $aid)->get();
+        return Activity::where('id', $aid)->first();
     }
 }
