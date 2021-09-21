@@ -1,9 +1,11 @@
 export class ActivityAnswers {
   constructor(
-    public answer_id: number,
+    public id: number,
+    public activity_id: number,
     public slot: number,
     public caption: any,
-    public correct: number,
-    public selected: boolean
+    public correct: boolean,
+    public created_at: string,
+    public updated_at: string
   ) {}
 }
