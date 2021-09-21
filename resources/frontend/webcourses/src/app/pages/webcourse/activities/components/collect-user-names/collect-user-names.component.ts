@@ -30,7 +30,7 @@ export class CollectUserNamesComponent implements OnInit {
 
   btnClick(names) {
     this.waitingForAPI = true
-    this.httpClient.post(`${this.configService.params.api.route}/user/collect_user_names.php`, names).subscribe(
+    this.httpClient.post(`${this.configService.params.api.route}/user/profile/user_name`, names).subscribe(
       (saved) => {
         if (saved) {
           this.userFirstName = names.firstName

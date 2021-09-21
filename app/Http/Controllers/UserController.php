@@ -10,4 +10,8 @@ class UserController extends Controller
     {
         return auth()->user();
     }
+
+    public function save_name() {
+        return "Lenoczka Novikova";
+    }
 }
