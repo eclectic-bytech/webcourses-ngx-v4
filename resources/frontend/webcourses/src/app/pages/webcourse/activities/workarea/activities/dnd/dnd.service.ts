@@ -14,7 +14,7 @@ export class DndService {
     let userOrder = new Array()
     activity.user_answers.forEach(aid => {
       function isAid(answer: ActivityAnswers) {
-        return answer.answer_id === aid
+        return answer.id === aid
       }
       userOrder.push(activity.answers.find(isAid))
     })

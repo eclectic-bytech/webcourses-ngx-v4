@@ -24,7 +24,7 @@ export class ClickRotateComponent implements OnInit {
 
   ngOnInit(): void {
     this.clickRotateService.userSelections = (this.activity.user_answers) ? this.activity.user_answers : {}
-    this.rotateItems = JSON.parse(this.activity.body.assess_text)
+    this.rotateItems = JSON.parse(this.activity.assess_text)
     // set id where puctuation mark is a period. used for setting text-capitalize class.
     for (let y in this.rotateItems) {
       if (this.rotateItems[y] === '.') {
@@ -49,8 +49,8 @@ export class ClickRotateComponent implements OnInit {
 
   showLabel(option: ActivityAnswers) {
     if (this.showMarkingType === 'user') {
-      return (this.clickRotateService.userSelections[option.answer_id])
-        ? option.caption + this.rotateItems[this.clickRotateService.userSelections[option.answer_id]]
+      return (this.clickRotateService.userSelections[option.id])
+        ? option.caption + this.rotateItems[this.clickRotateService.userSelections[option.id]]
         : option.caption
     } else {
       return (option.correct === 0) ? option.caption : option.caption + this.rotateItems[option.correct]
@@ -66,8 +66,8 @@ export class ClickRotateComponent implements OnInit {
         return (previousAnswer.correct === this.periodId) ? true : false
       } else {
         return (
-          this.clickRotateService.userSelections[previousAnswer.answer_id] &&
-          this.clickRotateService.userSelections[previousAnswer.answer_id] === this.periodId
+          this.clickRotateService.userSelections[previousAnswer.id] &&
+          this.clickRotateService.userSelections[previousAnswer.id] === this.periodId
         ) ? true : false
       }
     }
@@ -75,13 +75,13 @@ export class ClickRotateComponent implements OnInit {
 
   markColours(answer: ActivityAnswers) {
     if (this.showMarkingType === 'user') {
-      if (answer.correct !== 0 && !this.clickRotateService.userSelections[answer.answer_id]) {
+      if (answer.correct !== 0 && !this.clickRotateService.userSelections[answer.id]) {
         this.colours = 'clickMissed'
-      } else if (answer.correct !==0 && this.clickRotateService.userSelections[answer.answer_id] == answer.correct) {
+      } else if (answer.correct !==0 && this.clickRotateService.userSelections[answer.id] == answer.correct) {
         this.colours = 'clickCorrect'
       } else if (
-        answer.correct !==0 && this.clickRotateService.userSelections[answer.answer_id] != answer.correct
-      ||answer.correct ===0 && this.clickRotateService.userSelections[answer.answer_id]
+        answer.correct !==0 && this.clickRotateService.userSelections[answer.id] != answer.correct
+      ||answer.correct ===0 && this.clickRotateService.userSelections[answer.id]
       ) {
         this.colours = 'clickWrong'
       } else {

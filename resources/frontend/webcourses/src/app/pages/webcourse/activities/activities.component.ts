@@ -62,9 +62,9 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
       }
     )
 
-    this.activitiesService.chapterIndex$ = this.chapterIndexService.getChapterIndex(
-      this.route.snapshot.params.aid
-    )
+    // this.activitiesService.chapterIndex$ = this.chapterIndexService.getChapterIndex(
+    //   this.route.snapshot.params.aid
+    // )
 
     // this.publisherService.getPublisher(this.route.snapshot.params.aid, 'aid').subscribe(
     //   (publisherInfo) => {

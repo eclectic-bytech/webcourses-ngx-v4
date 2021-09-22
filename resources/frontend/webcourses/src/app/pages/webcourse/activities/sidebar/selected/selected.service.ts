@@ -37,7 +37,7 @@ export class SelectedService {
   updateSelectedCourse(currentActivity: Activity) {
     this.userService.userCourses$.subscribe(
       (userCourses: Course[]) => {
-        this.selectedCourse = this.getSelectedCourse(userCourses, currentActivity)
+        // this.selectedCourse = this.getSelectedCourse(userCourses, currentActivity)
         this.completionStatsService.initCourseCompletionStats(userCourses)
       }
     )
@@ -45,7 +45,7 @@ export class SelectedService {
 
   getSelectedChapter(chapters: Chapter[], currentActivity: Activity, offset: number) {
     const i = chapters.findIndex(
-      (chapter: Chapter) => chapter.chid === currentActivity.meta.chid
+      (chapter: Chapter) => chapter.chid === currentActivity.meta.chapter_id
     ) + offset
     // If Next is clicked on last activity in chapter, returning null triggers EOChapter page
     return (i >= 0) ? chapters[i] : null
@@ -58,7 +58,7 @@ export class SelectedService {
       // Subscribing to getUserCourses$ bypasses then updates userCourses$ shareReplay cache
       this.userService.userCourses$.subscribe(
         (userCourses: Course[]) => {
-          this.selectedCourse = this.findSelectedCourse(userCourses, currentActivity)
+          // this.selectedCourse = this.findSelectedCourse(userCourses, currentActivity)
           this.completionStatsService.initCourseCompletionStats(userCourses)
         }
       )
@@ -68,9 +68,10 @@ export class SelectedService {
   }
 
   findSelectedCourse(courses: Course[], currentActivity: Activity) {
-    return courses.find(
-      (course: Course) => course.id === currentActivity.meta.pid
-    )
+    return false;
+    // return courses.find(
+    //   (course: Course) => course.id === currentActivity.meta.pid
+    // )
   }
 
 }

@@ -26,12 +26,12 @@ export class NavService {
 
       // Get array of aids in current chapter
     const chapterAids = this.getChapterAids(
-      chapters, selectedActivity.meta.chid
+      chapters, selectedActivity.meta.chapter_id
     )
 
     // Get AID that follows (offset 1) or precedes (offset -1) loaded activity set
     const i = chapterAids.findIndex(
-      (aid: number) => aid === selectedActivity.meta.aid
+      (aid: number) => aid === selectedActivity.meta.activity_id
     ) + offset
 
     return chapterAids[i]
@@ -49,8 +49,8 @@ export class NavService {
   firstActivitySetCheck() {
     this.activitiesService.chapterIndex$.subscribe(
       (chapters: Chapter[]) => {
-        const aids = this.getChapterAids(chapters, this.workareaService.activities[0].meta.chid)
-        this.firstActivitySet = this.workareaService.activities[0].meta.aid === aids[0] ? true : false
+        const aids = this.getChapterAids(chapters, this.workareaService.activities[0].meta.chapter_id)
+        this.firstActivitySet = this.workareaService.activities[0].meta.activity_id === aids[0] ? true : false
       }
     )
   }

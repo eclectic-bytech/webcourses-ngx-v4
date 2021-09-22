@@ -17,7 +17,7 @@ export class ChapterIndexService {
   getChapterIndex(aid: string) {
     return this.httpClient
       .get<Chapter[]>(
-        `${this.configService.params.api.route}/webcourse/chapters/index.php?aid=${aid}`
+        `${this.configService.params.api.route}/webcourse/chapters/${aid}`
       ).pipe(shareReplay(1))
   }
 }

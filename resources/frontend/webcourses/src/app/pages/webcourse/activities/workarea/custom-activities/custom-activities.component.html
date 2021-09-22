@@ -2,7 +2,7 @@
   <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" @fadeInOut></fa-icon>
 </ng-template>
 
-<div *ngIf="activity.meta.aid == 3531  || activity.meta.aid == 3536">
+<div *ngIf="activity.meta.activity_id == 3531  || activity.meta.activity_id == 3536">
   <p>Your before and after results for the pre and after course assessment are below.</p>
   <table class="table table-striped table-sm" style="max-width: 40rem;">
     <thead>
@@ -43,7 +43,7 @@
   </table>
 </div>
 
-<div *ngIf="activity.meta.aid == 4076">
+<div *ngIf="activity.meta.activity_id == 4076">
 
   <div class="text-center">
     <h3>Thank you for completing</h3>
@@ -54,7 +54,7 @@
     <button class="btn my-3"
       [ngClass]="this.completionCertificatesService.downloadCertificateLoading ? 'btn-secondary' : 'btn-success'"
       [disabled]="this.completionCertificatesService.downloadCertificateLoading ? true : false"
-      (click)="this.completionCertificatesService.downloadCertificate(this.activity.meta.pid)"
+      (click)="this.completionCertificatesService.downloadCertificate(0)"
     >
       <span *ngIf="!this.completionCertificatesService.downloadCertificateLoading; else preparing">
         Certificate of Completion

@@ -25,9 +25,9 @@
     [ngClass]="this.navService.waitingForApi ? 'btn-secondary' : 'btn-success'"
     [disabled]="this.navService.waitingForApi"
     >
-    <fa-icon [icon]="activity.meta.type === 'info' ? faCheck : faPencilAlt" class="mr-2" *ngIf="!this.navService.waitingForApi"></fa-icon>
+    <fa-icon [icon]="activity.meta.activity_type === 'info' ? faCheck : faPencilAlt" class="mr-2" *ngIf="!this.navService.waitingForApi"></fa-icon>
     <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mr-2" *ngIf="this.navService.waitingForApi"></fa-icon>
-    {{ activity.meta.type === 'info' ? 'MARK READ' : 'SAVE' }}
+    {{ activity.meta.activity_type === 'info' ? 'MARK READ' : 'SAVE' }}
   </button>
 
 </div>

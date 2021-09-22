@@ -3,22 +3,22 @@
 
       <!-- RADIO FORM -->
 
-      <div *ngIf="activity.meta.type === 'radio'" class="container-fluid">
+      <div *ngIf="activity.meta.activity_type === 'radio'" class="container-fluid">
 
         <div *ngFor="let option of activity.answers; let i = index" class="row">
 
           <div class="col-sm-1 col-2 my-1 text-center">
             <input
               type="radio"
-              [id]="option.answer_id"
-              [value]="option.answer_id"
+              [id]="option.id"
+              [value]="option.id"
               formControlName="answer"
               >
           </div>
 
           <div class="col-sm-10 col-9 my-1">
             <label class="form-check-label"
-              [for]="option.answer_id"
+              [for]="option.id"
               [innerHtml]="option.caption  | safehtml: 'html'"
               >
             </label>
@@ -31,15 +31,15 @@
 
       <!-- CHECKBOX FORM -->
 
-      <div *ngIf="activity.meta.type === 'checkbox'" class="container-fluid mx-3">
+      <div *ngIf="activity.meta.activity_type === 'checkbox'" class="container-fluid mx-3">
 
         <div *ngFor="let option of activity.answers; let i = index" class="row">
 
           <div class="col-sm-1 col-2 my-1">
             <input
               type="checkbox"
-              [id]="option.answer_id"
-              [value]="option.answer_id"
+              [id]="option.id"
+              [value]="option.id"
               formControlName="answer"
               (click)="updateSelections(i)"
               >
@@ -47,7 +47,7 @@
 
           <div class="col-sm-10 col-9 my-1">
             <label class="form-check-label"
-              [for]="option.answer_id"
+              [for]="option.id"
               [innerHtml]="option.caption | safehtml: 'html'"
               >
             </label>
@@ -58,7 +58,7 @@
       </div>
 
       <!-- TEXTAREA FORM -->
-      <div *ngIf="activity.meta.type === 'textarea'" class="container">
+      <div *ngIf="activity.meta.activity_type === 'textarea'" class="container">
         <textarea cols="66"
           [rows]="(activity?.default_answer) ?
             (activity.default_answer.length / 78 ) : 5"
@@ -70,34 +70,35 @@
 
       <!-- TEXT FORM -->
 
-      <div *ngIf="activity.meta.type === 'text'" class="container">
+      <div *ngIf="activity.meta.activity_type === 'text'" class="container">
         <input type="text" class="form-control"
           formControlName='answer'
-          value="{{activity.answers}}"
+          [value]="activity.answers"
+          [src]="activity"
         >
       </div>
 
       <!-- CLICK ACTIVITY -->
 
-      <div *ngIf="activity.meta.type === 'click' && activity.meta.style != 'image'" class="container-fluid">
+      <div *ngIf="activity.meta.activity_type === 'click' && activity.meta.style != 'image'" class="container-fluid">
         <ul class="clickActivity">
+          <!-- [ngClass]="activity.answers[i].selected ? 'clickSelected' : 'clickFalse'" -->
           <li
             *ngFor="let option of activity.answers; let i = index"
-            [ngClass]="activity.answers[i].selected ? 'clickSelected' : 'clickFalse'"
             >
 
             <input
               type="checkbox"
               [ngClass]="['d-none']"
-              [id]="option.answer_id"
-              [value]="option.answer_id"
+              [id]="option.id"
+              [value]="option.id"
               formControlName="answer"
               (click)="updateSelections(i)"
               >
 
             <label class="handy text-left px-3"
               [innerHtml]="option.caption"
-              [for]="option.answer_id"
+              [for]="option.id"
             >
             </label>
 
@@ -105,14 +106,14 @@
         </ul>
       </div>
 
-      <div *ngIf="activity.meta.type === 'click' && activity.meta.style === 'image'" class="container-fluid">
+      <div *ngIf="activity.meta.activity_type === 'click' && activity.meta.style === 'image'" class="container-fluid">
+        <!-- [ngClass]="activity.answers[i].selected ? 'imgSelected' : 'imgFalse'" -->
         <img
           *ngFor="let image of activity.answers; let i = index"
           [src]="image.caption.src"
           [alt]="image.caption.alt"
           type="button"
           class="click-img mr-2 mt-2"
-          [ngClass]="activity.answers[i].selected ? 'imgSelected' : 'imgFalse'"
           (click)="updateSelections(i, true)"
         >
       </div>

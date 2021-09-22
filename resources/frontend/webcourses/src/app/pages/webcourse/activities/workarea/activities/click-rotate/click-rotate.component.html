@@ -50,14 +50,14 @@
           <input
             type="checkbox"
             [ngClass]="['d-none']"
-            [id]="option.answer_id"
-            [value]="option.answer_id"
+            [id]="option.id"
+            [value]="option.id"
             formControlName="answer"
-            (click)="updateSelections(i, option.answer_id)"
+            (click)="updateSelections(i, option.id)"
           >
           <label
             [innerHtml]="showLabel(option)"
-            [for]="option.answer_id"
+            [for]="option.id"
             [ngClass]="checkIfCapsNeeded(i) ? 'text-capitalize' : ''"
             class="handy text-left px-3"
           ></label>

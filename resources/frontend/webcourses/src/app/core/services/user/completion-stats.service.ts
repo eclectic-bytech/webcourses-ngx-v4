@@ -28,7 +28,7 @@ export class CompletionStatsService {
   }
 
   bumpStats(activity: Activity) {
-    this.completionStats.inChid[activity.meta.chid]++
-    this.completionStats.inPid[activity.meta.pid]++
+    this.completionStats.inChid[activity.meta.chapter_id]++
+    // this.completionStats.inPid[activity.meta.pid]++
   }
 }

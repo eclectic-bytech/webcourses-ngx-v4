@@ -16,8 +16,8 @@ export class CustomActivitiesService {
   count: any
 
   activityRouter(activity: Activity) {
-    if (activity.meta.aid === 3531 || activity.meta.aid === 3536) {
-      this.beforeAfterCount(activity.meta.aid)
+    if (activity.meta.activity_id === 3531 || activity.meta.activity_id === 3536) {
+      this.beforeAfterCount(activity.meta.activity_id)
     }
   }
 
