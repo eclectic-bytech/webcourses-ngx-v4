@@ -1,4 +1,4 @@
-<div class="modal-header" *ngIf="!userFirstName && !waitingForAPI">
+<div class="modal-header" *ngIf="!first_name && !waitingForAPI">
   <h4 class="common-heading my-auto" id="modal-basic-title">Before you continue...</h4>
 </div>
 <div class="modal-body">
@@ -13,11 +13,11 @@
       <app-loading-spinner></app-loading-spinner>
     </div>
     <ng-template #content>
-      <div *ngIf="!userFirstName && !this.waitingForAPI; else nameSaved">
+      <div *ngIf="!first_name && !this.waitingForAPI; else nameSaved">
         <p>Please enter your name for the course student reports.</p>
         <div class="mb-4" class="d-block w-50">
-          <input ngModel type="text" name="firstName" placeholder="First name" class="mr-2" minlength="2" maxlength="50" class="form-control form-control-secondary my-2" required>
-          <input ngModel type="text" name="lastName" placeholder="Last name" minlength="2" maxlength="20" class="form-control form-control-secondary my-2" required>
+          <input ngModel type="text" name="first_name" placeholder="First name" class="mr-2" minlength="2" maxlength="50" class="form-control form-control-secondary my-2" required>
+          <input ngModel type="text" name="last_name" placeholder="Last name" minlength="2" maxlength="20" class="form-control form-control-secondary my-2" required>
         </div>
         <!-- <p>{{ names.value | json }}</p>
         <p>{{ names.control.status | json }}</p> -->
@@ -25,7 +25,7 @@
       <ng-template #nameSaved>
         <div class="lead text-center">
           <span class="text-success font-weight-bold">Your profile was updated successfully.</span><br>
-          Thank you, <span class="text-capitalize">{{ userFirstName }}</span>.
+          Thank you, <span class="text-capitalize">{{ first_name }}</span>.
         </div>
       </ng-template>
     </ng-template>
@@ -33,7 +33,7 @@
 </div>
 <div class="modal-footer" *ngIf="!this.waitingForAPI">
   <button
-    *ngIf="!userFirstName; else returnToCoursee"
+    *ngIf="!first_name; else returnToCoursee"
     type="submit" class="btn btn-success"
     (click)="btnClick(names.value)"
     [disabled]="names.form.invalid"

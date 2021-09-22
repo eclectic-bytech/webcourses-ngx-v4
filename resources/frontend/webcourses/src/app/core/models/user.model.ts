@@ -3,8 +3,8 @@ export class User {
   publisherId: number
   email: string
   emailVerified: number
-  firstName: string
-  lastName: string
+  first_name: string
+  last_name: string
   username: string
   profile_photo_url: string
   country: string

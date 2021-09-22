@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { HttpClient } from '@angular/common/http'
-// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 
 import { ConfigService } from './../../../../../core/services/config/config.service'
 import { UserService } from '../../../../../core/services/user/user.service'
@@ -15,14 +14,13 @@ export class CollectUserNamesComponent implements OnInit {
 
   waitingForAPI = false
   failedUpdate = false
-  userFirstName = ''
+  first_name = ''
 
   constructor(
     private ngbModal: NgbModal,
     private httpClient: HttpClient,
     private configService: ConfigService,
     private userService: UserService
-    // public activeModal: NgbActiveModal
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +31,7 @@ export class CollectUserNamesComponent implements OnInit {
     this.httpClient.post(`${this.configService.params.api.route}/user/profile/user_name`, names).subscribe(
       (saved) => {
         if (saved) {
-          this.userFirstName = names.firstName
+          this.first_name = names.first_name
           this.waitingForAPI = false
           this.userService.getUser().subscribe(
             (data) => {
