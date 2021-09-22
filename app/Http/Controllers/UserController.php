@@ -16,10 +16,12 @@ class UserController extends Controller
     public function save_name(Request $request) {
         $input = $request->input();
         $user = auth()->user();
-        $name = $input['firstName'] . ' ' . $input['lastName'];
 
         return User
             ::where('id', $user['id'])
-            ->update(['name' => $name]);
+            ->update([
+                'first_name' => $input['first_name'],
+                'last_name' => $input['last_name']
+            ]);
     }
 }
