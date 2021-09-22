@@ -13,4 +13,9 @@ class ActivityController extends Controller
             ->with('meta', 'answers')
             ->first();
     }
+
+    public function chapters($aid = false) {
+        // return Chapter::where
+        return false;
+    }
 }

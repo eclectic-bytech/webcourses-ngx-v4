@@ -1,6 +1,6 @@
 <div class="row" @fadeInOut>
   <div class="container-fluid"
-    *ngIf="activity.meta.type === 'radio' || activity.meta.type === 'checkbox'">
+    *ngIf="activity.meta.activity_type === 'radio' || activity.meta.activity_type === 'checkbox'">
 
     <div *ngFor="let option of activity.answers; let l = last;" class="row">
 
@@ -36,7 +36,7 @@
 
   <!-- TEXTAREA FORM -->
 
-  <div *ngIf="activity.meta.type === 'textarea'" class="container">
+  <div *ngIf="activity.meta.activity_type === 'textarea'" class="container">
     <textarea
       cols="66"
       [rows]="activity.user_answers.length / 78"
@@ -46,13 +46,13 @@
 
   <!-- TEXT INPUT FORM -->
 
-  <div *ngIf="activity.meta.type === 'text'" class="container">
+  <div *ngIf="activity.meta.activity_type === 'text'" class="container">
     <input type="text" class="form-control" value="{{activity.user_answers}}" disabled>
   </div>
 
   <!-- CLICK ACTIVITY -->
 
-  <div  *ngIf="activity.meta.type === 'click' && activity.meta.style != 'image'" class="container-fluid">
+  <div  *ngIf="activity.meta.activity_type === 'click' && activity.meta.style != 'image'" class="container-fluid">
     <ul class="clickActivity">
       <li
         class="text-left px-3"
@@ -64,7 +64,7 @@
     </ul>
   </div>
 
-  <div *ngIf="activity.meta.type === 'click' && activity.meta.style === 'image'" class="container-fluid">
+  <div *ngIf="activity.meta.activity_type === 'click' && activity.meta.style === 'image'" class="container-fluid">
     <img
       *ngFor="let image of activity.answers; let i = index"
       [src]="image.caption.src"

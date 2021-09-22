@@ -34,25 +34,25 @@ export class ActiveModeService {
     let extractedAnswer: any
 
     if (
-      this.lastActivityInSet.meta.type === 'checkbox'
-    ||this.lastActivityInSet.meta.type === 'click'
+      this.lastActivityInSet.meta.activity_type === 'checkbox'
+    ||this.lastActivityInSet.meta.activity_type === 'click'
     ) {
       extractedAnswer = this.extractOnlySelectedOptions()
     }
     else if (
-      this.lastActivityInSet.meta.type === 'dnd'
-    ||this.lastActivityInSet.meta.type === 'dnd-match'
+      this.lastActivityInSet.meta.activity_type === 'dnd'
+    ||this.lastActivityInSet.meta.activity_type === 'dnd-match'
     ) {
       extractedAnswer = this.dndExtract(this.workareaService.activities)
     }
-    else if (this.lastActivityInSet.meta.type === 'click2') {
+    else if (this.lastActivityInSet.meta.activity_type === 'click2') {
       extractedAnswer = JSON.stringify(this.clickRotateService.userSelections)
     }
-    else if (this.lastActivityInSet.meta.type === 'radio') {
+    else if (this.lastActivityInSet.meta.activity_type === 'radio') {
       extractedAnswer = [this.activityForm.value.answer]
     } else if (
-      this.lastActivityInSet.meta.type === 'text'
-    ||this.lastActivityInSet.meta.type === 'textarea'
+      this.lastActivityInSet.meta.activity_type === 'text'
+    ||this.lastActivityInSet.meta.activity_type === 'textarea'
     ) {
       extractedAnswer = this.activityForm.value.answer
     } else {
@@ -65,14 +65,14 @@ export class ActiveModeService {
 
   userAnswerPOST(user_answers) {
     this.httpClient.post(
-      `${this.configService.params.api.route}/webcourse/activities/index.php?id=${this.lastActivityInSet.meta.aid}`, user_answers
+      `${this.configService.params.api.route}/webcourse/activities/index.php?id=${this.lastActivityInSet.meta.activity_id}`, user_answers
     ).subscribe(
       (activity_supplemental) => {
         this.completionStatsService.bumpStats(this.lastActivityInSet)
         this.navService.navDisable(false)
 
         if (activity_supplemental['after_word']) {
-          this.lastActivityInSet.body.after_word = activity_supplemental['after_word']
+          this.lastActivityInSet.after_word = activity_supplemental['after_word']
         }
 
         if (activity_supplemental['answers']) {
@@ -82,14 +82,14 @@ export class ActiveModeService {
         if (user_answers) {
           this.lastActivityInSet.user_answers = user_answers
 
-          if (this.lastActivityInSet.meta.type === 'dnd' || this.lastActivityInSet.meta.type === 'dnd-match') {
+          if (this.lastActivityInSet.meta.activity_type === 'dnd' || this.lastActivityInSet.meta.activity_type === 'dnd-match') {
             this.dndService.showUserOrder(this.lastActivityInSet)
           } else {
             // Loop through last activity answers
             for (let i = 0; i < this.lastActivityInSet.answers.length; i++) {
               // Loop through user answers
               for (let j = 0; j < user_answers.length; j++) {
-                if (this.lastActivityInSet.answers[i].answer_id === user_answers[j]) {
+                if (this.lastActivityInSet.answers[i].id === user_answers[j]) {
                   this.lastActivityInSet.answers[i].selected = true
                 }
               }
@@ -114,7 +114,7 @@ export class ActiveModeService {
       .reduce(
         (selected, id) => {
           if (id.selected) {
-            selected.push(id.answer_id)
+            selected.push(id.id)
           }
           return selected
         }, []
@@ -126,7 +126,7 @@ export class ActiveModeService {
     let extractedAnswer = []
     // Loop through activity answers, build array of AIDs only, in user selected order
     activities[this.workareaService.activities.length - 1].answers.forEach(answer => {
-      extractedAnswer.push(answer.answer_id)
+      extractedAnswer.push(answer.id)
     })
     return extractedAnswer
   }

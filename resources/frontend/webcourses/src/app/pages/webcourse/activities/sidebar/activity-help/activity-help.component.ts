@@ -21,7 +21,7 @@ export class ActivityHelpComponent implements OnInit {
     private configService: ConfigService,
     public workareaService: WorkareaService,
   ) {
-    this.activityType = this.workareaService.activities[this.workareaService.activities.length - 1].meta.type
+    this.activityType = this.workareaService.activities[this.workareaService.activities.length - 1].meta.activity_type
   }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class ActivityHelpComponent implements OnInit {
     this.workareaService.currentActivity$
       .subscribe(
         (activity: Activity) => {
-          this.activityType = activity.meta.type
+          this.activityType = activity.meta.activity_type
           this.getActivityHelp(this.activityType) },
         (err) => { console.log(err) }
       )

@@ -23,7 +23,7 @@ export class DndComponent {
   ) {}
 
   ngOnInit() {
-    if (this.activity.meta.type === 'dnd-match') {
+    if (this.activity.meta.activity_type === 'dnd-match') {
       // Break out static column's captions into dndMatchDataStatic.
       // Prevents static column captions from following items moved in the sortable col.
       this.activity.answers.forEach(answer => {

@@ -53,8 +53,11 @@ Route::group(['prefix' => 'v4'], function() {
     // Paths grouped as /v4/user
     Route::group(['prefix' => 'user', 'auth:sanctum' => 'verified'], function() {
 
-        // User profile
-        Route::get('/profile', [UserController::class, 'loggedInUser']);
+        // Paths grouped as /user/profile
+        Route::group(['prefix' => 'profile'], function() {
+            Route::get('/', [UserController::class, 'loggedInUser']);
+            Route::post('/user_name', [UserController::class, 'save_name']);
+        });
 
         // Paths grouped as /v4/user/courses
         Route::group(['prefix' => 'courses'], function() {
@@ -74,6 +77,7 @@ Route::group(['prefix' => 'v4'], function() {
     // Paths grouped as /v4/webcourse
     Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
         Route::get('/activities/{aid?}', [ActivityController::class, 'activity']);
+        Route::get('/chapters/{aid?}', [ActivityController::class, 'chapters']);
     });
 
     // Paths grouped as /v4/publisher

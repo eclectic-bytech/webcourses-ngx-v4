@@ -56,15 +56,15 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.userService.user$.subscribe(
       (user: User) => {
-        if (!user.firstName) {
+        if (!user.first_name) {
           this.ngbModal.open(CollectUserNamesComponent, this.modalOptions)
         }
       }
     )
 
-    this.activitiesService.chapterIndex$ = this.chapterIndexService.getChapterIndex(
-      this.route.snapshot.params.aid
-    )
+    // this.activitiesService.chapterIndex$ = this.chapterIndexService.getChapterIndex(
+    //   this.route.snapshot.params.aid
+    // )
 
     // this.publisherService.getPublisher(this.route.snapshot.params.aid, 'aid').subscribe(
     //   (publisherInfo) => {
