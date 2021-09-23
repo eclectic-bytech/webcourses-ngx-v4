@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Activity;
+use App\Models\Help;
 
 class ActivityController extends Controller
 {
@@ -12,6 +13,16 @@ class ActivityController extends Controller
             ::where('id', $aid)
             ->with('meta', 'answers')
             ->get();
+    }
+
+    public function help($type = false) {
+        if ($type) {
+            return Help
+                ::where('id', $type)
+                ->first();
+        } else {
+            return false;
+        }
     }
 
     public function chapters($aid = false) {

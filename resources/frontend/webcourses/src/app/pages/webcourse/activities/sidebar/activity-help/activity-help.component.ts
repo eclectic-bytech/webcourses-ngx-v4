@@ -39,7 +39,7 @@ export class ActivityHelpComponent implements OnInit {
   getActivityHelp(type: string) {
     if (!this.activityHelp[type]) {
       this.httpClient.get<string>(
-        `${this.configService.params.api.route}/help/${type}`
+        `${this.configService.params.api.route}/webcourse/activities/help/${type}`
       ).subscribe(
         (help) => { this.activityHelp[type] = help },
         (err) => { console.log(err) }
