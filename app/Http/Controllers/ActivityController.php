@@ -11,7 +11,7 @@ class ActivityController extends Controller
         return Activity
             ::where('id', $aid)
             ->with('meta', 'answers')
-            ->first();
+            ->get();
     }
 
     public function chapters($aid = false) {
