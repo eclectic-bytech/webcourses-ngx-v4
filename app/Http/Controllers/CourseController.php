@@ -54,7 +54,7 @@ class CourseController extends Controller
             ::where('courses.id', $cid)
             ->where('courses.published', 1)
             ->where('courses.private', 0)
-            ->with(['publisher', 'theme'])
+            ->with(['publisher', 'theme', 'UserProgress'])
             ->withCount('courseSyllabus as total_activities')
             ->withCount('participants as total_students')
             ->first();
