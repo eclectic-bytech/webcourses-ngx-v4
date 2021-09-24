@@ -10,6 +10,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserCourseController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ChapterController;
 
 /*
 |--------------------------------------------------------------------------

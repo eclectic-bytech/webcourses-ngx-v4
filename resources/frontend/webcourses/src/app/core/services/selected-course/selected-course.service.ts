@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { WorkareaService } from 'src/app/pages/webcourse/activities/workarea/workarea.service'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
+import { ChapterService } from '../webcourse/chapter/chapter.service'
 
 import { Course } from 'src/app/models/course.model'
 import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
@@ -16,7 +17,8 @@ export class SelectedCourseService {
 
   constructor(
     private workareaService: WorkareaService,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private chapterService: ChapterService
   ) { }
 
   servicePrimer() {
@@ -25,6 +27,11 @@ export class SelectedCourseService {
         this.courseService.getCourse(activity.meta.course_id).subscribe(
           (course: Course) => {
             this.selectedCourse = course
+          }
+        )
+        this.chapterService.getChapter(activity.meta.chapter_id).subscribe(
+          (chapter: Chapter) => {
+            this.selectedChapter = chapter
           }
         )
       }
