@@ -25,7 +25,7 @@ class ActivityController extends Controller
         }
     }
 
-    public function chapters($aid = false) {
+    public function chapters($cid = false) {
         // return Chapter::where
         return false;
     }

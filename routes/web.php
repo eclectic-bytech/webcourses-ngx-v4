@@ -78,7 +78,8 @@ Route::group(['prefix' => 'v4'], function() {
     Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
         Route::get('/activities/{aid?}', [ActivityController::class, 'activity']);
         Route::get('/activities/help/{type?}', [ActivityController::class, 'help']);
-        Route::get('/chapters/{aid?}', [ActivityController::class, 'chapters']);
+        Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
+        Route::get('/chapters/{cid?}', [ActivityController::class, 'chapters']);
     });
 
     // Paths grouped as /v4/publisher
