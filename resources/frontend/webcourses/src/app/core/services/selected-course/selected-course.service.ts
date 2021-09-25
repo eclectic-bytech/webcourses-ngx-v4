@@ -14,24 +14,26 @@ export class SelectedCourseService {
 
   public selectedCourse: Course
   public selectedChapter: Chapter
+  public totalActivities = 0
 
   constructor(
     private workareaService: WorkareaService,
     private courseService: CourseService,
     private chapterService: ChapterService
-  ) { }
+    ) { }
 
-  servicePrimer() {
-    this.workareaService.currentActivity$.subscribe(
-      (activity: Activity) => {
-        this.courseService.getCourse(activity.meta.course_id).subscribe(
-          (course: Course) => {
-            this.selectedCourse = course
-          }
-        )
-        this.chapterService.getChapter(activity.meta.chapter_id).subscribe(
-          (chapter: Chapter) => {
-            this.selectedChapter = chapter
+    servicePrimer() {
+      this.workareaService.currentActivity$.subscribe(
+        (activity: Activity) => {
+          this.courseService.getCourse(activity.meta.course_id).subscribe(
+            (course: Course) => {
+              this.selectedCourse = course
+            }
+            )
+            this.chapterService.getChapter(activity.meta.chapter_id).subscribe(
+              (chapter: Chapter) => {
+                this.selectedChapter = chapter
+                this.totalActivities = this.selectedChapter.syllabus.length
           }
         )
       }

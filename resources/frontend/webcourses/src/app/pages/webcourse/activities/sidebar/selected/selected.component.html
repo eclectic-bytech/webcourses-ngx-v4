@@ -9,7 +9,6 @@
           <p class="h5 mb-0 primary-text" [innerHtml]="selectedCourse.title"></p>
           <small class="text-uppercase main-label primary-text">Course with {{selectedCourse.total_activities}} activities</small>
           <div class="mt-2" id="courseProgress">
-            <!-- <ngb-progressbar [value]="0" height="3px"></ngb-progressbar> -->
             <ngb-progressbar
               [value]="selectedCourse.user_progress.total_activities_completed / selectedCourse.total_activities * 100"
               height="3px"
@@ -28,7 +27,7 @@
       <div class="row">
         <div class="col mt-3">
           <p class="h5 mb-0 primary-text">{{ selectedChapter.label }}</p>
-          <small class="text-uppercase main-label primary-text">Chapter with X activities</small>
+          <small class="text-uppercase main-label primary-text">Chapter with {{ this.selectedCourseService.totalActivities }} activities</small>
           <app-activities-bar [chapter]="selectedChapter"></app-activities-bar>
         </div>
       </div>

@@ -10,7 +10,6 @@ class ChapterController extends Controller
     public function chapter($chid) {
         return Chapter
             ::where('id', $chid)
-            ->withCount('syllabus as total_activities')
             ->with('syllabus')
             ->first();
     }
