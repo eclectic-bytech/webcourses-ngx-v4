@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col mt-3">
           <p class="h5 mb-0 primary-text">{{ selectedChapter.label }}</p>
-          <small class="text-uppercase main-label primary-text">Chapter with {{ this.selectedCourseService.totalActivities }} activities</small>
+          <small class="text-uppercase main-label primary-text">Chapter with {{ selectedChapter.total_activities }} activities</small>
           <app-activities-bar [chapter]="selectedChapter"></app-activities-bar>
         </div>
       </div>

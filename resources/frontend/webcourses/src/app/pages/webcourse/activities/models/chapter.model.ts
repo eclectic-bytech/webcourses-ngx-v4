@@ -16,5 +16,8 @@ export class Chapter {
 
     // LEGACY, not yet substituted above with another property
     public tac: number,
+
+    // OPTIONAL parameters have to come last
+    public total_activities?: number
     ) {}
 }
