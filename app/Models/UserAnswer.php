@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class UserAnswer extends Model
 {
     use HasFactory;
+
+    public function user_answer() {
+        $user = auth()->user();
+        return $this
+            ->hasMany(UserAnswer::class);
+    }
+
 }
