@@ -36,7 +36,7 @@ export class ChapterEndComponent implements OnInit {
 
   continueButton() {
     if (this.nextChapter) {
-      this.workareaService.loadActivities(this.nextChapter.activities[0])
+      this.workareaService.loadActivities(this.nextChapter.syllabus[0])
     } else {
       this.navService.endOfChapter = false
       this.navService.endOfCourse = true

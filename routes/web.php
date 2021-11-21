@@ -10,6 +10,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserCourseController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ChapterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +54,7 @@ Route::group(['prefix' => 'v4'], function() {
     // Paths grouped as /v4/user
     Route::group(['prefix' => 'user', 'auth:sanctum' => 'verified'], function() {
 
-        // Paths grouped as /user/profile
+        // Paths grouped as /v4/user/profile
         Route::group(['prefix' => 'profile'], function() {
             Route::get('/', [UserController::class, 'loggedInUser']);
             Route::post('/user_name', [UserController::class, 'save_name']);
