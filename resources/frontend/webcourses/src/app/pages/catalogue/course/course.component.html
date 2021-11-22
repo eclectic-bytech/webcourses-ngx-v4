@@ -1,4 +1,4 @@
-<div *ngIf="this.courseInfo$ | async as course; else loading" class="container-fluid navbar-shift pt-3">
+<div *ngIf="this.courseService.courseInfo$ | async as course; else loading" class="container-fluid navbar-shift pt-3">
 
   <div class="card">
     <img class="card-img-top"

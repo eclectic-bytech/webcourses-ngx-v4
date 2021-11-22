@@ -15,17 +15,15 @@ import { Course } from 'src/app/models/course.model'
 })
 export class CourseComponent implements OnInit {
 
-  public courseInfo$: Observable<Course>
-
   constructor(
-    private courseService: CourseService,
+    public courseService: CourseService,
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       params => {
-        this.courseInfo$ = this.courseService.getCourse(params.cid).pipe(
+        this.courseService.courseInfo$ = this.courseService.getCourse(params.cid).pipe(
           ( course => course )
         )
       }

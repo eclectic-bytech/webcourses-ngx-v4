@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs'
+
 import { ConfigService } from '../../../core/services/config/config.service'
 import { Course } from 'src/app/models/course.model'
 
@@ -9,6 +11,7 @@ import { Course } from 'src/app/models/course.model'
 export class CourseService {
 
   public showCouponInput: number
+  public courseInfo$: Observable<Course>
 
   constructor(
     private http: HttpClient,
