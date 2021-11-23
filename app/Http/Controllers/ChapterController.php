@@ -13,4 +13,8 @@ class ChapterController extends Controller
             ->with('syllabus')
             ->first();
     }
+
+    public function chapters($cid) {
+        return null;
+    }
 }
