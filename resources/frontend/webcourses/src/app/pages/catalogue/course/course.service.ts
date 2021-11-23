@@ -11,7 +11,7 @@ import { Course } from 'src/app/models/course.model'
 export class CourseService {
 
   public showCouponInput: number
-  public courseInfo$: Observable<Course>
+  public courseInfo$: Observable<Course> = this.getCourse(174)
 
   constructor(
     private http: HttpClient,
@@ -21,7 +21,7 @@ export class CourseService {
   getCourse(cid: any) {
     return this.http.get<Course>(`
       ${this.config.params.api.route}/catalogue/course/${cid}
-    `).pipe(courses => courses)
+    `).pipe(course => course)
   }
 
 }
