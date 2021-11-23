@@ -14,10 +14,11 @@ export class ChapterIndexService {
     private configService: ConfigService
   ) {}
 
-  getChapterIndex(aid: string) {
+  getChapterIndex$(cid: string) {
     return this.httpClient
       .get<Chapter[]>(
-        `${this.configService.params.api.route}/webcourse/chapters/${aid}`
+        `${this.configService.params.api.route}/webcourse/${cid}/chapters`
       ).pipe(shareReplay(1))
   }
+
 }
