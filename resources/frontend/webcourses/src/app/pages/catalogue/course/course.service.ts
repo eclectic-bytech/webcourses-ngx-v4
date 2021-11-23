@@ -11,7 +11,7 @@ import { Course } from 'src/app/models/course.model'
 export class CourseService {
 
   public showCouponInput: number
-  public courseInfo$: Observable<Course> = this.getCourse(174)
+  public courseInfo$: Observable<Course>
 
   constructor(
     private http: HttpClient,
