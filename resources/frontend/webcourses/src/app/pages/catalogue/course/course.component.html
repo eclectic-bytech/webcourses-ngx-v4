@@ -1,4 +1,4 @@
-<div *ngIf="this.courseInfo$ | async as course; else loading" class="container-fluid navbar-shift pt-3">
+<div *ngIf="this.courseService.courseInfo$ | async as course; else loading" class="container-fluid navbar-shift pt-3">
 
   <div class="card">
     <img class="card-img-top"
@@ -31,7 +31,7 @@
                   <div class="d-flex">
                     <div><img [src]="'/assets/tea.svg'" alt="Pencil cup icon" class="icon-set pr-2"></div>
                     <div class="flex-grow-1 my-auto text-center">
-                      <div class="spec-card-title">Number of activities</div>
+                      <div class="spec-card-title">No. of activities</div>
                       <div class="lead">{{course.total_activities}}</div>
                     </div>
                   </div>
