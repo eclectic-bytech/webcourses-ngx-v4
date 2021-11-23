@@ -36,7 +36,6 @@ class CourseController extends Controller
     {
         // Passed userId is intended for admin seeing what courses a user has access to.
         // Currently unused, added as documentation for future features.
-        // return Course
         return Course
             ::where('courses.published', 1)
             ->where('courses.private', 0)
@@ -50,7 +49,7 @@ class CourseController extends Controller
 
     public function course($cid) {
         // Course details page
-        return course
+        return Course
             ::where('courses.id', $cid)
             ->where('courses.published', 1)
             ->where('courses.private', 0)
@@ -59,7 +58,6 @@ class CourseController extends Controller
             ->withCount('participants as total_students')
             ->first();
     }
-
 
     /**
      * Show the form for creating a new resource.
