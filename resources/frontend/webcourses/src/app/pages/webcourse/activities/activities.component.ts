@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { PublisherService } from './../../catalogue/publisher/publisher.service'
-import { ActivatedRoute } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap'
 
@@ -9,8 +8,6 @@ import { ActivitiesService } from './activities.service'
 import { UserService } from '../../../core/services/user/user.service'
 import { User } from '../../../core/models/user.model'
 import { ChapterIndexService } from './sidebar/chapter-index/chapter-index.service'
-import { ThemeService } from '../../../core/services/theme/theme.service'
-
 import { faUserGraduate } from '@fortawesome/free-solid-svg-icons'
 import { faList } from '@fortawesome/free-solid-svg-icons'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
@@ -38,12 +35,10 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   faChevronDown = faChevronDown
 
   constructor(
-    private route: ActivatedRoute,
     private ngbModal: NgbModal,
     public activitiesService: ActivitiesService,
     private userService: UserService,
     private chapterIndexService: ChapterIndexService,
-    private themeService: ThemeService,
     public publisherService: PublisherService
   ) {
     this.modalOptions = {
@@ -62,15 +57,6 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
       }
     )
 
-    // this.activitiesService.chapterIndex$ = this.chapterIndexService.getChapterIndex(
-    //   this.route.snapshot.params.aid
-    // )
-
-    // this.publisherService.getPublisher(this.route.snapshot.params.aid, 'aid').subscribe(
-    //   (publisherInfo) => {
-    //     this.themeService.changeTheme(publisherInfo.theme)
-    //   }
-    // )
   }
 
   ngOnDestroy() {
