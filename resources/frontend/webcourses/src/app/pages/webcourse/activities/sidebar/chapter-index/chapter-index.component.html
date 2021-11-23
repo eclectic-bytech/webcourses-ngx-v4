@@ -1,7 +1,7 @@
 <div
   id="chapter-index-tab"
   class="px-4"
-  *ngIf="this.activitiesService.chapterIndex$ | async as chapterIndex; else loading"
+  *ngIf="chapterIndex$ | async as chapterIndex; else loading"
   @fadeInOut
   >
   <div class="container-fluid my-3">

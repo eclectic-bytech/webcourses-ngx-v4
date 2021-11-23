@@ -14,7 +14,7 @@ export class ChapterIndexService {
     private configService: ConfigService
   ) {}
 
-  getChapterIndex$(cid: string) {
+  getChapterIndex$(cid: number) {
     return this.httpClient
       .get<Chapter[]>(
         `${this.configService.params.api.route}/webcourse/${cid}/chapters`

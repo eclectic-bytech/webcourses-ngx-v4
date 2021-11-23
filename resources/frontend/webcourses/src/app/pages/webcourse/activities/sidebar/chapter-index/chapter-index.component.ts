@@ -4,6 +4,8 @@ import { Chapter } from '../../models/chapter.model'
 import { CompletionStatsService } from '../../../../../core/services/user/completion-stats.service'
 import { FadeInOut } from '../../../../../core/animations/fade-in-out.animation'
 import { WorkareaService } from '../../workarea/workarea.service'
+import { ChapterIndexService } from './chapter-index.service'
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 @Component({
   selector: 'app-chapter-index',
@@ -13,10 +15,10 @@ import { WorkareaService } from '../../workarea/workarea.service'
 })
 export class ChapterIndexComponent {
 
-  chapterIndex: Chapter[]
-
   constructor(
     public activitiesService: ActivitiesService,
+    private selectedCourseService: SelectedCourseService,
+    private chapterIndexService: ChapterIndexService,
     private completionStatsService: CompletionStatsService,
     public workareaService: WorkareaService
   ) { }
@@ -36,4 +38,9 @@ export class ChapterIndexComponent {
     return false
   }
 
+  get chapterIndex$() {
+    return this.chapterIndexService.getChapterIndex$(
+      this.selectedCourseService.selectedCourse.id
+    ).pipe(chapterIndex => chapterIndex)
+  }
 }
