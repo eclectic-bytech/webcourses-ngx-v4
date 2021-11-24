@@ -14,7 +14,4 @@ class ChapterController extends Controller
             ->first();
     }
 
-    public function chapters($cid) {
-        return null;
-    }
 }

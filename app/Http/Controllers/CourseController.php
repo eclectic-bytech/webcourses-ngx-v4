@@ -59,6 +59,17 @@ class CourseController extends Controller
             ->first();
     }
 
+    public function chapterIndex($cid)
+    {
+        $course = Course
+            ::where('id', $cid)
+            ->with('chapterIndex')
+            ->first();
+
+        $course = json_decode($course);
+        return $course->chapter_index;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

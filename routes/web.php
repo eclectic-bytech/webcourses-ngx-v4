@@ -80,7 +80,7 @@ Route::group(['prefix' => 'v4'], function() {
         Route::get('/activities/{aid?}', [ActivityController::class, 'activity']);
         Route::get('/activities/help/{type?}', [ActivityController::class, 'help']);
         Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
-        Route::get('/{cid?}/chapters', [CourseController::class, 'chapters']);
+        Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
     });
 
     // Paths grouped as /v4/publisher

@@ -35,4 +35,15 @@ class Course extends Model
         return $this->hasMany(UserProgress::class);
     }
 
+    public function chapterIndex() {
+        return $this->hasManyThrough(
+            Chapter::class,
+            CourseSyllabus::class,
+            'course_id',
+            'id',
+            'id',
+            'chapter_id'
+        )->distinct();
+    }
+
 }
