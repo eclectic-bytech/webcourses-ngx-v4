@@ -6,6 +6,7 @@ import { FadeInOut } from '../../../../../core/animations/fade-in-out.animation'
 import { WorkareaService } from '../../workarea/workarea.service'
 import { ChapterIndexService } from './chapter-index.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-chapter-index',
@@ -15,6 +16,8 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 })
 export class ChapterIndexComponent {
 
+  public chapterIndex$: Observable<any>
+
   constructor(
     public activitiesService: ActivitiesService,
     private selectedCourseService: SelectedCourseService,
@@ -22,6 +25,12 @@ export class ChapterIndexComponent {
     private completionStatsService: CompletionStatsService,
     public workareaService: WorkareaService
   ) { }
+
+  ngOnInit() {
+    this.chapterIndex$ = this.chapterIndexService.getChapterIndex$(
+      this.selectedCourseService.selectedCourse.id
+    )
+  }
 
   chapterUnlock(chapterIndex: Chapter[], chapterNumber: number) {
     // First chapter, always unlocked
@@ -38,9 +47,4 @@ export class ChapterIndexComponent {
     return false
   }
 
-  get chapterIndex$() {
-    return this.chapterIndexService.getChapterIndex$(
-      this.selectedCourseService.selectedCourse.id
-    ).pipe(chapterIndex => chapterIndex)
-  }
 }

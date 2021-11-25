@@ -12,12 +12,12 @@
 
             <div *ngIf="chapterUnlock(chapterIndex, chapterNumber); else lockedChapter">
               <a (click)="this.workareaService.loadActivities(chapter.syllabus[0])" class="handy">
-                {{chapter.title}}
+                {{chapter.label}}
               </a>
             </div>
             <ng-template #lockedChapter>
               <div class="primary-text">
-                {{chapter.title}}
+                {{chapter.label}}
               </div>
             </ng-template>
 
