@@ -19,4 +19,4 @@ VirtualBox / Vagrant Laravel Homestead running Ubuntu 64-bit
 
 Angular source files are in `/resources/frontend/webcourses`. They're served via Laravel's AngularController +Blade.
 
-To recompile the Angular source code, run `npm run-script build:prod`.
+To recompile the Angular source code, run `npm run-script build:prod` in `/resources/frontend/webcourses/app/src`.
