@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Chapter;
+
 class Course extends Model
 {
     use HasFactory;
@@ -43,7 +45,9 @@ class Course extends Model
             'id',
             'id',
             'chapter_id'
-        )->distinct();
+        )
+        ->with('syllabus')
+        ->distinct();
     }
 
 }
