@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core'
-import { ActivitiesService } from '../../activities.service'
 import { Activity } from '../../workarea/models/activity.model'
 import { Chapter } from '../../models/chapter.model'
 import { UserService } from '../../../../../core/services/user/user.service'
 import { CompletionStatsService } from '../../../../../core/services/user/completion-stats.service'
 import { Course } from 'src/app/models/course.model'
+import { ChapterIndexService } from '../chapter-index/chapter-index.service'
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class SelectedService {
 
   constructor(
     private completionStatsService: CompletionStatsService,
-    private activitiesService: ActivitiesService,
+    private chapterIndexService: ChapterIndexService,
     private userService: UserService
   ) {}
 
@@ -26,7 +26,7 @@ export class SelectedService {
   }
 
   updateSelectedChapter(currentActivity: Activity) {
-    this.activitiesService.chapterIndex$.subscribe(
+    this.chapterIndexService.getChapterIndex$(this.selectedChapter.id).subscribe(
       (chapters: Chapter[]) => {
         this.selectedChapter = this.getSelectedChapter(chapters, currentActivity, 0)
         this.completionStatsService.initChapterCompletionStats(chapters)
