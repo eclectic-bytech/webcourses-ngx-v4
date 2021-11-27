@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core'
 import { WorkareaService } from '../workarea.service'
-import { ActivitiesService } from '../../activities.service'
 import { Chapter } from '../../models/chapter.model'
+import { ChapterIndexService } from '../../sidebar/chapter-index/chapter-index.service'
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class NavService {
 
   constructor(
     private workareaService: WorkareaService,
-    private activitiesService: ActivitiesService
+    private chapterIndexService: ChapterIndexService,
+    private selectedCourseService: SelectedCourseService
   ) {}
 
 
@@ -47,7 +49,7 @@ export class NavService {
   }
 
   firstActivitySetCheck() {
-    this.activitiesService.chapterIndex$.subscribe(
+    this.chapterIndexService.getChapterIndex$(this.selectedCourseService.selectedCourse.id).subscribe(
       (chapters: Chapter[]) => {
         const aids = this.getChapterAids(chapters, this.workareaService.activities[0].meta.chapter_id)
         this.firstActivitySet = this.workareaService.activities[0].meta.activity_id === aids[0] ? true : false
