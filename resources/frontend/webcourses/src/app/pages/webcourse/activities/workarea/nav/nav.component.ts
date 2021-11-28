@@ -7,6 +7,8 @@ import { Location } from '@angular/common'
 
 import { faStepBackward, faSpinner, faCheck, faPencilAlt, faThLarge } from '@fortawesome/free-solid-svg-icons'
 import { WorkareaService } from '../workarea.service'
+import { ChapterIndexService } from '../../sidebar/chapter-index/chapter-index.service'
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 
 @Component({
@@ -28,8 +30,9 @@ export class NavComponent implements OnInit {
     public navService: NavService,
     private location: Location,
     private activeModeService: ActiveModeService,
-    private activitiesService: ActivitiesService,
-    private workareaService: WorkareaService
+    private chapterIndexService: ChapterIndexService,
+    private workareaService: WorkareaService,
+    private selectedCourseService: SelectedCourseService
   ) { }
 
   ngOnInit() {
@@ -50,7 +53,7 @@ export class NavComponent implements OnInit {
     // Offset should be 1 for next activity, -1 for previous activity
     this.navService.navDisable(true)
 
-    this.activitiesService.chapterIndex$.subscribe(
+    this.chapterIndexService.getChapterIndex$(this.selectedCourseService.selectedCourse.id).subscribe(
       (chapters) => {
         // Clicking next on last activity will result in followingAidInSet = undefined
         // Back button is disabled on first chapter activity set

@@ -26,7 +26,7 @@ export class NavService {
       this.workareaService.activities[this.workareaService.activities.length - 1] :
       this.workareaService.activities[0]
 
-      // Get array of aids in current chapter
+    // Get array of aids in current chapter
     const chapterAids = this.getChapterAids(
       chapters, selectedActivity.meta.chapter_id
     )
@@ -41,7 +41,7 @@ export class NavService {
 
   getChapterAids(chapters: Chapter[], currentChapter: number) {
     function i(chapter: Chapter) {
-      if (chapter.chid === currentChapter) {
+      if (chapter.id === currentChapter) {
         return chapter
       }
     }

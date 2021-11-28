@@ -26,7 +26,7 @@ export class SelectedService {
   }
 
   updateSelectedChapter(currentActivity: Activity) {
-    this.chapterIndexService.getChapterIndex$(this.selectedChapter.id).subscribe(
+    this.chapterIndexService.getChapterIndex$(currentActivity.meta.course_id).subscribe(
       (chapters: Chapter[]) => {
         this.selectedChapter = this.getSelectedChapter(chapters, currentActivity, 0)
         this.completionStatsService.initChapterCompletionStats(chapters)
