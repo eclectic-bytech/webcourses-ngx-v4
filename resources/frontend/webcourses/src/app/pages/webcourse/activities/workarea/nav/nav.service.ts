@@ -45,7 +45,7 @@ export class NavService {
         return chapter
       }
     }
-    return chapters[chapters.findIndex(i)].activities
+    return chapters[chapters.findIndex(i)].syllabus
   }
 
   firstActivitySetCheck() {
