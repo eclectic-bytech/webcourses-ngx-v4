@@ -11,6 +11,7 @@ use App\Http\Controllers\UserCourseController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\UserAnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,7 @@ Route::group(['prefix' => 'v4'], function() {
     // Paths grouped as /v4/webcourse
     Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
         Route::get('/activities/{aid?}', [ActivityController::class, 'activity']);
+        Route::post('/activities/{aid}/user_answer', [UserAnswerController::class, 'user_answer']);
         Route::get('/activities/help/{type?}', [ActivityController::class, 'help']);
         Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
