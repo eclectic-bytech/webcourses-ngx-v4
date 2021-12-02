@@ -57,10 +57,10 @@ export class NavComponent implements OnInit {
       (chapters) => {
         // Clicking next on last activity will result in followingAidInSet = undefined
         // Back button is disabled on first chapter activity set
-        const followingAidInSet = this.navService.calcFollowingAid(chapters, offset)
-        if (followingAidInSet) {
-          this.workareaService.loadActivities(followingAidInSet)
-          this.location.go(`/webcourse/activities/${followingAidInSet}`)
+        const followingActivityInSet = this.navService.calcFollowingAid(chapters, offset)
+        if (followingActivityInSet) {
+          this.workareaService.loadActivities(followingActivityInSet.activity_id)
+          this.location.go(`/webcourse/activities/${followingActivityInSet.activity_id}`)
         } else {
           this.navService.endOfChapter = true
         }
