@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class UserAnswerController extends Controller
 {
-    public function user_answer($user_answer) {
-        return $user_answer;
+    public function user_answer($aid) {
+        return $aid;
     }
 }
