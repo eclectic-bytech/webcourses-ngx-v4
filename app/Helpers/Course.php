@@ -1,11 +1,8 @@
 <?php
 
-use App\Http\Controllers\ActivityController;
-use App\Models\Activity;
+use App\Http\Controllers\CourseSyllabusController;
 
-function activityMeta(int $aid) {
-    $controller = new ActivityController();
-    $activity = $controller->activity($aid)->first();
-    $meta = $activity->meta;
-    return $meta;
+function getActivityMeta(int $aid) {
+    $controller = new CourseSyllabusController();
+    return $controller->activityMeta($aid);
 }
