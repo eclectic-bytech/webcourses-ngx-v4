@@ -8,5 +8,10 @@ use Illuminate\Http\Request;
 
 class UserProgressController extends Controller
 {
-    //
+    public function userProgress(int $uid, int $cid) {
+        return UserProgress
+            ::where('user_id', $uid)
+            ->where('course_id', $cid)
+            ->first();
+    }
 }
