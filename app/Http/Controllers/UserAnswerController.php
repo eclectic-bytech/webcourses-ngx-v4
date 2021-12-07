@@ -12,9 +12,9 @@ class UserAnswerController extends Controller
         $uid = auth()->user()->id;
         $cid = getActivityMeta($aid)->course_id; // global helper defined in app/Helpers/Course.php
         $pid = getUserProgress($uid, $cid)->id; // A pid confirms user is student in course
-        // End Guard?
 
         if ($pid) {
+        // End Guard?
             // Check if user already completed this activity
             // get userAnswer where pid=x and where activity_id=y
             $user_answers = $request->Input();
