@@ -9,7 +9,7 @@ class UserAnswerController extends Controller
 {
     public function save_user_answer(Request $request, int $aid) {
         // This should probably be turned into a HasCourseWriteAccess Guard...
-        // Maybe two: main, and second that checks for WriteAccess only.
+        // Maybe two: courseReadAccess, and activityWriteAnswerAccess.
         $activity_meta = getActivityMeta($aid); // global helper defined in app/Helpers/Course.php
 
         $uid = auth()->user()->id;
