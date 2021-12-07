@@ -79,7 +79,7 @@ Route::group(['prefix' => 'v4'], function() {
     // Paths grouped as /v4/webcourse
     Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
         Route::get('/activities/{aid?}', [ActivityController::class, 'activity']);
-        Route::post('/activities/{aid}/user_answer', [UserAnswerController::class, 'user_answer']);
+        Route::post('/activities/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
         Route::get('/activities/help/{type?}', [ActivityController::class, 'help']);
         Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
