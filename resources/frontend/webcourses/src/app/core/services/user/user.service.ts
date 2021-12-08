@@ -33,7 +33,7 @@ export class UserService {
 
   getUser() {
     return this.httpClient
-      .get<User>(`/v4/user/profile`)
+      .get<User>(`${this.configService.params.api.route}/user/profile`)
       .pipe(profile => profile)
   }
 
