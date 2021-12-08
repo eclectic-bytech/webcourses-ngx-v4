@@ -21,7 +21,7 @@ export class CourseEndComponent {
   reviewButton() {
     this.activitiesService.chapterIndex$.subscribe(
       (chapters) => {
-        this.workareaService.loadActivities(chapters[0].activities[0])
+        this.workareaService.loadActivities(chapters[0].syllabus[0])
       }
     )
   }

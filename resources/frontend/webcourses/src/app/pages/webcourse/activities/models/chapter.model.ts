@@ -10,7 +10,6 @@ export class Chapter {
 
     // LEGACY, already substituted above with another property
     public chid: number,
-    public activities: any,
     public title: string,
     public ta: number,
 
