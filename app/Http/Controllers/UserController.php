@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-
 class UserController extends Controller
 {
     public function loggedInUser()
@@ -16,12 +15,12 @@ class UserController extends Controller
     public function save_name(Request $request) {
         $input = $request->input();
         $user = auth()->user();
-
-        return User
-            ::where('id', $user['id'])
+        return tap(User::where('id', $user['id']))
             ->update([
                 'first_name' => $input['first_name'],
                 'last_name' => $input['last_name']
-            ]);
+            ])
+            ->first()
+        ;
     }
 }

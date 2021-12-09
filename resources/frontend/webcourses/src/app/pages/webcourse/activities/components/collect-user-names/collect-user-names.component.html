@@ -1,46 +1,55 @@
-<div class="modal-header" *ngIf="!first_name && !waitingForAPI">
-  <h4 class="common-heading my-auto" id="modal-basic-title">Before you continue...</h4>
-</div>
-<div class="modal-body">
-  <form #names="ngForm" (keyup.enter)="names.form.valid ? btnClick(names.value) : ''">
-    <div *ngIf="this.waitingForAPI; else content">
-      <div
-        [innerHtml]="failedUpdate ? 'Update failed. Rebooting session...' : 'Updating your profile...'"
-        [ngClass]="failedUpdate ? 'text-danger' : ''"
-        class="mt-3 lead text-center"
-      >
-      </div>
-      <app-loading-spinner></app-loading-spinner>
+<ng-template [ngIf]="status === 'updating'">
+  <div class="modal-body">
+    <div class="my-3 lead text-center">
+      <span class="text-info font-weight-bold">Updating your profile!</span><br>
+      How's the weather today?
     </div>
-    <ng-template #content>
-      <div *ngIf="!first_name && !this.waitingForAPI; else nameSaved">
-        <p>Please enter your name for the course student reports.</p>
+  </div>
+</ng-template>
+
+<ng-template [ngIf]="status === 'failedUpdate'">
+  <div class="modal-body">
+    <div class="my-3 lead text-center">
+      <span class="text-danger font-weight-bold">Update failed.</span><br>
+      Rebooting session...
+    </div>
+  </div>
+  <ngb-progressbar [value]="percent" type="danger" height="3px"></ngb-progressbar>
+</ng-template>
+
+<ng-template [ngIf]="status === 'prompt'">
+  <div class="modal-header">
+    <h4 class="common-heading my-auto" id="modal-basic-title">Before you continue...</h4>
+  </div>
+  <div class="modal-body">
+    <form #names="ngForm" (keyup.enter)="names.form.valid ? btnClick(names.value) : ''">
+      <div>
+        <p>Please provide a name for the course student reports.</p>
         <div class="mb-4" class="d-block w-50">
-          <input ngModel type="text" name="first_name" placeholder="First name" class="mr-2" minlength="2" maxlength="50" class="form-control form-control-secondary my-2" required>
-          <input ngModel type="text" name="last_name" placeholder="Last name" minlength="2" maxlength="20" class="form-control form-control-secondary my-2" required>
+          <input ngModel type="text" name="first_name" placeholder="First name" class="mr-2" minlength="2" maxlength="50" class="form-control form-control-secondary my-2" [(ngModel)]="user.first_name" required>
+          <input ngModel type="text" name="last_name" placeholder="Last name" minlength="2" maxlength="20" class="form-control form-control-secondary my-2" [(ngModel)]="user.last_name" required>
         </div>
-        <!-- <p>{{ names.value | json }}</p>
-        <p>{{ names.control.status | json }}</p> -->
       </div>
-      <ng-template #nameSaved>
-        <div class="lead text-center">
-          <span class="text-success font-weight-bold">Your profile was updated successfully.</span><br>
-          Thank you, <span class="text-capitalize">{{ first_name }}</span>.
-        </div>
-      </ng-template>
-    </ng-template>
-  </form>
-</div>
-<div class="modal-footer" *ngIf="!this.waitingForAPI">
-  <button
-    *ngIf="!first_name; else returnToCoursee"
-    type="submit" class="btn btn-success"
-    (click)="btnClick(names.value)"
-    [disabled]="names.form.invalid"
-  >
-    Submit
-  </button>
-  <ng-template #returnToCoursee>
-    <button type="button" class="btn btn-primary mx-auto" (click)="close()">Continue</button>
-  </ng-template>
-</div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="submit" class="btn btn-success"
+      (click)="btnClick(names.value)"
+      [disabled]="names.form.invalid"
+    >
+      Submit
+    </button>
+
+  </div>
+</ng-template>
+
+<ng-template [ngIf]="status === 'saved'">
+  <div class="modal-body">
+    <div class="my-3 lead text-center">
+      <span class="text-success font-weight-bold">Your profile was updated successfully.</span><br>
+      Thank you, <span class="text-capitalize font-weight-bold">{{ user.first_name }}</span>.
+    </div>
+  </div>
+  <ngb-progressbar [value]="percent" type="success" height="3px"></ngb-progressbar>
+</ng-template>

@@ -45,14 +45,16 @@ export class ActivitiesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.user$.subscribe(
-      (user: User) => {
-        if (!user.first_name) {
-          this.ngbModal.open(CollectUserNamesComponent, this.modalOptions)
+    setTimeout(() => {
+      this.userService.user$.subscribe(
+        (user: User) => {
+          if (!user.first_name) {
+            const comp = this.ngbModal.open(CollectUserNamesComponent, this.modalOptions)
+            comp.componentInstance.user = user
+          }
         }
-      }
-    )
-
+      )
+    }, 3500);
   }
 
 }
