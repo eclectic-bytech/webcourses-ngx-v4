@@ -33,7 +33,7 @@
     "@types/stripe": "^7.13.24",
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.5",
-    "eslint": "^6.8.0",
+    "eslint": "^8.6.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "ngx-cookie-service": "^11.0.2",
@@ -47,7 +47,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1101.1",
+    "@angular-devkit/build-angular": "^13.1.2",
     "@angular/cli": "^11.1.1",
     "@angular/compiler-cli": "^11.1.0",
     "@angular/language-service": "^11.1.0",
@@ -57,7 +57,7 @@
     "ajv": "^6.12.2",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~5.2.3",
+    "karma": "^6.3.10",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
