@@ -39,6 +39,8 @@ config.json
 .history/*
 
 # misc
+.vagrant
+.angular
 /.sass-cache
 /connect.lock
 /coverage
