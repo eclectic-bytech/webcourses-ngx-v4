@@ -1,8 +1,10 @@
-## NOVEMBER NEWS DROP
+## Homestead Branch (January 2022)
 
-Over the last few months, I've not fired up XAMPP at all, instead relying on Vagrant Homestead for local dev. Toward the end of November I expect to have Homestead box setup documentation available for firing up Open Webcourses locally. --Sławomir
+The homstead branch is now capable of hosting itself through creating a virtual machine using Vagrant. Several additional steps are required to initialise Laravel and Angular, and for that reason the branch is still limited in utility.
 
+Since it takes a WNGX tech only 3-5 minutes to get the system up and running, I expect that by month's end all steps will be done by script, or eliminated.
 
+Thanks to Collier for starting work for making WNGX installable via Composer. We look forward to bringing this option to techs not versed in or wishing to avoid Git.
 
 
 ## Introduction
