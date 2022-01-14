@@ -1,3 +1,24 @@
+
+     ***** *    **   ***         ***** *     **          * ***        ***          **     
+  ******  *  *****    ***     ******  **    **** *     *  ****  *    *****       ****  *  
+ **   *  *     *****   ***   **   *  * **    ****     *  *  ****    *   ***      ******   
+*    *  **     * **      ** *    *  *  **    * *     *  **   **          ***    *   **    
+    *  ***     *         **     *  *    **   *      *  ***                ***  *          
+   **   **     *         **    ** **    **   *     **   **                 ****           
+   **   **     *         **    ** **     **  *     **   **   ***            ***           
+   **   **     *         **    ** **     **  *     **   **  ****  *         ****          
+   **   **     *         **    ** **      ** *     **   ** *  ****         *  ***         
+   **   **     *         **    ** **      ** *     **   ***    **         *    ***        
+    **  **     *         **    *  **       ***      **  **     *         *      ***       
+     ** *      *         *        *        ***       ** *      *        *        ***      
+      ***      ***      *     ****          **        ***     *        *          ***   * 
+       ******** ********     *  *****                  *******        *            *****  
+         ****     ****      *     **                     ***         *              ***   
+                            *                                                             
+                             **                                                           
+                                                                                          
+
+
 ## Homestead Branch (January 2022)
 
 The homstead branch is now capable of hosting itself through creating a virtual machine using Vagrant. Several additional steps are required to initialise Laravel and Angular, and for that reason the branch is still limited in utility.
