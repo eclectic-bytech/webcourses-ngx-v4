@@ -68,7 +68,6 @@
                 }
               ],
               "outputPath": "../../../public/webcourses",
-              "deployUrl": "/webcourses/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
