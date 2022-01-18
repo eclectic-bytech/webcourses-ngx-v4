@@ -22,7 +22,4 @@
 #curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 #sudo apt-get install -y nodejs
 
-echo -e "\033[1;34mWNGX Installer v1.0 RC1\033[0;37m"
-echo
-echo -e "\033[1;35mRunning Composer...\033[0;37m"
-composer install
+./installer.sh
