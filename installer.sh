@@ -1,16 +1,17 @@
-echo -e "\033[1;34mWNGX Installer v1.0 RC2\033[0;37m"
-echo
-echo -e "\033[1;35mRunning Composer...\033[0;37m"
-composer install
+echo -e "\033[1;35mWNGX Installer v1.0 RC2\033[1;34m";
 
-echo -e "\033[1;35mCreating a copy of .env file...\033[0;37m"
-cp .env.example .env
+echo -e "Running Composer...";
+composer install;
 
-echo -e "\033[1;35mRunning homestead make...\033[0;37m"
-vendor/bin/homestead make
+echo -e "Creating a copy of .env file...";
+cp .env.example .env;
 
-echo -e "\033[1;35mVagrant up...\033[0;37m"
-vagrant up
+echo "Running homestead make...";
+vendor/bin/homestead make;
 
-echo -e "\033[1;35mInit system via vagrant ssh command...\033[0;37m"
-vagrant ssh --command "~/code/init.sh"
+echo -e "\033[1;34mVagrant up...\033[0;37m";
+vagrant up;
+
+echo -e "\033[1;34mInit system via vagrant ssh command...";
+
+vagrant ssh --command "~/code/init.sh";
