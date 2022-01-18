@@ -23,3 +23,4 @@
 #sudo apt-get install -y nodejs
 
 php /home/vagrant/code/artisan migrate
+cp ~/code/public/webcourses/index.html ~/code/resources/views/angular.blade.php
