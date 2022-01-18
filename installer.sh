@@ -13,5 +13,4 @@ echo -e "\033[1;34mVagrant up...\033[0;37m";
 vagrant up;
 
 echo -e "\033[1;34mInit system via vagrant ssh command...";
-
 vagrant ssh --command "~/code/init.sh";
