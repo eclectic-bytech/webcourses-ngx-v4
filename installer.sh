@@ -11,3 +11,6 @@ vendor/bin/homestead make
 
 echo -e "\033[1;35mVagrant up...\033[0;37m"
 vagrant up
+
+echo -e "\033[1;35mInit system via `vagrant ssh --command`...\033[0;37m"
+vagrant ssh --command "~/code/init.sh"

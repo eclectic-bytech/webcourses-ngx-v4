@@ -21,6 +21,3 @@
 # More info: https://github.com/nodesource/distributions/blob/master/README.md#debinstall
 #curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 #sudo apt-get install -y nodejs
-
-php /home/vagrant/code/artisan migrate
-cp ~/code/public/webcourses/index.html ~/code/resources/views/angular.blade.php
