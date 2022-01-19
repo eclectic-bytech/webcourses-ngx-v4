@@ -10,23 +10,29 @@ oooooo   oooooo     oooo ooooo      ooo   .oooooo.    ooooooo  ooooo            
   
 ```
 
-## Homestead Branch (January 2022)
+## Tuesday, January 18
 
-The homstead branch is now capable of hosting itself through creating a virtual machine using Vagrant. Several additional steps are required to initialise Laravel and Angular, and for that reason the branch is still limited in utility.
+The master branch now contains an installer that'll fire up the platform in a virtual box. 🚀
 
-Since it takes a WNGX tech only 3-5 minutes to get the system up and running, I expect that by month's end all steps will be done by script, or eliminated.
 
-Thanks to Collier for starting work for making WNGX installable via Composer. We look forward to bringing this option to techs not versed in or wishing to avoid Git.
+## Installation
+
+You must have Oracle's VM VirtualBox and Vagrant installed before continuing.
+
+With the above installed, get the repo onto your machine (download, clone, etc.)  
+Run the installer at the root of the project using the `./installer.sh` command.  
+
+Add the following binding to your DNS settings:  
+> `192.168.56.56        homestead.test`
+
+Access WNGX by going to http://homestead.test. Start by clicking the Register link in the upper right corner.
 
 
 ## Introduction
 
 Online web course platform. Public release still not ready for production systems.
-
-
-## Our dev environment
-
-VirtualBox / Vagrant Laravel Homestead running Ubuntu 64-bit
+  
+  
 
 
 ## Laravel & Angular combo
