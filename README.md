@@ -7,6 +7,8 @@ oooooo   oooooo     oooo ooooo      ooo   .oooooo.    ooooooo  ooooo            
     `888.8'  `888.8'      8     `88b.8  888     ooooo    .8PY888.         88ooo888oo 
      `888'    `888'       8       `888  `88.    .88'    d8'  `888b             888   
       `8'      `8'       o8o        `8   `Y8bood8P'   o888o  o88888o          o888o  
+      
+...everyone is encouraged to contribute, while we ensure high and professional quality
   
 ```
 
