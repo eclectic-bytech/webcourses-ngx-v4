@@ -20,7 +20,7 @@ The master branch now contains an installer that'll fire up the platform in a vi
 You must have Oracle's VM VirtualBox and Vagrant installed before continuing.
 
 With the above installed, get the repo onto your machine (download, clone, etc.)  
-Run the installer at the root of the project using the `./installer.sh` command.  
+Run the installer at the root of the project using the `./installer.sh` command. (Use [Windows GitBash](https://gitforwindows.org/) command line if on that OS - Windows' command line will not work.)
 
 Add the following binding to your DNS settings:  
 > `192.168.56.56        homestead.test`
