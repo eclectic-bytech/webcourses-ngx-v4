@@ -8,9 +8,10 @@ oooooo   oooooo     oooo ooooo      ooo   .oooooo.    ooooooo  ooooo            
      `888'    `888'       8       `888  `88.    .88'    d8'  `888b             888   
       `8'      `8'       o8o        `8   `Y8bood8P'   o888o  o88888o          o888o  
       
-...everyone is encouraged to contribute, while we ensure high and professional quality
   
 ```
+Everyone is encouraged to contribute, while we ensure high and professional quality.
+
 
 ## Tuesday, January 18
 
