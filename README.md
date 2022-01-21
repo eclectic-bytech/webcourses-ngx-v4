@@ -32,7 +32,8 @@ Run the installer at the root of the project by using the `./installer.sh` comma
 Add the following binding to your DNS settings:  
 > `192.168.56.56        homestead.test`
 
-Access WNGX by going to http://homestead.test. Start by clicking the Register link in the upper right corner.
+Access WNGX by going to http://homestead.test.
+Start by clicking the Register link in the upper right corner.
 
 
 ## About
