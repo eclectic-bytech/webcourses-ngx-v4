@@ -25,7 +25,8 @@ The master branch now contains an installer that'll fire up the platform in a vi
 - [Composer](https://getcomposer.org/)
 - Bash
 
-Under Windows, GitBash from [Git for Windows](https://gitforwindows.org/) and [Cygwin](https://www.cygwin.com/) should do nicely. This is where you need to run the installer.sh mentioned in the Installation section below.
+Under Windows, GitBash from [Git for Windows](https://gitforwindows.org/) or [Cygwin](https://www.cygwin.com/)'s bash should do nicely.  
+This is where you need to run the installer.sh mentioned in the Installation section below.
 
 ## Installation
 
@@ -35,9 +36,11 @@ Run the installer at the root of the project by using the `./installer.sh` comma
 Add the following binding to your DNS settings:  
 > `192.168.56.56        homestead.test`
 
-From the project folder, you can now run `vagrant up` to start the virtual machine. You should see it in the Oracle VM GUI, first as idle, and then as running once you've ran the command. Use `vagrant halt` to stop the server.
+From the project folder, you can now run `vagrant up` to start the virtual machine.  
+You should see it in the Oracle VM GUI, first as idle, and then as running once you've ran the command.  
+Use `vagrant halt` to stop the server.
 
-Access WNGX by going to http://homestead.test.
+Access WNGX by going to http://homestead.test.  
 Start by clicking the Register link in the upper right corner.
 
 
