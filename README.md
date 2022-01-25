@@ -43,6 +43,10 @@ Use `vagrant halt` to stop the server.
 Access WNGX by going to http://homestead.test.  
 Start by clicking the Register link in the upper right corner.
 
+## Demo
+
+We've a video and interactive demo.  
+Access is available from https://www.webcourses.io/demo.
 
 ## About
 
