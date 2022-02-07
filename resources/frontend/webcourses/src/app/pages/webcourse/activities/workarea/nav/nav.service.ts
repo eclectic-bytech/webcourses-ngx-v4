@@ -3,6 +3,7 @@ import { WorkareaService } from '../workarea.service'
 import { Chapter } from '../../models/chapter.model'
 import { ChapterIndexService } from '../../sidebar/chapter-index/chapter-index.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
+import { ActivityMeta } from '../models/activity-meta.model'
 
 @Injectable({
   providedIn: 'root'
@@ -32,11 +33,13 @@ export class NavService {
     )
 
     // Get AID that follows (offset 1) or precedes (offset -1) loaded activity set
-    const i = chapterAids.findIndex(
-      (aid: number) => aid === selectedActivity.meta.activity_id
-    ) + offset
-
-    return chapterAids[i]
+    let i = chapterAids.findIndex(
+      // (aid: number) => aid === selectedActivity.meta.activity_id
+      (aid: ActivityMeta) => {
+        if (aid.activity_id === selectedActivity.meta.activity_id) return true
+      }
+    )
+    return chapterAids[++i]
   }
 
   getChapterAids(chapters: Chapter[], currentChapter: number) {

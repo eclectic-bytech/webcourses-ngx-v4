@@ -99,9 +99,9 @@ export class ActiveModeService {
 
         // Afterword, correct answers, etc might be returned when saving user answers
         // If they do, merge them back into the activities object
-        // this.workareaService.activities[this.workareaService.activities.length - 1] = {
-        //   ...this.workareaService.activities[this.workareaService.activities.length - 1], ...activity_supplemental
-        // }
+        this.workareaService.activities[this.workareaService.activities.length - 1] = {
+          ...this.workareaService.activities[this.workareaService.activities.length - 1], ...activity_supplemental
+        }
 
       },
       (err) => { console.log('ERROR #2334.') }
