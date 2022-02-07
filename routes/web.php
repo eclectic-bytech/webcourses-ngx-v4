@@ -37,7 +37,7 @@ Route::get('/', function () {
     ]);
 });
 
-// Jetstream user dashboard not part of the v4 group. Do not move it there.
+// Jetstream user dashboard is not part of the v4 group/path. Do not move it there.
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
@@ -78,11 +78,14 @@ Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped as /v4/webcourse
     Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
-        Route::get('/activities/{aid?}', [ActivityController::class, 'activity']);
-        Route::post('/activities/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
-        Route::get('/activities/help/{type?}', [ActivityController::class, 'help']);
-        Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
+
+        Route::get('/activities/{aid?}', [ActivityController::class, 'activity']);
+        Route::get('/activities/help/{type?}', [ActivityController::class, 'help']);
+        Route::post('/activities/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
+
+        Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
+        Route::get('/chapter/{chid}/user_answer_count', [UserAnswerController::class, 'total_user_answers_in_chapter']);
     });
 
     // Paths grouped as /v4/publisher
