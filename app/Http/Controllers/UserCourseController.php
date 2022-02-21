@@ -21,10 +21,9 @@ class UserCourseController extends Controller
 
     // Takes PID, return which aid should be loaded when user decides to work on the course
     public function start_aid($pid) {
-        return UserAnswer
-            ::where('progress_id', $pid)
-            ->latest()
-            ->first();
+        // Check if user has started work on the course
+        $answer = UserAnswer::where('progress_id', $pid)->latest()->first();
+        return (is_null($answer)) ? 3964 : $answer['activity_id'];
     }
 
 }
