@@ -16,7 +16,7 @@ Homestead.yaml
 # Ignore compiled version of WNGX and related items
 # /public/webcourses
 /resources/views/angular.blade.php
-/public/publisher-files
+# /public/publisher-files
 
 # Copied from resources/frontend/webcourses:
 # Angular's own .ignore
