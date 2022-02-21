@@ -1,8 +1,9 @@
 import { Component } from '@angular/core'
-import { Router } from '@angular/router'
-import { ActivitiesService } from '../../../activities.service'
 import { FadeInOut } from '../../../../../../core/animations/fade-in-out.animation'
 import { WorkareaService } from '../../workarea.service'
+import { Observable } from 'rxjs'
+import { Chapter } from '../../../models/chapter.model'
+import { SelectedService } from '../../../sidebar/selected/selected.service'
 
 @Component({
   selector: 'app-course-end',
@@ -12,18 +13,15 @@ import { WorkareaService } from '../../workarea.service'
 })
 export class CourseEndComponent {
 
+  chapterIndex$: Observable<Chapter[]>
+
   constructor(
-    private router: Router,
-    private activitiesService: ActivitiesService,
+    private selectedService: SelectedService,
     private workareaService: WorkareaService
   ) { }
 
   reviewButton() {
-    this.activitiesService.chapterIndex$.subscribe(
-      (chapters) => {
-        this.workareaService.loadActivities(chapters[0].syllabus[0])
-      }
-    )
+    this.workareaService.loadActivities(this.selectedService.firstChapter.syllabus[0])
   }
 
 }

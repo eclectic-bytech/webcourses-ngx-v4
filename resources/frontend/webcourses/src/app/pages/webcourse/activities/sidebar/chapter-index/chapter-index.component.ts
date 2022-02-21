@@ -5,7 +5,7 @@ import { CompletionStatsService } from '../../../../../core/services/user/comple
 import { FadeInOut } from '../../../../../core/animations/fade-in-out.animation'
 import { WorkareaService } from '../../workarea/workarea.service'
 import { ChapterIndexService } from './chapter-index.service'
-import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
+import { SelectedCourseService } from '../../../../../../../src/app/core/services/selected-course/selected-course.service'
 import { Observable } from 'rxjs'
 
 @Component({
@@ -16,12 +16,12 @@ import { Observable } from 'rxjs'
 })
 export class ChapterIndexComponent {
 
-  public chapterIndex$: Observable<any>
+  chapterIndex$: Observable<Chapter[]>
 
   constructor(
     public activitiesService: ActivitiesService,
     private selectedCourseService: SelectedCourseService,
-    private chapterIndexService: ChapterIndexService,
+    public chapterIndexService: ChapterIndexService,
     private completionStatsService: CompletionStatsService,
     public workareaService: WorkareaService
   ) { }
@@ -39,7 +39,7 @@ export class ChapterIndexComponent {
     } else {
       // Second chapter and after is unlocked if previous is completed
       let previousChapter: Chapter = chapterIndex[chapterNumber - 1]
-      if (this.completionStatsService.completionStats.inChid[previousChapter.chid] === previousChapter.ta) {
+      if (this.completionStatsService.completionStats.inChid[previousChapter.id] === previousChapter.ta) {
         return true
       }
     }

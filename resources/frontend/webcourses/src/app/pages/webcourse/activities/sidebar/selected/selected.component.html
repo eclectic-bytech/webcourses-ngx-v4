@@ -29,8 +29,6 @@
           <p class="h5 mb-0 primary-text">{{ selectedChapter.label }}</p>
           <small class="text-uppercase main-label primary-text">Chapter with {{ selectedChapter.total_activities }} activities</small>
           <app-activities-bar [chapter]="selectedChapter"></app-activities-bar>
-          <button class="btn btn-primary" (click)="this.completionStatsService.stats(selectedChapter.id)">STAT ME!</button>
-          <pre>EM: {{ this.completionStatsService.cs }}</pre>
         </div>
       </div>
     </div>
