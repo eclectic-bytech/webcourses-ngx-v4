@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http'
 import { ConfigService } from '../../../core/services/config/config.service'
 import { Chapter } from '../../../pages/webcourse/activities/models/chapter.model'
 import { Activity } from '../../../pages/webcourse/activities/workarea/models/activity.model'
-import { Course } from 'src/app/models/course.model'
+import { Course } from '../../../../../src/app/models/course.model'
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,8 @@ export class CompletionStatsService {
 
   initChapterCompletionStats(chapterIndex: Chapter[]) {
     chapterIndex.forEach(chapter => {
-      if (!this.completionStats.inChid[chapter.chid]) {
-        this.completionStats.inChid[chapter.chid] = chapter.tac
+      if (!this.completionStats.inChid[chapter.id]) {
+        this.completionStats.inChid[chapter.id] = chapter.tac
       }
     })
   }
@@ -37,9 +37,7 @@ export class CompletionStatsService {
 
   bumpStats(activity: Activity) {
     this.completionStats.inChid[activity.meta.chapter_id]++
-    // this.completionStats.inPid[activity.meta.pid]++
     this.completionStats.inPid[1]++
-    console.log(this.completionStats.inPid[1])
   }
 
   stats(chid: number) {

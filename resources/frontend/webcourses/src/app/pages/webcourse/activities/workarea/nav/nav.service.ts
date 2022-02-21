@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { WorkareaService } from '../workarea.service'
 import { Chapter } from '../../models/chapter.model'
 import { ChapterIndexService } from '../../sidebar/chapter-index/chapter-index.service'
-import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
+import { SelectedCourseService } from '../../../../../../../src/app/core/services/selected-course/selected-course.service'
 import { ActivityMeta } from '../models/activity-meta.model'
 
 @Injectable({
