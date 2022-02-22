@@ -27,12 +27,8 @@ class UserCourseController extends Controller
         $answer = UserAnswer::where('progress_id', $pid)->latest()->first();
 
         if (is_null($answer)) {
-            $progress = json_decode(UserProgress::where('id', $pid)->first());
-            // $uid will be used for auth checking, though probably in a guard.
-            // $uid = $progress->user_id;
-            $cid = $progress->course_id;
-            $start_aid = json_decode(CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first())->activity_id;
-            return $start_aid;
+            $cid = json_decode(UserProgress::where('id', $pid)->first())->course_id;
+            return CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
         } else {
             return $answer['activity_id'];
         }
