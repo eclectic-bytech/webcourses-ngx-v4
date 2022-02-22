@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\UserCourse;
 use App\Models\UserAnswer;
+use App\Models\UserProgress;
+use App\Models\CourseSyllabus;
 use Illuminate\Http\Request;
 
 class UserCourseController extends Controller
@@ -23,7 +25,17 @@ class UserCourseController extends Controller
     public function start_aid($pid) {
         // Check if user has started work on the course
         $answer = UserAnswer::where('progress_id', $pid)->latest()->first();
-        return (is_null($answer)) ? 3964 : $answer['activity_id'];
+
+        if (is_null($answer)) {
+            $progress = json_decode(UserProgress::where('id', $pid)->first());
+            // $uid will be used for auth checking, though probably in a guard.
+            // $uid = $progress->user_id;
+            $cid = $progress->course_id;
+            $start_aid = json_decode(CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first())->activity_id;
+            return $start_aid;
+        } else {
+            return $answer['activity_id'];
+        }
     }
 
 }
