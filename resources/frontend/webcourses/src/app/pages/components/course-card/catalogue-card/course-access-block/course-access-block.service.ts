@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { ConfigService } from '../../../../../core/services/config/config.service'
-import { UserAnswer } from 'src/app/pages/webcourse/activities/models/user.answer.model'
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +12,11 @@ export class CourseAccessBlockService {
     private configService: ConfigService
   ) { }
 
-  getDestinationAid(pid: number, firstAid: boolean) {
-    let first = (firstAid) ? '&first=true' : ''
+  getDestinationAid(pid: number) {
+    // let first = (firstAid) ? '&first=true' : ''
     return this.httpClient
-      .get<UserAnswer>(`
-        ${this.configService.params.api.route}/user/courses/resume/${pid}${first}
+      .get<Number>(`
+        ${this.configService.params.api.route}/user/courses/resume/${pid}
       `).pipe(aid => aid)
   }
 
