@@ -8,4 +8,4 @@ echo "Creating default team for developers.";
 php artisan db:seed --class=TeamSeeder
 
 echo "Creating default user for developers.";
-php artisan db:seed --class=UserSeeder
+php artisan db:seed --class=UserSeeder-
