@@ -41,12 +41,15 @@ You should see it in the Oracle VM GUI, first as idle, and then as running once 
 Use `vagrant halt` to stop the server.
 
 Access WNGX by going to http://homestead.test.  
-Start by clicking the Register link in the upper right corner.
+  
+Default **user**: example@example.com  
+Default **password**: password 
 
 ## Demo
 
-We've a video and interactive demo.  
-Access is available from https://www.webcourses.io/demo.
+We're working on including a demo course with the platform.  
+Meanwhile, you can try a preinstalled, interactive demo in the cloud.  
+Details at https://www.webcourses.io/demo.
 
 ## About
 
