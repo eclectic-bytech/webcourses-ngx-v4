@@ -16,15 +16,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@example.com',
+            'name' => 'Super Admin',
+            'email' => 'example@example.com',
             'password' => Hash::make('password'),
             'current_team_id' => 1
         ]);
 
         DB::table('team_user')->insert([
             'team_id' => '1',
-            'role' => 'test',
+            'role' => 'Admin role.',
             'user_id' => '1'
         ]);
     }
