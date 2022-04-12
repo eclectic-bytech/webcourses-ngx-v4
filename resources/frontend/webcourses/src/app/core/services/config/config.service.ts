@@ -36,7 +36,7 @@ export class ConfigService {
   }
 
   brandLogo(theme: Theme) {
-    return 'publisher-files/0/theme/logo.png'
+    return 'publisher-files/default/theme/logo.png'
     // return this.appConfig.publicDirectory + theme.logo
   }
 

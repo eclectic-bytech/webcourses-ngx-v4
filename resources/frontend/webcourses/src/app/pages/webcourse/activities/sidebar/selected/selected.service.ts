@@ -3,7 +3,7 @@ import { Activity } from '../../workarea/models/activity.model'
 import { Chapter } from '../../models/chapter.model'
 import { UserService } from '../../../../../core/services/user/user.service'
 import { CompletionStatsService } from '../../../../../core/services/user/completion-stats.service'
-import { Course } from 'src/app/models/course.model'
+import { Course } from '../../../../../../../src/app/models/course.model'
 import { ChapterIndexService } from '../chapter-index/chapter-index.service'
 
 @Injectable({
@@ -11,7 +11,10 @@ import { ChapterIndexService } from '../chapter-index/chapter-index.service'
 })
 export class SelectedService {
 
+  firstChapter: Chapter
   selectedChapter: Chapter
+  nextChapter: Chapter
+
   selectedCourse: Course
 
   constructor(
@@ -21,14 +24,22 @@ export class SelectedService {
   ) {}
 
   updateSelected(currentActivity: Activity) {
-    this.updateSelectedChapter(currentActivity)
+    console.log('UPDATE SELECTED - RUNNING')
     this.updateSelectedCourse(currentActivity)
-  }
 
-  updateSelectedChapter(currentActivity: Activity) {
     this.chapterIndexService.getChapterIndex$(currentActivity.meta.course_id).subscribe(
       (chapters: Chapter[]) => {
-        this.selectedChapter = this.getSelectedChapter(chapters, currentActivity, 0)
+        let i = chapters.findIndex(
+          (chapter: Chapter) => {
+            if (chapter.id == currentActivity.meta.chapter_id) return true
+          }
+        )
+        this.selectedChapter = chapters[i]
+        this.firstChapter = chapters[0]
+
+        let j = i+1
+        this.nextChapter = (chapters[j]) ? chapters[j]: null
+
         this.completionStatsService.initChapterCompletionStats(chapters)
       }
     )
@@ -44,12 +55,36 @@ export class SelectedService {
   }
 
   getSelectedChapter(chapters: Chapter[], currentActivity: Activity, offset: number) {
-    const i = chapters.findIndex(
-      (chapter: Chapter) => chapter.chid === currentActivity.meta.chapter_id
-    ) + offset
-    // If Next is clicked on last activity in chapter, returning null triggers EOChapter page
-    return (i >= 0) ? chapters[i] : null
+    return chapters.find(
+      (chapter: Chapter) => {
+        if (chapter.id == currentActivity.meta.chapter_id) return chapter
+      }
+    )
   }
+
+      //   if (chapter.id == currentActivity.meta.chapter_id) {
+      //     console.log(chapter)
+      //     return chapter
+      //   } else {
+      //     console.log('Nada')
+      //   }
+      // })
+    // If Next is clicked on last activity in chapter, returning null triggers EOChapter page
+    // console.log('Pt. 5')
+    // return (i) ? chapters[++i] : null
+    // return (typeof i === 'number') ? chapters[++i] : null
+
+
+    // if(typeof i === 'number'){
+    //   i++
+    //   console.log('CHAPTERS!')
+    //   console.log(chapters[i])
+    //   return chapters[i]
+    // } else {
+    //   console.log('Last chapter!!')
+    //   return null
+    // }
+
 
   getSelectedCourse(userCourses: Course[], currentActivity: Activity) {
     let selectedCourse = this.findSelectedCourse(userCourses, currentActivity)

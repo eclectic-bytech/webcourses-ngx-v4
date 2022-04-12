@@ -22,11 +22,11 @@ export class CourseAccessBlockComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToActivity(pid: number, firstAid: boolean) {
+  goToActivity(pid: number) {
     // When course is completed, first aid in course is fetched. Otherwise, last completed.
-    this.courseAccessBlockService.getDestinationAid(pid, firstAid).subscribe(
-      (lastAnswer: any) => {
-        this.router.navigateByUrl(`/webcourse/activities/${lastAnswer.activity_id}`)
+    this.courseAccessBlockService.getDestinationAid(pid).subscribe(
+      (aid: number) => {
+        this.router.navigateByUrl(`/webcourse/activities/${aid}`)
       }
     )
   }

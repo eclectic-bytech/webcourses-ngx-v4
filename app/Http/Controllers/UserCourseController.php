@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\UserCourse;
 use App\Models\UserAnswer;
+use App\Models\UserProgress;
+use App\Models\CourseSyllabus;
 use Illuminate\Http\Request;
 
 class UserCourseController extends Controller
@@ -21,10 +23,15 @@ class UserCourseController extends Controller
 
     // Takes PID, return which aid should be loaded when user decides to work on the course
     public function start_aid($pid) {
-        return UserAnswer
-            ::where('progress_id', $pid)
-            ->latest()
-            ->first();
+        // Check if user has started work on the course
+        $answer = UserAnswer::where('progress_id', $pid)->latest()->first();
+
+        if (is_null($answer)) {
+            $cid = json_decode(UserProgress::where('id', $pid)->first())->course_id;
+            return CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
+        } else {
+            return $answer['activity_id'];
+        }
     }
 
 }

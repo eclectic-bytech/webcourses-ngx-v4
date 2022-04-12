@@ -9,7 +9,6 @@ export class Chapter {
     public updated_at: string,
 
     // LEGACY, already substituted above with another property
-    public chid: number,
     public title: string,
     public ta: number,
 
