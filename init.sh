@@ -9,3 +9,4 @@ php ~/code/artisan db:seed --class=TeamSeeder
 
 echo "Seeding default admin user...";
 php ~/code/artisan db:seed --class=UserSeeder
+

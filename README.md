@@ -7,15 +7,26 @@ oooooo   oooooo     oooo ooooo      ooo   .oooooo.    ooooooo  ooooo            
     `888.8'  `888.8'      8     `88b.8  888     ooooo    .8PY888.         88ooo888oo 
      `888'    `888'       8       `888  `88.    .88'    d8'  `888b             888   
       `8'      `8'       o8o        `8   `Y8bood8P'   o888o  o88888o          o888o  
-      
+
+Everyone is encouraged to contribute, while we ensure high and professional quality.
+=======
   
 ```
-Everyone is encouraged to contribute, while we ensure high and professional quality.
+
+## Homestead Branch (January 2022)
 
 
 ## Tuesday, January 18
 
 The master branch now contains an installer that'll fire up the platform in a virtual box. 🚀
+
+The homstead branch is now capable of hosting itself through creating a virtual machine using Vagrant. Several additional steps are required to initialise Laravel and Angular, and for that reason the branch is still limited in utility.
+
+Since it takes a WNGX tech only 3-5 minutes to get the system up and running, I expect that by month's end all steps will be done by script, or eliminated.
+
+Thanks to Collier for starting work for making WNGX installable via Composer. We look forward to bringing this option to techs not versed in or wishing to avoid Git.
+
+
 
 
 ## Pre-requisites
