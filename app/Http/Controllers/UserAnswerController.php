@@ -46,7 +46,6 @@ class UserAnswerController extends Controller
                     )
                 );
                 $answer['answers'] = array();
-                $answer['after_word'] = 'Em';
                 return $answer;
             }
         }
