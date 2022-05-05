@@ -24,11 +24,7 @@ class UserSeeder extends Seeder
 
         DB::table('team_user')->insert([
             'team_id' => '1',
-<<<<<<< HEAD
-            'role' => 'test',
-=======
             'role' => 'Admin role.',
->>>>>>> master
             'user_id' => '1'
         ]);
     }
