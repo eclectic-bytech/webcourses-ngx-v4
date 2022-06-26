@@ -62,4 +62,6 @@ Online web course platform. Public release still not ready for production system
 
 Angular source files are in `/resources/frontend/webcourses`. They're served via Laravel's AngularController +Blade.
 
-To recompile the Angular source code, run `npm run-script build:prod` in `/resources/frontend/webcourses/app/src`.
+To recompile the Angular source go to `/resources/frontend/webcourses/app/src` and run `npm install`. This'll install the libraries required for Angular and a recompile of the front-end.
+
+With the Angular libraries installed, run `npm run-script build:prod` (check that you're still in `/resources/frontend/webcourses/app/src`).
