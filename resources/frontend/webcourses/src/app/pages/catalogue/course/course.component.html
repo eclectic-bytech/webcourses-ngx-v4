@@ -2,7 +2,7 @@
 
   <div class="card">
     <img class="card-img-top"
-      src="publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}"
+      src="/publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}"
       [alt]="course.cover_alt"
     >
     <div class="card-body">
@@ -29,7 +29,7 @@
               <div class="card border-secondary">
                 <div class="card-body text-dark">
                   <div class="d-flex">
-                    <div><img [src]="'/assets/tea.svg'" alt="Pencil cup icon" class="icon-set pr-2"></div>
+                    <div><img [src]="'assets/tea.svg'" alt="Pencil cup icon" class="icon-set pr-2"></div>
                     <div class="flex-grow-1 my-auto text-center">
                       <div class="spec-card-title">Number of activities</div>
                       <div class="lead">{{course.total_activities}}</div>
@@ -43,7 +43,7 @@
             <div class="card border-secondary">
               <div class="card-body text-dark">
                 <div class="d-flex">
-                  <div><img src="/assets/stopwatch.svg" alt="Stopwatch graphic icon" class="icon-set"></div>
+                  <div><img src="assets/stopwatch.svg" alt="Stopwatch graphic icon" class="icon-set"></div>
                   <div class="flex-grow-1 my-auto text-center">
                     <div class="spec-card-title">Estimated time required</div>
                     <div class="lead">{{course.completion_time | number:'1.0-0'}} hrs.</div>
@@ -60,7 +60,7 @@
                   <div>
                     <img
                       class="icon-set" alt="Wrong / right option icon"
-                      [src]="(course.eval_type === 'Online') ? '/assets/feedback.svg' : '/assets/rating.svg'"
+                      [src]="(course.eval_type === 'Online') ? 'assets/feedback.svg' : 'assets/rating.svg'"
                     >
                   </div>
                   <div class="flex-grow-1 my-auto text-center">
@@ -94,7 +94,10 @@
               <!-- <div [appThemeSet]="course.publisher.settings.theme"></div> -->
               <div>
                 <a [href]="course.publisher.website" target="_blank">
-                  <img src="logo.gif"
+                  <img
+                    class="mb-3"
+                    width="250"
+                    src="/publisher-files/{{course.publisher.id}}/logo.svg"
                     [alt]="course.publisher.name + 'logo'"
                   >
                   <p class="text-secondary" style="line-height: 1.1">
