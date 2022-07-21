@@ -12,6 +12,10 @@ oooooo   oooooo     oooo ooooo      ooo   .oooooo.    ooooooo  ooooo            
 ```
 Everyone is encouraged to contribute, while we ensure high and professional quality.
 
+## Wednesday, July 20
+
+If you get a timeout on `vagrant up`, run `vagrant provision`, after confirming in VM that the machine is up and running. See issue #55 for suggested fix that needs a developer.
+
 
 ## Tuesday, January 18
 
