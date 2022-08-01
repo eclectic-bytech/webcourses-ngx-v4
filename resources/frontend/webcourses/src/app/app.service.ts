@@ -35,7 +35,7 @@ export class AppService {
         // If purchase_course is set, user logged in after clicking Buy as Anon
         // saw 'Please login' modal, and followed through with the login link
         if (this.cookieService.check('cllhairbiesltliunlee_purchase_course')) {
-          this.poService.makePurchase(this.cookieService.get('cllhairbiesltliunlee_purchase_course'), null)
+          this.poService.makePurchase(Number(this.cookieService.get('cllhairbiesltliunlee_purchase_course')), null)
         }
         // Called here, just in case the clean-up in makePurchase is not reached
         // Needed until hard reload applies cookie code data (price changes and related)

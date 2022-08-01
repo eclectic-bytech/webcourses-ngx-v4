@@ -21,7 +21,7 @@ export class GroupJoinCardComponent implements OnInit{
   }
 
   enrolButton(cid: string, codeHash: string) {
-    this.poService.makePurchase(cid, codeHash)
+    this.poService.makePurchase(Number(cid), codeHash)
     this.couponFieldService.coupon = null
   }
 

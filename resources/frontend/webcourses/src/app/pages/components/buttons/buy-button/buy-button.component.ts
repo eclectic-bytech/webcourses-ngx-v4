@@ -7,6 +7,7 @@ import { UserService } from './../../../../core/services/user/user.service'
 
 import { ConfigService } from '../../../../core/services/config/config.service'
 import { PurchaseOrderService } from './../../../stripe/payment/purchase-order/purchase-order.service'
+import { Course } from 'src/app/models/course.model'
 
 @Component({
   selector: 'app-buy-button',
@@ -17,7 +18,7 @@ export class BuyButtonComponent implements OnChanges {
 
   faSpinner = faSpinner
 
-  @Input() course
+  @Input() course: Course
   @Input() btnLg: boolean
 
   public button
@@ -38,7 +39,7 @@ export class BuyButtonComponent implements OnChanges {
 
   buyButton() {
     this.purchaseStarted = true
-    this.poService.makePurchase(this.course.cid, null)
+    this.poService.makePurchase(this.course.id, null)
   }
 
   loginRequired(content) {
@@ -48,7 +49,7 @@ export class BuyButtonComponent implements OnChanges {
 
       if (result === 'login') {
         this.cookieService.set(
-          'cllhairbiesltliunlee_purchase_course', this.course.cid, 1, '/', this.configService.params.cookies.domain, true, 'None'
+          'cllhairbiesltliunlee_purchase_course', String(this.course.id), 1, '/', this.configService.params.cookies.domain, true, 'None'
         )
         this.router.navigateByUrl('/user/login')
       }

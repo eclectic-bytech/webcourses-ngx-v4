@@ -16,7 +16,7 @@ export class PurchaseOrderService {
     private cookieService: CookieService
   ) { }
 
-  makePurchase(cid: string, codeHash: string) {
+  makePurchase(cid: number, codeHash: string) {
     const purchaseData = {
       cid: cid,
       coupon_code: (codeHash) ? codeHash : this.cookieService.get('cllhairbiesltliunlee_discount_code')
