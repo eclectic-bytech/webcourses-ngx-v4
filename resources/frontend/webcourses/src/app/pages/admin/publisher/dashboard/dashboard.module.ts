@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PublisherAdminDashboardComponent } from './dashboard/dashboard.component';
+import { PublisherAdminDashboardComponent } from './dashboard.component';
 
 
 
@@ -12,4 +12,4 @@ import { PublisherAdminDashboardComponent } from './dashboard/dashboard.componen
     CommonModule
   ]
 })
-export class PublisherModule { }
+export class DashboardModule { }
