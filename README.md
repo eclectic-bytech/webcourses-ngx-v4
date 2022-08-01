@@ -12,6 +12,9 @@ oooooo   oooooo     oooo ooooo      ooo   .oooooo.    ooooooo  ooooo            
 ```
 Everyone is encouraged to contribute, while we ensure high and professional quality.
 
+## Bytech officially welcomes Collier to the WNGX team and contributors circle
+
+Super thanks to Collier (mrshychip), and his continued interest in and contributions to the Open Webcourses platform.
 
 ## Tuesday, January 18
 
