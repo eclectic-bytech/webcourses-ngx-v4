@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PublisherDashboardComponent } from './publisher/dashboard/dashboard.component';
-import { DashboardComponent } from './system/dashboard/dashboard.component'
+import { AdminDashboardComponent } from './system/dashboard/dashboard.component'
 
 const routes: Routes = [
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: AdminDashboardComponent
   },
   {
     path: 'publisher/dashboard',
