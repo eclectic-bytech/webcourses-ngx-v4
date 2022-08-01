@@ -7,7 +7,7 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
   styleUrls: ['./dashboard.component.sass'],
   animations: [FadeInOut]
 })
-export class PublisherDashboardComponent implements OnInit {
+export class PublisherAdminDashboardComponent implements OnInit {
 
   constructor() { }
 

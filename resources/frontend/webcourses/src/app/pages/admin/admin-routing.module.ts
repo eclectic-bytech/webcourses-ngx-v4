@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PublisherDashboardComponent } from './publisher/dashboard/dashboard.component';
+import { PublisherAdminDashboardComponent } from './publisher/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './system/dashboard/dashboard.component'
 
 const routes: Routes = [
@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'publisher/dashboard',
-    component: PublisherDashboardComponent
+    component: PublisherAdminDashboardComponent
   }
 ]
 
