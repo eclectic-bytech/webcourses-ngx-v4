@@ -37,6 +37,10 @@ const routes: Routes = [
       {
         path: 'stripe/payment',
         loadChildren: () => import('./pages/stripe/payment/payment.module').then(m => m.PaymentModule)
+      },
+      {
+        path: 'admin',
+        loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
       }
     ]
   }

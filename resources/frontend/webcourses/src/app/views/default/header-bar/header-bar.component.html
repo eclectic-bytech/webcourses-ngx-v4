@@ -102,8 +102,9 @@
         class="nav-item btn-group d-xs-block d-lg-none text-light handy mt-4 mb-2 justify-content-end">
         My Courses
       </li>
+      <!-- [routerLink]="['/publisher', this.user.publisherId, 'webcourses']" -->
       <li
-        [routerLink]="['/publisher', this.user.publisherId, 'webcourses']"
+        [routerLink]="['/admin', 'publisher', 'dashboard']"
         (click)="collapseMenus()"
         class="nav-item btn-group d-xs-block d-lg-none text-light handy my-2 justify-content-end">
         Publisher
@@ -155,9 +156,10 @@
             My Courses
           </button>
 
+          <!-- [routerLink]="['/publisher', this.user.publisherId, 'webcourses']" -->
           <button
             ngbDropdownItem
-            [routerLink]="['/publisher', this.user.publisherId, 'webcourses']"
+            [routerLink]="['/admin/', 'publisher', 'dashboard']"
             [routerLinkActive]="['active2']"
             (click)="collapseMenus()"
             class="nav-item handy p-3"
