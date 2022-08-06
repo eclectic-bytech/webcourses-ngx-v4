@@ -95,3 +95,11 @@ Route::group(['prefix' => 'v4'], function() {
 
     });
 });
+
+   // Paths groups as /app/Http/Controllers/LogoutController.php
+
+Route::group(['middleware' => ['auth']], function() {
+   Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+
+    });
+});
