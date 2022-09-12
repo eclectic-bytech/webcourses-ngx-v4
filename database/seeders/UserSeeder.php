@@ -25,8 +25,7 @@ class UserSeeder extends Seeder
         DB::table('team_user')->insert([
             'team_id' => '1',
             'role' => 'Admin role.',
-            'user_id' => '1',
-            'personal_team' => true
+            'user_id' => '1'
         ]);
     }
 }

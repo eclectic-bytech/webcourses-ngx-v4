@@ -13,7 +13,7 @@ export class CouponFieldService {
     status: { valid: false, message: '', cssClass: '' },
     details: { group_code: {
         cover: {
-          image_url: 'card-logo.png',
+          image_url: 'assets/card-logo.png',
           alt_desc: 'Access webcourses using a group code'
         },
         cid: null
