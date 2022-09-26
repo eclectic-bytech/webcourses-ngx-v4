@@ -1,7 +1,7 @@
 {
   "/v4": {
-    "target": "https://local.cultivatelearning.ca/v4",
-    "secure": true,
+    "target": "http://homestead.test",
+    "secure": false,
     "changeOrigin": true
   },
   "/assets": {
@@ -10,8 +10,8 @@
     "changeOrigin": true
   },
   "/publisher-files": {
-    "target": "https://dev.cultivatelearning.ca/",
-    "secure": true,
+    "target": "http://homestead.test/publisher-files:80",
+    "secure": false,
     "changeOrigin": true
   }
 }

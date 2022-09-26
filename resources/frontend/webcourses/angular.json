@@ -27,6 +27,7 @@
 	            "src/config.json",
               "src/images",
               "src/assets",
+              "src/publisher-files",
               {
                 "glob": "**/*",
                 "input": "../cultivate-assets/courses",
