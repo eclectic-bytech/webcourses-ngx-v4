@@ -3,7 +3,8 @@
   "version": "4.0.0alpha",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config=proxy.conf.json --ssl --ssl-key localhost.key --ssl-cert localhost.crt --configuration=dev -o",
+    "start": "ng serve --proxy-config=proxy.conf.json --ssl --ssl-key localhost.key --ssl-cert localhost.crt --configuration=dev",
+    "api": "npx json-server --watch db.json --routes routes.json",
     "build": "ng build",
     "build:prod": "ng build --configuration production && cp ../../../public/webcourses/index.html ../../views/angular.blade.php && cp ../../../public/webcourses/config.json ../../../public",
     "test": "ng test",
@@ -57,6 +58,7 @@
     "ajv": "^6.12.2",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
+    "json-server": "^0.17.0",
     "karma": "^6.3.10",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",

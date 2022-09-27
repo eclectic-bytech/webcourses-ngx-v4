@@ -1,8 +1,9 @@
 {
   "/v4": {
-    "target": "http://homestead.test",
+    "target": "http://127.0.0.1:3000",
     "secure": false,
-    "changeOrigin": true
+    "changeOrigin": true,
+    "logLevel": "debug"
   },
   "/assets": {
     "target": "https://www.cultivatelearning.ca/",
