@@ -10,11 +10,11 @@ export class ThemeService {
   defaultTheme: Theme = {
     bootstrap_nav: 'navbar-dark',
     label: 'CultivateLearning',
-    path: 'default',
+    path: '1',
     sideBar: false,
     headerBar: false,
     mainArea: false,
-    logo: 'publisher-files/default/theme/logo.png',
+    logo: 'publisher-files/1/theme/logo.png',
     publisherHome: '',
     created_at: '',
     updated_at: '',
