@@ -4,5 +4,8 @@
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
+  },
+  "/v5": {
+    "target": "localhost"
   }
 }
