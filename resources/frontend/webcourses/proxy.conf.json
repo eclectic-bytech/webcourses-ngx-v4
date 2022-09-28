@@ -4,15 +4,5 @@
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
-  },
-  "/assets": {
-    "target": "https://www.cultivatelearning.ca/",
-    "secure": true,
-    "changeOrigin": true
-  },
-  "/publisher-files": {
-    "target": "http://homestead.test/publisher-files:80",
-    "secure": false,
-    "changeOrigin": true
   }
 }

@@ -1,6 +1,7 @@
 {
   "/v4/user/profile": "/user",
   "/v4/catalogue": "/catalogue",
+  "/v4/catalogue/user": "/catalogue_user",
   "/v4/publisher": "/publisher",
   "/v4/publisher/:id": "/publisher/:id"
 }
