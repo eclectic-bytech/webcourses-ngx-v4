@@ -48,17 +48,22 @@ Access WNGX by going to http://homestead.test.
 Default **user**: example@example.com  
 Default **password**: password 
 
+
+## About
+
+Online web course platform. Public release still not ready for production systems.
+
+
 ## Demo
 
 We're working on including a demo course with the platform.  
 Meanwhile, you can try a preinstalled, interactive demo in the cloud.  
 Details at https://www.webcourses.io/demo.
 
-## About
+## Working on the front end
 
-Online web course platform. Public release still not ready for production systems.
-  
-  
+To work on the front end, start up the angular server with `npm start`.  
+Json-server is now included in the setup for a fake api. Start using `npm run api`.
 
 
 ## Laravel & Angular combo
