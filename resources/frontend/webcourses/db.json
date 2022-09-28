@@ -11,8 +11,103 @@
       "country": "Canada",
       "roles": ["learner"]
     },
-  "catalogue":
-    [
-      {"id":1,"title":"Open WebCourses Platform: Introduction","cover":"cover.png","publisher_id":1,"completion_time":"0.5","audience":"Educators, and learners passionate about online learning","cover_alt":"Open WebCourses logo - three rings forming a triangle, and platform name arranged into a skeleton key shape.","short_desc":"A quick overview of some key features of the Open WebCourses learning platform. Free access code and details at <a href=\"https:\/\/www.webcourses.io\/demo\" target=\"_blank\">webcourses.io<\/a>.","long_desc":null,"objective":"<p>Introduce and highlight features of the open source online learning platform.<\/p>","eval_type":"Online","price":1000,"created_at":"2020-05-29T14:30:20.000000Z","updated_at":"2021-07-26T07:32:43.000000Z","total_activities":16,"total_students":1,"publisher":{"id":1,"name":"Open WebCourses","website":"https:\/\/www.webcourses.io","contact_fname":"Slawomir","contact_lname":"Borkowski","contact_email":"welcome@webcourses.io","contact_phone":"204-410-2234","country":"Canada","province":"MB","city":"Winnipeg","settings":[],"created_at":"2021-06-18T15:17:37.000000Z","updated_at":null},"theme":null,"user_progress":{"id":1,"user_id":1,"course_id":1,"build_id":1,"correct":0,"wrong":0,"missed":0,"created_at":"2022-01-23T14:38:23.000000Z","updated_at":null,"demo":0,"total_activities_completed":0}}
-    ]
+  "catalogue": [
+    {
+      "id":1,
+      "title":"Open WebCourses Platform: Introduction",
+      "cover":"cover.png",
+      "publisher_id":1,
+      "completion_time":"0.5",
+      "audience":"Educators, and learners passionate about online learning",
+      "cover_alt":"Open WebCourses logo - three rings forming a triangle, and platform name arranged into a skeleton key shape.",
+      "short_desc":"A quick overview of some key features of the Open WebCourses learning platform. Free access code and details at <a href=\"https:\/\/www.webcourses.io\/demo\" target=\"_blank\">webcourses.io<\/a>.",
+      "long_desc":null,
+      "objective":"<p>Introduce and highlight features of the open source online learning platform.<\/p>",
+      "eval_type":"Online",
+      "price":1000,
+      "created_at":"2020-05-29T14:30:20.000000Z",
+      "updated_at":"2021-07-26T07:32:43.000000Z",
+      "total_activities":16,
+      "total_students":1,
+      "publisher":
+        {
+          "id":1,
+          "name":"Open WebCourses",
+          "website":"https:\/\/www.webcourses.io",
+          "contact_fname":"Slawomir",
+          "contact_lname":"Borkowski",
+          "contact_email":"welcome@webcourses.io",
+          "contact_phone":"204-410-2234",
+          "country":"Canada",
+          "province":"MB",
+          "city":"Winnipeg",
+          "settings":[],
+          "created_at":"2021-06-18T15:17:37.000000Z",
+          "updated_at":null
+        },
+      "theme":null,
+      "user_progress":
+        {
+          "id":1,
+          "user_id":1,
+          "course_id":1,
+          "build_id":1,
+          "correct":0,
+          "wrong":0,
+          "missed":0,
+          "created_at":"2022-01-23T14:38:23.000000Z",
+          "updated_at":null,
+          "demo":0,
+          "total_activities_completed":0
+        }
+    }
+  ],
+  "publisher": [
+    {
+      "id":1,
+      "title":"Open WebCourses Platform: Introduction",
+      "cover":"cover.png",
+      "publisher_id":1,
+      "completion_time":"0.5",
+      "audience":"Educators, and learners passionate about online learning",
+      "cover_alt":"Open WebCourses logo - three rings forming a triangle, and platform name arranged into a skeleton key shape.",
+      "short_desc":"A quick overview of some key features of the Open WebCourses learning platform. Free access code and details at <a href=\"https:\/\/www.webcourses.io\/demo\" target=\"_blank\">webcourses.io<\/a>.",
+      "long_desc":null,
+      "objective":"<p>Introduce and highlight features of the open source online learning platform.<\/p>",
+      "eval_type":"Online",
+      "price":1000,
+      "created_at":"2020-05-29T14:30:20.000000Z",
+      "updated_at":"2021-07-26T07:32:43.000000Z",
+      "total_activities":16,
+      "total_students":1,
+      "publisher":{"id":1,
+      "name":"Open WebCourses",
+      "website":"https:\/\/www.webcourses.io",
+      "contact_fname":"Slawomir",
+      "contact_lname":"Borkowski",
+      "contact_email":"welcome@webcourses.io",
+      "contact_phone":"204-410-2234",
+      "country":"Canada",
+      "province":"MB",
+      "city":"Winnipeg",
+      "settings":[],
+      "created_at":"2021-06-18T15:17:37.000000Z",
+      "updated_at":null},
+      "theme":null,
+      "user_progress":
+        {
+          "id":1,
+          "user_id":1,
+          "course_id":1,
+          "build_id":1,
+          "correct":0,
+          "wrong":0,
+          "missed":0,
+          "created_at":"2022-01-23T14:38:23.000000Z",
+          "updated_at":null,
+          "demo":0,
+          "total_activities_completed":0
+        }
+    }
+  ]
 }
