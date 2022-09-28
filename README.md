@@ -62,7 +62,7 @@ Details at https://www.webcourses.io/demo.
 
 ## Working on the front end
 
-To work on the front end, start up the angular server with `npm start`. 
+To work on the front end, start up the angular server with `npm start`.  
 Json-server is now included in the setup for a fake api. Start using `npm run api`.
 
 
