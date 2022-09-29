@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { FormBuilder, Validators } from '@angular/forms'
+import { UntypedFormBuilder, Validators } from '@angular/forms'
 import { ActiveModeService } from './active-mode.service'
 import { UserService } from '../../../../../core/services/user/user.service'
 import { Activity } from '../models/activity.model'
@@ -14,7 +14,7 @@ export class ActiveModeComponent implements OnInit {
   @Input() activity: Activity
 
   constructor(
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     public user: UserService,
     public activeModeService: ActiveModeService
     ) {}
