@@ -1,6 +1,6 @@
 {
   "name": "webcourses-ngx",
-  "version": "4.0.0alpha",
+  "version": "4.0.0a",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config=proxy.conf.json --ssl --ssl-key localhost.key --ssl-cert localhost.crt --configuration=dev",
@@ -14,13 +14,13 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.2.4",
-    "@angular/cdk": "^13.1.1",
+    "@angular/cdk": "^14.2.3",
     "@angular/common": "^14.2.4",
     "@angular/compiler": "^14.2.4",
     "@angular/core": "^14.2.4",
     "@angular/forms": "^14.2.4",
     "@angular/localize": "^14.2.4",
-    "@angular/material": "^13.1.1",
+    "@angular/material": "^14.2.3",
     "@angular/platform-browser": "^14.2.4",
     "@angular/platform-browser-dynamic": "^14.2.4",
     "@angular/router": "^14.2.4",
