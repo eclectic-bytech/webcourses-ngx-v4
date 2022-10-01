@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { CookieService } from 'ngx-cookie-service'
-import { NgProgressHttpModule } from '@ngx-progressbar/http'
+import { NgProgressModule } from 'ngx-progressbar'
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics'
 
 import { AppRoutingModule } from './app-routing.module'
@@ -27,7 +27,7 @@ import { ActivitiesService } from './pages/webcourse/activities/activities.servi
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgProgressHttpModule,
+    NgProgressModule,
     NgxGoogleAnalyticsModule.forRoot('UA-2342672-30'),
     NgxGoogleAnalyticsRouterModule,
     AppRoutingModule,
