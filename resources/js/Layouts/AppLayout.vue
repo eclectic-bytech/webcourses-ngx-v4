@@ -250,7 +250,7 @@
 
                 <div class="p-6">
                     <h1>$TEAM VARIABLE</h1>
-                    <pre>{{ team }}</pre>
+                    <pre>{{ $team }}</pre>
                 </div>
                 -->
             </main>
