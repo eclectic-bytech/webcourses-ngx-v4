@@ -20,8 +20,7 @@ export class HeaderBarService {
     // config path parameters in template, or create a method anyway.
     this.httpClient.post('/user/logout', '').subscribe(
       () => {
-        const logoutRedirectPath: string = `https://${this.configService.params.cookies.domain}${this.configService.params.logoutRedirectPath}`
-        this.document.location.href = logoutRedirectPath
+        this.document.location.href = this.configService.params.logoutRedirectPath
       },
       (err) => { console.log('err') }
     )

@@ -6,5 +6,6 @@
   "cookies": {
     "domain": "wngx.local"
   },
-  "assetsPath": "assets/"
+  "assetsPath": "assets/",
+  "logoutRedirectPath": "/user/login"
 }
