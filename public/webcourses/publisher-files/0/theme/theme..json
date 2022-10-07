@@ -1,0 +1,9 @@
+{
+  "label":"Eclectic",
+  "path":"eclectic",
+  "bootstrap_nav":"navbar-light",
+  "headerBar":"/publisher-files/eclectic/theme/headerbar.css",
+  "sideBar":false,
+  "mainArea":false,
+  "publisherHome":"https://www.eclectic.ca"
+}
