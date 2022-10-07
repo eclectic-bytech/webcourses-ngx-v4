@@ -11,21 +11,17 @@
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <!-- <welcome /> -->
                     <div class="grid grid-cols-2">
-                        <div class="p-6">
-                            <p><a href="/webcourses">Online courses</a></p>
-                            <p>Welcome to cultivatelearning.ca</p>
-                            <p>
-                            <a href="/webcourses">
-                            <button class="bg-grey-light hover:bg-grey text-grey-darkest font-bold py-2 px-4 rounded inline-flex items-center">
-                                <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-                                <span>My courses</span>
-                                
-                            </button>
-                            </a>
-                            </p>
+                        <div class="p-6 text-center my-auto" style="color:darkslategrey;">
+                            <div class="text-2xl">
+                                Welcome to <span class="font-semibold">learning anywhere</span> on the
+                                <a href="https://www.webcourses.io">
+                                    <span style="color:#f59e0b;" class="font-semibold uppercase">webcourses.io</span>&nbsp;Platform.
+                                </a>
+                            </div>
+                            <p class="mt-5" style="color:black;">We're glad you're here.</p>
                         </div>
                         <div class="p-6">
-                            <img src="/images/my-webcourses.png.png" width="800">
+                            <img class="max-w-full h-auto rounded-full" src="/images/my-webcourses.png">
                         </div>
                     </div>
 
