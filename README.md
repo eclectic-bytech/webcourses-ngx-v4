@@ -73,3 +73,8 @@ Angular source files are in `/resources/frontend/webcourses`. They're served via
 To recompile the Angular source go to `/resources/frontend/webcourses/app/src` and run `npm install`. This'll install the libraries required for Angular and a recompile of the front-end.
 
 With the Angular libraries installed, run `npm run-script build:prod` (check that you're still in `/resources/frontend/webcourses/app/src`).
+
+
+## Vue Login and Profile Management
+
+Vue's front end is chiefly in `/resources/js`. To recompiled changes in Vue files, run `npm install` from `resources` and then `npm run dev`, `npm run prod` or `npm run watch`.
