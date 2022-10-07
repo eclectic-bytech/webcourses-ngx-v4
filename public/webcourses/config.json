@@ -1,7 +1,7 @@
 {
   "api": {
-      "domain": "http://wngx.local/",
-      "route": "/v4"
+    "domain": "http://wngx.local/",
+    "route": "/v4"
   },
   "cookies": {
     "domain": "wngx.local"
