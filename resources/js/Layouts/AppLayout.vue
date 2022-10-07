@@ -185,7 +185,8 @@
                                 </jet-responsive-nav-link>
                             </form>
 
-                            <!-- Team Management -->
+                            <!-- Team management in hamburger menu
+                            <!~~ Team Management ~~>
                             <template v-if="$page.props.jetstream.hasTeamFeatures">
                                 <div class="border-t border-gray-200"></div>
 
@@ -193,7 +194,7 @@
                                     Manage Team
                                 </div>
 
-                                <!-- Team Settings -->
+                                <!~~ Team Settings ~~>
                                 <jet-responsive-nav-link :href="route('teams.show', $page.props.user.current_team)" :active="route().current('teams.show')">
                                     Team Settings
                                 </jet-responsive-nav-link>
@@ -204,7 +205,7 @@
 
                                 <div class="border-t border-gray-200"></div>
 
-                                <!-- Team Switcher -->
+                                <!~~ Team Switcher ~~>
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     Switch Teams
                                 </div>
@@ -220,6 +221,8 @@
                                     </form>
                                 </template>
                             </template>
+                            -->
+
                         </div>
                     </div>
                 </div>
