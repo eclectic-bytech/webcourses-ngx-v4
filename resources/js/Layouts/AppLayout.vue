@@ -26,8 +26,9 @@
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
+                            <!--
                             <div class="ml-3 relative">
-                                <!-- Teams Dropdown -->
+                                <!~~ Teams Dropdown ~~>
                                 <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
@@ -43,13 +44,13 @@
 
                                     <template #content>
                                         <div class="w-60">
-                                            <!-- Team Management -->
+                                            <!~~ Team Management ~~>
                                             <template v-if="$page.props.jetstream.hasTeamFeatures">
                                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                                     Manage Team
                                                 </div>
 
-                                                <!-- Team Settings -->
+                                                <!~~ Team Settings ~~>
                                                 <jet-dropdown-link :href="route('teams.show', $page.props.user.current_team)">
                                                     Team Settings
                                                 </jet-dropdown-link>
@@ -60,7 +61,7 @@
 
                                                 <div class="border-t border-gray-100"></div>
 
-                                                <!-- Team Switcher -->
+                                                <!~~ Team Switcher ~~>
                                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                                     Switch Teams
                                                 </div>
@@ -80,6 +81,7 @@
                                     </template>
                                 </jet-dropdown>
                             </div>
+                            -->
 
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
@@ -225,10 +227,11 @@
 
             <!-- Page Content -->
             <main>
+
                 <slot></slot>
                 <div class="py-8"><div class="border-t border-gray-200"></div></div>
 
-                <div class="p-6">
+                <!-- <div class="p-6">
                     <h1>$PAGE VARIABLE</h1>
                     <pre>{{ $page }}</pre>
                 </div>
@@ -239,6 +242,7 @@
                     <h1>$TEAM VARIABLE</h1>
                     <pre>{{ team }}</pre>
                 </div>
+                -->
             </main>
         </div>
     </div>
