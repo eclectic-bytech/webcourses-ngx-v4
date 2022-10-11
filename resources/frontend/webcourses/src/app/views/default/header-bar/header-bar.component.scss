@@ -11,6 +11,11 @@
 #user-name {
   max-width: 130px;
   overflow: hidden;
+  color: darkorange;
+}
+
+#signIn-dashboard {
+  padding: 0; /* Overrides Bootstrap's nav-link padding */
 }
 
 // Change main menu item hover colour in headerbar

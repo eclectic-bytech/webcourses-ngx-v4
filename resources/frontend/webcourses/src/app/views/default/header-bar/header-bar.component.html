@@ -116,16 +116,24 @@
         Admin
       </li>
       <li class="nav-item btn-group mt-3 mt-lg-0 justify-content-end">
-        <a class="nav-link handy" id="logoutButton" href="/user/dashboard/">
-          <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user.email)"
-            class="mr-2 float-left" [size]='36'>
-          <div class="float-left">
-            <div id="log-in-out" [innerHtml]="user.email ? 'Dashboard' : 'Sign in'"></div>
-            <div id="user-name">
-              <small class="activity-menu-label" [innerHtml]="user.email ? user.email : 'Guest'"></small>
-            </div>
+        <img ngxGravatar
+          [src]="this.gravatarMd5.gravatarMD5src(user.email)"
+          [size]='36'
+          class="mr-2 float-left"
+        >
+        <div class="float-left">
+          <a
+            [href]="user.email ? '/user/dashboard/' : '/user/login'"
+            [innerHtml]="user.email ? 'Dashboard' : 'Sign in'"
+            id="signIn-dashboard"
+            class="nav-link handy"
+          >
+          </a>
+
+          <div id="user-name">
+            <small class="activity-menu-label" [innerHtml]="user.email ? user.email : 'Guest'"></small>
           </div>
-        </a>
+        </div>
       </li>
 
       <div *ngIf="user.email"
