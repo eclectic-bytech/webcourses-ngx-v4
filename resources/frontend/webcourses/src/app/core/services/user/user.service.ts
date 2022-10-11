@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { shareReplay } from 'rxjs/operators'
 
-import { User } from '../../models/user.model'
+import { JetstreamUser } from '../../models/jetstream-user.model'
 import { Course } from '../../../models/course.model'
 import { ConfigService } from '../config/config.service'
 
@@ -14,16 +14,52 @@ export class UserService {
 
   userCourses$: Observable<Course[]> = this.getUserCourses$()
 
-  user$ = new BehaviorSubject<User>(<User>{
-    id: 0,
-    email: '',
-    emailVerified: 0,
-    first_name: '',
-    last_name: '',
-    username: 'Anon',
-    profile_photo_url: 'default.jpg',
-    country: 'Canada',
-    roles: ['learner']
+  user$ = new BehaviorSubject<JetstreamUser>(<JetstreamUser>{
+		id: 1,
+		name: "Guest",
+		first_name: null,
+		last_name: null,
+		email: null,
+		email_verified_at: null,
+		current_team_id: 1,
+		profile_photo_path: null,
+		created_at: null,
+		updated_at: null,
+		profile_photo_url: null,
+		current_team: {
+			id: 1,
+			user_id: 1,
+			name: "Administrators",
+			personal_team: true,
+			created_at: null,
+			updated_at: null
+		},
+		all_teams: [
+			{
+				id: 1,
+				user_id: 1,
+				name: "Administrators",
+				personal_team: true,
+				created_at: null,
+				updated_at: null,
+				membership: {
+					user_id: 1,
+					team_id: 1,
+					role: "Admin role.",
+					created_at: null,
+					updated_at: null
+				}
+			},
+			{
+				id: 2,
+				user_id: 1,
+				name: "Publishers",
+				personal_team: false,
+				created_at: null,
+				updated_at: null
+			}
+		],
+		two_factor_enabled: false
   })
 
   constructor(
@@ -33,7 +69,7 @@ export class UserService {
 
   getUser() {
     return this.httpClient
-      .get<User>(`${this.configService.params.api.route}/user/profile`)
+      .get<JetstreamUser>(`${this.configService.params.api.route}/user/profile`)
       .pipe(profile => profile)
   }
 

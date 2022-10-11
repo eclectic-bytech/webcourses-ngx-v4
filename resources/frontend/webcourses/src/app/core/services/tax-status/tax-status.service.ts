@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { User } from '../../models/user.model'
+import { JetstreamUser } from '../../models/jetstream-user.model'
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,9 @@ export class TaxStatusService {
 
   constructor() { }
 
-  taxesApply(user: User) {
-    this.gstApplies = (user.country === 'Canada') ? true : false
+  taxesApply(user: JetstreamUser) {
+    // this.gstApplies = (user.country === 'Canada') ? true : false
+    this.gstApplies = true
   }
 
 }

@@ -1,15 +1,51 @@
 {
   "user":
     {
-      "id": 0,
-      "email": "",
-      "emailVerified": 0,
-      "first_name": "",
-      "last_name": "",
-      "username": "Anon2",
-      "profile_photo_url": "default.jpg",
-      "country": "Canada",
-      "roles": ["learner"]
+      "id": 1,
+      "name": "Admin",
+      "first_name": null,
+      "last_name": null,
+      "email": "example@example.com",
+      "email_verified_at": null,
+      "current_team_id": 1,
+      "profile_photo_path": null,
+      "created_at": null,
+      "updated_at": null,
+      "profile_photo_url": null,
+      "current_team": {
+        "id": 1,
+        "user_id": 1,
+        "name": "Administrators",
+        "personal_team": true,
+        "created_at": null,
+        "updated_at": null
+      },
+      "all_teams": [
+        {
+          "id": 1,
+          "user_id": 1,
+          "name": "Administrators",
+          "personal_team": true,
+          "created_at": null,
+          "updated_at": null,
+          "membership": {
+            "user_id": 1,
+            "team_id": 1,
+            "role": "Admin role.",
+            "created_at": null,
+            "updated_at": null
+          }
+        },
+        {
+          "id": 2,
+          "user_id": 1,
+          "name": "Publishers",
+          "personal_team": true,
+          "created_at": null,
+          "updated_at": null
+        }
+      ],
+      "two_factor_enabled": false
     },
   "catalogue": [
     {

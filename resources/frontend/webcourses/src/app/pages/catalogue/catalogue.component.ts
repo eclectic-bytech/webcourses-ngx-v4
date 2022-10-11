@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators'
 
 import { CatalogueService } from './catalogue.service'
 import { UserService } from './../../core/services/user/user.service'
-import { User } from '../../core/models/user.model'
+import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 import { Course } from './../../models/course.model'
 import { TaxStatusService } from '../../core/services/tax-status/tax-status.service'
 import { AppService } from './../../app.service'
@@ -21,7 +21,7 @@ import { FadeInOut } from '../../core/animations/fade-in-out.animation'
 export class CatalogueComponent implements OnInit, OnDestroy {
 
   public webcoursesAll$: Observable<Course[]>
-  public user: User
+  public user: JetstreamUser
   public themeId: number
 
   private sub: Subscription = new Subscription()
@@ -41,7 +41,7 @@ export class CatalogueComponent implements OnInit, OnDestroy {
     this.webcoursesAll$ = this.route.data.pipe(map(data => data.webcoursesAll))
 
     this.sub = this.userService.user$.subscribe(
-      (user: User) => {
+      (user: JetstreamUser) => {
         if (user.email) {
           this.user = user
         }

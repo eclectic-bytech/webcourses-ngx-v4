@@ -3,7 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { HttpClient } from '@angular/common/http'
 
 import { ConfigService } from './../../../../../core/services/config/config.service'
-import { User } from 'src/app/core/models/user.model'
+import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 import { UserService } from '../../../../../core/services/user/user.service'
 
 @Component({
@@ -13,7 +13,7 @@ import { UserService } from '../../../../../core/services/user/user.service'
 })
 export class CollectUserNamesComponent implements OnInit {
 
-  @Input() user: User
+  @Input() user: JetstreamUser
 
   // Used in HTML template, options are: prompt, updating, failedUpdate, saved
   status = 'prompt'
@@ -33,7 +33,7 @@ export class CollectUserNamesComponent implements OnInit {
     this.status = 'updating'
 
     this.httpClient.post(`${this.configService.params.api.route}/user/profile/user_name`, names).subscribe(
-      (user: User) => {
+      (user: JetstreamUser) => {
         this.status = 'saved'
         this.userService.user$.next(user)
         this.user = user

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { UserService } from './../../../../core/services/user/user.service'
-import { User } from '../../../../core/models/user.model'
+import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 
 @Component({
   selector: 'app-payment-successful',
@@ -10,7 +10,7 @@ import { User } from '../../../../core/models/user.model'
 })
 export class PaymentSuccessfulComponent implements OnInit {
 
-  public user: User
+  public user: JetstreamUser
 
   constructor(
     public router: Router,
@@ -19,7 +19,7 @@ export class PaymentSuccessfulComponent implements OnInit {
 
   ngOnInit() {
     this.userService.user$.subscribe(
-      (user: User) => {
+      (user: JetstreamUser) => {
         this.user = user
       }
     )

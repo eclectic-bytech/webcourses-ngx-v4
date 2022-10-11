@@ -5,7 +5,7 @@ import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap'
 import { CollectUserNamesComponent } from './components/collect-user-names/collect-user-names.component'
 import { ActivitiesService } from './activities.service'
 import { UserService } from '../../../core/services/user/user.service'
-import { User } from '../../../core/models/user.model'
+import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 import { faUserGraduate } from '@fortawesome/free-solid-svg-icons'
 import { faList } from '@fortawesome/free-solid-svg-icons'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
@@ -47,7 +47,7 @@ export class ActivitiesComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.userService.user$.subscribe(
-        (user: User) => {
+        (user: JetstreamUser) => {
           if (!user.first_name) {
             const comp = this.ngbModal.open(CollectUserNamesComponent, this.modalOptions)
             comp.componentInstance.user = user

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { UserService } from './../../../core/services/user/user.service'
 import { HeaderBarService } from './header-bar.service'
-import { User } from '../../../core/models/user.model'
+import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 import { GravatarMd5Service } from '../../../core/services/gravatar-md5/gravatar-md5.service'
 import { ThemeService } from '../../../core/services/theme/theme.service'
 import { DomSanitizer } from '@angular/platform-browser'
@@ -23,7 +23,7 @@ export class HeaderBarComponent implements OnInit {
   faGem = faGem
   faGraduationCap = faGraduationCap
 
-  public user: User
+  public user: JetstreamUser
   public menuCollapsed = true
   public menuCollapsed2 = true
 
@@ -38,7 +38,7 @@ export class HeaderBarComponent implements OnInit {
 
   ngOnInit() {
     this.userService.user$.subscribe(
-      (user: User) => { this.user = user },
+      (user: JetstreamUser) => { this.user = user },
       (err) => { console.log(err) }
     )
   }
