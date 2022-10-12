@@ -1,10 +1,11 @@
 {
+  "login": "local",
   "api": {
-    "domain": "http://wngx.local/",
+    "domain": "http:/local.webcourses/",
     "route": "/v4"
   },
   "cookies": {
-    "domain": "wngx.local"
+    "domain": "local.webcourses"
   },
   "assetsPath": "assets/",
   "logoutRedirectPath": "/user/login"

@@ -1,10 +1,10 @@
 /*
-    Compiled app uses config.json from Laravel's /public. It never is auto updated.
-    Live compiled dev uses config.json from webcourses' root path (/public/webcourses
-    as of writing.) It's updated with every recompile.
+  Live compiled dev uses public/webcourses/config.json - it's updated with every recompile.
+  Compiled app uses public/config.json - it's never auto-updated.
 */
 
 export class Config {
+  public login: string
   public api: {
     'domain': string,
     'route': string

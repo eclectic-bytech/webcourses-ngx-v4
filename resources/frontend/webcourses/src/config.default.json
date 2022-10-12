@@ -1,10 +1,11 @@
 {
+  "login": "live",
   "api": {
-    "domain": "https://local.cultivatelearning.ca/",
+    "domain": "http://local.webcourses/",
     "route": "/v4"
   },
   "cookies": {
-    "domain": "local.cultivatelearning.ca"
+    "domain": "local.webcourses"
   },
   "assetsPath": "assets/",
   "logoutRedirectPath": "/user/login"
