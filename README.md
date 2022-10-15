@@ -12,24 +12,14 @@ oooooo   oooooo     oooo ooooo      ooo   .oooooo.    ooooooo  ooooo            
 ```
 Everyone is encouraged to contribute, while we ensure high and professional quality.
 
+## Documentation
+
+We've now a proper [wiki with documentation](https://github.com/eclectic-bytech/webcourses-ngx-v4/wiki), and some content that was originally here has now been moved there.
+
 ## Bytech officially welcomes Collier to the WNGX team and contributors circle
 
 Super thanks to Collier (mrshychip), and his continued interest in and contributions to the Open Webcourses platform.
 
-## Tuesday, January 18
-
-The master branch now contains an installer that'll fire up the platform in a virtual box. 🚀
-
-
-## Pre-requisites
-
-- [Oracle VM VirtualBox](https://www.virtualbox.org/)
-- [Vagrant](https://www.vagrantup.com/vmware/downloads)
-- [Composer](https://getcomposer.org/)
-- Bash
-
-Under Windows, GitBash from [Git for Windows](https://gitforwindows.org/) or [Cygwin](https://www.cygwin.com/)'s bash should do nicely.  
-This is where you need to run the installer.sh mentioned in the Installation section below.
 
 ## Installation
 
