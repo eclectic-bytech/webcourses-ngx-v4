@@ -1,5 +1,4 @@
 {
-  "login": "local",
   "api": {
     "domain": "http:/local.webcourses/",
     "route": "/v4"
@@ -8,5 +7,6 @@
     "domain": "local.webcourses"
   },
   "assetsPath": "assets/",
-  "logoutRedirectPath": "/user/login"
+  "logoutRedirectPath": "/user/login",
+  "devMode": false
 }
