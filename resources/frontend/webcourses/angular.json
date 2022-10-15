@@ -68,7 +68,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputPath": "../../../public/webcourses",
+              "outputPath": "../../public/webcourses",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
