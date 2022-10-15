@@ -6,7 +6,7 @@ cp ~/code/public/webcourses/index.html ~/code/resources/views/angular.blade.php;
 echo
 echo "Copying config.default.json to config.json....";
 echo
-cp ~/code/resources/frontend/webcourses/src/config.default.json ~/code/public/config.json;
+cp ~/code/resources/webcourses/src/config.default.json ~/code/public/config.json;
 echo
 echo "Seeding default user team...";
 php ~/code/artisan db:seed --class=TeamSeeder;
