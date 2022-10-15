@@ -1,4 +1,4 @@
-<div id="fullMainContent" *ngIf="this.userService.user$ | async as user">
+<div id="fullMainContent">
   <div class="container-fluid">
     <div class="row" *ngIf="this.themeService.activeTheme$ | async as theme">
       <div class="col-12 col-sm-10 col-md-9 col-lg-7 mx-1 mx-sm-2 mx-md-5">
@@ -31,7 +31,7 @@
 
           <p><strong>Course codes</strong> are course specific, and must be entered on a matching course panel.
           <strong>Group codes</strong> should be entered on the <em>"Got a group code?"</em> panel, available on the
-          <strong *ngIf="!user.email; else hotMyCourses">My Courses</strong> page. Detailed instructions are available below.</p>
+          <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong> page. Detailed instructions are available below.</p>
 
           <div id="course-code">
             <div class="my-3" *ngIf="theme.path !== 'default'; else clDivider">&nbsp;</div>
@@ -59,13 +59,13 @@
               Copy and paste the <strong>Course code</strong> you received,
               click <strong>Submit</strong> and then <strong>Enrol</strong> or <strong>Buy</strong> (when a discount code is used.)
             </li>
-            <li *ngIf="!user.email">
+            <li *ngIf="!this.userService.user">
               Sign up with cultivatelearning.ca and/or sign in via the
-              <a [routerLink]="['/login']" target="_blank" class="font-weight-bold">Sign in page</a>.
+              <a [routerLink]="['/user/login']" target="_blank" class="font-weight-bold">Sign in page</a>.
             </li>
           </ol>
 
-          <p><span *ngIf="!user.email">Upon sign in you'll be redirected directly to the course.</span></p>
+          <p><span *ngIf="!this.userService.user">Upon sign in you'll be redirected directly to the course.</span></p>
 
           <div id="group-code">
             <div class="my-3" *ngIf="theme.path !== 'default'; else clDivider">&nbsp;</div>
@@ -73,16 +73,16 @@
 
           <h4 class="mb-2 mb-sm-3 text-uppercase">Group Codes</h4>
 
-          <p *ngIf="!user.email">
+          <p *ngIf="!this.userService.user">
             To use a <strong>Group access code</strong>, you must be signed in.
             If you don't yet have a cultivatelearning.ca account, click the <strong>Sign up tab</strong> available
-            on the <a [routerLink]="['/login']" target="_blank" class="font-weight-bold">Sign in page</a>.
+            on the <a [routerLink]="['/user/login']" target="_blank" class="font-weight-bold">Sign in page</a>.
           </p>
 
           <ol class="mt-1 mb-3" style="line-height:2;">
             <li>Click the <strong>Use code</strong> button located on the <em>"Got a Group Access Code?"</em> panel
-              on the <strong *ngIf="!user.email; else hotMyCourses">My Courses</strong> page
-              <span *ngIf="user.email">(accessible via the top right corner's <strong>User Menu</strong>)</span>.
+              on the <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong> page
+              <span *ngIf="this.userService.user">(accessible via the top right corner's <strong>User Menu</strong>)</span>.
             </li>
             <li>Copy and paste the <strong>Course code</strong> you received and click
               <strong>Submit</strong>, then <strong>Enrol</strong>.
@@ -96,9 +96,9 @@
           <h4 class="mb-2 mb-sm-3 text-uppercase">Purchased and unlocked courses</h4>
 
           <p>All your courses are available from the the top-right corner's <strong>user menu</strong> dropdown under
-            <strong *ngIf="!user.email; else hotMyCourses">My Courses</strong>.
-            <span *ngIf="!user.email">
-              <a [routerLink]="['/login']" target="_blank" class="font-weight-bold">Sign in</a> to access it.
+            <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong>.
+            <span *ngIf="!this.userService.user">
+              <a [routerLink]="['/user/login']" target="_blank" class="font-weight-bold">Sign in</a> to access it.
             </span>
           </p>
 

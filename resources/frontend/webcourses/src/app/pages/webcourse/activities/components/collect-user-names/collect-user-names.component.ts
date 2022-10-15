@@ -35,7 +35,6 @@ export class CollectUserNamesComponent implements OnInit {
     this.httpClient.post(`${this.configService.params.api.route}/user/profile/user_name`, names).subscribe(
       (user: JetstreamUser) => {
         this.status = 'saved'
-        this.userService.user$.next(user)
         this.user = user
         this.countDown(true)
       },

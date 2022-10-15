@@ -17,11 +17,5 @@ export class PaymentSuccessfulComponent implements OnInit {
     public userService: UserService,
   ) { }
 
-  ngOnInit() {
-    this.userService.user$.subscribe(
-      (user: JetstreamUser) => {
-        this.user = user
-      }
-    )
-  }
+  ngOnInit() {}
 }

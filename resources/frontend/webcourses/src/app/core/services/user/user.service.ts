@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Subject, Observable } from 'rxjs'
+import { Observable } from 'rxjs'
 import { shareReplay } from 'rxjs/operators'
 
 import { JetstreamUser } from '../../models/jetstream-user.model'
@@ -13,7 +13,6 @@ import { ConfigService } from '../config/config.service'
 export class UserService {
 
   public user:JetstreamUser
-  user$ = new Subject<JetstreamUser>()
   userCourses$: Observable<Course[]> = this.getUserCourses$()
 
 

@@ -23,7 +23,6 @@ export class HeaderBarComponent implements OnInit {
   faGem = faGem
   faGraduationCap = faGraduationCap
 
-  public user: JetstreamUser
   public menuCollapsed = true
   public menuCollapsed2 = true
 
@@ -36,12 +35,7 @@ export class HeaderBarComponent implements OnInit {
     public themeService: ThemeService
   ) { }
 
-  ngOnInit() {
-    this.userService.user$.subscribe(
-      (user: JetstreamUser) => { this.user = user },
-      (err) => { console.log(err) }
-    )
-  }
+  ngOnInit() {}
 
   collapseMenus() {
     this.menuCollapsed = this.menuCollapsed2 = true

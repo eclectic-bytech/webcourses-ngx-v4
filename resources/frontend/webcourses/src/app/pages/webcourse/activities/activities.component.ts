@@ -45,16 +45,10 @@ export class ActivitiesComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.userService.user$.subscribe(
-        (user: JetstreamUser) => {
-          if (!user.first_name) {
-            const comp = this.ngbModal.open(CollectUserNamesComponent, this.modalOptions)
-            comp.componentInstance.user = user
-          }
-        }
-      )
-    }, 3500);
+    if (!this.userService.user.first_name) {
+      const comp = this.ngbModal.open(CollectUserNamesComponent, this.modalOptions)
+      comp.componentInstance.user = this.userService.user
+    }
   }
 
 }

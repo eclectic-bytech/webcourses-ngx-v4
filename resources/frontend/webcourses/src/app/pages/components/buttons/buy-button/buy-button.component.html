@@ -1,7 +1,7 @@
-<div *ngIf="this.userService.user$ | async as user">
+<div *ngIf="this.userService.user">
   <div *ngIf="!this.purchaseStarted; else verifying">
     <button *ngIf="!this.course.user_progress"
-      (click)="user.email ? buyButton() : this.loginRequired(content)"
+      (click)="this.userService.user ? buyButton() : this.loginRequired(content)"
       class="btn btn-primary p-2"
       [ngClass]="btnLg ? 'btn-lg' : ''"
     >
