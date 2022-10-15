@@ -4,7 +4,6 @@
 */
 
 export class Config {
-  public login: string
   public api: {
     'domain': string,
     'route': string
@@ -14,4 +13,5 @@ export class Config {
   }
   public assetsPath: string
   public logoutRedirectPath: string
+  public devMode: boolean
 }
