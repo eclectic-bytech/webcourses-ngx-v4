@@ -18,7 +18,7 @@
   >
 
   <button class="navbar-toggler" type="button" (click)="menuCollapsed2 = !menuCollapsed2" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-    <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(user ? user.email : 'anon@webcourses.io')" [size]='36'>
+    <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(this.userService.user ? this.userService.user.email : 'anon@webcourses.io')" [size]='36'>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="menuCollapsed">
@@ -96,7 +96,7 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent2" [ngbCollapse]="menuCollapsed2">
     <ul class="navbar-nav" style="min-width:190px">
       <li
-        *ngIf="user"
+        *ngIf="this.userService.user"
         [routerLink]="['/user', 'webcourses']"
         (click)="collapseMenus()"
         class="nav-item btn-group d-xs-block d-lg-none text-light handy mt-4 mb-2 justify-content-end">
@@ -117,26 +117,26 @@
       </li>
       <li class="nav-item btn-group mt-3 mt-lg-0 justify-content-end">
         <img ngxGravatar
-          [src]="this.gravatarMd5.gravatarMD5src(user ? user.email : 'anon@webcourses.io')"
+          [src]="this.gravatarMd5.gravatarMD5src(this.userService.user ? this.userService.user.email : 'anon@webcourses.io')"
           [size]='36'
           class="mr-2 float-left"
         >
         <div class="float-left">
           <a
-            [href]="user ? '/user/dashboard/' : '/user/login'"
-            [innerHtml]="user ? 'Dashboard' : 'Sign in'"
+            [href]="this.userService.user ? '/user/dashboard/' : '/user/login'"
+            [innerHtml]="this.userService.user ? 'Dashboard' : 'Sign in'"
             id="signIn-dashboard"
             class="nav-link handy"
           >
           </a>
 
           <div id="user-name">
-            <small class="activity-menu-label" [innerHtml]="user ? user.email : 'Guest'"></small>
+            <small class="activity-menu-label" [innerHtml]="this.userService.user ? this.userService.user.email : 'Guest'"></small>
           </div>
         </div>
       </li>
 
-      <div *ngIf="user"
+      <div *ngIf="this.userService.user"
         ngbDropdown
         role="group"
         aria-label="User Menu"

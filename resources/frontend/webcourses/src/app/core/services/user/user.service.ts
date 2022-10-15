@@ -12,9 +12,10 @@ import { ConfigService } from '../config/config.service'
 })
 export class UserService {
 
+  public user:JetstreamUser
+  user$ = new Subject<JetstreamUser>()
   userCourses$: Observable<Course[]> = this.getUserCourses$()
 
-  user$ = new Subject<JetstreamUser>()
 
   constructor(
     private httpClient: HttpClient,
@@ -34,4 +35,17 @@ export class UserService {
     return this.userCourses$
   }
 
+  localUserSession() {
+    if (!this.user) {
+      this.getUser().subscribe(
+        (user: JetstreamUser) => {
+          // Call will return empty response if user is not logged in.
+          // We check for that before overwriting anon user.
+          if (user) this.user = user
+        }
+      )
+    } else {
+      this.user = null
+    }
+  }
 }

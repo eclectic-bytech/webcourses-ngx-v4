@@ -3,9 +3,11 @@ import { Title } from '@angular/platform-browser'
 import { UserService } from './core/services/user/user.service'
 import { CookieService } from 'ngx-cookie-service'
 
+import { ConfigService } from './core/services/config/config.service'
 import { JetstreamUser } from './core/models/jetstream-user.model'
 import { PurchaseOrderService } from './pages/stripe/payment/purchase-order/purchase-order.service'
 import { TaxStatusService } from './core/services/tax-status/tax-status.service'
+import { config } from 'process'
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,7 @@ export class AppService {
   public taxStatus = true
 
   constructor(
+    private configService: ConfigService,
     private cookieService: CookieService,
     private titleService: Title,
     private userService: UserService,
@@ -24,12 +27,20 @@ export class AppService {
   ) {}
 
   initLogged() {
+    // Local proxy has a user object, making it impossible to do an anon session
+    // The if-check allows us to run getUser via admin menu bar and its "Simulate Login"
+    if (!this.configService.params.devMode) {
+      this.getUser()
+    }
+  }
+
+  public getUser() {
     this.userService.getUser().subscribe(
       (user: JetstreamUser) => {
 
         // Call will return empty response if user is not logged in.
         // We check for that before overwriting anon user.
-        if (user) this.userService.user$.next(user)
+        if (user) this.userService.user = user
 
         this.taxService.taxesApply(user)
         // If purchase_course is set, user logged in after clicking Buy as Anon

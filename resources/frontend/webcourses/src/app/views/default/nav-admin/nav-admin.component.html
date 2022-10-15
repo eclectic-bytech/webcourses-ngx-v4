@@ -1,0 +1,12 @@
+<nav class="bar">
+
+  <ul class="nav justify-content-end mr-5 py-2">
+    <li class="nav-item">
+      <a class="nav-link handy"
+        (click)="this.userService.localUserSession()"
+        [innerHtml]="this.userService.user ? 'Simulate Login (Enabled)' : 'Simulate Login (Disabled)'">
+      </a>
+    </li>
+  </ul>
+
+</nav>

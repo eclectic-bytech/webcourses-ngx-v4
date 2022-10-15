@@ -6,8 +6,9 @@
     rel="stylesheet" [href]="this.sanitiser.bypassSecurityTrustResourceUrl(theme.headerBar)"
   >
   <app-header-bar [theme]="theme"></app-header-bar>
+  <app-nav-admin *ngIf="this.configService.params.devMode"></app-nav-admin>
 </header>
 
-<main>
+<main [ngClass]="this.configService.params.devMode ? 'mt-5' : 'mt-0'">
   <router-outlet></router-outlet>
 </main>

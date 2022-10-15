@@ -7,6 +7,7 @@ import { NgProgressHttpModule } from 'ngx-progressbar/http'
 
 // Cultivate Learning LAYOUT Modules
 import { HeaderBarModule } from './header-bar/header-bar.module'
+import { NavAdminModule  } from './nav-admin/nav-admin.module'
 
 // Cultivate Learning Modules
 import { CatalogueModule } from './../../pages/catalogue/catalogue.module'
@@ -29,6 +30,7 @@ import { ThemeService } from '../../core/services/theme/theme.service'
     RouterModule,
     CatalogueModule,
     HeaderBarModule,
+    NavAdminModule,
     NgProgressModule,
     NgProgressHttpModule
   ],
