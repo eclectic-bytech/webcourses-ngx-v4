@@ -6,6 +6,12 @@ composer install;
 echo -e "Creating a copy of .env file...";
 cp .env.example .env;
 
+echo -e "Installing NPM packages needed by Vue...";
+npm install;
+
+echo -e "Installing NPM packages needed by Angular...";
+npm install /resources/webcourses;
+
 echo "Running homestead make...";
 vendor/bin/homestead make;
 
