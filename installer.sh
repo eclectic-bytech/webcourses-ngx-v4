@@ -10,7 +10,9 @@ echo -e "Installing NPM packages needed by Vue...";
 npm install;
 
 echo -e "Installing NPM packages needed by Angular...";
-npm install resources/webcourses;
+cd resources/webcourses/;
+npm install;
+cd ../../;
 
 echo "Running homestead make...";
 vendor/bin/homestead make;
