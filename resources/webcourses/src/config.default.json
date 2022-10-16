@@ -1,10 +1,10 @@
 {
   "api": {
-    "domain": "http://local.webcourses/",
+    "domain": "http://homestead.test/",
     "route": "/v4"
   },
   "cookies": {
-    "domain": "local.webcourses"
+    "domain": "homestead.test"
   },
   "assetsPath": "assets/",
   "logoutRedirectPath": "/user/login",
