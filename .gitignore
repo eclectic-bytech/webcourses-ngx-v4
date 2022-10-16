@@ -19,7 +19,7 @@ Homestead.yaml
 /resources/views/angular.blade.php
 /public/publisher-files
 
-# Copied from resources/frontend/webcourses:
+# Copied from resources/webcourses:
 # Angular's own .ignore
 
 # IDEs and editors
