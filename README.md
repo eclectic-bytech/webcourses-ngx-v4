@@ -33,11 +33,6 @@ From the project folder, you can now run `vagrant up` to start the virtual machi
 You should see it in the Oracle VM GUI, first as idle, and then as running once you've ran the command.  
 Use `vagrant halt` to stop the server.
 
-Access WNGX by going to http://homestead.test.  
-  
-Default **user**: admin  
-Default **password**: password 
-
 
 ## About
 
