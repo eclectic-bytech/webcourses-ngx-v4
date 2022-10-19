@@ -35,7 +35,7 @@ Use `vagrant halt` to stop the server.
 
 Access WNGX by going to http://homestead.test.  
   
-Default **user**: example@example.com  
+Default **user**: admin  
 Default **password**: password 
 
 
