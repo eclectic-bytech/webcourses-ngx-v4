@@ -11,10 +11,12 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <img class="navbar-brand ml-2 ml-lg-0 mr-0 mr-lg-5 handy"
+  <img
     *ngIf="theme.logo"
     (click)="logoLink(theme)"
     [src]="this.sanit.bypassSecurityTrustResourceUrl(theme.logo)"
+    id="logo"
+    class="navbar-brand ml-2 ml-lg-0 mr-0 mr-lg-5 handy"
   >
 
   <button class="navbar-toggler" type="button" (click)="menuCollapsed2 = !menuCollapsed2" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
