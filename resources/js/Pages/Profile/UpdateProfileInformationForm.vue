@@ -41,11 +41,25 @@
                 <jet-input-error :message="form.errors.photo" class="mt-2" />
             </div>
 
-            <!-- Name -->
+            <!-- Username -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="username" value="Username" />
                 <jet-input id="username" type="text" class="mt-1 block w-full" v-model="form.username" autocomplete="username" />
                 <jet-input-error :message="form.errors.username" class="mt-2" />
+            </div>
+
+            <!-- User first name -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="first_name" value="First name" />
+                <jet-input id="first_name" type="text" class="mt-1 block w-full" v-model="form.first_name" autocomplete="first_name" />
+                <jet-input-error :message="form.errors.first_name" class="mt-2" />
+            </div>
+
+            <!-- User last name -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="last_name" value="Last name" />
+                <jet-input id="last_name" type="text" class="mt-1 block w-full" v-model="form.last_name" autocomplete="last_name" />
+                <jet-input-error :message="form.errors.last_name" class="mt-2" />
             </div>
 
             <!-- Email -->
@@ -96,6 +110,8 @@
                     _method: 'PUT',
                     username: this.user.username,
                     email: this.user.email,
+                    first_name: this.user.first_name,
+                    last_name: this.user.last_name,
                     photo: null,
                 }),
 
