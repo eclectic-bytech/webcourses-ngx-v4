@@ -27,5 +27,6 @@ class UserSeeder extends Seeder
             'role' => 'Admin role.',
             'user_id' => '1'
         ]);
+
     }
 }

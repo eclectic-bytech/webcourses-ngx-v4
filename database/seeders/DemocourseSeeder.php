@@ -14,23 +14,6 @@ class DemocourseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('publishers')->insert([
-            'id' => 1,
-            'owner_uid' => 1,
-            'name' => 'Open WebCourses',
-            'website' => 'https://www.webcourses.io',
-            'contact_fname' => 'Slawomir',
-            'contact_lname' => 'Borkowski',
-            'contact_email' => 'welcome@webcourses.io',
-            'contact_phone' => '204-410-2234',
-            'country' => 'Canada',
-            'province' => 'MB',
-            'city' => 'Winnipeg',
-            'settings' => '{}',
-            'created_at' => '2021-06-18 15:17:37',
-            'updated_at' => NULL
-        ]);
-
         DB::table('courses')->insert([
             'id' => 1,
             'active_bid' => 1,
@@ -50,7 +33,7 @@ class DemocourseSeeder extends Seeder
             'created_at' => '2020-05-29 14:30:20',
             'updated_at' => '2021-07-26 07:32:43'
         ]);
-        
+
         DB::table('chapters')->insert([
             'id' => 309,
             'label' => 'Introduction',
@@ -71,66 +54,7 @@ class DemocourseSeeder extends Seeder
             'created_at' => '2021-06-30 13:13:54',
             'updated_at' => NULL
         ]);
-        
-        DB::table('activity_types')->insert([
-            'id' => 'checkbox',
-            'label' => 'Checkbox',
-            'help' => '<p>Select the correct answer(s) and click the <span class="font-weight-bold">Save</span> button.</p><p class="font-weight-bold text-uppercase">Exercise Feedback</p><dl class="row">  <dt class="col-sm-3">Green checkmark</dt>  <dd class="col-sm-9">Correct answer</dd>  <dt class="col-sm-3">Grey checkmark</dt>  <dd class="col-sm-9">Missed correct answer</dd>  <dt class="col-sm-3">Red x</dt>  <dd class="col-sm-9">Wrong answer</dd></dl>'
-        ]);
 
-        DB::table('activity_types')->insert([
-            'id' => 'click',
-            'label' => 'Click',
-            'help' => '<p>Click or tap to select an item - click or tap it again to deselect it. You may select multiple items. When done click <span class="font-weight-bold">Save</span>.</p>'
-        ]);
-
-        DB::table('activity_types')->insert([
-            'id' => 'click2',
-            'label' => 'Click2',
-            'help' => '<p>Continue clicking an item until it has the correct punctuation mark.</p>'
-        ]);
-
-        DB::table('activity_types')->insert([
-            'id' => 'custom',
-            'label' => 'Custom Activity',
-            'help' => '<p>No additional help available for this activity.</p>'
-        ]);
-
-        DB::table('activity_types')->insert([
-            'id' => 'dnd',
-            'label' => 'Drag-n-Drop',
-            'help' => '<p>Drag items into their correct position.</p>'
-        ]);
-        
-        DB::table('activity_types')->insert([
-            'id' => 'dnd-match',
-            'label' => 'Drag-n-Drop Match',
-            'help' => '<p>Drag items into their correct position.</p>'
-        ]);
-
-        DB::table('activity_types')->insert([
-            'id' => 'info',
-            'label' => 'Info',
-            'help' => '<p>Read the activity. Click <span class="font-text-bold">Mark Read</span> or <span class="font-text-bold">Next</span> to continue.</p>'
-        ]);
-        DB::table('activity_types')->insert([
-            'id' => 'radio',
-            'label' => 'Radio',
-            'help' => '<p>Select the correct answer and click the \'Save\' button.</p><p class="font-weight-bold text-uppercase"><u>Exercise Feedback</u></p><dl class="row">  <dt class="col-sm-4">Green checkmark</dt>  <dd class="col-sm-8">Correct answer</dd>  <dt class="col-sm-4">Grey checkmark</dt>  <dd class="col-sm-8">Missed correct answer</dd>  <dt class="col-sm-4">Red x</dt>  <dd class="col-sm-8">Wrong answer</dd></dl>'
-        ]);
-
-        DB::table('activity_types')->insert([
-            'id' => 'text',
-            'label' => 'Text (unmarked)',
-            'help' => '<p>Read the instructions in the activity. Write your answer in the text box and click <span class="font-weight-bold">Save</span>.</p>'
-        ]);
-
-        DB::table('activity_types')->insert([
-            'id' => 'textarea',
-            'label' => 'Textarea (unmarked)',
-            'help' => '<p>Read the instructions in the activity. Write your answer in the text box and click <span class="font-weight-bold">Save</span>.</p>'
-        ]);
-        
         DB::table('course_syllabus')->insert([
             'activity_id' => 3964,
             'activity_type' => 'info',
@@ -291,7 +215,7 @@ class DemocourseSeeder extends Seeder
             'updated_at' => NULL
         ]);
 
-DB::table('course_syllabus')->insert([
+        DB::table('course_syllabus')->insert([
             'activity_id' => 4773,
             'activity_type' => 'textarea',
             'course_id' => 1,
@@ -388,22 +312,22 @@ DB::table('course_syllabus')->insert([
         ]);
 
         DB::table('activities')->insert([
-            'id' => 3964, 
-            'prequestion' => '<img src="/publisher-files/default/courses/1/images/logo.svg" height="100" alt="Open WebCourses Logo" class="d-block mx-auto mt-5"><hr><div class="h3 my-4 text-center">  <p>An open source web course platform</p>  <p class="text-uppercase mt-2">Overview</p></div><p class="mb-3 mt-5 text-center text-secondary">  <small>Join in <a href="https://www.webcourses.io/funding" target="_blank">partnership or sponsor</a> Open WebCourses.</small></p><p class="mb-3 mt-5 text-center text-uppercase text-secondary">  Partners and sponsors  <div class="d-block text-center">    <a href="https://www.eclectic.ca" target="_blank">      <img src="/publisher-files/default/courses/1/images/eclectic_logo.svg" alt="Eclectic Communications" height="40" class="img-responsive mx-3">    </a>    <a href="https://www.bytech.ca/" target="_blank">      <img src="/publisher-files/default/courses/1/images/bytech_logo.svg" alt="Bytech" height="40" class="img-responsive mx-3">    </a>  </div></p>', 
-            'question' => NULL, 
-            'assess_text' => NULL, 
-            'after_word' => NULL, 
-            'created_at' => '2021-06-22 10:17:54', 
+            'id' => 3964,
+            'prequestion' => '<img src="/publisher-files/default/courses/1/images/logo.svg" height="100" alt="Open WebCourses Logo" class="d-block mx-auto mt-5"><hr><div class="h3 my-4 text-center">  <p>An open source web course platform</p>  <p class="text-uppercase mt-2">Overview</p></div><p class="mb-3 mt-5 text-center text-secondary">  <small>Join in <a href="https://www.webcourses.io/funding" target="_blank">partnership or sponsor</a> Open WebCourses.</small></p><p class="mb-3 mt-5 text-center text-uppercase text-secondary">  Partners and sponsors  <div class="d-block text-center">    <a href="https://www.eclectic.ca" target="_blank">      <img src="/publisher-files/default/courses/1/images/eclectic_logo.svg" alt="Eclectic Communications" height="40" class="img-responsive mx-3">    </a>    <a href="https://www.bytech.ca/" target="_blank">      <img src="/publisher-files/default/courses/1/images/bytech_logo.svg" alt="Bytech" height="40" class="img-responsive mx-3">    </a>  </div></p>',
+            'question' => NULL,
+            'assess_text' => NULL,
+            'after_word' => NULL,
+            'created_at' => '2021-06-22 10:17:54',
             'updated_at' => '2021-06-22 11:09:43'
         ]);
-        
+
         DB::table('activities')->insert([
-            'id' => 4764, 
-            'prequestion' => '<p class="h4 my-3">Engaging, interactive user experience</p><div class="card-columns">  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Checkbox</h5>      <p class="card-text">Multiple choice. No selection required, or, select one through all options.</p>      <p class="card-text"><small class="text-muted">Category: Multiple choice</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Radio Button</h5>      <p class="card-text">Multiple choice. Requires one selection. Changing selection automatically unchecks previous.</p>      <p class="card-text"><small class="text-muted">Category: Multiple choice</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Click</h5>      <p class="card-text">        Has features of checkbox activity type, with customised presentation:        it replaces checkboxes\' traditional selection list with cards, images, or other selectable items.</p>      <p class="card-text"><small class="text-muted">Category: Multiple choice</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Click 2</h5>      <p class="card-text">        With Click 2, when a selectable item is clicked, the option rotates to another.         </p>      <p class="card-text"><small class="text-muted">Category: Multiple choice array</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Drag and Drop</h5>      <p class="card-text">        Re-arrange items into a sequence by dragging and dropping them.        </p>      <p class="card-text"><small class="text-muted">Category: Sequences</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Drag and Drop Match</h5>      <p class="card-text">        Pair up items across rows or columns.        </p>      <p class="card-text"><small class="text-muted">Category: Other</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Informational</h5>      <p class="card-text">        The only activity type that does not require interaction. Student reads the text and marks the activity as read.        </p>      <p class="card-text"><small class="text-muted">Category: Informational</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Text</h5>      <p class="card-text">        Captures user input on a single-line text box.      </p>      <p class="card-text"><small class="text-muted">Category: Short answer</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Textarea</h5>      <p class="card-text">        Captures user input in a multi-line text box.      </p>      <p class="card-text"><small class="text-muted">Category: Long answer</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Custom type</h5>      <p class="card-text">        Increase variety by embedding any type of activity from a library or other source.      </p>      <p class="card-text"><small class="text-muted">Category: Custom</small></p>    </div>  </div></div><p>Open WebCourses does not rely on difficult to maintain and passive-experience videos for content delivery.</p>', 
-            'question' => NULL, 
-            'assess_text' => NULL, 
+            'id' => 4764,
+            'prequestion' => '<p class="h4 my-3">Engaging, interactive user experience</p><div class="card-columns">  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Checkbox</h5>      <p class="card-text">Multiple choice. No selection required, or, select one through all options.</p>      <p class="card-text"><small class="text-muted">Category: Multiple choice</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Radio Button</h5>      <p class="card-text">Multiple choice. Requires one selection. Changing selection automatically unchecks previous.</p>      <p class="card-text"><small class="text-muted">Category: Multiple choice</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Click</h5>      <p class="card-text">        Has features of checkbox activity type, with customised presentation:        it replaces checkboxes\' traditional selection list with cards, images, or other selectable items.</p>      <p class="card-text"><small class="text-muted">Category: Multiple choice</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Click 2</h5>      <p class="card-text">        With Click 2, when a selectable item is clicked, the option rotates to another.         </p>      <p class="card-text"><small class="text-muted">Category: Multiple choice array</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Drag and Drop</h5>      <p class="card-text">        Re-arrange items into a sequence by dragging and dropping them.        </p>      <p class="card-text"><small class="text-muted">Category: Sequences</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Drag and Drop Match</h5>      <p class="card-text">        Pair up items across rows or columns.        </p>      <p class="card-text"><small class="text-muted">Category: Other</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Informational</h5>      <p class="card-text">        The only activity type that does not require interaction. Student reads the text and marks the activity as read.        </p>      <p class="card-text"><small class="text-muted">Category: Informational</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Text</h5>      <p class="card-text">        Captures user input on a single-line text box.      </p>      <p class="card-text"><small class="text-muted">Category: Short answer</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Textarea</h5>      <p class="card-text">        Captures user input in a multi-line text box.      </p>      <p class="card-text"><small class="text-muted">Category: Long answer</small></p>    </div>  </div>  <div class="card">    <!-- <img class="card-img-top" src="/publisher-files/default/courses/1/images/4764.png" alt="Card image cap"> -->    <div class="card-body">      <h5 class="card-title">Custom type</h5>      <p class="card-text">        Increase variety by embedding any type of activity from a library or other source.      </p>      <p class="card-text"><small class="text-muted">Category: Custom</small></p>    </div>  </div></div><p>Open WebCourses does not rely on difficult to maintain and passive-experience videos for content delivery.</p>',
+            'question' => NULL,
+            'assess_text' => NULL,
             'after_word' => NULL,
-            'created_at' => '2021-06-22 11:26:13', 
+            'created_at' => '2021-06-22 11:26:13',
             'updated_at' => '2021-06-25 05:09:10'
         ]);
 
@@ -426,7 +350,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-06-28 11:20:44',
             'updated_at' => '2021-06-28 11:20:45'
         ]);
-        
+
         DB::table('activities')->insert([
             'id' => 4767,
             'prequestion' => '<p class="mt-4">Here is the same activity but using a traditional form with radio buttons and no images.</p>',
@@ -475,7 +399,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-07-13 11:24:05',
             'updated_at' => '2021-07-13 11:24:05'
         ]);
-        
+
         DB::table('activities')->insert([
             'id' => 4772,
             'prequestion' => '<p>Sometimes a larger area for text is handy. Here is one.</p>',
@@ -495,7 +419,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-07-13 11:24:07',
             'updated_at' => NULL
         ]);
-        
+
         DB::table('activities')->insert([
             'id' => 4774,
             'prequestion' => '<p class="mt-4">Another option is to include default text that the user can then edit.</p>',
@@ -525,7 +449,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-07-13 11:24:12',
             'updated_at' => '2021-07-13 11:24:12'
         ]);
-        
+
         DB::table('activities')->insert([
             'id' => 4777,
             'prequestion' => '<p>Let\'s take a break from questions about planets, and move on to maths. Something easy.</p>',
@@ -572,7 +496,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-06-25 13:16:38',
             'updated_at' => '2021-06-28 04:25:57'
         ]);
-        
+
         DB::table('activity_answers')->insert([
             'activity_id' => 4765,
             'slot' => 4,
@@ -590,7 +514,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-06-28 15:43:56',
             'updated_at' => NULL
         ]);
-        
+
         DB::table('activity_answers')->insert([
             'activity_id' => 4767,
             'slot' => 2,
@@ -617,7 +541,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-06-28 15:43:56',
             'updated_at' => NULL
         ]);
-        
+
         DB::table('activity_answers')->insert([
             'activity_id' => 4768,
             'slot' => 1,
@@ -661,7 +585,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-06-29 08:05:14',
             'updated_at' => NULL
         ]);
-        
+
         DB::table('activity_answers')->insert([
             'activity_id' => 4770,
             'slot' => 2,
@@ -679,7 +603,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-06-29 08:05:14',
             'updated_at' => NULL
         ]);
-        
+
         DB::table('activity_answers')->insert([
             'activity_id' => 4770,
             'slot' => 4,
@@ -706,7 +630,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-06-30 13:30:46',
             'updated_at' => '2021-07-18 06:03:37'
         ]);
-        
+
         DB::table('activity_answers')->insert([
             'activity_id' => 4777,
             'slot' => 3,
@@ -750,7 +674,7 @@ DB::table('course_syllabus')->insert([
             'created_at' => '2021-06-30 15:30:01',
             'updated_at' => '2021-07-13 11:24:27'
         ]);
-        
+
         DB::table('activity_defaults')->insert([
             'activity_id' => 4773,
             'source' => 2,
@@ -762,17 +686,10 @@ DB::table('course_syllabus')->insert([
             'source' => 1,
             'id' => 3
         ]);
-        
+
         DB::table('activity_default_answers')->insert([
             'answer' => 'Mercury, Venus, Mars, Earth, Jupiter, Saturn, Uranus, Neptune'
         ]);
 
-        DB::table('user_progress')->insert([
-            'user_id' => '1', 
-            'course_id' => '1', 
-            'build_id' => '1', 
-            'created_at' => '2022-01-23 14:38:23', 
-            'demo' => '0'
-        ]);
     }
 }

@@ -11,8 +11,20 @@ echo
 echo "Seeding default user team...";
 php ~/code/artisan db:seed --class=TeamSeeder;
 echo
+echo "Seeding default roles...";
+php ~/code/artisan db:seed --class=RoleSeeder;
+echo
 echo "Seeding default admin user...";
 php ~/code/artisan db:seed --class=UserSeeder;
 echo
+echo "Seeding default publisher...";
+php ~/code/artisan db:seed --class=PublisherSeeder;
+echo
+echo "Seeding activity types...";
+php ~/code/artisan db:seed --class=ActivitytypeSeeder;
+echo
 echo "Seeding default course...";
 php ~/code/artisan db:seed --class=DemocourseSeeder;
+echo
+echo "Seeding default user progress entry...";
+php ~/code/artisan db:seed --class=UserprogressSeeder;
