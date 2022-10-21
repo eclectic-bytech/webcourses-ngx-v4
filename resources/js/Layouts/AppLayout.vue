@@ -17,7 +17,7 @@
                                         <jet-application-mark class="block h-9 w-auto" />
                                     -->
                                     <div class="block h-9 w-auto">
-                                        <img src="/webcourses/publisher-files/0/theme/logo.svg" alt="System Logo" style="max-height: 2.3rem;">
+                                        <img src="/webcourses/publisher-files/1/theme/logo.svg" alt="System Logo" style="max-height: 2.3rem;">
                                     </div>
                                 </inertia-link>
                             </div>
