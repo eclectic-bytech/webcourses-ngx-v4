@@ -32,3 +32,6 @@ echo
 echo "Seeding default user roles entries...";
 php ~/code/artisan db:seed --class=UserrolesSeeder;
 echo
+echo "Seeding default publisher theme entries...";
+php ~/code/artisan db:seed --class=ThemeSeeder;
+echo
