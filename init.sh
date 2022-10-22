@@ -28,3 +28,10 @@ php ~/code/artisan db:seed --class=DemocourseSeeder;
 echo
 echo "Seeding default user progress entry...";
 php ~/code/artisan db:seed --class=UserprogressSeeder;
+echo
+echo "Seeding default user roles entries...";
+php ~/code/artisan db:seed --class=UserrolesSeeder;
+echo
+echo "Seeding default publisher theme entries...";
+php ~/code/artisan db:seed --class=ThemesSeeder;
+echo

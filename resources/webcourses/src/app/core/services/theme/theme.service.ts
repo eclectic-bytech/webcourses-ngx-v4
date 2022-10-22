@@ -14,7 +14,7 @@ export class ThemeService {
     sideBar: false,
     headerBar: false,
     mainArea: false,
-    logo: 'publisher-files/0/theme/logo.svg',
+    logo: 'publisher-files/1/theme/logo.svg',
     publisherHome: '',
     created_at: '',
     updated_at: '',
