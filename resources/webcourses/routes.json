@@ -3,9 +3,9 @@
   "/v4/user/dashboard": "/user",
   "/v4/catalogue": "/catalogue",
   "/v4/catalogue/course/:id": "/catalogue/:id",
-  "/v4/catalogue/user": "/catalogue_user",
+  "/v4/catalogue/user": "/user_webcourses",
   "/v4/publisher": "/publisher",
   "/v4/publisher/:id": "/publisher/:id",
   "/v4/publisher/profile/:id": "/publisher/:id",
-  "/v4/catalogue/publisher/1": "/catalogue_publisher_1"
+  "/v4/catalogue/publisher/:id": "/catalogue_by_publisher/:id"
 }

@@ -98,18 +98,18 @@
         }
     }
   ],
-  "catalogue_publisher_1": [
+  "catalogue_by_publisher": [
       {
+        "id": 1,
         "cid": 1,
-        "title": "The CORE Foundations for Leaders",
+        "title": "Webcourses.IO Demo",
         "cover": "3871-1.jpg",
-        "cover_alt": "A group of people with positive attitude cheering and clapping",
+        "cover_alt": "None",
         "publisher_id": 1,
         "price": 14900,
         "pid": null,
-        "publisher_name": "Brivia Consulting",
-        "short_desc": "Introduction to The CORE Foundations for Leaders Course",
-        "path": "brivia",
+        "publisher_name": "Webcourses.IO",
+        "short_desc": "A demonstation of webcourses.IO features.",
         "settings": {},
         "publisher":
         {
@@ -127,9 +127,38 @@
           "created_at":"2021-06-18T15:17:37.000000Z",
           "updated_at":null
         }
+      },
+      {
+        "id": 2,
+        "cid": 2,
+        "title": "The CORE Foundations for Leaders",
+        "cover": "3871-1.jpg",
+        "cover_alt": "A group of people with positive attitude cheering and clapping",
+        "publisher_id": 2,
+        "price": 14900,
+        "pid": null,
+        "publisher_name": "Brivia Consulting",
+        "short_desc": "Introduction to The CORE Foundations for Leaders Course",
+        "settings": {},
+        "publisher":
+        {
+          "id":2,
+          "name":"Brivia Consulting",
+          "website":"https:\/\/www.brivia.ca",
+          "contact_fname":"John",
+          "contact_lname":"Doe",
+          "contact_email":"info@brivia.ca",
+          "contact_phone":"204-888-8888",
+          "country":"Canada",
+          "province":"MB",
+          "city":"Winnipeg",
+          "settings":[],
+          "created_at":"2021-06-18T15:17:37.000000Z",
+          "updated_at":null
+        }
       }
   ],
-  "catalogue_user": [
+  "user_webcourses": [
     {
       "id":1,
       "title":"Open WebCourses Platform: Introduction",
@@ -197,7 +226,7 @@
         "headerBar": "/publisher-files/brivia/theme/headerbar.css",
         "sideBar": false,
         "mainArea": false,
-        "logo": "/publisher-files/brivia/theme/logo.png",
+        "logo": "/publisher-files/2/theme/logo.png",
         "publisherHome": "https://www.briviaconsulting.com"
       }
     }
