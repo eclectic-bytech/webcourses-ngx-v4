@@ -19,7 +19,7 @@ class DemocourseSeeder extends Seeder
             'active_bid' => 1,
             'title' => 'Open WebCourses Platform: Introduction',
             'cover' => 'cover.png',
-            'publisher_id' => 1,
+            'publisher_id' => 2,
             'published' => 1,
             'private' => 0,
             'completion_time' => 0.5,

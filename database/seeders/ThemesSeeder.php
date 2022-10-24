@@ -22,5 +22,13 @@ class ThemesSeeder extends Seeder
             'bootstrap_nav' => 'navbar-dark',
             'created_at' => now()
         ]);
+
+        DB::table('themes')->insert([
+            'publisher_id' => 2,
+            'label' => 'Cultivate Learning',
+            'path' => 'cultivate',
+            'bootstrap_nav' => 'navbar-dark',
+            'created_at' => now()
+        ]);
     }
 }

@@ -19,14 +19,12 @@ class UserSeeder extends Seeder
             'username' => 'admin',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
-            'current_team_id' => 1
         ]);
 
-        DB::table('team_user')->insert([
-            'team_id' => '1',
-            'role' => 'Admin role.',
-            'user_id' => '1'
+        DB::table('users')->insert([
+            'username' => 'cultivate',
+            'email' => 'support@cultivatelearning.ca',
+            'password' => Hash::make('password'),
         ]);
-
     }
 }
