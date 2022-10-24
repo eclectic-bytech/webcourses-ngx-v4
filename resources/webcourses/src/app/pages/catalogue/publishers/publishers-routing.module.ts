@@ -13,7 +13,7 @@ const routes: Routes = [
     // },
     data: {
       title: 'Publishers at Cultivate Learning',
-      theme_id: 0
+      theme_id: 1
     }
   },
 ]
