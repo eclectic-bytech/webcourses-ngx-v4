@@ -19,6 +19,7 @@ class ThemesSeeder extends Seeder
             'publisher_id' => 1,
             'label' => 'Webcourses.IO',
             'path' => 'webcourses_io',
+            'logo' => 'publisher-files/1/theme/logo.svg',
             'bootstrap_nav' => 'navbar-dark',
             'created_at' => now()
         ]);
@@ -27,6 +28,7 @@ class ThemesSeeder extends Seeder
             'publisher_id' => 2,
             'label' => 'Cultivate Learning',
             'path' => 'cultivate',
+            'logo' => 'publisher-files/2/theme/logo.png',
             'bootstrap_nav' => 'navbar-dark',
             'created_at' => now()
         ]);
