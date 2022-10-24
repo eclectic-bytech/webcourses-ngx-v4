@@ -9,7 +9,7 @@ class CreatePublishersTable extends Migration
     public function up()
     {
         Schema::create('publishers', function (Blueprint $table) {
-            $table->mediumInteger('id')->unsigned();
+            $table->mediumIncrements('id')->unsigned();
             $table->bigInteger('owner_uid')->unsigned()->default(0)->unique()->comment('UID that owns this publisher account.');
             $table->string('name',48)->default('0')->comment('Publisher Name');
             $table->string('website',256)->nullable()->default('NULL')->comment('Publisher website address');
@@ -20,7 +20,6 @@ class CreatePublishersTable extends Migration
             $table->string('country',64)->nullable()->default('NULL');
             $table->string('province',64)->nullable()->default('NULL');
             $table->string('city',64)->nullable()->default('NULL');
-            $table->primary('id');
             $table->foreign('owner_uid')->references('id')->on('users');
             $table->timestamps();
         });
