@@ -22,5 +22,13 @@ class UserprogressSeeder extends Seeder
             'created_at' => '2022-01-23 14:38:23',
             'demo' => '0'
         ]);
+
+        DB::table('user_progress')->insert([
+            'user_id' => '1',
+            'course_id' => '2',
+            'build_id' => '1',
+            'created_at' => '2022-01-23 14:38:23',
+            'demo' => '0'
+        ]);
     }
 }

@@ -19,6 +19,26 @@ class DemocourseSeeder extends Seeder
             'active_bid' => 1,
             'title' => 'Open WebCourses Platform: Introduction',
             'cover' => 'cover.png',
+            'publisher_id' => 1,
+            'published' => 1,
+            'private' => 0,
+            'completion_time' => 0.5,
+            'audience' => 'Educators, and learners passionate about online learning',
+            'cover_alt' => 'Open WebCourses logo - three rings forming a triangle, and platform name arranged into a skeleton key shape.',
+            'short_desc' => 'A quick overview of some key features of the Open WebCourses learning platform. Free access code and details at <a href="https://www.webcourses.io/demo" target="_blank">webcourses.io</a>.',
+            'long_desc' => NULL,
+            'objective' => '<p>Introduce and highlight features of the open source online learning platform.</p>',
+            'eval_type' => 'Online',
+            'price' => 1000,
+            'created_at' => '2020-05-29 14:30:20',
+            'updated_at' => '2021-07-26 07:32:43'
+        ]);
+
+        DB::table('courses')->insert([
+            'id' => 2,
+            'active_bid' => 1,
+            'title' => 'Brivia CORE',
+            'cover' => 'cover.png',
             'publisher_id' => 2,
             'published' => 1,
             'private' => 0,
