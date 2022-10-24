@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators'
 import { WebcoursesService } from './webcourses.service'
 import { AppService } from './../../../app.service'
 import { ActivatedRoute } from '@angular/router'
-import { PublisherModel } from './../../catalogue/models/publisher.model'
+import { Publisher } from './../../../models/publisher.model'
 
 import { faUsers, faThLarge } from '@fortawesome/free-solid-svg-icons'
 import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
@@ -21,7 +21,7 @@ export class WebcoursesComponent implements OnInit {
   faThLarge = faThLarge
 
   publisherCourses$: Observable<any[]>
-  public publisherInfo$: Observable<PublisherModel>
+  public publisherInfo$: Observable<Publisher>
 
   constructor(
     private route: ActivatedRoute,

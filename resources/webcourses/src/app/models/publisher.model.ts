@@ -9,6 +9,18 @@ export class Publisher {
   public country: string
   public province: string
   public city: string
+  public theme: {
+    label: string
+    path: string
+    bootstrap_nav: string
+    headerBar: boolean|string
+    sideBar: boolean|string
+    mainArea: boolean|string
+    logo: string
+    publisherHome: string
+    created_at: string
+    updated_at: string
+  }
   public created_at: string
   public updated_at: string
 }
