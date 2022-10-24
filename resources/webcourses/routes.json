@@ -6,5 +6,6 @@
   "/v4/catalogue/user": "/catalogue_user",
   "/v4/publisher": "/publisher",
   "/v4/publisher/:id": "/publisher/:id",
-  "/v4/publisher/profile/:id": "/publisher/:id"
+  "/v4/publisher/profile/:id": "/publisher/:id",
+  "/v4/catalogue/publisher/1": "/catalogue_publisher_1"
 }
