@@ -12,6 +12,11 @@ npm install;
 echo -e "Installing NPM packages needed by Angular...";
 cd resources/webcourses/;
 npm install;
+
+echo
+echo -e "Compiling webcourses (Angular framework)..."
+npm run build:prod;
+
 cd ../../;
 
 echo "Running homestead make...";
