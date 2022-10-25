@@ -26,8 +26,8 @@ class ThemesSeeder extends Seeder
 
         DB::table('themes')->insert([
             'publisher_id' => 2,
-            'label' => 'Cultivate Learning',
-            'path' => 'cultivate',
+            'label' => 'ACME',
+            'path' => 'acme',
             'logo' => 'publisher-files/2/theme/logo.png',
             'bootstrap_nav' => 'navbar-dark',
             'created_at' => now()
