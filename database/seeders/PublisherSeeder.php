@@ -16,7 +16,6 @@ class PublisherSeeder extends Seeder
     public function run()
     {
         DB::table('publishers')->insert([
-            'id' => 1,
             'owner_uid' => 1,
             'name' => 'Open WebCourses',
             'website' => 'https://www.webcourses.io',
@@ -27,6 +26,22 @@ class PublisherSeeder extends Seeder
             'country' => 'Canada',
             'province' => 'MB',
             'city' => 'Winnipeg',
+            'settings' => '{}',
+            'created_at' => '2021-06-18 15:17:37',
+            'updated_at' => NULL
+        ]);
+
+        DB::table('publishers')->insert([
+            'owner_uid' => 2,
+            'name' => 'ACME Company',
+            'website' => 'https://www.example.com',
+            'contact_fname' => 'Road',
+            'contact_lname' => 'Runner',
+            'contact_email' => 'runner@example.com',
+            'contact_phone' => '800-EAT-DIRT',
+            'country' => 'USA',
+            'province' => 'NV',
+            'city' => 'Village',
             'settings' => '{}',
             'created_at' => '2021-06-18 15:17:37',
             'updated_at' => NULL

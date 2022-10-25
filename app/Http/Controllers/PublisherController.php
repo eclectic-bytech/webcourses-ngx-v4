@@ -14,7 +14,9 @@ class PublisherController extends Controller
      */
     public function index($id)
     {
-        return Publisher::where('id', $id)->sole();
+        return Publisher::where('id', $id)
+            ->with(['theme'])
+            ->sole();
     }
 
     /**

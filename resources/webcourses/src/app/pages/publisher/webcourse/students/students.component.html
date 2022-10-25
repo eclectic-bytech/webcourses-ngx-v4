@@ -1,6 +1,6 @@
 <div *ngIf="(courseStudents$ | async) as courseStudents" id="fullMainContent" @fadeInOut>
   <div *ngIf="(courseStudentGroups$ | async) as studentsGroups">
-    <div *ngIf="(publisherInfo$ | async) as publisherInfo" [appThemeSet]="publisherInfo.settings.theme">
+    <div *ngIf="(publisherInfo$ | async) as publisherInfo" [appThemeSet]="publisherInfo.theme">
 
       <div class="card mx-2">
 

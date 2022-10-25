@@ -34,6 +34,26 @@ class DemocourseSeeder extends Seeder
             'updated_at' => '2021-07-26 07:32:43'
         ]);
 
+        DB::table('courses')->insert([
+            'id' => 2,
+            'active_bid' => 1,
+            'title' => 'ACME Tricks',
+            'cover' => 'cover.jpg',
+            'publisher_id' => 2,
+            'published' => 1,
+            'private' => 0,
+            'completion_time' => 0.5,
+            'audience' => 'Looney characters welcome',
+            'cover_alt' => 'TNT Blast Hole',
+            'short_desc' => 'Learn all the tricks that can be wrecked on coyotes with pencil and crayon.',
+            'long_desc' => NULL,
+            'objective' => '<p>Introduce and highlight features of the pencile and crayon method.</p>',
+            'eval_type' => 'Online',
+            'price' => 1000,
+            'created_at' => '2020-05-29 14:30:20',
+            'updated_at' => '2021-07-26 07:32:43'
+        ]);
+
         DB::table('chapters')->insert([
             'id' => 309,
             'label' => 'Introduction',

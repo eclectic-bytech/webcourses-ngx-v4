@@ -1,7 +1,7 @@
 <div *ngIf="this.publisherCourses$ | async as publisherCourses" id="fullMainContent" @fadeInOut>
   <div
     *ngIf="this.publisherInfo$ | async as publisherInfo"
-    [appThemeSet]="publisherInfo.settings.theme"
+    [appThemeSet]="publisherInfo.theme"
     class="text-center"
     >
     <div class="mb-3">

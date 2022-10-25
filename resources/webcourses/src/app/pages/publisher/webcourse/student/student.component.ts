@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { ActivatedRoute } from '@angular/router'
-import { PublisherModel } from '../../../catalogue/models/publisher.model'
+import { Publisher } from '../../../../models/publisher.model'
 import { FadeInOut } from '../../../../core/animations/fade-in-out.animation'
 
 @Component({
@@ -15,7 +15,7 @@ import { FadeInOut } from '../../../../core/animations/fade-in-out.animation'
 export class StudentComponent implements OnInit {
 
   studentActivities$: Observable<any>
-  publisherInfo$: Observable<PublisherModel>
+  publisherInfo$: Observable<Publisher>
 
   constructor(
     private route: ActivatedRoute

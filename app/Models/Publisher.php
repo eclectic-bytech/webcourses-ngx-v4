@@ -11,4 +11,9 @@ class Publisher extends Model
     protected $casts = ["settings" => "array"];
 
     use HasFactory;
+
+    public function theme() {
+        return $this->hasOne(Theme::class, 'publisher_id', 'id');
+    }
+
 }
