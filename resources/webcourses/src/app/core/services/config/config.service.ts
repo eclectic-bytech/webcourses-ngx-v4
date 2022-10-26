@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpBackend } from '@angular/common/http'
 import { Config } from './../../models/config.model'
-import { Theme } from '../../models/theme.model'
+import { Theme } from '../../../models/theme.model'
 
 @Injectable({
   providedIn: 'root'

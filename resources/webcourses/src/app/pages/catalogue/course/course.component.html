@@ -2,7 +2,7 @@
 
   <div class="card">
     <img class="card-img-top"
-      src="/publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}"
+      src="publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}"
       [alt]="course.cover_alt"
     >
     <div class="card-body">
@@ -91,13 +91,13 @@
 
           <div class="row mt-5">
             <div class="col-12 col-lg-10 mx-auto text-center">
-              <!-- <div [appThemeSet]="course.publisher.settings.theme"></div> -->
+              <div [appThemeSet]="course.theme"></div>
               <div>
                 <a [href]="course.publisher.website" target="_blank">
                   <img
                     class="mb-3"
                     width="250"
-                    src="/publisher-files/{{course.publisher.id}}/logo.svg"
+                    [src]="course.theme.logo"
                     [alt]="course.publisher.name + 'logo'"
                   >
                   <p class="text-secondary" style="line-height: 1.1">

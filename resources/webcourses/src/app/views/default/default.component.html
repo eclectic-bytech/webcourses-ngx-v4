@@ -2,9 +2,9 @@
 <ng-progress #progressBar></ng-progress>
 
 <header *ngIf="this.themeService.activeTheme$ | async as theme" class="fixed-top">
-  <link *ngIf="theme.headerBar"
+  <!-- <link *ngIf="theme.headerBar"
     rel="stylesheet" [href]="this.sanitiser.bypassSecurityTrustResourceUrl(theme.headerBar)"
-  >
+  > -->
   <app-header-bar [theme]="theme"></app-header-bar>
   <app-nav-admin *ngIf="this.configService.params.devMode"></app-nav-admin>
 </header>

@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser'
 import { faWrench } from '@fortawesome/free-solid-svg-icons'
 import { faGem } from '@fortawesome/free-solid-svg-icons'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
-import { Theme } from '../../../core/models/theme.model'
+import { Theme } from '../../../models/theme.model'
 
 @Component({
   selector: 'app-header-bar',

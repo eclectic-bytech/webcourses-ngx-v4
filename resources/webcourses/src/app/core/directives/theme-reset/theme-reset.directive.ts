@@ -1,6 +1,6 @@
 import { Directive, OnInit, Input } from '@angular/core'
 import { ThemeService } from '../../services/theme/theme.service'
-import { Theme } from '../../models/theme.model'
+import { Theme } from '../../../models/theme.model'
 
 @Directive({
   selector: '[appThemeSet]'

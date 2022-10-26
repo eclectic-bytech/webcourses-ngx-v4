@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
-import { Theme } from './../../models/theme.model'
+import { Theme } from './../../../models/theme.model'
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +8,12 @@ import { Theme } from './../../models/theme.model'
 export class ThemeService {
 
   defaultTheme: Theme = {
-    bootstrap_nav: 'navbar-dark',
+    id: 1,
+    publisher_id: 1,
     label: 'Open',
     path: '1',
-    sideBar: false,
-    headerBar: false,
-    mainArea: false,
     logo: 'publisher-files/1/theme/logo.svg',
-    publisherHome: '',
+    bootstrap_nav: 'navbar-dark',
     created_at: '',
     updated_at: '',
   }
