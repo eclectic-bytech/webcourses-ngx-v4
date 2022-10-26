@@ -4,6 +4,7 @@ export class Theme {
   public label: string
   public path: string
   public logo: string
+  public css: string
   public bootstrap_nav: string
   public created_at: string
   public updated_at: string

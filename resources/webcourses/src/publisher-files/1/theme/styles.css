@@ -1,13 +1,17 @@
 #header-menu {
-  background-image: url("/publisher-files/5/theme/bg.png");
+  background-image: url("bg.png");
   /* background-color: #f3f3f3 !important; */
   background-repeat: repeat;
   border-bottom: 1px #eee solid;
 }
 
-/*lava menu background for active item*/    
+/*lava menu background for active item*/
 #header-menu .active {
   background-color: #fba604!important;
+}
+
+a {
+	color: #042779!important;
 }
 
 #activity-menu-outlet {
