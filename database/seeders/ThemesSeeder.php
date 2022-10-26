@@ -20,6 +20,7 @@ class ThemesSeeder extends Seeder
             'label' => 'Webcourses.IO',
             'path' => 'webcourses_io',
             'logo' => 'publisher-files/1/theme/logo.svg',
+            'css' => 'publisher-files/1/theme/styles.css',
             'bootstrap_nav' => 'navbar-dark',
             'created_at' => now()
         ]);
@@ -29,6 +30,7 @@ class ThemesSeeder extends Seeder
             'label' => 'ACME',
             'path' => 'acme',
             'logo' => 'publisher-files/2/theme/logo.png',
+            'css' => 'publisher-files/2/theme/styles.css',
             'bootstrap_nav' => 'navbar-dark',
             'created_at' => now()
         ]);

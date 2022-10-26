@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('themes', function (Blueprint $table) {
-            $table->string('logo', 128)->after('path');
+            $table->string('css', 128)->after('logo');
         });
     }
 

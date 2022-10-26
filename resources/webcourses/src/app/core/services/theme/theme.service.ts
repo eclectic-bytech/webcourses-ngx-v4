@@ -13,6 +13,7 @@ export class ThemeService {
     label: 'Open',
     path: '1',
     logo: 'publisher-files/1/theme/logo.svg',
+    css: 'publisher-files/1/theme/styles.css',
     bootstrap_nav: 'navbar-dark',
     created_at: '',
     updated_at: '',

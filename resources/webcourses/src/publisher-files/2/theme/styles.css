@@ -1,0 +1,56 @@
+body {
+	background-image: none!important;
+}
+
+/* SIDEBAR HEADER / HEADER-MENU STUFF */
+
+#header-menu {
+	background-color: #046899!important;
+}
+
+li.active a {
+	color: #e9e9e9!important;
+}
+
+#headbar-user-dropdown {
+	background-color: #07f!important;
+	color: #ddd!important;
+}
+
+/* GLOBAL SIDEBAR CONTENT AREA */
+
+#activity-menu-outlet,
+.main-theme-bg
+{
+	background-color: #ecf5fa !important;
+	color: #555!important;
+}
+
+#activity-menu-outlet a {
+	color: orange!important;
+}
+
+/* SMALL DETAILS AND MICRO-MANAGEMENT OF STYLES */
+
+#progress-tab .h4 {
+	color: #5d5d5d!important;
+}
+
+.default-activity-bar {
+  border-right: 2px solid #ecf5fa!important;
+}
+
+
+#chapter-index-tab a {
+	color: #5d5d5d!important;
+}
+
+.unlocked {
+	background-color: orange!important;
+}
+
+.primary-text,
+.wcng-spinner
+{
+	color: #666!important;
+}
