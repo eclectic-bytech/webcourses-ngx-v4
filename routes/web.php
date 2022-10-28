@@ -42,6 +42,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
+Route::get('/dashboard', function () {
+    return redirect('user/dashboard');
+});
+
 Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped /v4/catalogue: Web course catalogues
