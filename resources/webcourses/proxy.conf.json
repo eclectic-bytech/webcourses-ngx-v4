@@ -1,7 +1,7 @@
 {
   "/v4": {
-    "target": "http://127.0.0.1:3000",
-    "secure": false,
+    "target": "https://localhost:3000",
+    "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"
   }
