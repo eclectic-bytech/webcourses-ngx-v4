@@ -27,7 +27,6 @@ class PublisherController extends Controller
                 ->with(['theme'])
                 ->sole();
         }
-
     }
 
     /**
