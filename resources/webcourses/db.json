@@ -2,7 +2,7 @@
   "user":
     {
       "id": 1,
-      "name": "Admin",
+      "username": "Admin",
       "first_name": null,
       "last_name": null,
       "email": "example@example.com",
