@@ -42,6 +42,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
+//Added after moving /dashboard to /user/dashboard to fix issue #60
+
 Route::get('/dashboard', function () {
     return redirect('user/dashboard');
 });
