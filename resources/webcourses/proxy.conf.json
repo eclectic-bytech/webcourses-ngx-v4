@@ -1,8 +1,14 @@
 {
   "/v4": {
-    "target": "https://localhost:3000",
-    "secure": true,
+    "target": "http://localhost:3000",
+    "secure": false,
     "changeOrigin": true,
-    "logLevel": "debug"
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/v4/publisher/profile/webcourses_io": "/v4/publisher/profile/1",
+      "^/v4/publisher/profile/acme": "/v4/publisher/profile/2",
+      "^/v4/catalogue/publisher/webcourses_io": "/v4/catalogue/publisher/1",
+      "^/v4/catalogue/publisher/acme": "/v4/catalogue/publisher/2"
+    }
   }
 }
