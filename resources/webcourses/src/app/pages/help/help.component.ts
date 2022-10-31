@@ -1,13 +1,16 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { ConfigService } from './../../core/services/config/config.service'
-import { UserService } from './../../core/services/user/user.service'
-import { ThemeService } from './../../core/services/theme/theme.service'
+
+import { ConfigService } from 'src/app/core/services/config/config.service'
+import { UserService } from 'src/app/core/services/user/user.service'
+import { ThemeService } from 'src/app/core/services/theme/theme.service'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-help',
   templateUrl: './help.component.html',
-  styleUrls: ['./help.component.sass']
+  styleUrls: ['./help.component.sass'],
+  animations: [FadeInOut]
 })
 export class HelpComponent {
 
