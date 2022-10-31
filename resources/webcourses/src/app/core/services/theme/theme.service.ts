@@ -9,6 +9,7 @@ export class ThemeService {
 
   defaultTheme: Theme = {
     id: 1,
+    id_alias: 'webcourses_io',
     publisher_id: 1,
     label: 'Open',
     path: '1',
