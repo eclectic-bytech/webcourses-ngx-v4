@@ -1,5 +1,6 @@
 export class Theme {
   public id: number
+  public id_alias: string | number
   public publisher_id: number
   public label: string
   public path: string

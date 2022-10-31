@@ -10,6 +10,7 @@ class CreatePublishersTable extends Migration
     {
         Schema::create('publishers', function (Blueprint $table) {
             $table->mediumIncrements('id')->unsigned();
+            $table->string('id_alias',32)->unique();
             $table->bigInteger('owner_uid')->unsigned()->default(0)->unique()->comment('UID that owns this publisher account.');
             $table->string('name',48)->default('0')->comment('Publisher Name');
             $table->string('website',256)->nullable()->default('NULL')->comment('Publisher website address');

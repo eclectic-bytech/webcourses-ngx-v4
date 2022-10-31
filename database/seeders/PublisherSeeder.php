@@ -16,6 +16,7 @@ class PublisherSeeder extends Seeder
     public function run()
     {
         DB::table('publishers')->insert([
+            'id_alias' => 'webcourses_io',
             'owner_uid' => 1,
             'name' => 'Open WebCourses',
             'website' => 'https://www.webcourses.io',
@@ -32,6 +33,7 @@ class PublisherSeeder extends Seeder
         ]);
 
         DB::table('publishers')->insert([
+            'id_alias' => 'acme',
             'owner_uid' => 2,
             'name' => 'ACME Company',
             'website' => 'https://www.example.com',

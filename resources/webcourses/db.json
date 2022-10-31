@@ -166,6 +166,7 @@
   "catalogue_by_publisher_1": [
     {
       "id": 1,
+      "id_alias": "webcourses_io",
       "title": "Open WebCourses Platform: Introduction",
       "cover": "cover.png",
       "publisher_id": 1,
@@ -183,6 +184,7 @@
       "total_students": 1,
       "publisher": {
         "id": 1,
+        "id_alias": "webcourses_io",
         "name": "Open WebCourses",
         "website": "https://www.webcourses.io",
         "contact_fname": "Slawomir",
@@ -242,6 +244,7 @@
       "total_students": 1,
       "publisher": {
         "id": 2,
+        "id_alias": "acme",
         "name": "ACME Company",
         "website": "https://www.example.com",
         "contact_fname": "Road",
