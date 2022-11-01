@@ -1,28 +1,85 @@
 <nav
   id="header-menu"
-  class="navbar navbar-expand-lg bg-dark"
+  class="navbar navbar-expand-lg navbar-light"
   [ngClass]="theme.bootstrap_nav"
->
-  <button class="navbar-toggler" type="button"
-    (click)="menuCollapsed = !menuCollapsed"
-    data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+
+  >
+
+  <a class="navbar-brand" href="#" (click)="logoLink(theme)">
+    <!-- class="navbar-brand ml-2 ml-lg-0 mr-0 mr-lg-5 handy" -->
+    <img
+      id="logo"
+      *ngIf="theme.logo"
+      [src]="this.sanit.bypassSecurityTrustResourceUrl(theme.logo)"
     >
+  </a>
+
+  <button (click)="menuCollapsed = !menuCollapsed" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <img
-    *ngIf="theme.logo"
-    (click)="logoLink(theme)"
-    [src]="this.sanit.bypassSecurityTrustResourceUrl(theme.logo)"
-    id="logo"
-    class="navbar-brand ml-2 ml-lg-0 mr-0 mr-lg-5 handy"
-  >
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="menuCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown" ngbDropdown>
+        <a   ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" ngbDropdownMenu>
+          <a class="dropdown-item" href="#" ngbDropdownItem>Action</a>
+          <a class="dropdown-item" href="#" ngbDropdownItem>Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" ngbDropdownItem>Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
 
-  <button class="navbar-toggler" type="button" (click)="menuCollapsed2 = !menuCollapsed2" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-    <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(this.userService.user ? this.userService.user.email : 'anon@webcourses.io')" [size]='36'>
-  </button>
 
+    <div class="text-lg-right" style="line-height: 1.2;">
+      <a
+        [href]="this.userService.user ? '/user/dashboard/' : '/user/login'"
+        [innerHtml]="this.userService.user ? 'Dashboard' : 'Sign&nbsp;in'"
+        id="signIn-dashboard"
+        class="nav-link handy"
+      >
+      </a>
+      <small id="user-name" class="activity-menu-label" [innerHtml]="this.userService.user ? this.userService.user.username : 'Guest'"></small>
+    </div>
+
+    <div
+      *ngIf="this.userService.user; else noDropdown"
+      ngbDropdown
+      >
+      <div ngbDropdownToggle>
+        <img
+          ngxGravatar
+          [src]="this.gravatarMd5.gravatarMD5src(this.userService.user.email)"
+          [size]='36'
+        >
+      </div>
+    </div>
+    <ng-template #noDropdown>
+      <img
+        ngxGravatar
+        [src]="this.gravatarMd5.gravatarMD5src('anon@webcourses.io')"
+        [size]='36'
+      >
+    </ng-template>
+
+  </div>
+
+</nav>
+
+
+<!--
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="menuCollapsed">
     <ul class="navbar-nav">
 
@@ -52,7 +109,7 @@
           <a class="nav-link" (click)="collapseMenus()">Help</a>
         </li>
 
-        <!-- <li
+        <!~~ <li
           [routerLink]="['/catalogue', 'publishers']"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{exact: true}"
@@ -67,7 +124,7 @@
           class="nav-item handy px-2 py-1 mx-0 mx-lg-2"
           >
           <a class="nav-link text-light" (click)="collapseMenus()">About us</a>
-        </li> -->
+        </li> ~~>
       </ng-container>
 
       <ng-template #PublisherHome>
@@ -152,7 +209,7 @@
           My Courses3
         </button>
 
-        <!-- [routerLink]="['/publisher', this.user.publisherId, 'webcourses']" -->
+        <!~~ [routerLink]="['/publisher', this.user.publisherId, 'webcourses']" ~~>
         <button
           ngbDropdownItem
           [routerLink]="['/admin/', 'publisher', 'dashboard']"
@@ -195,7 +252,7 @@
         class="nav-item btn-group d-xs-block d-lg-none handy mt-4 mb-2 justify-content-end">
         My Courses2
       </li>
-      <!-- [routerLink]="['/publisher', this.user.publisherId, 'webcourses']" -->
+      <!~~ [routerLink]="['/publisher', this.user.publisherId, 'webcourses']" ~~>
       <li
         [routerLink]="['/admin', 'publisher', 'dashboard']"
         (click)="collapseMenus()"
@@ -211,4 +268,4 @@
     </ul>
 
   </div>
-</nav>
+-->
