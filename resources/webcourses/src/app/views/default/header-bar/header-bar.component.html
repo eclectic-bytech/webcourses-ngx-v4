@@ -52,7 +52,6 @@
       <!-- PUBLISHER'S MAIN NAVIGATION, WITH EXIT LINK TO MAIN SYSTEM -->
 
       <ng-template #publisherCustom>
-
         <!-- CATALOGUE / WEBCOURSES LINK -->
         <li class="nav-item px-2 py-1 mx-2"
           [routerLinkActive]="['active']"
@@ -104,8 +103,9 @@
       <small id="user-name" class="activity-menu-label" [innerHtml]="this.userService.user ? this.userService.user.username : 'Guest'"></small>
     </div>
 
+    <!-- LOGGED IN USER - PROFILE ICON WITH DROP DOWN -->
     <div
-      *ngIf="this.userService.user; else noDropdown"
+      *ngIf="this.userService.user; else anonUser"
       ngbDropdown
       >
       <div ngbDropdownToggle>
@@ -115,8 +115,18 @@
           [size]='36'
         >
       </div>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" ngbDropdownMenu>
+        <a class="dropdown-item" href="#" ngbDropdownItem>Action</a>
+        <a class="dropdown-item" href="#" ngbDropdownItem>Another action</a>
+        <!--
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" ngbDropdownItem>Something else here</a>
+        -->
+      </div>
     </div>
-    <ng-template #noDropdown>
+
+    <!-- ANON USER, WITH GENERIC USER ICON -->
+    <ng-template #anonUser>
       <img
         ngxGravatar
         [src]="this.gravatarMd5.gravatarMD5src('anon@webcourses.io')"
