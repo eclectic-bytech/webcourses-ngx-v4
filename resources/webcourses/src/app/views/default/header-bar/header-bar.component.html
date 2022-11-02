@@ -77,22 +77,10 @@
         </li>
       </ng-template>
 
-      <!-- <li class="nav-item dropdown" ngbDropdown>
-        <a   ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown" ngbDropdownMenu>
-          <a class="dropdown-item" href="#" ngbDropdownItem>Action</a>
-          <a class="dropdown-item" href="#" ngbDropdownItem>Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" ngbDropdownItem>Something else here</a>
-        </div>
-      </li> -->
-
     </ul>
 
 
-    <div class="text-lg-right" style="line-height: 1.2;">
+    <div class="text-lg-right px-3" style="line-height: 1.2;">
       <a
         [href]="this.userService.user ? '/user/dashboard/' : '/user/login'"
         [innerHtml]="this.userService.user ? 'Dashboard' : 'Sign&nbsp;in'"
@@ -108,6 +96,7 @@
       *ngIf="this.userService.user; else anonUser"
       ngbDropdown
       >
+
       <div ngbDropdownToggle>
         <img
           ngxGravatar
@@ -115,13 +104,31 @@
           [size]='36'
         >
       </div>
+
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" ngbDropdownMenu>
-        <a class="dropdown-item" href="#" ngbDropdownItem>Action</a>
-        <a class="dropdown-item" href="#" ngbDropdownItem>Another action</a>
-        <!--
+
+        <!-- USER MENU: MY COURSES-->
+        <a class="dropdown-item"
+          [routerLink]="['/user', 'webcourses']"
+          (click)="collapseMenus()"
+          ngbDropdownItem
+        >
+          <fa-icon [icon]="faGraduationCap" class="py-3 px-2 text-warning"></fa-icon>
+          My courses
+        </a>
+
+        <!-- MENU ITEMS DIVIDER -->
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#" ngbDropdownItem>Something else here</a>
-        -->
+
+        <!-- 'SIGN OUT' MENU OPTION: Uses button for proper cursor at hover -->
+        <button class="dropdown-item"
+          (click)="this.headerbarService.signOut()"
+          ngbDropdownItem
+        >
+          <fa-icon [icon]="faWrench" class="py-3 px-2 text-warning"></fa-icon>
+          Sign out
+        </button>
+
       </div>
     </div>
 
