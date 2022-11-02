@@ -6,7 +6,6 @@
   >
 
   <a class="navbar-brand" href="#" (click)="logoLink(theme)">
-    <!-- class="navbar-brand ml-2 ml-lg-0 mr-0 mr-lg-5 handy" -->
     <img
       id="logo"
       *ngIf="theme.logo"
@@ -20,13 +19,66 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="menuCollapsed">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown" ngbDropdown>
+
+      <!-- STANDARD MAIN NAVIGATION, SYSTEM BRANDED AND LINKED -->
+
+      <ng-container *ngIf="theme.publisher_id == 1; else publisherCustom">
+        <!-- HOME PAGE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/']" (click)="collapseMenus()">Home</a>
+        </li>
+
+        <!-- CATALOGUE / WEBCOURSES LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">Webcourses</a>
+        </li>
+
+        <!-- HELP PAGE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()">Help</a>
+        </li>
+      </ng-container>
+
+
+      <!-- PUBLISHER'S MAIN NAVIGATION, WITH EXIT LINK TO MAIN SYSTEM -->
+
+      <ng-template #publisherCustom>
+
+        <!-- CATALOGUE / WEBCOURSES LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/catalogue', 'publisher', theme.path]" (click)="collapseMenus()">{{ theme.label }} Webcourses</a>
+        </li>
+
+        <!-- HELP PAGE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/help', theme.path ]" (click)="collapseMenus()">Help</a>
+        </li>
+
+        <!-- EXIT TO MAIN CATALOGUE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/catalogue' ]" (click)="collapseMenus()">Exit {{ theme.label }}</a>
+        </li>
+      </ng-template>
+
+      <!-- <li class="nav-item dropdown" ngbDropdown>
         <a   ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
@@ -36,10 +88,8 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" ngbDropdownItem>Something else here</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+      </li> -->
+
     </ul>
 
 
