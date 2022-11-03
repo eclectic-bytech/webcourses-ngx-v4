@@ -42,3 +42,9 @@
     display: inline-block!important;
   }
 }
+
+@media(min-width: 992px) {
+  .alwaysVisible {
+    order: 1;
+  }
+}

@@ -16,70 +16,13 @@
     >
   </a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="menuCollapsed">
-    <ul class="navbar-nav mr-auto">
+  <div class="navbar navbar-expand px-0 alwaysVisible">
+    <!--
+      alwaysVisible class background:
+      https://stackoverflow.com/questions/59807203/bootstrap-4-how-to-prevent-collapsing-menu-from-collapsing-all-elements-in-the
 
-      <!-- STANDARD MAIN NAVIGATION, SYSTEM BRANDED AND LINKED -->
-
-      <ng-container *ngIf="theme.publisher_id == 1; else publisherCustom">
-        <!-- HOME PAGE LINK -->
-        <li class="nav-item px-2 py-1 mx-2"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact: true}"
-        >
-          <a class="nav-link" [routerLink]="['/']" (click)="collapseMenus()">Home</a>
-        </li>
-
-        <!-- CATALOGUE / WEBCOURSES LINK -->
-        <li class="nav-item px-2 py-1 mx-2"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact: true}"
-        >
-          <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">Webcourses</a>
-        </li>
-
-        <!-- HELP PAGE LINK -->
-        <li class="nav-item px-2 py-1 mx-2"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact: true}"
-        >
-          <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()">Help</a>
-        </li>
-      </ng-container>
-
-
-      <!-- PUBLISHER'S MAIN NAVIGATION, WITH EXIT LINK TO MAIN SYSTEM -->
-
-      <ng-template #publisherCustom>
-        <!-- CATALOGUE / WEBCOURSES LINK -->
-        <li class="nav-item px-2 py-1 mx-2"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact: true}"
-        >
-          <a class="nav-link" [routerLink]="['/catalogue', 'publisher', theme.path]" (click)="collapseMenus()">{{ theme.label }} Webcourses</a>
-        </li>
-
-        <!-- HELP PAGE LINK -->
-        <li class="nav-item px-2 py-1 mx-2"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact: true}"
-        >
-          <a class="nav-link" [routerLink]="['/help', theme.path ]" (click)="collapseMenus()">Help</a>
-        </li>
-
-        <!-- EXIT TO MAIN CATALOGUE LINK -->
-        <li class="nav-item px-2 py-1 mx-2"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact: true}"
-        >
-          <a class="nav-link" [routerLink]="['/catalogue' ]" (click)="collapseMenus()">Exit {{ theme.label }}</a>
-        </li>
-      </ng-template>
-
-    </ul>
-  </div>
-
-  <div class="navbar navbar-expand px-0">
+      User menu and login links are placed just after logo to prevent these collapsing into the burger menu when it was opened
+    -->
     <div class="pr-3 d-none d-sm-block" style="line-height: 1.2;">
       <a
         [href]="this.userService.user ? '/user/dashboard/' : '/user/login'"
@@ -152,6 +95,69 @@
         >
       </a>
     </ng-template>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="menuCollapsed">
+    <ul class="navbar-nav mr-auto">
+
+      <!-- STANDARD MAIN NAVIGATION, SYSTEM BRANDED AND LINKED -->
+
+      <ng-container *ngIf="theme.publisher_id == 1; else publisherCustom">
+        <!-- HOME PAGE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/']" (click)="collapseMenus()">Home</a>
+        </li>
+
+        <!-- CATALOGUE / WEBCOURSES LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">Webcourses</a>
+        </li>
+
+        <!-- HELP PAGE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()">Help</a>
+        </li>
+      </ng-container>
+
+
+      <!-- PUBLISHER'S MAIN NAVIGATION, WITH EXIT LINK TO MAIN SYSTEM -->
+
+      <ng-template #publisherCustom>
+        <!-- CATALOGUE / WEBCOURSES LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/catalogue', 'publisher', theme.path]" (click)="collapseMenus()">{{ theme.label }} Webcourses</a>
+        </li>
+
+        <!-- HELP PAGE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/help', theme.path ]" (click)="collapseMenus()">Help</a>
+        </li>
+
+        <!-- EXIT TO MAIN CATALOGUE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/catalogue' ]" (click)="collapseMenus()">Exit {{ theme.label }}</a>
+        </li>
+      </ng-template>
+
+    </ul>
   </div>
 
 </nav>
