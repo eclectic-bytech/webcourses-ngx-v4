@@ -15,9 +15,9 @@ export class CourseAccessBlockService {
   getDestinationAid(pid: number) {
     // let first = (firstAid) ? '&first=true' : ''
     return this.httpClient
-      .get<Number>(`
-        ${this.configService.params.api.route}/user/courses/resume/${pid}
-      `).pipe(aid => aid)
+      .get<{}>(`
+        ${this.configService.params.api.route}/user/course/${pid}/resume/
+      `).pipe(resume => resume)
   }
 
 }
