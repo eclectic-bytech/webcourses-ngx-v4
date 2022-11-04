@@ -13,6 +13,11 @@ echo -e "Installing NPM packages needed by Angular...";
 cd resources/webcourses/;
 npm install;
 
+echo -e "Creating symbolic link associations in publisher-files directory...";
+cd ../../public/webcourses/publisher-files;
+ln -s 1 webcourses_io;
+ln -s 2 acme;
+
 echo
 echo -e "Compiling webcourses (Angular framework)..."
 npm run build:prod;
