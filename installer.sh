@@ -20,9 +20,11 @@ echo
 echo -e "Compiling webcourses (Angular framework)...";
 npm run build:prod;
 
+cd ../../public/webcourses/publisher-files/
 echo -e "Creating symbolic link associations in publisher-files directory...";
-ln -s ./../../public/webcourses/publisher-files/1 ./../../public/webcourses/publisher-files/webcourses_io;
-ln -s ./../../public/webcourses/publisher-files/2 ./../../public/webcourses/publisher-files/acme;
+ln -s 1 webcourses_io;
+ln -s 2 acme;
+cd ../../resources/webcourses;
 
 echo
 echo "Running homestead make...";
@@ -30,11 +32,11 @@ vendor/bin/homestead make;
 
 echo
 echo -e "Try dos2unix on init.sh to prevent console line break errors...";
-dos2unix ../../init.sh;
+dos2unix ./../../init.sh;
 
-# echo
-# echo -e "\033[1;34mVagrant up...\033[0;37m";
-# vagrant up;
+echo
+echo -e "\033[1;34mVagrant up...\033[0;37m";
+vagrant up;
 
-# echo -e "\033[1;34mInit system via vagrant ssh command...";
-# vagrant ssh --command "~/code/init.sh";
+echo -e "\033[1;34mInit system via vagrant ssh command...";
+vagrant ssh --command "~/code/init.sh";
