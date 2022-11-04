@@ -50,6 +50,7 @@
   "user_course_resume":
     {
       "id": 1,
+      "pid": 1,
       "aid": "3964"
     },
   "catalogue": [
