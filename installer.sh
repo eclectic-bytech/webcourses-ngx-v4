@@ -13,9 +13,13 @@ echo -e "Installing NPM packages needed by Angular...";
 cd resources/webcourses/;
 npm install;
 
+echo -e "PWD!!!!!!!!!!!!!!!!!!!";
+pwd;
+
+
 echo -e "Creating symbolic link associations in publisher-files directory...";
-ln -s ../../public/webcourses/publisher-files/1 ../../public/webcourses/publisher-files/webcourses_io;
-ln -s ../../public/webcourses/publisher-files/2 ../../public/webcourses/publisher-files/acme;
+ln -s ./public/webcourses/publisher-files/1 ../../public/webcourses/publisher-files/webcourses_io;
+ln -s ./public/webcourses/publisher-files/2 ../../public/webcourses/publisher-files/acme;
 
 echo
 echo -e "Compiling webcourses (Angular framework)...";
@@ -28,7 +32,7 @@ vendor/bin/homestead make;
 
 echo
 echo -e "Try dos2unix on init.sh to prevent console line break errors...";
-dos2unix init.sh;
+dos2unix ./init.sh;
 
 # echo
 # echo -e "\033[1;34mVagrant up...\033[0;37m";
