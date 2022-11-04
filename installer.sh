@@ -13,9 +13,6 @@ echo -e "Installing NPM packages needed by Angular...";
 cd resources/webcourses/;
 npm install;
 
-echo -e "PWD!!!!!!!!!!!!!!!!!!!";
-pwd;
-
 echo
 echo -e "Compiling webcourses (Angular framework)...";
 npm run build:prod;
@@ -24,7 +21,7 @@ cd ../../public/webcourses/publisher-files/
 echo -e "Creating symbolic link associations in publisher-files directory...";
 ln -s 1 webcourses_io;
 ln -s 2 acme;
-cd ../../resources/webcourses;
+cd ../../../resources/webcourses;
 
 echo
 echo "Running homestead make...";
