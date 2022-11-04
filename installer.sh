@@ -1,4 +1,4 @@
-echo -e "\033[1;35mWNGX Installer v1.0a\033[1;34m";
+echo -e "\033[1;35mWNGX Installer v1.1.0a\033[1;34m";
 
 echo -e "Running Composer...";
 composer install;
@@ -14,21 +14,25 @@ cd resources/webcourses/;
 npm install;
 
 echo -e "Creating symbolic link associations in publisher-files directory...";
-cd ../../public/webcourses/publisher-files;
-ln -s 1 webcourses_io;
-ln -s 2 acme;
+ln -s ../../public/webcourses/publisher-files/1 ../../public/webcourses/publisher-files/webcourses_io;
+ln -s ../../public/webcourses/publisher-files/2 ../../public/webcourses/publisher-files/acme;
 
 echo
-echo -e "Compiling webcourses (Angular framework)..."
+echo -e "Compiling webcourses (Angular framework)...";
 npm run build:prod;
 
-cd ../../;
+# cd ../../;
 
 echo "Running homestead make...";
 vendor/bin/homestead make;
 
-echo -e "\033[1;34mVagrant up...\033[0;37m";
-vagrant up;
+echo
+echo -e "Try dos2unix on init.sh to prevent console line break errors...";
+dos2unix init.sh;
 
-echo -e "\033[1;34mInit system via vagrant ssh command...";
-vagrant ssh --command "~/code/init.sh";
+# echo
+# echo -e "\033[1;34mVagrant up...\033[0;37m";
+# vagrant up;
+
+# echo -e "\033[1;34mInit system via vagrant ssh command...";
+# vagrant ssh --command "~/code/init.sh";
