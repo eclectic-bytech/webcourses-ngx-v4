@@ -47,6 +47,11 @@
       ],
       "two_factor_enabled": false
     },
+  "user_course_resume":
+    {
+      "id": 1,
+      "aid": "3964"
+    },
   "catalogue": [
     {
       "id": 1,
