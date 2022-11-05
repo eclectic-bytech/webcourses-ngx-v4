@@ -47,6 +47,7 @@
       ],
       "two_factor_enabled": false
     },
+  "post_user_name": {},
   "user_course_resume":
     {
       "id": 1,

@@ -1,5 +1,6 @@
 {
   "/v4/user/profile": "/user",
+  "/v4/user/profile/user_name": "/post_user_name",
   "/v4/user/dashboard": "/user",
   "/v4/user/course/:id/resume": "/user_course_resume",
   "/v4/catalogue": "/catalogue",
