@@ -56,7 +56,7 @@ export class ActiveModeService {
     ) {
       extractedAnswer = this.activityForm.value.answer
     } else {
-      extractedAnswer = 42 // info and custom types
+      extractedAnswer = JSON.stringify(42) // info and custom types
     }
 
     return extractedAnswer

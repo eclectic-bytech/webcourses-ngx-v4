@@ -1,207 +1,163 @@
 <nav
   id="header-menu"
-  class="navbar navbar-expand-lg bg-dark"
+  class="navbar navbar-expand-lg navbar-light justify-content-between"
   [ngClass]="theme.bootstrap_nav"
 >
-  <button class="navbar-toggler" type="button"
-    (click)="menuCollapsed = !menuCollapsed"
-    data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-    >
+
+  <button (click)="menuCollapsed = !menuCollapsed" class="navbar-toggler p-1 p-sm-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <img
-    *ngIf="theme.logo"
-    (click)="logoLink(theme)"
-    [src]="this.sanit.bypassSecurityTrustResourceUrl(theme.logo)"
-    id="logo"
-    class="navbar-brand ml-2 ml-lg-0 mr-0 mr-lg-5 handy"
-  >
+  <a class="navbar-brand ml-xs-3 ml-md-5 ml-lg-0" (click)="logoLink(theme)">
+    <img
+      id="logo"
+      *ngIf="theme.logo"
+      [src]="this.sanit.bypassSecurityTrustResourceUrl(theme.logo)"
+    >
+  </a>
 
-  <button class="navbar-toggler" type="button" (click)="menuCollapsed2 = !menuCollapsed2" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-    <img ngxGravatar [src]="this.gravatarMd5.gravatarMD5src(this.userService.user ? this.userService.user.email : 'anon@webcourses.io')" [size]='36'>
-  </button>
+  <div class="navbar navbar-expand px-0 alwaysVisible">
+    <!--
+      alwaysVisible class background:
+      https://stackoverflow.com/questions/59807203/bootstrap-4-how-to-prevent-collapsing-menu-from-collapsing-all-elements-in-the
+
+      User menu and login links are placed just after logo to prevent these collapsing into the burger menu when it was opened
+    -->
+    <div class="pr-3 d-none d-sm-block" style="line-height: 1.2;">
+      <a
+        [href]="this.userService.user ? '/user/dashboard/' : '/user/login'"
+        [innerHtml]="this.userService.user ? 'Dashboard' : 'Sign&nbsp;in'"
+        id="signIn-dashboard"
+        class="nav-link handy"
+      >
+      </a>
+      <small id="user-name" class="activity-menu-label" [innerHtml]="this.userService.user ? this.userService.user.username : 'Guest'"></small>
+    </div>
+
+    <!-- LOGGED IN USER - PROFILE ICON WITH DROP DOWN -->
+    <div
+      *ngIf="this.userService.user; else anonUser"
+      ngbDropdown
+      >
+
+      <button class="btn px-0 px-sm-2" ngbDropdownToggle>
+        <img
+          ngxGravatar
+          [src]="this.gravatarMd5.gravatarMD5src(this.userService.user.email)"
+          [size]='36'
+        >
+      </button>
+
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" ngbDropdownMenu>
+
+        <!-- USER MENU: MY COURSES-->
+        <a class="dropdown-item py-2"
+          [routerLink]="['/user', 'webcourses']"
+          (click)="collapseMenus()"
+          ngbDropdownItem
+        >
+          <fa-icon [icon]="faGraduationCap" class="py-3 pr-2 text-warning"></fa-icon>
+          My courses
+        </a>
+
+        <!-- USER MENU: DASHBOARD. Needed for XS displays. -->
+        <a class="dropdown-item py-2"
+          [href]="'/user/dashboard'"
+          (click)="collapseMenus()"
+          ngbDropdownItem
+        >
+          <fa-icon [icon]="faWrench" class="py-3 pr-2 text-warning"></fa-icon>
+          Dashboard
+        </a>
+
+        <!-- MENU ITEMS DIVIDER -->
+        <div class="dropdown-divider"></div>
+
+        <!-- 'SIGN OUT' MENU OPTION: Uses button for proper cursor at hover -->
+        <button class="dropdown-item"
+          (click)="this.headerbarService.signOut()"
+          ngbDropdownItem
+        >
+          <fa-icon [icon]="faSignOutAlt" class="py-3 pr-2 text-warning"></fa-icon>
+          Sign out
+        </button>
+
+      </div>
+    </div>
+
+    <!-- ANON USER, WITH GENERIC USER ICON -->
+    <ng-template #anonUser>
+      <a [href]="'/user/login'">
+        <img
+          ngxGravatar
+          [src]="this.gravatarMd5.gravatarMD5src('anon@webcourses.io')"
+          [size]='36'
+        >
+      </a>
+    </ng-template>
+  </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="menuCollapsed">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mr-auto">
 
-      <ng-container *ngIf="theme.path == 'default'; else PublisherHome">
-        <li
-          [routerLink]="['/']"
+      <!-- STANDARD MAIN NAVIGATION, SYSTEM BRANDED AND LINKED -->
+
+      <ng-container *ngIf="theme.publisher_id == 1; else publisherCustom">
+        <!-- HOME PAGE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{exact: true}"
-          class="nav-item handy px-2 py-1 mx-0 mx-lg-2 mt-3 mt-lg-0"
-          >
-          <a class="nav-link text-light" (click)="collapseMenus()">Home</a>
-        </li>
-        <li
-          [routerLink]="['/catalogue']"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact: true}"
-          class="nav-item handy px-2 py-1 mx-0 mx-lg-2 mt-3 mt-lg-0"
-          >
-          <a class="nav-link text-light" (click)="collapseMenus()">Web Courses</a>
-        </li>
-        <li
-          [routerLink]="['/help']"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact: true}"
-          class="nav-item handy px-2 py-1 mx-0 mx-lg-2 mt-3 mt-lg-0"
-          >
-          <a class="nav-link text-light" (click)="collapseMenus()">Help</a>
+        >
+          <a class="nav-link" [routerLink]="['/']" (click)="collapseMenus()">Home</a>
         </li>
 
-        <!-- <li
-          [routerLink]="['/catalogue', 'publishers']"
+        <!-- CATALOGUE / WEBCOURSES LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{exact: true}"
-          class="nav-item handy px-2 py-1 mx-0 mx-lg-2"
-          >
-          <a class="nav-link text-light" (click)="collapseMenus()">Publishers</a>
+        >
+          <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">Webcourses</a>
         </li>
-        <li
-          [routerLink]="['/about']"
+
+        <!-- HELP PAGE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{exact: true}"
-          class="nav-item handy px-2 py-1 mx-0 mx-lg-2"
-          >
-          <a class="nav-link text-light" (click)="collapseMenus()">About us</a>
-        </li> -->
+        >
+          <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()">Help</a>
+        </li>
       </ng-container>
 
-      <ng-template #PublisherHome>
-        <li
-          [routerLink]="['/catalogue', 'publisher', theme.path]"
+
+      <!-- PUBLISHER'S MAIN NAVIGATION, WITH EXIT LINK TO MAIN SYSTEM -->
+
+      <ng-template #publisherCustom>
+        <!-- CATALOGUE / WEBCOURSES LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{exact: true}"
-          class="nav-item handy px-2 py-1 mx-2 mt-3 mt-lg-0"
-          >
-          <a class="nav-link" (click)="collapseMenus()">{{ theme.label }} Web Courses</a>
+        >
+          <a class="nav-link" [routerLink]="['/catalogue', 'publisher', theme.path]" (click)="collapseMenus()">{{ theme.label }} Webcourses</a>
         </li>
-        <li
-          [routerLink]="['/help', (theme.path != 'default') ? theme.path : '']"
+
+        <!-- HELP PAGE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{exact: true}"
-          class="nav-item handy px-2 py-1 mx-0 mx-lg-2 mt-3 mt-lg-0"
-          >
-          <a class="nav-link" (click)="collapseMenus()">Help</a>
+        >
+          <a class="nav-link" [routerLink]="['/help', theme.path ]" (click)="collapseMenus()">Help</a>
         </li>
-        <li [routerLink]="'/catalogue'" class="nav-item handy px-2 py-1 mx-2">
-          <a class="nav-link" style="opacity:.52" (click)="collapseMenus()">Exit {{ theme.label }}</a>
+
+        <!-- EXIT TO MAIN CATALOGUE LINK -->
+        <li class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/catalogue' ]" (click)="collapseMenus()">Exit {{ theme.label }}</a>
         </li>
       </ng-template>
 
     </ul>
-  </div>
-
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent2" [ngbCollapse]="menuCollapsed2">
-    <ul class="navbar-nav" style="min-width:190px">
-      <li
-        *ngIf="this.userService.user"
-        [routerLink]="['/user', 'webcourses']"
-        (click)="collapseMenus()"
-        class="nav-item btn-group d-xs-block d-lg-none text-light handy mt-4 mb-2 justify-content-end">
-        My Courses
-      </li>
-      <!-- [routerLink]="['/publisher', this.user.publisherId, 'webcourses']" -->
-      <li
-        [routerLink]="['/admin', 'publisher', 'dashboard']"
-        (click)="collapseMenus()"
-        class="nav-item btn-group d-xs-block d-lg-none text-light handy my-2 justify-content-end">
-        Publisher
-      </li>
-      <li
-        [routerLink]="['/admin', 'dashboard']"
-        (click)="collapseMenus()"
-        class="nav-item btn-group d-xs-block d-lg-none text-light handy my-2 justify-content-end">
-        Admin
-      </li>
-      <li class="nav-item btn-group mt-3 mt-lg-0 justify-content-end">
-        <img ngxGravatar
-          [src]="this.gravatarMd5.gravatarMD5src(this.userService.user ? this.userService.user.email : 'anon@webcourses.io')"
-          [size]='36'
-          class="mr-2 float-left"
-        >
-        <div class="float-left">
-          <a
-            [href]="this.userService.user ? '/user/dashboard/' : '/user/login'"
-            [innerHtml]="this.userService.user ? 'Dashboard' : 'Sign in'"
-            id="signIn-dashboard"
-            class="nav-link handy"
-          >
-          </a>
-
-          <div id="user-name">
-            <small class="activity-menu-label" [innerHtml]="this.userService.user ? this.userService.user.email : 'Guest'"></small>
-          </div>
-        </div>
-      </li>
-
-      <div *ngIf="this.userService.user"
-        ngbDropdown
-        role="group"
-        aria-label="User Menu"
-        placement="bottom-right"
-        display="dynamic"
-        class="align-self-center"
-      >
-        <div id="dropdown-icon">
-          <button ngbDropdownToggle
-            class="btn dropdown-toggle-split"
-            id="headbar-user-dropdown"
-            >
-          </button>
-        </div>
-
-        <div class="dropdown-menu mt-2" ngbDropdownMenu>
-
-          <button
-            ngbDropdownItem
-            [routerLink]="['/user', 'webcourses']"
-            (click)="collapseMenus()"
-            class="nav-item handy p-3"
-            >
-            <fa-icon [icon]="faGraduationCap" class="py-3 px-2 text-warning"></fa-icon>
-            My Courses
-          </button>
-
-          <!-- [routerLink]="['/publisher', this.user.publisherId, 'webcourses']" -->
-          <button
-            ngbDropdownItem
-            [routerLink]="['/admin/', 'publisher', 'dashboard']"
-            [routerLinkActive]="['active2']"
-            (click)="collapseMenus()"
-            class="nav-item handy p-3"
-            >
-            <fa-icon [icon]="faGem" class="py-3 px-2 text-warning"></fa-icon>
-            Publisher
-          </button>
-
-          <button
-            ngbDropdownItem
-            [routerLink]="['/admin', 'dashboard']"
-            [routerLinkActive]="['active2']"
-            (click)="collapseMenus()"
-            class="nav-item handy p-3"
-            >
-            <fa-icon [icon]="faWrench" class="py-3 px-2 text-warning"></fa-icon>
-            Admin
-          </button>
-
-          <button
-            ngbDropdownItem
-            (click)="this.headerbarService.signOut()"
-            class="nav-item handy p-3"
-            >
-            <fa-icon [icon]="faWrench" class="py-3 px-2 text-warning"></fa-icon>
-            Sign out
-          </button>
-        </div>
-      </div>
-
-    </ul>
-
   </div>
 
 </nav>

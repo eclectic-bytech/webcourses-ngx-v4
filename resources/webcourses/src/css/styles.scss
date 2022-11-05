@@ -8,6 +8,11 @@ body, html {
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
+// Added to fix issue #101: modal covered by backdrop due to parent with fixed positioning
+.modal-open .modal {
+  z-index: 1100!important;
+}
+
 // Browser Update. A script in Angular's index.html for 'outdated browser' user notification
 .buorg {
   background-color:lightpink!important;

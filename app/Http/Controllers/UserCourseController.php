@@ -25,13 +25,14 @@ class UserCourseController extends Controller
     public function start_aid($pid) {
         // Check if user has started work on the course
         $answer = UserAnswer::where('progress_id', $pid)->latest()->first();
-
+        $resume['pid'] = (int)$pid;
         if (is_null($answer)) {
             $cid = json_decode(UserProgress::where('id', $pid)->first())->course_id;
-            return CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
+            $resume['aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
         } else {
-            return $answer['activity_id'];
+            $resume['aid'] = $answer['activity_id'];
         }
+        return $resume;
     }
 
 }

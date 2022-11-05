@@ -2,6 +2,8 @@ import { Theme } from "./theme.model"
 
 export class Publisher {
   public id: number
+  public id_alias: string
+  public owner_uid: number
   public name: string
   public website: string
   public contact_fname: string
@@ -11,6 +13,7 @@ export class Publisher {
   public country: string
   public province: string
   public city: string
+  public settings: string
   public theme: Theme
   public created_at: string
   public updated_at: string

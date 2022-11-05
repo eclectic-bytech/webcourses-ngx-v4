@@ -2,6 +2,11 @@
   max-height: 3.5rem;
 }
 
+// Bootstrap 4 override
+.navbar {
+  padding: .3rem 1rem;
+}
+
 // Force hidding of ngbDropdownToggle user menu (Bootstrap classes get over-ridden)
 #dropdown-icon {
   display: none!important;
@@ -40,5 +45,11 @@
 @media (min-width: 992px) {
   #dropdown-icon {
     display: inline-block!important;
+  }
+}
+
+@media(min-width: 992px) {
+  .alwaysVisible {
+    order: 1;
   }
 }
