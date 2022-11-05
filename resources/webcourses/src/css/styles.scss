@@ -8,6 +8,10 @@ body, html {
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
+.modal-open .modal {
+  z-index: 1100!important;
+}
+
 // Browser Update. A script in Angular's index.html for 'outdated browser' user notification
 .buorg {
   background-color:lightpink!important;
