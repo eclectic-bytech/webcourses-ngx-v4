@@ -465,5 +465,32 @@
         "updated_at": null
       }
     }
+  ],
+  "webcourse_activity": [
+    {
+      "id": 3964,
+      "prequestion": "<img src=\"publisher-files/webcourses_io/courses/1/images/logo.svg\" height=\"100\" alt=\"Open WebCourses Logo\" class=\"d-block mx-auto mt-5\"><hr><div class=\"h3 my-4 text-center\">  <p>An open source web course platform</p>  <p class=\"text-uppercase mt-2\">Overview</p></div><p class=\"mb-3 mt-5 text-center text-secondary\">  <small>Join in <a href=\"https://www.webcourses.io/funding\" target=\"_blank\">partnership or sponsor</a> Open WebCourses.</small></p><p class=\"mb-3 mt-5 text-center text-uppercase text-secondary\">  Partners and sponsors  <div class=\"d-block text-center\">    <a href=\"https://www.eclectic.ca\" target=\"_blank\">      <img src=\"publisher-files/webcourses_io/courses/1/images/eclectic_logo.svg\" alt=\"Eclectic Communications\" height=\"40\" class=\"img-responsive mx-3\">    </a>    <a href=\"https://www.bytech.ca/\" target=\"_blank\">      <img src=\"publisher-files/webcourses_io/courses/1/images/bytech_logo.svg\" alt=\"Bytech\" height=\"40\" class=\"img-responsive mx-3\">    </a>  </div></p>",
+      "question": null,
+      "assess_text": null,
+      "after_word": null,
+      "created_at": "2021-06-22T10:17:54.000000Z",
+      "updated_at": "2021-06-22T11:09:43.000000Z",
+      "meta": {
+        "activity_id": 3964,
+        "activity_type": "info",
+        "course_id": 1,
+        "build_id": 1,
+        "chapter_id": 309,
+        "seq": 0,
+        "marked": 0,
+        "cont": 0,
+        "default_answer": 0,
+        "style": "",
+        "demo": 0,
+        "created_at": null,
+        "updated_at": null
+      },
+      "answers": []
+    }
   ]
 }
