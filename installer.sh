@@ -1,21 +1,21 @@
-# echo -e "\033[1;35mWNGX Installer v1.1.0a\033[1;34m";
+echo -e "\033[1;35mWNGX Installer v1.1.0a\033[1;34m";
 
-# echo -e "Running Composer...";
-# composer install;
+echo -e "Running Composer...";
+composer install;
 
-# echo -e "Creating a copy of .env file...";
-# cp .env.example .env;
+echo -e "Creating a copy of .env file...";
+cp .env.example .env;
 
-# echo -e "Installing NPM packages needed by Vue...";
-# npm install;
+echo -e "Installing NPM packages needed by Vue...";
+npm install;
 
 echo -e "Installing NPM packages needed by Angular...";
 cd resources/webcourses/;
-# npm install;
+npm install;
 
-# echo
-# echo -e "Compiling webcourses (Angular framework)...";
-# npm run build:prod;
+echo
+echo -e "Compiling webcourses (Angular framework)...";
+npm run build:prod;
 
 cd ../../
 
