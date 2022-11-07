@@ -62,7 +62,7 @@ Route::group(['prefix' => 'v4'], function() {
     // Paths grouped as /v4/user
     Route::group(['prefix' => 'user', 'auth:sanctum' => 'verified'], function() {
 
-        Route::get('/redirect',[UserRedirectController::class, 'user_login_redirect']);
+        Route::get('/redirect', [UserRedirectController::class, 'user_login_redirect']);
 
         // Paths grouped as /v4/user/profile
         Route::group(['prefix' => 'profile'], function() {
