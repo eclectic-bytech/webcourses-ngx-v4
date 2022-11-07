@@ -17,11 +17,7 @@ echo
 echo -e "Compiling webcourses (Angular framework)...";
 npm run build:prod;
 
-cd ../../public/webcourses/publisher-files/
-echo -e "Creating symbolic link associations in publisher-files directory...";
-ln -s 1 webcourses_io;
-ln -s 2 acme;
-cd ../../../;
+cd ../../
 
 echo
 echo "Running homestead make...";
