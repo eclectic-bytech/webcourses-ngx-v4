@@ -8,7 +8,7 @@
 </ng-template>
 
 <ng-template [ngIf]="status === 'failedUpdate'">
-  <div class="modal-body">
+  <div class="modal-body" @fadeInOut>
     <div class="my-3 lead text-center">
       <span class="text-danger font-weight-bold">Update failed.</span><br>
       Rebooting session...
@@ -63,7 +63,7 @@
 </ng-template>
 
 <ng-template [ngIf]="status === 'saved'">
-  <div class="modal-body">
+  <div class="modal-body" @fadeInOut>
     <div class="my-3 lead text-center">
       <span class="text-success font-weight-bold">Your profile was updated successfully.</span><br>
       Thank you, <span class="text-capitalize font-weight-bold">{{ user.first_name }}</span>.
