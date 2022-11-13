@@ -13,5 +13,7 @@
   "/v4/catalogue/publisher/2": "/catalogue_by_publisher_2",
   "/v4/webcourse/activities/:id": "/webcourse_activity",
   "/v4/webcourse/activities/3964/user_answer": "/post_user_answer",
+  "/v4/webcourse/activities/4764/user_answer": "/post_user_answer",
+  "/v4/webcourse/activities/4765/user_answer": "/post_user_answer",
   "/v4/webcourse/1/chapters": "/webcourse_1_chapters"
 }

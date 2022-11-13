@@ -492,6 +492,105 @@
         "updated_at": null
       },
       "answers": []
+    },
+    {
+      "id": 4764,
+      "prequestion": "<p class=\"h4 my-3\">Engaging, interactive user experience</p><div class=\"card-columns\">  <div class=\"card\">    <!-- <img class=\"card-img-top\" src=\"publisher-files/1/courses/1/images/4764.png\" alt=\"Card image cap\"> -->    <div class=\"card-body\">      <h5 class=\"card-title\">Checkbox</h5>      <p class=\"card-text\">Multiple choice. No selection required, or, select one through all options.</p>      <p class=\"card-text\"><small class=\"text-muted\">Category: Multiple choice</small></p>    </div>  </div>  <div class=\"card\">    <!-- <img class=\"card-img-top\" src=\"publisher-files/1/courses/1/images/4764.png\" alt=\"Card image cap\"> -->    <div class=\"card-body\">      <h5 class=\"card-title\">Radio Button</h5>      <p class=\"card-text\">Multiple choice. Requires one selection. Changing selection automatically unchecks previous.</p>      <p class=\"card-text\"><small class=\"text-muted\">Category: Multiple choice</small></p>    </div>  </div>  <div class=\"card\">    <!-- <img class=\"card-img-top\" src=\"publisher-files/1/courses/1/images/4764.png\" alt=\"Card image cap\"> -->    <div class=\"card-body\">      <h5 class=\"card-title\">Click</h5>      <p class=\"card-text\">        Has features of checkbox activity type, with customised presentation:        it replaces checkboxes' traditional selection list with cards, images, or other selectable items.</p>      <p class=\"card-text\"><small class=\"text-muted\">Category: Multiple choice</small></p>    </div>  </div>  <div class=\"card\">    <!-- <img class=\"card-img-top\" src=\"publisher-files/1/courses/1/images/4764.png\" alt=\"Card image cap\"> -->    <div class=\"card-body\">      <h5 class=\"card-title\">Click 2</h5>      <p class=\"card-text\">        With Click 2, when a selectable item is clicked, the option rotates to another.         </p>      <p class=\"card-text\"><small class=\"text-muted\">Category: Multiple choice array</small></p>    </div>  </div>  <div class=\"card\">    <!-- <img class=\"card-img-top\" src=\"publisher-files/1/courses/1/images/4764.png\" alt=\"Card image cap\"> -->    <div class=\"card-body\">      <h5 class=\"card-title\">Drag and Drop</h5>      <p class=\"card-text\">        Re-arrange items into a sequence by dragging and dropping them.        </p>      <p class=\"card-text\"><small class=\"text-muted\">Category: Sequences</small></p>    </div>  </div>  <div class=\"card\">    <!-- <img class=\"card-img-top\" src=\"publisher-files/1/courses/1/images/4764.png\" alt=\"Card image cap\"> -->    <div class=\"card-body\">      <h5 class=\"card-title\">Drag and Drop Match</h5>      <p class=\"card-text\">        Pair up items across rows or columns.        </p>      <p class=\"card-text\"><small class=\"text-muted\">Category: Other</small></p>    </div>  </div>  <div class=\"card\">    <!-- <img class=\"card-img-top\" src=\"publisher-files/1/courses/1/images/4764.png\" alt=\"Card image cap\"> -->    <div class=\"card-body\">      <h5 class=\"card-title\">Informational</h5>      <p class=\"card-text\">        The only activity type that does not require interaction. Student reads the text and marks the activity as read.        </p>      <p class=\"card-text\"><small class=\"text-muted\">Category: Informational</small></p>    </div>  </div>  <div class=\"card\">    <!-- <img class=\"card-img-top\" src=\"publisher-files/1/courses/1/images/4764.png\" alt=\"Card image cap\"> -->    <div class=\"card-body\">      <h5 class=\"card-title\">Text</h5>      <p class=\"card-text\">        Captures user input on a single-line text box.      </p>      <p class=\"card-text\"><small class=\"text-muted\">Category: Short answer</small></p>    </div>  </div>  <div class=\"card\">    <!-- <img class=\"card-img-top\" src=\"publisher-files/1/courses/1/images/4764.png\" alt=\"Card image cap\"> -->    <div class=\"card-body\">      <h5 class=\"card-title\">Textarea</h5>      <p class=\"card-text\">        Captures user input in a multi-line text box.      </p>      <p class=\"card-text\"><small class=\"text-muted\">Category: Long answer</small></p>    </div>  </div>  <div class=\"card\">    <!-- <img class=\"card-img-top\" src=\"publisher-files/1/courses/1/images/4764.png\" alt=\"Card image cap\"> -->    <div class=\"card-body\">      <h5 class=\"card-title\">Custom type</h5>      <p class=\"card-text\">        Increase variety by embedding any type of activity from a library or other source.      </p>      <p class=\"card-text\"><small class=\"text-muted\">Category: Custom</small></p>    </div>  </div></div><p>Open WebCourses does not rely on difficult to maintain and passive-experience videos for content delivery.</p>",
+      "question": null,
+      "assess_text": null,
+      "after_word": null,
+      "created_at": "2021-06-22T11:26:13.000000Z",
+      "updated_at": "2021-06-25T05:09:10.000000Z",
+      "meta": {
+        "activity_id": 4764,
+        "activity_type": "info",
+        "course_id": 1,
+        "build_id": 1,
+        "chapter_id": 309,
+        "seq": 1,
+        "marked": 0,
+        "cont": 0,
+        "default_answer": 0,
+        "style": "",
+        "demo": 0,
+        "created_at": "2021-06-22T16:25:00.000000Z",
+        "updated_at": null
+      },
+      "answers": []
+    },
+    {
+      "id": 4765,
+      "prequestion": "<p>Let us start with a multiple choice question that has one correct answer.</p>",
+      "question": "Select the planet that is closest to our sun.",
+      "assess_text": null,
+      "after_word": null,
+      "created_at": "2021-06-25T11:14:23.000000Z",
+      "updated_at": "2021-06-28T11:20:45.000000Z",
+      "meta": {
+        "activity_id": 4765,
+        "activity_type": "click",
+        "course_id": 1,
+        "build_id": 1,
+        "chapter_id": 322,
+        "seq": 3,
+        "marked": 1,
+        "cont": 0,
+        "default_answer": 0,
+        "style": "image",
+        "demo": 0,
+        "created_at": "2021-06-25T16:12:18.000000Z",
+        "updated_at": "2021-06-28T16:17:44.000000Z"
+      },
+      "answers": [
+        {
+          "id": 1,
+          "activity_id": 4765,
+          "slot": 1,
+          "caption": {
+            "src": "publisher-files/1/courses/1/images/planets/mercury.png",
+            "alt": "Mercury"
+          },
+          "correct": 1,
+          "created_at": "2021-06-25T12:51:36.000000Z",
+          "updated_at": "2021-06-28T04:25:55.000000Z"
+        },
+        {
+          "id": 2,
+          "activity_id": 4765,
+          "slot": 2,
+          "caption": {
+            "src": "publisher-files/1/courses/1/images/planets/earth.png",
+            "alt": "Earth"
+          },
+          "correct": 0,
+          "created_at": "2021-06-25T13:14:38.000000Z",
+          "updated_at": "2021-06-28T04:25:57.000000Z"
+        },
+        {
+          "id": 3,
+          "activity_id": 4765,
+          "slot": 3,
+          "caption": {
+            "src": "publisher-files/1/courses/1/images/planets/mars.png",
+            "alt": "Mars"
+          },
+          "correct": 0,
+          "created_at": "2021-06-25T13:16:38.000000Z",
+          "updated_at": "2021-06-28T04:25:57.000000Z"
+        },
+        {
+          "id": 4,
+          "activity_id": 4765,
+          "slot": 4,
+          "caption": {
+            "src": "publisher-files/1/courses/1/images/planets/venus.png",
+            "alt": "Venus"
+          },
+          "correct": 0,
+          "created_at": "2021-06-26T10:37:58.000000Z",
+          "updated_at": "2021-06-28T04:25:56.000000Z"
+        }
+      ]
     }
   ],
   "post_user_answer": {},
