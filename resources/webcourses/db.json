@@ -47,8 +47,8 @@
     "two_factor_enabled": false
   },
   "post_user_name": {
-    "first_name": "StarFox",
-    "last_name": "One"
+    "first_name": "slasdas",
+    "last_name": "asdasdsa"
   },
   "user_course_resume": {
     "id": 1,
@@ -591,6 +591,31 @@
           "updated_at": "2021-06-28T04:25:56.000000Z"
         }
       ]
+    },
+    {
+      "id": 4766,
+      "prequestion": "<p class=\"h4 my-3\">Learn through interaction</p><p>In this chapter you'll experience the activity types available in Open WebCourses. Each can be customised to varying degrees through custom styles. Today we'll use the defaults and no customisations to give you an overview of what you can expect out of the box.</p>",
+      "question": null,
+      "assess_text": null,
+      "after_word": null,
+      "created_at": "2021-06-28T11:20:44.000000Z",
+      "updated_at": "2021-06-28T11:20:45.000000Z",
+      "meta": {
+        "activity_id": 4766,
+        "activity_type": "info",
+        "course_id": 1,
+        "build_id": 1,
+        "chapter_id": 322,
+        "seq": 2,
+        "marked": 1,
+        "cont": 0,
+        "default_answer": 0,
+        "style": null,
+        "demo": 0,
+        "created_at": "2021-06-28T20:27:23.000000Z",
+        "updated_at": null
+      },
+      "answers": []
     }
   ],
   "post_user_answer": {},
@@ -853,6 +878,230 @@
           "demo": 0,
           "created_at": "2021-06-29T18:36:13.000000Z",
           "updated_at": "2021-07-13T16:24:22.000000Z"
+        }
+      ]
+    }
+  ],
+  "webcourse_chapter": [
+    {
+      "id": 309,
+      "label": "Introduction",
+      "syllabus": [
+        {
+          "activity_id": 3964,
+          "activity_type": "info",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 309,
+          "seq": 0,
+          "marked": 0,
+          "cont": 0,
+          "default_answer": 0,
+          "style": "",
+          "demo": 0,
+          "created_at": null,
+          "updated_at": null
+        },
+        {
+          "activity_id": 4764,
+          "activity_type": "info",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 309,
+          "seq": 1,
+          "marked": 0,
+          "cont": 0,
+          "default_answer": 0,
+          "style": "",
+          "demo": 0,
+          "created_at": "2021-06-22T16:25:00.000000Z",
+          "updated_at": null
+        }
+      ]
+    },
+    {
+      "id": 322,
+      "label": "Learn through interaction",
+      "syllabus": [
+        {
+          "activity_id": 4765,
+          "activity_type": "click",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 3,
+          "marked": 1,
+          "cont": 0,
+          "default_answer": 0,
+          "style": "image",
+          "demo": 0,
+          "created_at": "2021-06-25T16:12:18.000000Z",
+          "updated_at": "2021-06-28T16:17:44.000000Z"
+        },
+        {
+          "activity_id": 4766,
+          "activity_type": "info",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 2,
+          "marked": 1,
+          "cont": 0,
+          "default_answer": 0,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-28T20:27:23.000000Z",
+          "updated_at": null
+        },
+        {
+          "activity_id": 4767,
+          "activity_type": "radio",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 4,
+          "marked": 1,
+          "cont": 1,
+          "default_answer": 0,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-28T20:41:06.000000Z",
+          "updated_at": "2021-06-28T16:20:47.000000Z"
+        },
+        {
+          "activity_id": 4768,
+          "activity_type": "click",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 5,
+          "marked": 1,
+          "cont": 1,
+          "default_answer": 0,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-28T21:03:17.000000Z",
+          "updated_at": null
+        },
+        {
+          "activity_id": 4769,
+          "activity_type": "info",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 6,
+          "marked": 1,
+          "cont": 1,
+          "default_answer": 0,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-28T21:50:18.000000Z",
+          "updated_at": null
+        },
+        {
+          "activity_id": 4770,
+          "activity_type": "radio",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 7,
+          "marked": 0,
+          "cont": 0,
+          "default_answer": 0,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-29T12:55:14.000000Z",
+          "updated_at": "2021-07-18T12:20:09.000000Z"
+        },
+        {
+          "activity_id": 4771,
+          "activity_type": "text",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 8,
+          "marked": 1,
+          "cont": 1,
+          "default_answer": 0,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-29T13:18:05.000000Z",
+          "updated_at": null
+        },
+        {
+          "activity_id": 4772,
+          "activity_type": "textarea",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 9,
+          "marked": 1,
+          "cont": 0,
+          "default_answer": 0,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-29T14:45:30.000000Z",
+          "updated_at": null
+        },
+        {
+          "activity_id": 4773,
+          "activity_type": "textarea",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 10,
+          "marked": 1,
+          "cont": 1,
+          "default_answer": 2,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-29T14:54:58.000000Z",
+          "updated_at": null
+        },
+        {
+          "activity_id": 4774,
+          "activity_type": "textarea",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 11,
+          "marked": 1,
+          "cont": 0,
+          "default_answer": 1,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-29T15:05:09.000000Z",
+          "updated_at": null
+        },
+        {
+          "activity_id": 4777,
+          "activity_type": "dnd",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 12,
+          "marked": 1,
+          "cont": 0,
+          "default_answer": 0,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-30T18:24:34.000000Z",
+          "updated_at": null
+        },
+        {
+          "activity_id": 4778,
+          "activity_type": "dnd-match",
+          "course_id": 1,
+          "build_id": 1,
+          "chapter_id": 322,
+          "seq": 13,
+          "marked": 1,
+          "cont": 0,
+          "default_answer": 0,
+          "style": null,
+          "demo": 0,
+          "created_at": "2021-06-30T20:15:29.000000Z",
+          "updated_at": "2021-07-13T16:24:23.000000Z"
         }
       ]
     }
