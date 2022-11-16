@@ -35,3 +35,8 @@ echo
 echo "Seeding default publisher theme entries...";
 php ~/code/artisan db:seed --class=ThemesSeeder;
 echo
+echo -e "\e[1;31m ********************************************** \e[0m"
+echo 'Add homstead.test to the local DNS or hosts file'
+echo -e "\e[1;31m ********************************************** \e[0m"
+echo 'homestead.test 192.168.52.52'
+echo 'localhost 127.0.0.1 (required when running npm run api)'
