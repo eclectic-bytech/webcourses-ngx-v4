@@ -11,6 +11,7 @@ import { faGem } from '@fortawesome/free-solid-svg-icons'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { Theme } from '../../../models/theme.model'
+import { faThumbtack } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-header-bar',
@@ -24,6 +25,7 @@ export class HeaderBarComponent implements OnInit {
   faGem = faGem
   faGraduationCap = faGraduationCap
   faSignOutAlt = faSignOutAlt
+  faThumbtack = faThumbtack
 
   public menuCollapsed = true
   public menuCollapsed2 = true
