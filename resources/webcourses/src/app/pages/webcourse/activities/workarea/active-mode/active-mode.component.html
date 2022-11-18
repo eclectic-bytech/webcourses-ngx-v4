@@ -107,8 +107,8 @@
       </div>
 
       <div *ngIf="activity.meta.activity_type === 'click' && activity.meta.style === 'image'" class="container-fluid">
-        <!-- [ngClass]="activity.answers[i].selected ? 'imgSelected' : 'imgFalse'" -->
         <img
+          [ngClass]="activity.answers[i].selected ? 'imgSelected' : 'imgFalse'"
           *ngFor="let image of activity.answers; let i = index"
           [src]="image.caption.src"
           [alt]="image.caption.alt"
