@@ -28,11 +28,17 @@ class UserAnswerController extends Controller
         // End Guard?
             $controller = new UserAnswerController();
             $existing_answer = $controller->user_answer($pid, $aid);
-
             if (!$existing_answer) {
                 // If user has no answer for this activity, we continue...
 
-                $answers = ($activity_type === 'info') ? [ 42 ] : $request->input();
+                if ($activity_type === 'text' || $activity_type === 'textarea') {
+                    $input = $request->input();
+                    $answers[0] = DB::table('user_long_answers')->insertGetId(
+                        array('answer' => $input['answer'])
+                    );
+                } else {
+                    $answers = ($activity_type === 'info') ? [ 42 ] : $request->input();
+                }
 
                 // Do this using Eloquent?
                 // Remove Carbon:now() in fav of an auto DB solution?

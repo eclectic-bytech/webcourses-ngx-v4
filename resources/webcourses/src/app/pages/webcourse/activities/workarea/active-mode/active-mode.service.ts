@@ -54,7 +54,7 @@ export class ActiveModeService {
       this.lastActivityInSet.meta.activity_type === 'text'
     ||this.lastActivityInSet.meta.activity_type === 'textarea'
     ) {
-      extractedAnswer = this.activityForm.value.answer
+      extractedAnswer = { "answer": this.activityForm.value.answer }
     } else {
       extractedAnswer = JSON.stringify(42) // info and custom types
     }
