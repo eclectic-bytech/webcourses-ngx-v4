@@ -46,10 +46,7 @@
     ],
     "two_factor_enabled": false
   },
-  "post_user_name": {
-    "first_name": "slasdas",
-    "last_name": "asdasdsa"
-  },
+  "post_user_name": {},
   "user_course_resume": {
     "id": 1,
     "pid": 1,
@@ -173,7 +170,7 @@
       }
     }
   ],
-  "catalogue_by_publisher_1": [
+  "catalogue_by_publisher": [
     {
       "id": 1,
       "title": "Open WebCourses Platform: Introduction",
@@ -231,9 +228,7 @@
         "demo": 0,
         "total_activities_completed": 0
       }
-    }
-  ],
-  "catalogue_by_publisher_2": [
+    },
     {
       "id": 2,
       "title": "ACME Tricks",
