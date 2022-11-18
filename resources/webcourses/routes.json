@@ -9,9 +9,9 @@
   "/v4/publisher": "/publisher",
   "/v4/publisher/:id": "/publisher/:id",
   "/v4/publisher/profile/:id": "/publisher/:id",
-  "/v4/catalogue/publisher/1": "/catalogue_by_publisher_1",
-  "/v4/catalogue/publisher/2": "/catalogue_by_publisher_2",
-  "/v4/webcourse/activities/:id": "/webcourse_activity",
-  "/v4/webcourse/activities/3964/user_answer": "/post_user_answer",
-  "/v4/webcourse/1/chapters": "/webcourse_1_chapters"
+  "/v4/catalogue/publisher/:id": "/catalogue_by_publisher?id=:id",
+  "/v4/webcourse/activities/:id": "/webcourse_activity?id=:id",
+  "/v4/webcourse/activities/:id/user_answer": "/post_user_answer",
+  "/v4/webcourse/1/chapters": "/webcourse_1_chapters",
+  "/v4/webcourse/chapter/:id": "/webcourse_chapter/:id"
 }
