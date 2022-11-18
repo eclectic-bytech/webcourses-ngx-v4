@@ -32,21 +32,23 @@ class UserAnswerController extends Controller
             if (!$existing_answer) {
                 // If user has no answer for this activity, we continue...
 
-                // if ($activity_type === 'info') { }
+                $answers = ($activity_type === 'info') ? [ 42 ] : $request->input();
+
                 // Do this using Eloquent?
                 // Remove Carbon:now() in fav of an auto DB solution?
                 // Or is this max compatibility, regardless of DB?
-                $answer_id = DB::table('user_answers')->insertGetId(
-                    array(
-                        'activity_id' => $aid,
-                        'chapter_id' => $chid,
-                        'progress_id' => $pid,
-                        'answer_id' => 42,
-                        'created_at' => Carbon::now()
-                    )
-                );
-                $answer['answers'] = array();
-                return $answer;
+                foreach ($answers as $key => $answer) {
+                    $answer_id = DB::table('user_answers')->insertGetId(
+                        array(
+                            'activity_id' => $aid,
+                            'chapter_id' => $chid,
+                            'progress_id' => $pid,
+                            'answer_id' => $answer,
+                            'created_at' => Carbon::now()
+                        )
+                    );
+                }
+                return $answers;
             }
         }
         return 0;
