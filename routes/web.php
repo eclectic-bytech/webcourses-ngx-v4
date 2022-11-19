@@ -13,6 +13,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\UserRedirectController;
+use App\Http\Controllers\SyllabusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +93,7 @@ Route::group(['prefix' => 'v4'], function() {
     Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
 
-        Route::get('/activities/{aid?}', [ActivityController::class, 'activity']);
+        Route::get('/activities/{aid?}', [SyllabusController::class, 'activity_set']);
         Route::get('/activities/help/{type?}', [ActivityController::class, 'help']);
         Route::post('/activities/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
 
