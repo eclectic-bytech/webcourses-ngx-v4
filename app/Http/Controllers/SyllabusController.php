@@ -33,6 +33,7 @@ class SyllabusController extends Controller
             return $requested_activity_meta;
         }
 
+        // user has no access to course to which requested activity belongs
         return 'No soup for you';
 
     }
