@@ -14,13 +14,17 @@ class SyllabusController extends Controller
         $requested_activity_meta = Syllabus::where('activity_id', $aid)->first();
 
         $uid = auth()->user()->id;
-        $pid = getUserProgress($uid, $requested_activity_meta->course_id)->id;
+        $cid = $requested_activity_meta->course_id;
+        $pid = getUserProgress($uid, $cid)->id;
 
         if ($pid) {
             // User has access to course
 
             if ($requested_activity_meta->cont === 0) {
                 // requested activity is first in set
+
+                // requested activity is first in set: but is it the last?
+                $next_activity = $requested_activity_meta->seq + 1;
                 $controller = new ActivityController();
                 $activity[0] = $controller->activity($aid);
                 return $activity;
