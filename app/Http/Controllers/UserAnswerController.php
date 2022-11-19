@@ -64,7 +64,7 @@ class UserAnswerController extends Controller
         return UserAnswer
             ::where('progress_id', $pid)
             ->where('activity_id', $aid)
-            ->first();
+            ->get();
     }
 
     // public function total_user_answers_in_chapter(int $chid) {
