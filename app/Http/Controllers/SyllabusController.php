@@ -40,11 +40,15 @@ class SyllabusController extends Controller
         if ($requested_aid_meta->cont === 0) {
             // requested activity is first in set
             $get_prev_activity = false;
-
-            $controller = new ActivityController();
-            $activity = $controller->build_activity($requested_aid_meta->activity_id, $pid);
-            return $activity;
+        } else {
+            $prev_seq = --$requested_aid_meta->seq;
         }
+
+        $controller = new ActivityController();
+        $activity = $controller->build_activity($requested_aid_meta->activity_id, $pid);
+        // $activity['prev_seq'] = $prev_seq;
+
+        return $activity;
     }
 
 }
