@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\UserAnswerController;
 use App\Models\Syllabus;
 
 class SyllabusController extends Controller
@@ -42,51 +41,11 @@ class SyllabusController extends Controller
             // requested activity is first in set
             $get_prev_activity = false;
 
-            $activity = $this->build_activity($requested_aid_meta->activity_id, $pid);
+            $controller = new ActivityController();
+            $activity = $controller->build_activity($requested_aid_meta->activity_id, $pid);
             return $activity;
         }
     }
 
-    private function build_activity($aid, $pid) {
-
-        $controller = new ActivityController();
-        $activity = $controller->activity($aid, $pid);
-
-        $controller = new UserAnswerController();
-        $activity['user_answers'] = $controller->user_answer($pid, $aid);
-        $activity['Kay'] = 'love';
-
-        if (!count($activity['user_answers'])) {
-            unset($activity['user_answers'], $activity['after_word']);
-        } else {
-            foreach ($activity['answers'] as $key => $answer) {
-                foreach ($activity['user_answers'] as $key2 => $user_answer) {
-                    if ($answer['id'] === $user_answer['answer_id']) {
-                        $activity['answers'][$key]['selected'] = true;
-                    }
-                }
-            }
-        }
-
-        $activity = $this->built_activity_post_process($activity);
-
-        return $activity;
-        // create the requested activity
-    }
-
-
-    private function built_activity_post_process($activity) {
-
-        // Answer caption for Click type activity where meta.style is image need json_decode
-        if ($activity['meta']['activity_type'] === "click" && $activity['meta']['style'] === "image") {
-            foreach ($activity['answers'] as $i => $answer) {
-                if(isJSON($answer['caption'])) {
-                    $activity['answers'][$i]['caption'] = json_decode($answer['caption']);
-                }
-            }
-        }
-
-        return $activity;
-    }
 }
 
