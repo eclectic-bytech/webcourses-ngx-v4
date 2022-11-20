@@ -10,16 +10,13 @@ use App\Models\Help;
 
 class ActivityController extends Controller
 {
-    public function activity($aid = false) {
+    public function activity($aid, $pid) {
 
         // REMEMBER TO START CHECKING FOR USER ID WHEN PULLING user_answers
         $activity = Activity
             ::where('id', $aid)
             ->with('meta', 'answers')
             ->first();
-
-        $uid = auth()->user()->id;
-        $pid = getUserProgress($uid, $activity['meta']['course_id'])->id;
 
         $controller = new UserAnswerController();
         $activity['user_answers'] = $controller->user_answer($pid, $aid);
