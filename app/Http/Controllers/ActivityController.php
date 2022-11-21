@@ -31,20 +31,22 @@ class ActivityController extends Controller
     public function build_activity($aid, $pid) {
         $activityy = clone $this->activity($aid, $pid);
 
-        foreach ($activityy['answers'] as $key => $answer) {
-            if (count($activityy['user_answers'])) {
+        if ($activityy['user_answers']->isNotEmpty()) {
+            foreach ($activityy['answers'] as $key => $answer) {
                 foreach ($activityy['user_answers'] as $key2 => $user_answer) {
                     if ($answer['id'] === $user_answer['answer_id']) {
                         $activityy['answers'][$key]['selected'] = true;
                     }
                 }
-            } else {
-                unset(
-                    $activityy['answers'][$key]['correct'],
-                    $activityy['after_word'],
-                    $activityy['user_answers']
-                );
             }
+        } else {
+            foreach ($activityy['answers'] as $key => $answer) {
+                unset($activityy['answers'][$key]['correct']);
+            }
+            unset(
+                $activityy['after_word'],
+                $activityy['user_answers']
+            );
         }
 
         $activityy = clone $this->built_activity_post_process($activityy);
