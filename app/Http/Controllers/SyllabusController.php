@@ -22,12 +22,38 @@ class SyllabusController extends Controller
         if ($pid) {
             // User has access to course
             $activity_set = $this->build_activity_set($requested_aid_meta, $pid);
+            $activities_meta_set = $this->build_activities_meta_set($requested_aid_meta);
+            $activity_set['Kay'] = $activities_meta_set;
             return $activity_set;
         }
 
         // user has no access to course to which requested activity belongs
         return 'No soup for you';
 
+    }
+
+    public function build_activities_meta_set($requested_aid_meta) {
+        $aid_meta = $requested_aid_meta;
+        $cid = $aid_meta->course_id;
+        $activities_meta_set[] = $aid_meta;
+
+        while ($aid_meta->cont === 1) {
+            $aid_meta = getActivityMetaBySeq(
+                $cid, $aid_meta->seq - 1
+            );
+            array_unshift($activities_meta_set, $aid_meta);
+        }
+
+        do {
+            $aid_meta = getActivityMetaBySeq(
+                $cid, $aid_meta->seq + 1
+            );
+            if ($aid_meta->cont === 1) {
+                array_push($activities_meta_set, $aid_meta);
+            }
+        } while ($aid_meta->cont === 1);
+
+        return $activities_meta_set;
     }
 
     public function build_activity_set($requested_aid_meta, $pid) {
