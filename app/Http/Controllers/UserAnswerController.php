@@ -9,8 +9,6 @@ use Carbon\Carbon;
 
 class UserAnswerController extends Controller
 {
-    // Currently returns autoincrement ID of inserted answer. Needs to return:
-    // { }
     public function save_user_answer(Request $request, int $aid) {
         $uid = auth()->user()->id;
 
