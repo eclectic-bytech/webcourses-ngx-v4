@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\ActivityController;
+
 use App\Models\UserAnswer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -52,7 +54,8 @@ class UserAnswerController extends Controller
                         )
                     );
                 }
-                return $answers;
+                $controller = new ActivityController();
+                return $controller->build_activity($aid, $pid);
             }
         }
         return 0;
