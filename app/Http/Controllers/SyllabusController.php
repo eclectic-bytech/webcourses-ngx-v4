@@ -37,7 +37,7 @@ class SyllabusController extends Controller
         // only backward: if cont === 1 && !user_answer
         // front and back: if cont === 1 && user_answer
 
-        if ($requested_aid_meta->cont != 0 || $requested_aid_meta->seq === 0) {
+        if ($requested_aid_meta->cont === 0 || $requested_aid_meta->seq === 0) {
             // requested activity is first in set or course
             $get_prev_activity = false;
         } else {
