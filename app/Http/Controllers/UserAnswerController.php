@@ -28,7 +28,7 @@ class UserAnswerController extends Controller
             $existing_answer = $controller->user_answers($pid, $aid);
 
             // If user has no answer for this activity, we continue...
-            if (isset($existing_answer)) {
+            if ($existing_answer->isEmpty()) {
                 if ($activity_type === 'text' || $activity_type === 'textarea') {
                     $input = $request->input();
                     $answers[0] = DB::table('user_long_answers')->insertGetId(
