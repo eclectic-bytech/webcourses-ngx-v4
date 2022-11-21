@@ -36,7 +36,8 @@
         "files":
         [
             "app/Helpers/Course.php",
-            "app/Helpers/Publisher.php"
+            "app/Helpers/Publisher.php",
+            "app/Helpers/Activity.php"
         ]
     },
     "autoload-dev": {

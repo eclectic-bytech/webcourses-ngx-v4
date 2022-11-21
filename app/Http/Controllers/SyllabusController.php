@@ -37,16 +37,19 @@ class SyllabusController extends Controller
         // only backward: if cont === 1 && !user_answer
         // front and back: if cont === 1 && user_answer
 
-        if ($requested_aid_meta->cont === 0) {
-            // requested activity is first in set
+        if ($requested_aid_meta->cont != 0 || $requested_aid_meta->seq === 0) {
+            // requested activity is first in set or course
             $get_prev_activity = false;
         } else {
-            $prev_seq = --$requested_aid_meta->seq;
+            $prev_seq = $requested_aid_meta->seq - 1;
+            $prev_aid_meta = getActivityMetaBySeq(
+                $requested_aid_meta->course_id, $prev_seq
+            );
         }
 
         $controller = new ActivityController();
         $activity = $controller->build_activity($requested_aid_meta->activity_id, $pid);
-        // $activity['prev_seq'] = $prev_seq;
+        $activity['prev_aid_meta'] = $prev_aid_meta;
 
         return $activity;
     }
