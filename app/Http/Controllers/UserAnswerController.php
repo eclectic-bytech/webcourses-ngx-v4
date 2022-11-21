@@ -27,10 +27,10 @@ class UserAnswerController extends Controller
         if (isset($pid)) {
         // End Guard?
             $controller = new UserAnswerController();
-            $existing_answer = $controller->user_answer($pid, $aid);
-            if (!$existing_answer) {
-                // If user has no answer for this activity, we continue...
+            $existing_answer = $controller->user_answers($pid, $aid);
 
+            // If user has no answer for this activity, we continue...
+            if (isset($existing_answer)) {
                 if ($activity_type === 'text' || $activity_type === 'textarea') {
                     $input = $request->input();
                     $answers[0] = DB::table('user_long_answers')->insertGetId(
@@ -60,7 +60,7 @@ class UserAnswerController extends Controller
         return 0;
     }
 
-    public function user_answer(int $pid, int $aid) {
+    public function user_answers(int $pid, int $aid) {
         return UserAnswer
             ::where('progress_id', $pid)
             ->where('activity_id', $aid)

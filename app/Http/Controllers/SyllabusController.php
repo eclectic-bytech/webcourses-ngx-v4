@@ -21,9 +21,8 @@ class SyllabusController extends Controller
 
         if ($pid) {
             // User has access to course
-            $activity_set = $this->build_activity_set($requested_aid_meta, $pid);
             $activities_meta_set = $this->build_activities_meta_set($requested_aid_meta);
-            $activity_set['Kay'] = $activities_meta_set;
+            $activity_set = $this->get_activities($activities_meta_set, $pid);
             return $activity_set;
         }
 
@@ -32,51 +31,48 @@ class SyllabusController extends Controller
 
     }
 
+    public function get_activities($activities_meta_set, $pid) {
+        $activity_set = [];
+        $i = 0;
+
+        do {
+            $controller = new ActivityController();
+            $activity = $controller->build_activity($activities_meta_set[$i]->activity_id, $pid);
+
+            // doing $activity['user_answers']->isNotEmpty executes user_answers method
+            // that sets an empty $activity['user_answers'] when there are none, breaks the front end
+            $unassociated_activity = clone($activity);
+            $getNext = $unassociated_activity['user_answers']->isNotEmpty() ? TRUE : FALSE;
+
+            // we're pushing $activity. unlike $unassociated_activity, it has its empty user_answer keys unset
+            // when it goes throgh build_activity()
+            array_push($activity_set, $activity);
+            $i++;
+        } while ( isset($activities_meta_set[$i]) && $getNext );
+
+        return $activity_set;
+    }
+
     public function build_activities_meta_set($requested_aid_meta) {
         $aid_meta = $requested_aid_meta;
         $cid = $aid_meta->course_id;
         $activities_meta_set[] = $aid_meta;
 
+        // get preceding activities: requested activity is not first in set
         while ($aid_meta->cont === 1) {
-            $aid_meta = getActivityMetaBySeq(
-                $cid, $aid_meta->seq - 1
-            );
+            $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq - 1);
             array_unshift($activities_meta_set, $aid_meta);
         }
 
+        // get following activities until we hit an activity that is not a set continuation
         do {
-            $aid_meta = getActivityMetaBySeq(
-                $cid, $aid_meta->seq + 1
-            );
+            $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq + 1);
             if ($aid_meta->cont === 1) {
                 array_push($activities_meta_set, $aid_meta);
             }
         } while ($aid_meta->cont === 1);
 
         return $activities_meta_set;
-    }
-
-    public function build_activity_set($requested_aid_meta, $pid) {
-        $get_next_activity = $get_prev_activity = true;
-
-        // only forward: if cont === 0 && user_answer
-        // only backward: if cont === 1 && !user_answer
-        // front and back: if cont === 1 && user_answer
-
-        if ($requested_aid_meta->cont === 0 || $requested_aid_meta->seq === 0) {
-            // requested activity is first in set or course
-            $get_prev_activity = false;
-        } else {
-            $prev_seq = $requested_aid_meta->seq - 1;
-            $prev_aid_meta = getActivityMetaBySeq(
-                $requested_aid_meta->course_id, $prev_seq
-            );
-        }
-
-        $controller = new ActivityController();
-        $activity[] = $controller->build_activity($requested_aid_meta->activity_id, $pid);
-
-        return $activity;
     }
 
 }

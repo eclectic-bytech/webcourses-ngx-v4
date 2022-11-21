@@ -14,7 +14,7 @@ class ActivityController extends Controller
     public function activity($aid, $pid) {
         return Activity
             ::where('id', $aid)
-            ->with('meta', 'answers')
+            ->with('meta', 'answers', 'user_answers')
             ->first();
     }
 
@@ -29,28 +29,26 @@ class ActivityController extends Controller
     }
 
     public function build_activity($aid, $pid) {
+        $activityy = clone $this->activity($aid, $pid);
 
-        $activity = $this->activity($aid, $pid);
-
-        $controller = new UserAnswerController();
-        $activity['user_answers'] = $controller->user_answer($pid, $aid);
-
-        if (!count($activity['user_answers'])) {
-            unset($activity['user_answers'], $activity['after_word']);
-        } else {
-            foreach ($activity['answers'] as $key => $answer) {
-                foreach ($activity['user_answers'] as $key2 => $user_answer) {
+        if (count($activityy['user_answers'])) {
+            foreach ($activityy['answers'] as $key => $answer) {
+                foreach ($activityy['user_answers'] as $key2 => $user_answer) {
                     if ($answer['id'] === $user_answer['answer_id']) {
-                        $activity['answers'][$key]['selected'] = true;
+                        $activityy['answers'][$key]['selected'] = true;
                     }
                 }
             }
+        } else {
+            unset(
+                $activityy['after_word'],
+                $activityy['user_answers']
+            );
         }
 
-        $activity = $this->built_activity_post_process($activity);
+        $activityy = clone $this->built_activity_post_process($activityy);
 
-        return $activity;
-        // create the requested activity
+        return $activityy;
     }
 
     private function built_activity_post_process($activity) {
