@@ -21,7 +21,7 @@ class SyllabusController extends Controller
 
         if ($pid) {
             // User has access to course
-            $activity_set[] = $this->build_activity_set($requested_aid_meta, $pid);
+            $activity_set = $this->build_activity_set($requested_aid_meta, $pid);
             return $activity_set;
         }
 
@@ -48,8 +48,7 @@ class SyllabusController extends Controller
         }
 
         $controller = new ActivityController();
-        $activity = $controller->build_activity($requested_aid_meta->activity_id, $pid);
-        $activity['prev_aid_meta'] = $prev_aid_meta;
+        $activity[] = $controller->build_activity($requested_aid_meta->activity_id, $pid);
 
         return $activity;
     }
