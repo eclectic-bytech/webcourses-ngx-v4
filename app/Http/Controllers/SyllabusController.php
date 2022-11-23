@@ -9,7 +9,9 @@ use App\Models\Syllabus;
 
 class SyllabusController extends Controller
 {
+
     public function activity_set(int $aid) {
+        // gets called by front-end /webcourse/activties/{aid}
 
         $uid = auth()->user()->id;
 
@@ -31,12 +33,37 @@ class SyllabusController extends Controller
 
     }
 
+    public function build_activities_meta_set($requested_aid_meta) {
+        $aid_meta = $requested_aid_meta;
+        $cid = $aid_meta->course_id;
+        // $activities_meta_set[] = $aid_meta;
+        $activities_meta_set = [];
+
+        // get preceding activities: requested activity is not first in set
+        while ($aid_meta->cont === 1) {
+            $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq - 1);
+            array_unshift($activities_meta_set, $aid_meta);
+        }
+
+        array_push($activities_meta_set, $requested_aid_meta);
+
+        // get following activities until we hit an activity that is not a set continuation
+        do {
+            $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq + 1);
+            if ($aid_meta->cont === 1) {
+                array_push($activities_meta_set, $aid_meta);
+            }
+        } while ($aid_meta->cont === 1);
+
+        return $activities_meta_set;
+    }
+
     public function get_activities($activities_meta_set, $pid) {
         $activity_set = [];
         $i = 0;
+        $controller = new ActivityController();
 
         do {
-            $controller = new ActivityController();
             $activity = $controller->build_activity($activities_meta_set[$i]->activity_id, $pid);
 
             // doing $activity['user_answers']->isNotEmpty executes user_answers method
@@ -51,28 +78,6 @@ class SyllabusController extends Controller
         } while ( isset($activities_meta_set[$i]) && $getNext );
 
         return $activity_set;
-    }
-
-    public function build_activities_meta_set($requested_aid_meta) {
-        $aid_meta = $requested_aid_meta;
-        $cid = $aid_meta->course_id;
-        $activities_meta_set[] = $aid_meta;
-
-        // get preceding activities: requested activity is not first in set
-        while ($aid_meta->cont === 1) {
-            $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq - 1);
-            array_unshift($activities_meta_set, $aid_meta);
-        }
-
-        // get following activities until we hit an activity that is not a set continuation
-        do {
-            $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq + 1);
-            if ($aid_meta->cont === 1) {
-                array_push($activities_meta_set, $aid_meta);
-            }
-        } while ($aid_meta->cont === 1);
-
-        return $activities_meta_set;
     }
 
 }
