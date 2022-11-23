@@ -392,7 +392,7 @@ class DemocourseSeeder extends Seeder
         ]);
         DB::table('activities')->insert([
             'id' => 4769,
-            'prequestion' => '<p class="mt-4">Some activities benefit from the context of activities that came before. This info-type and read only activity is the fourth in this sequence, but we could have just as easily loaded it and the others solo, by clearing preceding activities off the screen.</p>',
+            'prequestion' => '<p class="mt-4">Some activities benefit from the context of activities that came before. This info-type and read only activity is the third in this sequence, but we could have just as easily loaded it and the others solo, by clearing preceding activities off the screen.</p>',
             'question' => NULL,
             'assess_text' => NULL,
             'after_word' => NULL,
