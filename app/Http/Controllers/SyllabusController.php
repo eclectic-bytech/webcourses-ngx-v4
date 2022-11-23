@@ -16,7 +16,7 @@ class SyllabusController extends Controller
         $requestedActivity = $this->requestedActivity($requested_aid);
 
         if (is_int($requestedActivity['pid'])) {
-            // We found a user progress ID for course of which requested_aid is part of
+            // We found a user progress ID for course to which requested_aid belongs
 
             $activitiesMetaSet = $this->build_activities_meta_set($requestedActivity['meta']);
             $activitySet = $this->get_activities($activitiesMetaSet, $requestedActivity['pid']);
