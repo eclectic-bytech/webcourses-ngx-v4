@@ -19,9 +19,9 @@ class SyllabusController extends Controller
             // We found a user progress ID for course to which requested_aid belongs
 
             $activitiesMetaSet = $this->build_activities_meta_set($requestedActivity['meta']);
-            $activitySet = $this->get_activities($activitiesMetaSet, $requestedActivity['pid']);
+            $activitiesSet = $this->get_activities($activitiesMetaSet, $requestedActivity['pid']);
 
-            return $activitySet;
+            return $activitiesSet;
         }
 
         // user has no access to course to which requested activity belongs
