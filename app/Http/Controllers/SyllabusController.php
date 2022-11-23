@@ -30,26 +30,27 @@ class SyllabusController extends Controller
     }
 
     public function build_activities_meta_set($requested_aid_meta) {
-        $aid_meta = $requested_aid_meta;
-        $cid = $aid_meta->course_id;
-        // $activities_meta_set[] = $aid_meta;
+        $cid = $requested_aid_meta->course_id;
         $activities_meta_set = [];
 
         // get preceding activities: requested activity is not first in set
+        $aid_meta = $requested_aid_meta;
         while ($aid_meta->cont === 1) {
             $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq - 1);
             array_unshift($activities_meta_set, $aid_meta);
         }
 
+        // with preceding activities added to the set, add the activity that was actyally requested
         array_push($activities_meta_set, $requested_aid_meta);
 
         // get following activities until we hit an activity that is not a set continuation
-        do {
+        $aid_meta = $requested_aid_meta;
+        while ($aid_meta->cont === 1) {
             $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq + 1);
             if ($aid_meta->cont === 1) {
                 array_push($activities_meta_set, $aid_meta);
             }
-        } while ($aid_meta->cont === 1);
+        }
 
         return $activities_meta_set;
     }
