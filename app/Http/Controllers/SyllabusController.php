@@ -10,22 +10,18 @@ use App\Models\Syllabus;
 class SyllabusController extends Controller
 {
 
-    public function activity_set(int $aid) {
+    public function activity_set(int $requested_aid) {
         // gets called by front-end /webcourse/activties/{aid}
 
-        $uid = auth()->user()->id;
+        $requestedActivity = $this->requestedActivity($requested_aid);
 
-        // get meta data on requested activity
-        $requested_aid_meta = Syllabus::where('activity_id', $aid)->first();
+        if (is_int($requestedActivity['pid'])) {
+            // We found a user progress ID for course of which requested_aid is part of
 
-        // get user's course progress id
-        $pid = getUserProgress($uid, $requested_aid_meta->course_id)->id;
+            $activitiesMetaSet = $this->build_activities_meta_set($requestedActivity['meta']);
+            $activitySet = $this->get_activities($activitiesMetaSet, $requestedActivity['pid']);
 
-        if ($pid) {
-            // User has access to course
-            $activities_meta_set = $this->build_activities_meta_set($requested_aid_meta);
-            $activity_set = $this->get_activities($activities_meta_set, $pid);
-            return $activity_set;
+            return $activitySet;
         }
 
         // user has no access to course to which requested activity belongs
@@ -80,5 +76,16 @@ class SyllabusController extends Controller
         return $activity_set;
     }
 
+    private function requestedActivity($aid) {
+        $uid = auth()->user()->id;
+
+        // get meta data on requested activity
+        $requestedActivity['meta'] = Syllabus::where('activity_id', $aid)->first();
+
+        // get user's course progress id
+        $requestedActivity['pid'] = getUserProgress($uid, $requestedActivity['meta']->course_id)->id;
+
+        return $requestedActivity;
+    }
 }
 
