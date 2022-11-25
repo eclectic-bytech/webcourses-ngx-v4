@@ -39,18 +39,22 @@ Route::get('/', function () {
     ]);
 });
 
-// Jetstream user dashboard is not part of the v4 group/path. Do not move it there.
-Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
 
 //Added after moving /dashboard to /user/dashboard to fix issue #60
-
 Route::get('/dashboard', function () {
     return redirect('user/dashboard');
 });
 
-Route::get('/user/redirect', [UserRedirectController::class, 'user_login_redirect']);
+Route::group(['prefix' => 'user'], function() {
+    // Controller that implements Inertia redirect to Angular's My Webcourses
+    // at login, without getting stuck in an iFrame (issue 81)
+    Route::get('/redirect', [UserRedirectController::class, 'user_login_redirect']);
+
+    // Jetstream user dashboard is not part of the v4 group/path. Do not move it there.
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+});
 
 Route::group(['prefix' => 'v4'], function() {
 
