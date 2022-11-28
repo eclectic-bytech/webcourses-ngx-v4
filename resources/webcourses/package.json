@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config=proxy.conf.json --ssl --ssl-key localhost.key --ssl-cert localhost.crt --configuration=dev",
     "api": "npx json-server --watch db.json --routes routes.json",
-    "build": "ng build",
+    "build": "npm run ng build",
     "build:prod": "ng build --configuration production && bash ./after.sh",
     "test": "ng test",
     "lint": "ng lint",
