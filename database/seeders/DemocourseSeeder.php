@@ -482,7 +482,7 @@ class DemocourseSeeder extends Seeder
 
         DB::table('activities')->insert([
             'id' => 4778,
-            'prequestion' => '<p>From maths to animals. If you don\'t know the answers, asks your children. What does the fox say?</p>',
+            'prequestion' => '<p>From maths to animals. If you don\'t know the answers, ask your children. What does the fox say?</p>',
             'question' => 'Drag and drop the sounds to match them up with animals.',
             'assess_text' => NULL,
             'after_word' => NULL,
