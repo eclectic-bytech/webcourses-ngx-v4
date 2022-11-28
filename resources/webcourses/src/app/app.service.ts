@@ -7,7 +7,6 @@ import { ConfigService } from './core/services/config/config.service'
 import { JetstreamUser } from './core/models/jetstream-user.model'
 import { PurchaseOrderService } from './pages/stripe/payment/purchase-order/purchase-order.service'
 import { TaxStatusService } from './core/services/tax-status/tax-status.service'
-import { config } from 'process'
 
 @Injectable({
   providedIn: 'root'
