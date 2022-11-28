@@ -19,7 +19,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         
     - name: Install Angular 14.2.7
-      uses: actions/angular-github-actions@14.2.7
+      uses: actions/angular-github-actions@14
 
     - name: Build
       run: |
