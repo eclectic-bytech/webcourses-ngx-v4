@@ -35,8 +35,11 @@ echo
 echo "Seeding default publisher theme entries...";
 php ~/code/artisan db:seed --class=ThemesSeeder;
 echo
-echo -e "\e[1;31m ********************************************** \e[0m"
-echo 'Add homstead.test to the local DNS or hosts file'
-echo -e "\e[1;31m ********************************************** \e[0m"
-echo 'homestead.test 192.168.52.52'
-echo 'localhost 127.0.0.1 (required when running npm run api)'
+echo -e "\e[1;32m*******************************************************\e[0m";
+echo -e "\e[1;32m*\e[0m    \e[1mMake sure you have the following DNS entry:\e[0m      \e[1;32m*";
+echo -e "\e[1;32m*\e[0m    \e[34mhomestead.test 192.168.52.52                     \e[1;32m*";
+echo -e "\e[1;32m*                                                     *";
+echo -e "\e[1;32m*\e[0m    \e[1mRequired when running Angular in watch mode:     \e[1;32m*";
+echo -e "\e[1;32m*\e[0m    \e[34mlocalhost 127.0.0.1                              \e[1;32m*";
+echo -e "\e[1;32m*******************************************************\e[0m";
+echo
