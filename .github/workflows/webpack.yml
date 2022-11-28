@@ -24,4 +24,4 @@ jobs:
 
     - name: Build
       run: |
-        npm run build:prod
+        npm --prefix ./resources/webcourses run build:prod
