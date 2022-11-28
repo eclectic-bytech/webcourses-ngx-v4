@@ -11,8 +11,9 @@ oooooo   oooooo     oooo ooooo      ooo   .oooooo.    ooooooo  ooooo            
   
 ```
 
-
+<div style="text-align: center;">
 [![WNGX Build](https://github.com/eclectic-bytech/webcourses-ngx-v4/actions/workflows/main.yml/badge.svg)](https://github.com/eclectic-bytech/webcourses-ngx-v4/actions/workflows/main.yml)
+</div>
 
 Everyone is encouraged to contribute, while we ensure high and professional quality.
 
