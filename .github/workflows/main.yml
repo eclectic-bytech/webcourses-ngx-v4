@@ -24,4 +24,4 @@ jobs:
       - name: npm install and npm run build
         run: |
           npm i
-          npm --prefix ./resources/webcourses run dev
+          npm --prefix ./resources/webcourses run build
