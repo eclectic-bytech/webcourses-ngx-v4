@@ -23,4 +23,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install and npm run build
         run: |
-          npm run build:prod
+          npm --prefix ./resources/webcourses run build:prod
