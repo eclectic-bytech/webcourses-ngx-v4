@@ -5,7 +5,6 @@ import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap'
 import { CollectUserNamesComponent } from './components/collect-user-names/collect-user-names.component'
 import { ActivitiesService } from './activities.service'
 import { UserService } from '../../../core/services/user/user.service'
-import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 import { faUserGraduate } from '@fortawesome/free-solid-svg-icons'
 import { faList } from '@fortawesome/free-solid-svg-icons'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
@@ -38,7 +37,7 @@ export class ActivitiesComponent implements OnInit {
     public publisherService: PublisherService
   ) {
     this.modalOptions = {
-      backdrop:'static',
+      backdrop: 'static',
       centered: true,
       keyboard: false
     }

@@ -12,6 +12,6 @@ class Chapter extends Model
     protected $hidden = ['created_at', 'updated_at'];
 
     public function syllabus() {
-        return $this->hasMany(CourseSyllabus::class);
+        return $this->hasMany(CourseSyllabus::class)->orderBy('seq', 'ASC');
     }
 }

@@ -8,7 +8,7 @@
 </ng-template>
 
 <ng-template [ngIf]="status === 'failedUpdate'">
-  <div class="modal-body">
+  <div class="modal-body" @fadeInOut>
     <div class="my-3 lead text-center">
       <span class="text-danger font-weight-bold">Update failed.</span><br>
       Rebooting session...
@@ -19,15 +19,33 @@
 
 <ng-template [ngIf]="status === 'prompt'">
   <div class="modal-header">
-    <h4 class="common-heading my-auto" id="modal-basic-title">Before you continue...</h4>
+    <h4 class="common-heading my-auto" id="modal-basic-title">Before you continue.....</h4>
   </div>
   <div class="modal-body">
     <form #names="ngForm" (keyup.enter)="names.form.valid ? btnClick(names.value) : ''">
       <div>
         <p>Please provide a name for the course student reports.</p>
         <div class="mb-4" class="d-block w-50">
-          <input ngModel type="text" name="first_name" placeholder="First name" class="mr-2" minlength="2" maxlength="50" class="form-control form-control-secondary my-2" [(ngModel)]="user.first_name" required>
-          <input ngModel type="text" name="last_name" placeholder="Last name" minlength="2" maxlength="20" class="form-control form-control-secondary my-2" [(ngModel)]="user.last_name" required>
+          <input ngModel
+            [(ngModel)]="user.first_name"
+            type="text"
+            name="first_name"
+            placeholder="First name"
+            minlength="2"
+            maxlength="50"
+            class="form-control form-control-secondary my-2"
+            required
+          >
+          <input ngModel
+            [(ngModel)]="user.last_name"
+            type="text"
+            name="last_name"
+            placeholder="Last name"
+            minlength="2"
+            maxlength="20"
+            class="form-control form-control-secondary my-2"
+            required
+            >
         </div>
       </div>
     </form>
@@ -38,14 +56,14 @@
       (click)="btnClick(names.value)"
       [disabled]="names.form.invalid"
     >
-      Submit
+      Save
     </button>
 
   </div>
 </ng-template>
 
 <ng-template [ngIf]="status === 'saved'">
-  <div class="modal-body">
+  <div class="modal-body" @fadeInOut>
     <div class="my-3 lead text-center">
       <span class="text-success font-weight-bold">Your profile was updated successfully.</span><br>
       Thank you, <span class="text-capitalize font-weight-bold">{{ user.first_name }}</span>.

@@ -16,6 +16,8 @@ class CourseController extends Controller
     public function index($publisherId = false)
     {
         $userIsLoggedIn = auth()->check();
+        $publisherId = ($publisherId) ? publisherIntId($publisherId) : false;
+
         return Course
             ::where('published', 1)
             ->where('private', 0)

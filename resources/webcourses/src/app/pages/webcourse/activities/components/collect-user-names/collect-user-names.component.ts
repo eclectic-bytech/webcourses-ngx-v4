@@ -4,12 +4,13 @@ import { HttpClient } from '@angular/common/http'
 
 import { ConfigService } from './../../../../../core/services/config/config.service'
 import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
-import { UserService } from '../../../../../core/services/user/user.service'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-collect-user-names',
   templateUrl: './collect-user-names.component.html',
-  styleUrls: ['./collect-user-names.component.scss']
+  styleUrls: ['./collect-user-names.component.scss'],
+  animations: [FadeInOut]
 })
 export class CollectUserNamesComponent implements OnInit {
 
@@ -21,7 +22,6 @@ export class CollectUserNamesComponent implements OnInit {
 
   constructor(
     private ngbModal: NgbModal,
-    private userService: UserService,
     private httpClient: HttpClient,
     private configService: ConfigService
   ) { }
@@ -53,7 +53,7 @@ export class CollectUserNamesComponent implements OnInit {
         clearInterval(countDown)
         setTimeout(() => {
           success ? this.ngbModal.dismissAll() : location.reload()
-        }, 600)
+        }, 1000)
       }
     }, 20)
   }

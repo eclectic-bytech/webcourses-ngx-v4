@@ -1,6 +1,7 @@
 export class ActivityAnswers {
   constructor(
     public id: number,
+    public answer_id: number,
     public activity_id: number,
     public slot: number,
     public caption: any,

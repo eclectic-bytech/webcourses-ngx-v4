@@ -2,7 +2,12 @@
 <div *ngIf="activity.user_answers; else activeMode" @fadeInOut>
   <div class="dnd container">
     <div *ngFor="let option of activity.answers; let i = index" class="row row-{{i}}">
-      <div class="dnd-box dnd-col-0 dnd-static px-3 py-2 col mr-1 font-weight-bold" *ngIf="activity.meta.activity_type === 'dnd-match'" [innerHtml]="dndMatchDataStatic[i]"></div>
+      <div
+        class="dnd-box dnd-col-0 dnd-static px-3 py-2 col mr-1 font-weight-bold"
+        *ngIf="activity.meta.activity_type === 'dnd-match'"
+        [innerHtml]="dndMatchDataStatic[i]"
+      >
+      </div>
       <div
         [innerHtml]="(activity.meta.activity_type === 'dnd-match') ? option.caption.sortable : option.caption"
         class="dnd-box px-3 py-2 col dnd-col-1"
@@ -42,8 +47,18 @@
 <ng-template #activeMode>
   <div cdkDropList (cdkDropListDropped)="drop($event)" class="dnd dnd-active container" @fadeInOut>
     <div *ngFor="let option of activity.answers; let i = index" class="row row-{{i}}">
-      <div class="dnd-box dnd-col-0 dnd-static px-3 py-2 col mr-1 font-weight-bold" *ngIf="activity.meta.activity_type === 'dnd-match'" [innerHtml]="dndMatchDataStatic[i]"></div>
-      <div class="dnd-box dnd-col-1 px-3 py-2 col" cdkDrag [innerHtml]="(activity.meta.activity_type === 'dnd-match') ? option.caption.sortable : option.caption"></div>
+      <div
+        class="dnd-box dnd-col-0 dnd-static px-3 py-2 col mr-1 font-weight-bold"
+        *ngIf="activity.meta.activity_type === 'dnd-match'"
+        [innerHtml]="dndMatchDataStatic[i]"
+      >
+      </div>
+      <div
+        class="dnd-box dnd-col-1 px-3 py-2 col"
+        cdkDrag
+        [innerHtml]="(activity.meta.activity_type === 'dnd-match') ? option.caption.sortable : option.caption"
+      >
+      </div>
     </div>
   </div>
 </ng-template>

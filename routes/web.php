@@ -12,6 +12,8 @@ use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\UserAnswerController;
+use App\Http\Controllers\UserRedirectController;
+use App\Http\Controllers\SyllabusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,17 +39,25 @@ Route::get('/', function () {
     ]);
 });
 
-// Jetstream user dashboard is not part of the v4 group/path. Do not move it there.
-Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+//Added after moving /dashboard to /user/dashboard to fix issue #60
+Route::get('/dashboard', function () {
+    return redirect('user/dashboard');
+});
+
+Route::group(['prefix' => 'user'], function() {
+    Route::get('/redirect', [UserRedirectController::class, 'user_login_redirect']);
+
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+});
 
 Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped /v4/catalogue: Web course catalogues
     Route::group(['prefix' => '/catalogue'], function() {
         Route::get('/', [CourseController::class, 'index']);
-        Route::get('/publisher/{publisherId?}', [CourseController::class, 'index'])->whereNumber('publisherId');
+        Route::get('/publisher/{publisherId?}', [CourseController::class, 'index']);
         Route::get('/user/{userId?}', [CourseController::class, 'indexUser'])->whereNumber('userId');
         Route::get('/course/{cid}', [CourseController::class, 'course'])->whereNumber('cid');
     });
@@ -61,13 +71,16 @@ Route::group(['prefix' => 'v4'], function() {
             Route::post('/user_name', [UserController::class, 'save_name']);
         });
 
+        // Paths grouped as /v4/user/course
+        Route::group(['prefix' => 'course'], function() {
+            Route::get('/{pid?}/resume', [UserCourseController::class, 'start_aid']);
+        });
+
         // Paths grouped as /v4/user/courses
         Route::group(['prefix' => 'courses'], function() {
 
             // Catalogue of courses where the user is a participant
             Route::get('/', [UserCourseController::class, 'index']);
-
-            Route::get('/resume/{pid?}', [UserCourseController::class, 'start_aid']);
 
             // User's web courses progress: Unused?
             // Route::get('/progress', [UserCourseController::class, 'indexWithCourse']);
@@ -80,7 +93,7 @@ Route::group(['prefix' => 'v4'], function() {
     Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
 
-        Route::get('/activities/{aid?}', [ActivityController::class, 'activity']);
+        Route::get('/activities/{aid?}', [SyllabusController::class, 'activity_set']);
         Route::get('/activities/help/{type?}', [ActivityController::class, 'help']);
         Route::post('/activities/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
 

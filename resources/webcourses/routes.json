@@ -1,12 +1,17 @@
 {
   "/v4/user/profile": "/user",
+  "/v4/user/profile/user_name": "/post_user_name",
   "/v4/user/dashboard": "/user",
+  "/v4/user/course/:id/resume": "/user_course_resume",
   "/v4/catalogue": "/catalogue",
   "/v4/catalogue/course/:id": "/catalogue/:id",
   "/v4/catalogue/user": "/catalogue_user",
   "/v4/publisher": "/publisher",
   "/v4/publisher/:id": "/publisher/:id",
   "/v4/publisher/profile/:id": "/publisher/:id",
-  "/v4/catalogue/publisher/1": "/catalogue_by_publisher_1",
-  "/v4/catalogue/publisher/2": "/catalogue_by_publisher_2"
+  "/v4/catalogue/publisher/:id": "/catalogue_by_publisher?id=:id",
+  "/v4/webcourse/activities/:id": "/webcourse_activity?id=:id",
+  "/v4/webcourse/activities/:id/user_answer": "/post_user_answer",
+  "/v4/webcourse/1/chapters": "/webcourse_1_chapters",
+  "/v4/webcourse/chapter/:id": "/webcourse_chapter/:id"
 }

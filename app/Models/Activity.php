@@ -17,4 +17,8 @@ class Activity extends Model
     public function answers() {
         return $this->hasMany(Answer::class);
     }
+
+    public function user_answers() {
+        return $this->hasMany(UserAnswer::class);
+    }
 }
