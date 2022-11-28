@@ -49,22 +49,20 @@ class ActivityController extends Controller
             );
         }
 
-        $activityy = clone $this->built_activity_post_process($activityy);
+        $activityy = clone $this->json_decode_activity_answers($activityy);
 
         return $activityy;
     }
 
-    private function built_activity_post_process($activity) {
-
-        // Answer caption for Click type activity where meta.style is image need json_decode
-        if ($activity['meta']['activity_type'] === "click" && $activity['meta']['style'] === "image") {
-            foreach ($activity['answers'] as $i => $answer) {
-                if(isJSON($answer['caption'])) {
-                    $activity['answers'][$i]['caption'] = json_decode($answer['caption']);
-                }
+    private function json_decode_activity_answers($activity) {
+        // Some activity answers are in JSON format. This routine prevents escaping of their
+        // quotation marks with slashes.
+        foreach ($activity['answers'] as $i => $answer) {
+            if(isJSON($answer['caption'])) {
+                $activity['answers'][$i]['caption'] = json_decode($answer['caption']);
             }
         }
-
         return $activity;
     }
+
 }
