@@ -1,3 +1,4 @@
+[![WNGX Build](https://github.com/eclectic-bytech/webcourses-ngx-v4/actions/workflows/main.yml/badge.svg)](https://github.com/eclectic-bytech/webcourses-ngx-v4/actions/workflows/main.yml)
 ```
 
 oooooo   oooooo     oooo ooooo      ooo   .oooooo.    ooooooo  ooooo            .o   
@@ -10,8 +11,6 @@ oooooo   oooooo     oooo ooooo      ooo   .oooooo.    ooooooo  ooooo            
       
   
 ```
-
-[![WNGX Build](https://github.com/eclectic-bytech/webcourses-ngx-v4/actions/workflows/main.yml/badge.svg)](https://github.com/eclectic-bytech/webcourses-ngx-v4/actions/workflows/main.yml)
 
 Everyone is encouraged to contribute, while we ensure high and professional quality.
 
