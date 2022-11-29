@@ -97,7 +97,19 @@ class ActivityController extends Controller
     }
 
     private function user_long_answer($activity) {
-        $activity['user_long_answer'] = "Kay";
+        if ($activity['user_answers']->isNotEmpty()) {
+            if ($activity['meta']['activity_type'] === 'textarea' || $activity['meta']['activity_type'] === 'text') {
+                $user_long_answer = UserLongAnswer
+                    ::where('id', $activity['user_answers'][0]['answer_id'])
+                    ->first();
+
+                $activity['user_long_answer'] = $user_long_answer['answer'];
+            }
+        } else {
+            // Running isNotEmpty check creates empty $activity['user_answers'].
+            // Remove it since there are no user answers/
+            unset($activity['user_answers']);
+        }
         return $activity;
     }
 
