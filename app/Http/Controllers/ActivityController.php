@@ -53,6 +53,7 @@ class ActivityController extends Controller
         }
 
         $activityy = clone $this->json_decode_activity_answers($activityy);
+        $activityy = clone $this->user_long_answer($activityy);
         $activityy = clone $this->activity_default_answer($activityy, $pid);
 
         return $activityy;
@@ -92,6 +93,11 @@ class ActivityController extends Controller
             unset($activity['default_answer']);
             $activity['default_answer'] = $answer;
         }
+        return $activity;
+    }
+
+    private function user_long_answer($activity) {
+        $activity['user_long_answer'] = "Kay";
         return $activity;
     }
 

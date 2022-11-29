@@ -40,14 +40,14 @@
     <textarea
       cols="66"
       [rows]="activity.user_answers.length / 78"
-      class="form-control" disabled>{{activity.user_answers.answer}}
+      class="form-control" disabled>{{activity.user_long_answer}}
     </textarea>
   </div>
 
   <!-- TEXT INPUT FORM -->
 
   <div *ngIf="activity.meta.activity_type === 'text'" class="container">
-    <input type="text" class="form-control" value="{{activity.user_answers.answer}}" disabled>
+    <input type="text" class="form-control" value="{{activity.user_long_answer}}" disabled>
   </div>
 
   <!-- CLICK ACTIVITY -->
