@@ -8,13 +8,16 @@ use App\Http\Controllers\UserAnswerController;
 
 use App\Models\Activity;
 use App\Models\Help;
+use App\Models\UserAnswer;
+use App\Models\UserLongAnswer;
+use App\Models\ActivityDefaultAnswer;
 
 class ActivityController extends Controller
 {
     public function activity($aid, $pid) {
         return Activity
             ::where('id', $aid)
-            ->with('meta', 'answers', 'user_answers')
+            ->with('meta', 'answers', 'user_answers', 'default_answer')
             ->first();
     }
 
@@ -50,6 +53,7 @@ class ActivityController extends Controller
         }
 
         $activityy = clone $this->json_decode_activity_answers($activityy);
+        $activityy = clone $this->activity_default_answer($activityy, $pid);
 
         return $activityy;
     }
@@ -61,6 +65,32 @@ class ActivityController extends Controller
             if(isJSON($answer['caption'])) {
                 $activity['answers'][$i]['caption'] = json_decode($answer['caption']);
             }
+        }
+        return $activity;
+    }
+
+    private function activity_default_answer($activity, $pid) {
+        if (is_null($activity['default_answer'])) {
+            unset($activity['default_answer']);
+        } else {
+            if ($activity['default_answer']['source'] === 1) {
+                $default_answer = ActivityDefaultAnswer
+                    ::where('aid', $activity['default_answer']['id'])
+                    ->first();
+            } else {
+                $answer_meta = UserAnswer
+                    ::where('activity_id', $activity['default_answer']['id'])
+                    ->where('progress_id', $pid)
+                    ->first();
+
+                $default_answer = UserLongAnswer
+                    ::where('id', $answer_meta['answer_id'])
+                    ->first();
+            }
+
+            $answer = $default_answer['answer'];
+            unset($activity['default_answer']);
+            $activity['default_answer'] = $answer;
         }
         return $activity;
     }
