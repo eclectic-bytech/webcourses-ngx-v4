@@ -9,11 +9,11 @@
 
 // Force hidding of ngbDropdownToggle user menu (Bootstrap classes get over-ridden)
 #dropdown-icon {
-  display: none!important;
+  display: none !important;
 }
 
 #headbar-user-dropdown {
-	background-color: orange;
+  background-color: orange;
   color: #2d2d2d;
 }
 
@@ -24,11 +24,13 @@
 }
 
 #signIn-dashboard {
-  padding: 0; /* Overrides Bootstrap's nav-link padding */
+  padding: 0;
+  /* Overrides Bootstrap's nav-link padding */
 }
 
 // Change main menu item hover colour in headerbar
-.dropdown-item:focus, .dropdown-item:hover {
+.dropdown-item:focus,
+.dropdown-item:hover {
   background-color: rgb(223, 240, 255);
 }
 
@@ -39,12 +41,12 @@
 
 .active {
   background-color: #454b50;
-  border-radius:.35rem;
+  border-radius: .35rem;
 }
 
 @media (min-width: 992px) {
   #dropdown-icon {
-    display: inline-block!important;
+    display: inline-block !important;
   }
 }
 
@@ -52,4 +54,10 @@
   .alwaysVisible {
     order: 1;
   }
+}
+
+.disAIcon {
+  text-align: center !important;
+  display: inline-block;
+  width: 2rem;
 }
