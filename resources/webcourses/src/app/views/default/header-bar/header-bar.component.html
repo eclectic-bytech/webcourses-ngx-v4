@@ -70,10 +70,12 @@
           (click)="collapseMenus()"
           ngbDropdownItem
         >
+        <div class="disAIcon">
           <fa-icon
             [icon]="faGraduationCap"
-            class="py-3 pr-2 text-warning"
+            class="py-3 text-warning"
           ></fa-icon>
+          </div>
           My courses
         </a>
 
@@ -84,10 +86,12 @@
           (click)="collapseMenus()"
           ngbDropdownItem
         >
+        <div class="disAIcon">
           <fa-icon
             [icon]="faThumbtack"
-            class="py-3 pr-3 text-warning"
+            class="py-3 text-warning"
           ></fa-icon>
+        </div>
           Publisher
         </a>
 
@@ -98,10 +102,11 @@
           (click)="collapseMenus()"
           ngbDropdownItem
         >
-          <fa-icon [icon]="faWrench" class="py-3 pr-2 text-warning"></fa-icon>
+        <div class="disAIcon">
+          <fa-icon [icon]="faWrench" class="py-3 text-warning"></fa-icon>
+          </div>
           Dashboard
         </a>
-
         <!-- MENU ITEMS DIVIDER -->
         <div class="dropdown-divider"></div>
 
@@ -111,10 +116,12 @@
           (click)="this.headerbarService.signOut()"
           ngbDropdownItem
         >
+        <div class="disAIcon">
           <fa-icon
             [icon]="faSignOutAlt"
-            class="py-3 pr-2 text-warning"
+            class="py-3 text-warning"
           ></fa-icon>
+        </div>
           Sign out
         </button>
       </div>
