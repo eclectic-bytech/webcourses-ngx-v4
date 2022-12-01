@@ -195,13 +195,11 @@
         <!-- EXIT TO MAIN CATALOGUE LINK -->
         <li
           class="nav-item px-2 py-1 mx-2"
-class="gg"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
           <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">
             Exit {{ theme.label }}
-
           </a>
         </li>
       </ng-template>
