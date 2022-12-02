@@ -15,7 +15,7 @@ export class ThemeService {
     path: '1',
     logo: 'publisher-files/1/theme/logo.svg',
     css: 'publisher-files/1/theme/styles.css',
-    bootstrap_nav: 'navbar-dark',
+    bootstrap_nav: 'navbar-light',
     created_at: '',
     updated_at: '',
   }
