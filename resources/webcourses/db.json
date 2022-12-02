@@ -19,6 +19,7 @@
       "created_at": null,
       "updated_at": null
     },
+    "user_roles": [1,2],
     "all_teams": [
       {
         "id": 1,

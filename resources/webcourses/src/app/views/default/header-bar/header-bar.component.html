@@ -94,6 +94,7 @@
         <a
           class="dropdown-item py-2"
           [routerLink]="['/admin', 'publisher', 'dashboard']"
+          [ngClass]="this.userService.userIsPublisher() ? '' : 'd-none'"
           (click)="collapseMenus()"
           ngbDropdownItem
         >
