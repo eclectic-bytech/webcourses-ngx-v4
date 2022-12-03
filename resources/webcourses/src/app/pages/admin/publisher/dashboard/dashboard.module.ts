@@ -14,4 +14,5 @@ import { PublisherMenuModule } from '../menu/menu.module';
     DashboardRoutingModule
   ]
 })
+
 export class PublisherAdminDashboardModule { }
