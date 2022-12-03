@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
 
 import { PublisherService } from 'src/app/pages/catalogue/publisher/publisher.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
@@ -12,19 +13,16 @@ import { Publisher } from './../../../../models/publisher.model'
 })
 export class PublisherAdminDashboardComponent implements OnInit {
 
-  public publisherInfo: Publisher
+  public publisherInfo$: Observable<Publisher>
 
   constructor(
     public publisherService: PublisherService
   ) { }
 
   ngOnInit(): void {
-
-    this.publisherService.getPublisher(1, 'cid').subscribe(
-      (publisher: Publisher) => {
-        this.publisherInfo = publisher
-      }
-    )
+    console.log('Kay')
+    this.publisherInfo$ = this.publisherService.getPublisher(1, 'Kay');
   }
+
 }
 
