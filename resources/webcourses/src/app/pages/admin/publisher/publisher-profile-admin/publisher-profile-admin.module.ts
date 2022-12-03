@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PublisherProfileRoutingModule } from './publisher-profile-routing.module';
+import { PublisherMenuModule } from '../menu/menu.module';
 import { PublisherProfileAdminComponent } from './publisher-profile-admin.component';
 
 @NgModule({
@@ -9,7 +10,8 @@ import { PublisherProfileAdminComponent } from './publisher-profile-admin.compon
   ],
   imports: [
     CommonModule,
-    PublisherProfileRoutingModule
+    PublisherProfileRoutingModule,
+    PublisherMenuModule
   ]
 })
 
