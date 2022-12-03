@@ -1,3 +1,7 @@
+<div class="container" style="margin-top: 200px;">
+  <div [routerLink]="['/admin', 'publisher', 'profile']">PROFILE</div>
+</div>
+
 <div *ngIf="publisherInfo$ | async as publisherInfo" @fadeInOut>
 
   <div id="fullMainContent" class="container mt-5 pt-5">
