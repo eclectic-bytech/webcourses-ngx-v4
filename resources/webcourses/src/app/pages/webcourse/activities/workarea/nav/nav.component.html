@@ -14,9 +14,9 @@
     [ngClass]="this.navService.waitingForApi ? 'btn-secondary' : 'btn-primary'"
     [disabled]="this.navService.waitingForApi"
     >
-    <fa-icon [icon]="faThLarge" class="mr-1" *ngIf="!this.navService.waitingForApi"></fa-icon>
-    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mr-2" *ngIf="this.navService.waitingForApi"></fa-icon>
     NEXT
+    <fa-icon [icon]="faStepForward" class="mx-1" *ngIf="!this.navService.waitingForApi"></fa-icon>
+    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mx-2" *ngIf="this.navService.waitingForApi"></fa-icon>
   </button>
 
   <button type="submit" class="btn"
