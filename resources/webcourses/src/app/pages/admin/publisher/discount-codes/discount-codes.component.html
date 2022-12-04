@@ -11,6 +11,14 @@
 
   <div *ngFor="let courseDiscountCodes of discountCodes">
 
+    <div class="card my-4">
+      <div class="card-body">
+        <div class="card-title h4">{{ courseDiscountCodes.course.title }}</div>
+        <div class="card-subtitle" [innerHtml]="courseDiscountCodes.course.short_desc"></div>
+        <div class="card-text mt-2">{{ courseDiscountCodes.course.created_at }}</div>
+      </div>
+    </div>
+
     <table class="table table-bordered table-hover table-striped">
       <thead>
         <tr>
@@ -27,7 +35,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let discountCode of courseDiscountCodes, let i = index, let l = last">
+        <tr *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last">
           <td>{{ discountCode.code }}
             <span
               class="badge badge-pill badge-success font-weight-light float-right"
