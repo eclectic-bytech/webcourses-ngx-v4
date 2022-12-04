@@ -15,7 +15,7 @@ export class DiscountCodesService {
 
   getDiscountCodes$() {
     return this.httpClient.get<Coupon>(`
-      ${this.configService.params.api.route}/publisher/codes}
+      ${this.configService.params.api.route}/admin/publisher/codes}
     `).pipe(codes => codes)
   }
 }
