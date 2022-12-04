@@ -12,10 +12,19 @@
   <div *ngFor="let courseDiscountCodes of discountCodes">
 
     <div class="card my-4">
-      <div class="card-body">
-        <div class="card-title h4">{{ courseDiscountCodes.course.title }}</div>
-        <div class="card-subtitle" [innerHtml]="courseDiscountCodes.course.short_desc"></div>
-        <div class="card-text mt-2">{{ courseDiscountCodes.course.created_at }}</div>
+      <div class="row no-gutters">
+        <div class="col-auto">
+          <img
+            style="max-height: 10rem"
+            src="publisher-files/{{courseDiscountCodes.course.publisher_id}}/courses/{{courseDiscountCodes.course.id}}/images/{{courseDiscountCodes.course.cover}}" alt="{{courseDiscountCodes.course.cover_alt}}"
+          >
+        </div>
+        <div class="col">
+          <div class="card-body">
+            <div class="card-title h4">{{ courseDiscountCodes.course.title }}</div>
+            <div class="card-subtitle">{{ courseDiscountCodes.course.created_at }}</div>
+          </div>
+        </div>
       </div>
     </div>
 
