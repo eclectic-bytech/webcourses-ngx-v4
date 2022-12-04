@@ -19,6 +19,7 @@
         <th class="text-uppercase text-center">course <span class="text-uppercase">id</span></th>
         <th class="text-right text-uppercase">used</th>
         <th class="text-right text-uppercase">max</th>
+        <th class="text-uppercase d-none d-xl-table-cell text-center">created</th>
       </tr>
     </thead>
 
@@ -34,6 +35,7 @@
         <td class="text-center">{{ discountCode.cid }}</td>
         <td class="text-right">{{ discountCode.uses }}</td>
         <td class="text-right">{{ discountCode.uses_max }}</td>
+        <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at }}</td>
       </tr>
     </tbody>
   </table>
