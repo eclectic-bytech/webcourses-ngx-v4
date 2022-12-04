@@ -13,7 +13,7 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 })
 export class DiscountCodesComponent implements OnInit {
 
-  public discountCodes$: Observable<Coupon[]>
+  public discountCodes$: Observable<any[]>
 
   constructor(
     private discountCodesService: DiscountCodesService

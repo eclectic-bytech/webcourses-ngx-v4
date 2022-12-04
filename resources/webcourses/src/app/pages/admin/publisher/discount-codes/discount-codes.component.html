@@ -8,37 +8,42 @@
   class="container"
   @fadeInOut>
 
-  <table class="table table-bordered table-hover table-striped">
-    <thead>
-      <tr>
-        <th class="text-uppercase">
-          code
-          <span class="badge badge-pill badge-light font-weight-light text-capitalize float-right">Available</span>
-        </th>
-        <th class="text-uppercase">label</th>
-        <th class="text-uppercase text-center">course <span class="text-uppercase">id</span></th>
-        <th class="text-right text-uppercase">used</th>
-        <th class="text-right text-uppercase">max</th>
-        <th class="text-uppercase d-none d-xl-table-cell text-center">created</th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <tr *ngFor="let discountCode of discountCodes, let i = index, let l = last">
-        <td>{{ discountCode.code }}
-          <span
-            class="badge badge-pill badge-success font-weight-light float-right"
-            [innerHtml]="discountCode.uses_max - discountCode.uses">
-          </span>
-        </td>
-        <td>{{ discountCode.label }}</td>
-        <td class="text-center">{{ discountCode.cid }}</td>
-        <td class="text-right">{{ discountCode.uses }}</td>
-        <td class="text-right">{{ discountCode.uses_max }}</td>
-        <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div *ngFor="let courseDiscountCodes of discountCodes">
+
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th class="text-uppercase">
+            code
+            <span class="badge badge-pill badge-light font-weight-light text-capitalize float-right">Available</span>
+          </th>
+          <th class="text-uppercase">label</th>
+          <th class="text-uppercase text-center">course <span class="text-uppercase">id</span></th>
+          <th class="text-right text-uppercase">used</th>
+          <th class="text-right text-uppercase">max</th>
+          <th class="text-uppercase d-none d-xl-table-cell text-center">created</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let discountCode of courseDiscountCodes, let i = index, let l = last">
+          <td>{{ discountCode.code }}
+            <span
+              class="badge badge-pill badge-success font-weight-light float-right"
+              [innerHtml]="discountCode.uses_max - discountCode.uses">
+            </span>
+          </td>
+          <td>{{ discountCode.label }}</td>
+          <td class="text-center">{{ discountCode.cid }}</td>
+          <td class="text-right">{{ discountCode.uses }}</td>
+          <td class="text-right">{{ discountCode.uses_max }}</td>
+          <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>
 
 <ng-template #loading>
