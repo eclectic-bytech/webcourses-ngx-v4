@@ -4,7 +4,7 @@
 </div>
 
 <div
-  *ngIf="discountCodes$ | async as discountCodes"
+  *ngIf="discountCodes$ | async as discountCodes; else loading"
   class="container"
   @fadeInOut>
 
@@ -39,3 +39,6 @@
   </table>
 </div>
 
+<ng-template #loading>
+  <app-loading-spinner></app-loading-spinner>
+</ng-template>
