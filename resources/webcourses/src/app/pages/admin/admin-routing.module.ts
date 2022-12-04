@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
 
 const routes: Routes = [
   {
     path: 'publisher/profile',
-    loadChildren: () => import('./publisher/publisher-profile-admin/publisher-profile-admin.module').then(m => m.PublisherProfileAdminModule),
+    loadChildren: () => import('./publisher/profile/profile.module').then(m => m.PublisherProfileModule),
     pathMatch: 'full'
   },
   {
-    path: 'publisher/dashboard',
-    loadChildren: () => import('./publisher/dashboard/dashboard.module').then(m => m.PublisherAdminDashboardModule),
+    path: 'publisher/courses',
+    loadChildren: () => import('./publisher/courses/courses.module').then(m => m.PublisherCoursesModule),
     pathMatch: 'full'
   }
 ]

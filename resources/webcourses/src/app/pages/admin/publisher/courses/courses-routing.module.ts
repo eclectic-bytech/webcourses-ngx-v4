@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule, Routes } from '@angular/router'
-import { PublisherProfileAdminComponent } from './publisher-profile-admin.component'
+import { PublisherCoursesComponent } from './courses.component'
 
 const routes: Routes = [
   {
     path: '',
-    component: PublisherProfileAdminComponent,
+    component: PublisherCoursesComponent,
     data: {
-      title: 'Publisher Profile'
+      title: 'Publisher CoursesProfile'
     }
   },
 ]
@@ -22,4 +22,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class PublisherProfileRoutingModule { }
+export class PublisherCoursesRoutingModule { }
