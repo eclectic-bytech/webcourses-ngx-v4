@@ -15,7 +15,7 @@
     [disabled]="this.navService.waitingForApi"
     >
     NEXT
-    <fa-icon [icon]="faStepForward" class="mx-1" *ngIf="!this.navService.waitingForApi"></fa-icon>
+    <fa-icon [icon]="faStepForward" class="mx-2" *ngIf="!this.navService.waitingForApi"></fa-icon>
     <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mx-2" *ngIf="this.navService.waitingForApi"></fa-icon>
   </button>
 
