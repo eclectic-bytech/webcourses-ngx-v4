@@ -5,7 +5,7 @@ import { ActiveModeService } from '../active-mode/active-mode.service'
 import { ActivitiesService } from '../../activities.service'
 import { Location } from '@angular/common'
 
-import { faStepBackward, faSpinner, faCheck, faPencilAlt, faThLarge } from '@fortawesome/free-solid-svg-icons'
+import { faStepBackward, faSpinner, faCheck, faPencilAlt, faStepForward } from '@fortawesome/free-solid-svg-icons'
 import { WorkareaService } from '../workarea.service'
 import { ChapterIndexService } from '../../sidebar/chapter-index/chapter-index.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
@@ -24,7 +24,7 @@ export class NavComponent implements OnInit {
   faCheck = faCheck
   faPencilAlt = faPencilAlt
   faSpinner = faSpinner
-  faThLarge = faThLarge
+  faStepForward = faStepForward
 
   constructor(
     public navService: NavService,
