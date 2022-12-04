@@ -12,4 +12,5 @@ import { DiscountCodesRoutingModule } from './discount-codes-routing.module'
     DiscountCodesRoutingModule
   ]
 })
+
 export class DiscountCodesModule { }

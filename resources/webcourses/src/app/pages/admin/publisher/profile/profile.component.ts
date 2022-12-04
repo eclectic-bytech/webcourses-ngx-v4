@@ -14,6 +14,7 @@ import { Publisher } from './../../../../models/publisher.model'
 export class PublisherProfileComponent implements OnInit {
 
   public publisherInfo$: Observable<Publisher>
+
   constructor(
     public publisherService: PublisherService
   ) { }
