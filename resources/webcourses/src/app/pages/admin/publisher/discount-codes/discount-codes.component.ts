@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
 
 import { DiscountCodesService } from './discount-codes.service'
-import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
-import { Observable } from 'rxjs'
 import { Coupon } from 'src/app/models/coupon.model'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-discount-codes',
@@ -13,14 +13,14 @@ import { Coupon } from 'src/app/models/coupon.model'
 })
 export class DiscountCodesComponent implements OnInit {
 
-  public discountCodes$: Observable<Coupon>
+  public discountCodes$: Observable<Coupon[]>
 
   constructor(
     private discountCodesService: DiscountCodesService
   ) { }
 
   ngOnInit(): void {
-    this.discountCodes$ = this.discountCodesService.getDiscountCodes$()
+    this.discountCodes$ = this.discountCodesService.getDiscountCodes()
   }
 
 }

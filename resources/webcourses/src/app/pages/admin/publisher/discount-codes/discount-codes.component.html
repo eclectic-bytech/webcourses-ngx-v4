@@ -1,1 +1,41 @@
-<p class="container" style="margin-top: 200px;" @fadeInOut>discount-codes works!</p>
+<div class="container mb-5 text-center" style="margin-top: 200px;" @fadeInOut>
+  <div class="h2">All Discount Coupons</div>
+  <p>A quick overview of all codes generated for your webcourses.</p>
+</div>
+
+<div
+  *ngIf="discountCodes$ | async as discountCodes"
+  class="container"
+  @fadeInOut>
+
+  <table class="table table-bordered table-hover table-striped">
+    <thead>
+      <tr>
+        <th class="text-uppercase">
+          code
+          <span class="badge badge-pill badge-light font-weight-light text-capitalize float-right">Available</span>
+        </th>
+        <th class="text-uppercase">label</th>
+        <th class="text-uppercase text-center">course <span class="text-uppercase">id</span></th>
+        <th class="text-right text-uppercase">used</th>
+        <th class="text-right text-uppercase">max</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let discountCode of discountCodes, let i = index, let l = last">
+        <td>{{ discountCode.code }}
+          <span
+            class="badge badge-pill badge-success font-weight-light float-right"
+            [innerHtml]="discountCode.uses_max - discountCode.uses">
+          </span>
+        </td>
+        <td>{{ discountCode.label }}</td>
+        <td class="text-center">{{ discountCode.cid }}</td>
+        <td class="text-right">{{ discountCode.uses }}</td>
+        <td class="text-right">{{ discountCode.uses_max }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
