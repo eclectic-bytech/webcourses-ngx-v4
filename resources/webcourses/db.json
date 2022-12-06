@@ -19,6 +19,7 @@
       "created_at": null,
       "updated_at": null
     },
+    "user_roles": [1,2],
     "all_teams": [
       {
         "id": 1,
@@ -93,7 +94,7 @@
         "path": "webcourses_io",
         "logo": "publisher-files/1/theme/logo.svg",
         "css": "publisher-files/1/theme/styles.css",
-        "bootstrap_nav": "navbar-dark",
+        "bootstrap_nav": "navbar-light",
         "created_at": "2022-10-25T14:46:48.000000Z",
         "updated_at": null
       },
@@ -211,7 +212,7 @@
         "path": "webcourses_io",
         "logo": "publisher-files/1/theme/logo.svg",
         "css": "publisher-files/1/theme/styles.css",
-        "bootstrap_nav": "navbar-dark",
+        "bootstrap_nav": "navbar-light",
         "created_at": "2022-10-25T14:46:48.000000Z",
         "updated_at": null
       },
@@ -329,7 +330,7 @@
         "path": "webcourses_io",
         "logo": "publisher-files/1/theme/logo.svg",
         "css": "publisher-files/1/theme/styles.css",
-        "bootstrap_nav": "navbar-dark",
+        "bootstrap_nav": "navbar-light",
         "created_at": "2022-10-25T14:46:48.000000Z",
         "updated_at": null
       },
@@ -429,7 +430,7 @@
         "path": "webcourses_io",
         "logo": "publisher-files/1/theme/logo.svg",
         "css": "publisher-files/1/theme/styles.css",
-        "bootstrap_nav": "navbar-dark",
+        "bootstrap_nav": "navbar-light",
         "created_at": "2022-10-25T14:46:48.000000Z",
         "updated_at": null
       }

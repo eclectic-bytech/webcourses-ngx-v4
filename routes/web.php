@@ -14,6 +14,7 @@ use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\UserRedirectController;
 use App\Http\Controllers\SyllabusController;
+use App\Http\Controllers\CouponsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,4 +108,17 @@ Route::group(['prefix' => 'v4'], function() {
         Route::get('/profile/{id}', [PublisherController::class, 'index']);
 
     });
+
+    // Paths grouped as /v4/admin
+    Route::group(['prefix' => 'admin'], function() {
+
+        // Paths grouped as /v4/admin/publisher
+        Route::group(['prefix' => 'publisher'], function() {
+
+            Route::get('/coupons', [CouponsController::class, 'index']);
+
+        });
+
+    });
+
 });
