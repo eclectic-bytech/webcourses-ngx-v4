@@ -19,7 +19,10 @@
       "created_at": null,
       "updated_at": null
     },
-    "user_roles": [1,2],
+    "user_roles": [
+      1,
+      2
+    ],
     "all_teams": [
       {
         "id": 1,
@@ -47,7 +50,10 @@
     ],
     "two_factor_enabled": false
   },
-  "post_user_name": {},
+  "post_user_name": {
+    "first_name": "Starfox",
+    "last_name": "One"
+  },
   "user_course_resume": {
     "id": 1,
     "pid": 1,
@@ -614,7 +620,9 @@
       "answers": []
     }
   ],
-  "post_user_answer": {},
+  "post_user_answer": [
+    2
+  ],
   "webcourse_1_chapters": [
     {
       "id": 309,
