@@ -23,7 +23,7 @@ php artisan migrate;
 
 echo
 echo "\033[1;34mCopying Angular index.html to angular.blade.php....";
-cp ./public/webcourses/index.html ~/code/resources/views/angular.blade.php;
+cp public/webcourses/index.html ./resources/views/angular.blade.php;
 
 # echo
 # echo "\033[1;34mCopying config.default.json to config.json....";
