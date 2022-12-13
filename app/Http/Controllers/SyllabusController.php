@@ -48,10 +48,11 @@ class SyllabusController extends Controller
 
         do {
             $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq + 1);
-            if ($aid_meta->cont === 1) {
+            // is_null checks required on last activity of a course
+            if (!is_null($aid_meta) && $aid_meta->cont === 1) {
                 array_push($activities_meta_set, $aid_meta);
             }
-        } while ($aid_meta->cont === 1);
+        } while (!is_null($aid_meta) && $aid_meta->cont === 1);
 
         return $activities_meta_set;
     }
