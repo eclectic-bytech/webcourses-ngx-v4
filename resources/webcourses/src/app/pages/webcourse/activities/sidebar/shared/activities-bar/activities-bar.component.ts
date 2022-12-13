@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core'
-import { Chapter } from '../../../models/chapter.model'
-import { SelectedService } from '../../selected/selected.service'
-import { UserService } from '../../../../../../core/services/user/user.service'
-import { CompletionStatsService } from '../../../../../../core/services/user/completion-stats.service'
-import { WorkareaService } from '../../../workarea/workarea.service'
+import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
+import { SelectedService } from 'src/app/pages/webcourse/activities/sidebar/selected/selected.service'
+import { UserService } from 'src/app/core/services/user/user.service'
+import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
+import { WorkareaService } from 'src/app/pages/webcourse/activities/workarea/workarea.service'
 
 @Component({
   selector: 'app-activities-bar',
