@@ -20,7 +20,6 @@ export class CompletionStatsService {
   public cs = 0
 
   initChapterCompletionStats(chapterIndex: Chapter[]) {
-    console.log(chapterIndex)
     chapterIndex.forEach(chapter => {
       if (!this.completionStats.inChid[chapter.id]) {
         this.completionStats.inChid[chapter.id] = chapter.syllabus.length
