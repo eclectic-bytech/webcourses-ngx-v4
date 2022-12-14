@@ -23,7 +23,7 @@ export class CompletionStatsService {
     console.log(chapterIndex)
     chapterIndex.forEach(chapter => {
       if (!this.completionStats.inChid[chapter.id]) {
-        this.completionStats.inChid[chapter.id] = chapter.tac
+        this.completionStats.inChid[chapter.id] = chapter.syllabus.length
       }
     })
   }
