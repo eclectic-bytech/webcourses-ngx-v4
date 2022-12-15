@@ -19,7 +19,7 @@ export class NavService {
     private workareaService: WorkareaService,
     private chapterIndexService: ChapterIndexService,
     private selectedCourseService: SelectedCourseService
-  ) {}
+  ) { }
 
 
   calcFollowingAid(chapters: Chapter[], offset: number) {
@@ -52,9 +52,11 @@ export class NavService {
   }
 
   firstActivitySetCheck() {
+    console.log('checking chapter number')
     this.chapterIndexService.getChapterIndex$(this.selectedCourseService.selectedCourse.id).subscribe(
       (chapters: Chapter[]) => {
         const aids = this.getChapterAids(chapters, this.workareaService.activities[0].meta.chapter_id)
+        console.log(aids)
         this.firstActivitySet = this.workareaService.activities[0].meta.activity_id === aids[0] ? true : false
       }
     )
