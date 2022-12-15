@@ -21,7 +21,10 @@
               </div>
             </ng-template>
 
-            <app-activities-bar [chapter]="chapter" [tac]="this.selectedCourseService.selectedCourse.user_progress.total_activities_completed"></app-activities-bar>
+            <app-activities-bar
+              [chapter]="chapter"
+              [tac]="this.selectedCourseService.selectedCourse.user_progress.total_activities_completed"
+            ></app-activities-bar>
 
           </li>
         </ol>
