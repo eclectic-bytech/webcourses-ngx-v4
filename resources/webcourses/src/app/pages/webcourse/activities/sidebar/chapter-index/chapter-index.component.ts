@@ -1,11 +1,11 @@
 import { Component } from '@angular/core'
 import { ActivitiesService } from '../../activities.service'
 import { Chapter } from '../../models/chapter.model'
-import { CompletionStatsService } from '../../../../../core/services/user/completion-stats.service'
-import { FadeInOut } from '../../../../../core/animations/fade-in-out.animation'
+import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { WorkareaService } from '../../workarea/workarea.service'
 import { ChapterIndexService } from './chapter-index.service'
-import { SelectedCourseService } from '../../../../../../../src/app/core/services/selected-course/selected-course.service'
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 import { Observable } from 'rxjs'
 
 @Component({
@@ -20,7 +20,7 @@ export class ChapterIndexComponent {
 
   constructor(
     public activitiesService: ActivitiesService,
-    private selectedCourseService: SelectedCourseService,
+    public selectedCourseService: SelectedCourseService,
     public chapterIndexService: ChapterIndexService,
     private completionStatsService: CompletionStatsService,
     public workareaService: WorkareaService
