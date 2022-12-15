@@ -50,10 +50,7 @@
     ],
     "two_factor_enabled": false
   },
-  "post_user_name": {
-    "first_name": "Starfox",
-    "last_name": "One"
-  },
+  "post_user_name": {},
   "user_course_resume": {
     "id": 1,
     "pid": 1,
@@ -620,9 +617,7 @@
       "answers": []
     }
   ],
-  "post_user_answer": [
-    2
-  ],
+  "post_user_answer": [ ],
   "webcourse_1_chapters": [
     {
       "id": 309,
