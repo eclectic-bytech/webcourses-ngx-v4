@@ -11,7 +11,7 @@
           <li *ngFor="let chapter of chapterIndex, let chapterNumber = index" class="h5 font-weight-normal">
 
             <div *ngIf="chapterUnlock(chapterIndex, chapterNumber); else lockedChapter">
-              <a (click)="this.workareaService.loadActivities(chapter.syllabus[0])" class="handy">
+              <a (click)="this.workareaService.loadActivities(chapter.syllabus[0].activity_id)" class="handy">
                 {{chapter.label}}
               </a>
             </div>
