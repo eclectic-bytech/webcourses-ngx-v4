@@ -39,7 +39,7 @@ export class ChapterIndexComponent {
     } else {
       // Second chapter and after is unlocked if previous is completed
       let previousChapter: Chapter = chapterIndex[chapterNumber - 1]
-      if (this.completionStatsService.completionStats.inChid[previousChapter.id] === previousChapter.ta) {
+      if (this.completionStatsService.completionStats.inChid[previousChapter.id] === previousChapter.syllabus.length) {
         return true
       }
     }
