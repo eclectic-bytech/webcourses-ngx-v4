@@ -47,4 +47,8 @@ export class UserService {
       this.user = null
     }
   }
+
+  userIsPublisher() {
+    return (this.user['user_roles'].indexOf(2) !== -1) ? 1 : 0
+  }
 }

@@ -21,7 +21,7 @@ export class CourseEndComponent {
   ) { }
 
   reviewButton() {
-    this.workareaService.loadActivities(this.selectedService.firstChapter.syllabus[0])
+    this.workareaService.loadActivities(this.selectedService.firstChapter.syllabus[0].activity_id)
   }
 
 }

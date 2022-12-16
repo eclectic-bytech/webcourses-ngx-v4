@@ -19,7 +19,7 @@ export class NavService {
     private workareaService: WorkareaService,
     private chapterIndexService: ChapterIndexService,
     private selectedCourseService: SelectedCourseService
-  ) {}
+  ) { }
 
 
   calcFollowingAid(chapters: Chapter[], offset: number) {

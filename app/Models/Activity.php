@@ -21,4 +21,8 @@ class Activity extends Model
     public function user_answers() {
         return $this->hasMany(UserAnswer::class);
     }
+
+    public function default_answer() {
+        return $this->hasOne(ActivityDefaults::class);
+    }
 }

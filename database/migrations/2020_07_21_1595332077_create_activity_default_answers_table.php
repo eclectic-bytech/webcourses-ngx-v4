@@ -10,8 +10,9 @@ class CreateActivityDefaultAnswersTable extends Migration
     {
         Schema::create('activity_default_answers', function (Blueprint $table) {
 
-		$table->increments('aid')->unsigned()->comment('Activity ID');
+		$table->mediumInteger('aid')->unsigned()->comment('Activity ID');
 		$table->mediumtext('answer')->comment('Text or data to be used as the default for an active mode activity');
+        $table->index('aid');
 
         });
     }

@@ -11,6 +11,7 @@ export class Activity {
     public created_at: string,
     public updated_at: string,
     public meta: ActivityMeta,
+    public user_long_answer: string,
     public answers: ActivityAnswers[],
     public user_answers: any,
     public default_answer?: string

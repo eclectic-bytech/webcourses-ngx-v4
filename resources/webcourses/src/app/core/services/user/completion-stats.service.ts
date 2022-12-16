@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 
-import { ConfigService } from '../../../core/services/config/config.service'
-import { Chapter } from '../../../pages/webcourse/activities/models/chapter.model'
-import { Activity } from '../../../pages/webcourse/activities/workarea/models/activity.model'
-import { Course } from '../../../../../src/app/models/course.model'
+import { ConfigService } from 'src/app/core/services/config/config.service'
+import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
+import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
+import { Course } from 'src/app/models/course.model'
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class CompletionStatsService {
   initChapterCompletionStats(chapterIndex: Chapter[]) {
     chapterIndex.forEach(chapter => {
       if (!this.completionStats.inChid[chapter.id]) {
-        this.completionStats.inChid[chapter.id] = chapter.tac
+        this.completionStats.inChid[chapter.id] = chapter.syllabus.length
       }
     })
   }

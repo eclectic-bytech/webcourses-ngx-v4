@@ -708,6 +708,7 @@ class DemocourseSeeder extends Seeder
         ]);
 
         DB::table('activity_default_answers')->insert([
+            'aid' => 3,
             'answer' => 'Mercury, Venus, Mars, Earth, Jupiter, Saturn, Uranus, Neptune'
         ]);
 

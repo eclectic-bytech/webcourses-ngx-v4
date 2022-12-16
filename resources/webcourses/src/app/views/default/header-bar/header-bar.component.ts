@@ -2,16 +2,11 @@ import { Component, OnInit, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { UserService } from './../../../core/services/user/user.service'
 import { HeaderBarService } from './header-bar.service'
-// import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 import { GravatarMd5Service } from '../../../core/services/gravatar-md5/gravatar-md5.service'
 import { ThemeService } from '../../../core/services/theme/theme.service'
 import { DomSanitizer } from '@angular/platform-browser'
-import { faWrench } from '@fortawesome/free-solid-svg-icons'
-import { faGem } from '@fortawesome/free-solid-svg-icons'
-import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faWrench, faGem, faGraduationCap, faSignOutAlt, faPenNib, faBarcode } from '@fortawesome/free-solid-svg-icons'
 import { Theme } from '../../../models/theme.model'
-import { faThumbtack } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-header-bar',
@@ -21,11 +16,13 @@ import { faThumbtack } from '@fortawesome/free-solid-svg-icons'
 export class HeaderBarComponent implements OnInit {
 
   @Input() theme: Theme
+
   faWrench = faWrench
   faGem = faGem
   faGraduationCap = faGraduationCap
   faSignOutAlt = faSignOutAlt
-  faThumbtack = faThumbtack
+  faPenNib = faPenNib
+  faBarcode = faBarcode
 
   public menuCollapsed = true
   public menuCollapsed2 = true

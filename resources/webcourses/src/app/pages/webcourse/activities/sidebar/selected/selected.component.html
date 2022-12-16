@@ -17,18 +17,16 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="mt-3"
-    *ngIf="this.selectedCourseService.selectedChapter as selectedChapter; else loading"
-    @fadeInOut
-    >
     <div class="container-fluid my-3">
       <div class="row">
         <div class="col mt-3">
-          <p class="h5 mb-0 primary-text">{{ selectedChapter.label }}</p>
-          <small class="text-uppercase main-label primary-text">Chapter with {{ selectedChapter.total_activities }} activities</small>
-          <app-activities-bar [chapter]="selectedChapter"></app-activities-bar>
+          <p class="h5 mb-0 primary-text">{{ this.selectedCourseService.selectedChapter.label }}</p>
+          <small class="text-uppercase main-label primary-text">Chapter with {{ this.selectedCourseService.selectedChapter.total_activities }} activities</small>
+          <app-activities-bar
+            [chapter]="this.selectedCourseService.selectedChapter"
+            [tac]="selectedCourse.user_progress.total_activities_completed"
+          ></app-activities-bar>
         </div>
       </div>
     </div>

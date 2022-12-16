@@ -21,7 +21,7 @@ class ThemesSeeder extends Seeder
             'path' => 'webcourses_io',
             'logo' => 'publisher-files/1/theme/logo.svg',
             'css' => 'publisher-files/1/theme/styles.css',
-            'bootstrap_nav' => 'navbar-dark',
+            'bootstrap_nav' => 'navbar-light',
             'created_at' => now()
         ]);
 
