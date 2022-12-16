@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
-import { DefaultComponent } from './views/default/default.component'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { AuthUserGuard } from './core/auth/auth-user.guard'
+import { DefaultComponent } from './views/default/default.component'
 import { CultivateLearningSessionInterceptor } from './core/interceptors/cultivate-learning-session.interceptor'
 
 const routes: Routes = [
@@ -24,10 +25,12 @@ const routes: Routes = [
       },
       {
         path: 'user',
+        canActivate: [AuthUserGuard],
         loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
       },
       {
         path: 'webcourse',
+        canActivate: [AuthUserGuard],
         loadChildren: () => import('./pages/webcourse/webcourse.module').then(m => m.WebcourseModule)
       },
       {
