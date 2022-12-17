@@ -12,6 +12,7 @@ export class Config {
     'domain': string
   }
   public assetsPath: string
+  public domain: string
   public logoutRedirectPath: string
   public devMode: boolean
 }
