@@ -7,6 +7,7 @@
     "domain": "homestead.test"
   },
   "assetsPath": "assets/",
+  "domain": "http://homestead.test",
   "logoutRedirectPath": "/user/login",
   "devMode": false
 }
