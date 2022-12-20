@@ -35,7 +35,7 @@ export class UserService {
   }
 
   localUserSession() {
-    if (!this.user) {
+    if (!this.user && this.configService.params.devMode) {
       this.getUser().subscribe(
         (user: JetstreamUser) => {
           // Call will return empty response if user is not logged in.
