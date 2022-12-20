@@ -22,7 +22,7 @@
         <div class="col">
           <div class="card-body">
             <div class="card-title h4">{{ courseDiscountCodes.course.title }}</div>
-            <div class="card-subtitle">{{ courseDiscountCodes.course.created_at }}</div>
+            <div class="card-subtitle">{{ courseDiscountCodes.course.created_at | date:'longDate'}}</div>
           </div>
         </div>
       </div>
