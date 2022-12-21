@@ -12,7 +12,7 @@ export class PublisherService {
     private config: ConfigService
   ) { }
 
-  getPublisher(id: any, type: string) {
+  getPublisher(id: any, id_type: string) {
     return this.http.get<any>(`
       ${this.config.params.api.route}/publisher/profile/${id}
     `).pipe(publisher => publisher)
