@@ -12,9 +12,9 @@ export class PublisherService {
     private config: ConfigService
   ) { }
 
-  getPublisher(id: any, id_type: string) {
+  getPublisher(uid: any) {
     return this.http.get<any>(`
-      ${this.config.params.api.route}/publisher/profile/${id}
+      ${this.config.params.api.route}/publisher/profile/${uid}
     `).pipe(publisher => publisher)
 
     // We used to fetch publisher's details based on PID, AID and PUB

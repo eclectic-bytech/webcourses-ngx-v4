@@ -12,12 +12,12 @@ class PublisherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($uid)
     {
         $idInt = (int)$id;
         if ($idInt != 0)
         {
-            return Publisher::where('id', $idInt)
+            return Publisher::where('owner_uid', $idInt)
                 ->with(['theme'])
                 ->sole();
         }
