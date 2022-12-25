@@ -90,48 +90,49 @@
           My courses
         </a>
 
-        <!-- MENU ITEMS DIVIDER -->
-        <div class="dropdown-divider"></div>
-
         <!-- USER MENU: PUBLISHER-->
-        <a
-          class="dropdown-item py-2"
-          [routerLink]="['/admin', 'publisher', 'profile']"
-          [ngClass]="this.userService.userIsPublisher() ? '' : 'd-none'"
-          (click)="collapseMenus()"
-          ngbDropdownItem
-        >
-          <div class="menu-icon text-center d-inline-block pr-2">
-            <fa-icon [icon]="faGem" class="text-warning"></fa-icon>
-          </div>
-          Publisher
-        </a>
+        <div [ngClass]="this.userService.userIsPublisher() ? '' : 'd-none'">
 
-        <a
-          class="dropdown-item py-2"
-          [routerLink]="['/admin', 'publisher', 'courses']"
-          [ngClass]="this.userService.userIsPublisher() ? '' : 'd-none'"
-          (click)="collapseMenus()"
-          ngbDropdownItem
-        >
-          <div class="menu-icon text-center d-inline-block pr-2">
-            <!-- <fa-icon [icon]="faPenNib" class="text-warning"></fa-icon> -->
-          </div>
-          Courses
-        </a>
+          <!-- MENU ITEMS DIVIDER -->
+          <div class="dropdown-divider"></div>
 
-        <a
-          class="dropdown-item py-2"
-          [routerLink]="['/admin', 'publisher', 'discount-codes']"
-          [ngClass]="this.userService.userIsPublisher() ? '' : 'd-none'"
-          (click)="collapseMenus()"
-          ngbDropdownItem
-        >
-          <div class="menu-icon text-center d-inline-block pr-2">
-            <!-- <fa-icon [icon]="faBarcode" class="text-warning"></fa-icon> -->
-          </div>
-          Discount Codes
-        </a>
+          <a
+            class="dropdown-item py-2"
+            [routerLink]="['/admin', 'publisher', 'profile']"
+            (click)="collapseMenus()"
+            ngbDropdownItem
+          >
+            <div class="menu-icon text-center d-inline-block pr-2">
+              <fa-icon [icon]="faGem" class="text-warning"></fa-icon>
+            </div>
+            Publisher
+          </a>
+
+          <a
+            class="dropdown-item py-2"
+            [routerLink]="['/admin', 'publisher', 'courses']"
+            (click)="collapseMenus()"
+            ngbDropdownItem
+          >
+            <div class="menu-icon text-center d-inline-block pr-2">
+              <!-- <fa-icon [icon]="faPenNib" class="text-warning"></fa-icon> -->
+            </div>
+            Courses
+          </a>
+
+          <a
+            class="dropdown-item py-2"
+            [routerLink]="['/admin', 'publisher', 'discount-codes']"
+            (click)="collapseMenus()"
+            ngbDropdownItem
+          >
+            <div class="menu-icon text-center d-inline-block pr-2">
+              <!-- <fa-icon [icon]="faBarcode" class="text-warning"></fa-icon> -->
+            </div>
+            Discount Codes
+          </a>
+
+        </div>
 
         <!-- MENU ITEMS DIVIDER -->
         <div class="dropdown-divider"></div>
