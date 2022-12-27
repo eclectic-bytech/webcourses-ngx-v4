@@ -1,0 +1,3 @@
+[submodule "resources/webcourses/src/publisher-files"]
+	path = resources/webcourses/src/publisher-files
+	url = https://github.com/eclectic-bytech/publisher-files
