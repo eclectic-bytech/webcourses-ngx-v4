@@ -23,5 +23,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install and npm run build
         run: |
+          git submodule update
           npm --prefix ./resources/webcourses i --include=dev
           npm --prefix ./resources/webcourses run build
