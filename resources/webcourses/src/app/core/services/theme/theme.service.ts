@@ -9,12 +9,12 @@ export class ThemeService {
 
   defaultTheme: Theme = {
     id: 1,
-    id_alias: 'webcourses_io',
+    id_alias: 'default',
     publisher_id: 1,
     label: 'Open',
-    path: '1',
-    logo: 'publisher-files/1/theme/logo.svg',
-    css: 'publisher-files/1/theme/styles.css',
+    path: '0',
+    logo: 'publisher-files/0/theme/logo.svg',
+    css: 'publisher-files/0/theme/styles.css',
     bootstrap_nav: 'navbar-light',
     created_at: '',
     updated_at: '',
