@@ -17,6 +17,7 @@ Homestead.yaml
 # Ignore compiled version of WNGX and related items
 # /public/webcourses
 /resources/views/angular.blade.php
+/resources/webcourses/src/publisher-files
 /public/webcourses
 
 # Copied from resources/webcourses:
