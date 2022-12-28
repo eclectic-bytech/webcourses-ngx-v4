@@ -14,6 +14,10 @@ cd resources/webcourses/;
 npm install;
 
 echo
+echo -e "Installing /publisher-files Git submodule";
+git submodule update;
+
+echo
 echo -e "Compiling webcourses (Angular framework)...";
 npm run build:prod;
 
