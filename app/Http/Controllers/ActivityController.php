@@ -17,7 +17,10 @@ class ActivityController extends Controller
     public function activity($aid, $pid) {
         return Activity
             ::where('id', $aid)
-            ->with('meta', 'answers', 'user_answers', 'default_answer')
+            ->with('meta', 'answers', 'default_answer')
+            ->with(['user_answers' => function ($query) use ($pid) {
+                $query::with('pid', $pid);
+            }])
             ->first();
     }
 
