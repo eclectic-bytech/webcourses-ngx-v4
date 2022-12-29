@@ -19,7 +19,7 @@ class ActivityController extends Controller
             ::where('id', $aid)
             ->with('meta', 'answers', 'default_answer')
             ->with(['user_answers' => function ($query) use ($pid) {
-                $query->where('pid', $pid);
+                $query->where('progress_id', $pid);
             }])
             ->first();
     }
