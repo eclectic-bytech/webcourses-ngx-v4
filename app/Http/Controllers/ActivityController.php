@@ -16,28 +16,18 @@ class ActivityController extends Controller
 {
     public function activity($aid, $pid) {
         return Activity
-            ::where('id', $aid)
-            ->with('meta', 'answers', 'default_answer')
+            ::with('meta', 'answers', 'default_answer')
             ->with(['user_answers' => function ($query) use ($pid) {
                 $query->where('progress_id', $pid);
             }])
-            ->first();
+            ->find($aid);
     }
 
-    public function help($type = false) {
-        if ($type) {
-            return Help
-                ::where('id', $type)
-                ->first();
-        } else {
-            return false;
-        }
-    }
 
     public function build_activity($aid, $pid) {
-        $activityy = clone $this->activity($aid, $pid);
+        $activityy = $this->activity($aid, $pid);
 
-        if ($activityy['user_answers']->isNotEmpty()) {
+        if ($activityy->user_answers->isNotEmpty()) {
             foreach ($activityy['answers'] as $key => $answer) {
                 foreach ($activityy['user_answers'] as $key2 => $user_answer) {
                     if ($answer['id'] === $user_answer['answer_id']) {
@@ -56,10 +46,10 @@ class ActivityController extends Controller
         }
 
         $activityy = clone $this->json_decode_activity_answers($activityy);
-        $activityy = clone $this->user_long_answer($activityy);
+        $activityy = $this->user_long_answer($activityy);
         $activityy = clone $this->activity_default_answer($activityy, $pid);
-
         return $activityy;
+
     }
 
     private function json_decode_activity_answers($activity) {
@@ -100,7 +90,7 @@ class ActivityController extends Controller
     }
 
     private function user_long_answer($activity) {
-        if ($activity['user_answers']->isNotEmpty()) {
+        if ($activity->user_answers()->exists()) {
             if ($activity['meta']['activity_type'] === 'textarea' || $activity['meta']['activity_type'] === 'text') {
                 $user_long_answer = UserLongAnswer
                     ::where('id', $activity['user_answers'][0]['answer_id'])
@@ -116,4 +106,13 @@ class ActivityController extends Controller
         return $activity;
     }
 
+    public function help($type = false) {
+        if ($type) {
+            return Help
+                ::where('id', $type)
+                ->first();
+        } else {
+            return false;
+        }
+    }
 }
