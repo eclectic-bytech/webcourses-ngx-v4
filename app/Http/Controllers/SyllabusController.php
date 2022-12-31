@@ -64,8 +64,7 @@ class SyllabusController extends Controller
 
         do {
             $activity = $controller->build_activity($activities_meta_set[$i]->activity_id, $pid);
-            $user_answers = $activity['user_answers'];
-            $getNext = ( is_object($user_answers) && $user_answers->count() ) ? TRUE : FALSE;
+            $getNext = isset($activity['user_answers']) ? TRUE : FALSE;
 
             // we're pushing $activity. unlike $unassociated_activity, it has its empty user_answer keys unset
             // when it goes throgh build_activity()

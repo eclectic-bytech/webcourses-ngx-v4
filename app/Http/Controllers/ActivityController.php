@@ -20,14 +20,14 @@ class ActivityController extends Controller
             ->with(['user_answers' => function ($query) use ($pid) {
                 $query->where('progress_id', $pid);
             }])
-            ->find($aid);
+            ->find($aid)->toArray();
     }
 
 
     public function build_activity($aid, $pid) {
         $activityy = $this->activity($aid, $pid);
 
-        if ($activityy['user_answers']->count()) {
+        if ($activityy['user_answers']) {
             foreach ($activityy['answers'] as $key => $answer) {
                 foreach ($activityy['user_answers'] as $key2 => $user_answer) {
                     if ($answer['id'] === $user_answer['answer_id']) {
@@ -41,12 +41,13 @@ class ActivityController extends Controller
             }
             unset(
                 $activityy['after_word'],
+                $activityy['user_answers']
             );
         }
 
-        $activityy = clone $this->json_decode_activity_answers($activityy);
-        $activityy = clone $this->user_long_answer($activityy);
-        $activityy = clone $this->activity_default_answer($activityy, $pid);
+        $activityy = $this->json_decode_activity_answers($activityy);
+        $activityy = $this->user_long_answer($activityy);
+        $activityy = $this->activity_default_answer($activityy, $pid);
         return $activityy;
 
     }
@@ -86,8 +87,8 @@ class ActivityController extends Controller
     }
 
     private function user_long_answer($activity) {
-        $user_answers = $activity->user_answers();
-        if (is_object($user_answers) && $user_answers->count()) {
+
+        if (isset($activity['user_answers'])) {
             $a_type = $activity['meta']['activity_type'];
             if ( $a_type === 'textarea' || $a_type === 'text') {
                 $user_long_answer = UserLongAnswer::find($activity['user_answers'][0]['answer_id']);
