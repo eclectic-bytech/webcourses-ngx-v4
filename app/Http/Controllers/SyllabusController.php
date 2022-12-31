@@ -64,11 +64,8 @@ class SyllabusController extends Controller
 
         do {
             $activity = $controller->build_activity($activities_meta_set[$i]->activity_id, $pid);
-
-            // doing $activity['user_answers']->isNotEmpty executes user_answers method
-            // that sets an empty $activity['user_answers'] when there are none, breaks the front end
-            $unassociated_activity = clone($activity);
-            $getNext = $unassociated_activity['user_answers']->isNotEmpty() ? TRUE : FALSE;
+            $user_answers = $activity['user_answers'];
+            $getNext = ( is_object($user_answers) && $user_answers->count() ) ? TRUE : FALSE;
 
             // we're pushing $activity. unlike $unassociated_activity, it has its empty user_answer keys unset
             // when it goes throgh build_activity()

@@ -25,9 +25,9 @@ class ActivityController extends Controller
 
 
     public function build_activity($aid, $pid) {
-        $activityy = clone $this->activity($aid, $pid);
+        $activityy = $this->activity($aid, $pid);
 
-        if ($activityy->user_answers->isNotEmpty()) {
+        if ($activityy['user_answers']->count()) {
             foreach ($activityy['answers'] as $key => $answer) {
                 foreach ($activityy['user_answers'] as $key2 => $user_answer) {
                     if ($answer['id'] === $user_answer['answer_id']) {
@@ -41,7 +41,6 @@ class ActivityController extends Controller
             }
             unset(
                 $activityy['after_word'],
-                $activityy['user_answers']
             );
         }
 
