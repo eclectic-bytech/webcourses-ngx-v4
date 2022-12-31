@@ -25,7 +25,7 @@ class ActivityController extends Controller
 
 
     public function build_activity($aid, $pid) {
-        $activityy = $this->activity($aid, $pid);
+        $activityy = clone $this->activity($aid, $pid);
 
         if ($activityy->user_answers->isNotEmpty()) {
             foreach ($activityy['answers'] as $key => $answer) {
@@ -46,7 +46,7 @@ class ActivityController extends Controller
         }
 
         $activityy = clone $this->json_decode_activity_answers($activityy);
-        $activityy = $this->user_long_answer($activityy);
+        $activityy = clone $this->user_long_answer($activityy);
         $activityy = clone $this->activity_default_answer($activityy, $pid);
         return $activityy;
 
@@ -77,31 +77,23 @@ class ActivityController extends Controller
                     ->where('progress_id', $pid)
                     ->first();
 
-                $default_answer = UserLongAnswer
-                    ::where('id', $answer_meta['answer_id'])
-                    ->first();
+                $default_answer = UserLongAnswer::find($answer_meta['answer_id']);
             }
 
-            $answer = $default_answer['answer'];
             unset($activity['default_answer']);
-            $activity['default_answer'] = $answer;
+            $activity['default_answer'] = $default_answer['answer'];
         }
         return $activity;
     }
 
     private function user_long_answer($activity) {
-        if ($activity->user_answers()->exists()) {
-            if ($activity['meta']['activity_type'] === 'textarea' || $activity['meta']['activity_type'] === 'text') {
-                $user_long_answer = UserLongAnswer
-                    ::where('id', $activity['user_answers'][0]['answer_id'])
-                    ->first();
-
+        $user_answers = $activity->user_answers();
+        if (is_object($user_answers) && $user_answers->count()) {
+            $a_type = $activity['meta']['activity_type'];
+            if ( $a_type === 'textarea' || $a_type === 'text') {
+                $user_long_answer = UserLongAnswer::find($activity['user_answers'][0]['answer_id']);
                 $activity['user_long_answer'] = $user_long_answer['answer'];
             }
-        } else {
-            // Running isNotEmpty check creates empty $activity['user_answers'].
-            // Remove it since there are no user answers/
-            unset($activity['user_answers']);
         }
         return $activity;
     }
