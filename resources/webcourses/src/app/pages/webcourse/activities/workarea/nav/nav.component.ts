@@ -2,14 +2,12 @@ import { Component, OnInit, Input } from '@angular/core'
 import { NavService } from './nav.service'
 import { Activity } from './../models/activity.model'
 import { ActiveModeService } from '../active-mode/active-mode.service'
-import { ActivitiesService } from '../../activities.service'
 import { Location } from '@angular/common'
 
 import { faStepBackward, faSpinner, faCheck, faPencilAlt, faStepForward } from '@fortawesome/free-solid-svg-icons'
 import { WorkareaService } from '../workarea.service'
 import { ChapterIndexService } from '../../sidebar/chapter-index/chapter-index.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
-
 
 @Component({
   selector: 'app-nav',
@@ -41,20 +39,12 @@ export class NavComponent implements OnInit {
     )
   }
 
-
   SaveButton() {
     this.navService.navDisable(true)
-    const extractedAnswers = this.activeModeService.extractAnswers()
-    this.activeModeService.userAnswerPOST(extractedAnswers)
+    this.activeModeService.userAnswerPOST(
+      this.activeModeService.extractAnswers()
+    )
   }
-
-  onSubmit() {
-    this.navService.navDisable(true)
-    const extractedAnswers = this.activeModeService.extractAnswers()
-    this.activeModeService.userAnswerPOST(extractedAnswers)
-    console.log('Kay')
-  }
-
 
   GoToActivity(offset: number) {
     // Offset should be 1 for next activity, -1 for previous activity

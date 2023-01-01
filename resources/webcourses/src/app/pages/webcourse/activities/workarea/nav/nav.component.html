@@ -22,8 +22,10 @@
   <button type="submit" class="btn"
     *ngIf="!activity.user_answers"
     (click)="SaveButton()"
-    [ngClass]="this.navService.waitingForApi ? 'btn-secondary' : 'btn-success'"
-    [disabled]="this.navService.waitingForApi"
+    [ngClass]="
+      (this.navService.waitingForApi || !this.activeModeService.activityForm.valid) ? 'btn-secondary' : 'btn-success'
+    "
+    [disabled]="this.navService.waitingForApi || !this.activeModeService.activityForm.valid"
     >
     <fa-icon [icon]="activity.meta.activity_type === 'info' ? faCheck : faPencilAlt" class="mr-2" *ngIf="!this.navService.waitingForApi"></fa-icon>
     <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mr-2" *ngIf="this.navService.waitingForApi"></fa-icon>
