@@ -8,13 +8,14 @@ import { CompletionStatsService } from './../../../../../core/services/user/comp
 import { ConfigService } from '../../../../../core/services/config/config.service'
 import { DndService } from './../activities/dnd/dnd.service'
 import { ClickRotateService } from '../activities/click-rotate/click-rotate.service'
+import { FormGroup } from '@angular/forms'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActiveModeService {
 
-  activityForm
+  public activityForm: FormGroup
   saving = false
 
   constructor(
