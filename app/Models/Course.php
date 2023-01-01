@@ -47,6 +47,7 @@ class Course extends Model
             'chapter_id'
         )
         ->with('syllabus')
+        ->orderBy('seq')
         ->distinct();
     }
 
