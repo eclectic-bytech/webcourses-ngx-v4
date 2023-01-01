@@ -29,7 +29,7 @@ export class NavComponent implements OnInit {
   constructor(
     public navService: NavService,
     private location: Location,
-    private activeModeService: ActiveModeService,
+    public activeModeService: ActiveModeService,
     private chapterIndexService: ChapterIndexService,
     private workareaService: WorkareaService,
     private selectedCourseService: SelectedCourseService
@@ -46,6 +46,13 @@ export class NavComponent implements OnInit {
     this.navService.navDisable(true)
     const extractedAnswers = this.activeModeService.extractAnswers()
     this.activeModeService.userAnswerPOST(extractedAnswers)
+  }
+
+  onSubmit() {
+    this.navService.navDisable(true)
+    const extractedAnswers = this.activeModeService.extractAnswers()
+    this.activeModeService.userAnswerPOST(extractedAnswers)
+    console.log('Kay')
   }
 
 
