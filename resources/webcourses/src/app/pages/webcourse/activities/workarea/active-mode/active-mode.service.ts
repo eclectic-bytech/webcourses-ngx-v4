@@ -32,28 +32,17 @@ export class ActiveModeService {
     // We need to do a bit of work to get answers from certain activity types
     // This is where this work gets done
     let extractedAnswer: any
+    let activityType = this.lastActivityInSet.meta.activity_type
 
-    if (
-      this.lastActivityInSet.meta.activity_type === 'checkbox'
-    ||this.lastActivityInSet.meta.activity_type === 'click'
-    ) {
+    if (activityType === 'checkbox' || activityType === 'click') {
       extractedAnswer = this.extractOnlySelectedOptions()
-    }
-    else if (
-      this.lastActivityInSet.meta.activity_type === 'dnd'
-    ||this.lastActivityInSet.meta.activity_type === 'dnd-match'
-    ) {
+    } else if (activityType === 'dnd' || activityType === 'dnd-match') {
       extractedAnswer = this.dndExtract(this.workareaService.activities)
-    }
-    else if (this.lastActivityInSet.meta.activity_type === 'click2') {
+    } else if (activityType === 'click2') {
       extractedAnswer = JSON.stringify(this.clickRotateService.userSelections)
-    }
-    else if (this.lastActivityInSet.meta.activity_type === 'radio') {
+    } else if (activityType === 'radio') {
       extractedAnswer = [this.activityForm.value.answer]
-    } else if (
-      this.lastActivityInSet.meta.activity_type === 'text'
-    ||this.lastActivityInSet.meta.activity_type === 'textarea'
-    ) {
+    } else if (activityType === 'text' || activityType === 'textarea') {
       extractedAnswer = { "answer": this.activityForm.value.answer }
     } else {
       extractedAnswer = JSON.stringify(42) // info and custom types

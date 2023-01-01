@@ -26,7 +26,9 @@ export class ActiveModeComponent implements OnInit {
       text: [this.activity.default_answer, Validators.required],
       textarea: [this.activity.default_answer, Validators.required]
     }
-    this.activeModeService.activityForm = this.fb.group({ answer: answerValidators[this.activity.meta.activity_type] })
+    this.activeModeService.activityForm = this.fb.group({
+      answer: answerValidators[this.activity.meta.activity_type]
+    })
   }
 
   updateSelections(i, singleSelection?: boolean) {
