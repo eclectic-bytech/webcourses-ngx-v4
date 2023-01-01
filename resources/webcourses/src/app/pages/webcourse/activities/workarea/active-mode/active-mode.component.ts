@@ -17,14 +17,18 @@ export class ActiveModeComponent implements OnInit {
     public fb: UntypedFormBuilder,
     public user: UserService,
     public activeModeService: ActiveModeService
-    ) {}
+  ) {}
 
   ngOnInit() {
     const answerValidators = {
       radio: ['', Validators.required],
       checkbox: [''], // Dec 22, 2020: This can be removed?
-      text: [this.activity.default_answer, Validators.required],
-      textarea: [this.activity.default_answer, Validators.required]
+      text: [this.activity.default_answer, Validators.compose([
+        Validators.required, Validators.minLength(5)
+      ])],
+      textarea: [this.activity.default_answer, Validators.compose([
+        Validators.required, Validators.minLength(5)
+      ])]
     }
     this.activeModeService.activityForm = this.fb.group({
       answer: answerValidators[this.activity.meta.activity_type]
