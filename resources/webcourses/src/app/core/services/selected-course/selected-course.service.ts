@@ -6,6 +6,7 @@ import { ChapterService } from '../webcourse/chapter/chapter.service'
 import { Course } from 'src/app/models/course.model'
 import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
 import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
+import { ThemeService } from '../theme/theme.service'
 
 @Injectable({
   providedIn: 'root'
@@ -18,21 +19,23 @@ export class SelectedCourseService {
   constructor(
     private workareaService: WorkareaService,
     private courseService: CourseService,
-    private chapterService: ChapterService
-    ) { }
+    private chapterService: ChapterService,
+    private themeService: ThemeService
+  ) { }
 
-    servicePrimer() {
-      this.workareaService.currentActivity$.subscribe(
-        (activity: Activity) => {
-          this.courseService.getCourse(activity.meta.course_id).subscribe(
-            (course: Course) => {
-              this.selectedCourse = course
-            }
-            )
-            this.chapterService.getChapter(activity.meta.chapter_id).subscribe(
-              (chapter: Chapter) => {
-                this.selectedChapter = chapter
-                this.selectedChapter.total_activities = this.selectedChapter.syllabus.length
+  servicePrimer() {
+    this.workareaService.currentActivity$.subscribe(
+      (activity: Activity) => {
+        this.courseService.getCourse(activity.meta.course_id).subscribe(
+          (course: Course) => {
+            this.selectedCourse = course
+            this.themeService.changeTheme(course.theme)
+          }
+        )
+        this.chapterService.getChapter(activity.meta.chapter_id).subscribe(
+          (chapter: Chapter) => {
+            this.selectedChapter = chapter
+            this.selectedChapter.total_activities = this.selectedChapter.syllabus.length
           }
         )
       }

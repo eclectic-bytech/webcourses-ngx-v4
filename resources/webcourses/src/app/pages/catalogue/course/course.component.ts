@@ -19,7 +19,7 @@ export class CourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      params => {
+      (params) => {
         this.courseService.courseInfo$ = this.courseService.getCourse(params.cid)
       }
     )
