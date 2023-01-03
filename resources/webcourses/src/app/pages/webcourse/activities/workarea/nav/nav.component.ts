@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { NavService } from './nav.service'
 import { Activity } from './../models/activity.model'
 import { ActiveModeService } from '../active-mode/active-mode.service'
@@ -14,7 +14,7 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.sass']
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
 
   @Input() activity: Activity
 
@@ -29,15 +29,9 @@ export class NavComponent implements OnInit {
     private location: Location,
     public activeModeService: ActiveModeService,
     private chapterIndexService: ChapterIndexService,
-    private workareaService: WorkareaService,
+    public workareaService: WorkareaService,
     private selectedCourseService: SelectedCourseService
   ) { }
-
-  ngOnInit() {
-    this.workareaService.currentActivity$.subscribe(
-      () => this.navService.navDisable(false)
-    )
-  }
 
   SaveButton() {
     this.navService.navDisable(true)
