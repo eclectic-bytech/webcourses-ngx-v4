@@ -10,6 +10,7 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 // WNGX Models and Misc
 import { Activity } from '../../workarea/models/activity.model'
 import { FadeInOut } from '../../../../../core/animations/fade-in-out.animation'
+import { ActivityHelp } from './activity-help.model'
 
 @Component({
   selector: 'app-activity-help',
@@ -19,7 +20,7 @@ import { FadeInOut } from '../../../../../core/animations/fade-in-out.animation'
 })
 export class ActivityHelpComponent implements OnInit {
 
-  public activityHelp$ = new BehaviorSubject<string | null>(null)
+  public activityHelp$ = new BehaviorSubject<ActivityHelp | null>(null)
 
   constructor(
     private httpClient: HttpClient,
@@ -31,14 +32,14 @@ export class ActivityHelpComponent implements OnInit {
     this.selectedCourseService.selectedActivitySet$.subscribe(
       (activities: Activity[]) => {
         this.getActivityHelp(activities[activities.length - 1].meta.activity_type).subscribe(
-          (help: string) => { this.activityHelp$.next(help) }
+          (help: ActivityHelp) => { this.activityHelp$.next(help) }
         )
       }
     )
   }
 
   getActivityHelp(type: string) {
-    return this.httpClient.get<string>(
+    return this.httpClient.get<ActivityHelp>(
       `${this.configService.params.api.route}/webcourse/activities/help/${type}`
     ).pipe(shareReplay(1))
   }
