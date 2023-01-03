@@ -1,7 +1,7 @@
 <div
   id="chapter-index-tab"
   class="px-4"
-  *ngIf="chapterIndex$ | async as chapterIndex; else loading"
+  *ngIf="(this.selectedCourseService.selectedChapterIndex$ | async) as chapterIndex; else loading"
   @fadeInOut
   >
   <div class="container-fluid my-3">
@@ -23,7 +23,7 @@
 
             <app-activities-bar
               [chapter]="chapter"
-              [tac]="this.selectedCourseService.selectedCourse.user_progress.total_activities_completed"
+              [tac]="0"
             ></app-activities-bar>
 
           </li>

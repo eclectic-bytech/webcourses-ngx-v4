@@ -1,6 +1,7 @@
 <div id="progress-tab" class="px-4">
+
   <div class="mt-3"
-    *ngIf="this.selectedCourseService.selectedCourse as selectedCourse; else loading"
+    *ngIf="(this.selectedCourseService.selectedCourse$ | async) as selectedCourse; else loading"
     @fadeInOut
     >
     <div class="container-fluid my-3">
@@ -17,15 +18,20 @@
         </div>
       </div>
     </div>
+  </div>
 
+  <div
+    *ngIf="(this.selectedCourseService.selectedChapter$ | async) as selectedChapter; else loading"
+    @fadeInOut
+    >
     <div class="container-fluid my-3">
       <div class="row">
         <div class="col mt-3">
-          <p class="h5 mb-0 primary-text">{{ this.selectedCourseService.selectedChapter.label }}</p>
-          <small class="text-uppercase main-label primary-text">Chapter with {{ this.selectedCourseService.selectedChapter.total_activities }} activities</small>
+          <p class="h5 mb-0 primary-text">{{ selectedChapter.label }}</p>
+          <small class="text-uppercase main-label primary-text">Chapter with {{ selectedChapter.syllabus.length }} activities</small>
           <app-activities-bar
-            [chapter]="this.selectedCourseService.selectedChapter"
-            [tac]="selectedCourse.user_progress.total_activities_completed"
+            [chapter]="selectedChapter"
+            [tac]="selectedChapter.syllabus.length"
           ></app-activities-bar>
         </div>
       </div>

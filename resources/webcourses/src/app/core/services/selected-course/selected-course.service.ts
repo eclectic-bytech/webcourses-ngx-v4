@@ -1,47 +1,59 @@
 import { Injectable } from '@angular/core'
+import { BehaviorSubject } from 'rxjs'
+
+// WNGX Services
 import { WorkareaService } from 'src/app/pages/webcourse/activities/workarea/workarea.service'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
-import { ChapterService } from '../webcourse/chapter/chapter.service'
+import { ChapterIndexService } from 'src/app/pages/webcourse/activities/sidebar/chapter-index/chapter-index.service'
 
-import { Course } from 'src/app/models/course.model'
-import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
+// WNGX Models
 import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
-import { ThemeService } from '../theme/theme.service'
+import { ActivityMeta } from 'src/app/pages/webcourse/activities/workarea/models/activity-meta.model'
+import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
+import { Course } from 'src/app/models/course.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class SelectedCourseService {
 
-  public selectedCourse: Course
-  public selectedChapter: Chapter
+  // Activities can be bookmarked: selected course & chapter then follow
+  public selectedActivitySet$ = new BehaviorSubject<Activity[] | null>(null)
+  public selectedChapter$ = new BehaviorSubject<Chapter | null>(null)
+  public selectedChapterIndex$ = new BehaviorSubject<Chapter[] | null>(null)
+  public selectedCourse$ = new BehaviorSubject<Course | null>(null)
 
   constructor(
     private workareaService: WorkareaService,
-    private courseService: CourseService,
-    private chapterService: ChapterService,
-    private themeService: ThemeService
+    private chapterIndexService: ChapterIndexService,
+    private courseService: CourseService
   ) { }
 
   servicePrimer() {
     this.workareaService.currentActivitySet$.subscribe(
       (activities: Activity[]) => {
         if (activities) {
+          this.selectedActivitySet$.next(activities)
           this.courseService.getCourse(activities[0].meta.course_id).subscribe(
             (course: Course) => {
-              this.selectedCourse = course
-              this.themeService.changeTheme(course.theme)
-            }
+              this.selectedCourse$.next(course) }
           )
-          this.chapterService.getChapter(activities[0].meta.chapter_id).subscribe(
-            (chapter: Chapter) => {
-              this.selectedChapter = chapter
-              this.selectedChapter.total_activities = this.selectedChapter.syllabus.length
+          this.chapterIndexService.getChapterIndex(activities[0].meta.course_id).subscribe(
+            (chapters: Chapter[]) => {
+              this.selectedChapterIndex$.next(chapters)
+              this.selectedChapter$.next(this.getSelectedChapter(chapters, activities[0].meta))
             }
           )
         }
       }
     )
+  }
+
+  getSelectedChapter(chapters: Chapter[], activityMeta: ActivityMeta) {
+    let chapterIndex = chapters.findIndex( chapter => {
+      return chapter.id === activityMeta.chapter_id
+    })
+    return chapters[chapterIndex]
   }
 
 }

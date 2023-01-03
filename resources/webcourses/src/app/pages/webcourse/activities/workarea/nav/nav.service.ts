@@ -21,8 +21,17 @@ export class NavService {
     private selectedCourseService: SelectedCourseService
   ) { }
 
+  initCourse() {
+    this.chapterIndexService.getChapterIndex(1).subscribe(
+      (chapterIndex) => {
+        console.log(chapterIndex)
+        this.chapterIndexService.chapterIndex$.next(chapterIndex)
+      }
+    )
+  }
 
   calcFollowingAid(chapters: Chapter[], offset: number) {
+
     const selectedActivity = (offset === 1) ?
       this.workareaService.activities[this.workareaService.activities.length - 1] :
       this.workareaService.activities[0]
@@ -52,7 +61,7 @@ export class NavService {
   }
 
   firstActivitySetCheck() {
-    this.chapterIndexService.getChapterIndex$(this.selectedCourseService.selectedCourse.id).subscribe(
+    this.chapterIndexService.chapterIndex$.subscribe(
       (chapters: Chapter[]) => {
         const aids = this.getChapterAids(chapters, this.workareaService.activities[0].meta.chapter_id)
         this.firstActivitySet = this.workareaService.activities[0].meta.activity_id === aids[0] ? true : false

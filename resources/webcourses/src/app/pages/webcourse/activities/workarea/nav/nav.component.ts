@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { NavService } from './nav.service'
 import { Activity } from './../models/activity.model'
 import { ActiveModeService } from '../active-mode/active-mode.service'
@@ -33,6 +33,10 @@ export class NavComponent {
     private selectedCourseService: SelectedCourseService
   ) { }
 
+  ngOnInit() {
+    this.navService.initCourse()
+  }
+
   SaveButton() {
     this.navService.navDisable(true)
     this.activeModeService.userAnswerPOST(
@@ -44,7 +48,7 @@ export class NavComponent {
     // Offset should be 1 for next activity, -1 for previous activity
     this.navService.navDisable(true)
 
-    this.chapterIndexService.getChapterIndex$(this.selectedCourseService.selectedCourse.id).subscribe(
+    this.chapterIndexService.chapterIndex$.subscribe(
       (chapters) => {
         // Clicking next on last activity will result in followingAidInSet = undefined
         // Back button is disabled on first chapter activity set

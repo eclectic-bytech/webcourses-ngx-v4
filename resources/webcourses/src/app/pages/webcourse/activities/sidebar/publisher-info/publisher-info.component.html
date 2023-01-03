@@ -1,30 +1,41 @@
-<div id="publisher-info-tab" class="px-4" *ngIf="publisherInfo; else loading" @fadeInOut>
+<div id="publisher-info-tab" class="px-4"
+  *ngIf="(this.selectedCourseService.selectedCourse$ | async ) as sc; else loading"
+  @fadeInOut
+  >
 
   <div class="container-fluid my-3">
 
     <!-- Publisher Name -->
     <div class="row">
-      <div class="col mt-3 h5 primary-text" [innerHtml]="publisherInfo.name"></div>
+      <div class="col mt-3 h5 primary-text" [innerHtml]="sc.publisher.name"></div>
     </div>
 
     <!-- Contact and email address -->
     <div class="row py-2">
-      <div class="col-1 mx-auto"><fa-icon [icon]="faEnvelope" class="primary-text"></fa-icon></div>
+      <div class="col-1 mx-auto">
+        <fa-icon [icon]="faEnvelope" class="primary-text"></fa-icon>
+      </div>
       <div class="col">
-        <div class="primary-text">{{ publisherInfo.contact_fname }} {{ publisherInfo.contact_lname }}</div>
-        <a target="_blank" [href]="'mailto:' + publisherInfo.contact_email" *ngIf="publisherInfo.contact_email">
-          {{ publisherInfo.contact_email }}
+        <div class="primary-text">
+          {{ sc.publisher.contact_fname }}
+          {{ sc.publisher.contact_lname }}
+        </div>
+        <a target="_blank"
+          [href]="'mailto:' + sc.publisher.contact_email"
+          *ngIf="sc.publisher.contact_email"
+          >
+          {{ sc.publisher.contact_email }}
         </a>
       </div>
     </div>
 
     <!-- Hotlinked website address -->
-    <div class="row py-2" *ngIf="publisherInfo.website">
+    <div class="row py-2" *ngIf="sc.publisher.website">
       <div class="col-1 mx-auto"><fa-icon [icon]="faGlobe" class="primary-text"></fa-icon></div>
       <div class="col">
         <div class="primary-text">Website</div>
-        <a target="_blank" [href]="publisherInfo.website">
-          {{ publisherInfo.website.replace('https://', '')}}
+        <a target="_blank" [href]="sc.publisher.website">
+          {{ sc.publisher.website.replace('https://', '')}}
         </a>
       </div>
     </div>

@@ -27,7 +27,7 @@ export class SelectedService {
     console.log('UPDATE SELECTED - RUNNING')
     this.updateSelectedCourse(currentActivity)
 
-    this.chapterIndexService.getChapterIndex$(currentActivity.meta.course_id).subscribe(
+    this.chapterIndexService.chapterIndex$.subscribe(
       (chapters: Chapter[]) => {
         let i = chapters.findIndex(
           (chapter: Chapter) => {
@@ -60,53 +60,6 @@ export class SelectedService {
         if (chapter.id == currentActivity.meta.chapter_id) return chapter
       }
     )
-  }
-
-      //   if (chapter.id == currentActivity.meta.chapter_id) {
-      //     console.log(chapter)
-      //     return chapter
-      //   } else {
-      //     console.log('Nada')
-      //   }
-      // })
-    // If Next is clicked on last activity in chapter, returning null triggers EOChapter page
-    // console.log('Pt. 5')
-    // return (i) ? chapters[++i] : null
-    // return (typeof i === 'number') ? chapters[++i] : null
-
-
-    // if(typeof i === 'number'){
-    //   i++
-    //   console.log('CHAPTERS!')
-    //   console.log(chapters[i])
-    //   return chapters[i]
-    // } else {
-    //   console.log('Last chapter!!')
-    //   return null
-    // }
-
-
-  getSelectedCourse(userCourses: Course[], currentActivity: Activity) {
-    let selectedCourse = this.findSelectedCourse(userCourses, currentActivity)
-    if (!selectedCourse) {
-      // Normally we want to subscribe to userService.userCourses$ to make use of caching.
-      // Subscribing to getUserCourses$ bypasses then updates userCourses$ shareReplay cache
-      this.userService.userCourses$.subscribe(
-        (userCourses: Course[]) => {
-          // this.selectedCourse = this.findSelectedCourse(userCourses, currentActivity)
-          this.completionStatsService.initCourseCompletionStats(userCourses)
-        }
-      )
-    } else {
-      return selectedCourse
-    }
-  }
-
-  findSelectedCourse(courses: Course[], currentActivity: Activity) {
-    return false;
-    // return courses.find(
-    //   (course: Course) => course.id === currentActivity.meta.pid
-    // )
   }
 
 }

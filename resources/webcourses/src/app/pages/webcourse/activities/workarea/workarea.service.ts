@@ -4,7 +4,7 @@ import { Location } from '@angular/common'
 import { Activity } from './models/activity.model'
 import { BehaviorSubject } from 'rxjs'
 import { ConfigService } from '../../../../core/services/config/config.service'
-import { SelectedService } from '../sidebar/selected/selected.service'
+// import { SelectedService } from '../sidebar/selected/selected.service'
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,12 @@ export class WorkareaService {
   // Saving fetched activities to variable. Allows to later push activities into it
   // from Next button
   public activities: Activity[]
-  public currentActivitySet$ = new BehaviorSubject<Activity[] | null>(null) // Experimental
+  public currentActivitySet$ = new BehaviorSubject<Activity[] | null>(null)
 
   constructor(
     public httpClient: HttpClient,
     private configService: ConfigService,
-    private selectedService: SelectedService,
+    // private selectedService: SelectedService,
     private location: Location
   ) {}
 
@@ -44,7 +44,7 @@ export class WorkareaService {
             this.hackAroundBackendLimitation(activities)
            }
         }
-        this.selectedService.updateSelected(activities[0])
+        // this.selectedService.updateSelected(activities[0])
       }
     )
   }
