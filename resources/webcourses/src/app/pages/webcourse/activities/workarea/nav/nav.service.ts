@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core'
-import { WorkareaService } from '../workarea.service'
+import { Router } from '@angular/router'
+import { combineLatest } from 'rxjs'
+
+// WNGX services
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
+
+// WNGX models and misc
 import { Chapter } from '../../models/chapter.model'
-import { ChapterIndexService } from '../../sidebar/chapter-index/chapter-index.service'
-import { SelectedCourseService } from '../../../../../../../src/app/core/services/selected-course/selected-course.service'
+import { Activity } from '../models/activity.model'
 import { ActivityMeta } from '../models/activity-meta.model'
+import { WorkareaService } from '../workarea.service'
 
 @Injectable({
   providedIn: 'root'
@@ -13,42 +19,35 @@ export class NavService {
   waitingForApi = false
   endOfChapter = false
   endOfCourse = false
-  firstActivitySet = true
 
   constructor(
+    private router: Router,
     private workareaService: WorkareaService,
-    private chapterIndexService: ChapterIndexService,
-    private selectedCourseService: SelectedCourseService
+    public selectedCourseService: SelectedCourseService
   ) { }
 
-  initCourse() {
-    this.chapterIndexService.getChapterIndex(1).subscribe(
-      (chapterIndex) => {
-        console.log(chapterIndex)
-        this.chapterIndexService.chapterIndex$.next(chapterIndex)
+  calcFollowingAid(offset: number) {
+    combineLatest([
+      this.selectedCourseService.selectedChapter$,
+      this.selectedCourseService.selectedActivitySet$
+    ]).subscribe(
+      results => {
+        const selectedChapterSyllabus: ActivityMeta[] = results[0].syllabus
+        const activitySet: Activity[] = results[1]
+        const selectedActivity: Activity =
+          (offset === 1) ? activitySet[activitySet.length - 1] : activitySet[0]
+
+        let i = selectedChapterSyllabus.findIndex(
+          (activityMeta: ActivityMeta) => {
+            if (activityMeta.activity_id === selectedActivity.meta.activity_id) return true
+          }
+        )
+
+        let activityId = selectedChapterSyllabus[++i].activity_id
+        this.router.navigateByUrl(`/webcourse/activities/${activityId}`)
+        this.workareaService.loadActivities(activityId)
       }
     )
-  }
-
-  calcFollowingAid(chapters: Chapter[], offset: number) {
-
-    const selectedActivity = (offset === 1) ?
-      this.workareaService.activities[this.workareaService.activities.length - 1] :
-      this.workareaService.activities[0]
-
-    // Get array of aids in current chapter
-    const chapterAids = this.getChapterAids(
-      chapters, selectedActivity.meta.chapter_id
-    )
-
-    // Get AID that follows (offset 1) or precedes (offset -1) loaded activity set
-    let i = chapterAids.findIndex(
-      // (aid: number) => aid === selectedActivity.meta.activity_id
-      (aid: ActivityMeta) => {
-        if (aid.activity_id === selectedActivity.meta.activity_id) return true
-      }
-    )
-    return chapterAids[++i]
   }
 
   getChapterAids(chapters: Chapter[], currentChapter: number) {
@@ -60,19 +59,9 @@ export class NavService {
     return chapters[chapters.findIndex(i)].syllabus
   }
 
-  firstActivitySetCheck() {
-    this.chapterIndexService.chapterIndex$.subscribe(
-      (chapters: Chapter[]) => {
-        const aids = this.getChapterAids(chapters, this.workareaService.activities[0].meta.chapter_id)
-        this.firstActivitySet = this.workareaService.activities[0].meta.activity_id === aids[0] ? true : false
-      }
-    )
-  }
-
   navDisable(status: boolean) {
     this.endOfChapter = false
     this.endOfCourse = false
-    this.firstActivitySetCheck()
     this.waitingForApi = status
   }
 

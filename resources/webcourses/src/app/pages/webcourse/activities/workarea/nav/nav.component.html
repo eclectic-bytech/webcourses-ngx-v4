@@ -1,15 +1,17 @@
-<div *ngIf="activity" class="py-5 pr-lg-4 pr-md-1 pr-sm-0">
+<div  class="py-5 pr-lg-4 pr-md-1 pr-sm-0"
+  *ngIf="(this.selectedCourseService.selectedActivitySet$ | async) as activity"
+  >
 
   <button class="btn btn-primary mr-3"
     (click)="GoToActivity(-1)"
-    [ngClass]="this.navService.waitingForApi || this.navService.firstActivitySet ? 'btn-secondary' : 'btn-primary'"
-    [disabled]="this.navService.waitingForApi || this.navService.firstActivitySet"
+    [ngClass]="this.navService.waitingForApi || activity[activity.length -1].meta.seq == 0 ? 'btn-secondary' : 'btn-primary'"
+    [disabled]="this.navService.waitingForApi || activity[activity.length -1].meta.seq == 0"
     >
     <fa-icon [icon]="faStepBackward"></fa-icon>
   </button>
 
   <button type="button" class="btn"
-    *ngIf="activity.user_answers"
+    *ngIf="activity[activity.length -1].user_answers"
     (click)="GoToActivity(1)"
     [ngClass]="this.navService.waitingForApi ? 'btn-secondary' : 'btn-primary'"
     [disabled]="this.navService.waitingForApi"
@@ -20,16 +22,16 @@
   </button>
 
   <button type="submit" class="btn"
-    *ngIf="!activity.user_answers"
+    *ngIf="!activity[activity.length -1].user_answers"
     (click)="SaveButton()"
     [ngClass]="
       (this.navService.waitingForApi || !this.activeModeService.activityForm.valid) ? 'btn-secondary' : 'btn-success'
     "
     [disabled]="this.navService.waitingForApi || !this.activeModeService.activityForm.valid"
     >
-    <fa-icon [icon]="activity.meta.activity_type === 'info' ? faCheck : faPencilAlt" class="mr-2" *ngIf="!this.navService.waitingForApi"></fa-icon>
+    <fa-icon [icon]="activity[activity.length -1].meta.activity_type === 'info' ? faCheck : faPencilAlt" class="mr-2" *ngIf="!this.navService.waitingForApi"></fa-icon>
     <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mr-2" *ngIf="this.navService.waitingForApi"></fa-icon>
-    {{ activity.meta.activity_type === 'info' ? 'MARK READ' : 'SAVE' }}
+    {{ activity[activity.length -1].meta.activity_type === 'info' ? 'MARK READ' : 'SAVE' }}
   </button>
 
 </div>

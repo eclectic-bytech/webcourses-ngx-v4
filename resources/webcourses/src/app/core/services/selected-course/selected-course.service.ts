@@ -17,11 +17,14 @@ import { Course } from 'src/app/models/course.model'
 })
 export class SelectedCourseService {
 
-  // Activities can be bookmarked: selected course & chapter then follow
+  // Activities can be bookmarked: selected course & chapter follow activity loading
   public selectedActivitySet$ = new BehaviorSubject<Activity[] | null>(null)
   public selectedChapter$ = new BehaviorSubject<Chapter | null>(null)
   public selectedChapterIndex$ = new BehaviorSubject<Chapter[] | null>(null)
   public selectedCourse$ = new BehaviorSubject<Course | null>(null)
+
+  public nextChapter$ = new BehaviorSubject<Chapter | null>(null)
+  public previousChapter$ = new BehaviorSubject<Chapter | null>(null)
 
   constructor(
     private workareaService: WorkareaService,
@@ -41,7 +44,7 @@ export class SelectedCourseService {
           this.chapterIndexService.getChapterIndex(activities[0].meta.course_id).subscribe(
             (chapters: Chapter[]) => {
               this.selectedChapterIndex$.next(chapters)
-              this.selectedChapter$.next(this.getSelectedChapter(chapters, activities[0].meta))
+              this.setChapters(chapters, activities[0].meta)
             }
           )
         }
@@ -49,11 +52,13 @@ export class SelectedCourseService {
     )
   }
 
-  getSelectedChapter(chapters: Chapter[], activityMeta: ActivityMeta) {
+  setChapters(chapters: Chapter[], activityMeta: ActivityMeta) {
     let chapterIndex = chapters.findIndex( chapter => {
       return chapter.id === activityMeta.chapter_id
     })
-    return chapters[chapterIndex]
+    this.selectedChapter$.next(chapters[chapterIndex])
+    this.nextChapter$.next(chapters[++chapterIndex])
+    this.previousChapter$.next(chapters[--chapterIndex])
   }
 
 }

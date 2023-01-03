@@ -1,8 +1,17 @@
-<div class="text-center eoc-container" @fadeInOut>
-  <p class="text-uppercase font-weight-bold">Congratulations!</p>
-  <p>You've completed the course.</p>
+<div class="text-center eoc-container">
+  <div
+    *ngIf="(this.selectedCourseService.selectedChapterIndex$ | async) as chapterIndex; else loading"
+    @fadeInOut
+    >
+    <p class="text-uppercase font-weight-bold">Congratulations!</p>
+    <p>You've completed the course.</p>
 
-  <button class="btn btn-primary mt-3" (click)="reviewButton()">
-    REVIEW
-  </button>
+    <button class="btn btn-primary mt-3" (click)="reviewButton(chapterIndex[0])">
+      REVIEW
+    </button>
+  </div>
+
+  <ng-template #loading>
+    ... loading.
+  </ng-template>
 </div>

@@ -4,7 +4,6 @@ import { Location } from '@angular/common'
 import { Activity } from './models/activity.model'
 import { BehaviorSubject } from 'rxjs'
 import { ConfigService } from '../../../../core/services/config/config.service'
-// import { SelectedService } from '../sidebar/selected/selected.service'
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,6 @@ export class WorkareaService {
   constructor(
     public httpClient: HttpClient,
     private configService: ConfigService,
-    // private selectedService: SelectedService,
     private location: Location
   ) {}
 
@@ -44,7 +42,6 @@ export class WorkareaService {
             this.hackAroundBackendLimitation(activities)
            }
         }
-        // this.selectedService.updateSelected(activities[0])
       }
     )
   }

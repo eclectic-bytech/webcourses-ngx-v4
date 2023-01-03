@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'
+import { Location } from '@angular/common'
+
 import { FadeInOut } from '../../../../../../core/animations/fade-in-out.animation'
-import { WorkareaService } from '../../workarea.service'
-import { Observable } from 'rxjs'
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 import { Chapter } from '../../../models/chapter.model'
-import { SelectedService } from '../../../sidebar/selected/selected.service'
 
 @Component({
   selector: 'app-course-end',
@@ -13,15 +13,12 @@ import { SelectedService } from '../../../sidebar/selected/selected.service'
 })
 export class CourseEndComponent {
 
-  chapterIndex$: Observable<Chapter[]>
-
   constructor(
-    private selectedService: SelectedService,
-    private workareaService: WorkareaService
+    public selectedCourseService: SelectedCourseService,
+    private location: Location
   ) { }
 
-  reviewButton() {
-    this.workareaService.loadActivities(this.selectedService.firstChapter.syllabus[0].activity_id)
+  reviewButton(firstChapter: Chapter) {
+    this.location.go(`/webcourse/activities/${firstChapter.syllabus[0].meta.activity_id}`)
   }
-
 }

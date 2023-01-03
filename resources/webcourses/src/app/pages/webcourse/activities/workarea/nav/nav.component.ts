@@ -1,12 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core'
-import { NavService } from './nav.service'
-import { Activity } from './../models/activity.model'
-import { ActiveModeService } from '../active-mode/active-mode.service'
-import { Location } from '@angular/common'
-
+import { Component } from '@angular/core'
 import { faStepBackward, faSpinner, faCheck, faPencilAlt, faStepForward } from '@fortawesome/free-solid-svg-icons'
-import { WorkareaService } from '../workarea.service'
-import { ChapterIndexService } from '../../sidebar/chapter-index/chapter-index.service'
+
+// WNGX services
+import { NavService } from './nav.service'
+import { ActiveModeService } from '../active-mode/active-mode.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 @Component({
@@ -14,9 +11,8 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.sass']
 })
-export class NavComponent {
 
-  @Input() activity: Activity
+export class NavComponent {
 
   faStepBackward = faStepBackward
   faCheck = faCheck
@@ -26,16 +22,9 @@ export class NavComponent {
 
   constructor(
     public navService: NavService,
-    private location: Location,
     public activeModeService: ActiveModeService,
-    private chapterIndexService: ChapterIndexService,
-    public workareaService: WorkareaService,
-    private selectedCourseService: SelectedCourseService
+    public selectedCourseService: SelectedCourseService
   ) { }
-
-  ngOnInit() {
-    this.navService.initCourse()
-  }
 
   SaveButton() {
     this.navService.navDisable(true)
@@ -47,20 +36,7 @@ export class NavComponent {
   GoToActivity(offset: number) {
     // Offset should be 1 for next activity, -1 for previous activity
     this.navService.navDisable(true)
-
-    this.chapterIndexService.chapterIndex$.subscribe(
-      (chapters) => {
-        // Clicking next on last activity will result in followingAidInSet = undefined
-        // Back button is disabled on first chapter activity set
-        const followingActivityInSet = this.navService.calcFollowingAid(chapters, offset)
-        if (followingActivityInSet) {
-          this.workareaService.loadActivities(followingActivityInSet.activity_id)
-          this.location.go(`/webcourse/activities/${followingActivityInSet.activity_id}`)
-        } else {
-          this.navService.endOfChapter = true
-        }
-      }
-    )
+    this.navService.calcFollowingAid(offset)
   }
 
 }
