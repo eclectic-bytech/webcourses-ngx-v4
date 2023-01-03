@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Location } from '@angular/common'
 import { Activity } from './models/activity.model'
-import { Subject } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
 import { ConfigService } from '../../../../core/services/config/config.service'
 import { SelectedService } from '../sidebar/selected/selected.service'
 
@@ -13,22 +13,21 @@ export class WorkareaService {
 
   // Saving fetched activities to variable. Allows to later push activities into it
   // from Next button
-  activities: Activity[]
-  currentActivity$: Subject<Activity> // Experimental
+  public activities: Activity[]
+  public currentActivitySet$ = new BehaviorSubject<Activity[] | null>(null) // Experimental
 
   constructor(
     public httpClient: HttpClient,
     private configService: ConfigService,
     private selectedService: SelectedService,
     private location: Location
-  ) {
-    this.currentActivity$ = new Subject<Activity>()
-  }
+  ) {}
 
   loadActivities(aid) {
     this.getActivities(aid).subscribe(
       (activities: Activity[]) => {
         this.location.go(`/webcourse/activities/${aid}`)
+        this.currentActivitySet$.next(activities)
 
         if (activities.length === 1) {
           if (activities[0].meta.cont) {
@@ -45,7 +44,6 @@ export class WorkareaService {
             this.hackAroundBackendLimitation(activities)
            }
         }
-        this.currentActivity$.next(activities[activities.length - 1])
         this.selectedService.updateSelected(activities[0])
       }
     )
