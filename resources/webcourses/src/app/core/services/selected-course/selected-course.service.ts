@@ -57,8 +57,13 @@ export class SelectedCourseService {
       return chapter.id === activityMeta.chapter_id
     })
     this.selectedChapter$.next(chapters[chapterIndex])
-    this.nextChapter$.next(chapters[++chapterIndex])
-    this.previousChapter$.next(chapters[--chapterIndex])
+
+    let nextChapter = (chapters.length >= chapterIndex) ? chapters[++chapterIndex] : null
+    this.nextChapter$.next(nextChapter)
+
+    let previousChapter = (chapterIndex > 1) ? (chapters[--chapterIndex]) : null
+    this.previousChapter$.next(previousChapter)
+
   }
 
 }
