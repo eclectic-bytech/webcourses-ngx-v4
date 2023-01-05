@@ -6,7 +6,7 @@ import { WorkareaService } from 'src/app/pages/webcourse/activities/workarea/wor
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { ChapterIndexService } from 'src/app/pages/webcourse/activities/sidebar/chapter-index/chapter-index.service'
 
-// WNGX Models
+// WNGX models abd misc
 import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
 import { ActivityMeta } from 'src/app/pages/webcourse/activities/workarea/models/activity-meta.model'
 import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
