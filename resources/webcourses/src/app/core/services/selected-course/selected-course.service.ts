@@ -63,7 +63,6 @@ export class SelectedCourseService {
 
     let previousChapter = (chapterIndex > 1) ? (chapters[--chapterIndex]) : null
     this.previousChapter$.next(previousChapter)
-
   }
 
 }
