@@ -14,6 +14,7 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 
 export class NavComponent {
 
+  // FontAwesome icons
   faStepBackward = faStepBackward
   faCheck = faCheck
   faPencilAlt = faPencilAlt
