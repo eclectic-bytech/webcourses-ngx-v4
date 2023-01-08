@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
 
-// WNGX Services
+// WNGX services
 import { WorkareaService } from 'src/app/pages/webcourse/activities/workarea/workarea.service'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { ChapterIndexService } from 'src/app/pages/webcourse/activities/sidebar/chapter-index/chapter-index.service'
 
-// WNGX models abd misc
+// WNGX models and misc
 import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
 import { ActivityMeta } from 'src/app/pages/webcourse/activities/workarea/models/activity-meta.model'
 import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'

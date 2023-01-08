@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { Location } from '@angular/common'
 
-// WNGX Services
+// WNGX services
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 // WNGX models and misc
