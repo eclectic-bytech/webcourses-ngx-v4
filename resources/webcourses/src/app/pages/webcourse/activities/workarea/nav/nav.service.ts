@@ -45,7 +45,7 @@ export class NavService {
 
         if (i === this.courseSyllabus.length-1) {
           this.endOfChapter = true
-          this.endOfCourse = (offset === 1) ? true : false
+          this.endOfCourse = (offset === 1) ? true : false // don't show eoc dialogue on back button
         } else {
           console.log('More activities available')
           let activity = this.courseSyllabus[i + offset]
