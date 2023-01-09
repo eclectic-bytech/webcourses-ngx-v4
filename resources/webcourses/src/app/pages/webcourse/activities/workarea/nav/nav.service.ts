@@ -44,7 +44,8 @@ export class NavService {
         )
 
         if (i === this.courseSyllabus.length-1) {
-          this.endOfChapter = this.endOfCourse = true;
+          this.endOfChapter = true
+          this.endOfCourse = (offset === 1) ? true : false
         } else {
           console.log('More activities available')
           let activity = this.courseSyllabus[i + offset]
