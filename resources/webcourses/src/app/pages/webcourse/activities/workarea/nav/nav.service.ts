@@ -36,7 +36,7 @@ export class NavService {
         let calcStartActivity: Activity =
           (offset === 1) ? activitySet[activitySet.length - 1] : activitySet[0]
 
-        // i = relevant activity's index position in the course syllabus
+        // i = jump point activity's index position in the course syllabus
         let i: number = this.courseSyllabus.findIndex(
           (activityMeta: ActivityMeta) => {
             if (activityMeta.activity_id === calcStartActivity.meta.activity_id) return true
