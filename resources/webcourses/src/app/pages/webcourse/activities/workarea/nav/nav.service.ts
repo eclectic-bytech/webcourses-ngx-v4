@@ -32,7 +32,7 @@ export class NavService {
       (activitySet: Activity[]) => {
 
         // For previous activity, the first in the current set interests us.
-        // For next activity, it the current set's last activity we want.
+        // For next activity, it's the current set's last activity we want.
         let calcStartActivity: Activity =
           (offset === 1) ? activitySet[activitySet.length - 1] : activitySet[0]
 
