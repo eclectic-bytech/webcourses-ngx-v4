@@ -4,16 +4,17 @@ import { combineLatest, Subscription } from 'rxjs'
 
 // WNGX services
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
+import { WorkareaService } from '../workarea.service'
 
 // WNGX models and misc
 import { Chapter } from '../../models/chapter.model'
 import { Activity } from '../models/activity.model'
 import { ActivityMeta } from '../models/activity-meta.model'
-import { WorkareaService } from '../workarea.service'
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class NavService {
 
   waitingForApi = false
