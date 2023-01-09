@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
-import { combineLatest } from 'rxjs'
+import { combineLatest, Subscription } from 'rxjs'
 
 // WNGX services
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
@@ -19,6 +19,7 @@ export class NavService {
   waitingForApi = false
   endOfChapter = false
   endOfCourse = false
+  sub: Subscription
 
   constructor(
     private router: Router,
@@ -27,14 +28,19 @@ export class NavService {
   ) { }
 
   calcFollowingAid(offset: number) {
-    combineLatest([
+    this.sub = combineLatest([
       this.selectedCourseService.selectedChapter$,
       this.selectedCourseService.selectedActivitySet$
     ]).subscribe(
       results => {
-        const selectedChapterSyllabus: ActivityMeta[] = results[0].syllabus
-        const activitySet: Activity[] = results[1]
-        const selectedActivity: Activity =
+        this.waitingForApi = false
+
+        let selectedChapterSyllabus: ActivityMeta[] = results[0].syllabus
+        let activitySet: Activity[] = results[1]
+
+        // For previous activity, the first in the current set interests us.
+        // For next activity, it the current set's last activity we want.
+        let selectedActivity: Activity =
           (offset === 1) ? activitySet[activitySet.length - 1] : activitySet[0]
 
         let i = selectedChapterSyllabus.findIndex(
@@ -43,11 +49,20 @@ export class NavService {
           }
         )
 
-        let activityId = selectedChapterSyllabus[++i].activity_id
-        this.router.navigateByUrl(`/webcourse/activities/${activityId}`)
-        this.workareaService.loadActivities(activityId)
+        // i starts at 0, comparison to length needs to be made with -1
+        if (i < selectedChapterSyllabus.length-1) {
+          console.log('More activities available')
+          let activityId = selectedChapterSyllabus[++i].activity_id
+          this.router.navigateByUrl(`/webcourse/activities/${activityId}`)
+          this.workareaService.loadActivities(activityId)
+        } else {
+          console.log('No more activities in this chapter')
+          this.endOfChapter = true
+        }
+
       }
     )
+    this.sub.unsubscribe()
   }
 
   getChapterAids(chapters: Chapter[], currentChapter: number) {
