@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
-import { combineLatest, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 
 // WNGX services
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 import { WorkareaService } from '../workarea.service'
 
 // WNGX models and misc
-import { Chapter } from '../../models/chapter.model'
 import { Activity } from '../models/activity.model'
 import { ActivityMeta } from '../models/activity-meta.model'
 
@@ -29,55 +28,43 @@ export class NavService {
   ) { }
 
   calcFollowingAid(offset: number) {
-    this.sub = combineLatest([
-      this.selectedCourseService.selectedChapter$,
-      this.selectedCourseService.selectedActivitySet$
-    ]).subscribe(
-      results => {
-        this.waitingForApi = false
-
-        let selectedChapterSyllabus: ActivityMeta[] = results[0].syllabus
-        let activitySet: Activity[] = results[1]
+    this.sub = this.selectedCourseService.selectedActivitySet$.subscribe(
+      (activitySet: Activity[]) => {
 
         // For previous activity, the first in the current set interests us.
         // For next activity, it the current set's last activity we want.
-        let selectedActivity: Activity =
+        let calcStartActivity: Activity =
           (offset === 1) ? activitySet[activitySet.length - 1] : activitySet[0]
 
-        let i = selectedChapterSyllabus.findIndex(
+        // i = relevant activity's index position in the course syllabus
+        let i: number = this.courseSyllabus.findIndex(
           (activityMeta: ActivityMeta) => {
-            if (activityMeta.activity_id === selectedActivity.meta.activity_id) return true
+            if (activityMeta.activity_id === calcStartActivity.meta.activity_id) return true
           }
         )
 
-        // i starts at 0, comparison to length needs to be made with -1
-        if (i < selectedChapterSyllabus.length-1) {
-          console.log('More activities available')
-          let activityId = selectedChapterSyllabus[++i].activity_id
-          this.router.navigateByUrl(`/webcourse/activities/${activityId}`)
-          this.workareaService.loadActivities(activityId)
+        if (i === this.courseSyllabus.length-1) {
+          this.endOfChapter = this.endOfCourse = true;
         } else {
-          console.log('No more activities in this chapter')
-          this.endOfChapter = true
+          console.log('More activities available')
+          let activity = this.courseSyllabus[i + offset]
+          this.endOfChapter = (this.courseSyllabus[i].chapter_id === activity.chapter_id) ? false : true
+          this.router.navigateByUrl(`/webcourse/activities/${activity.activity_id}`)
+          this.workareaService.loadActivities(activity.activity_id)
         }
 
+        this.waitingForApi = false
       }
     )
     this.sub.unsubscribe()
   }
 
-  getChapterAids(chapters: Chapter[], currentChapter: number) {
-    function i(chapter: Chapter) {
-      if (chapter.id === currentChapter) {
-        return chapter
-      }
-    }
-    return chapters[chapters.findIndex(i)].syllabus
+  get courseSyllabus() {
+    return this.selectedCourseService.courseSyllabus
   }
 
   navDisable(status: boolean) {
-    this.endOfChapter = false
-    this.endOfCourse = false
+    this.endOfChapter = this.endOfCourse = false
     this.waitingForApi = status
   }
 
