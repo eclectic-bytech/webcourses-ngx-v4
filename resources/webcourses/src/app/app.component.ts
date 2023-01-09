@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     this.selectedCourseService.servicePrimer()
 
     this.sub = this.selectedCourseService.selectedCourse$.subscribe(
-      (course: Course) => { this.themeService.changeTheme(course.theme) }
+      (course: Course) => { if (course) this.themeService.changeTheme(course.theme) }
     )
   }
 
