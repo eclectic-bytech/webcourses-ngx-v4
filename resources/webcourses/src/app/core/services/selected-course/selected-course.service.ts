@@ -26,6 +26,8 @@ export class SelectedCourseService {
   public nextChapter$ = new BehaviorSubject<Chapter | null>(null)
   public previousChapter$ = new BehaviorSubject<Chapter | null>(null)
 
+  public courseSyllabus: ActivityMeta[] = [] // only used in next/prev activity nav
+
   constructor(
     private workareaService: WorkareaService,
     private chapterIndexService: ChapterIndexService,
