@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Location } from '@angular/common'
-import { Activity } from './models/activity.model'
 import { BehaviorSubject } from 'rxjs'
+
+// WNGX services
 import { ConfigService } from '../../../../core/services/config/config.service'
+
+// WNGX models and misc
+import { Activity } from './models/activity.model'
 
 @Injectable({
   providedIn: 'root'
