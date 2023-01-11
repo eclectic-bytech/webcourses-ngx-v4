@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs'
 
 // WNGX services
 import { ConfigService } from '../../../../core/services/config/config.service'
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 // WNGX models and misc
 import { Activity } from './models/activity.model'
@@ -17,12 +18,12 @@ export class WorkareaService {
   // Saving fetched activities to variable. Allows to later push activities into it
   // from Next button
   public activities: Activity[]
-  public currentActivitySet$ = new BehaviorSubject<Activity[] | null>(null)
 
   constructor(
     public httpClient: HttpClient,
     private configService: ConfigService,
-    private location: Location
+    private location: Location,
+    private selectedCourseService: SelectedCourseService
   ) {}
 
   loadActivities(aid) {
@@ -35,7 +36,8 @@ export class WorkareaService {
   }
 
   propagateActivities(activitySet: Activity[]) {
-    this.currentActivitySet$.next(activitySet)
+    console.log('Propagate activities.')
+    this.selectedCourseService.selectedActivitySet$.next(activitySet)
 
     if (activitySet.length === 1) {
       if (activitySet[0].meta.cont) {
