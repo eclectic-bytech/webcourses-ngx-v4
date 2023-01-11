@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
 
 // WNGX services
-import { WorkareaService } from 'src/app/pages/webcourse/activities/workarea/workarea.service'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { ChapterIndexService } from 'src/app/pages/webcourse/activities/sidebar/chapter-index/chapter-index.service'
 
@@ -26,30 +25,27 @@ export class SelectedCourseService {
   public nextChapter$ = new BehaviorSubject<Chapter | null>(null)
   public previousChapter$ = new BehaviorSubject<Chapter | null>(null)
 
+  public selectedActivitySet: Activity[]
+  public selectedCourse: Course
   public courseSyllabus: ActivityMeta[] = [] // only used in next/prev activity nav
 
   constructor(
-    private workareaService: WorkareaService,
     private chapterIndexService: ChapterIndexService,
     private courseService: CourseService
   ) { }
 
-  servicePrimer() {
-    this.workareaService.currentActivitySet$.subscribe(
-      (activities: Activity[]) => {
-        if (activities) {
-          this.selectedActivitySet$.next(activities)
-          this.courseService.getCourse(activities[0].meta.course_id).subscribe(
-            (course: Course) => {
-              this.selectedCourse$.next(course) }
-          )
-          this.chapterIndexService.getChapterIndex(activities[0].meta.course_id).subscribe(
-            (chapters: Chapter[]) => {
-              this.selectedChapterIndex$.next(chapters)
-              this.setChapters(chapters, activities[0].meta)
-            }
-          )
-        }
+  servicePrimer(activity: Activity) {
+    this.courseService.getCourse(activity.meta.course_id).subscribe(
+      (course: Course) => {
+        this.selectedCourse$.next(course)
+        this.selectedCourse = course
+      }
+    )
+
+    this.chapterIndexService.getChapterIndex(activity.meta.course_id).subscribe(
+      (chapters: Chapter[]) => {
+        this.selectedChapterIndex$.next(chapters)
+        this.setChapters(chapters, activity.meta)
       }
     )
   }

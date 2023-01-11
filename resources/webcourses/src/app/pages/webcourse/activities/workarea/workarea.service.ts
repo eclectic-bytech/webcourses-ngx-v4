@@ -27,23 +27,23 @@ export class WorkareaService {
 
   loadActivities(aid) {
     this.getActivities(aid).subscribe(
-      (activities: Activity[]) => {
+      (activitySet: Activity[]) => {
         this.location.go(`/webcourse/activities/${aid}`)
-        this.currentActivitySet$.next(activities)
+        this.currentActivitySet$.next(activitySet)
 
-        if (activities.length === 1) {
-          if (activities[0].meta.cont) {
-            this.activities = this.activities.concat(activities)
+        if (activitySet.length === 1) {
+          if (activitySet[0].meta.cont) {
+            this.activities = this.activities.concat(activitySet)
           } else {
-            this.activities = activities
+            this.activities = activitySet
             this.scrollToTop()
           }
 
         } else {
-          if (!this.activities) {
-            this.activities = activities
+          if (!activitySet) {
+            this.activities = activitySet
            } else {
-            this.hackAroundBackendLimitation(activities)
+            this.hackAroundBackendLimitation(activitySet)
            }
         }
       }
