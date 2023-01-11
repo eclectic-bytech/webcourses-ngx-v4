@@ -38,6 +38,7 @@ export class WorkAreaComponent implements OnInit {
 
           // any activity in set would do for the primer, choosing 0 by default
           this.selectedService.servicePrimer(activitySet[0])
+          this.workareaService.propagateActivities(activitySet)
         }
       )
   }

@@ -29,25 +29,29 @@ export class WorkareaService {
     this.getActivities(aid).subscribe(
       (activitySet: Activity[]) => {
         this.location.go(`/webcourse/activities/${aid}`)
-        this.currentActivitySet$.next(activitySet)
-
-        if (activitySet.length === 1) {
-          if (activitySet[0].meta.cont) {
-            this.activities = this.activities.concat(activitySet)
-          } else {
-            this.activities = activitySet
-            this.scrollToTop()
-          }
-
-        } else {
-          if (!activitySet) {
-            this.activities = activitySet
-           } else {
-            this.hackAroundBackendLimitation(activitySet)
-           }
-        }
+        this.propagateActivities(activitySet)
       }
     )
+  }
+
+  propagateActivities(activitySet: Activity[]) {
+    this.currentActivitySet$.next(activitySet)
+
+    if (activitySet.length === 1) {
+      if (activitySet[0].meta.cont) {
+        this.activities = this.activities.concat(activitySet)
+      } else {
+        this.activities = activitySet
+        this.scrollToTop()
+      }
+
+    } else {
+      if (!activitySet) {
+        this.activities = activitySet
+       } else {
+        this.hackAroundBackendLimitation(activitySet)
+       }
+    }
   }
 
   getActivities(aid: any) {
