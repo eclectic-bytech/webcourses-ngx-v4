@@ -5,6 +5,7 @@ import { faStepBackward, faSpinner, faCheck, faPencilAlt, faStepForward } from '
 import { NavService } from './nav.service'
 import { ActiveModeService } from '../active-mode/active-mode.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
+import { WorkareaService } from '../workarea.service'
 
 
 @Component({
@@ -25,7 +26,8 @@ export class NavComponent {
   constructor(
     public navService: NavService,
     public activeModeService: ActiveModeService,
-    public selectedCourseService: SelectedCourseService
+    public selectedCourseService: SelectedCourseService,
+    public workareaService: WorkareaService
   ) { }
 
   SaveButton() {

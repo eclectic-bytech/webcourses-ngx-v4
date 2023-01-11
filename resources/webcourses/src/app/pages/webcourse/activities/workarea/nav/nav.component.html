@@ -4,8 +4,8 @@
 
   <button class="btn btn-primary mr-3"
     (click)="GoToActivity(-1)"
-    [ngClass]="this.navService.waitingForApi || activity[activity.length -1].meta.seq == 0 ? 'btn-secondary' : 'btn-primary'"
-    [disabled]="this.navService.waitingForApi || activity[activity.length -1].meta.seq == 0"
+    [ngClass]="this.workareaService.waitingForApi || activity[activity.length -1].meta.seq == 0 ? 'btn-secondary' : 'btn-primary'"
+    [disabled]="this.workareaService.waitingForApi || activity[activity.length -1].meta.seq == 0"
     >
     <fa-icon [icon]="faStepBackward"></fa-icon>
   </button>
@@ -13,24 +13,24 @@
   <button type="button" class="btn"
     *ngIf="activity[activity.length -1].user_answers"
     (click)="GoToActivity(1)"
-    [ngClass]="this.navService.waitingForApi ? 'btn-secondary' : 'btn-primary'"
-    [disabled]="this.navService.waitingForApi"
+    [ngClass]="this.workareaService.waitingForApi ? 'btn-secondary' : 'btn-primary'"
+    [disabled]="this.workareaService.waitingForApi"
     >
     NEXT
-    <fa-icon [icon]="faStepForward" class="mx-2" *ngIf="!this.navService.waitingForApi"></fa-icon>
-    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mx-2" *ngIf="this.navService.waitingForApi"></fa-icon>
+    <fa-icon [icon]="faStepForward" class="mx-2" *ngIf="!this.workareaService.waitingForApi"></fa-icon>
+    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mx-2" *ngIf="this.workareaService.waitingForApi"></fa-icon>
   </button>
 
   <button type="submit" class="btn"
     *ngIf="!activity[activity.length -1].user_answers"
     (click)="SaveButton()"
     [ngClass]="
-      (this.navService.waitingForApi || !this.activeModeService.activityForm.valid) ? 'btn-secondary' : 'btn-success'
+      (this.workareaService.waitingForApi || !this.activeModeService.activityForm.valid) ? 'btn-secondary' : 'btn-success'
     "
-    [disabled]="this.navService.waitingForApi || !this.activeModeService.activityForm.valid"
+    [disabled]="this.workareaService.waitingForApi || !this.activeModeService.activityForm.valid"
     >
-    <fa-icon [icon]="activity[activity.length -1].meta.activity_type === 'info' ? faCheck : faPencilAlt" class="mr-2" *ngIf="!this.navService.waitingForApi"></fa-icon>
-    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mr-2" *ngIf="this.navService.waitingForApi"></fa-icon>
+    <fa-icon [icon]="activity[activity.length -1].meta.activity_type === 'info' ? faCheck : faPencilAlt" class="mr-2" *ngIf="!this.workareaService.waitingForApi"></fa-icon>
+    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mr-2" *ngIf="this.workareaService.waitingForApi"></fa-icon>
     {{ activity[activity.length -1].meta.activity_type === 'info' ? 'MARK READ' : 'SAVE' }}
   </button>
 

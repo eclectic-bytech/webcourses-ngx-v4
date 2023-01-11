@@ -3,7 +3,8 @@ import { Location } from '@angular/common'
 
 import { FadeInOut } from '../../../../../../core/animations/fade-in-out.animation'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
-import { Chapter } from '../../../models/chapter.model'
+import { WorkareaService } from '../../workarea.service'
+import { NavService } from '../../nav/nav.service'
 
 @Component({
   selector: 'app-course-end',
@@ -15,10 +16,13 @@ export class CourseEndComponent {
 
   constructor(
     public selectedCourseService: SelectedCourseService,
-    private location: Location
+    private location: Location,
+    private workareaService: WorkareaService
   ) { }
 
-  reviewButton(firstChapter: Chapter) {
-    this.location.go(`/webcourse/activities/${firstChapter.syllabus[0].meta.activity_id}`)
+  reviewButton(aid) {
+    this.workareaService.loadActivities(aid)
+    this.workareaService.endOfCourse = this.workareaService.endOfChapter = false
+    // this.location.go(`/webcourse/activities/${firstChapter.syllabus[0].activity_id}`)
   }
 }

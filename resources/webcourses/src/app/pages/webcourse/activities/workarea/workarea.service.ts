@@ -17,6 +17,9 @@ export class WorkareaService {
   // Saving fetched activities to variable. Allows to later push activities into it
   // from Next button
   public activities: Activity[]
+  public waitingForApi = false
+  public endOfChapter = false
+  public endOfCourse = false
 
   constructor(
     public httpClient: HttpClient,

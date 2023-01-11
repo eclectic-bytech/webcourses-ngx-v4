@@ -15,10 +15,6 @@ import { ActivityMeta } from '../models/activity-meta.model'
 
 export class NavService {
 
-  waitingForApi = false
-  endOfChapter = false
-  endOfCourse = false
-
   constructor(
     private router: Router,
     private workareaService: WorkareaService,
@@ -39,17 +35,17 @@ export class NavService {
     )
 
     if (i === this.courseSyllabus.length-1) {
-      this.endOfChapter = true
-      this.endOfCourse = (offset === 1) ? true : false // don't show eoc dialogue on back button
+      this.workareaService.endOfChapter = true
+      this.workareaService.endOfCourse = (offset === 1) ? true : false // don't show eoc dialogue on back button
     } else {
       console.log('More activities available')
       let activity = this.courseSyllabus[i + offset]
-      this.endOfChapter = (this.courseSyllabus[i].chapter_id === activity.chapter_id) ? false : true
+      this.workareaService.endOfChapter = (this.courseSyllabus[i].chapter_id === activity.chapter_id) ? false : true
       this.router.navigateByUrl(`/webcourse/activities/${activity.activity_id}`)
       this.workareaService.loadActivities(activity.activity_id)
     }
 
-    this.waitingForApi = false
+    this.workareaService.waitingForApi = false
   }
 
   get courseSyllabus() {
@@ -61,8 +57,8 @@ export class NavService {
   }
 
   navDisable(status: boolean) {
-    this.endOfChapter = this.endOfCourse = false
-    this.waitingForApi = status
+    this.workareaService.endOfChapter = this.workareaService.endOfCourse = false
+    this.workareaService.waitingForApi = status
   }
 
 }

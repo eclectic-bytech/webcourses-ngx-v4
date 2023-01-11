@@ -1,7 +1,7 @@
-<app-chapter-end *ngIf="this.navService.endOfChapter;"></app-chapter-end>
-<app-course-end *ngIf="this.navService.endOfCourse;"></app-course-end>
+<app-chapter-end *ngIf="this.workareaService.endOfChapter;"></app-chapter-end>
+<app-course-end *ngIf="this.workareaService.endOfCourse;"></app-course-end>
 
-<div *ngIf="!this.navService.endOfChapter && !this.navService.endOfCourse">
+<div *ngIf="!this.workareaService.endOfChapter && !this.workareaService.endOfCourse">
   <div class="container" *ngIf="this.workareaService.activities" id="workarea-activities">
     <div *ngFor="let activity of this.workareaService.activities" class="row activity mt-4" @fadeInOut>
 
