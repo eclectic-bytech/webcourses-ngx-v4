@@ -46,7 +46,9 @@ class Course extends Model
             'id',
             'chapter_id'
         )
-        ->with('syllabus')
+        ->with(['syllabus' => function($query) {
+            $query->orderBy('seq', 'ASC');
+        }])
         ->orderBy('seq')
         ->distinct();
     }
