@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'
-import { Subscription } from 'rxjs'
 import { faStepBackward, faSpinner, faCheck, faPencilAlt, faStepForward } from '@fortawesome/free-solid-svg-icons'
 
 // WNGX services
@@ -17,8 +16,6 @@ import { Chapter } from '../../models/chapter.model'
 })
 
 export class NavComponent {
-
-  private sub: Subscription
 
   // FontAwesome icons
   faStepBackward = faStepBackward
