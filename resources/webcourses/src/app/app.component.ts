@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.appService.initLogged()
-    this.selectedCourseService.servicePrimer()
+    // this.selectedCourseService.servicePrimer()
 
     this.sub = this.selectedCourseService.selectedCourse$.subscribe(
       (course: Course) => { if (course) this.themeService.changeTheme(course.theme) }
