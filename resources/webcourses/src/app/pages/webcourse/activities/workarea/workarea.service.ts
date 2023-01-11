@@ -33,13 +33,14 @@ export class WorkareaService {
       (activitySet: Activity[]) => {
         this.location.go(`/webcourse/activities/${aid}`)
         this.propagateActivities(activitySet)
+        this.selectedCourseService.selectedActivitySet$.next(activitySet)
+        this.selectedCourseService.selectedActivitySet = activitySet
       }
     )
   }
 
   propagateActivities(activitySet: Activity[]) {
     console.log('Propagate activities.')
-    this.selectedCourseService.selectedActivitySet$.next(activitySet)
 
     if (activitySet.length === 1) {
       if (activitySet[0].meta.cont) {

@@ -1,15 +1,12 @@
-<div class="text-center eoch-container"
-  *ngIf="(this.selectedCourseService.nextChapter$ | async) as nextChapter"
-  @fadeInOut
-  >
+<div class="text-center eoch-container" @fadeInOut>
   <p class="font-weight-bold">End of chapter.</p>
 
-  <div *ngIf="nextChapter.label" class="next-chapter">
+  <div *ngIf="(this.selectedCourseService.nextChapter$ | async) as nc" class="next-chapter">
     <p class="h5 next-chapter-label">Next Chapter</p>
-    <p class="h4" [innerHtml]="nextChapter.label"></p>
+    <p class="h4" [innerHtml]="nc.label"></p>
   </div>
 
-  <button class="btn btn-primary mt-3" (click)="this.workareaService.endOfChapter = false">
+  <button class="btn btn-primary mt-3" (click)="continueButton()">
     CONTINUE
   </button>
 </div>

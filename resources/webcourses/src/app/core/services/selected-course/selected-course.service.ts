@@ -28,6 +28,7 @@ export class SelectedCourseService {
   public selectedActivitySet: Activity[]
   public selectedCourse: Course
   public courseSyllabus: ActivityMeta[] = [] // only used in next/prev activity nav
+  public chapterIndex: Chapter[] = []
 
   constructor(
     private chapterIndexService: ChapterIndexService,
@@ -46,7 +47,8 @@ export class SelectedCourseService {
     this.chapterIndexService.getChapterIndex(activity.meta.course_id).subscribe(
       (chapters: Chapter[]) => {
         this.selectedChapterIndex$.next(chapters)
-        this.setChapters(chapters, activity.meta)
+        this.chapterIndex = chapters
+        this.setChapters(activity.meta)
 
         chapters.forEach( (chapter: Chapter) => {
           this.courseSyllabus = this.courseSyllabus.concat(chapter.syllabus)
@@ -55,16 +57,16 @@ export class SelectedCourseService {
     )
   }
 
-  setChapters(chapters: Chapter[], activityMeta: ActivityMeta) {
-    let chapterIndex = chapters.findIndex( chapter => {
+  setChapters(activityMeta: ActivityMeta) {
+    let i = this.chapterIndex.findIndex( chapter => {
       return chapter.id === activityMeta.chapter_id
     })
-    this.selectedChapter$.next(chapters[chapterIndex])
+    this.selectedChapter$.next(this.chapterIndex[i])
 
-    let nextChapter = (chapters.length >= chapterIndex) ? chapters[++chapterIndex] : null
+    let nextChapter = (this.chapterIndex.length >= i) ? this.chapterIndex[++i] : null
     this.nextChapter$.next(nextChapter)
 
-    let previousChapter = (chapterIndex > 1) ? (chapters[--chapterIndex]) : null
+    let previousChapter = (i > 1) ? (this.chapterIndex[--i]) : null
     this.previousChapter$.next(previousChapter)
   }
 

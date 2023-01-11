@@ -1,5 +1,5 @@
-<app-chapter-end *ngIf="this.workareaService.endOfChapter;"></app-chapter-end>
-<app-course-end *ngIf="this.workareaService.endOfCourse;"></app-course-end>
+<app-chapter-end *ngIf="this.workareaService.endOfChapter"></app-chapter-end>
+<app-course-end *ngIf="this.workareaService.endOfCourse && !this.workareaService.endOfChapter"></app-course-end>
 
 <div *ngIf="!this.workareaService.endOfChapter && !this.workareaService.endOfCourse">
   <div class="container" *ngIf="this.workareaService.activities" id="workarea-activities">

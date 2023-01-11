@@ -20,4 +20,9 @@ export class ChapterEndComponent {
     public workareaService: WorkareaService
   ) { }
 
+  continueButton() {
+    this.selectedCourseService.setChapters(this.selectedCourseService.selectedActivitySet[0].meta)
+    this.workareaService.endOfChapter = false
+  }
+
 }
