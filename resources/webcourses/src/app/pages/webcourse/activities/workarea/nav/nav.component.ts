@@ -6,8 +6,6 @@ import { NavService } from './nav.service'
 import { ActiveModeService } from '../active-mode/active-mode.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
-// WNGX models and misc
-import { Chapter } from '../../models/chapter.model'
 
 @Component({
   selector: 'app-nav',
