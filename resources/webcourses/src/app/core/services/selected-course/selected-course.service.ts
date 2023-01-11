@@ -34,7 +34,7 @@ export class SelectedCourseService {
     private courseService: CourseService
   ) { }
 
-  servicePrimer(activity: Activity) {
+  fullCourseLoader(activity: Activity) {
     this.courseService.getCourse(activity.meta.course_id).subscribe(
       (course: Course) => {
         this.selectedCourse$.next(course)
