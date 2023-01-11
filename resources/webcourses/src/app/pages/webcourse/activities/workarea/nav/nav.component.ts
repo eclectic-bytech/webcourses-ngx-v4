@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core'
+import { Component } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { faStepBackward, faSpinner, faCheck, faPencilAlt, faStepForward } from '@fortawesome/free-solid-svg-icons'
 
@@ -16,7 +16,7 @@ import { Chapter } from '../../models/chapter.model'
   styleUrls: ['./nav.component.sass']
 })
 
-export class NavComponent implements OnDestroy {
+export class NavComponent {
 
   private sub: Subscription
 
@@ -33,19 +33,6 @@ export class NavComponent implements OnDestroy {
     public selectedCourseService: SelectedCourseService
   ) { }
 
-  ngOnInit() {
-    this.sub = this.selectedCourseService.selectedChapterIndex$.subscribe(
-      (chapterIndex: Chapter[]) => {
-        if (chapterIndex) {
-          chapterIndex.forEach( (chapter: Chapter) => {
-            this.selectedCourseService.courseSyllabus =
-            this.selectedCourseService.courseSyllabus.concat(chapter.syllabus)
-          })
-        }
-      }
-    )
-  }
-
   SaveButton() {
     this.navService.navDisable(true)
     this.activeModeService.userAnswerPOST(
@@ -59,7 +46,4 @@ export class NavComponent implements OnDestroy {
     this.navService.calcFollowingAid(offset)
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe()
-  }
 }

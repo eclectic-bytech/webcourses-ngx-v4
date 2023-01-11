@@ -35,6 +35,7 @@ export class SelectedCourseService {
   ) { }
 
   fullCourseLoader(activity: Activity) {
+    console.log('Full course loader fired.')
     this.courseService.getCourse(activity.meta.course_id).subscribe(
       (course: Course) => {
         this.selectedCourse$.next(course)
@@ -46,6 +47,10 @@ export class SelectedCourseService {
       (chapters: Chapter[]) => {
         this.selectedChapterIndex$.next(chapters)
         this.setChapters(chapters, activity.meta)
+
+        chapters.forEach( (chapter: Chapter) => {
+          this.courseSyllabus = this.courseSyllabus.concat(chapter.syllabus)
+        })
       }
     )
   }

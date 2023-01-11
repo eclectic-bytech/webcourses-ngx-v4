@@ -30,11 +30,13 @@ export class WorkAreaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('Hello World.')
     this.workareaService
       .getActivities(this.route.snapshot.paramMap.get('aid'))
       .subscribe(
         (activitySet: Activity[]) => {
           this.selectedService.selectedActivitySet$.next(activitySet)
+          console.log('Singleton. Or is it?')
 
           // any activity in set would do for the primer, choosing 0 by default
           this.selectedService.fullCourseLoader(activitySet[0])
