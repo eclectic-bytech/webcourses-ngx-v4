@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Location } from '@angular/common'
-import { BehaviorSubject } from 'rxjs'
 
 // WNGX services
 import { ConfigService } from '../../../../core/services/config/config.service'
@@ -54,6 +53,7 @@ export class WorkareaService {
         this.hackAroundBackendLimitation(activitySet)
        }
     }
+
   }
 
   getActivities(aid: any) {
