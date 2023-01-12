@@ -21,8 +21,8 @@ export class ChapterEndComponent {
   ) { }
 
   continueButton() {
+    this.workareaService.endOfChapter = false // run first, in case next line fails
     this.selectedCourseService.setChapters(this.selectedCourseService.selectedActivitySet[0].meta)
-    this.workareaService.endOfChapter = false
   }
 
 }
