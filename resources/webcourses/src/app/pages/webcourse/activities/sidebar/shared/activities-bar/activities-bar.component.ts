@@ -13,7 +13,6 @@ import { WorkareaService } from 'src/app/pages/webcourse/activities/workarea/wor
 export class ActivitiesBarComponent {
 
   @Input() chapter: Chapter
-  @Input() tac: Number
   maxWidthPercent = 94
 
   constructor(

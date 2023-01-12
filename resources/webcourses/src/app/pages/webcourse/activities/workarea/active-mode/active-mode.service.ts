@@ -58,7 +58,7 @@ export class ActiveModeService {
       `${this.configService.params.api.route}/webcourse/activities/${this.lastActivityInSet.meta.activity_id}/user_answer`, user_answers
     ).subscribe(
       (activity_supplemental) => {
-        this.completionStatsService.bumpStats(this.lastActivityInSet)
+        this.completionStatsService.totalActivitiesCompleted++
         this.navService.navDisable(false)
 
         if (activity_supplemental['after_word']) {

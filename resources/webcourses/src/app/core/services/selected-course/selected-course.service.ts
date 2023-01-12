@@ -10,6 +10,7 @@ import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/act
 import { ActivityMeta } from 'src/app/pages/webcourse/activities/workarea/models/activity-meta.model'
 import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
 import { Course } from 'src/app/models/course.model'
+import { CompletionStatsService } from '../user/completion-stats.service'
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,8 @@ export class SelectedCourseService {
 
   constructor(
     private chapterIndexService: ChapterIndexService,
-    private courseService: CourseService
+    private courseService: CourseService,
+    public completionStatsService: CompletionStatsService
   ) { }
 
   fullCourseLoader(activity: Activity) {
@@ -41,6 +43,7 @@ export class SelectedCourseService {
       (course: Course) => {
         this.selectedCourse$.next(course)
         this.selectedCourse = course
+        this.completionStatsService.totalActivitiesCompleted = course.user_progress.total_activities_completed
       }
     )
 
