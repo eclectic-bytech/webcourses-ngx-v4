@@ -452,7 +452,7 @@ class DemocourseSeeder extends Seeder
 
         DB::table('activities')->insert([
             'id' => 4775,
-            'prequestion' => '<p>Open WebCourses courses are designed to be easy to update and maintain. The platform does not rely on videos, but they can be added.</p><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/32kYH6XZrIo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            'prequestion' => '<p>Open WebCourses courses are designed to be easy to update and maintain. The platform does not rely on videos, but they can be added.</p><div class="embed-responsive embed-responsive-16by9"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/32kYH6XZrIo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>',
             'question' => NULL,
             'assess_text' => NULL,
             'after_word' => NULL,
