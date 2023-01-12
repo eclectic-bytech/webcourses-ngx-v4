@@ -9,7 +9,4 @@ export class CompletionStatsService {
 
   public totalActivitiesCompleted: number = 0
 
-  public cs = 0
-  completionStats = { inChid: [], inPid: [] }
-
 }

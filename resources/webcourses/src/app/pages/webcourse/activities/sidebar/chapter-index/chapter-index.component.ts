@@ -24,18 +24,7 @@ export class ChapterIndexComponent {
   ) { }
 
   chapterUnlock(chapterIndex: Chapter[], chapterNumber: number) {
-    // First chapter, always unlocked
-    if (chapterNumber === 0) {
-      return true
-    } else {
-      // Second chapter and after is unlocked if previous is completed
-      let previousChapter: Chapter = chapterIndex[chapterNumber - 1]
-      if (this.completionStatsService.completionStats.inChid[previousChapter.id] === previousChapter.syllabus.length) {
-        return true
-      }
-    }
-    // None of the conditions for unlocking a chapter were met
-    return false
+    let seq = chapterIndex[chapterNumber].syllabus[0].seq
+    return (seq <= this.completionStatsService.totalActivitiesCompleted) ? true : false
   }
-
 }
