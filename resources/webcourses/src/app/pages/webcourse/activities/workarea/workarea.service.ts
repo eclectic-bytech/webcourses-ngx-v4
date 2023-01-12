@@ -51,13 +51,12 @@ export class WorkareaService {
       }
 
     } else {
-      if (!activitySet) {
+      if (!this.activities) {
         this.activities = activitySet
-       } else {
+      } else {
         this.hackAroundBackendLimitation(activitySet)
-       }
+      }
     }
-
   }
 
   getActivities(aid: any) {
