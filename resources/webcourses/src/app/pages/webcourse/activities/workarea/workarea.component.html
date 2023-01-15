@@ -56,7 +56,14 @@
 
     </div>
 
-    <app-nav class="row justify-content-end d-print-none"></app-nav>
+    <div class="py-5 d-print-none">
+      <div class="float-left handy" (click)="printButton()">
+        <fa-icon [icon]="faPrint" class="text-info mr-3"></fa-icon>
+        <span class="text-secondary h6">Print</span>
+      </div>
+
+      <app-nav class="row justify-content-end d-print-none"></app-nav>
+    </div>
 
   </div>
 </div>

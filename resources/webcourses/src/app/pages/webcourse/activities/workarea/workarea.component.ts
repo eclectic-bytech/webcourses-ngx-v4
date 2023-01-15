@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
+import { faPrint } from '@fortawesome/free-solid-svg-icons'
 
 // WNGX services
 import { WorkareaService } from './workarea.service'
@@ -22,6 +23,8 @@ export class WorkAreaComponent implements OnInit {
 
   public activitySet: Activity[]
 
+  public faPrint = faPrint
+
   constructor(
     public route: ActivatedRoute,
     public workareaService: WorkareaService,
@@ -30,7 +33,6 @@ export class WorkAreaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('Hello World.')
     this.workareaService
       .getActivities(this.route.snapshot.paramMap.get('aid'))
       .subscribe(
@@ -45,4 +47,7 @@ export class WorkAreaComponent implements OnInit {
       )
   }
 
+  printButton() {
+    window.print()
+  }
 }
