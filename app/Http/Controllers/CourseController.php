@@ -50,14 +50,19 @@ class CourseController extends Controller
 
     public function course($cid) {
         // Course details page
-        return Course
+        $course = Course
             ::where('courses.id', $cid)
             ->where('courses.published', 1)
-            ->where('courses.private', 0)
+            // ->where('courses.private', 0)
             ->with(['publisher', 'theme', 'UserProgress'])
             ->withCount('courseSyllabus as total_activities')
             ->withCount('participants as total_students')
             ->first();
+
+        if ($course['private'] === 1) {
+            return (isset($course['user_progress'])) ? $course : null;
+        }
+        return null;
     }
 
     public function chapterIndex($cid)

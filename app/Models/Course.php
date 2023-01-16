@@ -11,7 +11,7 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['active_bid', 'published', 'private'];
+    protected $hidden = ['active_bid', 'published'];
 
     public function publisher() {
         return $this->belongsTo(Publisher::class);
