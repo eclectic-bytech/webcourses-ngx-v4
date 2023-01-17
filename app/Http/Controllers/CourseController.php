@@ -40,7 +40,6 @@ class CourseController extends Controller
         // Currently unused, added as documentation for future features.
         return Course
             ::where('courses.published', 1)
-            ->where('courses.private', 0)
             ->whereHas('UserProgress')
             ->withCount('courseSyllabus as total_activities')
             ->withCount('participants as total_students')
