@@ -63,7 +63,7 @@ class CourseController extends Controller
         if ($course->private === 1) {
             return (isset($course->user_progress)) ? $course : null;
         }
-        return null;
+        return $course;
     }
 
     public function chapterIndex($cid)
