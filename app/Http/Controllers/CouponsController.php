@@ -27,8 +27,26 @@ class CouponsController extends Controller
         return $this->belongsTo(Course::class);
     }
 
-    public function applyPublicCourseCoupon($cid, $coupon) {
-        $coupon = array("status" => $this->couponMessage('valid'));
+    public function applyPublicCourseCoupon(int $cid, $coupon) {
+        $uid = auth()->user()->id;
+
+        if (!$cid && !$uid) {
+            # Only logged in users should be able to submit a code without cid
+            $code['status'] = $this->badCode('Something went wrong.');
+            return $code;
+        } else {
+            $code_info = Coupons::find($coupon);
+            $code['woot'] = $code_info;
+            $code['status'] = $this->badCode('Test');
+            return $code;
+        }
+
+        $coupon = array(
+            "status" => $this->couponMessage('valid'),
+            "cid" => $cid,
+            "coupon" => $coupon,
+            "uid" => $uid
+        );
         return $coupon;
     }
 
@@ -45,5 +63,9 @@ class CouponsController extends Controller
         $message['valid'] = array("valid" => true, "cssClass" => "success", "message" => "Code applied.");
 
         return $message[$status];
+    }
+
+    private function badCode($reason) {
+        return array("valid" => false, "cssClass" => "warning", "message" => $reason);
     }
 }
