@@ -14,7 +14,7 @@ use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\UserRedirectController;
 use App\Http\Controllers\SyllabusController;
-use App\Http\Controllers\CouponsController;
+use App\Http\Controllers\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,15 +109,15 @@ Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped as /v4/coupon
     Route::group(['prefix' => 'coupon'], function() {
-        Route::get('/course/{cid}/apply/{coupon}', [CouponsController::class, 'applyPublicCourseCoupon']);
-        Route::get('/course/group/apply/{coupon}', [CouponsController::class, 'applyPrivateCourseCoupon']);
+        Route::get('/course/{cid}/apply/{coupon}', [CouponController::class, 'applyPublicCourseCoupon']);
+        Route::get('/course/group/apply/{coupon}', [CouponController::class, 'applyPrivateCourseCoupon']);
     });
 
     // Paths grouped as /v4/admin
     Route::group(['prefix' => 'admin'], function() {
         // Paths grouped as /v4/admin/publisher
         Route::group(['prefix' => 'publisher'], function() {
-            Route::get('/coupons', [CouponsController::class, 'index']);
+            Route::get('/coupons', [CouponController::class, 'index']);
         });
     });
 

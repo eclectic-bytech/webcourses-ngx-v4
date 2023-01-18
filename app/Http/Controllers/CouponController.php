@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Coupons;
+use App\Models\Coupon;
 use App\Models\Course;
 use App\Models\Publisher;
 
-class CouponsController extends Controller
+class CouponController extends Controller
 {
     public function index() {
         $uid = auth()->user()->id;
@@ -17,7 +17,7 @@ class CouponsController extends Controller
         $coupons = [];
         foreach ($courses as $key => $course) {
             $coupons[$key]['course'] = $course;
-            $coupons[$key]['coupons'] = Coupons::where('cid', $course->id)->get();
+            $coupons[$key]['coupons'] = Coupon::where('cid', $course->id)->get();
         }
 
         return $coupons;
@@ -35,7 +35,7 @@ class CouponsController extends Controller
             $code['status'] = $this->badCode('Something went wrong.');
             return $code;
         } else {
-            $code_info = Coupons::find($coupon);
+            $code_info = Coupon::find($coupon);
             $code['woot'] = $code_info;
             $code['status'] = $this->badCode('Test');
             return $code;
