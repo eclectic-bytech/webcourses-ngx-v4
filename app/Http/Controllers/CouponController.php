@@ -35,7 +35,7 @@ class CouponController extends Controller
             $code['status'] = $this->badCode('Something went wrong.');
             return $code;
         } else {
-            $code_info = Coupon::find($coupon);
+            $code_info = Coupon::with(['course'])->find($coupon);
             $code['woot'] = $code_info;
             $code['status'] = $this->badCode('Test');
             return $code;
