@@ -27,4 +27,23 @@ class CouponsController extends Controller
         return $this->belongsTo(Course::class);
     }
 
+    public function applyPublicCourseCoupon($cid, $coupon) {
+        $coupon = array("status" => $this->couponMessage('valid'));
+        return $coupon;
+    }
+
+    public function applyPrivateCourseCoupon($coupon) {
+        $coupon = array("status" => $this->couponMessage('expired'));
+		return $coupon;
+    }
+
+    public function couponMessage($status) {
+        $message['inactive'] = array("valid" => false, "cssClass" => "danger", "message" => "Inactive code.");
+        $message['expired'] = array("valid" => false, "cssClass" => "danger", "message" => "Code expired.");
+        $message['maxuses'] = array("valid" => false, "cssClass" => "danger", "message" => "Code maximum uses reached.");
+        $message['cannotApply'] = array("valid" => false, "cssClass" => "warning", "message" => "Code can't be applied here.");
+        $message['valid'] = array("valid" => true, "cssClass" => "success", "message" => "Code applied.");
+
+        return $message[$status];
+    }
 }

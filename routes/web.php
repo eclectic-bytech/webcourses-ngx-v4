@@ -104,21 +104,21 @@ Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped as /v4/publisher
     Route::group(['prefix' => 'publisher'], function() {
-
         Route::get('/profile/{id}', [PublisherController::class, 'index']);
+    });
 
+    // Paths grouped as /v4/coupon
+    Route::group(['prefix' => 'coupon'], function() {
+        Route::get('/course/{cid}/apply/{coupon}', [CouponsController::class, 'applyPublicCourseCoupon']);
+        Route::get('/course/group/apply/{coupon}', [CouponsController::class, 'applyPrivateCourseCoupon']);
     });
 
     // Paths grouped as /v4/admin
     Route::group(['prefix' => 'admin'], function() {
-
         // Paths grouped as /v4/admin/publisher
         Route::group(['prefix' => 'publisher'], function() {
-
             Route::get('/coupons', [CouponsController::class, 'index']);
-
         });
-
     });
 
 });
