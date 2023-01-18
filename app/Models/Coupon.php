@@ -12,4 +12,15 @@ class Coupon extends Model
     public function course() {
         return $this->hasOne(Course::class, 'id', 'cid');
     }
+
+    public function publisher() {
+        return $this->hasOneThrough(
+            Publisher::class,
+            Course::class,
+            'publisher_id',
+            'id',
+            'cid',
+            'id'
+        );
+    }
 }
