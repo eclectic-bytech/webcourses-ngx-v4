@@ -9,6 +9,7 @@ use App\Models\Publisher;
 
 class CouponController extends Controller
 {
+    // displays in publisher's console all codes including usage level
     public function index() {
         $uid = auth()->user()->id;
         $publisher = Publisher::where('owner_uid', $uid)->first();
@@ -32,27 +33,36 @@ class CouponController extends Controller
 
         if (!$cid && !$uid) {
             # Only logged in users should be able to submit a code without cid
-            $code['status'] = $this->badCode('Something went wrong.');
-            return $code;
+            $code['status'] = $this->couponMessage('bad_code');
         } else {
             $code_info = Coupon::with(['course', 'publisher'])->find($coupon);
-            $code['woot'] = $code_info;
-            $code['status'] = $this->badCode('Test');
-            return $code;
+            if ($code_info) {
+                if ($this->userAlreadyEnrolled($uid, $code_info['cid'])) {
+                    $code['status'] = $this->couponMessage('enrolled');
+                } else {
+                    $code['status'] = $this->validateCode($code_info);
+                    $code['details'] = $code_info;
+                }
+            } else {
+                $code['status'] = $this->couponMessage('invalid');
+            }
         }
 
-        $coupon = array(
-            "status" => $this->couponMessage('valid'),
-            "cid" => $cid,
-            "coupon" => $coupon,
-            "uid" => $uid
-        );
-        return $coupon;
+        return $code;
     }
 
     public function applyPrivateCourseCoupon($coupon) {
         $coupon = array("status" => $this->couponMessage('expired'));
 		return $coupon;
+    }
+
+
+    public function validateCode($code_info) {
+        return $this->couponMessage('valid');
+    }
+
+    public function userAlreadyEnrolled($uid, $cid) {
+        return false;
     }
 
     public function couponMessage($status) {
@@ -61,11 +71,11 @@ class CouponController extends Controller
         $message['maxuses'] = array("valid" => false, "cssClass" => "danger", "message" => "Code maximum uses reached.");
         $message['cannotApply'] = array("valid" => false, "cssClass" => "warning", "message" => "Code can't be applied here.");
         $message['valid'] = array("valid" => true, "cssClass" => "success", "message" => "Code applied.");
-
+        $message['invalid'] = array("valid" => false, "cssClass" => "warning", "message" => "Invalid code.");
+        $message['enrolled'] = array("valid" => false, "cssClass" => "warning", "message" => "Access code already applied.");
+        $message['bad_code'] = array("valid" => false, "cssClass" => "warning", "message" => "Something went wrong.");
         return $message[$status];
     }
 
-    private function badCode($reason) {
-        return array("valid" => false, "cssClass" => "warning", "message" => $reason);
-    }
+
 }
