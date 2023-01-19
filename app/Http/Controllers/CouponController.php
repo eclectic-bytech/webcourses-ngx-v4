@@ -41,7 +41,7 @@ class CouponController extends Controller
                 if ($this->userAlreadyEnrolled($uid, $code_info['cid'])) {
                     $code['status'] = $this->couponMessage('enrolled');
                 } else {
-                    $code['status'] = $this->validateCode($code_info);
+                    $code['status'] = $this->validateCode($code_info, $cid);
                     $code['details'] = $code_info;
                 }
             } else {
@@ -52,15 +52,33 @@ class CouponController extends Controller
         return $code;
     }
 
+
     public function applyPrivateCourseCoupon($coupon) {
         $coupon = array("status" => $this->couponMessage('expired'));
 		return $coupon;
     }
 
 
-    public function validateCode($code_info) {
+    public function validateCode($code_info, $cid) {
+        // Codes provided without CID can only be applied to courses set as private
+        if (!$cid && !$code_info['details']['course']['private']) return $this->couponMessage('cannot_apply');
+
+		// This coupon exists & CID was provided, but the two don't go together
+        if ($code_info['cid'] != $cid) return $this->couponMessage('cannot_apply');
+
+        // $now = new date('Y-m-d H:i:s');
+        $now = date(DATE_ATOM);
+        if ( $now > $code_info['expiry'] ) return $this->couponMessage('expired');
+
+        // Max set to 0 means unlimited uses
+		if (
+            $code_info['uses_max'] &&
+            $code_info['uses'] >= $code_info['uses_max']
+        ) return $this->couponMessage('uses_max');
+
         return $this->couponMessage('valid');
     }
+
 
     public function userAlreadyEnrolled($uid, $cid) {
         $userProgress = UserProgress
@@ -74,7 +92,7 @@ class CouponController extends Controller
     public function couponMessage($status) {
         $message['inactive'] = array("valid" => false, "cssClass" => "danger", "message" => "Inactive code.");
         $message['expired'] = array("valid" => false, "cssClass" => "danger", "message" => "Code expired.");
-        $message['maxuses'] = array("valid" => false, "cssClass" => "danger", "message" => "Code maximum uses reached.");
+        $message['uses_max'] = array("valid" => false, "cssClass" => "danger", "message" => "Code maximum uses reached.");
         $message['cannot_apply'] = array("valid" => false, "cssClass" => "warning", "message" => "Code can't be applied here.");
         $message['valid'] = array("valid" => true, "cssClass" => "success", "message" => "Code applied.");
         $message['invalid'] = array("valid" => false, "cssClass" => "warning", "message" => "Invalid code.");
