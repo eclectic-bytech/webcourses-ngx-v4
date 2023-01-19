@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Coupon;
 use App\Models\Course;
 use App\Models\Publisher;
+use App\Models\UserProgress;
 
 class CouponController extends Controller
 {
@@ -62,7 +63,12 @@ class CouponController extends Controller
     }
 
     public function userAlreadyEnrolled($uid, $cid) {
-        return false;
+        $userProgress = UserProgress
+            ::where('user_id', $uid)
+            ->where('course_id', $cid)
+            ->where('demo', false)
+            ->first();
+        return ($userProgress) ? true : false;
     }
 
     public function couponMessage($status) {
@@ -76,6 +82,5 @@ class CouponController extends Controller
         $message['bad_code'] = array("valid" => false, "cssClass" => "warning", "message" => "Something went wrong.");
         return $message[$status];
     }
-
 
 }
