@@ -70,7 +70,9 @@ class CourseController extends Controller
     {
         $course = Course
             ::where('id', $cid)
-            ->with('chapterIndex')
+            ->with(['chapterIndex' => function($query) use ($cid) {
+                $query->where('course_id', $cid);
+            }])
             ->first();
 
         $course = json_decode($course);
