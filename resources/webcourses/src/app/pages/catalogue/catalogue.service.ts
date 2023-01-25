@@ -8,8 +8,6 @@ import { ConfigService } from '../../core/services/config/config.service'
 })
 export class CatalogueService {
 
-  public showCouponInput: number
-
   constructor(
     private http: HttpClient,
     private config: ConfigService

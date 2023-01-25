@@ -16,8 +16,6 @@ import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
 })
 export class PublisherComponent implements OnInit {
 
-  public showCouponInput: number
-
   public publisherCourses$: Observable<Course[]>
   public publisherInfo$: Observable<Publisher>
 

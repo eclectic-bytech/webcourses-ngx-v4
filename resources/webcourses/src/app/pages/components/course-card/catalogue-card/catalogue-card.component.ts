@@ -17,17 +17,11 @@ export class CatalogueCardComponent implements OnInit {
   // publisherInfo is only passed in 'my web webcourses' area. see ngOnInit for more info.
   public publisher: Publisher
 
-  public showCouponInput: number
-
   constructor(
     public taxService: TaxStatusService
   ) { }
 
   ngOnInit(): void {
-  }
-
-  showCouponInputToggle(cid: number) {
-    this.showCouponInput = (this.showCouponInput) ? null : cid
   }
 
 }
