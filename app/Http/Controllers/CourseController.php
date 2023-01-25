@@ -68,6 +68,10 @@ class CourseController extends Controller
 
     public function chapterIndex($cid)
     {
+        // tried fixing issue #160 here, but $cid needs to
+        // be passed to syllabus relation in chapterIndex
+        // this sort of passing is inadequate (applied in ActivityController:20):
+        // https://stackoverflow.com/questions/36411826/laravel-eloquent-pass-variable-to-with-relationship-function
         $course = Course
             ::where('id', $cid)
             ->with('chapterIndex')
