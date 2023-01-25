@@ -24,10 +24,10 @@ export class ActiveModeComponent implements OnInit {
       radio: ['', Validators.required],
       checkbox: [''], // Dec 22, 2020: This can be removed?
       text: [this.activity.default_answer, Validators.compose([
-        Validators.required, Validators.minLength(5)
+        Validators.required, Validators.minLength(3)
       ])],
       textarea: [this.activity.default_answer, Validators.compose([
-        Validators.required, Validators.minLength(5)
+        Validators.required, Validators.minLength(3)
       ])]
     }
     this.activeModeService.activityForm = this.fb.group({
