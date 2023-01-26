@@ -10,6 +10,7 @@ import { DemoFlagComponent } from './demo-flag.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [ DemoFlagComponent ]
 })
 export class DemoFlagModule { }

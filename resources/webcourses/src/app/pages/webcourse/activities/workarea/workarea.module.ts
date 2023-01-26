@@ -11,6 +11,7 @@ import { CourseEndComponent } from './components/course-end/course-end.component
 import { CustomActivitiesModule } from './custom-activities/custom-activities.module'
 import { ClickRotateModule } from './activities/click-rotate/click-rotate.module'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { DemoFlagModule } from '../../builder/activity/demo-flag/demo-flag.module'
 
 @NgModule({
   declarations: [WorkAreaComponent, ChapterEndComponent, CourseEndComponent],
@@ -23,7 +24,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     DndModule,
     ClickRotateModule,
     CustomActivitiesModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    DemoFlagModule
   ],
   exports: [WorkAreaComponent]
 })

@@ -2,6 +2,7 @@
 <app-course-end *ngIf="this.workareaService.endOfCourse && !this.workareaService.endOfChapter"></app-course-end>
 
 <div *ngIf="!this.workareaService.endOfChapter && !this.workareaService.endOfCourse">
+  <app-demo-flag></app-demo-flag>
   <div class="container" *ngIf="this.workareaService.activities" id="workarea-activities">
     <div *ngFor="let activity of this.workareaService.activities" class="row activity mt-4" @fadeInOut>
 
