@@ -117,6 +117,13 @@ Route::group(['prefix' => 'v4'], function() {
 
             Route::get('/coupons', [CouponsController::class, 'index']);
 
+            // Paths grouped as /v4/admin/publisher/course-editor
+            Route::group(['prefix' => 'course-editor'], function() {
+
+                Route::get('/syllabus/{aid}/demo', [CourseEditorController::class, 'demo']);
+
+            });
+
         });
 
     });
