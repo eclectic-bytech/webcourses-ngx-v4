@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('course_syllabus', function (Blueprint $table) {
-            //
+            $table->boolean('demo')->default(0);
         });
     }
 };
