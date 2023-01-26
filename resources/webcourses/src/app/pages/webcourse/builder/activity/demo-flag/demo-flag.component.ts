@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ActivityMeta } from '../../../activities/workarea/models/activity-meta.model';
+import { Component, Input } from '@angular/core'
+import { ActivityMeta } from '../../../activities/workarea/models/activity-meta.model'
 
 @Component({
   selector: 'app-demo-flag',
@@ -12,7 +12,7 @@ export class DemoFlagComponent {
 
   constructor() { }
 
-  saveDemoActivityStatus(demoActivity: boolean) {
+  saveActivityDemoStatus(demoActivity: boolean) {
     console.log(demoActivity)
   }
 

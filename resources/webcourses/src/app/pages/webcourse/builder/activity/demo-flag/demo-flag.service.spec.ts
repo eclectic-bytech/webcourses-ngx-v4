@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing'
 
-import { DemoFlagService } from './demo-flag.service';
+import { DemoFlagService } from './demo-flag.service'
 
 describe('DemoFlagService', () => {
-  let service: DemoFlagService;
+  let service: DemoFlagService
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(DemoFlagService);
-  });
+    TestBed.configureTestingModule({})
+    service = TestBed.inject(DemoFlagService)
+  })
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+    expect(service).toBeTruthy()
+  })
+})
