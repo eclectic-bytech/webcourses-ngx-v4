@@ -1,3 +1,11 @@
-<div class="justify-right d-inline-block text-secondary mt-5">
-  !Make this activity part of a free course demo
+<div class="text-right text-secondary mt-5 mr-5">
+  <form #demoActivity="ngForm">
+    <div class="form-check my-auto">
+      <label class="form-check-label user-select-none" for="demoActivityCheck">
+        Make this activity part of a free course demo
+      </label>
+      <input class="form-check-input ml-3 mt-2" name="demoActivityCheck" id="demoActivityCheck" type="checkbox" ngModel>
+    </div>
+    <!-- {{ demoActivity.value.demoActivityCheck }} -->
+  </form>
 </div>
