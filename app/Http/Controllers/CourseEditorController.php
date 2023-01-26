@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class CourseEditorController extends Controller
 {
     public function demo($aid) {
-        return "Kay!";
+        return json_encode("Yay!");
     }
 }

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { ActivityMeta } from '../../../activities/workarea/models/activity-meta.model'
+import { DemoFlagService } from './demo-flag.service'
 
 @Component({
   selector: 'app-demo-flag',
@@ -10,10 +11,12 @@ export class DemoFlagComponent {
 
   @Input() activityMeta: ActivityMeta
 
-  constructor() { }
+  constructor(
+    private demoFlagService: DemoFlagService
+  ) { }
 
-  saveActivityDemoStatus(demoActivity: boolean) {
-    console.log(demoActivity)
+  activityDemoFlagToggle() {
+    this.demoFlagService.saveActivityDemoStatus(this.activityMeta.activity_id)
   }
 
 }
