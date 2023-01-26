@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivityMeta } from '../../../activities/workarea/models/activity-meta.model';
 
 @Component({
@@ -6,13 +6,14 @@ import { ActivityMeta } from '../../../activities/workarea/models/activity-meta.
   templateUrl: './demo-flag.component.html',
   styleUrls: ['./demo-flag.component.sass']
 })
-export class DemoFlagComponent implements OnInit {
+export class DemoFlagComponent {
 
   @Input() activityMeta: ActivityMeta
 
   constructor() { }
 
-  ngOnInit(): void {
+  saveDemoActivityStatus(demoActivity: boolean) {
+    console.log(demoActivity)
   }
 
 }

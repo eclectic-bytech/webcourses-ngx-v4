@@ -4,7 +4,14 @@
       <label class="form-check-label user-select-none" for="demoActivityCheck">
         Make this activity part of a free course demo
       </label>
-      <input class="form-check-input ml-3 mt-2" name="demoActivityCheck" id="demoActivityCheck" type="checkbox" ngModel>
+      <input
+        type="checkbox"
+        class="form-check-input ml-3 mt-2"
+        name="demoActivityCheck"
+        id="demoActivityCheck"
+        (ngModelChange)="saveDemoActivityStatus($event)"
+        [ngModel]="activityMeta.demo"
+      >
     </div>
     <!-- {{ demoActivity.value.demoActivityCheck }} -->
   </form>
