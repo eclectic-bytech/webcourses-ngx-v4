@@ -4,6 +4,7 @@ import { SelectedService } from 'src/app/pages/webcourse/activities/sidebar/sele
 import { UserService } from 'src/app/core/services/user/user.service'
 import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
 import { WorkareaService } from 'src/app/pages/webcourse/activities/workarea/workarea.service'
+import { ActivityMeta } from '../../../workarea/models/activity-meta.model'
 
 @Component({
   selector: 'app-activities-bar',
@@ -21,5 +22,19 @@ export class ActivitiesBarComponent {
     public completionStatsService: CompletionStatsService,
     public user: UserService
   ) { }
+
+  activityBarClick(activityMeta: ActivityMeta) {
+    if (activityMeta.seq <= this.tac) {
+      this.workareaService.loadActivities(activityMeta.activity_id)
+    }
+  }
+
+  lockStatusClass(activityMeta: ActivityMeta) {
+    return (activityMeta.seq <= this.tac) ? 'unlocked' : 'locked'
+  }
+
+  get tac() {
+    return this.completionStatsService.totalActivitiesCompleted
+  }
 
 }
