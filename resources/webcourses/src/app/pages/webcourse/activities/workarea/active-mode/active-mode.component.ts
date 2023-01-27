@@ -24,7 +24,7 @@ export class ActiveModeComponent implements OnInit {
       radio: ['', Validators.required],
       checkbox: [''], // Dec 22, 2020: This can be removed?
       text: [this.activity.default_answer, Validators.compose([
-        Validators.required, Validators.minLength(3)
+        Validators.required, Validators.minLength(1)
       ])],
       textarea: [this.activity.default_answer, Validators.compose([
         Validators.required, Validators.minLength(3)
