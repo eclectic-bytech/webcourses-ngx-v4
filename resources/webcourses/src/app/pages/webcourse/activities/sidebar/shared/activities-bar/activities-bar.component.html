@@ -2,11 +2,11 @@
 
 <div class="mb-4">
   <div
-    *ngFor="let activity of chapter.syllabus"
+    *ngFor="let activityMeta of chapter.syllabus"
     class="default-activity-bar"
-    [ngClass]="lockStatusClass(activity)"
+    [ngClass]="lockStatusClass(activityMeta)"
     [ngStyle]="{'max-width.%': this.maxWidthPercent / chapter.syllabus.length}"
-    (click)="activityBarClick(activity)"
+    (click)="activityBarClick(activityMeta)"
     >
   </div>
 </div>
