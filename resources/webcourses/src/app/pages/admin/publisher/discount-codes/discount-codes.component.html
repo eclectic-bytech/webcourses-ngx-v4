@@ -22,7 +22,11 @@
         <div class="col">
           <div class="card-body">
             <div class="card-title h4">{{ courseDiscountCodes.course.title }}</div>
-            <div class="card-subtitle">Created: {{ courseDiscountCodes.course.created_at | date:'longDate' }}</div>
+            <div class="card-subtitle">
+              <div>Created: {{ courseDiscountCodes.course.created_at | date:'longDate' }}</div>
+              <div>ID: {{ courseDiscountCodes.course.id }}</div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -36,10 +40,10 @@
             <span class="badge badge-pill badge-light font-weight-light text-capitalize float-right">Available</span>
           </th>
           <th class="text-uppercase">label</th>
-          <th class="text-uppercase text-center">course <span class="text-uppercase">id</span></th>
           <th class="text-right text-uppercase">used</th>
           <th class="text-right text-uppercase">max</th>
-          <th class="text-uppercase d-none d-xl-table-cell text-center">created</th>
+          <th class="text-center text-uppercase">created</th>
+          <th class="text-center text-uppercase d-none d-xl-table-cell">last used</th>
         </tr>
       </thead>
 
@@ -52,10 +56,10 @@
             </span>
           </td>
           <td>{{ discountCode.label }}</td>
-          <td class="text-center">{{ discountCode.cid }}</td>
           <td class="text-right">{{ discountCode.uses }}</td>
           <td class="text-right">{{ discountCode.uses_max }}</td>
-          <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at }}</td>
+          <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'longDate' }}</td>
+          <td class="text-center d-none d-xl-table-cell">{{ discountCode.updated_at | date:'longDate' }}</td>
         </tr>
       </tbody>
     </table>
