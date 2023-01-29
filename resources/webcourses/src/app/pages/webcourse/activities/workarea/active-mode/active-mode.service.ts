@@ -94,7 +94,10 @@ export class ActiveModeService {
         }
 
       },
-      (err) => { console.log('ERROR #2334.') }
+      (err) => {
+        console.log('ERROR #2334.')
+        this.navService.navDisable(false)
+      }
     )
   }
 

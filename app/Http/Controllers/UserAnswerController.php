@@ -38,6 +38,9 @@ class UserAnswerController extends Controller
                     );
                 } else {
                     $answers = ($activity_type === 'info') ? [ 42 ] : $request->input();
+                    if (!$answers && $activity_type == 'checkbox' || $activity_type == 'click') {
+                        $answers[0] = 97;
+                    }
                 }
 
                 // Do this using Eloquent?

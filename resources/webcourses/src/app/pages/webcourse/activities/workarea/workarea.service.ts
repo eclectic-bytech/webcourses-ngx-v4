@@ -74,7 +74,13 @@ export class WorkareaService {
         with next activity added. To avoid that, we check if there are existing activities
         to avoid overwriting them causing additional, undesired fades. */
     if (this.activities[0].meta.activity_id === activities[0].meta.activity_id) {
-      this.activities.push(activities[activities.length -1])
+
+      // Length comparison fixes last activity getting re-added when an activity
+      // progress bar in the same activity set is clicked (issue #161)
+      if (this.activities.length != activities.length) {
+        this.activities.push(activities[activities.length -1])
+      }
+
     } else {
       this.activities = activities
       this.scrollToTop()

@@ -15,6 +15,7 @@ use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\UserRedirectController;
 use App\Http\Controllers\SyllabusController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\CourseEditorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,6 +119,14 @@ Route::group(['prefix' => 'v4'], function() {
         // Paths grouped as /v4/admin/publisher
         Route::group(['prefix' => 'publisher'], function() {
             Route::get('/coupons', [CouponController::class, 'index']);
+
+            // Paths grouped as /v4/admin/publisher/course-editor
+            Route::group(['prefix' => 'course-editor'], function() {
+
+                Route::put('/syllabus/{aid}/demo', [CourseEditorController::class, 'demo']);
+
+            });
+
         });
     });
 

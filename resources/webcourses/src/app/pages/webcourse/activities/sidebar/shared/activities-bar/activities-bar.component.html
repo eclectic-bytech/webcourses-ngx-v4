@@ -2,11 +2,11 @@
 
 <div class="mb-4">
   <div
-    *ngFor="let activity of chapter.syllabus"
+    *ngFor="let activityMeta of chapter.syllabus"
     class="default-activity-bar"
-    [ngClass]="(activity.seq <= this.completionStatsService.totalActivitiesCompleted ? 'unlocked' : 'locked')"
+    [ngClass]="lockStatusClass(activityMeta)"
     [ngStyle]="{'max-width.%': this.maxWidthPercent / chapter.syllabus.length}"
-    (click)="(activity.seq <= this.completionStatsService.totalActivitiesCompleted) ? this.workareaService.loadActivities(activity.activity_id) : ''"
+    (click)="activityBarClick(activityMeta)"
     >
   </div>
 </div>
