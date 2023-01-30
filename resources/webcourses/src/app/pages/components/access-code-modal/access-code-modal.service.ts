@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Course } from 'src/app/models/course.model'
 import { ConfigService } from 'src/app/core/services/config/config.service'
+import { Md5 } from 'ts-md5/dist/md5'
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { ConfigService } from 'src/app/core/services/config/config.service'
 
 export class AccessCodeModalService {
 
+  submitButtonActive = true
   public course: Course
 
   constructor(
@@ -16,13 +18,16 @@ export class AccessCodeModalService {
     private configService: ConfigService
   ) { }
 
-  submitCode(code:string) {
-    this.httpClient.post(`${this.configService.params.api.route}/k`, code).subscribe(
-      (data) => {
-        console.log("It's alive!")
-        console.log(data)
-      }
+  submitCode(accessCode:string, cid: number) {
+    this.submitButtonActive = false
+    let hashedAccessCode = Md5.hashStr(accessCode)
+    this.httpClient.get(
+      `${this.configService.params.api.route}/coupon/course/${cid}/apply/${hashedAccessCode}`
+    ).subscribe(
+      (response) => {
+        this.submitButtonActive = true
+      },
+      (err) => { this.submitButtonActive = true }
     )
   }
-
 }

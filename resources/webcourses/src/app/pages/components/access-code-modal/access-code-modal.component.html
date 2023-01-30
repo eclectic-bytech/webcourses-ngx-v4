@@ -1,6 +1,6 @@
 <div class="modal-body text-center">
   <h4 class="common-heading text-center" id="modal-basic-title">
-    Access by code
+    Course access
   </h4>
   <div class="my-4">
     <fa-icon [icon]="faFingerprint" [spin]="false" class="display-4 text-secondary"></fa-icon>
@@ -11,13 +11,23 @@
       {{this.accessCodeModalService.course.title}}
     </span>
   </div>
-  <div>
-    <form #accessCodeForm="ngForm">
-      <input ngModel [(ngModel)]="accessCode" name="codeM" id="codeM" type="text" class="form-control w-50 my-4 mx-auto text-center" required>
-      <div>
-        <button class="btn btn-primary" (click)="submitCodeButton(accessCode)">Enter</button>
-      </div>
-    </form>
-    {{ accessCode | json}}
-  </div>
+  <form #accessCodeForm="ngForm" class="my-4">
+    <input
+      type="text" class="form-control w-50 mx-auto text-center" minlength="12"
+      [(ngModel)]="accessCode" required
+    >
+
+    <button type="submit" class="btn mt-4 w-25"
+      (click)="submitCodeButton(accessCode)"
+      [ngClass]="this.accessCodeModalService.submitButtonActive ? 'btn-primary' : 'btn-secondary'"
+      [disabled]="!accessCodeForm.valid || !this.accessCodeModalService.submitButtonActive"
+    >
+      <span *ngIf="this.accessCodeModalService.submitButtonActive; else Loading">
+        Enter
+      </span>
+      <ng-template #Loading>
+        <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true"></fa-icon>
+      </ng-template>
+    </button>
+  </form>
 </div>
