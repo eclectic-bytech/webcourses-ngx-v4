@@ -1,9 +1,12 @@
 <div class="modal-body text-center">
-  <h4 class="common-heading mb-4 text-center" id="modal-basic-title">
-    {{this.accessCodeModalService.course.title}}
+  <h4 class="common-heading text-center" id="modal-basic-title">
+    Access by code
   </h4>
-  <div>
+  <div class="my-4">
     <fa-icon [icon]="faFingerprint" [spin]="false" class="display-4 text-secondary"></fa-icon>
   </div>
-  Enter the access code to gain automatic access.
+  Enter the access code to gain access to
+  <h5 class="text-info">
+    {{this.accessCodeModalService.course.title}}
+  </h5>
 </div>
