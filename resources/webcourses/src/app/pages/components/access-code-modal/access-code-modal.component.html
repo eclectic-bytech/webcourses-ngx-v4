@@ -5,8 +5,19 @@
   <div class="my-4">
     <fa-icon [icon]="faFingerprint" [spin]="false" class="display-4 text-secondary"></fa-icon>
   </div>
-  Enter the access code to gain access to
-  <h5 class="text-info">
-    {{this.accessCodeModalService.course.title}}
-  </h5>
+  <div class="font-weight-light">
+    Enter code to access<br>
+    <span class="font-weight-normal">
+      {{this.accessCodeModalService.course.title}}
+    </span>
+  </div>
+  <div>
+    <form #accessCodeForm="ngForm">
+      <input ngModel [(ngModel)]="accessCode" name="codeM" id="codeM" type="text" class="form-control w-50 my-4 mx-auto text-center" required>
+      <div>
+        <button class="btn btn-primary" (click)="submitCodeButton(accessCode)">Enter</button>
+      </div>
+    </form>
+    {{ accessCode | json}}
+  </div>
 </div>
