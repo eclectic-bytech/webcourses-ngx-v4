@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/models/course.model';
 import { CourseAccessBlockService } from './course-access-block.service';
+import { AccessCodeModalComponent } from '../../../access-code-modal/access-code-modal.component';
+import { AccessCodeModalService } from '../../../access-code-modal/access-code-modal.service';
 
 @Component({
   selector: 'app-course-access-block',
@@ -16,10 +19,19 @@ export class CourseAccessBlockComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public courseAccessBlockService: CourseAccessBlockService
+    private ngbModal: NgbModal,
+    public courseAccessBlockService: CourseAccessBlockService,
+    private accessCodeModalService: AccessCodeModalService
   ) { }
 
   ngOnInit(): void {
+  }
+
+  accessCodeModal(course: Course) {
+    this.accessCodeModalService.course = course
+    this.ngbModal.open(AccessCodeModalComponent, {
+      size: 'md', centered: true
+    })
   }
 
   goToActivity(pid: number) {
