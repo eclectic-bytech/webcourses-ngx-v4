@@ -90,14 +90,14 @@ class CouponController extends Controller
     }
 
     public function couponMessage($status) {
-        $message['inactive'] = array("valid" => false, "cssClass" => "danger", "message" => "Inactive code.");
-        $message['expired'] = array("valid" => false, "cssClass" => "danger", "message" => "Code expired.");
-        $message['uses_max'] = array("valid" => false, "cssClass" => "danger", "message" => "Code maximum uses reached.");
-        $message['cannot_apply'] = array("valid" => false, "cssClass" => "warning", "message" => "Code can't be applied here.");
-        $message['valid'] = array("valid" => true, "cssClass" => "success", "message" => "Code applied.");
-        $message['invalid'] = array("valid" => false, "cssClass" => "warning", "message" => "Invalid code.");
-        $message['enrolled'] = array("valid" => false, "cssClass" => "warning", "message" => "Access code already applied.");
-        $message['bad_code'] = array("valid" => false, "cssClass" => "warning", "message" => "Something went wrong.");
+        $message['inactive'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Inactive code.");
+        $message['expired'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Code expired.");
+        $message['uses_max'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Code maximum uses reached.");
+        $message['cannot_apply'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Code can't be applied here.");
+        $message['valid'] = array("valid" => true, "cssClass" => "text-success", "message" => "Code applied.");
+        $message['invalid'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Invalid code.");
+        $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Access code already applied.");
+        $message['bad_code'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Something went wrong.");
         return $message[$status];
     }
 
