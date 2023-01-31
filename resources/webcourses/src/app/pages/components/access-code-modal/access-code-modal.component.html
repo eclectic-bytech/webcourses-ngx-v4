@@ -7,13 +7,17 @@
   </div>
   <div class="h5 font-weight-light">
     Enter code to access<br>
-    <span class="font-weight-normal">
-      {{this.accessCodeModalService.course.title}}
+    <span class="font-weight-normal"
+      [innerHtml]="
+        this.accessCodeModalService.course ?
+        this.accessCodeModalService.course.title :
+        'a private webcourse that is<br>not listed in any catalogue'
+      ">
     </span>
   </div>
   <form #accessCodeForm="ngForm" class="mt-4 mb-2">
     <input
-      type="text" class="form-control w-50 mx-auto text-center" minlength="12"
+      type="text" class="form-control w-50 mx-auto text-center" minlength="12" name="accessCode"
       [(ngModel)]="accessCode" required
     >
 

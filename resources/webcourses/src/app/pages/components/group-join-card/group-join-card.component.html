@@ -13,7 +13,9 @@
         <small>Use this panel to unlock a private course not listed in any catalogue.</small>
       </p>
 
-      <button class="btn btn-primary mt-1 mt-md-3">
+      <button class="btn btn-primary mt-1 mt-md-3"
+        (click)="this.accessCodeModalService.accessCodeModal(null)"
+      >
         Use code
       </button>
     </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { PurchaseOrderService } from '../../stripe/payment/purchase-order/purchase-order.service'
+import { AccessCodeModalService } from '../access-code-modal/access-code-modal.service'
 
 @Component({
   selector: 'app-group-join-card',
@@ -9,6 +10,7 @@ import { PurchaseOrderService } from '../../stripe/payment/purchase-order/purcha
 export class GroupJoinCardComponent {
 
   constructor(
+    public accessCodeModalService: AccessCodeModalService,
     public poService: PurchaseOrderService
   ) {}
 

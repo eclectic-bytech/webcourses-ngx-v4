@@ -13,7 +13,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 export class AccessCodeModalService {
 
   submitButtonActive = true
-  public course: Course
+  public course: Course | null = null
 
   constructor(
     private httpClient: HttpClient,
@@ -21,8 +21,9 @@ export class AccessCodeModalService {
     private configService: ConfigService
   ) { }
 
-  accessCodeModal(course: Course) {
-    this.course = course
+  accessCodeModal(course: Course | null) {
+    if (course) this.course = course
+
     this.ngbModal.open(AccessCodeModalComponent, {
       size: 'md', centered: true
     })
