@@ -12,8 +12,13 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 export class AccessCodeModalService {
 
-  submitButtonActive = true
+  public submitButtonActive: boolean = true
+  public formStatus: boolean | any = false
+
   public course: Course | null = null
+
+  public descText: string
+  public defaultText = "<span class='font-weight-normal'>a private webcourse that is<br>not listed in any catalogue</span>"
 
   constructor(
     private httpClient: HttpClient,
@@ -22,7 +27,12 @@ export class AccessCodeModalService {
   ) { }
 
   accessCodeModal(course: Course | null) {
-    if (course) this.course = course
+    if (course) {
+      this.course = course
+      this.descText = `<span class='font-weight-normal'>${course.title}</span>`
+    } else {
+      this.descText = this.defaultText
+    }
 
     this.ngbModal.open(AccessCodeModalComponent, {
       size: 'md', centered: true
@@ -30,15 +40,26 @@ export class AccessCodeModalService {
   }
 
   submitCode(accessCode:string, cid: number) {
+
     this.submitButtonActive = false
     let hashedAccessCode = Md5.hashStr(accessCode)
+
     this.httpClient.get(
       `${this.configService.params.api.route}/coupon/course/${cid}/apply/${hashedAccessCode}`
     ).subscribe(
-      (response) => {
+      (reply) => {
+        this.descText = `<span class="${reply['status']['cssClass']} font-weight-bold"><br>${reply['status']['message']}</span>`
         this.submitButtonActive = true
+        setTimeout(() => {
+          this.formStatus = false
+          this.descText = this.defaultText
+        }, 2300);
       },
-      (err) => { this.submitButtonActive = true }
+      (err) => {
+        console.log(err)
+        this.submitButtonActive = true
+      }
     )
   }
+
 }
