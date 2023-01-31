@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http'
 import { Course } from 'src/app/models/course.model'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { Md5 } from 'ts-md5/dist/md5'
+import { AccessCodeModalComponent } from './access-code-modal.component'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +17,16 @@ export class AccessCodeModalService {
 
   constructor(
     private httpClient: HttpClient,
+    private ngbModal: NgbModal,
     private configService: ConfigService
   ) { }
+
+  accessCodeModal(course: Course) {
+    this.course = course
+    this.ngbModal.open(AccessCodeModalComponent, {
+      size: 'md', centered: true
+    })
+  }
 
   submitCode(accessCode:string, cid: number) {
     this.submitButtonActive = false
