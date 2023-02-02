@@ -6,6 +6,7 @@ import { shareReplay } from 'rxjs/operators'
 import { ConfigService } from '../config/config.service'
 import { Course } from '../../../models/course.model'
 import { JetstreamUser } from '../../models/jetstream-user.model'
+import { SessionExpiredService } from '../../modals/session-expired/session-expired.service'
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class UserService {
 
   constructor(
     private httpClient: HttpClient,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private sessionExpiredService: SessionExpiredService
   ) {}
 
   getUser() {
@@ -61,7 +63,7 @@ export class UserService {
           return (user) ? true : false
         },
         (err) => {
-          location.href = this.configService.params.domain + this.configService.params.logoutRedirectPath
+          this.sessionExpiredService.sessionExpiredModal(err['status'])
           return false
         }
       )
