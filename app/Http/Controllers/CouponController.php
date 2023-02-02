@@ -30,7 +30,14 @@ class CouponController extends Controller
     }
 
     public function applyPublicCourseCoupon(int $cid, $coupon) {
-        $uid = auth()->user()->id;
+        $user = auth()->user();
+
+        if ($user) {
+            $uid = auth()->user()->id;
+        } else {
+            $code['status'] = $this->couponMessage('login_required');
+            return $code;
+        }
 
         if (!$cid && !$uid) {
             # Only logged in users should be able to submit a code without cid
@@ -98,6 +105,7 @@ class CouponController extends Controller
         $message['invalid'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Invalid code");
         $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Access code already applied");
         $message['bad_code'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Something went wrong");
+        $message['login_required'] = array("valid" => false, "cssClass" => "text-warning", "message" => "User session expired");
         return $message[$status];
     }
 
