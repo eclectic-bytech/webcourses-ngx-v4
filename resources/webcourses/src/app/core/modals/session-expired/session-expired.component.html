@@ -1,0 +1,9 @@
+<div class="modal-body h5 my-3 text-center">
+  <div class="text-danger text-uppercase font-weight-bold">
+    {{ this.sessionExpiredService.errStatus }} unauthorised
+  </div>
+  <div class="text-secondary font-weight-light">Resetting session</div>
+</div>
+<ngb-progressbar type="info" height="3px"
+  [value]="this.sessionExpiredService.percent"
+></ngb-progressbar>
