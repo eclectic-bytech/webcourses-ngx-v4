@@ -109,7 +109,7 @@ Route::group(['prefix' => 'v4'], function() {
     });
 
     // Paths grouped as /v4/coupon
-    Route::group(['prefix' => 'coupon'], function() {
+    Route::group(['prefix' => 'coupon', 'middleware' => 'auth'], function() {
         Route::get('/course/{cid}/apply/{coupon}', [CouponController::class, 'applyPublicCourseCoupon']);
         Route::get('/course/group/apply/{coupon}', [CouponController::class, 'applyPrivateCourseCoupon']);
     });
