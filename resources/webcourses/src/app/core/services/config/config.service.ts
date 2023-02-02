@@ -13,6 +13,7 @@ export class ConfigService {
 
   // Using handler: HttpBackend in constructor, this way synced config init can use httpClient
   private httpBackEnd: HttpClient
+  static params: any
 
   constructor(
     public handler: HttpBackend

@@ -26,7 +26,7 @@ import { ActivitiesService } from './pages/webcourse/activities/activities.servi
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxGoogleAnalyticsModule.forRoot('UA-2342672-30'),
+    NgxGoogleAnalyticsModule.forRoot( ConfigService.params.googleAnalytics ),
     NgxGoogleAnalyticsRouterModule,
     AppRoutingModule,
     CatalogueModule,

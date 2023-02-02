@@ -15,4 +15,5 @@ export class Config {
   public domain: string
   public logoutRedirectPath: string
   public devMode: boolean
+  public googleAnalytics: string
 }
