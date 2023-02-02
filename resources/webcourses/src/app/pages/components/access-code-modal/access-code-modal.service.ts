@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Course } from 'src/app/models/course.model'
-import { ConfigService } from 'src/app/core/services/config/config.service'
-import { Md5 } from 'ts-md5/dist/md5'
-import { AccessCodeModalComponent } from './access-code-modal.component'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { Md5 } from 'ts-md5/dist/md5'
+
+// WNGX imports
+import { AccessCodeModalComponent } from './access-code-modal.component'
+import { ConfigService } from 'src/app/core/services/config/config.service'
+import { SessionExpiredService } from 'src/app/core/modals/session-expired/session-expired.service'
+import { Course } from 'src/app/models/course.model'
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +26,8 @@ export class AccessCodeModalService {
   constructor(
     private httpClient: HttpClient,
     private ngbModal: NgbModal,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private sessionExpiredService: SessionExpiredService
   ) { }
 
   accessCodeModal(course: Course | null) {
@@ -48,16 +52,20 @@ export class AccessCodeModalService {
       `${this.configService.params.api.route}/coupon/course/${cid}/apply/${hashedAccessCode}`
     ).subscribe(
       (reply) => {
-        this.descText = `<span class="${reply['status']['cssClass']} font-weight-bold"><br>${reply['status']['message']}</span>`
+        this.descText = `
+          <div class="${reply['status']['cssClass']} font-weight-bold">
+            ${reply['status']['message']}
+          </div>
+        `
         this.submitButtonActive = true
         setTimeout(() => {
           this.formStatus = false
           this.descText = this.defaultText
-        }, 2300);
+        }, 2300)
       },
       (err) => {
-        console.log(err)
-        this.submitButtonActive = true
+        this.ngbModal.dismissAll()
+        this.sessionExpiredService.sessionExpiredModal(err['status'])
       }
     )
   }
