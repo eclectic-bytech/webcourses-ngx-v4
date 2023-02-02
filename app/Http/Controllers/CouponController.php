@@ -105,7 +105,7 @@ class CouponController extends Controller
         $message['invalid'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Invalid code");
         $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Access code already applied");
         $message['bad_code'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Something went wrong");
-        $message['login_required'] = array("valid" => false, "cssClass" => "text-warning", "message" => "User session expired");
+        $message['login_required'] = array("valid" => "expired", "cssClass" => "text-warning", "message" => "User session expired");
         return $message[$status];
     }
 
