@@ -63,7 +63,6 @@ export class UserService {
           return (user) ? true : false
         },
         (err) => {
-          this.sessionExpiredService.sessionExpiredModal(err['status'])
           return false
         }
       )
