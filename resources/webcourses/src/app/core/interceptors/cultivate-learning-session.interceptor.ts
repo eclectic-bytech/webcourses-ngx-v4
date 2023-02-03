@@ -13,7 +13,7 @@ export class CultivateLearningSessionInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const requestClone = request.clone({
       setHeaders: {
-        Cultivate: 'Hello, CL!'
+        "Permissions-Policy": "interest-cohort=()"
       }
     })
     return next.handle(requestClone);
