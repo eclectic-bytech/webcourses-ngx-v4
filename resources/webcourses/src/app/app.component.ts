@@ -9,7 +9,7 @@ import { Course } from './models/course.model'
   selector: 'app-root',
   template: '<router-outlet></router-outlet>'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   private sub: Subscription
   constructor(
@@ -25,6 +25,8 @@ export class AppComponent implements OnInit {
     this.sub = this.selectedCourseService.selectedCourse$.subscribe(
       (course: Course) => { if (course) this.themeService.changeTheme(course.theme) }
     )
+
+
   }
 
   ngOnDestroy() {
