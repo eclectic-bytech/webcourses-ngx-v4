@@ -7,6 +7,8 @@ use App\Models\Coupon;
 use App\Models\Course;
 use App\Models\Publisher;
 use App\Models\UserProgress;
+use Illuminate\Support\Facades\DB;
+
 
 class CouponController extends Controller
 {
@@ -50,6 +52,10 @@ class CouponController extends Controller
                 } else {
                     $code['status'] = $this->validateCode($code_info, $cid);
                     $code['details'] = $code_info;
+
+                    if ($code['status']['valid']) $pid = $this->grantAccess($cid, $uid);
+                    if ($pid) $this->incrementCodeUses($code_info);
+
                 }
             } else {
                 $code['status'] = $this->couponMessage('invalid');
@@ -68,7 +74,7 @@ class CouponController extends Controller
 
     public function validateCode($code_info, $cid) {
         // Codes provided without CID can only be applied to courses set as private
-        if (!$cid && !$code_info['details']['course']['private']) return $this->couponMessage('cannot_apply');
+        // if (!$cid && !$code_info['details']['course']['private']) return $this->couponMessage('cannot_apply');
 
 		// This coupon exists & CID was provided, but the two don't go together
         if ($code_info['cid'] != $cid) return $this->couponMessage('cannot_apply');
@@ -86,6 +92,15 @@ class CouponController extends Controller
         return $this->couponMessage('valid');
     }
 
+    public function grantAccess($cid, $uid) {
+        return DB::table('user_progress')->insertGetId(
+            array('user_id' => $uid, 'course_id' => $cid, 'build_id' => 0, 'created_at' => date(DATE_ATOM), 'demo' => 0)
+        );
+    }
+
+    public function incrementCodeUses($code_info) {
+        DB::table('coupons')->where('id', $code_info['id'])->increment('uses');
+    }
 
     public function userAlreadyEnrolled($uid, $cid) {
         $userProgress = UserProgress
