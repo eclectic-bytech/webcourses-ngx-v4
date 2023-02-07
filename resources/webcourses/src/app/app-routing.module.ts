@@ -51,21 +51,21 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,
-    {
+  imports: [RouterModule.forRoot(routes, {
     anchorScrolling: 'enabled',
     onSameUrlNavigation: 'reload',
     scrollPositionRestoration: 'enabled',
     relativeLinkResolution: 'legacy'
-}
-    )],
+  })],
   exports: [RouterModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CultivateLearningSessionInterceptor,
       multi: true
-    }
+    },
+    AuthUserGuard
   ]
 })
+
 export class AppRoutingModule { }

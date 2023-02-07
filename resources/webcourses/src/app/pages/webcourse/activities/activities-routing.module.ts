@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { ActivitiesComponent } from './activities.component'
+import { AuthUserGuard } from 'src/app/core/auth/auth-user.guard'
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: ':aid',
+    canActivate: [AuthUserGuard],
     component: ActivitiesComponent
   }
 ]
@@ -21,7 +23,8 @@ const routes: Routes = [
     [RouterModule.forChild(routes)],
     CommonModule
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthUserGuard]
 })
 
 export class ActivitiesRoutingModule { }
