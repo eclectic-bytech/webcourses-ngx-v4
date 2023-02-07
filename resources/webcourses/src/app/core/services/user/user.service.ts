@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { of, Observable } from 'rxjs'
+import { Observable } from 'rxjs'
 import { shareReplay } from 'rxjs/operators'
 
 import { ConfigService } from '../config/config.service'
 import { Course } from '../../../models/course.model'
 import { JetstreamUser } from '../../models/jetstream-user.model'
-import { SessionExpiredService } from '../../modals/session-expired/session-expired.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  public user:JetstreamUser
+  public user: JetstreamUser
   userCourses$: Observable<Course[]> = this.getUserCourses$()
-  isLoggedIn$: Observable<boolean> = this.isLoggedInCheck$()
 
   constructor(
     private httpClient: HttpClient,
-    private configService: ConfigService,
-    private sessionExpiredService: SessionExpiredService
+    private configService: ConfigService
   ) {}
 
   getUser() {
@@ -52,20 +49,5 @@ export class UserService {
 
   userIsPublisher() {
     return (this.user['user_roles'].indexOf(2) !== -1) ? 1 : 0
-  }
-
-  isLoggedInCheck$(): Observable<boolean> {
-    if (this.user) {
-      return of(true)
-    } else {
-      this.getUser().subscribe(
-        (user: JetstreamUser) => {
-          return (user) ? true : false
-        },
-        (err) => {
-          return false
-        }
-      )
-    }
   }
 }
