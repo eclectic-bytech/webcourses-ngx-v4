@@ -10,13 +10,17 @@ class UserController extends Controller
 {
     public function loggedInUser()
     {
-        $user = auth()->user();
+        if (auth()->user()) {
+            $user = auth()->user();
 
-        $user_roles = UserRole::where('user_id', $user->id)->get();
+            $user_roles = UserRole::where('user_id', $user->id)->get();
 
-        // Pluck converts to flat array with values only.
-        $user['user_roles'] = $user_roles->pluck('role_id')->all();
-        return $user;
+            // Pluck converts to flat array with values only.
+            $user['user_roles'] = $user_roles->pluck('role_id')->all();
+            return $user;
+        } else {
+            return false;
+        }
     }
 
     public function save_name(Request $request) {
