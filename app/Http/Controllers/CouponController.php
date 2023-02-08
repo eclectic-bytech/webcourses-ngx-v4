@@ -70,7 +70,13 @@ class CouponController extends Controller
 
     public function grantAccess($cid, $uid) {
         return DB::table('user_progress')->insertGetId(
-            array('user_id' => $uid, 'course_id' => $cid, 'build_id' => 0, 'created_at' => date(DATE_ATOM), 'demo' => 0)
+            array(
+                'user_id' => $uid,
+                'course_id' => $cid,
+                'build_id' => 0,
+                'created_at' => date(DATE_ATOM),
+                'demo' => 0
+            )
         );
     }
 
