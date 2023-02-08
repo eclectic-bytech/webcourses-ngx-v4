@@ -5,13 +5,14 @@ import { faFingerprint, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import { trigger, style, transition, animate } from '@angular/animations'
+import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
   selector: 'app-access-code-modal',
   templateUrl: './access-code-modal.component.html',
-  styleUrls: ['./access-code-modal.component.sass'],
+  styleUrls: ['./access-code-modal.component.scss'],
   standalone: true,
-  imports: [FontAwesomeModule, FormsModule, CommonModule],
+  imports: [FontAwesomeModule, FormsModule, CommonModule, NgbProgressbarModule],
   animations: [
     trigger('valueAnimation', [
       transition('* => *', [
