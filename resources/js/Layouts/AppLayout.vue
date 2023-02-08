@@ -132,7 +132,7 @@
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <jet-dropdown-link as="button">
-                                                Log Out
+                                                Sign Out
                                             </jet-dropdown-link>
                                         </form>
                                     </template>
