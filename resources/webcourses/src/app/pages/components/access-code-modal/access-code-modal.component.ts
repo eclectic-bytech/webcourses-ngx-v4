@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { AccessCodeModalService } from './access-code-modal.service'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { faFingerprint, faSpinner } from '@fortawesome/free-solid-svg-icons'
@@ -23,7 +23,7 @@ import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap'
   ]
 })
 
-export class AccessCodeModalComponent {
+export class AccessCodeModalComponent implements OnInit {
 
   public accessCode: string
 
@@ -35,6 +35,13 @@ export class AccessCodeModalComponent {
   ) { }
 
   get fromStatus(){ return this.accessCodeModalService.formStatus }
+
+  ngOnInit(): void {
+    // Resets defaults, needed if user enters a second access code in one session
+    this.accessCodeModalService.descText = this.accessCodeModalService.defaultText
+    this.accessCodeModalService.formStatus = false
+    this.accessCodeModalService.submitButtonActive = true
+  }
 
   submitCodeButton(accessCode: string) {
     this.accessCodeModalService.submitCode(accessCode)
