@@ -7,7 +7,6 @@ import { Md5 } from 'ts-md5/dist/md5'
 import { AccessCodeModalComponent } from './access-code-modal.component'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { SessionExpiredService } from 'src/app/core/modals/session-expired/session-expired.service'
-import { Course } from 'src/app/models/course.model'
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +16,7 @@ export class AccessCodeModalService {
 
   public submitButtonActive: boolean = true
   public formStatus: boolean | any = false
-
-  public course: Course | null = null
+  public percent: number = 100
 
   public descText: string
   public defaultText = "Enter course access code"
@@ -30,7 +28,7 @@ export class AccessCodeModalService {
     private sessionExpiredService: SessionExpiredService
   ) { }
 
-  accessCodeModal(course: Course | null) {
+  accessCodeModal() {
     this.descText = this.defaultText
 
     this.ngbModal.open(AccessCodeModalComponent, {
@@ -38,7 +36,7 @@ export class AccessCodeModalService {
     })
   }
 
-  submitCode(accessCode:string, cid: number) {
+  submitCode(accessCode:string) {
 
     this.submitButtonActive = false
     let hashedAccessCode = Md5.hashStr(accessCode)
@@ -52,17 +50,31 @@ export class AccessCodeModalService {
             ${reply['status']['message']}
           </div>
         `
-        this.submitButtonActive = true
-        setTimeout(() => {
-          this.formStatus = false
-          this.descText = this.defaultText
-        }, 2300)
+
+        if (reply['status']['valid']) {
+          this.validCode(reply['details']['cid'])
+        } else {
+          this.submitButtonActive = true
+          setTimeout(() => {
+            this.formStatus = false
+            this.descText = this.defaultText
+          }, 2300)
+        }
       },
       (err) => {
         this.ngbModal.dismissAll()
         this.sessionExpiredService.sessionExpiredModal(err['status'])
       }
     )
+  }
+
+  validCode(cid: number) {
+    setInterval( () => {
+      this.percent--
+      if (this.percent === 0) {
+        location.href = `/webcourse/${cid}`
+      }
+    }, 21)
   }
 
 }

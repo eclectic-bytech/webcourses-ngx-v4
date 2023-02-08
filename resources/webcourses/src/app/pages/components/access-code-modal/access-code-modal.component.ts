@@ -34,12 +34,10 @@ export class AccessCodeModalComponent {
     public accessCodeModalService: AccessCodeModalService
   ) { }
 
-  get course(){ return this.accessCodeModalService.course }
   get fromStatus(){ return this.accessCodeModalService.formStatus }
 
   submitCodeButton(accessCode: string) {
-    let cid: number = this.course ? this.course.id : 0
-    this.accessCodeModalService.submitCode(accessCode, cid)
+    this.accessCodeModalService.submitCode(accessCode)
   }
 
 }
