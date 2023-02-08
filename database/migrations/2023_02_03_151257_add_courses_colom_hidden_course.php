@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->tinyInteger('hide_from_main_catalog')->unsigned()->default('0')
-            ->comment('Hide course from main catalogue - show in publisher catalogue only.')
-            ->after('private');
+            $table->tinyInteger('hide_from_main_catalogue')
+                ->unsigned()
+                ->default('0')
+                ->comment('Hide course from main catalogue - show in publisher catalogue only.')
+                ->after('private');
         });
     }
 
