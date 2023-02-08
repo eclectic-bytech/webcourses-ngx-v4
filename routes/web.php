@@ -93,6 +93,7 @@ Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped as /v4/webcourse
     Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
+        Route::get('/access-code/{code_hash}', [CouponController::class, 'applyAccessCode']);
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
 
         Route::get('/activities/{aid?}', [SyllabusController::class, 'activity_set']);
@@ -106,12 +107,6 @@ Route::group(['prefix' => 'v4'], function() {
     // Paths grouped as /v4/publisher
     Route::group(['prefix' => 'publisher'], function() {
         Route::get('/profile/{id}', [PublisherController::class, 'index']);
-    });
-
-    // Paths grouped as /v4/coupon
-    Route::group(['prefix' => 'coupon', 'middleware' => 'auth'], function() {
-        Route::get('/course/{cid}/apply/{coupon}', [CouponController::class, 'applyPublicCourseCoupon']);
-        Route::get('/course/group/apply/{coupon}', [CouponController::class, 'applyPrivateCourseCoupon']);
     });
 
     // Paths grouped as /v4/admin

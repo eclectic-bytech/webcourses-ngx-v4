@@ -44,7 +44,7 @@ export class AccessCodeModalService {
     let hashedAccessCode = Md5.hashStr(accessCode)
 
     this.httpClient.get(
-      `${this.configService.params.api.route}/coupon/course/${cid}/apply/${hashedAccessCode}`
+      `${this.configService.params.api.route}/webcourse/access-code/${hashedAccessCode}`
     ).subscribe(
       (reply) => {
         this.descText = `

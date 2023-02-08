@@ -31,54 +31,30 @@ class CouponController extends Controller
         return $this->belongsTo(Course::class);
     }
 
-    public function applyPublicCourseCoupon(int $cid, $coupon) {
+    public function applyAccessCode($code_hash) {
         $user = auth()->user();
+        $uid = $user->id;
 
-        if ($user) {
-            $uid = auth()->user()->id;
-        } else {
-            $code['status'] = $this->couponMessage('login_required');
-            return $code;
-        }
-
-        if (!$cid && !$uid) {
-            # Only logged in users should be able to submit a code without cid
-            $code['status'] = $this->couponMessage('bad_code');
-        } else {
-            $code_info = Coupon::with(['course', 'publisher'])->find($coupon);
-            if ($code_info) {
-                if ($this->userAlreadyEnrolled($uid, $code_info['cid'])) {
-                    $code['status'] = $this->couponMessage('enrolled');
-                } else {
-                    $code['status'] = $this->validateCode($code_info, $cid);
-                    $code['details'] = $code_info;
-
-                    if ($code['status']['valid']) $pid = $this->grantAccess($cid, $uid);
-                    if ($pid) $this->incrementCodeUses($code_info);
-
-                }
+        $code_info = Coupon::with(['course', 'publisher'])->find($code_hash);
+        if ($code_info) {
+            if ($this->userAlreadyEnrolled($uid, $code_info['cid'])) {
+                $code['status'] = $this->couponMessage('enrolled');
             } else {
-                $code['status'] = $this->couponMessage('invalid');
+                $code['status'] = $this->validateCode($code_info);
+                $code['details'] = $code_info;
+
+                if ($code['status']['valid']) $pid = $this->grantAccess($code_info['course']['id'], $uid);
+                if ($pid) $this->incrementCodeUses($code_info);
             }
+        } else {
+            $code['status'] = $this->couponMessage('invalid');
         }
 
         return $code;
     }
 
 
-    public function applyPrivateCourseCoupon($coupon) {
-        $coupon = array("status" => $this->couponMessage('expired'));
-		return $coupon;
-    }
-
-
-    public function validateCode($code_info, $cid) {
-        // Codes provided without CID can only be applied to courses set as private
-        // if (!$cid && !$code_info['details']['course']['private']) return $this->couponMessage('cannot_apply');
-
-		// This coupon exists & CID was provided, but the two don't go together
-        if ($code_info['cid'] != $cid) return $this->couponMessage('cannot_apply');
-
+    public function validateCode($code_info) {
         // $now = new date('Y-m-d H:i:s');
         $now = date(DATE_ATOM);
         if ( $now > $code_info['expiry'] ) return $this->couponMessage('expired');
@@ -120,7 +96,6 @@ class CouponController extends Controller
         $message['invalid'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Invalid code");
         $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Access code already applied");
         $message['bad_code'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Something went wrong");
-        $message['login_required'] = array("valid" => "expired", "cssClass" => "text-warning", "message" => "User session expired");
         return $message[$status];
     }
 
