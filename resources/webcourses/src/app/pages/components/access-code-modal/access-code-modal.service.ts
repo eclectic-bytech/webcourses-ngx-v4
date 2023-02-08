@@ -18,8 +18,8 @@ export class AccessCodeModalService {
   public formStatus: boolean | any = false
   public percent: number = 100
 
-  public descText: string
-  public defaultText = "Enter course access code"
+  public defaultText: string = "Enter course access code"
+  public descText: string = this.defaultText
 
   constructor(
     private httpClient: HttpClient,
@@ -29,8 +29,6 @@ export class AccessCodeModalService {
   ) { }
 
   accessCodeModal() {
-    this.descText = this.defaultText
-
     this.ngbModal.open(AccessCodeModalComponent, {
       size: 'md', centered: true
     })
