@@ -7,6 +7,7 @@ use App\Models\Coupon;
 use App\Models\Course;
 use App\Models\Publisher;
 use App\Models\UserProgress;
+use App\Models\CourseSyllabus;
 use Illuminate\Support\Facades\DB;
 
 
@@ -41,11 +42,15 @@ class CouponController extends Controller
                 $code['status'] = $this->couponMessage('enrolled');
             } else {
                 $code['status'] = $this->validateCode($code_info);
-                $code['details'] = $code_info;
+                $code['label'] = $code_info->label;
 
                 if ($code['status']['valid']) {
-                    $pid = $this->grantAccess($code_info['course']['id'], $uid);
-                    if ($pid) $this->incrementCodeUses($code_info);
+                    $cid = $code_info['course']['id'];
+                    $pid = $this->grantAccess($cid, $uid);
+                    if ($pid) {
+                        $this->incrementCodeUses($code_info);
+                        $code['first_aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
+                    }
                 }
             }
         } else {
@@ -99,7 +104,7 @@ class CouponController extends Controller
         $message['inactive'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Inactive code");
         $message['expired'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Code expired");
         $message['uses_max'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Code maximum uses reached");
-        $message['valid'] = array("valid" => true, "cssClass" => "text-success", "message" => "Access Granted<br><span class='text-secondary font-weight-light'>Redirecting...</span>");
+        $message['valid'] = array("valid" => true, "cssClass" => "text-success", "message" => "Access Granted");
         $message['invalid'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Invalid code");
         $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Access code already applied");
         return $message[$status];
