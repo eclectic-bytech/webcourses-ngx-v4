@@ -97,7 +97,7 @@ class CouponController extends Controller
         $message['inactive'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Inactive code");
         $message['expired'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Code expired");
         $message['uses_max'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Code maximum uses reached");
-        $message['valid'] = array("valid" => true, "cssClass" => "text-success", "message" => "Code applied");
+        $message['valid'] = array("valid" => true, "cssClass" => "text-success", "message" => "Access Granted<br><span class='text-secondary font-weight-light'>Redirecting...</span>");
         $message['invalid'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Invalid code");
         $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Access code already applied");
         return $message[$status];
