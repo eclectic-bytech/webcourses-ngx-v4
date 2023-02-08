@@ -1,10 +1,9 @@
-import { Component, OnInit, OnDestroy, isDevMode } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { AppService } from './app.service'
 import { SelectedCourseService } from './core/services/selected-course/selected-course.service'
 import { ThemeService } from './core/services/theme/theme.service'
 import { Course } from './models/course.model'
-import { environment } from 'src/environments/environment'
 
 @Component({
   selector: 'app-root',
@@ -20,11 +19,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    if (isDevMode()){
-      console.log ("we're in dev mode")
-    } else {
-      console.log ("we're not in dev mode")
-    }
     this.appService.initLogged()
     // this.selectedCourseService.servicePrimer()
 

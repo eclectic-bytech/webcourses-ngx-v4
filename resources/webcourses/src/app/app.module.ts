@@ -27,7 +27,7 @@ import { environment } from 'src/environments/environment'
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxGoogleAnalyticsModule.forRoot('UA-2342672-30'),
+    NgxGoogleAnalyticsModule.forRoot(environment.GoogleAnalyticsTracker),
     NgxGoogleAnalyticsRouterModule,
     AppRoutingModule,
     CatalogueModule,
