@@ -22,8 +22,8 @@ class CourseController extends Controller
             ::where('published', 1)
             ->where('private', 0)
             ->when(!$publisherId, function($query){
-                return $query->where('hide_from_main_catalog', 0);
-    })
+                return $query->where('hide_from_main_catalogue', 0);
+            })
             ->when($publisherId, function($query, $publisherId) {
                 return $query->where('publisher_id', $publisherId);
             })
