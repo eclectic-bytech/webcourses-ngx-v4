@@ -7,6 +7,7 @@ import { Md5 } from 'ts-md5/dist/md5'
 import { AccessCodeModalComponent } from './access-code-modal.component'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { SessionExpiredService } from 'src/app/core/modals/session-expired/session-expired.service'
+import { Router } from '@angular/router'
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,8 @@ export class AccessCodeModalService {
     private httpClient: HttpClient,
     private ngbModal: NgbModal,
     private configService: ConfigService,
-    private sessionExpiredService: SessionExpiredService
+    private sessionExpiredService: SessionExpiredService,
+    private router: Router
   ) { }
 
   accessCodeModal() {
@@ -43,14 +45,11 @@ export class AccessCodeModalService {
       `${this.configService.params.api.route}/webcourse/access-code/${hashedAccessCode}`
     ).subscribe(
       (reply) => {
-        this.descText = `
-          <div class="${reply['status']['cssClass']} font-weight-bold">
-            ${reply['status']['message']}
-          </div>
-        `
+        this.setResponseText(reply, false)
 
         if (reply['status']['valid']) {
-          this.validCode(reply['details']['cid'])
+          this.validCode(reply['first_aid'])
+          this.setResponseText(reply, true)
         } else {
           this.submitButtonActive = true
           setTimeout(() => {
@@ -66,13 +65,30 @@ export class AccessCodeModalService {
     )
   }
 
-  validCode(cid: number) {
+  validCode(first_aid: number) {
     setInterval( () => {
       this.percent--
       if (this.percent === 0) {
-        location.href = `/webcourse/${cid}`
+        this.ngbModal.dismissAll()
+        this.router.navigateByUrl(`/webcourse/activities/${first_aid}`)
       }
     }, 21)
+  }
+
+  setResponseText(reply, codeLabel) {
+    this.descText = `
+      <div class="${reply['status']['cssClass']} font-weight-bold">
+        ${reply['status']['message']}
+      </div>
+    `
+    if (codeLabel) {
+      this.descText = this.descText + `
+        <div class='font-weight-light text-secondary'>
+          CODE: <span class='font-weight-bold'>${reply['label']}</span>
+        </div>
+        <div class='h6 text-secondary font-weight-light mt-1'>Redirecting...</div>
+      `
+    }
   }
 
 }
