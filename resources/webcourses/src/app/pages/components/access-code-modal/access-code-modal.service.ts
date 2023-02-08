@@ -21,7 +21,7 @@ export class AccessCodeModalService {
   public course: Course | null = null
 
   public descText: string
-  public defaultText = "<span class='font-weight-normal'>a private webcourse that is<br>not listed in any catalogue</span>"
+  public defaultText = "Enter course access code"
 
   constructor(
     private httpClient: HttpClient,
@@ -31,12 +31,7 @@ export class AccessCodeModalService {
   ) { }
 
   accessCodeModal(course: Course | null) {
-    if (course) {
-      this.course = course
-      this.descText = `<span class='font-weight-normal'>${course.title}</span>`
-    } else {
-      this.descText = this.defaultText
-    }
+    this.descText = this.defaultText
 
     this.ngbModal.open(AccessCodeModalComponent, {
       size: 'md', centered: true

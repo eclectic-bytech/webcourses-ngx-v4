@@ -1,13 +1,17 @@
 <div class="modal-body text-center">
-  <h2 class="common-heading text-center my-3" id="modal-basic-title" @fadeInOut>
+  <h2 id="modal-basic-title" class="common-heading text-center my-3" @fadeInOut>
     Course access
   </h2>
   <div class="my-4">
-    <fa-icon [icon]="faFingerprint" [spin]="false" class="display-3 text-success"></fa-icon>
+    <fa-icon [icon]="faFingerprint" [spin]="false" class="display-3 fa-icon"></fa-icon>
   </div>
-  <div class="h5 font-weight-light">
-    Enter code to access<br>
-    <span [@valueAnimation]="this.accessCodeModalService.descText" [innerHtml]="this.accessCodeModalService.descText"></span>
+  <div class="d-flex h5 font-weight-light justify-content-center" style="height: 4rem; max-height: 4rem;">
+    <div
+      class="my-auto"
+      [@valueAnimation]="this.accessCodeModalService.descText"
+      [innerHtml]="this.accessCodeModalService.descText"
+    >
+    </div>
   </div>
   <form #accessCodeForm="ngForm" class="mt-4 mb-2">
     <input
@@ -29,3 +33,6 @@
     </button>
   </form>
 </div>
+<ngb-progressbar type="info" height="3px"
+  [value]="100"
+></ngb-progressbar>
