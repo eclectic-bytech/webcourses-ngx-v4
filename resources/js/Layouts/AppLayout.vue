@@ -27,7 +27,6 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                                <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/user">My courses</a>
                                 <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/catalogue">Course catalogue</a>
                             </div>
                         </div>
@@ -114,6 +113,10 @@
                                         <div class="block px-4 py-2 text-xs text-gray-400">
                                             Manage Account
                                         </div>
+
+                                        <jet-dropdown-link :href="('/webcourses/user')">
+                                            My Courses
+                                        </jet-dropdown-link>
 
                                         <jet-dropdown-link :href="route('profile.show')">
                                             Profile
