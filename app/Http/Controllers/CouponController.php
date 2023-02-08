@@ -43,8 +43,10 @@ class CouponController extends Controller
                 $code['status'] = $this->validateCode($code_info);
                 $code['details'] = $code_info;
 
-                if ($code['status']['valid']) $pid = $this->grantAccess($code_info['course']['id'], $uid);
-                if ($pid) $this->incrementCodeUses($code_info);
+                if ($code['status']['valid']) {
+                    $pid = $this->grantAccess($code_info['course']['id'], $uid);
+                    if ($pid) $this->incrementCodeUses($code_info);
+                }
             }
         } else {
             $code['status'] = $this->couponMessage('invalid');
