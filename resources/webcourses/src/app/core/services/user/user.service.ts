@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
-import { shareReplay } from 'rxjs/operators'
 
 import { ConfigService } from '../config/config.service'
 import { Course } from '../../../models/course.model'
@@ -29,7 +28,7 @@ export class UserService {
   getUserCourses$(): Observable<Course[]> {
     this.userCourses$ = this.httpClient
       .get<Course[]>(`${this.configService.params.api.route}/catalogue/user`)
-      .pipe(shareReplay(1))
+      .pipe()
     return this.userCourses$
   }
 
