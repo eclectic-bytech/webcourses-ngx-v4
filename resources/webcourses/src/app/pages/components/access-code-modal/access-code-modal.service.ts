@@ -16,7 +16,6 @@ import { Router } from '@angular/router'
 export class AccessCodeModalService {
 
   public submitButtonActive: boolean = true
-  public formStatus: boolean | any = false
   public percent: number = 100
 
   public defaultText: string = "Enter course access code"
@@ -53,7 +52,6 @@ export class AccessCodeModalService {
         } else {
           this.submitButtonActive = true
           setTimeout(() => {
-            this.formStatus = false
             this.descText = this.defaultText
           }, 2300)
         }

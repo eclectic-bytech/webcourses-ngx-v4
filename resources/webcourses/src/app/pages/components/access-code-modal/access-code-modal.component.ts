@@ -34,12 +34,9 @@ export class AccessCodeModalComponent implements OnInit {
     public accessCodeModalService: AccessCodeModalService
   ) { }
 
-  get fromStatus(){ return this.accessCodeModalService.formStatus }
-
   ngOnInit(): void {
     // Resets defaults, needed if user enters a second access code in one session
     this.accessCodeModalService.descText = this.accessCodeModalService.defaultText
-    this.accessCodeModalService.formStatus = false
     this.accessCodeModalService.submitButtonActive = true
   }
 
