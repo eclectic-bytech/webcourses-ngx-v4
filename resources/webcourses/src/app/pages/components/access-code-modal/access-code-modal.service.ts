@@ -73,7 +73,7 @@ export class AccessCodeModalService {
     }, 21)
   }
 
-  setResponseText(reply, codeLabel) {
+  setResponseText(reply: Object, codeLabel: boolean) {
     this.descText = `
       <div class="${reply['status']['cssClass']} font-weight-bold">
         ${reply['status']['message']}
