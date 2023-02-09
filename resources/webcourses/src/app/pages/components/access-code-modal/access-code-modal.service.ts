@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
+import { Router } from '@angular/router'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { Md5 } from 'ts-md5/dist/md5'
 
@@ -7,7 +8,6 @@ import { Md5 } from 'ts-md5/dist/md5'
 import { AccessCodeModalComponent } from './access-code-modal.component'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { SessionExpiredService } from 'src/app/core/modals/session-expired/session-expired.service'
-import { Router } from '@angular/router'
 
 @Injectable({
   providedIn: 'root'
