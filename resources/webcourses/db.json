@@ -50,10 +50,7 @@
     ],
     "two_factor_enabled": false
   },
-  "post_user_name": {
-    "first_name": "zxczxc",
-    "last_name": "zxczxczxc"
-  },
+  "post_user_name": {},
   "user_course_resume": {
     "id": 1,
     "pid": 1,
@@ -607,29 +604,7 @@
       "answers": []
     }
   ],
-  "post_user_answer": [
-    {
-      "id": 1
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    [
-      4
-    ],
-    {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "id": 7
-    }
-  ],
+  "post_user_answer": [ ],
   "webcourse_1_chapters": [
     {
       "id": 309,
