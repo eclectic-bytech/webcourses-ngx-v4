@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { WebcourseComponent } from './webcourse.component'
-import { AuthUserGuard } from 'src/app/core/auth/auth-user.guard'
 
 const routes: Routes = [
   {
@@ -15,7 +14,6 @@ const routes: Routes = [
     children: [
       {
         path: 'activities',
-        canActivate: [AuthUserGuard],
         loadChildren: () => import('./activities/activities.module').then(m => m.ActivitiesModule)
       },
     ]
@@ -24,8 +22,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-  providers: [AuthUserGuard]
+  exports: [RouterModule]
 })
 
 export class WebcourseRoutingModule { }
