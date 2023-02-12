@@ -15,8 +15,8 @@ import { SessionExpiredService } from 'src/app/core/modals/session-expired/sessi
 
 export class AccessCodeModalService {
 
-  public submitButtonActive: boolean = true
-  public percent: number = 100
+  public submitButtonActive: boolean
+  public percent: number
 
   public defaultText: string = "Enter course access code"
   public descText: string = this.defaultText

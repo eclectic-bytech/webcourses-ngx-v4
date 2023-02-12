@@ -38,6 +38,7 @@ export class AccessCodeModalComponent implements OnInit {
     // Resets defaults, needed if user enters a second access code in one session
     this.accessCodeModalService.descText = this.accessCodeModalService.defaultText
     this.accessCodeModalService.submitButtonActive = true
+    this.accessCodeModalService.percent = 100
   }
 
   submitCodeButton(accessCode: string) {
