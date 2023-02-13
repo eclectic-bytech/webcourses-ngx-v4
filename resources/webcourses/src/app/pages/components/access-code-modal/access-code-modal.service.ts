@@ -36,7 +36,6 @@ export class AccessCodeModalService {
   }
 
   submitCode(accessCode:string) {
-
     this.submitButtonActive = false
     let hashedAccessCode = Md5.hashStr(accessCode)
 
@@ -64,9 +63,10 @@ export class AccessCodeModalService {
   }
 
   validCode(first_aid: number) {
-    setInterval( () => {
+    let countDown = setInterval( () => {
       this.percent--
       if (this.percent === 0) {
+        clearInterval(countDown)
         this.ngbModal.dismissAll()
         this.router.navigateByUrl(`/webcourse/activities/${first_aid}`)
       }
