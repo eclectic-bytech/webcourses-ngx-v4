@@ -115,7 +115,7 @@
                                             Manage Account
                                         </div> -->
 
-                                        <jet-dropdown-link :href="('/webcourses/user')">
+                                        <jet-dropdown-link :href="('/user/redirect')">
                                             My Courses
                                         </jet-dropdown-link>
 
