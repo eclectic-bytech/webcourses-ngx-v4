@@ -15,8 +15,9 @@ import { SessionExpiredService } from 'src/app/core/modals/session-expired/sessi
 
 export class AccessCodeModalService {
 
-  public submitButtonActive: boolean
+  public submitButtonActive: boolean = true
   public percent: number
+  public defaultCode: string // form input field name
 
   public defaultText: string = "Enter course access code"
   public descText: string = this.defaultText
@@ -68,6 +69,7 @@ export class AccessCodeModalService {
       if (this.percent === 0) {
         clearInterval(countDown)
         this.ngbModal.dismissAll()
+        this.submitButtonActive = true
         this.router.navigateByUrl(`/webcourse/activities/${first_aid}`)
       }
     }, 21)
