@@ -12,10 +12,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faUserSecret, faFish } from '@fortawesome/free-solid-svg-icons'
+import { faGraduationCap, faFish , faRightFromBracket} from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faUserSecret, faFish)
+library.add(faGraduationCap , faFish, faRightFromBracket)
 
 const el = document.getElementById('app');
 

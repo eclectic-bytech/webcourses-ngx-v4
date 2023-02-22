@@ -113,7 +113,7 @@
                                             Manage Account
                                         </div> -->
                                         <jet-dropdown-link :href="('/user/redirect')" class="items-center" >
-                                             <font-awesome-icon icon="fa-solid fa-fish" />
+                                            <font-awesome-icon icon="fa-solid fa-graduation-cap" />
                                             My Courses
                                         </jet-dropdown-link>
 
@@ -130,7 +130,7 @@
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <jet-dropdown-link as="button" class="items-center"  >
-                                                <font-awesome-icon icon="fa-solid fa-fish" />
+                                                <font-awesome-icon icon="fa-solid fa-right-from-bracket" />
                                              Sign Out
                                             </jet-dropdown-link>
                                         </form>
