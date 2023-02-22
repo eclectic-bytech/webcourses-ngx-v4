@@ -12,10 +12,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faFish } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faUserSecret)
+library.add(faUserSecret, faFish)
 
 const el = document.getElementById('app');
 
@@ -28,7 +28,7 @@ createApp({
 })
     .mixin({ methods: { route } })
     .use(InertiaPlugin)
-    .component('inertia-link', Link, 'font-awesome-icon', FontAwesomeIcon)
-    .mount(app, el);
+    .component('font-awesome-icon', FontAwesomeIcon,'inertia-link', Link)
+    .mount('#app', el);
 
 InertiaProgress.init({ color: '#4B5563' });
