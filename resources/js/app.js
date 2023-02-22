@@ -28,7 +28,8 @@ createApp({
 })
     .mixin({ methods: { route } })
     .use(InertiaPlugin)
-    .component('font-awesome-icon', FontAwesomeIcon,'inertia-link', Link)
+    .component('font-awesome-icon', FontAwesomeIcon)
+    .component('inertia-link', Link)
     .mount('#app', el);
 
 InertiaProgress.init({ color: '#4B5563' });
