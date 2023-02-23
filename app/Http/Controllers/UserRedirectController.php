@@ -14,9 +14,11 @@ class UserRedirectController extends Controller
         $angular_url = '/webcourses/user/webcourses';
 
         $referring_url = parse_url($request->server('HTTP_REFERER'));
-        parse_str($referring_url['query'], $params);
 
-        $redirect = ($params['code']) ? $angular_url . '?code=' . $params['code'] : $angular_url;
+        if (isset($referring_url['query']))
+            parse_str($referring_url['query'], $params);
+
+        $redirect = (isset($params['code'])) ? $angular_url . '?code=' . $params['code'] : $angular_url;
 
         // Used to redirect from Vue to Angular without getting stuck in an iframe.
         // Solves issue #81.
