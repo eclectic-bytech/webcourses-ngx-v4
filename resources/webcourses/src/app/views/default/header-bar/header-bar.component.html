@@ -33,8 +33,9 @@
     -->
     <div class="pr-3 d-none d-sm-block" style="line-height: 1.2">
       <a
-        [href]="this.userService.user ? '/user/dashboard/' : '/user/login'"
-        [innerHtml]="this.userService.user ? 'Dashboard' : 'Sign&nbsp;in'"
+        *ngIf="!this.userService.user"
+        [innerHtml]="'Sign&nbsp;in'"
+        href="/user/login"
         id="signIn-dashboard"
         class="nav-link handy"
       >
@@ -64,19 +65,6 @@
         ngbDropdownMenu
       >
 
-        <!-- USER MENU: DASHBOARD. Needed for XS displays. -->
-        <a
-          class="dropdown-item py-2 d-xs-inline-block d-sm-none"
-          [href]="'/user/dashboard'"
-          (click)="collapseMenus()"
-          ngbDropdownItem
-        >
-          <div class="menu-icon text-center d-inline-block pr-2">
-            <fa-icon [icon]="faWrench" class="text-warning"></fa-icon>
-          </div>
-          Dashboard
-        </a>
-
         <!-- USER MENU: MY COURSES-->
         <a
           class="dropdown-item py-2"
@@ -87,7 +75,7 @@
           <div class="menu-icon text-center d-inline-block pr-2">
             <fa-icon [icon]="faGraduationCap" class="text-warning"></fa-icon>
           </div>
-          My courses
+          My Courses
         </a>
 
         <!-- USER MENU: PUBLISHER-->
@@ -133,7 +121,7 @@
           </a>
           <a class="dropdown-item py-2" href="/user/profile" ngbDropdownItem>
             <div class="menu-icon text-center d-inline-block pr-2">
-              <!-- <fa-icon [icon]="faBarcode" class="text-warning"></fa-icon> -->
+              <fa-icon [icon]="faWrench" class="text-warning"></fa-icon>
             </div>
             Profile
           </a>
