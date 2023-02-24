@@ -12,10 +12,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faGraduationCap, faFish , faRightFromBracket} from '@fortawesome/free-solid-svg-icons'
+import { faGraduationCap, faRightFromBracket, faWrench} from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faGraduationCap , faFish, faRightFromBracket)
+library.add(faGraduationCap , faRightFromBracket, faWrench)
 
 const el = document.getElementById('app');
 
@@ -30,6 +30,7 @@ createApp({
     .use(InertiaPlugin)
     .component('font-awesome-icon', FontAwesomeIcon)
     .component('inertia-link', Link)
-    .mount('#app', el);
+    .mount(el);
+
 
 InertiaProgress.init({ color: '#4B5563' });

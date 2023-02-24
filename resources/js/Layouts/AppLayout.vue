@@ -130,7 +130,7 @@
                                         <jet-dropdown-link :href="route('profile.show')" class="items-center">
                                             <div class="inline-flex px-2 py-1">
                                                 <div class="fa-icon-container">
-                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                                    <font-awesome-icon icon="fa-solid fa-wrench" class="text-amber-400 text-xlg" />
                                                 </div>
                                                 Profile
                                             </div>
@@ -295,7 +295,7 @@
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
 
     export default {
-        name: 'App',
+        // name: 'App',
         components: {
             // JetApplicationMark,
             JetBanner,
