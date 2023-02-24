@@ -124,8 +124,9 @@
                                                 </div>
                                                 My Courses
                                             </div>
-                                       </jet-dropdown-link>
+                                        </jet-dropdown-link>
 
+                                        <div class="border-t border-gray-100"></div>
 
                                         <jet-dropdown-link :href="route('profile.show')" class="items-center">
                                             <div class="inline-flex px-2 py-1">
