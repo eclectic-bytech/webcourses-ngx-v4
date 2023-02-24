@@ -17,7 +17,7 @@ export class SessionExpiredService {
     private configService: ConfigService
   ) { }
 
-  sessionExpiredModal(errStatus: number) {
+  sessionExpiredModal(errStatus?: number) {
     this.errStatus = errStatus
     this.ngbModal.open(SessionExpiredComponent, {
       size: 'md', centered: true, backdrop: 'static'
@@ -30,6 +30,7 @@ export class SessionExpiredService {
       this.percent--
       if (this.percent === 0) {
         clearInterval(countDown)
+        this.ngbModal.dismissAll()
         location.href = this.configService.params.domain + this.configService.params.logoutRedirectPath
       }
     }, msec)

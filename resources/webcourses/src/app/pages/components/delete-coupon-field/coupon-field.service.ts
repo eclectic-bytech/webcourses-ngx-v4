@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Md5 } from 'ts-md5/dist/md5'
+import { Subject, BehaviorSubject } from 'rxjs'
+
+// WNGX services
 import { CookieService } from 'ngx-cookie-service'
 import { ConfigService } from '../../../core/services/config/config.service'
-import { Subject, BehaviorSubject } from 'rxjs'
+
+// WNGX models and misc
 import { CouponCode } from '../../../commerce/models/coupon.model'
+import { Course } from 'src/app/models/course.model'
 
 @Injectable()
 export class CouponFieldService {
@@ -38,7 +43,7 @@ export class CouponFieldService {
     private configService: ConfigService,
   ) {}
 
-  validateCoupon(code: string, course) {
+  validateCoupon(code: string, course: Course) {
     this.verifyingCoupon = true
     this.course = course
     this.hashedCoupon = Md5.hashStr(code)
@@ -56,7 +61,7 @@ export class CouponFieldService {
       // tslint:disable-next-line
       default:
         /* Will be execute everytime, unless explicitly broken in case true */
-        const courseId = (this.course) ? this.course.cid : null
+        const courseId = (this.course) ? this.course.id : null
         this.apiCall(this.hashedCoupon, courseId).subscribe(
           (response) => {
             this.coupon = response
@@ -92,7 +97,7 @@ export class CouponFieldService {
 
   apiCall(hashedCoupon: string, courseId: string) {
     return this.http.get<any>(
-      `${this.configService.params.api.route}/coupons/apply_coupon.php?coupon=${hashedCoupon}&cid=${courseId}`
+      `${this.configService.params.api.route}/coupon/course/${courseId}/apply/${hashedCoupon}`
     )
   }
 

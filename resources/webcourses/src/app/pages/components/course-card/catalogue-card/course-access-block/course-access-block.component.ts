@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Course } from 'src/app/models/course.model';
-import { CourseAccessBlockService } from './course-access-block.service';
+import { Component, Input, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { Course } from 'src/app/models/course.model'
+import { AccessCodeModalService } from '../../../access-code-modal/access-code-modal.service'
+import { CourseAccessBlockService } from './course-access-block.service'
 
 @Component({
   selector: 'app-course-access-block',
@@ -16,7 +17,8 @@ export class CourseAccessBlockComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public courseAccessBlockService: CourseAccessBlockService
+    public courseAccessBlockService: CourseAccessBlockService,
+    public accessCodeModalService: AccessCodeModalService
   ) { }
 
   ngOnInit(): void {

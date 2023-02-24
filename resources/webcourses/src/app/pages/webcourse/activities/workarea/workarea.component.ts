@@ -10,6 +10,7 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 //WNGX models and misc
 import { Activity } from './models/activity.model'
 import { FadeInOut } from './../../../../core/animations/fade-in-out.animation'
+import { UserService } from 'src/app/core/services/user/user.service'
 
 
 @Component({
@@ -29,7 +30,8 @@ export class WorkAreaComponent implements OnInit {
     public route: ActivatedRoute,
     public workareaService: WorkareaService,
     public navService: NavService,
-    public selectedService: SelectedCourseService
+    public selectedService: SelectedCourseService,
+    public userService: UserService
   ) { }
 
   ngOnInit() {
@@ -38,7 +40,6 @@ export class WorkAreaComponent implements OnInit {
       .subscribe(
         (activitySet: Activity[]) => {
           this.selectedService.selectedActivitySet$.next(activitySet)
-          console.log('Singleton. Or is it?')
 
           // any activity in set would do for the primer, choosing 0 by default
           this.selectedService.fullCourseLoader(activitySet[0])

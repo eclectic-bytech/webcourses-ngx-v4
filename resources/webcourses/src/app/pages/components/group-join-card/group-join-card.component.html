@@ -1,39 +1,23 @@
-<div class="d-inline-block mb-3"
-  *ngIf="this.couponFieldService.listenForCouponStatus$ | async as couponStatus"
-  >
+<div class="d-inline-block mb-3">
   <div class="card m-1" style="width: 22rem!important;">
-    <img class="card-img-top"
-      style="min-height: 10rem;"
-      [src]="couponStatus.details.group_code.cover.image_url"
-      [alt]="couponStatus.details.group_code.cover.alt_desc"
+    <img class="card-img-top" style="min-height: 10rem;"
+      alt="Access a private course not listed in any catalogue"
+      src="assets/card-logo.png"
     >
 
     <small class="text-secondary text-uppercase mt-2">Enrol in other courses</small>
 
     <div class="card-body text-center" style="min-height: 13rem;">
-      <h5 class="card-title" [innerHtml]="couponStatus.details.label"></h5>
+      <h5 class="text-dark">Course access codes</h5>
       <p class="text-secondary" style="line-height: 1.2rem;">
-        <small [innerHtml]="couponStatus.details.short_desc | safehtml: 'html'"></small>
+        <small>If you have a course access code, click the button below to enter it.</small>
       </p>
 
-      <button
-        *ngIf="!showGroupCodeInput"
-        (click)="showGroupCodeInput = true"
-        class="btn btn-primary mt-1 mt-md-3"
-        >
+      <button class="btn btn-primary mt-1 mt-md-3"
+        (click)="this.accessCodeModalService.accessCodeModal()"
+      >
         Use code
       </button>
-      <button
-        *ngIf="couponStatus.status.valid"
-        (click)="enrolButton(couponStatus.details.group_code.cid, couponStatus.details.hash)"
-        class="btn btn-success mt-1 mt-md-3"
-        >
-        Enrol
-      </button>
-      <app-coupon-field *ngIf="showGroupCodeInput && couponStatus.status.valid != true"></app-coupon-field>
-      <div *ngIf="couponStatus.details.publisher" class="mt-1">
-        <small class="text-secondary">Publisher: {{couponStatus.details.publisher}}</small>
-      </div>
     </div>
   </div>
 </div>

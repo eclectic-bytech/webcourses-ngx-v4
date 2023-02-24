@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { TaxStatusService } from '../../../../core/services/tax-status/tax-status.service'
 import { Publisher } from 'src/app/models/publisher.model'
 import { Course } from './../../../../models/course.model'
@@ -8,7 +8,7 @@ import { Course } from './../../../../models/course.model'
   templateUrl: './catalogue-card.component.html',
   styleUrls: ['./catalogue-card.component.sass']
 })
-export class CatalogueCardComponent implements OnInit {
+export class CatalogueCardComponent {
 
   @Input() course: Course
   @Input() publisherInfo: Publisher
@@ -17,17 +17,8 @@ export class CatalogueCardComponent implements OnInit {
   // publisherInfo is only passed in 'my web webcourses' area. see ngOnInit for more info.
   public publisher: Publisher
 
-  public showCouponInput: number
-
   constructor(
     public taxService: TaxStatusService
   ) { }
-
-  ngOnInit(): void {
-  }
-
-  showCouponInputToggle(cid: number) {
-    this.showCouponInput = (this.showCouponInput) ? null : cid
-  }
 
 }

@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { CouponFieldService } from './coupon-field.service'
 import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
+import { Course } from 'src/app/models/course.model'
 
 @Component({
   selector: 'app-coupon-field',
@@ -14,7 +15,7 @@ export class CouponFieldComponent implements OnDestroy {
 
   faSpinner = faSpinner
 
-  @Input() course
+  @Input() course: Course
   private sub = new Subscription
 
   constructor(

@@ -10,7 +10,6 @@ import { Course } from 'src/app/models/course.model'
 })
 export class CourseService {
 
-  public showCouponInput: number
   public courseInfo$: Observable<Course>
 
   constructor(

@@ -14,7 +14,7 @@ use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\UserRedirectController;
 use App\Http\Controllers\SyllabusController;
-use App\Http\Controllers\CouponsController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CourseEditorController;
 
 /*
@@ -93,6 +93,7 @@ Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped as /v4/webcourse
     Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
+        Route::get('/access-code/{code_hash}', [CouponController::class, 'applyAccessCode']);
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
 
         Route::get('/activities/{aid?}', [SyllabusController::class, 'activity_set']);
@@ -105,18 +106,14 @@ Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped as /v4/publisher
     Route::group(['prefix' => 'publisher'], function() {
-
         Route::get('/profile/{id}', [PublisherController::class, 'index']);
-
     });
 
     // Paths grouped as /v4/admin
     Route::group(['prefix' => 'admin'], function() {
-
         // Paths grouped as /v4/admin/publisher
         Route::group(['prefix' => 'publisher'], function() {
-
-            Route::get('/coupons', [CouponsController::class, 'index']);
+            Route::get('/coupons', [CouponController::class, 'index']);
 
             // Paths grouped as /v4/admin/publisher/course-editor
             Route::group(['prefix' => 'course-editor'], function() {
@@ -126,7 +123,6 @@ Route::group(['prefix' => 'v4'], function() {
             });
 
         });
-
     });
 
 });
