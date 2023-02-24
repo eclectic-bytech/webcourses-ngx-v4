@@ -117,39 +117,32 @@
                                             Manage Account
                                         </div> -->
 
-                                        <jet-dropdown-link :href="('/user/redirect')" class="items-center" >
-                                            <div class="grid grid-cols-4">
-                                            <div>
-                                               <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
-                                           </div>
-                                            <div class="col-span-3">
-                                             My Courses
+                                        <jet-dropdown-link :href="('/user/redirect')" class="items-center">
+                                            <div class="inline-flex px-2 py-1">
+                                                <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                                </div>
+                                                My Courses
                                             </div>
-                                            <div></div>
-                                          </div>
                                        </jet-dropdown-link>
 
 
-                                        <jet-dropdown-link :href="route('profile.show')" class="items-center" >
-                                            <div class="grid grid-cols-4">
-                                            <div>
-                                           </div>
-                                            <div class="col-span-3">
+                                        <jet-dropdown-link :href="route('profile.show')" class="items-center">
+                                            <div class="inline-flex px-2 py-1">
+                                                <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                                </div>
                                                 Profile
                                             </div>
-                                            <div></div>
-                                        </div>
                                         </jet-dropdown-link>
 
                                         <jet-dropdown-link :href="route('api-tokens.index')" class="items-center"  v-if="$page.props.jetstream.hasApiFeatures">
-                                            <div class="grid grid-cols-4">
-                                            <div>
-                                           </div>
-                                            <div class="col-span-3">
+                                            <div class="inline-flex px-2 py-1">
+                                                <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                                </div>
                                                 API Tokens
                                             </div>
-                                            <div></div>
-                                        </div>
                                         </jet-dropdown-link>
 
                                         <div class="border-t border-gray-100"></div>
@@ -157,14 +150,12 @@
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <jet-dropdown-link as="button" class="items-center"  >
-                                                <div class="grid grid-cols-4">
-                                            <div>
-                                                <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="text-amber-400 text-xlg" />
-                                           </div>
-                                            <div class="col-span-3">
-                                                Sign Out
-                                            </div>
-                                          </div>
+                                                <div class="inline-flex px-2 py-1">
+                                                    <div class="fa-icon-container">
+                                                        <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="text-amber-400 text-xlg" />
+                                                    </div>
+                                                    Sign Out
+                                                </div>
                                             </jet-dropdown-link>
                                         </form>
                                     </template>
