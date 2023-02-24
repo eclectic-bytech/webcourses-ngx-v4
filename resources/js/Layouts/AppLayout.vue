@@ -112,17 +112,40 @@
                                         <!-- <div class="block px-4 py-2 text-xs text-gray-400">
                                             Manage Account
                                         </div> -->
+
                                         <jet-dropdown-link :href="('/user/redirect')" class="items-center" >
-                                            <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
-                                            My Courses
-                                        </jet-dropdown-link>
+                                            <div class="grid grid-cols-4">
+                                            <div>
+                                               <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                           </div>
+                                            <div class="col-span-3">
+                                             My Courses
+                                            </div>
+                                            <div></div>
+                                          </div>
+                                       </jet-dropdown-link>
+
 
                                         <jet-dropdown-link :href="route('profile.show')" class="items-center" >
-                                            Profile
+                                            <div class="grid grid-cols-4">
+                                            <div>
+                                           </div>
+                                            <div class="col-span-3">
+                                                Profile
+                                            </div>
+                                            <div></div>
+                                        </div>
                                         </jet-dropdown-link>
 
                                         <jet-dropdown-link :href="route('api-tokens.index')" class="items-center"  v-if="$page.props.jetstream.hasApiFeatures">
-                                            API Tokens
+                                            <div class="grid grid-cols-4">
+                                            <div>
+                                           </div>
+                                            <div class="col-span-3">
+                                                API Tokens
+                                            </div>
+                                            <div></div>
+                                        </div>
                                         </jet-dropdown-link>
 
                                         <div class="border-t border-gray-100"></div>
@@ -130,8 +153,14 @@
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <jet-dropdown-link as="button" class="items-center"  >
+                                                <div class="grid grid-cols-4">
+                                            <div>
                                                 <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="text-amber-400 text-xlg" />
-                                             Sign Out
+                                           </div>
+                                            <div class="col-span-3">
+                                                Sign Out
+                                            </div>
+                                          </div>
                                             </jet-dropdown-link>
                                         </form>
                                     </template>
