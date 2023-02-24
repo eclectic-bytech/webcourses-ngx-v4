@@ -63,6 +63,7 @@
         aria-labelledby="navbarDropdown"
         ngbDropdownMenu
       >
+
         <!-- USER MENU: DASHBOARD. Needed for XS displays. -->
         <a
           class="dropdown-item py-2 d-xs-inline-block d-sm-none"
@@ -91,6 +92,7 @@
 
         <!-- USER MENU: PUBLISHER-->
         <div [ngClass]="this.userService.userIsPublisher() ? '' : 'd-none'">
+
           <!-- MENU ITEMS DIVIDER -->
           <div class="dropdown-divider"></div>
 
@@ -186,9 +188,7 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" [routerLink]="['/']" (click)="collapseMenus()"
-            >Home</a
-          >
+          <a class="nav-link" [routerLink]="['/']" (click)="collapseMenus()">Home</a>
         </li>
 
         <!-- CATALOGUE / WEBCOURSES LINK -->
@@ -197,12 +197,7 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a
-            class="nav-link"
-            [routerLink]="['/catalogue']"
-            (click)="collapseMenus()"
-            >Webcourses</a
-          >
+          <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">Webcourses</a>
         </li>
 
         <!-- HELP PAGE LINK -->
@@ -211,9 +206,7 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()"
-            >Help</a
-          >
+          <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()">Help</a>
         </li>
       </ng-container>
 
@@ -226,11 +219,7 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a
-            class="nav-link"
-            [routerLink]="['/catalogue', 'publisher', theme.path]"
-            (click)="collapseMenus()"
-          >
+          <a class="nav-link" [routerLink]="['/catalogue', 'publisher', theme.path]" (click)="collapseMenus()">
             {{ theme.label }} Webcourses
           </a>
         </li>
@@ -241,12 +230,7 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a
-            class="nav-link"
-            [routerLink]="['/help', theme.path]"
-            (click)="collapseMenus()"
-            >Help</a
-          >
+          <a class="nav-link" [routerLink]="['/help', theme.path]" (click)="collapseMenus()">Help</a>
         </li>
 
         <!-- EXIT TO MAIN CATALOGUE LINK -->
@@ -255,11 +239,7 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a
-            class="nav-link"
-            [routerLink]="['/catalogue']"
-            (click)="collapseMenus()"
-          >
+          <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">
             Exit {{ theme.label }}
           </a>
         </li>
