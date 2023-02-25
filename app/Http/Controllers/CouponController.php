@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Publisher;
 use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
+use App\Models\CodesUses;
 use Illuminate\Support\Facades\DB;
 
 
@@ -52,6 +53,7 @@ class CouponController extends Controller
                     $pid = $this->grantAccess($cid, $uid);
                     if ($pid) {
                         $this->incrementCodeUses($code_info);
+                        $this->updateCodesUsesTable($code_hash, $pid);
                         $code['first_aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
                     }
                 }
@@ -79,15 +81,21 @@ class CouponController extends Controller
     }
 
     public function grantAccess($cid, $uid) {
-        return DB::table('user_progress')->insertGetId(
-            array(
-                'user_id' => $uid,
-                'course_id' => $cid,
-                'build_id' => 0,
-                'created_at' => date(DATE_ATOM),
-                'demo' => 0
-            )
-        );
+        $user_progress = new UserProgress;
+        $user_progress->user_id = $uid;
+        $user_progress->course_id = $cid;
+        $user_progress->build_id = 0;
+        $user_progress->demo = 0;
+        $user_progress->save();
+        return $user_progress->id;
+    }
+
+    public function updateCodesUsesTable($code_id, $pid) {
+        // Insert record into codes_uses table
+        $codes_uses = new CodesUses;
+        $codes_uses->code_id = $code_id;
+        $codes_uses->user_progress_id = $pid;
+        $codes_uses->save();
     }
 
     public function incrementCodeUses($code_info) {
