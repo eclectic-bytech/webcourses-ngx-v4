@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { SelectedCourseService } from '../selected-course/selected-course.service'
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,12 @@ export class CompletionCertificatesService {
   faSpinner = faSpinner
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private selectedCourse: SelectedCourseService
   ) { }
 
-  downloadCertificate(pid: number) {
+  downloadCertificate() {
+    let pid = this.selectedCourse.selectedCourse.user_progress.id
     this.downloadCertificateLoading = true
     this.httpClient.get(`/api/certificate.php?id=${pid}`, {responseType: 'blob' as 'json'})
       .subscribe(

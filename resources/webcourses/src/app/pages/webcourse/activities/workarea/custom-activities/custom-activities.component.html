@@ -54,7 +54,7 @@
     <button class="btn my-3"
       [ngClass]="this.completionCertificatesService.downloadCertificateLoading ? 'btn-secondary' : 'btn-success'"
       [disabled]="this.completionCertificatesService.downloadCertificateLoading ? true : false"
-      (click)="this.completionCertificatesService.downloadCertificate(0)"
+      (click)="this.completionCertificatesService.downloadCertificate()"
     >
       <span *ngIf="!this.completionCertificatesService.downloadCertificateLoading; else preparing">
         Certificate of Completion
