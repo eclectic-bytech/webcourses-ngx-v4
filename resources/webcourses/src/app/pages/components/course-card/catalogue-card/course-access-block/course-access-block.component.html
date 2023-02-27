@@ -10,7 +10,7 @@
     <div class="d-flex my-3 justify-content-between">
       <div class="text-left" style="line-height: 95%;">
         <small>
-          <a (click)="showCouponInput = !showCouponInput" class="handy text-success">
+          <a (click)="this.accessCodeModalService.accessCodeModal()" class="handy text-success">
             Use access<br>code
           </a>
         </small>
@@ -24,10 +24,6 @@
           total ${{ course.price / 100 * 1.05 | number:'1.2-2' }}
         </small>
       </div>
-    </div>
-
-    <div *ngIf="this.showCouponInput" class="mb-2">
-      <app-coupon-field [course]="course"></app-coupon-field>
     </div>
   </div>
 </ng-template>

@@ -21,6 +21,9 @@ class CourseController extends Controller
         return Course
             ::where('published', 1)
             ->where('private', 0)
+            ->when(!$publisherId, function($query){
+                return $query->where('hide_from_main_catalogue', 0);
+            })
             ->when($publisherId, function($query, $publisherId) {
                 return $query->where('publisher_id', $publisherId);
             })
@@ -68,11 +71,7 @@ class CourseController extends Controller
 
     public function chapterIndex($cid)
     {
-        // tried fixing issue #160 here, but $cid needs to
-        // be passed to syllabus relation in chapterIndex
-        // this sort of passing is inadequate (applied in ActivityController:20):
-        // https://stackoverflow.com/questions/36411826/laravel-eloquent-pass-variable-to-with-relationship-function
-        $course = Course
+      $course = Course
             ::where('id', $cid)
             ->with('chapterIndex')
             ->first();

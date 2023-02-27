@@ -1,0 +1,38 @@
+<div class="modal-body text-center">
+  <h2 id="modal-basic-title" class="common-heading text-center my-3" @fadeInOut>
+    Course access
+  </h2>
+  <div class="my-4">
+    <fa-icon [icon]="faFingerprint" [spin]="false" class="display-3 fa-icon"></fa-icon>
+  </div>
+  <div class="d-flex h5 font-weight-light justify-content-center" style="height: 4rem; max-height: 4rem;">
+    <div
+      class="my-auto"
+      [@valueAnimation]="this.accessCodeModalService.descText"
+      [innerHtml]="this.accessCodeModalService.descText"
+    >
+    </div>
+  </div>
+  <form #accessCodeForm="ngForm" class="mt-4 mb-2">
+    <input
+      type="text" class="form-control w-50 mx-auto text-center" minlength="8" name="accessCode"
+      [(ngModel)]="accessCode" required
+    >
+
+    <button type="submit" class="btn mt-4 w-25"
+      (click)="submitCodeButton(accessCode)"
+      [ngClass]="this.accessCodeModalService.submitButtonActive ? 'btn-primary' : 'btn-secondary'"
+      [disabled]="!accessCodeForm.valid || !this.accessCodeModalService.submitButtonActive"
+    >
+      <span *ngIf="this.accessCodeModalService.submitButtonActive; else Loading">
+        Enter
+      </span>
+      <ng-template #Loading>
+        <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true"></fa-icon>
+      </ng-template>
+    </button>
+  </form>
+</div>
+<ngb-progressbar type="info" height="3px"
+  [value]="this.accessCodeModalService.percent"
+></ngb-progressbar>

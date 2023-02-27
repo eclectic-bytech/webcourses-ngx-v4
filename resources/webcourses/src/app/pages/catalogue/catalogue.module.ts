@@ -6,7 +6,6 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap'
 
 import { CatalogueCardModule } from './../components/course-card/catalogue-card/catalogue-card.module'
 import { CatalogueComponent } from './catalogue.component'
-import { CouponOptionModule } from './../../pages/components/coupon-field/coupon-field.module'
 import { BuyButtonModule } from './../components/buttons/buy-button/buy-button.module'
 import { CatalogueRoutingModule } from './catalogue-routing.module'
 import { ThemeResetModule } from './../../core/directives/theme-reset/theme-reset.module'
@@ -26,7 +25,6 @@ import { ThemeResetModule } from './../../core/directives/theme-reset/theme-rese
     CatalogueRoutingModule,
     ThemeResetModule,
     BuyButtonModule,
-    CouponOptionModule,
     CatalogueCardModule
   ],
   exports: []
