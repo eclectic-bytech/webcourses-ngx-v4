@@ -25,7 +25,7 @@ class CouponController extends Controller
 
             foreach ($courses as $key => $course) {
                 $coupons[$key]['course'] = $course;
-                $coupons[$key]['coupons'] = Coupon::where('cid', $course->id)->get();
+                $coupons[$key]['coupons'] = Coupon::where('cid', $course->id)->orderBy('created_at', 'desc')->get();
             }
         }
 
