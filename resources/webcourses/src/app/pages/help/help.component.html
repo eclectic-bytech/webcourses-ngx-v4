@@ -4,16 +4,16 @@
       <div class="col-12 col-sm-10 col-md-9 col-lg-7 mx-1 mx-sm-2 mx-md-5">
         <h4 class="my-2 my-sm-3 mx-2 mx-md-4 text-uppercase">Help section</h4>
 
+        <!--
         <div class="pt-2 pt-md-4 pb-1 pb-md-2" style="background-color: rgb(50,50, 50, .12); border-radius: 14px;">
           <ul class="list-unstyled" style="line-height:2;">
-            <li class="mx-2 mx-md-4"><a [routerLink]="['.']" fragment="code-types">Code Types</a></li>
-            <li class="mx-2 mx-md-4"><a [routerLink]="['.']" fragment="course-code">Course Codes</a></li>
-            <li class="mx-2 mx-md-4"><a [routerLink]="['.']" fragment="group-code">Group Codes</a></li>
+            <li class="mx-2 mx-md-4"><a [routerLink]="['.']" fragment="course-access-codes">Course access codes</a></li>
             <li class="mx-2 mx-md-4"><a [routerLink]="['.']" fragment="course-access">Purchased and unlocked courses</a></li>
           </ul>
         </div>
 
-        <div id="code-types"></div>
+        <div id="course-access-codes"></div>
+        -->
 
         <!-- Hot-linked My Courses. Used when user is logged in. -->
         <ng-template #hotMyCourses>
@@ -27,65 +27,28 @@
 
         <div class="mx-2 mx-md-4 mt-3 mt-md-5">
 
-          <h4 class="mb-2 mb-sm-3 text-uppercase" >Code types</h4>
+          <h4 class="mb-2 mb-sm-3 text-uppercase">Course Access Codes</h4>
 
-          <p><strong>Course codes</strong> are course specific, and must be entered on a matching course panel.
-          <strong>Group codes</strong> should be entered on the <em>"Got a group code?"</em> panel, available on the
-          <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong> page. Detailed instructions are available below.</p>
-
-          <div id="course-code">
-            <div class="my-3" *ngIf="theme.path !== 'default'; else clDivider">&nbsp;</div>
-          </div>
-
-          <h4 class="mb-2 mb-sm-3 text-uppercase">Course codes</h4>
-
-          <p><strong>Course codes</strong> as the name suggests are course specific.
-            Click the <strong>Use access code</strong> link available on course cards in the
-            <span *ngIf="theme.path !== 'default'; else general">
-              <a class="font-weight-bold"
-                [routerLink]="['/catalogue', 'publisher', this.activatedRoute.snapshot.params.pub_id]"
-                >Course Catalogue</a>.
+          <p>
+            To use a <strong>Course Access Code</strong>, you must have a cultivatelearning.ca account, and be signed in.
+            <span *ngIf="!this.userService.user"><br>
+              <a href="/user/register" class="font-weight-bold">Register</a> or
+              <a href="/user/login" class="font-weight-bold">sign in</a>.
             </span>
-            <ng-template #general>
-              publisher-specific and full <a [routerLink]="['/catalogue']" class="font-weight-bold">course catalogues</a>.
-              <strong>Course codes</strong> are typically accompanied by a publisher catalogue link that makes it easier
-              to locate the matching course.
-            </ng-template>
+          </p>
+
+          <p>
+            If you received a code-embeded link via email, follow it for code-less entry.
+            <br *ngIf="!this.userService.user"> To enter a code
+            manually<span *ngIf="!this.userService.user">, <a href="/user/login" class="font-weight-bold">sign in</a> and</span>:
           </p>
 
           <ol class="mt-1 mb-3" style="line-height:2;">
-            <li>Click <strong>Use access code</strong> on the matching course card.</li>
+            <li>Click the <strong>Use code</strong> button located on the <em>course access codes panel</em>
+              on the <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong> page.
+            </li>
             <li>
-              Copy and paste the <strong>Course code</strong> you received,
-              click <strong>Submit</strong> and then <strong>Enrol</strong> or <strong>Buy</strong> (when a discount code is used.)
-            </li>
-            <li *ngIf="!this.userService.user">
-              Sign up with cultivatelearning.ca and/or sign in via the
-              <a [routerLink]="['/user/login']" target="_blank" class="font-weight-bold">Sign in page</a>.
-            </li>
-          </ol>
-
-          <p><span *ngIf="!this.userService.user">Upon sign in you'll be redirected directly to the course.</span></p>
-
-          <div id="group-code">
-            <div class="my-3" *ngIf="theme.path !== 'default'; else clDivider">&nbsp;</div>
-          </div>
-
-          <h4 class="mb-2 mb-sm-3 text-uppercase">Group Codes</h4>
-
-          <p *ngIf="!this.userService.user">
-            To use a <strong>Group access code</strong>, you must be signed in.
-            If you don't yet have a cultivatelearning.ca account, click the <strong>Sign up tab</strong> available
-            on the <a [routerLink]="['/user/login']" target="_blank" class="font-weight-bold">Sign in page</a>.
-          </p>
-
-          <ol class="mt-1 mb-3" style="line-height:2;">
-            <li>Click the <strong>Use code</strong> button located on the <em>"Got a Group Access Code?"</em> panel
-              on the <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong> page
-              <span *ngIf="this.userService.user">(accessible via the top right corner's <strong>User Menu</strong>)</span>.
-            </li>
-            <li>Copy and paste the <strong>Course code</strong> you received and click
-              <strong>Submit</strong>, then <strong>Enrol</strong>.
+              Copy and paste the <em>course acccess code</em> you received and click <strong>Enter</strong>.
             </li>
           </ol>
 
@@ -97,8 +60,8 @@
 
           <p>All your courses are available from the the top-right corner's <strong>user menu</strong> dropdown under
             <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong>.
-            <span *ngIf="!this.userService.user">
-              <a [routerLink]="['/user/login']" target="_blank" class="font-weight-bold">Sign in</a> to access it.
+            <span *ngIf="!this.userService.user"><br>
+              <a href="/user/login" class="font-weight-bold">Sign in</a> to access it.
             </span>
           </p>
 
