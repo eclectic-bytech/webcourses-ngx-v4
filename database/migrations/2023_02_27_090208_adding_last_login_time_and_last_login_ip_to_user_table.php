@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->timestamp('last_login_time')->nullable();
-            $table->string('last_login_ip',15)->nullable();
+            $table->string('last_login_ip',15)->nullable()->after('profile_photo_path');
+            $table->timestamp('last_login_time')->nullable()->after('last_login_ip');
         });
     }
 
