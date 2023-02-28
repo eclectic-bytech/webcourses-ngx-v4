@@ -24,4 +24,9 @@ class UserRedirectController extends Controller
         // Solves issue #81.
         return Inertia::location($redirect);
     }
+    public function home_redirect() {
+        // Used to redirect from Vue to Angular without getting stuck in an iframe.
+        // Solves issue #81.
+        return Inertia::location('/webcourses/');
+    }
 }

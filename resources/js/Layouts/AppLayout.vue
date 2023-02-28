@@ -179,7 +179,7 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                        <jet-responsive-nav-link :href="('/user/home')">
                             Home
                         </jet-responsive-nav-link>
                     </div>
@@ -198,18 +198,42 @@
                         </div>
 
                         <div class="mt-3 space-y-1">
+                            <jet-responsive-nav-link :href="('/user/redirect')">
+                                <div class="inline-flex py-1">
+                                    <div class="fa-icon-container">
+                                         <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                     </div>
+                                    My Courses
+                                   </div>
+                            </jet-responsive-nav-link>
+
                             <jet-responsive-nav-link :href="route('profile.show')" :active="route().current('profile.show')">
-                                Profile
+                                <div class="inline-flex py-1">
+                                    <div class="fa-icon-container">
+                                         <font-awesome-icon icon="fa-solid fa-wrench" class="text-amber-400 text-xlg" />
+                                     </div>
+                                    Profile
+                                   </div>
                             </jet-responsive-nav-link>
 
                             <jet-responsive-nav-link :href="route('api-tokens.index')" :active="route().current('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
-                                API Tokens
+                                <div class="inline-flex py-1">
+                                    <div class="fa-icon-container">
+                                           <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                       </div>
+                                     API Tokens
+                                   </div>
                             </jet-responsive-nav-link>
 
                             <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <jet-responsive-nav-link as="button">
-                                    Log Out
+                                    <div class="inline-flex py-1">
+                                        <div class="fa-icon-container">
+                                         <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="text-amber-400 text-xlg" />
+                                     </div>
+                                      Sign Out
+                                   </div>
                                 </jet-responsive-nav-link>
                             </form>
 
