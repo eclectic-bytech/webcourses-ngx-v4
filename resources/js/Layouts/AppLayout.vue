@@ -29,8 +29,8 @@
                                     Dashboard
                                 </jet-nav-link>
                                 -->
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses">Home</a>
                                 <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/catalogue">Webcourses</a>
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="https://publish.cultivatelearning.ca/">Publish</a>
                                 <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/help">Help</a>
                             </div>
                          </div>
@@ -217,12 +217,7 @@
                             </jet-responsive-nav-link>
 
                             <jet-responsive-nav-link :href="route('api-tokens.index')" :active="route().current('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
-                                <div class="inline-flex py-1">
-                                    <div class="fa-icon-container">
-                                           <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
-                                       </div>
-                                     API Tokens
-                                   </div>
+                                API Tokens
                             </jet-responsive-nav-link>
 
                             <!-- Authentication -->
@@ -230,9 +225,9 @@
                                 <jet-responsive-nav-link as="button">
                                     <div class="inline-flex py-1">
                                         <div class="fa-icon-container">
-                                         <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="text-amber-400 text-xlg" />
-                                     </div>
-                                      Sign Out
+                                        <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="text-amber-400 text-xlg" />
+                                    </div>
+                                    Sign Out
                                    </div>
                                 </jet-responsive-nav-link>
                             </form>

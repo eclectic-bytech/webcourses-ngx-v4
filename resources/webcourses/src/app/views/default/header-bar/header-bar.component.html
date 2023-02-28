@@ -165,22 +165,23 @@
       <!-- STANDARD MAIN NAVIGATION, SYSTEM BRANDED AND LINKED -->
 
       <ng-container *ngIf="theme.publisher_id == 1; else publisherCustom">
-        <!-- HOME PAGE LINK -->
-        <li
-          class="nav-item px-2 py-1 mx-2"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <a class="nav-link" [routerLink]="['/']" (click)="collapseMenus()">Home</a>
-        </li>
 
         <!-- CATALOGUE / WEBCOURSES LINK -->
         <li
           class="nav-item px-2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
-        >
+          >
           <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">Webcourses</a>
+        </li>
+
+        <!-- PUBLISHERS LINK -->
+        <li
+          class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" href="https://publish.cultivatelearning.ca">Publish</a>
         </li>
 
         <!-- HELP PAGE LINK -->
