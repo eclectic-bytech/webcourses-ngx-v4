@@ -48,7 +48,6 @@ Route::get('/dashboard', function () {
 
 Route::group(['prefix' => 'user'], function() {
     Route::get('/redirect', [UserRedirectController::class, 'user_login_redirect']);
-
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');

@@ -1,3 +1,8 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+/* WNGX Styles */
+.fa-icon-container {
+    width: 1.7rem;
+}

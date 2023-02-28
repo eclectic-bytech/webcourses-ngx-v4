@@ -24,14 +24,16 @@
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <!--
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                                <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/user">My courses</a>
-                                <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/catalogue">Course catalogue</a>
+                                -->
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/catalogue">Webcourses</a>
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="https://publish.cultivatelearning.ca/">Publish</a>
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/help">Help</a>
                             </div>
-                        </div>
-
+                         </div>
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!--
                             <div class="ml-3 relative">
@@ -111,24 +113,50 @@
 
                                     <template #content>
                                         <!-- Account Management -->
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                        <!-- <div class="block px-4 py-2 text-xs text-gray-400">
                                             Manage Account
-                                        </div>
+                                        </div> -->
 
-                                        <jet-dropdown-link :href="route('profile.show')">
-                                            Profile
+                                        <jet-dropdown-link :href="('/user/redirect')" class="items-center">
+                                            <div class="inline-flex px-2 py-1">
+                                                <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                                </div>
+                                                My Courses
+                                            </div>
                                         </jet-dropdown-link>
 
-                                        <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
-                                            API Tokens
+                                        <div class="border-t border-gray-100"></div>
+
+                                        <jet-dropdown-link :href="route('profile.show')" class="items-center">
+                                            <div class="inline-flex px-2 py-1">
+                                                <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-wrench" class="text-amber-400 text-xlg" />
+                                                </div>
+                                                Profile
+                                            </div>
+                                        </jet-dropdown-link>
+
+                                        <jet-dropdown-link :href="route('api-tokens.index')" class="items-center"  v-if="$page.props.jetstream.hasApiFeatures">
+                                            <div class="inline-flex px-2 py-1">
+                                                <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                                </div>
+                                                API Tokens
+                                            </div>
                                         </jet-dropdown-link>
 
                                         <div class="border-t border-gray-100"></div>
 
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
-                                            <jet-dropdown-link as="button">
-                                                Log Out
+                                            <jet-dropdown-link as="button" class="items-center"  >
+                                                <div class="inline-flex px-2 py-1">
+                                                    <div class="fa-icon-container">
+                                                        <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="text-amber-400 text-xlg" />
+                                                    </div>
+                                                    Sign Out
+                                                </div>
                                             </jet-dropdown-link>
                                         </form>
                                     </template>
@@ -151,8 +179,8 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                        <jet-responsive-nav-link :href="('/user/home')">
+                            Home
                         </jet-responsive-nav-link>
                     </div>
 
@@ -170,8 +198,22 @@
                         </div>
 
                         <div class="mt-3 space-y-1">
+                            <jet-responsive-nav-link :href="('/user/redirect')">
+                                <div class="inline-flex py-1">
+                                    <div class="fa-icon-container">
+                                         <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                     </div>
+                                    My Courses
+                                   </div>
+                            </jet-responsive-nav-link>
+
                             <jet-responsive-nav-link :href="route('profile.show')" :active="route().current('profile.show')">
-                                Profile
+                                <div class="inline-flex py-1">
+                                    <div class="fa-icon-container">
+                                         <font-awesome-icon icon="fa-solid fa-wrench" class="text-amber-400 text-xlg" />
+                                     </div>
+                                    Profile
+                                   </div>
                             </jet-responsive-nav-link>
 
                             <jet-responsive-nav-link :href="route('api-tokens.index')" :active="route().current('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
@@ -181,7 +223,12 @@
                             <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <jet-responsive-nav-link as="button">
-                                    Log Out
+                                    <div class="inline-flex py-1">
+                                        <div class="fa-icon-container">
+                                        <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="text-amber-400 text-xlg" />
+                                    </div>
+                                    Sign Out
+                                   </div>
                                 </jet-responsive-nav-link>
                             </form>
 
@@ -256,6 +303,7 @@
             </main>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -266,8 +314,8 @@
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
 
-
     export default {
+        // name: 'App',
         components: {
             // JetApplicationMark,
             JetBanner,
@@ -276,7 +324,6 @@
             JetNavLink,
             JetResponsiveNavLink,
         },
-
         data() {
             return {
                 showingNavigationDropdown: false,

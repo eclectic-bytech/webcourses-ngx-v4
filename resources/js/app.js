@@ -5,6 +5,18 @@ import { createApp, h } from 'vue';
 import { App as InertiaApp, plugin as InertiaPlugin, Link } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* import specific icons */
+import { faGraduationCap, faRightFromBracket, faWrench} from '@fortawesome/free-solid-svg-icons'
+
+/* add icons to the library */
+library.add(faGraduationCap , faRightFromBracket, faWrench)
+
 const el = document.getElementById('app');
 
 createApp({
@@ -16,7 +28,9 @@ createApp({
 })
     .mixin({ methods: { route } })
     .use(InertiaPlugin)
+    .component('font-awesome-icon', FontAwesomeIcon)
     .component('inertia-link', Link)
     .mount(el);
+
 
 InertiaProgress.init({ color: '#4B5563' });
