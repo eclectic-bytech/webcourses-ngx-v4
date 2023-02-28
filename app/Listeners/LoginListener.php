@@ -27,7 +27,7 @@ class LoginListener
     {
         $event->user->update([
         'last_login_time' => now(),
-        'last_login_ip' ->$request->ip(),
+        'last_login_ip' => request()->GetClientIp(),
         ]);
     }
 }

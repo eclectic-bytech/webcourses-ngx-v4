@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->timestamp('last_login_time')->nullable();
-            $table->string('last_login_ip')->nullable();
+            $table->string('last_login_ip',15)->nullable();
         });
     }
 
@@ -27,8 +27,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            // $table->timestamp('last_login_time')->nullable();
-            // $table->string('last_login_ip', 15)->nullable();
         });
     }
 };
