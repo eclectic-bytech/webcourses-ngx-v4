@@ -64,25 +64,8 @@
         aria-labelledby="navbarDropdown"
         ngbDropdownMenu
       >
-
-        <!-- USER MENU: MY COURSES-->
-        <a
-          class="dropdown-item py-2"
-          [routerLink]="['/user', 'webcourses']"
-          (click)="collapseMenus()"
-          ngbDropdownItem
-        >
-          <div class="menu-icon text-center d-inline-block pr-2">
-            <fa-icon [icon]="faGraduationCap" class="text-warning"></fa-icon>
-          </div>
-          My Courses
-        </a>
-
         <!-- USER MENU: PUBLISHER-->
         <div [ngClass]="this.userService.userIsPublisher() ? '' : 'd-none'">
-
-          <!-- MENU ITEMS DIVIDER -->
-          <div class="dropdown-divider"></div>
 
           <a
             class="dropdown-item py-2"
@@ -119,13 +102,30 @@
             </div>
             Access Codes
           </a>
-          <a class="dropdown-item py-2" href="/user/profile" ngbDropdownItem>
-            <div class="menu-icon text-center d-inline-block pr-2">
-              <fa-icon [icon]="faWrench" class="text-warning"></fa-icon>
-            </div>
-            Profile
-          </a>
+
+          <!-- MENU ITEMS DIVIDER -->
+          <div class="dropdown-divider"></div>
         </div>
+
+        <!-- USER MENU: MY COURSES & PROFILE -->
+        <a
+          class="dropdown-item py-2"
+          [routerLink]="['/user', 'webcourses']"
+          (click)="collapseMenus()"
+          ngbDropdownItem
+        >
+          <div class="menu-icon text-center d-inline-block pr-2">
+            <fa-icon [icon]="faGraduationCap" class="text-warning"></fa-icon>
+          </div>
+          My Courses
+        </a>
+
+        <a class="dropdown-item py-2" href="/user/profile" ngbDropdownItem>
+          <div class="menu-icon text-center d-inline-block pr-2">
+            <fa-icon [icon]="faWrench" class="text-warning"></fa-icon>
+          </div>
+          Profile
+        </a>
 
         <!-- MENU ITEMS DIVIDER -->
         <div class="dropdown-divider"></div>
