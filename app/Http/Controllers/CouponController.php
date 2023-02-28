@@ -17,10 +17,10 @@ class CouponController extends Controller
     // displays in publisher's console all codes including usage level
     public function index() {
         $uid = auth()->user()->id;
+        $publisher = Publisher::where('owner_uid', $uid)->first();
         $coupons = [];
 
         if (isset($publisher)) {
-            $publisher = Publisher::where('owner_uid', $uid)->first();
             $courses = Course::where('publisher_id', $publisher->id)->get();
 
             foreach ($courses as $key => $course) {
