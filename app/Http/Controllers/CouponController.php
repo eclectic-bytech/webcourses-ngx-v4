@@ -52,7 +52,7 @@ class CouponController extends Controller
                     $cid = $code_info['course']['id'];
                     $pid = $this->grantAccess($cid, $uid);
                     if ($pid) {
-                        $this->incrementCodeUses($code_info);
+                        $this->incrementCodeUses($code_hash);
                         $this->updateCodesUsesTable($code_hash, $pid);
                         $code['first_aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
                     }
@@ -98,8 +98,8 @@ class CouponController extends Controller
         $codes_uses->save();
     }
 
-    public function incrementCodeUses($code_info) {
-        DB::table('coupons')->where('id', $code_info['id'])->increment('uses');
+    public function incrementCodeUses($code_hash) {
+        DB::table('coupons')->where('id', $code_hash)->increment('uses');
     }
 
     public function userAlreadyEnrolled($uid, $cid) {
