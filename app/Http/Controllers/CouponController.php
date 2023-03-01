@@ -9,7 +9,6 @@ use App\Models\Publisher;
 use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
 use App\Models\CodesUses;
-use Illuminate\Support\Facades\DB;
 
 
 class CouponController extends Controller
@@ -99,7 +98,7 @@ class CouponController extends Controller
     }
 
     public function incrementCodeUses($code_hash) {
-        DB::table('coupons')->where('id', $code_hash)->increment('uses');
+        Coupon::find($code_hash)->increment('uses');
     }
 
     public function userAlreadyEnrolled($uid, $cid) {
