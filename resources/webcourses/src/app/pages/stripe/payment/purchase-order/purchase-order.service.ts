@@ -15,7 +15,7 @@ export class PurchaseOrderService {
   ) { }
 
   makePurchase(cid: number) {
-    this.http.get(`${this.configService.params.api.route}/payments/${cid}`)
+    this.http.get(`${this.configService.params.api.route}/purchase/course/${cid}`)
       .subscribe(
         (checkout: any) => {
           if (checkout.payment_required) {
