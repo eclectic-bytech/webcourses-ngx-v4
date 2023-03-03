@@ -48,7 +48,11 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last">
+        <tr
+          class="handy"
+          *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
+          [routerLink]="['users', discountCode.code]"
+        >
           <td>
             {{ discountCode.code }}
             {{ discountCode.code }}
@@ -57,7 +61,7 @@
               [innerHtml]="discountCode.uses_max - discountCode.uses">
             </span>
           </td>
-          <td><a [routerLink]="['users', discountCode.code]">{{ discountCode.label }}</a></td>
+          <td>{{ discountCode.label }}</td>
           <td class="text-right">{{ discountCode.uses }}</td>
           <td class="text-right">{{ discountCode.uses_max }}</td>
           <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'mediumDate' }}</td>
