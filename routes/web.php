@@ -8,6 +8,7 @@ use App\Http\Controllers\AngularController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserCourseController;
+use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ChapterController;
@@ -62,6 +63,10 @@ Route::group(['prefix' => 'v4'], function() {
         Route::get('/publisher/{publisherId?}', [CourseController::class, 'index']);
         Route::get('/user/{userId?}', [CourseController::class, 'indexUser'])->whereNumber('userId');
         Route::get('/course/{cid}', [CourseController::class, 'course'])->whereNumber('cid');
+    });
+
+    Route::group(['prefix' => '/purchase'], function() {
+        Route::get('/course/{cid}', [PurchaseOrderController::class, 'purchase_course']);
     });
 
     // Paths grouped as /v4/user
