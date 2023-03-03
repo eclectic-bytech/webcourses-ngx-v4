@@ -1,17 +1,27 @@
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
-<p>Kay</p>
+<div class="container mt-5 pt-5">
+  <div *ngIf="discountCodeUsers$ | async as discountCodeUsers">
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th class="text-uppercase text-center">id</th>
+          <th class="text-uppercase">first name</th>
+          <th class="text text-uppercase">last name</th>
+          <th class="text text-uppercase">email</th>
+          <th class="text text-uppercase">date started</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let discountCodeUser of discountCodeUsers, let i = 'index + 1'">
+          <td class="text-center">{{i}}</td>
+          <td>{{ discountCodeUser.user.first_name }}</td>
+          <td>{{ discountCodeUser.user.last_name }}</td>
+          <td>{{ discountCodeUser.user.email }}</td>
+          <td>{{ discountCodeUser.user.created_at | date:'mediumDate' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
 

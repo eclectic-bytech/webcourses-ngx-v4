@@ -50,12 +50,13 @@
       <tbody>
         <tr *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last">
           <td>{{ discountCode.code }}
+            {{ discountCode | json }}
             <span
               class="badge badge-pill badge-success font-weight-light float-right"
               [innerHtml]="discountCode.uses_max - discountCode.uses">
             </span>
           </td>
-          <td>{{ discountCode.label }}</td>
+          <td><a [routerLink]="['users', discountCode.code]">{{ discountCode.label }}</a></td>
           <td class="text-right">{{ discountCode.uses }}</td>
           <td class="text-right">{{ discountCode.uses_max }}</td>
           <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'mediumDate' }}</td>
