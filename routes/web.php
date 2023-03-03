@@ -16,6 +16,7 @@ use App\Http\Controllers\UserRedirectController;
 use App\Http\Controllers\SyllabusController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CourseEditorController;
+use App\Http\Controllers\CodesUseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,7 +113,12 @@ Route::group(['prefix' => 'v4'], function() {
     Route::group(['prefix' => 'admin'], function() {
         // Paths grouped as /v4/admin/publisher
         Route::group(['prefix' => 'publisher'], function() {
+
+            // Lists courses and their access codes
             Route::get('/coupons', [CouponController::class, 'index']);
+
+            // Lists all users that applied a code
+            Route::get('/access-codes/{code_id}/users', [CodesUseController::class, 'access_code_users']);
 
             // Paths grouped as /v4/admin/publisher/course-editor
             Route::group(['prefix' => 'course-editor'], function() {
