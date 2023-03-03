@@ -10,6 +10,7 @@ use Illuminate\Auth\Events\Login;
 
 // WNGX imports
 use App\Listeners\LoginListener;
+use App\Listeners\RegistrationListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            RegistrationListener::class
         ],
         Login::class => [
             LoginListener::class,
