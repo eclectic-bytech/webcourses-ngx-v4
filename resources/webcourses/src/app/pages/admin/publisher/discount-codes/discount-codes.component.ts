@@ -23,4 +23,11 @@ export class DiscountCodesComponent implements OnInit {
     this.discountCodes$ = this.discountCodesService.getDiscountCodes()
   }
 
+  pillClass(discountCode) {
+    let pill_class = "badge-success"
+    if ((discountCode.uses_max - discountCode.uses) < 10 && discountCode.uses_max != 0) pill_class = "badge-warning"
+    if ((discountCode.uses_max - discountCode.uses) <= 0 && discountCode.uses_max != 0) pill_class = "badge-danger"
+    return pill_class
+  }
+
 }
