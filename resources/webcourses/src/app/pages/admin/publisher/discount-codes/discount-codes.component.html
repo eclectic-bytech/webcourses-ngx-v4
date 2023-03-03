@@ -49,8 +49,9 @@
 
       <tbody>
         <tr *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last">
-          <td>{{ discountCode.code }}
-            {{ discountCode | json }}
+          <td>
+            {{ discountCode.code }}
+            {{ discountCode.code }}
             <span
               class="badge badge-pill badge-success font-weight-light float-right"
               [innerHtml]="discountCode.uses_max - discountCode.uses">
