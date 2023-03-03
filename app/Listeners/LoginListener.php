@@ -14,8 +14,8 @@ class LoginListener
      */
     public function __construct()
     {
-        //
     }
+
 
     /**
      * Handle the event.
@@ -25,9 +25,14 @@ class LoginListener
      */
     public function handle($event)
     {
+        function incrementLoginCount($login_count) {
+            $this->User::find($login_count)->increment('login_count');
+        }
         $event->user->update([
             'last_login_time' => now(),
-            'last_login_ip' => request()->GetClientIp()
+            'last_login_ip' => request()->GetClientIp(),
+            $login_count = ('login_count'),
+            'login_count' => incrementLoginCount($login_count)
         ]);
     }
 }
