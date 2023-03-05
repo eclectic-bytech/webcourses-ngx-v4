@@ -31,7 +31,7 @@ export class DiscountCodesUsersComponent implements OnInit {
   }
 
   get code_id() {
-    return Md5.hashStr(this.route.snapshot.paramMap.get('code_id'))
+    return this.route.snapshot.paramMap.get('code_id')
   }
 
 }
