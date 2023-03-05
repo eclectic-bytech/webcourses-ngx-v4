@@ -4,7 +4,7 @@ import { DiscountCodesUsersComponent } from './discount-codes-users.component';
 
 const routes: Routes = [
   {
-    path: ':code_id',
+    path: 'users',
     component: DiscountCodesUsersComponent
   }
 ];

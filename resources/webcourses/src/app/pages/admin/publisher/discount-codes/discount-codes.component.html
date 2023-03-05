@@ -51,7 +51,7 @@
         <tr
           class="handy"
           *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
-          [routerLink]="['users', discountCode.code]"
+          [routerLink]="[discountCode.id, 'users']"
         >
           <td>
             {{ discountCode.code }}
