@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function routeNotificationForSlack()
+    {
+        return 'https://hooks.slack.com/services/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';
+    }
 }

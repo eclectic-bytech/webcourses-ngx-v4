@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\SlackMessage;
 
 class RegistrationNotification extends Notification
 {
@@ -16,9 +17,9 @@ class RegistrationNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($userName)
     {
-        //
+        $this->user = $userName;
     }
 
     /**
@@ -41,19 +42,7 @@ class RegistrationNotification extends Notification
     public function toSlack($notifiable)
     {
      return (new SlackMessage)
+     ->success()
      ->content('No I am your father');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
     }
 }
