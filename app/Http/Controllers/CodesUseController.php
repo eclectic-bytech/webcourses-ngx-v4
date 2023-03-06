@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\CodesUse;
 use App\Models\Course;
 use App\Models\Coupon;
+use Illuminate\Support\Facades\DB;
 
 class CodesUseController extends Controller
 {
@@ -17,7 +18,9 @@ class CodesUseController extends Controller
         if ($uid === $course['publisher']['owner_uid']) {
             return CodesUse::where('code_id', $code_id)
                 ->with('user')
-                ->with('completed_activities_count')
+                ->withCount(['completed_activities_count' => function($query) {
+                    $query->select(DB::raw('count(distinct(activity_id))'));
+                }])
                 ->get();
         }
 

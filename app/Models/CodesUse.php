@@ -21,9 +21,6 @@ class CodesUse extends Model
     }
 
     public function completed_activities_count() {
-        return $this
-            ->hasMany(UserAnswer::class, 'user_progress_id', 'progress_id')
-            ->distinct('activity_id')
-            ->count();
+        return $this->hasMany(UserAnswer::class, 'progress_id', 'user_progress_id');
     }
 }
