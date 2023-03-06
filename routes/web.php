@@ -123,7 +123,7 @@ Route::group(['prefix' => 'v4'], function() {
             Route::get('/coupons', [CouponController::class, 'index']);
 
             // Paths grouped as /v4/admin/publisher/access_codes
-            Route::group(['prefix' => 'access_codes'], function() {
+            Route::group(['prefix' => 'access-codes'], function() {
                 // returns Course for code_id
                 Route::get('/{code_id}', [CodesUseController::class, 'access_code_course']);
                 // Lists all users that applied a code
