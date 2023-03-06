@@ -122,8 +122,14 @@ Route::group(['prefix' => 'v4'], function() {
             // Lists courses and their access codes
             Route::get('/coupons', [CouponController::class, 'index']);
 
-            // Lists all users that applied a code
-            Route::get('/access-codes/{code_id}/users', [CodesUseController::class, 'access_code_users']);
+            // Paths grouped as /v4/admin/publisher/access_codes
+            Route::group(['prefix' => 'access_codes', function() {
+                // Lists all users that applied a code
+                Route::get('/{code_id}/users', [CodesUseController::class, 'access_code_users']);
+
+                // returns Course for code_id
+                Route::get('/{code_id}', [CodesUseController::class, 'access_code_course']);
+            }]);
 
             // Paths grouped as /v4/admin/publisher/course
             Route::group(['prefix' => 'course'], function() {
