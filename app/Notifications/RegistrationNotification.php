@@ -29,21 +29,19 @@ class RegistrationNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['slack'];
     }
 
     /**
-     * Get the mail representation of the notification.
+     * Get the Slack representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return \Illuminate\Notifications\Messages\SlackMessage
      */
-    public function toMail($notifiable)
+    public function toSlack($notifiable)
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+     return (new SlackMessage)
+     ->content('No I am your father');
     }
 
     /**
