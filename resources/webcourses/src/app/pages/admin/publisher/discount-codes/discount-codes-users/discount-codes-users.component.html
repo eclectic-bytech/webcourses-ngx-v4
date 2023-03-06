@@ -14,7 +14,11 @@
       <tbody>
         <tr *ngFor="let discountCodeUser of discountCodeUsers, let i = 'index + 1'">
           <td class="text-center">{{i}}</td>
-          <td>{{ discountCodeUser.user.first_name }}</td>
+          <td [routerLink]="[
+            '/admin', 'publisher', 'course', 'user_progress', discountCodeUser.user_progress_id
+          ]">
+            {{ discountCodeUser.user.first_name }}
+          </td>
           <td>{{ discountCodeUser.user.last_name }}</td>
           <td>{{ discountCodeUser.user.email }}</td>
           <td>{{ discountCodeUser.user.created_at | date:'mediumDate' }}</td>
