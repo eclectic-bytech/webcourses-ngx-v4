@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing'
 import { AppComponent } from './app.component'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { APP_INITIALIZER } from '@angular/core'
-import { CookieService } from 'ngx-cookie-service'
 import { ConfigService } from './core/services/config/config.service'
 
 describe('AppComponent', () => {
@@ -18,7 +17,6 @@ describe('AppComponent', () => {
       ],
       providers: [
         HttpClientTestingModule,
-        CookieService,
         {
           provide: APP_INITIALIZER,
           multi: true,

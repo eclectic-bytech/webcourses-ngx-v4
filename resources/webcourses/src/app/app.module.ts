@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms'
 
-import { CookieService } from 'ngx-cookie-service'
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics'
 
 import { AppRoutingModule } from './app-routing.module'
@@ -43,7 +42,6 @@ import { ActivitiesService } from './pages/webcourse/activities/activities.servi
         }
       }
     },
-    CookieService,
     Title,
     UserService,
     ActivitiesService

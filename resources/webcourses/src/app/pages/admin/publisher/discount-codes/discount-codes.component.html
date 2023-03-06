@@ -48,11 +48,18 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last">
-          <td>{{ discountCode.code }}
+        <tr
+          class="handy"
+          *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
+          [routerLink]="[discountCode.id, 'users']"
+        >
+          <td>
+            {{ discountCode.code }}
             <span
-              class="badge badge-pill badge-success font-weight-light float-right"
-              [innerHtml]="discountCode.uses_max - discountCode.uses">
+              class="badge badge-pill font-weight-light mt-1 float-right"
+              [ngClass]="pillClass(discountCode)"
+              [innerHtml]="(discountCode.uses_max === 0) ? 'Unlimited' : discountCode.uses_max - discountCode.uses"
+            >
             </span>
           </td>
           <td>{{ discountCode.label }}</td>

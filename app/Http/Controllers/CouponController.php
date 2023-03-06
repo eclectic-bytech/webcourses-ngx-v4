@@ -8,7 +8,7 @@ use App\Models\Course;
 use App\Models\Publisher;
 use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
-use App\Models\CodesUses;
+use App\Models\CodesUse;
 
 
 class CouponController extends Controller
@@ -91,7 +91,7 @@ class CouponController extends Controller
 
     public function updateCodesUsesTable($code_id, $pid) {
         // Insert record into codes_uses table
-        $codes_uses = new CodesUses;
+        $codes_uses = new CodesUse;
         $codes_uses->code_id = $code_id;
         $codes_uses->user_progress_id = $pid;
         $codes_uses->save();
