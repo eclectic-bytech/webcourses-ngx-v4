@@ -18,7 +18,7 @@ class CodesUseController extends Controller
         if ($uid === $course['publisher']['owner_uid']) {
             return CodesUse::where('code_id', $code_id)
                 ->with('user')
-                ->withCount(['completed_activities_count' => function($query) {
+                ->withCount(['completed_activities' => function($query) {
                     $query->select(DB::raw('count(distinct(activity_id))'));
                 }])
                 ->get();

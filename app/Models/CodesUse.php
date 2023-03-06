@@ -20,7 +20,7 @@ class CodesUse extends Model
         );
     }
 
-    public function completed_activities_count() {
+    public function completed_activities() {
         return $this->hasMany(UserAnswer::class, 'progress_id', 'user_progress_id');
     }
 }
