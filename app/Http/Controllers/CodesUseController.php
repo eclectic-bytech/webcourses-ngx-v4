@@ -26,4 +26,9 @@ class CodesUseController extends Controller
 
         return [];
     }
+
+    public function access_code_course($code_id) {
+        $access_code = Coupon::find($code_id)->first();
+        return Course::find($access_code->cid)->first();
+    }
 }
