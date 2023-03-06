@@ -9,6 +9,10 @@ class Coupon extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     public function course() {
         return $this->hasOne(Course::class, 'id', 'cid');
     }

@@ -15,19 +15,18 @@ const routes: Routes = [
       title: 'Cultivate Learning Web Course Catalogue'
     },
   },
-      {
-        path: 'publisher',
-        loadChildren: () => import('./publisher/publisher.module').then(m => m.PublisherModule)
-      },
-      {
-        path: 'publishers',
-        loadChildren: () => import('./publishers/publishers.module').then(m => m.PublishersModule)
-      },
-      {
-        path: 'course',
-        loadChildren: () => import('./course/course.module').then(m => m.CourseModule)
-      }
-
+  {
+    path: 'publisher',
+    loadChildren: () => import('./publisher/publisher.module').then(m => m.PublisherModule)
+  },
+  {
+    path: 'publishers',
+    loadChildren: () => import('./publishers/publishers.module').then(m => m.PublishersModule)
+  },
+  {
+    path: 'course',
+    loadChildren: () => import('./course/course.module').then(m => m.CourseModule)
+  }
 ]
 
 @NgModule({

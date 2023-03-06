@@ -14,8 +14,4 @@ export class GroupJoinCardComponent {
     public poService: PurchaseOrderService
   ) {}
 
-  enrolButton(cid: string, codeHash: string) {
-    this.poService.makePurchase(Number(cid), codeHash)
-  }
-
 }

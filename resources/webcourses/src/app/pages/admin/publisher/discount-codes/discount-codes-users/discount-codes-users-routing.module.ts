@@ -1,0 +1,16 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { DiscountCodesUsersComponent } from './discount-codes-users.component';
+
+const routes: Routes = [
+  {
+    path: 'users',
+    component: DiscountCodesUsersComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class DiscountCodesUsersRoutingModule { }

@@ -9,8 +9,13 @@ const routes: Routes = [
     component: DiscountCodesComponent,
     data: {
       title: 'Discount Codes'
-    }
+    },
+    pathMatch: 'full'
   },
+  {
+    path: ':code_id',
+    loadChildren: () => import('./discount-codes-users/discount-codes-users.module').then(m => m.DiscountCodesUsersModule),
+  }
 ]
 
 @NgModule({
