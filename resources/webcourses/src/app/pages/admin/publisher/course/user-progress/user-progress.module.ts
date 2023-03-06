@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserProgressComponent } from './user-progress.component';
 
+import { UserProgressRoutingModule } from './user-progress-routing.module';
+import { UserProgressComponent } from './user-progress.component';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { UserProgressComponent } from './user-progress.component';
     UserProgressComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    UserProgressRoutingModule
   ]
 })
 export class UserProgressModule { }
