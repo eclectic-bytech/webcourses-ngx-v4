@@ -19,4 +19,11 @@ class CodesUse extends Model
             'user_id'
         );
     }
+
+    public function completed_activities_count() {
+        return $this
+            ->hasMany(UserAnswer::class, 'user_progress_id', 'progress_id')
+            ->distinct('activity_id')
+            ->count();
+    }
 }

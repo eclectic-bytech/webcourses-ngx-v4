@@ -15,7 +15,10 @@ class CodesUseController extends Controller
         $course = Course::where('id', $code->cid)->with('publisher')->first();
 
         if ($uid === $course['publisher']['owner_uid']) {
-            return CodesUse::where('code_id', $code_id)->with('user')->get();
+            return CodesUse::where('code_id', $code_id)
+                ->with('user')
+                ->with('completed_activities_count')
+                ->get();
         }
 
         return [];
