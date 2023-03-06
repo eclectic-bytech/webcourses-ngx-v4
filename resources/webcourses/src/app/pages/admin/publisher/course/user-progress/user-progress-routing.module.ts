@@ -4,7 +4,7 @@ import { UserProgressComponent } from './user-progress.component';
 
 const routes: Routes = [
   {
-    path: '{pid}',
+    path: ':pid',
     component: UserProgressComponent
   }
 ];
