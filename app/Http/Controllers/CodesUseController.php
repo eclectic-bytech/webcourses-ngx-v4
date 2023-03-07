@@ -21,6 +21,7 @@ class CodesUseController extends Controller
                 ->withCount(['completed_activities' => function($query) {
                     $query->select(DB::raw('count(distinct(activity_id))'));
                 }])
+                ->orderBy('created_at', 'desc')
                 ->get();
         }
 
