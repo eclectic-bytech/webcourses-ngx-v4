@@ -26,10 +26,9 @@ class RegistrationListener
      */
     public function handle($event)
     {
-        RegistrationNotification::class;
-    //     $userName = ($event->user->name);
-    //     $user = ($event->user);
+        $userName = ($event->user->name);
+        $user = ($event->user);
 
-    //     $user->notify(new RegistrationNotification($userName));
+        $user->notify(new RegistrationNotification($userName));
     }
 }
