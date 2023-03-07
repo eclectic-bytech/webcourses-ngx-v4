@@ -7,9 +7,14 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
+use app\Models\User;
+use routes\web;
 
 class RegistrationNotification extends Notification
 {
+
+    // protected $user;
+
     use Queueable;
 
     /**
@@ -17,9 +22,9 @@ class RegistrationNotification extends Notification
      *
      * @return void
      */
-    public function __construct($userName)
+    public function __construct()//App\User $user)
     {
-        $this->user = $userName;
+        // $this->user = $user;
     }
 
     /**
