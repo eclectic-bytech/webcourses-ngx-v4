@@ -29,6 +29,6 @@ class CodesUseController extends Controller
 
     public function access_code_course($code_id) {
         $access_code = Coupon::find($code_id)->first();
-        return Course::find($access_code->cid)->withCount('courseSyllabus as total_activities')->first();
+        return Course::where('id', $access_code->cid)->withCount('courseSyllabus as total_activities')->first();
     }
 }
