@@ -27,7 +27,6 @@ class RegistrationListener
      */
     public function handle($event)
     {
-        $user = User::where('id',1)->get();
-        \Notification::send($user, new RegistrationNotification(1));
+        \Notification::send($event->user, new RegistrationNotification());
     }
 }

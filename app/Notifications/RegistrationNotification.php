@@ -9,11 +9,10 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
 use app\Models\User;
 use routes\web;
+use app\Listeners\RegistrationListener;
 
 class RegistrationNotification extends Notification
 {
-
-    // protected $user;
 
     use Queueable;
 
@@ -22,9 +21,8 @@ class RegistrationNotification extends Notification
      *
      * @return void
      */
-    public function __construct()//App\User $user)
+    public function __construct()
     {
-        // $this->user = $user;
     }
 
     /**
@@ -48,6 +46,6 @@ class RegistrationNotification extends Notification
     {
      return (new SlackMessage)
      ->success()
-     ->content('No I am your father');
+     ->content($notifiable->email);
     }
 }
