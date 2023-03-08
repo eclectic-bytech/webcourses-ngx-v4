@@ -59,6 +59,11 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    /**
+     * The webhook for slack notifications.
+     *
+     * @var string
+     */
     public function routeNotificationForSlack()
     {
         return env('STACK_WEBHOOK_URL');

@@ -4,12 +4,8 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
-use app\Models\User;
-use routes\web;
-use app\Listeners\RegistrationListener;
 
 class RegistrationNotification extends Notification
 {
@@ -23,6 +19,7 @@ class RegistrationNotification extends Notification
      */
     public function __construct()
     {
+        //
     }
 
     /**
@@ -45,7 +42,6 @@ class RegistrationNotification extends Notification
     public function toSlack($notifiable)
     {
      return (new SlackMessage)
-     ->success()
      ->content($notifiable->email);
     }
 }
