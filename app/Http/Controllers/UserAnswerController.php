@@ -64,6 +64,10 @@ class UserAnswerController extends Controller
         return 0;
     }
 
+    public function user_answer_full_report($pid) {
+        return "Hola!";
+    }
+
     public function user_answers(int $pid, int $aid) {
         return UserAnswer
             ::where('progress_id', $pid)

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs'
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from 'src/app/core/services/config/config.service';
-import { Md5 } from 'ts-md5/dist/md5'
+import { Course } from 'src/app/models/course.model';
 
 @Component({
   selector: 'app-discount-codes-users',
@@ -13,6 +13,8 @@ import { Md5 } from 'ts-md5/dist/md5'
 export class DiscountCodesUsersComponent implements OnInit {
 
   public discountCodeUsers$ = new Subject<any[] | null>()
+  public course$ = new Subject<any|null>()
+  public total_activities = 0
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +28,15 @@ export class DiscountCodesUsersComponent implements OnInit {
     ).subscribe(
       (data) => {
         this.discountCodeUsers$.next(data)
+      }
+    )
+
+    this.httpClient.get<Course>(
+      `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/course`
+    ).subscribe(
+      (course: Course) => {
+        this.course$.next(course)
+        this.total_activities = course.total_activities
       }
     )
   }

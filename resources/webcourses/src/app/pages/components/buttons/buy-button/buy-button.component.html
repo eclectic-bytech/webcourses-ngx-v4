@@ -1,12 +1,11 @@
-<div *ngIf="this.userService.user">
+<div>
   <div *ngIf="!this.purchaseStarted; else verifying">
-    <button *ngIf="!this.course.user_progress"
+    <button
       (click)="this.userService.user ? buyButton() : this.loginRequired(content)"
       class="btn btn-primary p-2"
       [ngClass]="btnLg ? 'btn-lg' : ''"
     >
-      <span *ngIf="course.price > 0">${{ course.price / 100 | number:'1.0-2' }} – Buy</span>
-      <span *ngIf="course.price === 0" class="mx-3">Enrol</span>
+      <span>${{ course.price / 100 | number:'1.0-2' }} – Buy</span>
     </button>
   </div>
 </div>

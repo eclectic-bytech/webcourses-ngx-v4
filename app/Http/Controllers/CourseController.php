@@ -46,7 +46,10 @@ class CourseController extends Controller
             ->whereHas('UserProgress')
             ->withCount('courseSyllabus as total_activities')
             ->withCount('participants as total_students')
-            ->with(['publisher', 'theme', 'UserProgress'])
+            ->with(['publisher', 'theme'])
+            ->when(auth()->check(), function($query) {
+                return $query->with('userProgress');
+            })
             ->get();
     }
 
@@ -56,7 +59,10 @@ class CourseController extends Controller
         $course = Course
             ::where('courses.id', $cid)
             ->where('courses.published', 1)
-            ->with(['publisher', 'theme', 'UserProgress'])
+            ->with(['publisher', 'theme'])
+            ->when(auth()->check(), function($query) {
+                return $query->with('userProgress');
+            })
             ->withCount('courseSyllabus as total_activities')
             ->withCount('participants as total_students')
             ->first();
