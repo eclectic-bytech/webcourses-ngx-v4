@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'publisher/discount-codes',
     loadChildren: () => import('./publisher/discount-codes/discount-codes.module').then(m => m.DiscountCodesModule),
   },
+  {
+    path: 'publisher/course/user_progress',
+    loadChildren: () => import('./publisher/course/user-progress/user-progress-routing.module').then(m => m.UserProgressRoutingModule)
+  }
 ]
 
 

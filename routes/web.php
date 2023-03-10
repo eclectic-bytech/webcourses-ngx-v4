@@ -122,14 +122,22 @@ Route::group(['prefix' => 'v4'], function() {
             // Lists courses and their access codes
             Route::get('/coupons', [CouponController::class, 'index']);
 
-            // Lists all users that applied a code
-            Route::get('/access-codes/{code_id}/users', [CodesUseController::class, 'access_code_users']);
+            // Paths grouped as /v4/admin/publisher/access-codes
+            Route::group(['prefix' => 'access-codes'], function() {
+                // returns Course for code_id
+                Route::get('/{code_id}/course', [CodesUseController::class, 'access_code_course']);
+                // Lists all users that applied a code
+                Route::get('/{code_id}/users', [CodesUseController::class, 'access_code_users']);
+            });
+
+            // Paths grouped as /v4/admin/publisher/course
+            Route::group(['prefix' => 'course'], function() {
+                Route::get('/user-progress/{pid}', [UserAnswerController::class, 'user_answer_full_report']);
+            });
 
             // Paths grouped as /v4/admin/publisher/course-editor
             Route::group(['prefix' => 'course-editor'], function() {
-
                 Route::put('/syllabus/{aid}/demo', [CourseEditorController::class, 'demo']);
-
             });
 
         });
