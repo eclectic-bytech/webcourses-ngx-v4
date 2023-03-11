@@ -14,7 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('login_count')->unsigned()->nullable()->default(0)->comment('Keeps track of number of times a user logged in')->after('last_login_ip');
+            $table
+                ->integer('login_count')
+                ->unsigned()
+                ->nullable()
+                ->default(0)
+                ->comment('Keeps track of number of times a user logged in')
+                ->after('last_login_ip')
+            ;
         });
     }
 

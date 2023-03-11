@@ -7,7 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class LoginListener
 {
-        /**
+    /**
      * Create the event listener.
      *
      * @return void
