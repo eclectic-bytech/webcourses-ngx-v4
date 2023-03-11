@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Notification;
 use App\Notifications\RegistrationNotification;
 
 class RegistrationListener
@@ -26,6 +27,6 @@ class RegistrationListener
      */
     public function handle($event)
     {
-        \Notification::send($event->user, new RegistrationNotification());
+        Notification::send($event->user, new RegistrationNotification());
     }
 }
