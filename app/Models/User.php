@@ -64,8 +64,8 @@ class User extends Authenticatable
      *
      * @var string
      */
-    public function routeNotificationForSlack()
+    public function routeNotificationForSlack($notification)
     {
-        return env('STACK_WEBHOOK_URL');
+        return env('SLACK_HOOK_NOTIFICATION_URL_NEW_USER_REGISTRATION');
     }
 }
