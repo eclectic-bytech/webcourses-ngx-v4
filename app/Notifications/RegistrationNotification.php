@@ -41,7 +41,6 @@ class RegistrationNotification extends Notification
      */
     public function toSlack($notifiable)
     {
-     return (new SlackMessage)
-     ->content("New User: $notifiable->email");
+        return (new SlackMessage)->content("New User: $notifiable->email");
     }
 }
