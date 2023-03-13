@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 // WNGX imports
 import { DashboardComponent } from './dashboard.component'
@@ -13,6 +14,7 @@ import { LoadingSpinnerModule } from 'src/app/core/modules/loading-spinner/loadi
   ],
   imports: [
     CommonModule,
+    FontAwesomeModule,
     DashboardRoutingModule,
     LoadingSpinnerModule
   ]

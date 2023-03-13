@@ -1,6 +1,6 @@
 <div
   id="fullMainContent"
-  class="container"
+  class="container mb-5"
   @fadeInOut
   >
   <div class="row border border-secondary rounded-lg" style="background-color: lightslategray;">
@@ -31,7 +31,14 @@
       </div>
     </div>
     <div class="col">
-      <div class="h3 text-uppercase pb-2">Latest access-code uses</div>
+      <div class="d-block my-auto">
+        <div class="h3 text-uppercase d-inline-block">
+          Latest access-code uses
+        </div>
+        <button type="button" class="btn btn-link btn-sm float-right" (click)="refresh()">
+          <fa-icon [icon]="faRepeat" class="text-primary mr-2"></fa-icon>Refresh
+        </button>
+      </div>
       <table class="table table-sm">
         <thead>
           <tr>
@@ -51,12 +58,22 @@
           </tr>
         </tbody>
       </table>
+      <div class="py-1">
+        <span class="text-secondary text-uppercase float-right small">{{ this.lastRefresh | date: 'E H:mm:ss' }}</span>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <div class="h3 text-uppercase">Latest logins</div>
-      <div class="alert alert-primary mt-3" role="alert">
+      <div class="d-block my-auto">
+        <div class="h3 text-uppercase d-inline-block">
+          Latest logins
+          <button type="button" class="btn btn-link btn-sm ml-3" (click)="refreshLatestLogins()">
+            <fa-icon [icon]="faRepeat" class="text-primary mr-2"></fa-icon>Refresh
+          </button>
+        </div>
+      </div>
+      <div class="alert alert-primary mb-1" role="alert">
         <div *ngIf="(recentLogins$ | async) as recentLogins; else LoadingSpinner" @fadeInOut>
           <div *ngFor="let recentLogin of recentLogins" class="d-inline-block">
             <span class="h6 font-weight-normal">
@@ -68,9 +85,12 @@
           </div>
         </div>
         <ng-template #LoadingSpinner>
-          <app-loading-spinner></app-loading-spinner>
+          <div class="text-center d-block">
+            <app-loading-spinner></app-loading-spinner>
+          </div>
         </ng-template>
       </div>
+      <span class="text-secondary text-uppercase small">{{ this.lastLatestLoginsRefresh | date: 'E H:mm:ss' }}</span>
     </div>
   </div>
 </div>
