@@ -108,6 +108,12 @@
                                         <!-- <div class="block px-4 py-2 text-xs text-gray-400">
                                             Manage Account
                                         </div> -->
+                                        <!-- <div class="sm:hidden sm:flex flex items-center px-4">
+                                            <div>
+                                               <div class="font-medium text-base text-gray-800">{{ $page.props.user.username }}</div>
+                                               <div class="font-medium text-sm text-gray-500">{{ $page.props.user.email }}</div>
+                                            </div>
+                                        </div> -->
 
                                         <jet-dropdown-link :href="('/user/redirect')" class="items-center">
                                             <div class="inline-flex px-2 py-1">
