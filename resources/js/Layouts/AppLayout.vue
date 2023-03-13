@@ -170,15 +170,6 @@
                                 </jet-dropdown>
                             </div>
                         </div>
-<!--
-                        <div class="-mr-2 flex items-center sm:hidden">
-                            <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="justify-center p-2 transition">
-                                <div class="inline-flex items-center">
-                                    <img class="h-9 w-auto rounded-full object-cover" :src="$page.props.user.profile_photo_url"/>
-                                    <font-awesome-icon icon="fa-solid fa-caret-down" class="ml-1 text-gray-700" />
-                                </div>
-                            </button>
-                        </div> -->
                     </div>
                 </div>
 
