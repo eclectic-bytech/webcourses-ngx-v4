@@ -10,5 +10,6 @@ export class JetstreamUser {
   profile_photo_path: string
   created_at: string
   updated_at: string
+  login_count: number
   profile_photo_url: string
 }

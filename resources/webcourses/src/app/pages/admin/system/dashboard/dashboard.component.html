@@ -1,7 +1,76 @@
 <div
   id="fullMainContent"
-  class="mt-5 pt-5"
+  class="container mt-5"
   @fadeInOut
   >
-  System Administrator Dashboard, Animated
+  <div class="row border border-secondary rounded-lg" style="background-color: lightslategray;">
+    <div class="col text-center">
+      <img src="assets/starfleet.png" class="my-3">
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col">
+      <div class="h3 text-uppercase pb-2">System overview</div>
+      <div class="container-fluid">
+        <div class="row my-1">
+          <div class="col-2">N/A</div>
+          <div class="col-10">Publishers</div>
+        </div>
+        <div class="row my-1">
+          <div class="col-2">N/A</div>
+          <div class="col-10">Courses</div>
+        </div>
+        <div class="row my-1">
+          <div class="col-2">N/A</div>
+          <div class="col-10">Activities</div>
+        </div>
+        <div class="row my-1">
+          <div class="col-2">N/A</div>
+          <div class="col-10">User completed activities</div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="h3 text-uppercase pb-2">Latest access-code uses</div>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">ID</th>
+            <th scope="col">Label</th>
+            <th scope="col" class="text-right">Uses</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="(recentCodeUses$ | async) as recentCodeUses; else LoadingSpinner" @fadeInOut>
+          <tr *ngFor="let recentCodeUse of recentCodeUses">
+            <td class="text-center align-middle">{{ recentCodeUse.cid }}</td>
+            <td class="h6 font-weight-normal">
+              {{ recentCodeUse.label }}<br>
+              <span class="text-uppercase text-secondary font-weight-light small">{{ recentCodeUse.updated_at | date: 'E d MMM H:mm' }}</span>
+            </td>
+            <td class="text-right align-middle">{{ recentCodeUse.uses }} / {{ recentCodeUse.uses_max }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="h3 text-uppercase">Latest logins</div>
+      <div class="alert alert-primary mt-3" role="alert">
+        <div *ngIf="(recentLogins$ | async) as recentLogins; else LoadingSpinner" @fadeInOut>
+          <div *ngFor="let recentLogin of recentLogins" class="d-inline-block">
+            <span class="h6 font-weight-normal">
+              <a href="mailto:{{recentLogin.email}}" target="_blank">{{recentLogin.email}}</a>
+            </span>
+            <span> ({{ recentLogin.login_count }})</span>
+            <span class="text-secondary text-uppercase small"> {{ recentLogin.updated_at | date: 'E d MMM H:mm' }}</span>
+            <span class="px-2 font-weight-bold">-</span>
+          </div>
+        </div>
+        <ng-template #LoadingSpinner>
+          <app-loading-spinner></app-loading-spinner>
+        </ng-template>
+      </div>
+    </div>
+  </div>
 </div>

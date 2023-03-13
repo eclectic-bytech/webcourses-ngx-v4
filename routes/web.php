@@ -116,6 +116,13 @@ Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped as /v4/admin
     Route::group(['prefix' => 'admin'], function() {
+
+        // Paths gruped as /v4/admin/system
+        Route::middleware(['is_admin'])->prefix('system')->group(function() {
+            Route::get('recent-code-uses', [CouponController::class, 'recent_code_uses']);
+            Route::get('recent-logins', [UserController::class, 'recent_logins']);
+        });
+
         // Paths grouped as /v4/admin/publisher
         Route::group(['prefix' => 'publisher'], function() {
 

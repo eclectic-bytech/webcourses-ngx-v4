@@ -5,7 +5,7 @@ import { HeaderBarService } from './header-bar.service'
 import { GravatarMd5Service } from '../../../core/services/gravatar-md5/gravatar-md5.service'
 import { ThemeService } from '../../../core/services/theme/theme.service'
 import { DomSanitizer } from '@angular/platform-browser'
-import { faWrench, faGem, faGraduationCap, faSignOutAlt, faPenNib, faBarcode } from '@fortawesome/free-solid-svg-icons'
+import { faWrench, faGem, faGraduationCap, faSignOutAlt, faPenNib, faBarcode, faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
 import { Theme } from '../../../models/theme.model'
 
 @Component({
@@ -23,6 +23,7 @@ export class HeaderBarComponent implements OnInit {
   faSignOutAlt = faSignOutAlt
   faPenNib = faPenNib
   faBarcode = faBarcode
+  faScrewdriverWrench = faScrewdriverWrench
 
   public menuCollapsed = true
   public menuCollapsed2 = true
