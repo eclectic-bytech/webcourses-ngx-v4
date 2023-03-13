@@ -89,14 +89,7 @@ class User extends Authenticatable
      */
     public function defaultProfilePhotoUrl()
     {
-        return 'https://ui-avatars.com/api/'. implode('/', [
-
-            //IMPORTANT: Do not change this order
-            urlencode($this->name), // name
-            200, // image size
-            'EBF4FF', // background color
-            '7F9CF5', // font color
-        ]);
+        return 'https://www.gravatar.com/avatar/';
     }
     /**
      * @param  \Illuminate\Http\UploadedFile  $photo

@@ -98,8 +98,8 @@
                                     <template #trigger>
                                         <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                             <div class="inline-flex items-center">
-                                            <p class="mr-2">{{ $page.props.user.username }}</p>
-                                            <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.username" />
+                                            <div class="mr-2">{{ $page.props.user.username }}</div>
+                                            <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url"/>
                                             </div>
                                         </button>
 
