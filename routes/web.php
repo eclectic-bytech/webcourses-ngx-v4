@@ -50,7 +50,7 @@ Route::get('/dashboard', function () {
 
 Route::group(['prefix' => 'user'], function() {
     Route::get('/redirect', [UserRedirectController::class, 'user_login_redirect']);
-    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    Route::middleware(['auth:sanctum'])->get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
@@ -61,7 +61,7 @@ Route::group(['prefix' => 'v4'], function() {
     Route::group(['prefix' => '/catalogue'], function() {
         Route::get('/', [CourseController::class, 'index']);
         Route::get('/publisher/{publisherId?}', [CourseController::class, 'index']);
-        Route::get('/user/{userId?}', [CourseController::class, 'indexUser'])->whereNumber('userId');
+        Route::middleware(['auth:sanctum'])->get('/user/{userId?}', [CourseController::class, 'indexUser'])->whereNumber('userId');
         Route::get('/course/{cid}', [CourseController::class, 'course'])->whereNumber('cid');
     });
 
@@ -70,7 +70,7 @@ Route::group(['prefix' => 'v4'], function() {
     });
 
     // Paths grouped as /v4/user
-    Route::group(['prefix' => 'user', 'auth:sanctum' => 'verified'], function() {
+    Route::middleware(['auth:sanctum'])->prefix('user')->group(function() {
 
         // Paths grouped as /v4/user/profile
         Route::group(['prefix' => 'profile'], function() {
@@ -83,21 +83,10 @@ Route::group(['prefix' => 'v4'], function() {
             Route::get('/{pid?}/resume', [UserCourseController::class, 'start_aid']);
         });
 
-        // Paths grouped as /v4/user/courses
-        Route::group(['prefix' => 'courses'], function() {
-
-            // Catalogue of courses where the user is a participant
-            Route::get('/', [UserCourseController::class, 'index']);
-
-            // User's web courses progress: Unused?
-            // Route::get('/progress', [UserCourseController::class, 'indexWithCourse']);
-
-        });
-
     });
 
     // Paths grouped as /v4/webcourse
-    Route::group(['prefix' => 'webcourse', 'auth:sanctum' => 'verified'], function() {
+    Route::middleware(['auth:sanctum'])->prefix('webcourse')->group(function() {
         Route::get('/access-code/{code_hash}', [CouponController::class, 'applyAccessCode']);
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
 
@@ -115,7 +104,7 @@ Route::group(['prefix' => 'v4'], function() {
     });
 
     // Paths grouped as /v4/admin
-    Route::group(['prefix' => 'admin'], function() {
+    Route::middleware(['auth:sanctum'])->prefix('admin')->group(function() {
 
         // Paths gruped as /v4/admin/system
         Route::middleware(['is_admin'])->prefix('system')->group(function() {
