@@ -34,4 +34,8 @@ class UserController extends Controller
             ->first()
         ;
     }
+
+    public function recent_logins() {
+        return User::orderByDesc('updated_at')->limit(10)->get();
+    }
 }

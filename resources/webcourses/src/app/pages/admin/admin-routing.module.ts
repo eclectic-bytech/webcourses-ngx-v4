@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'publisher/course/user_progress',
     loadChildren: () => import('./publisher/course/user-progress/user-progress-routing.module').then(m => m.UserProgressRoutingModule)
+  },
+  {
+    path: 'system/dashboard',
+    loadChildren: () => import('./system/dashboard/dashboard.module').then(m => m.DashboardModule)
   }
 ]
 

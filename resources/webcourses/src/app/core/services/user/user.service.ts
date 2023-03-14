@@ -46,7 +46,8 @@ export class UserService {
     }
   }
 
-  userIsPublisher() {
-    return (this.user['user_roles'].indexOf(2) !== -1) ? 1 : 0
+  userHasRole(id: number) {
+    // 1: sysop, 2: publisher
+    return (this.user['user_roles'].indexOf(id) !== -1) ? 1 : 0
   }
 }
