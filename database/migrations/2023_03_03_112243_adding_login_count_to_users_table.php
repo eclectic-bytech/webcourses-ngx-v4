@@ -18,7 +18,7 @@ return new class extends Migration
                 ->integer('login_count')
                 ->unsigned()
                 ->nullable()
-                ->default(1)
+                ->default(0)
                 ->comment('Keeps track of number of times a user logged in')
                 ->after('last_login_ip')
             ;
