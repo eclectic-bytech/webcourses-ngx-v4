@@ -11,18 +11,20 @@ use Illuminate\Support\Facades\DB;
 class CodesUseController extends Controller
 {
     public function access_code_users($code_id) {
-        $uid = auth()->user()->id;
         $code = Coupon::find($code_id);
-        $course = Course::where('id', $code->cid)->with('publisher')->first();
 
-        if ($uid === $course['publisher']['owner_uid']) {
-            return CodesUse::where('code_id', $code_id)
-                ->with('user')
-                ->withCount(['completed_activities' => function($query) {
-                    $query->select(DB::raw('count(distinct(activity_id))'));
-                }])
-                ->orderBy('created_at', 'desc')
-                ->get();
+        if ($code) {
+            $course = Course::where('id', $code->cid)->with('publisher')->first();
+            if (auth()->user()->id === $course['publisher']['owner_uid'])
+            {
+                return CodesUse::where('code_id', $code_id)
+                    ->with('user')
+                    ->withCount(['completed_activities' => function($query) {
+                        $query->select(DB::raw('count(distinct(activity_id))'));
+                    }])
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+            }
         }
 
         return [];
