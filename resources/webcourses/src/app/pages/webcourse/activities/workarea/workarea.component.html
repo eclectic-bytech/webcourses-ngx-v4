@@ -19,8 +19,9 @@
         class="col"
         >
 
-        <div *ngIf="activity.meta.activity_type === 'custom'; else standardActivity">
+        <div *ngIf="activity.meta.activity_type === 'custom' || activity.meta.activity_type === 'special'; else standardActivity">
           <app-custom-activities *ngIf="activity.meta.activity_type === 'custom'" [activity]="activity"></app-custom-activities>
+          <app-special-activity *ngIf="activity.meta.activity_type === 'special'" [activity]="activity"></app-special-activity>
         </div>
 
         <ng-template #standardActivity>

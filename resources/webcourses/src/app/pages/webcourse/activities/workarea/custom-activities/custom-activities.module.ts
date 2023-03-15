@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { CustomActivitiesComponent } from './custom-activities.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
+// WNGX imports
+import { CustomActivitiesComponent } from './custom-activities.component'
 
 @NgModule({
   declarations: [CustomActivitiesComponent],

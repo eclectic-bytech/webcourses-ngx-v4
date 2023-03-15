@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+
 import { WorkAreaComponent } from './workarea.component'
 import { ActiveModeModule } from './active-mode/active-mode.module'
 import { ReviewModeModule } from './review-mode/review-mode.module'
@@ -8,13 +9,18 @@ import { NavModule } from './nav/nav.module'
 import { DndModule } from './activities/dnd/dnd.module'
 import { ChapterEndComponent } from './components/chapter-end/chapter-end.component'
 import { CourseEndComponent } from './components/course-end/course-end.component'
-import { CustomActivitiesModule } from './custom-activities/custom-activities.module'
 import { ClickRotateModule } from './activities/click-rotate/click-rotate.module'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-import { DemoFlagModule } from '../../builder/activity/demo-flag/demo-flag.module'
+import { DemoFlagModule } from '../../builder/activity/demo-flag/demo-flag.module';
+import { CustomActivitiesModule } from './custom-activities/custom-activities.module'
+import { SpecialActivityModule } from './activities/special-activity/special-activity.module'
 
 @NgModule({
-  declarations: [WorkAreaComponent, ChapterEndComponent, CourseEndComponent],
+  declarations: [
+    WorkAreaComponent,
+    ChapterEndComponent,
+    CourseEndComponent
+  ],
   imports: [
     CommonModule,
     ReviewModeModule,
@@ -23,10 +29,14 @@ import { DemoFlagModule } from '../../builder/activity/demo-flag/demo-flag.modul
     PipesModule,
     DndModule,
     ClickRotateModule,
-    CustomActivitiesModule,
     FontAwesomeModule,
-    DemoFlagModule
+    DemoFlagModule,
+    CustomActivitiesModule,
+    SpecialActivityModule
   ],
-  exports: [WorkAreaComponent]
+  exports: [
+    WorkAreaComponent,
+    SpecialActivityModule
+  ]
 })
 export class WorkAreaModule { }
