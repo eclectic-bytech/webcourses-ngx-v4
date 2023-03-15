@@ -23,6 +23,9 @@ class ActivityController extends Controller
             ->find($aid)->toArray();
     }
 
+    public function before_and_after_activity($aid) {
+        return $aid;
+    }
 
     public function build_activity($aid, $pid) {
         $activityy = $this->activity($aid, $pid);
