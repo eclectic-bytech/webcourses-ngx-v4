@@ -9,53 +9,50 @@
     ></app-demo-flag>
     <div *ngFor="let activity of this.workareaService.activities" class="row activity mt-4" @fadeInOut>
 
-      <!--!!!!!!!!!!!!!!!
-          ngIf is required on activity.* so 'Fringe' browser doesn't show nulls
-          !!!!!!!!!!!!!!! -->
 
       <div
         [id]="'activity' + activity.meta.activity_id"
         [ngClass]="(activity.user_answers) ? 'reviewModeActivity' : 'activeModeActivity'"
         class="col"
-        >
+      >
 
-        <div *ngIf="activity.meta.activity_type === 'custom' || activity.meta.activity_type === 'special'; else standardActivity">
-          <app-custom-activities *ngIf="activity.meta.activity_type === 'custom'" [activity]="activity"></app-custom-activities>
-          <app-special-activity *ngIf="activity.meta.activity_type === 'special'" [activity]="activity"></app-special-activity>
+        <!--!!!!!!!!!!!!!!!
+            ngIf is required on activity.* so 'Fringe' browser doesn't show nulls
+            !!!!!!!!!!!!!!! -->
+
+        <div *ngIf="activity.prequestion" [innerHTML]="activity.prequestion | safehtml: 'html'" class="prequestion mb-3"></div>
+        <div *ngIf="activity.question" [innerHTML]="activity.question | safehtml: 'html'" class="question mb-3 mt-4 h5"></div>
+        <!-- click2 type's assess-text holds punctuation mark data in json format -->
+        <div
+          *ngIf="activity.assess_text && activity.meta.activity_type != 'click2' && activity.meta.activity_type != 'click'"
+          [innerHtml]="activity.assess_text | safehtml: 'html'"
+          class="assess_text mb-4"
+        ></div>
+
+        <div *ngIf="
+          activity.meta.activity_type === 'dnd' ||
+          activity.meta.activity_type === 'dnd-match' ||
+          activity.meta.activity_type === 'click2';
+          else bulkActivities
+        ">
+          <app-dnd *ngIf="activity.meta.activity_type === 'dnd'  || activity.meta.activity_type === 'dnd-match'" [activity]="activity"></app-dnd>
+          <app-click-rotate *ngIf="activity.meta.activity_type === 'click2'" [activity]="activity"></app-click-rotate>
         </div>
 
-        <ng-template #standardActivity>
-          <div *ngIf="activity.prequestion" [innerHTML]="activity.prequestion | safehtml: 'html'" class="prequestion mb-3"></div>
-          <div *ngIf="activity.question" [innerHTML]="activity.question | safehtml: 'html'" class="question mb-3 mt-4 h5"></div>
-          <!-- click2 type's assess-text holds punctuation mark data in json format -->
-          <div
-            *ngIf="activity.assess_text && activity.meta.activity_type != 'click2' && activity.meta.activity_type != 'click'"
-            [innerHtml]="activity.assess_text | safehtml: 'html'"
-            class="assess_text mb-4"
-          ></div>
-
-          <div *ngIf="
-            activity.meta.activity_type === 'dnd'
-          ||activity.meta.activity_type === 'dnd-match'
-          ||activity.meta.activity_type === 'click2'
-          ;else bulkActivities
-          ">
-            <app-dnd *ngIf="activity.meta.activity_type === 'dnd'  || activity.meta.activity_type === 'dnd-match'" [activity]="activity"></app-dnd>
-            <app-click-rotate *ngIf="activity.meta.activity_type === 'click2'" [activity]="activity"></app-click-rotate>
-          </div>
-
-          <ng-template #bulkActivities>
-            <app-review-mode *ngIf="activity.user_answers" [activity]="activity"></app-review-mode>
-            <app-active-mode *ngIf="!activity.user_answers" [activity]="activity"></app-active-mode>
-          </ng-template>
-
-          <div class="after_word alert alert-primary mt-4"
-            *ngIf="activity.after_word"
-            [innerHTML]="activity.after_word | safehtml: 'html'"
-            @fadeInOut
-            >
-          </div>
+        <ng-template #bulkActivities>
+          <app-review-mode *ngIf="activity.user_answers" [activity]="activity"></app-review-mode>
+          <app-active-mode *ngIf="!activity.user_answers" [activity]="activity"></app-active-mode>
         </ng-template>
+
+        <app-special-activity *ngIf="activity.meta.activity_type === 'special'" [activity]="activity"></app-special-activity>
+
+        <div class="after_word alert alert-primary mt-4"
+          *ngIf="activity.after_word"
+          [innerHTML]="activity.after_word | safehtml: 'html'"
+          @fadeInOut
+          >
+        </div>
+
 
       </div>
 
