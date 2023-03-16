@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
+import { ConfigService } from 'src/app/core/services/config/config.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 @Injectable({
@@ -12,13 +13,14 @@ export class CompletionCertService {
 
   constructor(
     private httpClient: HttpClient,
-    private selectedCourse: SelectedCourseService
+    private selectedCourse: SelectedCourseService,
+    private configService: ConfigService
   ) { }
 
   downloadCertificate() {
     let pid = this.selectedCourse.selectedCourse.user_progress.id
     this.downloadCertificateLoading = true
-    this.httpClient.get(`/api/certificate.php?id=${pid}`, {responseType: 'blob' as 'json'})
+    this.httpClient.get(`${this.configService.params.api.route}/webcourse/activities/special/completion-cert/${pid}`, {responseType: 'blob' as 'json'})
       .subscribe(
         (response: any) => {
           this.downloadCertificateLoading = false

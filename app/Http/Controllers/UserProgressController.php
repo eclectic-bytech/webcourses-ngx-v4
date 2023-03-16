@@ -14,4 +14,9 @@ class UserProgressController extends Controller
             ->where('course_id', $cid)
             ->first();
     }
+
+    public function completion_cert(int $pid) {
+        return "Progress ID: $pid";
+    }
+
 }
