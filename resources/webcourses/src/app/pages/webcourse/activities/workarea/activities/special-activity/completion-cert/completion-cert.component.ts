@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { CompletionCertService } from './completion-cert.service'
 import { faSpinner, faFileArrowDown } from '@fortawesome/free-solid-svg-icons'
 
@@ -7,7 +7,7 @@ import { faSpinner, faFileArrowDown } from '@fortawesome/free-solid-svg-icons'
   templateUrl: './completion-cert.component.html',
   styleUrls: ['./completion-cert.component.scss']
 })
-export class CompletionCertComponent implements OnInit {
+export class CompletionCertComponent {
 
   faSpinner = faSpinner
   faFileArrowDown = faFileArrowDown
@@ -16,7 +16,5 @@ export class CompletionCertComponent implements OnInit {
     public completionCertService: CompletionCertService
   ) { }
 
-  ngOnInit(): void {
-  }
 
 }
