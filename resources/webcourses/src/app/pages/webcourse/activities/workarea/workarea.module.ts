@@ -12,7 +12,6 @@ import { CourseEndComponent } from './components/course-end/course-end.component
 import { ClickRotateModule } from './activities/click-rotate/click-rotate.module'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { DemoFlagModule } from '../../builder/activity/demo-flag/demo-flag.module';
-import { CustomActivitiesModule } from './custom-activities/custom-activities.module'
 import { SpecialActivityModule } from './activities/special-activity/special-activity.module'
 
 @NgModule({
@@ -31,7 +30,6 @@ import { SpecialActivityModule } from './activities/special-activity/special-act
     ClickRotateModule,
     FontAwesomeModule,
     DemoFlagModule,
-    CustomActivitiesModule,
     SpecialActivityModule
   ],
   exports: [

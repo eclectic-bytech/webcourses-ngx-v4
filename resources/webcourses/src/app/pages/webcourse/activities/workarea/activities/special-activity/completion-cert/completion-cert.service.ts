@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-import { SelectedCourseService } from '../selected-course/selected-course.service'
+import { Injectable } from '@angular/core'
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 @Injectable({
   providedIn: 'root'
 })
-export class CompletionCertificatesService {
+
+export class CompletionCertService {
 
   downloadCertificateLoading = false
-  faSpinner = faSpinner
 
   constructor(
     private httpClient: HttpClient,

@@ -1,1 +1,15 @@
-<p>completion-cert works!</p>
+<button class="btn my-3"
+  [ngClass]="this.completionCertService.downloadCertificateLoading ? 'btn-secondary' : 'btn-success'"
+  [disabled]="this.completionCertService.downloadCertificateLoading ? true : false"
+  (click)="this.completionCertService.downloadCertificate()"
+>
+
+  <span *ngIf="!this.completionCertService.downloadCertificateLoading; else preparing">
+    Certificate of Completion
+  </span>
+
+  <ng-template #preparing>
+    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true"></fa-icon>
+  </ng-template>
+
+</button>

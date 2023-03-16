@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { CompletionCertService } from './completion-cert.service'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-completion-cert',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core'
 })
 export class CompletionCertComponent implements OnInit {
 
-  constructor() { }
+  faSpinner = faSpinner
+
+  constructor(
+    public completionCertService: CompletionCertService
+  ) { }
 
   ngOnInit(): void {
   }
