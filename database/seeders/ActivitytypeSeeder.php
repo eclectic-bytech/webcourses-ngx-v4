@@ -73,5 +73,11 @@ class ActivitytypeSeeder extends Seeder
             'label' => 'Textarea (unmarked)',
             'help' => '<p>Read the instructions in the activity. Write your answer in the text box and click <span class="font-weight-bold">Save</span>.</p>'
         ]);
+
+        DB::table('activity_types')->insert([
+            'id' => 'special',
+            'label' => 'Special',
+            'help' => '<p>No additional help available for this activity.</p>'
+        ]);
     }
 }
