@@ -1,15 +1,19 @@
-<button class="btn my-3"
-  [ngClass]="this.completionCertService.downloadCertificateLoading ? 'btn-secondary' : 'btn-success'"
-  [disabled]="this.completionCertService.downloadCertificateLoading ? true : false"
-  (click)="this.completionCertService.downloadCertificate()"
->
+<div id="completion-certificate" class="alert alert-success text-center" role="alert">
+  <p class="text-uppercase h3 mt-3 text-dark font-weight-light">Certificate of Completion</p>
+  <hr class="w-75 mt-1">
+  <button class="btn btn-primary mt-1 mb-2"
+    [ngClass]="this.completionCertService.downloadCertificateLoading ? 'btn-secondary' : 'btn-primary'"
+    [disabled]="this.completionCertService.downloadCertificateLoading ? true : false"
+    (click)="this.completionCertService.downloadCertificate()"
+  >
 
-  <span *ngIf="!this.completionCertService.downloadCertificateLoading; else preparing">
-    Certificate of Completion
-  </span>
+    <span *ngIf="!this.completionCertService.downloadCertificateLoading; else preparing">
+      <fa-icon [icon]="faFileArrowDown" class="mr-3"></fa-icon>
+      Download <span class="small font-weight-light">(PDF)</span>
+    </span>
 
-  <ng-template #preparing>
-    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true"></fa-icon>
-  </ng-template>
-
-</button>
+    <ng-template #preparing>
+      <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true"></fa-icon>
+    </ng-template>
+  </button>
+</div>
