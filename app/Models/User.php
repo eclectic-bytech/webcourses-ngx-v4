@@ -68,4 +68,12 @@ class User extends Authenticatable
     {
         return env('SLACK_HOOK_NOTIFICATION_URL_NEW_USER_REGISTRATION');
     }
+
+    /**
+     * @return string
+     */
+    public function getProfilePhotoUrlAttribute()
+    {
+        return 'https://www.gravatar.com/avatar/'.md5($this->email).'?'.'https://www.gravatar.com/avatar/';
+    }
 }

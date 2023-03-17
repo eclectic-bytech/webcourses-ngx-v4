@@ -12,18 +12,19 @@
             <!-- Profile Photo -->
             <div class="col-span-6 sm:col-span-4" v-if="$page.props.jetstream.managesProfilePhotos">
                 <!-- Profile Photo File Input -->
-                <input type="file" class="hidden"
+                <!-- <input type="file" class="hidden"
                             ref="photo"
                             @change="updatePhotoPreview">
 
-                <jet-label for="photo" value="Photo" />
+                <jet-label for="photo" value="Photo" /> -->
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" v-show="! photoPreview">
                     <img :src="user.profile_photo_url" :alt="user.username" class="rounded-full h-20 w-20 object-cover">
                 </div>
+                <p class="mt-2">Update your profile photo on <a href="https://gravatar.com" target="_blank" class="text-indigo-700">gravatar.com</a></p>
 
-                <!-- New Profile Photo Preview -->
+                <!-- New Profile Photo Preview
                 <div class="mt-2" v-show="photoPreview">
                     <span class="block rounded-full w-20 h-20"
                           :style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
@@ -38,7 +39,8 @@
                     Remove Photo
                 </jet-secondary-button>
 
-                <jet-input-error :message="form.errors.photo" class="mt-2" />
+                <jet-input-error :message="form.errors.photo" class="mt-2" /> -->
+
             </div>
 
             <!-- Username -->
