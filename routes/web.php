@@ -92,7 +92,7 @@ Route::group(['prefix' => 'v4'], function() {
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
 
         Route::get('/activities/{aid?}', [SyllabusController::class, 'activity_set']);
-        Route::get('/activities/{aid}/special/before-and-after', [ActivityController::class, 'before_and_after_activity']);
+        Route::get('/activities/special/before-and-after/{aid}', [ActivityController::class, 'before_and_after_activity']);
         Route::get('/activities/special/completion-cert/{pid}', [UserProgressController::class, 'completion_cert']);
         Route::get('/activities/help/{type?}', [ActivityController::class, 'help']);
         Route::post('/activities/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);

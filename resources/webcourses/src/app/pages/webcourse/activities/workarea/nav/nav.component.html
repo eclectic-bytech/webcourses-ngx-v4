@@ -31,7 +31,7 @@
     >
     <fa-icon [icon]="activity[activity.length -1].meta.activity_type === 'info' ? faCheck : faPencilAlt" class="mr-2" *ngIf="!this.workareaService.waitingForApi"></fa-icon>
     <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mr-2" *ngIf="this.workareaService.waitingForApi"></fa-icon>
-    {{ activity[activity.length -1].meta.activity_type === 'info' ? 'MARK READ' : 'SAVE' }}
+    {{ activity[activity.length -1].meta.activity_type === 'info' ||  activity[activity.length -1].meta.activity_type === 'special' ? 'MARK READ' : 'SAVE' }}
   </button>
 
 </div>

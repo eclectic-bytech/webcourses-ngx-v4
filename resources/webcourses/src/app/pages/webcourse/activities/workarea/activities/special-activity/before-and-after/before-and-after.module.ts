@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 // WNGX imports
 import { BeforeAndAfterComponent } from './before-and-after.component'
@@ -10,7 +11,8 @@ import { BeforeAndAfterComponent } from './before-and-after.component'
     BeforeAndAfterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FontAwesomeModule
   ],
   exports: [
     BeforeAndAfterComponent

@@ -1,8 +1,4 @@
-<!-- <ng-template #loading>
-  <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" @fadeInOut></fa-icon>
-</ng-template>
-
-<div *ngIf="this.customActivitiesService">
+<div *ngIf="this.beforeAfter$ | async as beforeAfter">
   <p>Your before and after results for the pre and after course assessment are below.</p>
   <table class="table table-striped table-sm" style="max-width: 40rem;">
     <thead>
@@ -15,32 +11,20 @@
     <tbody>
       <tr>
         <th scope="row">Before</th>
-        <td class="text-center text-success">
-          <span *ngIf="this.customActivitiesService.count; else loading" @fadeInOut>
-            {{this.customActivitiesService.count.before.correct}} / {{this.customActivitiesService.count.before.total}}
-          </span>
+        <td class="text-center">
+          <span class="text-success">{{beforeAfter.before.correct}}</span>
+          <span class="text-dark"> / {{beforeAfter.before.total}}</span>
         </td>
-        <td class="text-center text-danger">
-          <span *ngIf="this.customActivitiesService.count; else loading" @fadeInOut>
-            {{this.customActivitiesService.count.before.wrong}}
-          </span>
-        </td>
+        <td class="text-center text-danger">{{beforeAfter.before.wrong}}</td>
       </tr>
       <tr>
         <th scope="row">After</th>
-        <td class="text-center text-success">
-          <span *ngIf="this.customActivitiesService.count; else loading" @fadeInOut>
-            {{this.customActivitiesService.count.after.correct}} / {{this.customActivitiesService.count.after.total}}
-          </span>
+        <td class="text-center">
+          <span class="text-success">{{beforeAfter.after.correct}}</span>
+          <span class="text-dark"> / {{beforeAfter.after.total}}</span>
         </td>
-        <td class="text-center text-danger">
-          <span *ngIf="this.customActivitiesService.count; else loading" @fadeInOut>
-            {{this.customActivitiesService.count.after.wrong}}
-          </span>
-        </td>
+        <td class="text-center text-danger">{{beforeAfter.after.wrong}}</td>
       </tr>
     </tbody>
   </table>
 </div>
-
--->
