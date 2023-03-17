@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserProgress;
+use App\Models\CourseSyllabus;
+use App\Models\Course;
 
 use Illuminate\Http\Request;
 use setasign\Fpdi\Fpdi;
@@ -17,9 +19,27 @@ class UserProgressController extends Controller
     }
 
     public function completion_cert(int $pid) {
-        $name = auth()->user()->first_name . " " . auth()->user()->last_name;
+        $user_progress = UserProgress::find($pid);
 
-        $path = 'webcourses/publisher-files/29/courses/408/docs/';
+        if ($user_progress->user_id != auth()->user()->id) {
+            abort(code:403);
+        };
+
+        $certificate_activity = CourseSyllabus
+            ::where('style', 'completion-cert')
+            ->where('course_id', $user_progress->course_id)
+            ->first();
+
+        if ($user_progress->total_activities_completed < $certificate_activity->seq - 2) {
+            // user did not complete enough activities for completion cert. why $certificate->seq-2?
+            // seq starts at 0; activity with cert doesn't need to be completed for user to qualify.
+            abort(code:403);
+        };
+
+        $name = auth()->user()->first_name . " " . auth()->user()->last_name;
+        $course = Course::find($user_progress->course_id);
+
+        $path = "webcourses/publisher-files/{$course->publisher_id}/courses/{$course->id}/docs/";
         $fileExt = '.pdf';
         $file = 'zT9d674nZ6YHupSU'.$fileExt;
 
