@@ -11,7 +11,7 @@ import { DndService } from './dnd.service'
   styleUrls: ['./dnd.component.scss'],
   animations: [FadeInOut]
 })
-export class DndComponent {
+export class DndComponent implements OnInit{
 
   @Input() activity: Activity
   @Output() activityChange = new EventEmitter<Activity>() // Return updated DnD order to parent, i.e. activeModeComponent
