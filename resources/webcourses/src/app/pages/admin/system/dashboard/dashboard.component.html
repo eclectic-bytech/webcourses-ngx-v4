@@ -54,7 +54,10 @@
               {{ recentCodeUse.label }}<br>
               <span class="text-uppercase text-secondary font-weight-light small">{{ recentCodeUse.updated_at | date: 'E d MMM H:mm' }}</span>
             </td>
-            <td class="text-right align-middle">{{ recentCodeUse.uses }} / {{ recentCodeUse.uses_max }}</td>
+            <td class="text-right align-middle">
+              {{ recentCodeUse.uses }} / {{ recentCodeUse.uses_max }}<br>
+              <span class="text-uppercase text-secondary font-weight-light small">{{ recentCodeUse.uses / recentCodeUse.uses_max | number: '1.1-1'}}% USED</span>
+            </td>
           </tr>
         </tbody>
       </table>
