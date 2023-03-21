@@ -116,7 +116,7 @@
             enableTwoFactorAuthentication() {
                 this.enabling = true
 
-                this.$inertia.post('/user/two-factor-authentication', {}, {
+                this.$inertia.post('/user/user/two-factor-authentication', {}, {
                     preserveScroll: true,
                     onSuccess: () => Promise.all([
                         this.showQrCode(),
@@ -127,21 +127,21 @@
             },
 
             showQrCode() {
-                return axios.get('/user/two-factor-qr-code')
+                return axios.get('/user/user/two-factor-qr-code')
                         .then(response => {
                             this.qrCode = response.data.svg
                         })
             },
 
             showRecoveryCodes() {
-                return axios.get('/user/two-factor-recovery-codes')
+                return axios.get('/user/user/two-factor-recovery-codes')
                         .then(response => {
                             this.recoveryCodes = response.data
                         })
             },
 
             regenerateRecoveryCodes() {
-                axios.post('/user/two-factor-recovery-codes')
+                axios.post('/user/user/two-factor-recovery-codes')
                         .then(response => {
                             this.showRecoveryCodes()
                         })
@@ -150,7 +150,7 @@
             disableTwoFactorAuthentication() {
                 this.disabling = true
 
-                this.$inertia.delete('/user/two-factor-authentication', {
+                this.$inertia.delete('/user/user/two-factor-authentication', {
                     preserveScroll: true,
                     onSuccess: () => (this.disabling = false),
                 })
