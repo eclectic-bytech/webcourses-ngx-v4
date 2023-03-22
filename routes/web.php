@@ -71,7 +71,7 @@ Route::group(['prefix' => 'v4'], function() {
     });
 
     // Paths grouped as /v4/user
-    Route::middleware(['auth:sanctum'])->prefix('user')->group(function() {
+    Route::prefix('user')->group(function() {
 
         // Paths grouped as /v4/user/profile
         Route::group(['prefix' => 'profile'], function() {
