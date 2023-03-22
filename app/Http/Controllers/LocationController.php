@@ -5,9 +5,9 @@ class LocationController extends Controller
 {
     public function index(Request $request)
     {
-            $userIp = $request->ip();
-            $locationData = \Location::get($userIp);
+        $userIp = '89.151.39.138';//$request->ip();
+        $locationData = \Location::get($userIp);
 
-            dd($locationData);
+        dd($locationData->countryCode);
     }
 }
