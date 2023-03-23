@@ -103,7 +103,7 @@
 
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
-                                <jet-dropdown align="right" width="48">
+                                <jet-dropdown align="right" width="52">
                                     <template #trigger>
                                         <button class="inline-flex items-center py-3 border border-transparent text-sm leading-4 font-medium rounded-md text-amber-500 bg-white focus:outline-none transition">
                                             <div class="hidden sm:flex text-center mr-2">{{ $page.props.user.username }}</div>
