@@ -123,6 +123,45 @@
                                                <div class="font-medium text-sm text-gray-500">{{ $page.props.user.email }}</div>
                                             </div>
                                         </div> -->
+                                        <jet-dropdown-link :href="('/user/redirect')" class="items-center"  >
+                                            <div class="inline-flex px-2 py-1">
+                                                <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-screwdriver-wrench" class="text-amber-400 text-xlg" />
+                                                </div>
+                                                System Dashboard
+                                            </div>
+                                        </jet-dropdown-link>
+
+                                        <div class="border-t border-gray-100"></div>
+
+                                        <jet-dropdown-link :href="('/user/redirect')" class="items-center"  >
+                                            <div class="inline-flex px-2 py-1">
+                                                <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-gem" class="text-amber-400 text-xlg" />
+                                                </div>
+                                                Publisher
+                                            </div>
+                                        </jet-dropdown-link>
+
+                                        <jet-dropdown-link :href="('/user/redirect')" class="items-center"  >
+                                            <div class="inline-flex px-2 py-1 pl-9">
+                                                <!-- <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                                </div> -->
+                                                Reports
+                                            </div>
+                                        </jet-dropdown-link>
+
+                                        <jet-dropdown-link :href="('/user/redirect')" class="items-center"  >
+                                            <div class="inline-flex px-2 py-1 pl-9">
+                                                <!-- <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                                </div> -->
+                                                Access Codes
+                                            </div>
+                                        </jet-dropdown-link>
+
+                                        <div class="border-t border-gray-100"></div>
 
                                         <jet-dropdown-link :href="('/user/redirect')" class="items-center">
                                             <div class="inline-flex px-2 py-1">
@@ -132,8 +171,6 @@
                                                 My Courses
                                             </div>
                                         </jet-dropdown-link>
-
-                                        <div class="border-t border-gray-100"></div>
 
                                         <jet-dropdown-link :href="route('profile.show')" class="items-center">
                                             <div class="inline-flex px-2 py-1">
