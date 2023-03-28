@@ -60,7 +60,7 @@ class UserProgressController extends Controller
 
         // $pdf->SetXY(40, 66); // X start, Y start in mm
         if ($course->id === 408) $pdf->SetXY(40, 66); // X start, Y start in mm
-        if ($course->id != 408) $pdf->SetXY(40, 130); // X start, Y start in mm
+        if ($course->id != 408) $pdf->SetXY(40, 150); // X start, Y start in mm
 
         $pdf->Cell(200,40,$name,0,1,"C");
 
