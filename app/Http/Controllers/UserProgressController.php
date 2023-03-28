@@ -57,7 +57,11 @@ class UserProgressController extends Controller
 
         $pdf->SetFont('Times','',30); // Font Name, Font Style (eg. 'B' for Bold), Font Size
         $pdf->SetTextColor(0,15,165); // RGB
-        $pdf->SetXY(40, 66); // X start, Y start in mm
+
+        // $pdf->SetXY(40, 66); // X start, Y start in mm
+        if ($course->id === 408) $pdf->SetXY(40, 66); // X start, Y start in mm
+        if ($course->id != 408) $pdf->SetXY(40, 130); // X start, Y start in mm
+
         $pdf->Cell(200,40,$name,0,1,"C");
 
         header('Content-Description: File Transfer');
