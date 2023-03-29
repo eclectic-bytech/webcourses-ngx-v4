@@ -27,7 +27,7 @@ class LoginListener
      */
     public function handle($event)
     {
-        $userIp = '89.151.39.138';//$request->ip();
+        $userIp = $request->ip();
         $locationData = \Location::get($userIp);
         $event->user->update([
             'last_login_time' => now(),
