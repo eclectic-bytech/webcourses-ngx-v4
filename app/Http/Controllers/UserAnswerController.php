@@ -37,8 +37,8 @@ class UserAnswerController extends Controller
                         array('answer' => $input['answer'])
                     );
                 } else {
-                    $answers = ($activity_type === 'info') ? [ 42 ] : $request->input();
-                    if (!$answers && $activity_type == 'checkbox' || $activity_type == 'click') {
+                    $answers = ($activity_type === 'info' || $activity_type === 'special') ? [ 42 ] : $request->input();
+                    if (!$answers && ($activity_type == 'checkbox' || $activity_type == 'click')) {
                         $answers[0] = 97;
                     }
                 }
