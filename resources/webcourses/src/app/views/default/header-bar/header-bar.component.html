@@ -210,6 +210,15 @@
         >
           <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()">Help</a>
         </li>
+
+        <!-- CONTACT PAGE LINK -->
+        <li
+          class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" [routerLink]="['/contact']" (click)="collapseMenus()">Contact</a>
+        </li>
       </ng-container>
 
       <!-- PUBLISHER'S MAIN NAVIGATION, WITH EXIT LINK TO MAIN SYSTEM -->
