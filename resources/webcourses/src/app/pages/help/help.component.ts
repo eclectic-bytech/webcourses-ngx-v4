@@ -9,7 +9,7 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 @Component({
   selector: 'app-help',
   templateUrl: './help.component.html',
-  styleUrls: ['./help.component.sass'],
+  styleUrls: ['./help.component.scss'],
   animations: [FadeInOut]
 })
 export class HelpComponent {
