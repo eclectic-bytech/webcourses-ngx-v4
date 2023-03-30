@@ -49,6 +49,10 @@ Route::get('/dashboard', function () {
     return redirect('user/dashboard');
 });
 
+Route::get('/', function () {
+    return redirect('user/login');
+});
+
 Route::group(['prefix' => 'user'], function() {
     Route::get('/redirect', [UserRedirectController::class, 'user_login_redirect']);
     Route::middleware(['auth:sanctum'])->get('/dashboard', function () {
