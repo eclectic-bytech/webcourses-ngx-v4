@@ -19,6 +19,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CourseEditorController;
 use App\Http\Controllers\CodesUseController;
 use App\Http\Controllers\UserProgressController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,14 +45,13 @@ Route::get('/', function () {
     ]);
 });
 
+Route::middleware(['auth:sanctum'])->get('/logout',[LogoutController::class, 'index']);
+
 //Added after moving /dashboard to /user/dashboard to fix issue #60
 Route::get('/dashboard', function () {
     return redirect('user/dashboard');
 });
 
-Route::get('/', function () {
-    return redirect('user/login');
-});
 
 Route::group(['prefix' => 'user'], function() {
     Route::get('/redirect', [UserRedirectController::class, 'user_login_redirect']);

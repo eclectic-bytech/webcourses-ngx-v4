@@ -156,16 +156,14 @@
                                         <div class="border-t border-gray-100"></div>
 
                                         <!-- Authentication -->
-                                        <form @submit.prevent="logout">
-                                            <jet-dropdown-link as="button" class="items-center"  >
+                                        <a href="/logout" class="items-center block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
                                                 <div class="inline-flex px-2 py-1">
                                                     <div class="fa-icon-container">
                                                         <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="text-amber-400 text-xlg" />
                                                     </div>
                                                     Sign Out
                                                 </div>
-                                            </jet-dropdown-link>
-                                        </form>
+                                        </a>
                                     </template>
                                 </jet-dropdown>
                             </div>
@@ -290,9 +288,9 @@
                 })
             },
 
-            logout() {
-                this.$inertia.post(route('logout'));
-            },
+            // logout() {
+            //  this.$inertia.post('logout');
+            // },
         }
     }
 </script>
