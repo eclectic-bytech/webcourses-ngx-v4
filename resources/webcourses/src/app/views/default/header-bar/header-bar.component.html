@@ -40,13 +40,20 @@
         class="nav-link handy"
       >
       </a>
-      <small
-        id="user-name"
-        class="activity-menu-label"
-        [innerHtml]="
-          this.userService.user ? this.userService.user.username : 'Guest'
-        "
-      ></small>
+      <a href="/user/profile">
+        <div
+          id="user-name"
+          class="activity-menu-label text-right"
+          [innerHtml]="
+            this.userService.user ? this.userService.user.username : 'Guest'
+          "
+        ></div>
+        <div
+          id="user-email"
+          class="activity-menu-label"
+          [innerHtml]="this.userService.user ? this.userService.user.email : ''"
+        ></div>
+      </a>
     </div>
 
     <!-- LOGGED IN USER - PROFILE ICON WITH DROP DOWN -->
@@ -73,7 +80,10 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <fa-icon [icon]="faScrewdriverWrench" class="text-warning"></fa-icon>
+              <fa-icon
+                [icon]="faScrewdriverWrench"
+                class="text-warning"
+              ></fa-icon>
             </div>
             System Dashboard
           </a>
@@ -84,7 +94,6 @@
 
         <!-- USER MENU: PUBLISHER-->
         <div [ngClass]="this.userService.userHasRole(2) ? '' : 'd-none'">
-
           <a
             class="dropdown-item py-2"
             [routerLink]="['/admin', 'publisher', 'profile']"
@@ -183,14 +192,18 @@
       <!-- STANDARD MAIN NAVIGATION, SYSTEM BRANDED AND LINKED -->
 
       <ng-container *ngIf="theme.publisher_id == 1; else publisherCustom">
-
         <!-- CATALOGUE / WEBCOURSES LINK -->
         <li
           class="nav-item px-2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a
+            class="nav-link"
+            [routerLink]="['/catalogue']"
+            (click)="collapseMenus()"
+            >Webcourses</a
           >
-          <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">Webcourses</a>
         </li>
 
         <!-- PUBLISHERS LINK -->
@@ -199,7 +212,9 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" href="https://publish.cultivatelearning.ca">Publish</a>
+          <a class="nav-link" href="https://publish.cultivatelearning.ca"
+            >Publish</a
+          >
         </li>
 
         <!-- HELP PAGE LINK -->
@@ -208,7 +223,9 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()">Help</a>
+          <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()"
+            >Help</a
+          >
         </li>
 
         <!-- CONTACT PAGE LINK -->
@@ -217,7 +234,12 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" [routerLink]="['/contact']" (click)="collapseMenus()">Contact</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/contact']"
+            (click)="collapseMenus()"
+            >Contact</a
+          >
         </li>
       </ng-container>
 
@@ -230,7 +252,11 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" [routerLink]="['/catalogue', 'publisher', theme.path]" (click)="collapseMenus()">
+          <a
+            class="nav-link"
+            [routerLink]="['/catalogue', 'publisher', theme.path]"
+            (click)="collapseMenus()"
+          >
             {{ theme.label }} Webcourses
           </a>
         </li>
@@ -241,7 +267,12 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" [routerLink]="['/help', theme.path]" (click)="collapseMenus()">Help</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/help', theme.path]"
+            (click)="collapseMenus()"
+            >Help</a
+          >
         </li>
 
         <!-- EXIT TO MAIN CATALOGUE LINK -->
@@ -250,7 +281,11 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">
+          <a
+            class="nav-link"
+            [routerLink]="['/catalogue']"
+            (click)="collapseMenus()"
+          >
             Exit {{ theme.label }}
           </a>
         </li>
