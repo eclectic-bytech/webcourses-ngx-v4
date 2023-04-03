@@ -102,11 +102,14 @@
                             -->
 
                             <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
+                            <div class="ml-3 relative inline-flex">
+                                <inertia-link :href="route('profile.show')" class="mr-1 py-3 mt-2 leading-3">
+                                    <div class="hidden hover:underline border border-transparent sm:flex justify-end text-amber-500">{{ $page.props.user.username }}</div>
+                                    <div class="hidden hover:underline border border-transparent sm:flex text-xs text-gray-500 font-bold">{{ $page.props.user.email }}</div>
+                                </inertia-link>
                                 <jet-dropdown align="right" width="48">
                                     <template #trigger>
-                                        <button class="inline-flex items-center py-3 border border-transparent text-sm leading-4 font-medium rounded-md text-amber-500 bg-white focus:outline-none transition">
-                                            <div class="hidden sm:flex text-center mr-2">{{ $page.props.user.username }}</div>
+                                        <button class="inline-flex items-center py-3 mt-1 text-center text-sm leading-4 font-medium rounded-md bg-white focus:outline-none transition">
                                             <img class="h-9 w-auto rounded-full object-cover" :src="$page.props.user.profile_photo_url"/>
                                             <font-awesome-icon icon="fa-solid fa-caret-down" class="ml-1 text-gray-700" />
                                         </button>
