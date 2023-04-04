@@ -202,15 +202,6 @@
           <a class="nav-link" href="https://publish.cultivatelearning.ca">Publish</a>
         </li>
 
-        <!-- HELP PAGE LINK -->
-        <li
-          class="nav-item px-2 py-1 mx-2"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()">Help</a>
-        </li>
-
         <!-- CONTACT PAGE LINK -->
         <li
           class="nav-item px-2 py-1 mx-2"
@@ -218,6 +209,15 @@
           [routerLinkActiveOptions]="{ exact: true }"
         >
           <a class="nav-link" [routerLink]="['/contact']" (click)="collapseMenus()">Contact</a>
+        </li>
+
+        <!-- HELP PAGE LINK -->
+        <li
+          class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" [routerLink]="['/help']" (click)="collapseMenus()">Help</a>
         </li>
       </ng-container>
 
