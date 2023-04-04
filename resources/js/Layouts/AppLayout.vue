@@ -124,6 +124,53 @@
                                             </div>
                                         </div> -->
 
+                                        <!-- Anchor tags for easy routing to the front end -->
+
+                                        <div v-if="$page.props.user.user_roles.includes(1)">
+                                        <a :href="('../webcourses/admin/system/dashboard')" class="items-center block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
+                                            <div class="inline-flex px-2 py-1">
+                                                <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-screwdriver-wrench" class="text-amber-400 text-xlg" />
+                                                </div>
+                                                System Dashboard
+                                            </div>
+                                        </a>
+                                        </div>
+
+                                        <div class="border-t border-gray-100"></div>
+
+                                        <div v-if="$page.props.user.user_roles.includes(2)">
+                                        <a :href="('../webcourses/admin/publisher/profile')" class="items-center block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
+                                            <div class="inline-flex px-2 py-1">
+                                                <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-gem" class="text-amber-400 text-xlg" />
+                                                </div>
+                                                Publisher
+                                            </div>
+                                        </a>
+
+                                        <a :href="('../webcourses/admin/publisher/courses')" class="items-center block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
+                                            <div class="inline-flex px-2 py-1 pl-9">
+                                                <!-- <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                                </div> -->
+                                                Reports
+                                            </div>
+                                        </a>
+
+                                        <a :href="('../webcourses/admin/publisher/discount-codes')" class="items-center block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
+                                            <div class="inline-flex px-2 py-1 pl-9">
+                                                <!-- <div class="fa-icon-container">
+                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
+                                                </div> -->
+                                                Access Codes
+                                            </div>
+                                        </a>
+                                        </div>
+
+                                        <!-- Jet-links for easy routing to the back end -->
+
+
                                         <jet-dropdown-link :href="('/user/redirect')" class="items-center">
                                             <div class="inline-flex px-2 py-1">
                                                 <div class="fa-icon-container">
