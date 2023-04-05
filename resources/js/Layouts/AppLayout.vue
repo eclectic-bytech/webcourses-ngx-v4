@@ -137,9 +137,9 @@
                                                     System Dashboard
                                                 </div>
                                             </a>
+                                            
+                                            <div class="border-t border-gray-100"></div>
                                         </div>
-
-                                        <div class="border-t border-gray-100"></div>
 
                                         <!-- Publisher menu items -->
                                         <div v-if="$page.props.user.user_roles.includes(2)">
@@ -169,10 +169,11 @@
                                                     Access Codes
                                                 </div>
                                             </a>
+                                            
+                                            <div class="border-t border-gray-100"></div>
                                         </div>
 
                                         <!-- Learner and profile menu items -->
-                                        <div class="border-t border-gray-100"></div>
 
                                         <jet-dropdown-link :href="('/user/redirect')" class="items-center">
                                             <div class="inline-flex px-2 py-1">
