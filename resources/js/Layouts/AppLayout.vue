@@ -40,6 +40,7 @@
                                 -->
                                 <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/catalogue">Webcourses</a>
                                 <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="https://publish.cultivatelearning.ca/">Publish</a>
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/contact">Contact</a>
                                 <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/help">Help</a>
                             </div>
                         </div>
@@ -181,6 +182,7 @@
                         <div class="mt-3 space-y-1">
                             <a href="/webcourses/catalogue" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition">Webcourses</a>
                             <a href="https://publish.cultivatelearning.ca/" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition">Publish</a>
+                            <a href="/webcourses/contact" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition">Contact</a>
                             <a href="/webcourses/help" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition">Help</a>
 
                             <!-- Team management in hamburger menu
