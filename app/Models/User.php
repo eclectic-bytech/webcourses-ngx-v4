@@ -82,7 +82,7 @@ class User extends Authenticatable
      */
     public function getUserRolesAttribute()
     {
-    return UserRole::where('user_id', $this->id)->pluck('role_id');
+        return UserRole::where('user_id', $this->id)->pluck('role_id');
     }
 
 }
