@@ -202,6 +202,15 @@
           <a class="nav-link" [routerLink]="['/getstarted']" (click)="collapseMenus()">Publish</a>
         </li>
 
+        <!-- PUBLISHERS LINK -->
+        <li
+          class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" [routerLink]="['/']" (click)="collapseMenus()">About</a>
+        </li>
+
         <!-- CONTACT PAGE LINK -->
         <li
           class="nav-item px-2 py-1 mx-2"
