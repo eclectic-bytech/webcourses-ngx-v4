@@ -199,7 +199,7 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" href="https://publish.cultivatelearning.ca">Publish</a>
+          <a class="nav-link" [routerLink]="['/getstarted']" (click)="collapseMenus()">Publish</a>
         </li>
 
         <!-- CONTACT PAGE LINK -->
