@@ -54,6 +54,10 @@ const routes: Routes = [
       {
         path: 'getstarted',
         loadChildren: () => import('./pages/publish/publish.module').then(m => m.PublishModule)
+      },
+      {
+        path: 'demo',
+        loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule)
       }
     ]
   }

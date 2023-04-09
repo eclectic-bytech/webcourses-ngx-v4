@@ -193,6 +193,15 @@
           <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">Webcourses</a>
         </li>
 
+        <!-- DEMO PAGE LINK -->
+        <li
+          class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" [routerLink]="['/demo']" (click)="collapseMenus()">Demo</a>
+        </li>
+
         <!-- PUBLISHERS LINK -->
         <li
           class="nav-item px-2 py-1 mx-2"
