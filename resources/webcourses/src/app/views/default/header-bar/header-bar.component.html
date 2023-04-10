@@ -43,14 +43,14 @@
       <a href="/user/profile">
         <div
           id="user-name"
-          class="activity-menu-label text-right"
+          class="activity-menu-label user-container"
           [innerHtml]="
             this.userService.user ? this.userService.user.username : 'Guest'
           "
         ></div>
         <div
           id="user-email"
-          class="activity-menu-label"
+          class="activity-menu-label user-container"
           [innerHtml]="this.userService.user ? this.userService.user.email : ''"
         ></div>
       </a>
