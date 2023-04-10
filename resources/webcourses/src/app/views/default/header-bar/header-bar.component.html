@@ -40,17 +40,17 @@
         class="nav-link handy"
       >
       </a>
-      <a href="/user/profile">
+      <a href="/user/profile" class="text-right user-container">
         <div
           id="user-name"
-          class="activity-menu-label user-container"
+          class="activity-menu-label"
           [innerHtml]="
             this.userService.user ? this.userService.user.username : 'Guest'
           "
         ></div>
         <div
           id="user-email"
-          class="activity-menu-label user-container"
+          class="activity-menu-label"
           [innerHtml]="this.userService.user ? this.userService.user.email : ''"
         ></div>
       </a>
