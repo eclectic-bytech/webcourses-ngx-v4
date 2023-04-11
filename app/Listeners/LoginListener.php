@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Location;
 
 class LoginListener
 {
@@ -28,7 +29,7 @@ class LoginListener
     public function handle($event)
     {
         $userIp = $request->ip();
-        $locationData = \Location::get($userIp);
+        $locationData = Location::get($userIp);
         $event->user->update([
             'last_login_time' => now(),
             'last_login_ip' => request()->GetClientIp(),
