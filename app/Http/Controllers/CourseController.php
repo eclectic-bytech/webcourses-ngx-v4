@@ -67,9 +67,6 @@ class CourseController extends Controller
             ->withCount('participants as total_students')
             ->first();
 
-        auth()->user()->current_course_id = (int)$cid;
-        auth()->user()->update();
-
         $course = json_decode($course);
         // If course is private, check if user has access before giving its details
         if ($course->private === 1) {
@@ -84,6 +81,9 @@ class CourseController extends Controller
             ::where('id', $cid)
             ->with('chapterIndex')
             ->first();
+
+            auth()->user()->current_course_id = (int)$cid;
+            auth()->user()->update();
 
         $course = json_decode($course);
         return $course->chapter_index;
