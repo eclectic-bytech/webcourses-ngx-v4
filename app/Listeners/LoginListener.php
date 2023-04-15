@@ -4,9 +4,6 @@ namespace App\Listeners;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Http\Controllers\LocationController;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use Location;
 
 class LoginListener
