@@ -56,7 +56,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
+        'profile_photo_url', 'user_roles'
     ];
 
     /**
@@ -76,4 +76,13 @@ class User extends Authenticatable
     {
         return 'https://www.gravatar.com/avatar/'.md5($this->email).'?'.'https://www.gravatar.com/avatar/';
     }
+
+    /**
+     * @return array
+     */
+    public function getUserRolesAttribute()
+    {
+        return UserRole::where('user_id', $this->id)->pluck('role_id');
+    }
+
 }

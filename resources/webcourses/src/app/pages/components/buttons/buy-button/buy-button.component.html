@@ -27,6 +27,11 @@
     <p>Before we can grant course access, we need to know for which account. Please sign-up and log-in before continuing.</p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="modal.close('login')">Login or Create Account</button>
+    <a href="/user/login">
+      <button type="button" class="btn btn-success mx-2">Login</button>
+    </a>
+    <a href="/user/register">
+      <button type="button" class="btn btn-success">Register</button>
+    </a>
   </div>
 </ng-template>
