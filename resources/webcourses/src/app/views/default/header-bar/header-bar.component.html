@@ -31,7 +31,7 @@
 
       User menu and login links are placed just after logo to prevent these collapsing into the burger menu when it was opened
     -->
-    <div class="pr-3 d-none d-sm-block" style="line-height: 1.2">
+    <div class="pr-1 d-none d-sm-block" style="line-height: 1.2">
       <a
         *ngIf="!this.userService.user"
         [innerHtml]="'Sign&nbsp;in'"
@@ -42,7 +42,7 @@
       </a>
       <small
         id="user-name"
-        class="activity-menu-label"
+        class="activity-menu-label d-inline-flex"
         [innerHtml]="
           this.userService.user ? this.userService.user.username : 'Guest'
         "
@@ -186,7 +186,7 @@
 
         <!-- CATALOGUE / WEBCOURSES LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
           >
@@ -195,7 +195,7 @@
 
         <!-- DEMO PAGE LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -204,7 +204,7 @@
 
         <!-- PUBLISHERS LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -213,7 +213,7 @@
 
         <!-- PUBLISHERS LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -222,7 +222,7 @@
 
         <!-- CONTACT PAGE LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -231,7 +231,7 @@
 
         <!-- HELP PAGE LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item2 py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
