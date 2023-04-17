@@ -82,9 +82,6 @@ class CourseController extends Controller
             ->with('chapterIndex')
             ->first();
 
-            auth()->user()->current_course_id = (int)$cid;
-            auth()->user()->update();
-
         $course = json_decode($course);
         return $course->chapter_index;
     }
