@@ -91,11 +91,13 @@ Route::group(['prefix' => 'v4'], function() {
         Route::get('/access-code/{code_hash}', [CouponController::class, 'applyAccessCode']);
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
 
-        Route::get('/activities/{aid?}', [SyllabusController::class, 'activity_set']);
-        Route::get('/activities/special/before-and-after/{aid}', [ActivityController::class, 'before_and_after_activity']);
-        Route::get('/activities/special/completion-cert/{pid}', [UserProgressController::class, 'completion_cert']);
-        Route::get('/activities/help/{type?}', [ActivityController::class, 'help']);
-        Route::post('/activities/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
+        Route::group(['prefix' => '/activities'], function() {
+          Route::get('/{aid?}', [SyllabusController::class, 'activity_set']);
+            Route::get('/special/before-and-after/{aid}', [ActivityController::class, 'before_and_after_activity']);
+            Route::get('/special/completion-cert/{pid}', [UserProgressController::class, 'completion_cert']);
+            Route::get('/help/{type?}', [ActivityController::class, 'help']);
+            Route::post('/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
+        });
 
         Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
         Route::get('/chapter/{chid}/user_answer_count', [UserAnswerController::class, 'total_user_answers_in_chapter']);
