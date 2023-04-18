@@ -20,8 +20,6 @@ class LoginListener
             if ($position = Location::get()) {
                 // Successfully retrieved position.
                 return $position->countryCode;
-            } else {
-                // Failed retrieving position.
             }
         }
     }
