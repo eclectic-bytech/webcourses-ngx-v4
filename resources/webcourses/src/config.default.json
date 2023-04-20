@@ -9,5 +9,6 @@
   "assetsPath": "assets/",
   "domain": "http://homestead.test",
   "logoutRedirectPath": "/user/login",
-  "devMode": false
+  "devMode": false,
+  "freeAccessCode": ""
 }

@@ -8,7 +8,7 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                            <!-- Hamburger -->
-                           <div class="-mr-2 flex items-center sm:hidden">
+                           <div class="-mr-2 flex items-center lg:hidden">
                             <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
                                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                     <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -18,7 +18,7 @@
                         </div>
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="flex-shrink-0 flex items-center sm:-my-px sm:flex">
+                            <div class="flex-shrink-0 flex items-center lg:-my-px lg:flex">
                                 <inertia-link :href="route('profile.show')">
                                     <!--
                                         Preserving this link to help understand Vue, when we move to
@@ -32,16 +32,18 @@
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
                                 <!--
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
                                 -->
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/catalogue">Webcourses</a>
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="https://publish.cultivatelearning.ca/">Publish</a>
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/contact">Contact</a>
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition" href="/webcourses/help">Help</a>
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/catalogue">Webcourses</a>
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/demo">Demo</a>
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="https://publish.cultivatelearning.ca/">Publish</a>
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/">About</a>
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/contact">Contact</a>
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/help">Help</a>
                             </div>
                         </div>
                         <div class="sm:flex sm:items-center sm:ml-6">
@@ -137,7 +139,7 @@
                                                     System Dashboard
                                                 </div>
                                             </a>
-                                            
+
                                             <div class="border-t border-gray-100"></div>
                                         </div>
 
@@ -169,7 +171,7 @@
                                                     Access Codes
                                                 </div>
                                             </a>
-                                            
+
                                             <div class="border-t border-gray-100"></div>
                                         </div>
 
@@ -228,10 +230,12 @@
                     <!-- Responsive Settings Options -->
                     <div class="pt-1 pb-2 border-b border-gray-200">
                         <div class="mt-3 space-y-1">
-                            <a href="/webcourses/catalogue" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition">Webcourses</a>
-                            <a href="https://publish.cultivatelearning.ca/" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition">Publish</a>
-                            <a href="/webcourses/contact" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition">Contact</a>
-                            <a href="/webcourses/help" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition">Help</a>
+                            <a href="/webcourses/catalogue" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">Webcourses</a>
+                            <a href="/webcourses/demo" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">Demo</a>
+                            <a href="https://publish.cultivatelearning.ca/" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">Publish</a>
+                            <a href="/webcourses/" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">About</a>
+                            <a href="/webcourses/contact" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">Contact</a>
+                            <a href="/webcourses/help" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">Help</a>
 
                             <!-- Team management in hamburger menu
                             <!~~ Team Management ~~>

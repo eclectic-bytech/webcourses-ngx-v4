@@ -12,7 +12,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
+        // loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
+        loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule),
         pathMatch: 'full'
       },
       {
@@ -49,6 +50,14 @@ const routes: Routes = [
       {
         path: 'contact',
         loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule)
+      },
+      {
+        path: 'getstarted',
+        loadChildren: () => import('./pages/publish/publish.module').then(m => m.PublishModule)
+      },
+      {
+        path: 'demo',
+        loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule)
       }
     ]
   }
