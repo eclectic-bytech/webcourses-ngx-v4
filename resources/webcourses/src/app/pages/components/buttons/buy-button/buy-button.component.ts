@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
@@ -13,7 +13,7 @@ import { Course } from 'src/app/models/course.model'
   templateUrl: './buy-button.component.html',
   styleUrls: ['./buy-button.component.scss']
 })
-export class BuyButtonComponent implements OnChanges {
+export class BuyButtonComponent {
 
   faSpinner = faSpinner
 
@@ -29,9 +29,6 @@ export class BuyButtonComponent implements OnChanges {
     private ngbModal: NgbModal,
     public userService: UserService
   ) { }
-
-  // If coupon is applied, ensures that price on Buy Button is updated
-  ngOnChanges() {}
 
   buyButton() {
     this.purchaseStarted = true

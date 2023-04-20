@@ -1,75 +1,81 @@
-<div id="fullMainContent" @fadeInOut>
-  <div class="container-fluid">
-    <div class="row" *ngIf="this.themeService.activeTheme$ | async as theme">
-      <div class="col-12 col-sm-10 col-md-9 col-lg-7 mx-1 mx-sm-2 mx-md-5">
-        <h4 class="my-2 my-sm-3 mx-2 mx-md-4 text-uppercase">Help section</h4>
+<div id="fullMainContent" class="container-fluid" @fadeInOut>
+  <div class="row justify-content-center min-vh-100">
+    <div class="col">
+      <div class="d-flex flex-column h-100">
+        <div class="row justify-content-center" *ngIf="this.themeService.activeTheme$ | async as theme">
+          <div class="container my-5">
+            <div class="row">
+              <div class="col">
+                <h3 class="mb-2 mt-4 text-uppercase">Help</h3>
+              </div>
+            </div>
 
-        <!--
-        <div class="pt-2 pt-md-4 pb-1 pb-md-2" style="background-color: rgb(50,50, 50, .12); border-radius: 14px;">
-          <ul class="list-unstyled" style="line-height:2;">
-            <li class="mx-2 mx-md-4"><a [routerLink]="['.']" fragment="course-access-codes">Course access codes</a></li>
-            <li class="mx-2 mx-md-4"><a [routerLink]="['.']" fragment="course-access">Purchased and unlocked courses</a></li>
-          </ul>
-        </div>
+            <div class="row">
+              <div class="col-12 p-3">
 
-        <div id="course-access-codes"></div>
-        -->
+                <ng-template #hotMyCourses>
+                  <a [routerLink]="['/user', 'webcourses']" class="font-weight-bold">My Courses</a>
+                </ng-template>
 
-        <!-- Hot-linked My Courses. Used when user is logged in. -->
-        <ng-template #hotMyCourses>
-          <a [routerLink]="['/user', 'webcourses']" class="font-weight-bold">My Courses</a>
-        </ng-template>
+                <h4 class="mb-2 mb-sm-3 text-uppercase text-dark py-2">Course Access Codes</h4>
 
-        <!-- Leaf divider, used when accessing publisher-free version of help -->
-        <ng-template #clDivider>
-          <img [src]="this.configService.assetsImage('cl-logo.svg')" class="d-block my-3 my-md-5 mx-auto" width="40" height="40">
-        </ng-template>
+                <p>
+                  To use a <strong>Course Access Code</strong>, you must have a cultivatelearning.ca account, and be signed in.
+                  <span *ngIf="!this.userService.user"><br>
+                    <a href="/user/register" class="font-weight-bold">Register</a> or
+                    <a href="/user/login" class="font-weight-bold">sign in</a>.
+                  </span>
+                </p>
 
-        <div class="mx-2 mx-md-4 mt-3 mt-md-5">
+                <p>
+                  If you received a code-embeded link via email, follow it for code-less entry.
+                  <br *ngIf="!this.userService.user"> To enter a code
+                  manually<span *ngIf="!this.userService.user">, <a href="/user/login" class="font-weight-bold">sign in</a> and</span>:
+                </p>
 
-          <h4 class="mb-2 mb-sm-3 text-uppercase">Course Access Codes</h4>
+                <ol class="mt-1 mb-3" style="line-height:2;">
+                  <li>Click the <strong>Use code</strong> button located on the <em>course access codes panel</em>
+                    on the <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong> page.
+                  </li>
+                  <li>
+                    Copy and paste the <em>course acccess code</em> you received and click <strong>Enter</strong>.
+                  </li>
+                </ol>
 
-          <p>
-            To use a <strong>Course Access Code</strong>, you must have a cultivatelearning.ca account, and be signed in.
-            <span *ngIf="!this.userService.user"><br>
-              <a href="/user/register" class="font-weight-bold">Register</a> or
-              <a href="/user/login" class="font-weight-bold">sign in</a>.
-            </span>
-          </p>
 
-          <p>
-            If you received a code-embeded link via email, follow it for code-less entry.
-            <br *ngIf="!this.userService.user"> To enter a code
-            manually<span *ngIf="!this.userService.user">, <a href="/user/login" class="font-weight-bold">sign in</a> and</span>:
-          </p>
+                <h4 class="mb-2 mb-sm-3 mt-5 text-uppercase">Purchased and unlocked courses</h4>
 
-          <ol class="mt-1 mb-3" style="line-height:2;">
-            <li>Click the <strong>Use code</strong> button located on the <em>course access codes panel</em>
-              on the <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong> page.
-            </li>
-            <li>
-              Copy and paste the <em>course acccess code</em> you received and click <strong>Enter</strong>.
-            </li>
-          </ol>
+                <p>All your courses are available from the the top-right corner's <strong>user menu</strong> dropdown under
+                  <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong>.
+                  <span *ngIf="!this.userService.user"><br>
+                    <a href="/user/login" class="font-weight-bold">Sign in</a> to access it.
+                  </span>
+                </p>
 
-          <div id="course-access">
-            <div class="my-3" *ngIf="theme.path !== 'default'; else clDivider">&nbsp;</div>
+
+                <h4 class="mb-3 text-dark text-uppercase mt-5">Inquiries about a specific webcourse</h4>
+
+                <div class="py-2">
+                  <span class="lead">Please contact the corresponding publisher.</span><br>
+                  <span class="text-secondary">
+                    Details are available in the Publisher tab inside each course, and on course
+                    specific pages, accessible through following the course title link.
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
           </div>
-
-          <h4 class="mb-2 mb-sm-3 text-uppercase">Purchased and unlocked courses</h4>
-
-          <p>All your courses are available from the the top-right corner's <strong>user menu</strong> dropdown under
-            <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong>.
-            <span *ngIf="!this.userService.user"><br>
-              <a href="/user/login" class="font-weight-bold">Sign in</a> to access it.
-            </span>
-          </p>
-
         </div>
 
+        <div class="row justify-content-center flex-grow-1" id="anastasia">
+          <!-- It's this div that displays the "footer" image -->
+          <!-- Image https://www.pexels.com/photo/gray-and-white-wallpaper-1103970/ -->
+          <!-- Flex code: https://stackoverflow.com/questions/50262517/bootstrap-4-row-fill-remaining-height -->
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<app-footer></app-footer>
+</div>
