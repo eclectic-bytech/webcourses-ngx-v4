@@ -4,8 +4,8 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\SlackMessage;
 
 class AccessGrantedNotification extends Notification
 {
@@ -46,6 +46,6 @@ class AccessGrantedNotification extends Notification
      */
     public function toSlack($notifiable)
     {
-        return (new SlackMessage)->content("Access Granted");
+        return (new SlackMessage)->content("$notifiable->email Used a Coupon");
     }
 }

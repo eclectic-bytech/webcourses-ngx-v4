@@ -9,6 +9,8 @@ use App\Models\Publisher;
 use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
 use App\Models\CodesUse;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\AccessGrantedNotification;
 
 
 class CouponController extends Controller
@@ -84,6 +86,7 @@ class CouponController extends Controller
     }
 
     public function grantAccess($cid, $uid) {
+        Notification::send(auth()->user(), new AccessGrantedNotification());
         $user_progress = new UserProgress;
         $user_progress->user_id = $uid;
         $user_progress->course_id = $cid;
