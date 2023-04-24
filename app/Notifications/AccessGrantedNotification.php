@@ -37,8 +37,7 @@ class AccessGrantedNotification extends Notification
      */
     public function via($notifiable)
     {
-        // return ['slack'];
-        return [TelegramChannel::class];
+        return ['slack', TelegramChannel::class];
     }
 
     /**
