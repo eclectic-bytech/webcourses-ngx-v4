@@ -32,8 +32,11 @@ class UserCourseController extends Controller
         } else {
             $resume['aid'] = $answer['activity_id'];
         }
+        
+        // Update user's selected course
         auth()->user()->current_course_id = $pid;
         auth()->user()->update();
+
         return $resume;
     }
 
