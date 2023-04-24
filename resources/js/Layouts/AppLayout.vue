@@ -109,7 +109,7 @@
                                 <jet-dropdown align="right" width="52">
                                     <template #trigger>
                                         <button class="inline-flex items-center py-3 border border-transparent text-sm leading-4 font-medium rounded-md text-amber-500 bg-white focus:outline-none transition">
-                                            <div class="hidden sm:flex text-center mr-2">{{ $page.props.user.username }}</div>
+                                            <div class="hidden sm:flex text-center mr-2 text-clip overflow-hidden max-w-[11rem]">{{ $page.props.user.username }}</div>
                                             <img class="h-9 w-auto rounded-full object-cover" :src="$page.props.user.profile_photo_url"/>
                                             <font-awesome-icon icon="fa-solid fa-caret-down" class="ml-1 text-gray-700" />
                                         </button>
