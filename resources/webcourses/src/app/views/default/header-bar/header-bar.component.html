@@ -31,7 +31,7 @@
 
       User menu and login links are placed just after logo to prevent these collapsing into the burger menu when it was opened
     -->
-    <div class="pr-1 d-none d-sm-block" style="line-height: 1.2">
+    <div id="user-name" class="pr-3 d-none d-sm-block" style="line-height: 1.2">
       <a
         *ngIf="!this.userService.user"
         [innerHtml]="'Sign&nbsp;in'"
@@ -41,8 +41,7 @@
       >
       </a>
       <small
-        id="user-name"
-        class="activity-menu-label d-inline-flex"
+        class="activity-menu-label"
         [innerHtml]="
           this.userService.user ? this.userService.user.username : 'Guest'
         "
