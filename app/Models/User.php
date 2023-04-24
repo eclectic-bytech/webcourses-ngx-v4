@@ -70,6 +70,16 @@ class User extends Authenticatable
     }
 
     /**
+     * The token for the telegram bot.
+     *
+     * @var string
+     */
+    public function routeNotificationForTelegram ($notification)
+    {
+        return env('TELEGRAM_CHANEL_ID');
+    }
+
+    /**
      * @return string
      */
     public function getProfilePhotoUrlAttribute()

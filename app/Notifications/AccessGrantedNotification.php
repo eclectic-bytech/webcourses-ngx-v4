@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
+use TelegramNotifications\TelegramChannel;
+use TelegramNotifications\Messages\TelegramMessage;
 
 class AccessGrantedNotification extends Notification
 {
@@ -35,7 +37,8 @@ class AccessGrantedNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['slack'];
+        // return ['slack'];
+        return [TelegramChannel::class];
     }
 
     /**
@@ -46,6 +49,11 @@ class AccessGrantedNotification extends Notification
      */
     public function toSlack($notifiable)
     {
-        return (new SlackMessage)->content("$notifiable->email Used a Coupon");
+        return (new SlackMessage)->content("$notifiable->email Used A Coupon");
+    }
+
+    public function toTelegram($notifiable)
+    {
+        return (new TelegramMessage)->text("$notifiable->email Used A Coupon");
     }
 }
