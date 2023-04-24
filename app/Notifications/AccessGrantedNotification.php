@@ -13,14 +13,18 @@ class AccessGrantedNotification extends Notification
 {
     use Queueable;
 
+    protected $cid;
+    protected $ct;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($cid, $ct)
     {
-        //
+        $this->cid = $cid;
+        $this->ct = $ct;
     }
 
     /**
@@ -48,11 +52,11 @@ class AccessGrantedNotification extends Notification
      */
     public function toSlack($notifiable)
     {
-        return (new SlackMessage)->content("$notifiable->email Used A Coupon");
+        return (new SlackMessage)->content("$notifiable->email Used A Coupon For Course #$this->cid    $this->ct");
     }
 
     public function toTelegram($notifiable)
     {
-        return (new TelegramMessage)->text("$notifiable->email Used A Coupon");
+        return (new TelegramMessage)->text("$notifiable->email Used A Coupon For Course #$this->cid    $this->ct");
     }
 }

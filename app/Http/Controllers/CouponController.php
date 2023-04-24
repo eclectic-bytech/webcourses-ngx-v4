@@ -55,7 +55,8 @@ class CouponController extends Controller
 
                 if ($code['status']['valid']) {
                     $cid = $code_info['course']['id'];
-                    $pid = $this->grantAccess($cid, $uid);
+                    $ct = $code_info['course']['title'];
+                    $pid = $this->grantAccess($cid, $uid, $ct);
                     if ($pid) {
                         $this->incrementCodeUses($code_hash);
                         $this->updateCodesUsesTable($code_hash, $pid);
@@ -85,8 +86,8 @@ class CouponController extends Controller
         return $this->couponMessage('valid');
     }
 
-    public function grantAccess($cid, $uid) {
-        Notification::send(auth()->user(), new AccessGrantedNotification());
+    public function grantAccess($cid, $uid, $ct) {
+        Notification::send(auth()->user(), new AccessGrantedNotification($cid, $ct));
         $user_progress = new UserProgress;
         $user_progress->user_id = $uid;
         $user_progress->course_id = $cid;
