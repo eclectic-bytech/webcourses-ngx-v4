@@ -26,12 +26,18 @@ class UserCourseController extends Controller
         // Check if user has started work on the course
         $answer = UserAnswer::where('progress_id', $pid)->latest()->first();
         $resume['pid'] = (int)$pid;
+        $cid = json_decode(UserProgress::where('id', $pid)->first())->course_id;
+
         if (is_null($answer)) {
-            $cid = json_decode(UserProgress::where('id', $pid)->first())->course_id;
             $resume['aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
         } else {
             $resume['aid'] = $answer['activity_id'];
         }
+
+        // Update user's selected course
+        auth()->user()->current_course_id = $cid;
+        auth()->user()->update();
+
         return $resume;
     }
 
