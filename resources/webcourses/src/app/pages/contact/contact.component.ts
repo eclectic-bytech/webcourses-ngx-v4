@@ -18,7 +18,7 @@ export class ContactComponent {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('./contact/contach.html', { responseType: 'text' }).subscribe(datat => {
+    this.http.get('/webcourses/publisher-files/default/html/contact.html', { responseType: 'text' }).subscribe(datat => {
       this.htmlContent = datat;
       console.log(datat)
     });
