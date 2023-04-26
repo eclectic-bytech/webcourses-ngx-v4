@@ -16,4 +16,5 @@ export class Config {
   public logoutRedirectPath: string
   public devMode: boolean
   public freeAccessCode: string
+  public featuredCID: number
 }
