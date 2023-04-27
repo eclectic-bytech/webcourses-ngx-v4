@@ -26,14 +26,8 @@
   </div>
   -->
 
-  <mat-card-content>
-    <p style="max-height:125px; min-height: 50px; overflow-y:auto;">
-      <span class="text-dark" [innerHtml]="course.short_desc | safehtml: 'html'"></span>
-    </p>
-
-    <!-- <app-course-access-block [course]="course"></app-course-access-block> -->
-
-
+  <mat-card-content class="overflow-auto">
+    <span class="text-dark" [innerHtml]="course.short_desc | safehtml: 'html'"></span>
   </mat-card-content>
 
   <mat-card-actions>
