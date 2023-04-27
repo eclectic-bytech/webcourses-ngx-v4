@@ -1,17 +1,18 @@
 <div>
   <div *ngIf="!this.purchaseStarted; else verifying">
     <button
+      mat-button
       (click)="this.userService.user ? buyButton() : this.loginRequired(content)"
-      class="btn btn-primary p-2"
       [ngClass]="btnLg ? 'btn-lg' : ''"
+      class="border"
     >
-      <span>${{ course.price / 100 | number:'1.0-2' }} – Buy</span>
+      Buy
     </button>
   </div>
 </div>
 
 <ng-template #verifying>
-  <button class="btn btn-secondary" style="width: 90px;" disabled>
+  <button mat-button style="width: 70px;" class="border" disabled>
     <fa-icon [icon]="faSpinner" animation="pulse"></fa-icon>
   </button>
 </ng-template>
