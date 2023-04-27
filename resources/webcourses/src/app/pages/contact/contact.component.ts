@@ -14,14 +14,13 @@ export class ContactComponent {
   public email = faGlobe
   public earthAmericas = faEarthAmericas
   public earthEurope = faEarthEurope
-  htmlContent: string;
+  htmlContent: string
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('/webcourses/publisher-files/default/html/contact.html', { responseType: 'text' }).subscribe(datat => {
-      this.htmlContent = datat;
-      console.log(datat)
-    });
+    this.http.get('/webcourses/publisher-files/default/html/contact.html', { responseType: 'text' }).subscribe(data => {
+      this.htmlContent = data
+    })
   }
 }
 
