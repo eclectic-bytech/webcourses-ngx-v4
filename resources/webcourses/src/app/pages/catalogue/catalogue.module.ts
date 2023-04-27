@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms'
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap'
 import { MatCardModule } from '@angular/material/card'
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatButtonModule } from '@angular/material/button'
 
 import { CatalogueCardModule } from './../components/course-card/catalogue-card/catalogue-card.module'
@@ -27,7 +26,6 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module'
     FormsModule,
     NgbAlertModule,
     MatCardModule,
-    MatSlideToggleModule,
     CatalogueRoutingModule,
     MatButtonModule,
     ThemeResetModule,
