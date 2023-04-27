@@ -2,7 +2,7 @@
 
   <div class="container-fluid">
     <div class="row mt-5">
-      <div class="col-lg-6">
+      <div class="col-xl-4 col-lg-12">
         <div id="featuredCID" *ngIf="this.featuredCourse$ | async as course">
           <mat-card id="featured-card" class="mx-auto" tabindex="0">
             <mat-card-header>
@@ -34,9 +34,9 @@
         </div>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-xl-8 col-lg-12 mb-2">
         <div
-          class="container-fluid text-center"
+          class="container-fluid"
           *ngIf="this.webcoursesAll$ | async as webcourses"
           [appThemeSet]="this.themeService.defaultTheme"
           @fadeInOut
