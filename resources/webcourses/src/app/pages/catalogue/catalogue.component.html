@@ -1,6 +1,23 @@
 <div id="fullMainContent">
 
-  <div class="container-fluid mt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="container my-5 align-middle">
+          <div class="row my-auto">
+            <div class="col-auto">
+              <!-- This should be a block, with HTML separated out like e.g. the Contact page's -->
+              <img src="https://www.cultivatelearning.ca/webcourses/publisher-files/default/images/squarees.png" alt="Cultivate learning" style="max-height: 6rem;" class="float-left mx-5">
+            </div>
+            <div class="col-auto my-auto">
+              <div class="lead">Welcome to the Cultivate Learning webcourse catalogue</div>
+              <div class="text-dark">Begin upgrading your skills by selecting a course, or <a [routerLink]="['/getstarted']">publish your own</a></div>
+            </div>
+          </div>
+        </div>
+        <hr class="mb-5">
+      </div>
+    </div>
     <div
       class="row d-flex justify-content-center"
       *ngIf="this.webcoursesAll$ | async as webcourses"
