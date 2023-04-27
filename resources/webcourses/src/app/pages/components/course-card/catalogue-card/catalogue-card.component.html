@@ -1,11 +1,12 @@
-<mat-card class="card m-1" style="max-width: 20rem;" [routerLink]="['/catalogue', 'course', course.id]">
+<mat-card class="card m-1" style="max-width: 20rem;">
+  <small class="d-inline-block text-secondary float-right"> #{{ course.id }}</small>
   <mat-card-header>
-    <mat-card-title>{{ course.title }}</mat-card-title>
+    <mat-card-title class="text-nowrap">{{ course.title }}</mat-card-title>
     <mat-card-subtitle>${{ course.price / 100 }}</mat-card-subtitle>
   </mat-card-header>
 
   <img mat-card-image
-    class="card-img-top handy" style="max-height: 7rem;"
+    class="card-img-top handy" style="max-height: 9rem;"
     src="publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}" alt="{{course.cover_alt}}"
   >
 
@@ -32,25 +33,40 @@
 
     <!-- <app-course-access-block [course]="course"></app-course-access-block> -->
 
-    <a class="card-link">
-      <small class="text-secondary">
-        Publisher:
-        <span
-          [routerLink]="['/catalogue', 'publisher', course.publisher.id_alias]"
-          class="text-uppercase text-primary handy"
-          >
-          {{ course.publisher.name }}
-        </span>
-      </small>
-    </a>
+
   </mat-card-content>
 
-  <mat-card-footer class="text-secondary">
-    <div class="container">
-      <div class="row align-items-start py-1">
-        <div class="col"><small>{{ course.total_activities }}&nbsp;Activities</small></div>
-        <div class="col text-center"><small>{{ course.total_students }}&nbsp;Participants</small></div>
-        <div class="col text-right"><small>Course #{{ course.id }}</small></div>
+  <mat-card-actions>
+    <app-buy-button [course]="course" class="d-inline-block"></app-buy-button>
+    <button mat-button [routerLink]="['/catalogue', 'course', course.id]">Details</button>
+  </mat-card-actions>
+
+  <mat-card-footer class="text-secondary text-uppercase">
+    <div class="container-fluid">
+      <div class="row p-1">
+        <div class="col p-0">
+          <small>
+            {{ course.total_activities }}
+            <fa-icon [icon]="faDiagramProject" class="mx-1" title="Activities"></fa-icon>
+          </small>
+          <small class="mx-1">
+            {{ course.total_students }}
+            <fa-icon [icon]="faUserGroup" class="mx-1" title="Participants"></fa-icon>
+          </small>
+        </div>
+        <div class="col p-0 float-right">
+          <a class="card-link">
+            <small class="text-secondary text-nowrap">
+              Publisher:
+              <span
+                [routerLink]="['/catalogue', 'publisher', course.publisher.id_alias]"
+                class="text-uppercase text-primary handy"
+                >
+                {{ course.publisher.name }}
+              </span>
+            </small>
+          </a>
+        </div>
       </div>
     </div>
   </mat-card-footer>
