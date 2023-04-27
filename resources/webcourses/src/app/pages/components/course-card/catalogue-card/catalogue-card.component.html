@@ -1,9 +1,15 @@
-<div class="card m-1" style="max-width: 15rem;">
-  <img [routerLink]="['course', course.id]"
+<mat-card class="card m-1" style="max-width: 20rem;" [routerLink]="['/catalogue', 'course', course.id]">
+  <mat-card-header>
+    <mat-card-title>{{ course.title }}</mat-card-title>
+    <mat-card-subtitle>${{ course.price / 100 }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image
     class="card-img-top handy" style="max-height: 7rem;"
     src="publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}" alt="{{course.cover_alt}}"
   >
 
+  <!--
   <div class="progress" style="height: 6px">
     <div class="progress-bar progress-bar-striped"
       *ngIf="course.user_progress"
@@ -17,15 +23,14 @@
       [attr.aria-valuemax]="100">
     </div>
   </div>
+  -->
 
-  <div class="card-body" style="min-height: 13rem;">
-    <a [routerLink]="['/catalogue', 'course', course.id]"><h5 class="card-title">{{course.title}}</h5></a>
-
-    <p style="max-height:125px; min-height: 50px; overflow-y:auto; line-height:.9">
-      <small class="text-secondary" [innerHtml]="course.short_desc | safehtml: 'html'"></small>
+  <mat-card-content>
+    <p style="max-height:125px; min-height: 50px; overflow-y:auto;">
+      <span class="text-dark" [innerHtml]="course.short_desc | safehtml: 'html'"></span>
     </p>
 
-    <app-course-access-block [course]="course"></app-course-access-block>
+    <!-- <app-course-access-block [course]="course"></app-course-access-block> -->
 
     <a class="card-link">
       <small class="text-secondary">
@@ -38,19 +43,15 @@
         </span>
       </small>
     </a>
-  </div>
+  </mat-card-content>
 
-  <div class="container-flex mx-2">
-    <div class="row">
-      <div class="col text-left">
-        <small class="text-secondary">{{ course.total_activities }} Activities</small>
-      </div>
-      <div class="col-auto text-center">
-        <small class="text-secondary">{{ course.total_students }} Participants</small>
-      </div>
-      <div class="col text-right">
-        <small class="text-secondary">Course #{{course.id}}</small>
+  <mat-card-footer class="text-secondary">
+    <div class="container">
+      <div class="row align-items-start py-1">
+        <div class="col"><small>{{ course.total_activities }}&nbsp;Activities</small></div>
+        <div class="col text-center"><small>{{ course.total_students }}&nbsp;Participants</small></div>
+        <div class="col text-right"><small>Course #{{ course.id }}</small></div>
       </div>
     </div>
-  </div>
-</div>
+  </mat-card-footer>
+</mat-card>
