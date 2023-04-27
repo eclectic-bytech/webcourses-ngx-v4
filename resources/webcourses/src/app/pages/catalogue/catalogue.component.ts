@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
-import { Observable, Subscription } from 'rxjs'
+import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
 import { ActivatedRoute } from '@angular/router'
 import { map } from 'rxjs/operators'
+import { faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { faDiagramProject } from '@fortawesome/free-solid-svg-icons'
 
 import { CatalogueService } from './catalogue.service'
 import { UserService } from './../../core/services/user/user.service'
@@ -25,6 +27,8 @@ export class CatalogueComponent implements OnInit {
   public featuredCourse$: Observable<Course>
   public themeId: number
 
+  public faDiagramProject = faDiagramProject
+  public faUserGroup = faUserGroup
 
   constructor(
     private route: ActivatedRoute,
