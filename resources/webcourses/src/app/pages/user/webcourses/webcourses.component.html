@@ -43,23 +43,21 @@
           <div class="row no-gutters">
             <div class="col-sm-12 col-md-4">
               <div class="card">
-
-                  <img
-                    class="card-img-top"
-                    style="object-fit: cover; height: 11rem;"
-                    src="publisher-files/{{course.publisher_id}}/courses/{{course.id}}/images/{{course.cover}}"
-                    alt="{{course.cover_alt}}"
-                  >
-
+                <img
+                  class="card-img-top"
+                  style="object-fit: cover; height: 11rem;"
+                  src="publisher-files/{{course.publisher_id}}/courses/{{course.id}}/images/{{course.cover}}"
+                  alt="{{course.cover_alt}}"
+                >
               </div>
             </div>
             <div class="col-auto ml-4">
-              <div class="lead">{{ course.title }} <small class="text-secondary"></small></div>
+              <div class="lead mt-3">{{ course.title }} <small class="text-secondary"></small></div>
               <div class="text-dark">
                 Joined: {{ course.user_progress.created_at | date:'longDate' }}
               </div>
               <button
-                mat-button color="primary" class="border mt-3"
+                mat-button color="primary" class="border my-3"
                 (click)="goToActivity(course.user_progress.id)"
               >
                 Enter
