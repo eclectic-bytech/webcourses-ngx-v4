@@ -38,7 +38,8 @@
           >
           <mat-card-content [innerHtml]="course.short_desc | safehtml: 'html'" class="text-dark overflow-auto"></mat-card-content>
           <mat-card-actions>
-            <app-buy-button [course]="course" class="d-inline-block"></app-buy-button>
+            <!-- <app-buy-button [course]="course" class="d-inline-block"></app-buy-button> -->
+            <button mat-button (click)="freebieAccess()" color="primary" class="border">Start</button>
             <button mat-button color="primary" [routerLink]="['/catalogue', 'course', course.id]">Details</button>
           </mat-card-actions>
           <mat-card-footer class="text-secondary text-uppercase">

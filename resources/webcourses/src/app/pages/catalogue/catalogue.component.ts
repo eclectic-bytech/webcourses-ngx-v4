@@ -14,6 +14,7 @@ import { ThemeService } from './../../core/services/theme/theme.service'
 import { FadeInOut } from '../../core/animations/fade-in-out.animation'
 import { CourseService } from './course/course.service'
 import { ConfigService } from 'src/app/core/services/config/config.service'
+import { AccessCodeModalService } from '../components/access-code-modal/access-code-modal.service'
 
 @Component({
   selector: 'app-catalogue',
@@ -38,7 +39,8 @@ export class CatalogueComponent implements OnInit {
     private globalService: AppService,
     public themeService: ThemeService,
     private courseService: CourseService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private accessCodeModalService: AccessCodeModalService
   ) { }
 
   ngOnInit() {
@@ -46,6 +48,15 @@ export class CatalogueComponent implements OnInit {
 
     this.webcoursesAll$ = this.route.data.pipe(map(data => data.webcoursesAll))
     this.featuredCourse$ = this.courseService.getCourse(this.configService.params.featuredCID)
+  }
+
+  freebieAccess() {
+    if (!this.userService.user) {
+      window.location.href = `/user/register?code=C-OPEN-WNGX`
+    } else {
+      this.accessCodeModalService.defaultCode = "C-OPEN-WNGX"
+      this.accessCodeModalService.submitCode('C-OPEN-WNGX')
+    }
   }
 
 }
