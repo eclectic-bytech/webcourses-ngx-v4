@@ -44,11 +44,9 @@
       *ngIf="this.publisherCourses$ | async as publisherCourses"
       @fadeInOut
     >
-
       <div *ngFor="let course of publisherCourses, let i = index, let l = last" class="col-auto mb-3 align-top">
         <app-catalogue-card [course]="course" [publisherInfo]="course.publisher"></app-catalogue-card>
       </div>
-
     </div>
 
   </div>

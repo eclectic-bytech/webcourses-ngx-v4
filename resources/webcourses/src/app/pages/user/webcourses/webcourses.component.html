@@ -1,28 +1,58 @@
-<div id="fullMainContent" class="text-center">
-  <div class="text-center mb-3">
-    <h1 class="common-heading mb-2">My Webcourses</h1>
-
-    <div *ngIf="this.user.userCourses$ | async as userCourses; else loading" @fadeInOut>
-      <small class="text-dark text-uppercase">{{userCourses.length}} Courses</small>
-        <div *ngIf="userCourses.length > 0; else noCoursesForYou">
-          <div class="mt-4">
-            <div *ngFor="let userCourse of userCourses, let i = index, let l = last" class="d-inline-block">
-              <app-catalogue-card [course]="userCourse"></app-catalogue-card>
-            </div>
-            <app-group-join-card></app-group-join-card>
-          </div>
+<div id="fullMainContent">
+  <div class="container-fluid">
+    <div
+      class="row d-flex justify-content-center my-4"
+      *ngIf="this.user$ | async as user"
+      @fadeInOut
+    >
+      <div class="col-auto my-auto">
+        <img
+          ngxGravatar
+          [src]="this.gravatarMd5.gravatarMD5src(user.email)"
+          [size]="100"
+          class="mr-4 img-fluid"
+        />
+        <div class="lead d-inline-block">
+          <span *ngIf="user.first_name; else newUser">Welcome back, {{ user.last_name }}</span>
+          <ng-template #newUser>
+            <span>Welcome, {{ user.username }}</span>
+          </ng-template>
         </div>
+      </div>
     </div>
+
+    <hr class="mb-5">
+
+    <div
+      class="row d-flex justify-content-center"
+      *ngIf="this.user.userCourses$ | async as userCourses; else loading"
+      @fadeInOut
+    >
+      <small class="text-dark text-uppercase">{{userCourses.length}} Courses</small>
+
+      <div
+        class="col-auto mb-3 align-top"
+        *ngFor="let userCourse of userCourses, let i = index, let l = last"
+        @fadeInOut
+      >
+        <app-catalogue-card [course]="userCourse"></app-catalogue-card>
+      </div>
+
+      <div *ngIf="userCourses.length === 0">
+        <h1 class="common-heading mb-2 mt-5 text-success">You've not yet enrolled in any courses.</h1>
+        <p class="text-dark">Start improving your skills by using a <span class="font-weight-bold">Course Access Code</span> below.<br>
+        Visit the <a [routerLink]="['/catalogue']" class="text-nowrap">Webcourse Catalogue</a> to browse all publicly available courses.</p>
+      </div>
+
+    </div>
+
     <ng-template #loading>
       <app-loading-spinner></app-loading-spinner>
     </ng-template>
+
   </div>
 </div>
 
-<ng-template #noCoursesForYou>
-  <h1 class="common-heading mb-2 mt-5 text-success">You've not yet enrolled in any courses.</h1>
-  <p class="text-dark">Start improving your skills by using a <span class="font-weight-bold">Course Access Code</span> below.<br>
-  Visit the <a [routerLink]="['/catalogue']" class="text-nowrap">Webcourse Catalogue</a> to browse all publicly available courses.</p>
-  <app-group-join-card></app-group-join-card>
-</ng-template>
 
+
+  <!-- <app-group-join-card></app-group-join-card> -->
