@@ -13,7 +13,7 @@
           class="mr-4 img-fluid"
         />
         <div class="lead d-inline-block">
-          <span *ngIf="user.first_name; else newUser">Welcome back, {{ user.last_name }}</span>
+          <span *ngIf="user.first_name; else newUser">Welcome back, {{ user.first_name }}</span>
           <ng-template #newUser>
             <span>Welcome, {{ user.username }}</span>
           </ng-template>
