@@ -28,32 +28,48 @@
       *ngIf="this.user.userCourses$ | async as userCourses; else loading"
       @fadeInOut
     >
-      <small class="text-dark text-uppercase">{{userCourses.length}} Courses</small>
 
-      <div
-        class="col-auto mb-3 align-top"
-        *ngFor="let course of userCourses, let i = index, let l = last"
-        @fadeInOut
-      >
-        <div class="card my-4">
+      <div class="col-12 col-lg-3 col-xl-4">
+        <small class="text-dark text-uppercase">{{userCourses.length}} Courses</small>
+        SELECTED COURSE
+      </div>
+
+      <div class="col-12 col-lg-9 col-xl-8 align-top">
+        <div
+          class="card my-3 mr-5"
+          *ngFor="let course of userCourses, let i = index, let l = last"
+        >
+
           <div class="row no-gutters">
             <div class="col-auto">
               <img
-                style="max-height: 10rem"
-                src="publisher-files/{{course.publisher_id}}/courses/{{course.id}}/images/{{course.cover}}" alt="{{course.cover_alt}}"
+                class="img-fluid"
+                style="height: 9rem; width: 17rem; object-fit: cover;"
+                src="publisher-files/{{course.publisher_id}}/courses/{{course.id}}/images/{{course.cover}}"
+                alt="{{course.cover_alt}}"
               >
             </div>
             <div class="col">
               <div class="card-body">
-                <div class="card-title lead">{{ course.title }}</div>
+                <div class="card-title lead">{{ course.title }} <small class="text-secondary"></small></div>
                 <div class="card-subtitle">
-                  <div>Joined: {{ course.user_progress.created_at | date:'longDate' }}</div>
-                  <div class="text-dark">
-                    <span [innerHtml]="course.short_desc | safehtml: 'html'"></span>
-                    <span class="text-secondary">(ID #{{ course.id }})</span>
-                  </div>
+                  Joined: {{ course.user_progress.created_at | date:'longDate' }}
                 </div>
+                <button
+                  mat-button color="primary" class="border mt-3"
+                  (click)="goToActivity(course.user_progress.id)"
+                >
+                  Enter
+                </button>
+                <button
+                  mat-button color="primary" class="mt-3 ml-2"
+                  [routerLink]="['/catalogue', 'course', course.id]"
+                >
+                  About
+                </button>
               </div>
+
+
             </div>
           </div>
           <div class="progress" style="height: 6px">
@@ -71,13 +87,6 @@
           </div>
         </div>
 
-        <!-- <div class="example-card">
-          <img src="publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}">
-          <div class="mat-card-content">
-            <span class="text-dark" [innerHtml]="course.short_desc | safehtml: 'html'"></span>
-          </div>
-        </div> -->
-        <!-- <app-catalogue-card [course]="userCourse"></app-catalogue-card> -->
       </div>
 
       <div *ngIf="userCourses.length === 0">
