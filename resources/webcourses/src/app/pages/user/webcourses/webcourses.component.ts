@@ -17,7 +17,6 @@ import { GravatarMd5Service } from 'src/app/core/services/gravatar-md5/gravatar-
 export class WebcoursesComponent implements OnInit {
 
   public showGroupCodeInput = false
-  // public user$ = new Observable<JetstreamUser>
   public user$: Observable<JetstreamUser> = this.user.getUser()
 
   constructor(
