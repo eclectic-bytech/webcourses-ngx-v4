@@ -54,6 +54,7 @@ export class CatalogueComponent implements OnInit {
     if (!this.userService.user) {
       window.location.href = `/user/register?code=C-OPEN-WNGX`
     } else {
+      this.accessCodeModalService.accessCodeModal()
       this.accessCodeModalService.defaultCode = "C-OPEN-WNGX"
       this.accessCodeModalService.submitCode('C-OPEN-WNGX')
     }
