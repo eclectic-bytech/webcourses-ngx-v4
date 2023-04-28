@@ -32,10 +32,52 @@
 
       <div
         class="col-auto mb-3 align-top"
-        *ngFor="let userCourse of userCourses, let i = index, let l = last"
+        *ngFor="let course of userCourses, let i = index, let l = last"
         @fadeInOut
       >
-        <app-catalogue-card [course]="userCourse"></app-catalogue-card>
+        <div class="card my-4">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <img
+                style="max-height: 10rem"
+                src="publisher-files/{{course.publisher_id}}/courses/{{course.id}}/images/{{course.cover}}" alt="{{course.cover_alt}}"
+              >
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <div class="card-title lead">{{ course.title }}</div>
+                <div class="card-subtitle">
+                  <div>Joined: {{ course.user_progress.created_at | date:'longDate' }}</div>
+                  <div class="text-dark">
+                    <span [innerHtml]="course.short_desc | safehtml: 'html'"></span>
+                    <span class="text-secondary">(ID #{{ course.id }})</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="progress" style="height: 6px">
+            <div class="progress-bar progress-bar-striped"
+              *ngIf="course.user_progress"
+              role="progressbar"
+              [style.width.%]="
+                course.user_progress ?
+                course.user_progress.total_activities_completed / course.total_activities * 100 : 0
+              "
+              [attr.aria-valuenow]="0"
+              aria-valuemin="0"
+              [attr.aria-valuemax]="100">
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="example-card">
+          <img src="publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}">
+          <div class="mat-card-content">
+            <span class="text-dark" [innerHtml]="course.short_desc | safehtml: 'html'"></span>
+          </div>
+        </div> -->
+        <!-- <app-catalogue-card [course]="userCourse"></app-catalogue-card> -->
       </div>
 
       <div *ngIf="userCourses.length === 0">

@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { GravatarModule } from 'ngx-gravatar'
 
+
 import { WebcoursesComponent } from './webcourses.component'
 import { WebcoursesRoutingModule } from './webcourses-routing.module'
 import { CatalogueCardModule } from '../../components/course-card/catalogue-card/catalogue-card.module'
 import { GroupJoinCardModule } from '../../components/group-join-card/group-join-card.module'
 import { LoadingSpinnerModule } from '../../../core/modules/loading-spinner/loading-spinner.module'
+import { PipesModule } from 'src/app/shared/pipes/pipes.module'
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { LoadingSpinnerModule } from '../../../core/modules/loading-spinner/load
     CommonModule,
     NgbModule,
     GravatarModule,
+    PipesModule,
     WebcoursesRoutingModule,
     CatalogueCardModule,
     LoadingSpinnerModule
