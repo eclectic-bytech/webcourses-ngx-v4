@@ -8,11 +8,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { CatalogueCardComponent } from './catalogue-card.component'
 import { BuyButtonModule } from '../../buttons/buy-button/buy-button.module'
 import { PipesModule } from './../../../../shared/pipes/pipes.module'
-import { CourseAccessBlockComponent } from './course-access-block/course-access-block.component'
 
 
 @NgModule({
-  declarations: [CatalogueCardComponent, CourseAccessBlockComponent],
+  declarations: [CatalogueCardComponent],
   imports: [
     CommonModule,
     RouterModule,
