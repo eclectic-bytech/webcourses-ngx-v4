@@ -48,7 +48,9 @@
         <div class="container-fluid pl-0">
           <div class="row justify-content-between align-items-start">
             <div class="col-auto">
-              <button mat-button color="primary" class="border mb-4">Unlock a course using an access code</button>
+              <button mat-button color="primary" class="border mb-4" (click)="this.accessCodeModalService.accessCodeModal()">
+                Unlock a course using an access code
+              </button>
             </div>
             <div class="col-auto">
               <small class="text-dark text-uppercase">{{userCourses.length}} courses unlocked</small>

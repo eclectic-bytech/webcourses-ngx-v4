@@ -28,10 +28,10 @@ export class WebcoursesComponent implements OnInit {
     private router: Router,
     public gravatarMd5: GravatarMd5Service,
     private appService: AppService,
-    private accessCodeModalService: AccessCodeModalService,
+    public accessCodeModalService: AccessCodeModalService,
     public user: UserService,
     private configService: ConfigService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
   ) { }
 
   ngOnInit() {
