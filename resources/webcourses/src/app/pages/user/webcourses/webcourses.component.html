@@ -1,11 +1,14 @@
 <div id="fullMainContent">
   <div class="container-fluid">
     <div
-      class="row d-flex justify-content-center my-4"
+      class="row d-flex align-items-start my-4"
       *ngIf="this.user$ | async as user"
       @fadeInOut
     >
-      <div class="col-auto my-auto">
+      <div class="col-12 col-lg-4">
+        <!-- COL PLACE HOLDER -->
+      </div>
+      <div class="col-12 col-lg-4">
         <img
           ngxGravatar
           [src]="this.gravatarMd5.gravatarMD5src(user.email)"
@@ -13,30 +16,46 @@
           class="mr-4 img-fluid"
         />
         <div class="lead d-inline-block">
-          <span *ngIf="user.first_name; else newUser">
+          <div *ngIf="user.first_name; else newUser">
             Welcome back, <span class="text-capitalize">{{ user.first_name }}</span>
-          </span>
+          </div>
           <ng-template #newUser>
-            <span>Welcome, {{ user.username }}</span>
+            <div>Welcome, {{ user.username }}</div>
           </ng-template>
         </div>
       </div>
+
+      <div class="col-12 col-lg-4 text-right align-items-start">
+        <!-- COL PLACE HOLDER -->
+      </div>
     </div>
 
-    <hr class="mb-5">
+    <hr class="mb-3">
 
     <div
-      class="row d-flex justify-content-center"
+      class="row d-flex justify-content-center align-items-start"
       *ngIf="this.user.userCourses$ | async as userCourses; else loading"
       @fadeInOut
     >
 
       <div class="col-xs-12 col-lg-3 col-xl-4">
-        <small class="text-dark text-uppercase">{{userCourses.length}} Courses</small>
-        SELECTED COURSE
+
+        <!-- AREA FOR DISPLAYING SELECTED COURSE -->
+
       </div>
 
       <div class="col-xs-12 col-lg-9 col-xl-8 align-top">
+        <div class="container-fluid pl-0">
+          <div class="row justify-content-between align-items-start">
+            <div class="col-auto">
+              <button mat-button color="primary" class="border mb-4">Unlock a course using an access code</button>
+            </div>
+            <div class="col-auto">
+              <small class="text-dark text-uppercase">{{userCourses.length}} courses unlocked</small>
+            </div>
+          </div>
+        </div>
+
         <div
           class="container p-0 mb-3 border rounded"
           *ngFor="let course of userCourses, let i = index, let l = last"
