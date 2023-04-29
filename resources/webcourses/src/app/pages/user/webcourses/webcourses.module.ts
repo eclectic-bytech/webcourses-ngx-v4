@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button'
 import { WebcoursesComponent } from './webcourses.component'
 import { WebcoursesRoutingModule } from './webcourses-routing.module'
 import { CatalogueCardModule } from '../../components/course-card/catalogue-card/catalogue-card.module'
-import { GroupJoinCardModule } from '../../components/group-join-card/group-join-card.module'
 import { LoadingSpinnerModule } from '../../../core/modules/loading-spinner/loading-spinner.module'
 
 @NgModule({
