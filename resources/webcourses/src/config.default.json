@@ -10,5 +10,6 @@
   "domain": "http://homestead.test",
   "logoutRedirectPath": "/user/login",
   "devMode": false,
-  "freeAccessCode": ""
+  "freeAccessCode": "",
+  "featuredCID": 1
 }
