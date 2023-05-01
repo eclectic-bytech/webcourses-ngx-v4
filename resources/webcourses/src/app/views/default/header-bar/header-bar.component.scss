@@ -18,9 +18,17 @@
 }
 
 #user-name {
+  color: darkorange;
   max-width: 8rem;
   overflow: hidden;
-  color: darkorange;
+}
+
+#user-email {
+  color: dimgrey;
+  font-size: x-small;
+  font-weight: bolder;
+  max-width: 8rem;
+  overflow: hidden;
 }
 
 #signIn-dashboard {

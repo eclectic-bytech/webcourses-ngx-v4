@@ -40,12 +40,20 @@
         class="nav-link handy"
       >
       </a>
-      <small
-        class="activity-menu-label"
-        [innerHtml]="
-          this.userService.user ? this.userService.user.username : 'Guest'
-        "
-      ></small>
+      <a href="/user/profile" class="text-right">
+        <div
+          id="user-name"
+          class="activity-menu-label"
+          [innerHtml]="
+            this.userService.user ? this.userService.user.username : 'Guest'
+          "
+        ></div>
+        <div
+          id="user-email"
+          class="activity-menu-label"
+          [innerHtml]="this.userService.user ? this.userService.user.email : ''"
+        ></div>
+      </a>
     </div>
 
     <!-- LOGGED IN USER - PROFILE ICON WITH DROP DOWN -->
@@ -185,7 +193,7 @@
 
         <!-- CATALOGUE / WEBCOURSES LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
           >
@@ -194,7 +202,7 @@
 
         <!-- DEMO PAGE LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -203,7 +211,7 @@
 
         <!-- PUBLISHERS LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -212,7 +220,7 @@
 
         <!-- PUBLISHERS LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -221,7 +229,7 @@
 
         <!-- CONTACT PAGE LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -230,7 +238,7 @@
 
         <!-- HELP PAGE LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
