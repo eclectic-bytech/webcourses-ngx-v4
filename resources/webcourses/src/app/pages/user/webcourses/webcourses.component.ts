@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Observable, Subscription } from 'rxjs'
 import { GravatarMd5Service } from 'src/app/core/services/gravatar-md5/gravatar-md5.service'
@@ -20,7 +20,7 @@ import { Course } from 'src/app/models/course.model'
   styleUrls: ['./webcourses.component.scss'],
   animations: [FadeInOut]
 })
-export class WebcoursesComponent implements OnInit {
+export class WebcoursesComponent implements OnInit, OnDestroy {
 
   public faDiagramProject = faDiagramProject
 
@@ -73,13 +73,13 @@ export class WebcoursesComponent implements OnInit {
   }
 
   percentDone(ta: number, tac: number, type: string) {
-    let percent = tac ? tac / ta * 100 : 0
+    let percent = Math.round(tac ? tac / ta * 100 : 0)
     if (type === 'integer') {
       return percent
     } else if (type === 'string') {
       return percent + '% Done'
     } else {
-      return "Numeric stats no available"
+      return "Numeric stat not available"
     }
   }
 

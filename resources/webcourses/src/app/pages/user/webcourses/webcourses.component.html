@@ -78,7 +78,7 @@
                   </small>
                 </div>
                 <div class="col-auto">
-                  <a href="{{ userSelectedCourse.publisher.website}}" target="_blank">
+                  <a [routerLink]="['/catalogue', 'publisher', userSelectedCourse.theme.path]">
                     <img src="{{ userSelectedCourse.theme.logo }}" class="pt-2 img-fluid" style="max-height: 4rem;">
                   </a>
                 </div>
