@@ -106,9 +106,9 @@
 
                             <!-- Settings Dropdown -->
                                 <div class="ml-3 relative inline-flex">
-                                <inertia-link :href="route('profile.show')" class="mr-1 py-3 mt-2 leading-3 text-clip overflow-hidden max-w-[11rem] ">
-                                    <div class="hidden hover:underline border border-transparent sm:flex justify-end text-amber-500">{{ $page.props.user.username }}</div>
-                                    <div class="hidden hover:underline border border-transparent sm:flex justify-end text-xs text-gray-500 font-bold">{{ $page.props.user.email }}</div>
+                                <inertia-link :href="route('profile.show')" class="mr-5 py-3 mt-2 leading-3 text-clip overflow-hidden max-w-[11rem] font-normal">
+                                    <div class="hidden border border-transparent sm:flex justify-end text-amber-500">{{ $page.props.user.username }}</div>
+                                    <div class="hidden border border-transparent sm:flex justify-end text-xs text-blue-900">{{ $page.props.user.email }}</div>
                                 </inertia-link>
 
                                 <jet-dropdown align="right" width="52">
