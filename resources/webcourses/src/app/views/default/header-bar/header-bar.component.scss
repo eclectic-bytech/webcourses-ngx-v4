@@ -17,16 +17,12 @@
   color: #2d2d2d;
 }
 
-#user-name {
-  color: darkorange;
-  max-width: 8rem;
-  overflow: hidden;
+.emailsignin {
+  font-size: small;
 }
 
-#user-email {
-  color: dimgrey;
-  font-size: x-small;
-  font-weight: bolder;
+#user-name {
+  color: darkorange;
   max-width: 8rem;
   overflow: hidden;
 }

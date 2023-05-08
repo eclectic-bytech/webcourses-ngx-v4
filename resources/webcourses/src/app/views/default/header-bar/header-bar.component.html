@@ -32,26 +32,18 @@
       User menu and login links are placed just after logo to prevent these collapsing into the burger menu when it was opened
     -->
     <div id="user-name" class="mr-3 d-none d-sm-block" style="line-height: 1.2">
-      <a
-        *ngIf="!this.userService.user"
-        [innerHtml]="'Sign&nbsp;in'"
-        href="/user/login"
-        id="signIn-dashboard"
-        class="nav-link handy"
-      >
-      </a>
       <a href="/user/profile" class="text-right">
         <div
           id="user-name"
           class="activity-menu-label"
           [innerHtml]="
-            this.userService.user ? this.userService.user.username : 'Guest'
+            this.userService.user ? this.userService.user.username : 'Sign&nbsp;in'
           "
         ></div>
         <div
-          id="user-email"
-          class="activity-menu-label"
-          [innerHtml]="this.userService.user ? this.userService.user.email : ''"
+          id="signIn-dashboard"
+          class="nav-link handy emailsignin"
+          [innerHtml]="this.userService.user ? this.userService.user.email : 'Guest'"
         ></div>
       </a>
     </div>
