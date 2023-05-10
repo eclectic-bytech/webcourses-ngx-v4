@@ -8,7 +8,7 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                            <!-- Hamburger -->
-                           <div class="-mr-2 flex items-center sm:hidden">
+                           <div class="-mr-2 flex items-center lg:hidden">
                             <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
                                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                     <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -18,7 +18,7 @@
                         </div>
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="flex-shrink-0 flex items-center sm:-my-px sm:flex">
+                            <div class="flex-shrink-0 flex items-center lg:-my-px lg:flex">
                                 <inertia-link :href="route('profile.show')">
                                     <!--
                                         Preserving this link to help understand Vue, when we move to
@@ -32,7 +32,7 @@
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
                                 <!--
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
@@ -105,11 +105,15 @@
                             -->
 
                             <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
+                                <div class="ml-3 relative inline-flex">
+                                <inertia-link :href="route('profile.show')" class="mr-5 py-3 mt-2 leading-3 text-clip overflow-hidden max-w-[11rem] font-normal">
+                                    <div class="hidden border border-transparent sm:flex justify-end text-amber-500">{{ $page.props.user.username }}</div>
+                                    <div class="hidden border border-transparent sm:flex justify-end text-xs text-blue-900">{{ $page.props.user.email }}</div>
+                                </inertia-link>
+
                                 <jet-dropdown align="right" width="52">
                                     <template #trigger>
                                         <button class="inline-flex items-center py-3 border border-transparent text-sm leading-4 font-medium rounded-md text-amber-500 bg-white focus:outline-none transition">
-                                            <div class="hidden sm:flex text-center mr-2">{{ $page.props.user.username }}</div>
                                             <img class="h-9 w-auto rounded-full object-cover" :src="$page.props.user.profile_photo_url"/>
                                             <font-awesome-icon icon="fa-solid fa-caret-down" class="ml-1 text-gray-700" />
                                         </button>
