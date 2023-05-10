@@ -25,6 +25,7 @@ export class ContactComponent {
     this.http.get('/webcourses/publisher-files/default/html/contact.html', { responseType: 'text' })
       .subscribe(
         (html: string) => {
+          console.log(html)
           this.htmlContent = html
         }
       )
