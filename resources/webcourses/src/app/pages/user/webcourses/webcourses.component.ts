@@ -1,18 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 import { Observable, Subscription } from 'rxjs'
 import { GravatarMd5Service } from 'src/app/core/services/gravatar-md5/gravatar-md5.service'
 import { faDiagramProject } from '@fortawesome/free-solid-svg-icons'
 
-import { ConfigService } from 'src/app/core/services/config/config.service'
 import { AppService } from '../../../app.service'
 import { UserService } from '../../../core/services/user/user.service'
 import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
 import { AccessCodeModalService } from '../../components/access-code-modal/access-code-modal.service'
 import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
-import { HttpClient } from '@angular/common/http'
 import { CourseService } from '../../catalogue/course/course.service'
 import { Course } from 'src/app/models/course.model'
+import { WebcoursesService } from './webcourses.service'
 
 @Component({
   selector: 'app-webcourses',
@@ -31,13 +30,11 @@ export class WebcoursesComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     public gravatarMd5: GravatarMd5Service,
+    public webcoursesService: WebcoursesService,
     private appService: AppService,
     public accessCodeModalService: AccessCodeModalService,
     public userService: UserService,
-    private configService: ConfigService,
-    private httpClient: HttpClient,
     private courseService: CourseService
   ) { }
 
@@ -54,22 +51,6 @@ export class WebcoursesComponent implements OnInit, OnDestroy {
         this.userSelectedCourse$ = this.courseService.getCourse(user.current_course_id)
       }
     )
-  }
-
-  goToActivity(pid: number) {
-    // When course is completed, first aid in course is fetched. Otherwise, last completed.
-    this.getDestinationAid(pid).subscribe(
-      (resume: any) => {
-        this.router.navigateByUrl(`/webcourse/activities/${resume.aid}`)
-      }
-    )
-  }
-
-  getDestinationAid(pid: number) {
-    return this.httpClient
-      .get<{}>(`
-        ${this.configService.params.api.route}/user/course/${pid}/resume/
-      `).pipe(resume => resume)
   }
 
   percentDone(ta: number, tac: number, type: string) {

@@ -58,7 +58,7 @@
                 <div class="col-auto">
                   <button
                     mat-button color="primary" class="border my-3"
-                    (click)="goToActivity(userSelectedCourse.user_progress.id)"
+                    (click)="this.webcoursesService.goToActivity(userSelectedCourse.user_progress.id)"
                   >
                     Resume
                   </button>
@@ -141,7 +141,7 @@
               </div>
               <button
                 mat-button color="primary" class="border my-3"
-                (click)="goToActivity(course.user_progress.id)"
+                (click)="this.webcoursesService.goToActivity(course.user_progress.id)"
               >
                 Enter
               </button>
