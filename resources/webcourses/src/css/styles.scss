@@ -5,6 +5,13 @@
   padding-top: 5.5rem;
 }
 
+/* Footer used on some main menu pages */
+.anastasia {
+  background-image: url('/webcourses/publisher-files/default/theme/footer-bg.jpg')!important;
+  background-size: cover!important;
+  background-repeat: no-repeat!important;
+}
+
 body, html {
   height: 100%;
   font-family: Roboto, Arial, Helvetica, sans-serif;
