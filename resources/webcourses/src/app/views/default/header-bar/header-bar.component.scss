@@ -17,10 +17,6 @@
   color: #2d2d2d;
 }
 
-.emailsignin {
-  font-size: small;
-}
-
 #user-name {
   color: darkorange;
   max-width: 8rem;
@@ -29,6 +25,7 @@
 
 #signIn-dashboard {
   padding: 0;
+  font-size: small;
   /* Overrides Bootstrap's nav-link padding */
 }
 
