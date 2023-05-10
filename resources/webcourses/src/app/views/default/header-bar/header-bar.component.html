@@ -32,20 +32,20 @@
       User menu and login links are placed just after logo to prevent these collapsing into the burger menu when it was opened
     -->
     <div id="user-name" class="mr-3 d-none d-sm-block" style="line-height: 1.2">
-      <a
-        *ngIf="!this.userService.user"
-        [innerHtml]="'Sign&nbsp;in'"
-        href="/user/login"
-        id="signIn-dashboard"
-        class="nav-link handy"
-      >
+      <a href="/user/profile" class="text-right">
+        <div
+          id="user-name"
+          class="activity-menu-label"
+          [innerHtml]="
+            this.userService.user ? this.userService.user.username : 'Sign&nbsp;in'
+          "
+        ></div>
+        <div
+          id="signIn-dashboard"
+          class="nav-link handy"
+          [innerHtml]="this.userService.user ? this.userService.user.email : 'Guest'"
+        ></div>
       </a>
-      <small
-        class="activity-menu-label"
-        [innerHtml]="
-          this.userService.user ? this.userService.user.username : 'Guest'
-        "
-      ></small>
     </div>
 
     <!-- LOGGED IN USER - PROFILE ICON WITH DROP DOWN -->
@@ -185,7 +185,7 @@
 
         <!-- CATALOGUE / WEBCOURSES LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
           >
@@ -194,7 +194,7 @@
 
         <!-- DEMO PAGE LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -203,7 +203,7 @@
 
         <!-- PUBLISHERS LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -212,7 +212,7 @@
 
         <!-- PUBLISHERS LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -221,7 +221,7 @@
 
         <!-- CONTACT PAGE LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
@@ -230,7 +230,7 @@
 
         <!-- HELP PAGE LINK -->
         <li
-          class="nav-item px-2 py-1 mx-2"
+          class="nav-item py-1 mx-2"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
