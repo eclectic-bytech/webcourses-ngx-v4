@@ -56,7 +56,7 @@ export class CatalogueComponent implements OnInit {
     if (!this.userService.user) {
       window.location.href = `/user/register?code=C-OPEN-WNGX`
     } else {
-      if (!course.user_progress) {
+      if (course.user_progress) {
         this.webcoursesService.goToActivity(course.user_progress.id)
       } else {
         this.accessCodeModalService.accessCodeModal()
