@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { GravatarModule } from 'ngx-gravatar'
 import { MatButtonModule } from '@angular/material/button'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { WebcoursesComponent } from './webcourses.component'
 import { WebcoursesRoutingModule } from './webcourses-routing.module'
@@ -20,7 +21,8 @@ import { LoadingSpinnerModule } from '../../../core/modules/loading-spinner/load
     MatButtonModule,
     WebcoursesRoutingModule,
     CatalogueCardModule,
-    LoadingSpinnerModule
+    LoadingSpinnerModule,
+    FontAwesomeModule
   ]
 })
 

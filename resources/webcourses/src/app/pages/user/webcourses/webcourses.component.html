@@ -1,26 +1,26 @@
 <div id="fullMainContent">
-  <div class="container-fluid">
-    <div
-      class="row d-flex align-items-start my-4"
-      *ngIf="this.user$ | async as user"
-      @fadeInOut
-    >
+  <div
+    class="container-fluid"
+    *ngIf="this.user$ | async as userProfile"
+    @fadeInOut
+  >
+    <div class="row d-flex align-items-start my-4">
       <div class="col-12 col-lg-4">
         <!-- COL PLACE HOLDER -->
       </div>
       <div class="col-12 col-lg-4">
         <img
           ngxGravatar
-          [src]="this.gravatarMd5.gravatarMD5src(user.email)"
+          [src]="this.gravatarMd5.gravatarMD5src(userProfile.email)"
           [size]="100"
           class="mr-4 img-fluid"
         />
         <div class="lead d-inline-block">
-          <div *ngIf="user.first_name; else newUser">
-            Welcome back, <span class="text-capitalize">{{ user.first_name }}</span>
+          <div *ngIf="userProfile.first_name; else newUser">
+            Welcome back, <span class="text-capitalize">{{ userProfile.first_name }}</span>
           </div>
           <ng-template #newUser>
-            <div>Welcome, {{ user.username }}</div>
+            <div>Welcome, {{ userProfile.username }}</div>
           </ng-template>
         </div>
       </div>
@@ -33,16 +33,78 @@
     <hr class="mb-3">
 
     <div
-      class="row d-flex justify-content-center align-items-start"
-      *ngIf="this.user.userCourses$ | async as userCourses; else loading"
+      class="row d-flex justify-content-center align-items-start pt-3"
+      *ngIf="this.userService.userCourses$ | async as userCourses; else loading"
       @fadeInOut
     >
 
-      <div class="col-xs-12 col-lg-3 col-xl-4">
+      <div
+        class="col-xs-12 col-lg-4 col-xxl-3"
+        *ngIf="userSelectedCourse$ | async as userSelectedCourse"
+      >
+        <div class="card mb-4">
+          <img
+            class="card-img-top"
+            src="publisher-files/1/theme/selected-course.jpg"
+            alt="{{userSelectedCourse.cover_alt}}"
+          >
+          <div class="card-body">
+            <div class="container-fluid">
+              <div class="row justify-content-between my-auto">
+                <div class="col-auto">
+                  <small class="text-secondary text-uppercase">Selected course</small>
+                  <div class="card-title text-dark">{{ userSelectedCourse.title }}</div>
+                </div>
+                <div class="col-auto">
+                  <button
+                    mat-button color="primary" class="border my-3"
+                    (click)="goToActivity(userSelectedCourse.user_progress.id)"
+                  >
+                    Resume
+                  </button>
+                  <button
+                    mat-button color="primary" class="my-3 mx-1"
+                    [routerLink]="['/catalogue', 'course', userSelectedCourse.id]"
+                  >
+                    About
+                  </button>
+                </div>
+              </div>
+              <div class="row justify-content-between my-auto">
+                <div class="col-auto text-secondary" title="Activities">
+                  <small>
+                    {{ userSelectedCourse.total_activities }}
+                    <fa-icon [icon]="faDiagramProject" class="px-1"></fa-icon>
+                  </small>
+                </div>
+                <div class="col-auto">
+                  <a [routerLink]="['/catalogue', 'publisher', userSelectedCourse.theme.path]">
+                    <img src="{{ userSelectedCourse.theme.logo }}" class="pt-2 img-fluid" style="max-height: 4rem;">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="progress" style="height: 6px">
+            <div class="progress-bar progress-bar-striped"
+              *ngIf="userSelectedCourse.user_progress"
+              role="progressbar"
+              [title]="percentDone(
+                userSelectedCourse.total_activities, userSelectedCourse.user_progress.total_activities_completed, 'string'
+              )"
+              [style.width.%]="percentDone(
+                userSelectedCourse.total_activities, userSelectedCourse.user_progress.total_activities_completed, 'integer'
+              )"
+              [attr.aria-valuenow]="0"
+              aria-valuemin="0"
+              [attr.aria-valuemax]="100">
+            </div>
+          </div>
+        </div>
         <!-- AREA FOR DISPLAYING SELECTED COURSE -->
       </div>
 
-      <div class="col-xs-12 col-lg-9 col-xl-8 align-top">
+      <div class="col-xs-12 col-lg-8 col-xxl-9 align-top">
         <div class="container-fluid pl-0">
           <div class="row justify-content-between align-items-start">
             <div class="col-auto">
@@ -95,10 +157,12 @@
             <div class="progress-bar progress-bar-striped"
               *ngIf="course.user_progress"
               role="progressbar"
-              [style.width.%]="
-                course.user_progress ?
-                course.user_progress.total_activities_completed / course.total_activities * 100 : 0
-              "
+              [title]="percentDone(
+                course.total_activities, course.user_progress.total_activities_completed, 'string'
+              )"
+              [style.width.%]="percentDone(
+                course.total_activities, course.user_progress.total_activities_completed, 'integer'
+              )"
               [attr.aria-valuenow]="0"
               aria-valuemin="0"
               [attr.aria-valuemax]="100">

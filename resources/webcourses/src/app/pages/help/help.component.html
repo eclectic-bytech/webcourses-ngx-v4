@@ -34,18 +34,19 @@
                 </p>
 
                 <ol class="mt-1 mb-3" style="line-height:2;">
-                  <li>Click the <strong>Use code</strong> button located on the <em>course access codes panel</em>
-                    on the <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong> page.
+                  <li>
+                    Click the <strong>Unlock a course using an access code</strong> button located on the
+                    <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong> page.
                   </li>
                   <li>
-                    Copy and paste the <em>course acccess code</em> you received and click <strong>Enter</strong>.
+                    Copy and paste the <strong>Course Acccess Code</strong> you received and click <strong>Enter</strong>.
                   </li>
                 </ol>
 
 
                 <h4 class="mb-2 mb-sm-3 mt-5 text-uppercase">Purchased and unlocked courses</h4>
 
-                <p>All your courses are available from the the top-right corner's <strong>user menu</strong> dropdown under
+                <p>All your courses are available from the the top-right corner's <strong>User Menu</strong> dropdown under
                   <strong *ngIf="!this.userService.user; else hotMyCourses">My Courses</strong>.
                   <span *ngIf="!this.userService.user"><br>
                     <a href="/user/login" class="font-weight-bold">Sign in</a> to access it.
