@@ -10,7 +10,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="text-2xl capitalize p-6">
-                        Hello, {{ $page.props.user.name }}.
+                        Hello, {{ $page.props.auth.user.name }}.
                     </div>
                     <div class="text-gray-500 p-6">
                         Here you'll find all courses you've access to.
