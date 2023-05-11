@@ -67,9 +67,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     anchorScrolling: 'enabled',
     onSameUrlNavigation: 'reload',
-    scrollPositionRestoration: 'enabled',
-    relativeLinkResolution: 'legacy'
-  })],
+    scrollPositionRestoration: 'enabled'
+})],
   exports: [RouterModule],
   providers: [
     {
