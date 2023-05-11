@@ -1,9 +1,16 @@
-<div class="card m-1" style="max-width: 22rem;">
-  <img [routerLink]="['course', course.id]"
-    class="card-img-top handy" style="min-height: 10rem;"
+<mat-card class="card m-1" style="max-width: 22rem;">
+  <!-- <small class="d-inline-block text-secondary float-right"> #{{ course.id }}</small> -->
+  <mat-card-header>
+    <mat-card-title class="text-dark">{{ course.title }}</mat-card-title>
+    <mat-card-subtitle>${{ course.price / 100 }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image
+    class="card-img-top handy" style="max-height: 11rem;"
     src="publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}" alt="{{course.cover_alt}}"
   >
 
+  <!--
   <div class="progress" style="height: 6px">
     <div class="progress-bar progress-bar-striped"
       *ngIf="course.user_progress"
@@ -17,40 +24,44 @@
       [attr.aria-valuemax]="100">
     </div>
   </div>
+  -->
 
-  <div class="card-body" style="min-height: 13rem;">
-    <a [routerLink]="['/catalogue', 'course', course.id]"><h5 class="card-title">{{course.title}}</h5></a>
+  <mat-card-content class="overflow-auto">
+    <span class="text-dark" [innerHtml]="course.short_desc | safehtml: 'html'"></span>
+  </mat-card-content>
 
-    <p style="max-height:125px; min-height: 50px; overflow-y:auto; line-height:.9">
-      <small class="text-secondary" [innerHtml]="course.short_desc | safehtml: 'html'"></small>
-    </p>
+  <mat-card-actions>
+    <app-buy-button [course]="course" class="d-inline-block"></app-buy-button>
+    <button mat-button color="primary" [routerLink]="['/catalogue', 'course', course.id]">About</button>
+  </mat-card-actions>
 
-    <app-course-access-block [course]="course"></app-course-access-block>
-
-    <a class="card-link">
-      <small class="text-secondary">
-        Publisher:
-        <span
-          [routerLink]="['/catalogue', 'publisher', course.publisher.id_alias]"
-          class="text-uppercase text-primary handy"
-          >
-          {{ course.publisher.name }}
-        </span>
-      </small>
-    </a>
-  </div>
-
-  <div class="container-flex mx-2">
-    <div class="row">
-      <div class="col text-left">
-        <small class="text-secondary">{{ course.total_activities }} Activities</small>
-      </div>
-      <div class="col-auto text-center">
-        <small class="text-secondary">{{ course.total_students }} Participants</small>
-      </div>
-      <div class="col text-right">
-        <small class="text-secondary">Course #{{course.id}}</small>
+  <mat-card-footer class="text-secondary text-uppercase">
+    <div class="container-fluid">
+      <div class="row p-1">
+        <div class="col p-0">
+          <small>
+            {{ course.total_activities }}
+            <fa-icon [icon]="faDiagramProject" class="mx-1" title="Activities"></fa-icon>
+          </small>
+          <small class="mx-1">
+            {{ course.total_students }}
+            <fa-icon [icon]="faUserGroup" class="mx-1" title="Participants"></fa-icon>
+          </small>
+        </div>
+        <div class="col p-0 float-right">
+          <a class="card-link">
+            <small class="text-secondary text-nowrap">
+              Publisher:
+              <span
+                [routerLink]="['/catalogue', 'publisher', course.publisher.id_alias]"
+                class="text-uppercase text-primary handy"
+                >
+                {{ course.publisher.name }}
+              </span>
+            </small>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </mat-card-footer>
+</mat-card>

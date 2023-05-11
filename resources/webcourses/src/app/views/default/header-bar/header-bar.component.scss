@@ -18,14 +18,14 @@
 }
 
 #user-name {
+  color: darkorange;
   max-width: 8rem;
   overflow: hidden;
-  color: darkorange;
 }
 
 #signIn-dashboard {
-  padding: 0;
-  /* Overrides Bootstrap's nav-link padding */
+  padding: 0; /* Overrides Bootstrap's nav-link padding */
+  font-size: small;
 }
 
 // Change main menu item hover colour in headerbar
@@ -44,6 +44,10 @@
   border-radius: .35rem;
 }
 
+.menu-icon {
+  width: 1.7rem;
+}
+
 @media (min-width: 992px) {
   #dropdown-icon {
     display: inline-block !important;
@@ -54,8 +58,4 @@
   .alwaysVisible {
     order: 1;
   }
-}
-
-.menu-icon {
-  width: 1.7rem;
 }

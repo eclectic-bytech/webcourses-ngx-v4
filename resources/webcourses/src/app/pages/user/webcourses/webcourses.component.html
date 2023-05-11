@@ -1,28 +1,188 @@
-<div id="fullMainContent" class="text-center">
-  <div class="text-center mb-3">
-    <h1 class="common-heading mb-2">My Webcourses</h1>
+<div id="fullMainContent">
+  <div
+    class="container-fluid"
+    *ngIf="this.user$ | async as userProfile"
+    @fadeInOut
+  >
+    <div class="row d-flex align-items-start my-4">
+      <div class="col-12 col-lg-4">
+        <!-- COL PLACE HOLDER -->
+      </div>
+      <div class="col-12 col-lg-4">
+        <img
+          ngxGravatar
+          [src]="this.gravatarMd5.gravatarMD5src(userProfile.email)"
+          [size]="100"
+          class="mr-4 img-fluid"
+        />
+        <div class="lead d-inline-block">
+          <div *ngIf="userProfile.first_name; else newUser">
+            Welcome back, <span class="text-capitalize">{{ userProfile.first_name }}</span>
+          </div>
+          <ng-template #newUser>
+            <div>Welcome, {{ userProfile.username }}</div>
+          </ng-template>
+        </div>
+      </div>
 
-    <div *ngIf="this.user.userCourses$ | async as userCourses; else loading" @fadeInOut>
-      <small class="text-dark text-uppercase">{{userCourses.length}} Courses</small>
-        <div *ngIf="userCourses.length > 0; else noCoursesForYou">
-          <div class="mt-4">
-            <div *ngFor="let userCourse of userCourses, let i = index, let l = last" class="d-inline-block">
-              <app-catalogue-card [course]="userCourse"></app-catalogue-card>
+      <div class="col-12 col-lg-4 text-right align-items-start">
+        <!-- COL PLACE HOLDER -->
+      </div>
+    </div>
+
+    <hr class="mb-3">
+
+    <div
+      class="row d-flex justify-content-center align-items-start pt-3"
+      *ngIf="this.userService.userCourses$ | async as userCourses; else loading"
+      @fadeInOut
+    >
+
+      <div
+        class="col-xs-12 col-lg-4 col-xxl-3"
+        *ngIf="userSelectedCourse$ | async as userSelectedCourse"
+      >
+        <div class="card mb-4">
+          <img
+            class="card-img-top"
+            src="publisher-files/1/theme/selected-course.jpg"
+            alt="Generic image for a user's selected course that determines which theme is loaded."
+          >
+          <div class="card-body">
+            <div class="container-fluid">
+              <div class="row justify-content-between my-auto">
+                <div class="col-auto">
+                  <small class="text-secondary text-uppercase">Selected course</small>
+                  <div class="card-title text-dark">{{ userSelectedCourse.title }}</div>
+                </div>
+                <div class="col-auto">
+                  <button
+                    mat-button color="primary" class="border my-3"
+                    (click)="this.webcoursesService.goToActivity(userSelectedCourse.user_progress.id)"
+                  >
+                    Resume
+                  </button>
+                  <button
+                    mat-button color="primary" class="my-3 mx-1"
+                    [routerLink]="['/catalogue', 'course', userSelectedCourse.id]"
+                  >
+                    About
+                  </button>
+                </div>
+              </div>
+              <div class="row justify-content-between my-auto">
+                <div class="col-auto text-secondary" title="Activities">
+                  <small>
+                    {{ userSelectedCourse.total_activities }}
+                    <fa-icon [icon]="faDiagramProject" class="px-1"></fa-icon>
+                  </small>
+                </div>
+                <div class="col-auto">
+                  <a [routerLink]="['/catalogue', 'publisher', userSelectedCourse.theme.path]">
+                    <img src="{{ userSelectedCourse.theme.logo }}" class="pt-2 img-fluid" style="max-height: 4rem;">
+                  </a>
+                </div>
+              </div>
             </div>
-            <app-group-join-card></app-group-join-card>
+          </div>
+          <div class="progress" style="height: 6px">
+            <div class="progress-bar progress-bar-striped"
+              *ngIf="userSelectedCourse.user_progress"
+              role="progressbar"
+              [title]="percentDone(
+                userSelectedCourse.total_activities, userSelectedCourse.user_progress.total_activities_completed, 'string'
+              )"
+              [style.width.%]="percentDone(
+                userSelectedCourse.total_activities, userSelectedCourse.user_progress.total_activities_completed, 'integer'
+              )"
+              [attr.aria-valuenow]="0"
+              aria-valuemin="0"
+              [attr.aria-valuemax]="100">
+            </div>
           </div>
         </div>
+        <!-- AREA FOR DISPLAYING SELECTED COURSE -->
+      </div>
+
+      <div class="col-xs-12 col-lg-8 col-xxl-9 align-top">
+        <div class="container-fluid pl-0">
+          <div class="row justify-content-between align-items-start">
+            <div class="col-auto">
+              <button mat-button color="primary" class="border mb-4" (click)="this.accessCodeModalService.accessCodeModal()">
+                Unlock a course using an access code
+              </button>
+            </div>
+            <div class="col-auto">
+              <small class="text-dark text-uppercase">{{userCourses.length}} courses unlocked</small>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="container p-0 mb-3 border rounded"
+          *ngFor="let course of userCourses, let i = index, let l = last"
+        >
+
+          <div class="row no-gutters">
+            <div class="col-sm-12 col-md-4">
+              <div class="card">
+                <img
+                  class="card-img-top"
+                  style="object-fit: cover; height: 11rem;"
+                  src="publisher-files/{{course.publisher_id}}/courses/{{course.id}}/images/{{course.cover}}"
+                  alt="{{course.cover_alt}}"
+                >
+              </div>
+            </div>
+            <div class="col-auto ml-4">
+              <div class="lead mt-3">{{ course.title }} <small class="text-secondary"></small></div>
+              <div class="text-dark">
+                Joined: {{ course.user_progress.created_at | date:'longDate' }}
+              </div>
+              <button
+                mat-button color="primary" class="border my-3"
+                (click)="this.webcoursesService.goToActivity(course.user_progress.id)"
+              >
+                Enter
+              </button>
+              <button
+                mat-button color="primary" class="mt-3 ml-2"
+                [routerLink]="['/catalogue', 'course', course.id]"
+              >
+                About
+              </button>
+            </div>
+          </div>
+          <div class="progress" style="height: 6px">
+            <div class="progress-bar progress-bar-striped"
+              *ngIf="course.user_progress"
+              role="progressbar"
+              [title]="percentDone(
+                course.total_activities, course.user_progress.total_activities_completed, 'string'
+              )"
+              [style.width.%]="percentDone(
+                course.total_activities, course.user_progress.total_activities_completed, 'integer'
+              )"
+              [attr.aria-valuenow]="0"
+              aria-valuemin="0"
+              [attr.aria-valuemax]="100">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div *ngIf="userCourses.length === 0">
+        <h1 class="common-heading mb-2 mt-5 text-success">You've not yet enrolled in any courses.</h1>
+        <p class="text-dark">Start improving your skills by using a <span class="font-weight-bold">Course Access Code</span> below.<br>
+        Visit the <a [routerLink]="['/catalogue']" class="text-nowrap">Webcourse Catalogue</a> to browse all publicly available courses.</p>
+      </div>
+
     </div>
+
     <ng-template #loading>
       <app-loading-spinner></app-loading-spinner>
     </ng-template>
+
   </div>
 </div>
-
-<ng-template #noCoursesForYou>
-  <h1 class="common-heading mb-2 mt-5 text-success">You've not yet enrolled in any courses.</h1>
-  <p class="text-dark">Start improving your skills by using a <span class="font-weight-bold">Course Access Code</span> below.<br>
-  Visit the <a [routerLink]="['/catalogue']" class="text-nowrap">Webcourse Catalogue</a> to browse all publicly available courses.</p>
-  <app-group-join-card></app-group-join-card>
-</ng-template>
-

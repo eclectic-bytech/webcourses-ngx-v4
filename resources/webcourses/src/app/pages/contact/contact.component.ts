@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
-import { faGlobe, faEarthAmericas, faEarthEurope } from '@fortawesome/free-solid-svg-icons'
+import { HttpClient } from '@angular/common/http'
+
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
@@ -10,8 +11,21 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 })
 
 export class ContactComponent {
-  public email = faGlobe
-  public earthAmericas = faEarthAmericas
-  public earthEurope = faEarthEurope
-  constructor() { }
+
+  public htmlContent: string
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  ngOnInit() {
+    this.http.get('/webcourses/publisher-files/default/html/pages/contact.html', { responseType: 'text' })
+      .subscribe(
+        (html: string) => {
+          this.htmlContent = html
+        }
+      )
+  }
+
 }
+
