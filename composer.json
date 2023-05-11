@@ -11,7 +11,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.6",
         "laravel/cashier": "^14.8",
-        "laravel/framework": "^9.0",
+        "laravel/framework": "^10.0",
         "laravel/jetstream": "^3.0",
         "laravel/sanctum": "^3.2",
         "laravel/slack-notification-channel": "^2.5",
