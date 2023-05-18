@@ -55,6 +55,7 @@
         >
           <td>
             {{ discountCode.code }}
+            <i class="fa-solid fa-copy" ngxClipboard [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"></i>
             <span
               class="badge badge-pill font-weight-light mt-1 float-right"
               [ngClass]="pillClass(discountCode)"
