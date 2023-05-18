@@ -35,6 +35,7 @@
     "eslint": "^8.6.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
+    "ngx-clipboard": "^16.0.0",
     "ngx-google-analytics": "^14.0.1",
     "ngx-gravatar": "^13.0.0",
     "ngx-progressbar": "^9.0.0",
