@@ -49,12 +49,11 @@
 
       <tbody>
         <tr
-          class="handy"
           *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
         >
           <td>
-            <span [routerLink]="[discountCode.id, 'users']">{{ discountCode.code }}</span>
-            <i class="fa-solid fa-copy mx-2" ngxClipboard [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"></i>
+            <span [routerLink]="[discountCode.id, 'users']" class="handy">{{ discountCode.code }}</span>
+            <i class="fa-solid fa-copy mx-2 handy" ngxClipboard [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code" title="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"></i>
             <span
               class="badge badge-pill font-weight-light mt-1 float-right"
               [ngClass]="pillClass(discountCode)"
