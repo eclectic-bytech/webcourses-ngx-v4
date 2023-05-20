@@ -34,7 +34,9 @@ class UserAnswerController extends Controller
                 if ($activity_type === 'text' || $activity_type === 'textarea') {
                     $input = $request->input();
                     $answers[0] = DB::table('user_long_answers')->insertGetId(
-                        array('answer' => $input['answer'])
+                        array('answer' => $input['answer'],
+                        'updated_at' => now(),
+                        'created_at' => now())
                     );
                 } else {
                     $answers = ($activity_type === 'info' || $activity_type === 'special') ? [ 42 ] : $request->input();
