@@ -10,4 +10,6 @@ class CourseSyllabus extends Model
 {
     use HasFactory;
     protected $table = 'course_syllabus';
+    protected $primaryKey = 'activity_id';
+
 }
