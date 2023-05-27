@@ -40,8 +40,6 @@ class UserAnswerController extends Controller
 
                     // Save ID of long answer for later processing
                     $answers[0] = $longAnswer->id;
-
-
                 } else {
                     $answers = ($activity_type === 'info' || $activity_type === 'special') ? [ 42 ] : $request->input();
                     if (!$answers && ($activity_type == 'checkbox' || $activity_type == 'click')) {
