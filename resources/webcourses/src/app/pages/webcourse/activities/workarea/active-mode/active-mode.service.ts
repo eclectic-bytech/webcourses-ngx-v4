@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
+import { FormGroup } from '@angular/forms'
+
+// WNGX services
 import { UserService } from '../../../../../core/services/user/user.service'
-import { WorkareaService } from '../workarea.service'
-import { NavService } from '../nav/nav.service'
-import { Activity } from './../models/activity.model'
 import { CompletionStatsService } from './../../../../../core/services/user/completion-stats.service'
 import { ConfigService } from '../../../../../core/services/config/config.service'
 import { DndService } from './../activities/dnd/dnd.service'
 import { ClickRotateService } from '../activities/click-rotate/click-rotate.service'
-import { FormGroup } from '@angular/forms'
+import { ActivitiesService } from '../../activities.service'
+import { WebcourseService } from '../../../webcourse.service'
+
+// WNGX models and misc
+import { Activity } from './../models/activity.model'
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +26,11 @@ export class ActiveModeService {
     private httpClient: HttpClient,
     private configService: ConfigService,
     public user: UserService,
-    private workareaService: WorkareaService,
-    private navService: NavService,
     private completionStatsService: CompletionStatsService,
     private dndService: DndService,
-    private clickRotateService: ClickRotateService
+    private clickRotateService: ClickRotateService,
+    private activitiesService: ActivitiesService,
+    private webcourseService: WebcourseService
   ) { }
 
   extractAnswers() {
@@ -38,7 +42,7 @@ export class ActiveModeService {
     if (activityType === 'checkbox' || activityType === 'click') {
       extractedAnswer = this.extractOnlySelectedOptions()
     } else if (activityType === 'dnd' || activityType === 'dnd-match') {
-      extractedAnswer = this.dndExtract(this.workareaService.activities)
+      extractedAnswer = this.dndExtract(this.activitiesService.activities)
     } else if (activityType === 'click2') {
       extractedAnswer = JSON.stringify(this.clickRotateService.userSelections)
     } else if (activityType === 'radio') {
@@ -59,7 +63,7 @@ export class ActiveModeService {
     ).subscribe(
       (activity_supplemental) => {
         this.completionStatsService.totalActivitiesCompleted++
-        this.navService.navDisable(false)
+        this.webcourseService.waitingForApi = false
 
         if (activity_supplemental['after_word']) {
           this.lastActivityInSet.after_word = activity_supplemental['after_word']
@@ -89,14 +93,14 @@ export class ActiveModeService {
 
         // Afterword, correct answers, etc might be returned when saving user answers
         // If they do, merge them back into the activities object
-        this.workareaService.activities[this.workareaService.activities.length - 1] = {
-          ...this.workareaService.activities[this.workareaService.activities.length - 1], ...activity_supplemental
+        this.activitiesService.activities[this.activitiesService.activities.length - 1] = {
+          ...this.activitiesService.activities[this.activitiesService.activities.length - 1], ...activity_supplemental
         }
 
       },
       (err) => {
         console.log('ERROR #2334.')
-        this.navService.navDisable(false)
+        this.webcourseService.waitingForApi = false
       }
     )
   }
@@ -118,15 +122,15 @@ export class ActiveModeService {
   dndExtract(activities: Activity[]) {
     let extractedAnswer = []
     // Loop through activity answers, build array of AIDs only, in user selected order
-    activities[this.workareaService.activities.length - 1].answers.forEach(answer => {
+    activities[this.activitiesService.activities.length - 1].answers.forEach(answer => {
       extractedAnswer.push(answer.id)
     })
     return extractedAnswer
   }
 
   get lastActivityInSet() {
-    return <Activity>this.workareaService.activities[
-      this.workareaService.activities.length - 1
+    return <Activity>this.activitiesService.activities[
+      this.activitiesService.activities.length - 1
     ]
   }
 }

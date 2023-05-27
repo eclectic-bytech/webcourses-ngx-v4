@@ -4,14 +4,18 @@ import { Observable, Subscription } from 'rxjs'
 import { GravatarMd5Service } from 'src/app/core/services/gravatar-md5/gravatar-md5.service'
 import { faDiagramProject } from '@fortawesome/free-solid-svg-icons'
 
+// WNGX services
 import { AppService } from '../../../app.service'
 import { UserService } from '../../../core/services/user/user.service'
-import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
 import { AccessCodeModalService } from '../../components/access-code-modal/access-code-modal.service'
-import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 import { CourseService } from '../../catalogue/course/course.service'
-import { Course } from 'src/app/models/course.model'
 import { WebcoursesService } from './webcourses.service'
+import { NavService } from '../../webcourse/activities/workarea/nav/nav.service'
+
+// WNGX models and misc
+import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
+import { Course } from 'src/app/models/course.model'
+import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-webcourses',
@@ -19,6 +23,7 @@ import { WebcoursesService } from './webcourses.service'
   styleUrls: ['./webcourses.component.scss'],
   animations: [FadeInOut]
 })
+
 export class WebcoursesComponent implements OnInit, OnDestroy {
 
   public faDiagramProject = faDiagramProject
@@ -35,22 +40,31 @@ export class WebcoursesComponent implements OnInit, OnDestroy {
     private appService: AppService,
     public accessCodeModalService: AccessCodeModalService,
     public userService: UserService,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private navService: NavService
   ) { }
 
   ngOnInit() {
     this.appService.setTitle(this.route.snapshot.data.title)
-    if (this.route.snapshot.queryParamMap.get('code')) {
-      this.accessCodeModalService.accessCodeModal()
-      this.accessCodeModalService.defaultCode = this.route.snapshot.queryParamMap.get('code')
-      this.accessCodeModalService.submitCode(this.route.snapshot.queryParamMap.get('code'))
-    }
+    this.accessCodeRoutine()
 
     this.subscription = this.userService.getUser().subscribe(
       (user: JetstreamUser) => {
         this.userSelectedCourse$ = this.courseService.getCourse(user.current_course_id)
       }
     )
+  }
+
+  enterButton(aid: number) {
+    this.navService.NavigateByAid(aid)
+  }
+
+  accessCodeRoutine() {
+    if (this.route.snapshot.queryParamMap.get('code')) {
+      this.accessCodeModalService.accessCodeModal()
+      this.accessCodeModalService.defaultCode = this.route.snapshot.queryParamMap.get('code')
+      this.accessCodeModalService.submitCode(this.route.snapshot.queryParamMap.get('code'))
+    }
   }
 
   percentDone(ta: number, tac: number, type: string) {

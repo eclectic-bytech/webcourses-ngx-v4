@@ -17,6 +17,10 @@ use App\Models\UserProgress;
 class ActivityController extends Controller
 {
     public function activity($aid, $pid) {
+        $userProgress = UserProgress::find($pid);
+        $userProgress->selected_aid = $aid;
+        $userProgress->save();
+
         return Activity
             ::with('meta', 'answers', 'default_answer')
             ->with(['user_answers' => function ($query) use ($pid) {

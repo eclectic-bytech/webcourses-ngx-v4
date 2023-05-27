@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core'
-import { AccessCodeModalService } from './access-code-modal.service'
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-import { faFingerprint, faSpinner } from '@fortawesome/free-solid-svg-icons'
-import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
-import { trigger, style, transition, animate } from '@angular/animations'
+import { FormsModule } from '@angular/forms'
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap'
+import { faFingerprint, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
+// WNGX imports
+import { AccessCodeModalService } from './access-code-modal.service'
+import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
 
 @Component({
   selector: 'app-access-code-modal',
@@ -13,14 +15,7 @@ import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap'
   styleUrls: ['./access-code-modal.component.scss'],
   standalone: true,
   imports: [FontAwesomeModule, FormsModule, CommonModule, NgbProgressbarModule],
-  animations: [
-    trigger('valueAnimation', [
-      transition('* => *', [
-        style({ opacity: 0 }),
-        animate(1000, style({ opacity: 1 }))
-      ])
-    ])
-  ]
+  animations: [FadeInOut2]
 })
 
 export class AccessCodeModalComponent implements OnInit {

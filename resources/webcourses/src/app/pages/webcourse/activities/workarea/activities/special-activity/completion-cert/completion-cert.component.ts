@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { CompletionCertService } from './completion-cert.service'
 import { faSpinner, faFileArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 @Component({
   selector: 'app-completion-cert',
@@ -13,8 +14,8 @@ export class CompletionCertComponent {
   faFileArrowDown = faFileArrowDown
 
   constructor(
-    public completionCertService: CompletionCertService
+    public completionCertService: CompletionCertService,
+    public selectedCourseService: SelectedCourseService
   ) { }
-
 
 }

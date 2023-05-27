@@ -1,11 +1,15 @@
 import { Component } from '@angular/core'
-import { ActivitiesService } from '../../activities.service'
-import { Chapter } from '../../models/chapter.model'
+
+// WNGX services
 import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
-import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
-import { WorkareaService } from '../../workarea/workarea.service'
-import { ChapterIndexService } from './chapter-index.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
+import { CourseChapterIndexService } from 'src/app/core/services/course-chapter-index/course-chapter-index.service'
+import { WebcourseService } from '../../../webcourse.service'
+
+// WNGX models and misc
+import { Chapter } from '../../models/chapter.model'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { NavService } from '../../workarea/nav/nav.service'
 
 @Component({
   selector: 'app-chapter-index',
@@ -16,11 +20,11 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 export class ChapterIndexComponent {
 
   constructor(
-    public activitiesService: ActivitiesService,
     public selectedCourseService: SelectedCourseService,
-    public chapterIndexService: ChapterIndexService,
+    public courseChapterIndexService: CourseChapterIndexService,
     private completionStatsService: CompletionStatsService,
-    public workareaService: WorkareaService
+    public webcourseService: WebcourseService,
+    public navService: NavService
   ) { }
 
   chapterUnlock(chapterIndex: Chapter[], chapterNumber: number) {

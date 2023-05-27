@@ -1,37 +1,59 @@
-<div  class="pr-lg-4 pr-md-1 pr-sm-0"
-  *ngIf="(this.selectedCourseService.selectedActivitySet$ | async) as activity"
+<div class="pr-lg-4 pr-md-1 pr-sm-0"
+  *ngIf="this.selectedCourseService.selectedActivitySet$ | async as activity"
   >
+  <div [@FadeInOut2]="this.webcourseService.endOfChapter || this.webcourseService.endOfCourse || activity">
+    <div *ngIf="!this.webcourseService.endOfChapter && !this.webcourseService.endOfCourse; else eo">
+      <button class="btn btn-primary mr-3"
+        (click)="calcFollowingAid(-1)"
+        [disabled]="this.webcourseService.waitingForApi || activity[activity.length -1].meta.seq == 0"
+        >
+        <fa-icon [icon]="faStepBackward"></fa-icon>
+      </button>
 
-  <button class="btn btn-primary mr-3"
-    (click)="GoToActivity(-1)"
-    [ngClass]="this.workareaService.waitingForApi || activity[activity.length -1].meta.seq == 0 ? 'btn-secondary' : 'btn-primary'"
-    [disabled]="this.workareaService.waitingForApi || activity[activity.length -1].meta.seq == 0"
-    >
-    <fa-icon [icon]="faStepBackward"></fa-icon>
-  </button>
+      <button type="button" class="btn btn-primary"
+        *ngIf="activity[activity.length -1].user_answers"
+        (click)="calcFollowingAid(1)"
+        [disabled]="this.webcourseService.waitingForApi"
+        >
+        NEXT
+        <fa-icon [icon]="faStepForward" class="mr-2 ml-1"></fa-icon>
+      </button>
 
-  <button type="button" class="btn"
-    *ngIf="activity[activity.length -1].user_answers"
-    (click)="GoToActivity(1)"
-    [ngClass]="this.workareaService.waitingForApi ? 'btn-secondary' : 'btn-primary'"
-    [disabled]="this.workareaService.waitingForApi"
-    >
-    NEXT
-    <fa-icon [icon]="faStepForward" class="mx-2" *ngIf="!this.workareaService.waitingForApi"></fa-icon>
-    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mx-2" *ngIf="this.workareaService.waitingForApi"></fa-icon>
-  </button>
+      <button type="submit" class="btn btn-success"
+        *ngIf="!activity[activity.length -1].user_answers"
+        (click)="SaveButton()"
+        [disabled]="this.webcourseService.waitingForApi || !this.activeModeService.activityForm.valid"
+        >
+        {{ activity[activity.length -1].meta.activity_type === 'info' || activity[activity.length -1].meta.activity_type === 'special' ? 'MARK READ' : 'SAVE' }}
+        <fa-icon
+          class="ml-2 mr-1 fa-regular"
+          [icon]="activity[activity.length -1].meta.activity_type === 'info' ? faCheck : faPenNib"
+          [ngClass]="this.activeModeService.activityForm.valid ? 'fa-fade' : ''"
+          style="--fa-animation-duration: 2s"
+        ></fa-icon>
+      </button>
+    </div>
 
-  <button type="submit" class="btn"
-    *ngIf="!activity[activity.length -1].user_answers"
-    (click)="SaveButton()"
-    [ngClass]="
-      (this.workareaService.waitingForApi || !this.activeModeService.activityForm.valid) ? 'btn-secondary' : 'btn-success'
-    "
-    [disabled]="this.workareaService.waitingForApi || !this.activeModeService.activityForm.valid"
-    >
-    <fa-icon [icon]="activity[activity.length -1].meta.activity_type === 'info' ? faCheck : faPencilAlt" class="mr-2" *ngIf="!this.workareaService.waitingForApi"></fa-icon>
-    <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="mr-2" *ngIf="this.workareaService.waitingForApi"></fa-icon>
-    {{ activity[activity.length -1].meta.activity_type === 'info' ||  activity[activity.length -1].meta.activity_type === 'special' ? 'MARK READ' : 'SAVE' }}
-  </button>
+    <ng-template #eo>
+      <button
+        *ngIf="this.webcourseService.endOfChapter"
+        [disabled]="this.webcourseService.waitingForApi"
+        (click)="ContinueButton()"
+        class="btn btn-primary"
+      >
+        CONTINUE
+        <fa-icon [icon]="faStepForward" class="ml-2 mr-1"></fa-icon>
+      </button>
 
+      <button
+        *ngIf="this.webcourseService.endOfCourse"
+        [disabled]="this.webcourseService.waitingForApi"
+        (click)="ReviewButton()"
+        class="btn btn-primary"
+      >
+        REVIEW
+        <fa-icon [icon]="faStepForward" class="ml-2 mr-1"></fa-icon>
+      </button>
+    </ng-template>
+  </div>
 </div>

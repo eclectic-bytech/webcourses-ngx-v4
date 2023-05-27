@@ -1,11 +1,9 @@
 import { Component } from '@angular/core'
 
-// WNGX services
+// WNGX imports
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
-
-// WNGX models and misc
-import { FadeInOut } from '../../../../../../core/animations/fade-in-out.animation'
-import { WorkareaService } from '../../workarea.service'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { CourseChapterIndexService } from 'src/app/core/services/course-chapter-index/course-chapter-index.service'
 
 @Component({
   selector: 'app-chapter-end',
@@ -16,13 +14,8 @@ import { WorkareaService } from '../../workarea.service'
 export class ChapterEndComponent {
 
   constructor(
+    public courseChapterIndexService: CourseChapterIndexService,
     public selectedCourseService: SelectedCourseService,
-    public workareaService: WorkareaService
   ) { }
-
-  continueButton() {
-    this.workareaService.endOfChapter = false // run first, in case next line fails
-    this.selectedCourseService.setChapters(this.selectedCourseService.selectedActivitySet[0].meta)
-  }
 
 }

@@ -1,20 +1,22 @@
 import { Component } from '@angular/core'
-import { SelectedService } from './selected.service'
+
+// WNGX imports
 import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
-import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
+import { CourseChapterIndexService } from 'src/app/core/services/course-chapter-index/course-chapter-index.service'
+import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
 
 @Component({
   selector: 'app-selected',
   templateUrl: './selected.component.html',
   styleUrls: ['./selected.component.scss'],
-  animations: [FadeInOut]
+  animations: [FadeInOut2]
 })
 export class SelectedComponent {
 
   constructor(
-    public selectedService: SelectedService,
     public completionStatsService: CompletionStatsService,
+    public courseChapterIndexService: CourseChapterIndexService,
     public selectedCourseService: SelectedCourseService
   ) { }
 

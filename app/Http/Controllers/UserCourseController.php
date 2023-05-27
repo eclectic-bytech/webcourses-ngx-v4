@@ -6,6 +6,9 @@ use App\Models\UserCourse;
 use App\Models\UserAnswer;
 use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
+
+use App\Http\Controllers\CourseController;
+
 use Illuminate\Http\Request;
 
 class UserCourseController extends Controller
@@ -23,22 +26,20 @@ class UserCourseController extends Controller
 
     // Takes PID, return which aid should be loaded when user decides to work on the course
     public function start_aid($pid) {
-        // Check if user has started work on the course
-        $answer = UserAnswer::where('progress_id', $pid)->latest()->first();
-        $resume['pid'] = (int)$pid;
-        $cid = json_decode(UserProgress::where('id', $pid)->first())->course_id;
+        $user_progress = json_decode(UserProgress::where('id', $pid)->first());
 
-        if (is_null($answer)) {
-            $resume['aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
-        } else {
-            $resume['aid'] = $answer['activity_id'];
+        if ($user_progress->user_id === auth()->user()->id) {
+            $resume['pid'] = (int)$pid;
+            $resume['aid'] = $user_progress->selected_aid;
+
+            // Update user's selected course
+            auth()->user()->current_course_id = $user_progress->course_id;
+            auth()->user()->update();
+
+            return $resume;
         }
 
-        // Update user's selected course
-        auth()->user()->current_course_id = $cid;
-        auth()->user()->update();
-
-        return $resume;
+        abort(403);
     }
 
 }
