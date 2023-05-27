@@ -34,11 +34,6 @@ class UserAnswerController extends Controller
                 if ($activity_type === 'text' || $activity_type === 'textarea') {
                     $input = $request->input();
 
-                    // Using DB::table is a sure sign we're not using Eloquent.
-                    // An example of replacing query builder (DB::table) with Eloquent can be found here:
-                    // https://github.com/eclectic-bytech/webcourses-ngx-v4/commit/007f61ace77348af3d56c6e3a1c705599e406485
-
-                    // Save answer using Eloquent instead of DB::table (raw query)
                     $longAnswer = new UserLongAnswer();
                     $longAnswer->answer = $input['answer'];
                     $longAnswer->save();
