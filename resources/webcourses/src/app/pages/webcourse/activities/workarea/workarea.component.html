@@ -16,7 +16,7 @@
         <!-- "Make activity part of demo" checkbox (publishers only)  -->
         <div *ngIf="this.selectedCourseService.selectedCourse as selectedCourse">
           <app-demo-flag
-            *ngIf="selectedCourse.publisher_id === this.userService.user.id && activity.meta.cont == false"
+            *ngIf="selectedCourse.publisher.owner_uid === this.userService.user.id && activity.meta.cont == false"
             [activityMeta]="activity.meta"
           ></app-demo-flag>
         </div>
