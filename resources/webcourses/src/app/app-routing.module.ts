@@ -4,6 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthUserGuard } from './core/auth/auth-user.guard'
 import { DefaultComponent } from './views/default/default.component'
 import { CultivateLearningSessionInterceptor } from './core/interceptors/cultivate-learning-session.interceptor'
+import { UserSessionExpiredInterceptor } from './core/interceptors/user-session-expired.interceptor'
 
 const routes: Routes = [
   {
@@ -74,6 +75,11 @@ const routes: Routes = [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CultivateLearningSessionInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserSessionExpiredInterceptor,
       multi: true
     },
     AuthUserGuard
