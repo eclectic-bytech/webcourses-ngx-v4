@@ -28,14 +28,18 @@ return new class extends Migration
                     $proid = $userAnswer->activity_id;
                 }
             }
+
             if ($proid === null) {
                 $upccid = $userProgress->course_id;
+
                 foreach ($courseSyllabuses as $courseSyllabus) {
                     if ($courseSyllabus->course_id === $upccid && $courseSyllabus->seq === 0) {
                         $proid = $courseSyllabus->activity_id;
+                        break;
                     }
                 }
             }
+
             $userProgress->selected_aid  = $proid;
             $userProgress->save();
         }
