@@ -25,7 +25,9 @@ return new class extends Migration
 
             foreach ($userAnswers as $userAnswer) {
                 if ($userAnswer->progress_id === $pid) {
-                    $proid = $userAnswer->activity_id;
+                    if ($userAnswer->activity_id > $proid){
+                        $proid = $userAnswer->activity_id;
+                    }
                 }
             }
 
