@@ -115,6 +115,13 @@ export class ActivitiesService {
       // progress bar in the same activity set is clicked (issue #161)
       if (this.activities.length != activities.length) {
         this.activities.push(activities[activities.length -1])
+        setTimeout(() => {
+          let scrollLocation = `activity${activities[activities.length -1].meta.activity_id}`
+          const element = document.getElementById(scrollLocation);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 500);
       }
 
     } else {
