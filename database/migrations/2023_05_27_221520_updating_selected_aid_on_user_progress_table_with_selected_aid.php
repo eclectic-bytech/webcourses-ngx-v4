@@ -22,11 +22,13 @@ return new class extends Migration
         foreach ($userProgresses as $userProgress) {
             $pid = $userProgress->id;
             $proid = null;
+            $newValue = null;
 
             foreach ($userAnswers as $userAnswer) {
                 if ($userAnswer->progress_id === $pid) {
-                    if ($userAnswer->activity_id > $proid){
+                    if ($userAnswer->id > $newValue){
                         $proid = $userAnswer->activity_id;
+                        $newValue + $userAnswer->id;
                     }
                 }
             }
