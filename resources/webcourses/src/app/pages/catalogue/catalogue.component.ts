@@ -2,20 +2,24 @@ import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 import { ActivatedRoute } from '@angular/router'
 import { map } from 'rxjs/operators'
+
 import { faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { faDiagramProject } from '@fortawesome/free-solid-svg-icons'
 
+// WNGX services
 import { CatalogueService } from './catalogue.service'
 import { UserService } from './../../core/services/user/user.service'
-import { Course } from './../../models/course.model'
 import { TaxStatusService } from '../../core/services/tax-status/tax-status.service'
 import { AppService } from './../../app.service'
 import { ThemeService } from './../../core/services/theme/theme.service'
-import { FadeInOut } from '../../core/animations/fade-in-out.animation'
 import { CourseService } from './course/course.service'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { AccessCodeModalService } from '../components/access-code-modal/access-code-modal.service'
-import { WebcoursesService } from '../user/webcourses/webcourses.service'
+import { NavService } from '../webcourse/activities/workarea/nav/nav.service'
+
+// WNGX models and misc
+import { Course } from './../../models/course.model'
+import { FadeInOut } from '../../core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-catalogue',
@@ -42,7 +46,7 @@ export class CatalogueComponent implements OnInit {
     private courseService: CourseService,
     private configService: ConfigService,
     private accessCodeModalService: AccessCodeModalService,
-    private webcoursesService: WebcoursesService
+    private navService: NavService
   ) { }
 
   ngOnInit() {
@@ -57,7 +61,7 @@ export class CatalogueComponent implements OnInit {
       window.location.href = `/user/register?code=C-OPEN-WNGX`
     } else {
       if (course.user_progress) {
-        this.webcoursesService.goToActivity(course.user_progress.id)
+        this.navService.NavigateByAid(course.user_progress.selected_aid)
       } else {
         this.accessCodeModalService.accessCodeModal()
         this.accessCodeModalService.defaultCode = "C-OPEN-WNGX"

@@ -24,22 +24,4 @@ class UserCourseController extends Controller
         return UserProgress::where('user_id', $user['id'])->get();
     }
 
-    // Takes PID, return which aid should be loaded when user decides to work on the course
-    public function start_aid($pid) {
-        $user_progress = json_decode(UserProgress::where('id', $pid)->first());
-
-        if ($user_progress->user_id === auth()->user()->id) {
-            $resume['pid'] = (int)$pid;
-            $resume['aid'] = $user_progress->selected_aid;
-
-            // Update user's selected course
-            auth()->user()->current_course_id = $user_progress->course_id;
-            auth()->user()->update();
-
-            return $resume;
-        }
-
-        abort(403);
-    }
-
 }

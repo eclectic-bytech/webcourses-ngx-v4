@@ -21,6 +21,10 @@ class SyllabusController extends Controller
             $activitiesMetaSet = $this->build_activities_meta_set($requestedActivity['meta']);
             $activitiesSet = $this->get_activities($activitiesMetaSet, $requestedActivity['pid']);
 
+            // Update user's selected course
+            auth()->user()->current_course_id = $requestedActivity['meta']->course_id;
+            auth()->user()->update();
+
             return $activitiesSet;
         }
 

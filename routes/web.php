@@ -79,10 +79,6 @@ Route::group(['prefix' => 'v4'], function() {
             Route::post('/user_name', [UserController::class, 'save_name']);
         });
 
-        // Paths grouped as /v4/user/course
-        Route::group(['prefix' => 'course'], function() {
-            Route::get('/{pid?}/resume', [UserCourseController::class, 'start_aid']);
-        });
 
     });
 
