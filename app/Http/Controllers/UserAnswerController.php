@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\ActivityController;
 
 use App\Models\UserAnswer;
+use App\Models\UserLongAnswer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -33,9 +34,20 @@ class UserAnswerController extends Controller
             if ($existing_answer->isEmpty()) {
                 if ($activity_type === 'text' || $activity_type === 'textarea') {
                     $input = $request->input();
-                    $answers[0] = DB::table('user_long_answers')->insertGetId(
-                        array('answer' => $input['answer'])
-                    );
+
+                    // Using DB::table is a sure sign we're not using Eloquent.
+                    // An example of replacing query builder (DB::table) with Eloquent can be found here:
+                    // https://github.com/eclectic-bytech/webcourses-ngx-v4/commit/007f61ace77348af3d56c6e3a1c705599e406485
+
+                    // Save answer using Eloquent instead of DB::table (raw query)
+                    $longAnswer = new UserLongAnswer();
+                    $longAnswer->answer = $input['answer'];
+                    $longAnswer->save();
+
+                    // Save ID of long answer for later processing
+                    $answers[0] = $longAnswer->id;
+
+
                 } else {
                     $answers = ($activity_type === 'info' || $activity_type === 'special') ? [ 42 ] : $request->input();
                     if (!$answers && ($activity_type == 'checkbox' || $activity_type == 'click')) {
@@ -43,9 +55,7 @@ class UserAnswerController extends Controller
                     }
                 }
 
-                // Do this using Eloquent?
-                // Remove Carbon:now() in fav of an auto DB solution?
-                // Or is this max compatibility, regardless of DB?
+                // Needs changing from query builder to Eloquent
                 foreach ($answers as $key => $answer) {
                     $answer_id = DB::table('user_answers')->insertGetId(
                         array(
