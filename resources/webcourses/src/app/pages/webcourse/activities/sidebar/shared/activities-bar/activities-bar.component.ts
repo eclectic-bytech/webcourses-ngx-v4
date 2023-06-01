@@ -1,10 +1,13 @@
 import { Component, Input } from '@angular/core'
-import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
-import { SelectedService } from 'src/app/pages/webcourse/activities/sidebar/selected/selected.service'
+
+// WNGX services
 import { UserService } from 'src/app/core/services/user/user.service'
 import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
-import { WorkareaService } from 'src/app/pages/webcourse/activities/workarea/workarea.service'
+import { NavService } from '../../../workarea/nav/nav.service'
+
+// WNGX models and misc
 import { ActivityMeta } from '../../../workarea/models/activity-meta.model'
+import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
 
 @Component({
   selector: 'app-activities-bar',
@@ -17,15 +20,14 @@ export class ActivitiesBarComponent {
   maxWidthPercent = 94
 
   constructor(
-    public workareaService: WorkareaService,
-    public selectedService: SelectedService,
     public completionStatsService: CompletionStatsService,
-    public user: UserService
+    public user: UserService,
+    private navService: NavService
   ) { }
 
   activityBarClick(activityMeta: ActivityMeta) {
     if (activityMeta.seq <= this.tac) {
-      this.workareaService.loadActivities(activityMeta.activity_id)
+      this.navService.NavigateByAid(activityMeta.activity_id)
     }
   }
 

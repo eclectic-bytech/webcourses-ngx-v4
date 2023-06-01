@@ -2,6 +2,7 @@
   color: #444;
   line-height: 1.4;
   font-size: 1.2rem;
+  margin-bottom: 7rem;
 }
 
 .question {
@@ -10,4 +11,11 @@
 
 .assess_text {
   color: #829d25;
+}
+
+#activity-nav-bar {
+  border-top: 1px solid #dedede;
+  background-color:whitesmoke;
+  z-index: 1010;
+  // z-index value chosen to fit bootstrap z-index: https://getbootstrap.com/docs/4.3/layout/overview/
 }

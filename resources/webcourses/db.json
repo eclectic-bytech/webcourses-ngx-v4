@@ -2,8 +2,8 @@
   "user": {
     "id": 1,
     "username": "Admin",
-    "first_name": null,
-    "last_name": null,
+    "first_name": "StarFox",
+    "last_name": "One",
     "email": "example@example.com",
     "email_verified_at": null,
     "current_team_id": 1,
@@ -52,8 +52,8 @@
     "two_factor_enabled": false
   },
   "post_user_name": {
-    "first_name": "StarFox",
-    "last_name": "One"
+    "first_name": "asasd",
+    "last_name": "asdasd"
   },
   "user_course_resume": {
     "id": 1,
@@ -104,6 +104,17 @@
         "bootstrap_nav": "navbar-light",
         "created_at": "2022-10-25T14:46:48.000000Z",
         "updated_at": null
+      },
+      "user_progress": {
+        "id": 2,
+        "user_id": 1,
+        "course_id": 2,
+        "build_id": 1,
+        "selected_aid": 3964,
+        "created_at": "2022-01-23T14:38:23.000000Z",
+        "updated_at": null,
+        "demo": 0,
+        "total_activities_completed": 0
       }
     },
     {
@@ -154,9 +165,7 @@
         "id": 2,
         "user_id": 1,
         "course_id": 2,
-        "build_id": 1,
-        "correct": 0,
-        "wrong": 0,
+        "selected_aid": 999,
         "missed": 0,
         "created_at": "2022-01-23T14:38:23.000000Z",
         "updated_at": null,
@@ -423,9 +432,7 @@
         "user_id": 1,
         "course_id": 1,
         "build_id": 1,
-        "correct": 0,
-        "wrong": 0,
-        "missed": 0,
+        "selected_aid": 3964,
         "created_at": "2022-01-23T14:38:23.000000Z",
         "updated_at": null,
         "demo": 0,
@@ -481,9 +488,7 @@
         "user_id": 1,
         "course_id": 2,
         "build_id": 1,
-        "correct": 0,
-        "wrong": 0,
-        "missed": 0,
+        "selected_aid": 3964,
         "created_at": "2022-01-23T14:38:23.000000Z",
         "updated_at": null,
         "demo": 0,
@@ -707,9 +712,6 @@
     },
     {
       "id": 3
-    },
-    {
-      "id": 4
     }
   ],
   "webcourse_1_chapters": [

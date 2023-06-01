@@ -19,18 +19,11 @@ export class WebcoursesService {
 
   goToActivity(pid: number) {
     // When course is completed, first aid in course is fetched. Otherwise, last completed.
-    this.getDestinationAid(pid).subscribe(
+    this.httpClient.get<{}>(`${this.configService.params.api.route}/user/course/${pid}/resume/`).subscribe(
       (resume: any) => {
         this.router.navigateByUrl(`/webcourse/activities/${resume.aid}`)
       }
     )
-  }
-
-  getDestinationAid(pid: number) {
-    return this.httpClient
-      .get<{}>(`
-        ${this.configService.params.api.route}/user/course/${pid}/resume/
-      `).pipe(resume => resume)
   }
 
 }

@@ -1,20 +1,25 @@
-<app-chapter-end *ngIf="this.workareaService.endOfChapter"></app-chapter-end>
-<app-course-end *ngIf="this.workareaService.endOfCourse && !this.workareaService.endOfChapter"></app-course-end>
+<app-chapter-end *ngIf="this.webcourseService.endOfChapter"></app-chapter-end>
+<app-course-end *ngIf="this.webcourseService.endOfCourse && !this.webcourseService.endOfChapter"></app-course-end>
 
-<div *ngIf="!this.workareaService.endOfChapter && !this.workareaService.endOfCourse">
-  <div class="container" *ngIf="this.workareaService.activities" id="workarea-activities">
-    <app-demo-flag
-      *ngIf="this.selectedService.selectedCourse.publisher_id === this.userService.user.id"
-      [activityMeta]="this.workareaService.activities[0].meta"
-    ></app-demo-flag>
-    <div *ngFor="let activity of this.workareaService.activities" class="row activity mt-4" @fadeInOut>
+<div *ngIf="!this.webcourseService.endOfChapter && !this.webcourseService.endOfCourse">
 
+  <div class="container" *ngIf="this.activitiesService.activities" id="workarea-activities">
+
+    <div *ngFor="let activity of this.activitiesService.activities" class="row activity mt-4" @fadeInOut>
 
       <div
         [id]="'activity' + activity.meta.activity_id"
         [ngClass]="(activity.user_answers) ? 'reviewModeActivity' : 'activeModeActivity'"
         class="col"
       >
+
+        <!-- "Make activity part of demo" checkbox (publishers only)  -->
+        <div *ngIf="this.selectedCourseService.selectedCourse as selectedCourse">
+          <app-demo-flag
+            *ngIf="selectedCourse.publisher.owner_uid === this.userService.user.id && activity.meta.cont == false"
+            [activityMeta]="activity.meta"
+          ></app-demo-flag>
+        </div>
 
         <!--!!!!!!!!!!!!!!!
             ngIf is required on activity.* so 'Fringe' browser doesn't show nulls
@@ -53,19 +58,41 @@
           >
         </div>
 
-
       </div>
 
-    </div>
-
-    <div class="py-5 d-print-none">
-      <div class="float-left handy" (click)="printButton()">
-        <fa-icon [icon]="faPrint" class="text-info mr-3"></fa-icon>
-        <span class="text-secondary h6">Print</span>
-      </div>
-
-      <app-nav class="row justify-content-end d-print-none"></app-nav>
     </div>
 
   </div>
 </div>
+
+<nav class="fixed-bottom d-print-none" id="activity-nav-bar">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-5 d-none d-lg-block">
+        <!-- This area is hidden under the activity sidebar -->
+      </div>
+      <div class="col-lg-7 my-auto">
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-4 my-auto">
+              <div class="handy" (click)="printButton()">
+                <fa-icon [icon]="faPrint" class="text-secondary mx-2"></fa-icon>
+                <span class="text-dark h6">Print</span>
+              </div>
+            </div>
+            <div class="col-4 my-auto text-center">
+              <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="ml-2 mr-1 text-dark fa-fade" size="2x" *ngIf="this.webcourseService.waitingForApi"></fa-icon>
+            </div>
+            <div class="col-4 text-right">
+              <div class="my-2">
+                <app-nav class="my-2"></app-nav>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
