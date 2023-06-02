@@ -1,6 +1,6 @@
 <nav
   id="header-menu"
-  class="navbar navbar-expand-lg justify-content-between"
+  class="navbar navbar-expand-xl justify-content-between"
   [ngClass]="theme.bootstrap_nav"
 >
   <button
@@ -208,6 +208,15 @@
           [routerLinkActiveOptions]="{ exact: true }"
         >
           <a class="nav-link" [routerLink]="['/getstarted']" (click)="collapseMenus()">Publish</a>
+        </li>
+
+        <!-- PRICING LINK -->
+        <li
+          class="nav-item px-2 py-1 mx-2"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" [routerLink]="['/pricing']" (click)="collapseMenus()">Pricing</a>
         </li>
 
         <!-- PUBLISHERS LINK -->

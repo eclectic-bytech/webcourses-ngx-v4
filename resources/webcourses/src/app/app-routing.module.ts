@@ -13,7 +13,6 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        // loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
         loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule),
         pathMatch: 'full'
       },
@@ -59,6 +58,10 @@ const routes: Routes = [
       {
         path: 'demo',
         loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule)
+      },
+      {
+        path: 'pricing',
+        loadChildren: () => import('./pages/pricing/pricing.module').then(m => m.PricingModule)
       }
     ]
   }
