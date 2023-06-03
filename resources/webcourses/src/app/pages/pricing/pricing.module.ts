@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 
 import { PricingRoutingModule } from './pricing-routing.module'
 import { PricingComponent } from './pricing.component'
-
+import { PipesModule } from 'src/app/shared/pipes/pipes.module'
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { PricingComponent } from './pricing.component'
   ],
   imports: [
     CommonModule,
-    PricingRoutingModule
+    PricingRoutingModule,
+    PipesModule
   ]
 })
 export class PricingModule { }
