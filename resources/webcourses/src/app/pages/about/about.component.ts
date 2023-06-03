@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-about',
@@ -12,12 +12,14 @@ export class AboutComponent {
   htmlContent: string
 
   constructor(
-    private http: HttpClient
+    private httpClient: HttpClient
   ) { }
 
   ngOnInit() {
-    this.http.get('/webcourses/publisher-files/default/html/pages/about.html', { responseType: 'text' }).subscribe(data => {
-      this.htmlContent = data
+    this.httpClient.get(
+      '/webcourses/publisher-files/default/html/pages/about.html', { responseType: 'text' }
+    ).subscribe( htmlContent => {
+      this.htmlContent = htmlContent
     })
   }
 }
