@@ -5,11 +5,9 @@ export class UserCourseProgress {
   public user_id: number
   public course_id: number
   public build_id: number
-  public correct: number
-  public wrong: number
-  public missed: number
+  public selected_aid: number
+  public demo: number
   public created_at: string
   public updated_at: string
-  public demo: number
   public total_activities_completed: number
 }

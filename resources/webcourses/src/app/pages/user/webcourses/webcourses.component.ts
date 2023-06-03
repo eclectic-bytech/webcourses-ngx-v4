@@ -1,16 +1,21 @@
-import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, Router } from '@angular/router'
-import { Observable } from 'rxjs'
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
+import { Observable, Subscription } from 'rxjs'
 import { GravatarMd5Service } from 'src/app/core/services/gravatar-md5/gravatar-md5.service'
+import { faDiagramProject } from '@fortawesome/free-solid-svg-icons'
 
-
-import { ConfigService } from 'src/app/core/services/config/config.service'
+// WNGX services
 import { AppService } from '../../../app.service'
 import { UserService } from '../../../core/services/user/user.service'
-import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
 import { AccessCodeModalService } from '../../components/access-code-modal/access-code-modal.service'
+import { CourseService } from '../../catalogue/course/course.service'
+import { WebcoursesService } from './webcourses.service'
+import { NavService } from '../../webcourse/activities/workarea/nav/nav.service'
+
+// WNGX models and misc
 import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
-import { HttpClient } from '@angular/common/http'
+import { Course } from 'src/app/models/course.model'
+import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-webcourses',
@@ -18,24 +23,43 @@ import { HttpClient } from '@angular/common/http'
   styleUrls: ['./webcourses.component.scss'],
   animations: [FadeInOut]
 })
-export class WebcoursesComponent implements OnInit {
+
+export class WebcoursesComponent implements OnInit, OnDestroy {
+
+  public faDiagramProject = faDiagramProject
 
   public showGroupCodeInput = false
-  public user$: Observable<JetstreamUser> = this.user.getUser()
+  public user$: Observable<JetstreamUser> = this.userService.getUser()
+  public userSelectedCourse$: Observable<Course>
+  private subscription: Subscription
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     public gravatarMd5: GravatarMd5Service,
+    public webcoursesService: WebcoursesService,
     private appService: AppService,
     public accessCodeModalService: AccessCodeModalService,
-    public user: UserService,
-    private configService: ConfigService,
-    private httpClient: HttpClient,
+    public userService: UserService,
+    private courseService: CourseService,
+    private navService: NavService
   ) { }
 
   ngOnInit() {
     this.appService.setTitle(this.route.snapshot.data.title)
+    this.accessCodeRoutine()
+
+    this.subscription = this.userService.getUser().subscribe(
+      (user: JetstreamUser) => {
+        this.userSelectedCourse$ = this.courseService.getCourse(user.current_course_id)
+      }
+    )
+  }
+
+  enterButton(aid: number) {
+    this.navService.NavigateByAid(aid)
+  }
+
+  accessCodeRoutine() {
     if (this.route.snapshot.queryParamMap.get('code')) {
       this.accessCodeModalService.accessCodeModal()
       this.accessCodeModalService.defaultCode = this.route.snapshot.queryParamMap.get('code')
@@ -43,20 +67,19 @@ export class WebcoursesComponent implements OnInit {
     }
   }
 
-  goToActivity(pid: number) {
-    // When course is completed, first aid in course is fetched. Otherwise, last completed.
-    this.getDestinationAid(pid).subscribe(
-      (resume: any) => {
-        this.router.navigateByUrl(`/webcourse/activities/${resume.aid}`)
-      }
-    )
+  percentDone(ta: number, tac: number, type: string) {
+    let percent = Math.round(tac ? tac / ta * 100 : 0)
+    if (type === 'integer') {
+      return percent
+    } else if (type === 'string') {
+      return percent + '% Done'
+    } else {
+      return "Numeric stat not available"
+    }
   }
 
-  getDestinationAid(pid: number) {
-    return this.httpClient
-      .get<{}>(`
-        ${this.configService.params.api.route}/user/course/${pid}/resume/
-      `).pipe(resume => resume)
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
   }
 
 }

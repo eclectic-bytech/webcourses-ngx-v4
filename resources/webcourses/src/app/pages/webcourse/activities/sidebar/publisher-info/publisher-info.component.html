@@ -1,5 +1,5 @@
 <div id="publisher-info-tab" class="px-4"
-  *ngIf="(this.selectedCourseService.selectedCourse$ | async ) as sc; else loading"
+  *ngIf="this.selectedCourseService.selectedCourse as sc; else loading"
   @fadeInOut
   >
 

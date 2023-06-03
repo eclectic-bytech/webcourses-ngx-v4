@@ -4,6 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthUserGuard } from './core/auth/auth-user.guard'
 import { DefaultComponent } from './views/default/default.component'
 import { CultivateLearningSessionInterceptor } from './core/interceptors/cultivate-learning-session.interceptor'
+import { UserSessionExpiredInterceptor } from './core/interceptors/user-session-expired.interceptor'
 
 const routes: Routes = [
   {
@@ -12,7 +13,6 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        // loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
         loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule),
         pathMatch: 'full'
       },
@@ -58,6 +58,10 @@ const routes: Routes = [
       {
         path: 'demo',
         loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule)
+      },
+      {
+        path: 'pricing',
+        loadChildren: () => import('./pages/pricing/pricing.module').then(m => m.PricingModule)
       }
     ]
   }
@@ -67,14 +71,18 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {
     anchorScrolling: 'enabled',
     onSameUrlNavigation: 'reload',
-    scrollPositionRestoration: 'enabled',
-    relativeLinkResolution: 'legacy'
-  })],
+    scrollPositionRestoration: 'enabled'
+})],
   exports: [RouterModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CultivateLearningSessionInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserSessionExpiredInterceptor,
       multi: true
     },
     AuthUserGuard

@@ -2,8 +2,8 @@
   "user": {
     "id": 1,
     "username": "Admin",
-    "first_name": null,
-    "last_name": null,
+    "first_name": "StarFox",
+    "last_name": "One",
     "email": "example@example.com",
     "email_verified_at": null,
     "current_team_id": 1,
@@ -11,6 +11,7 @@
     "created_at": null,
     "updated_at": null,
     "profile_photo_url": null,
+    "current_course_id": 1,
     "current_team": {
       "id": 1,
       "user_id": 1,
@@ -50,7 +51,10 @@
     ],
     "two_factor_enabled": false
   },
-  "post_user_name": {},
+  "post_user_name": {
+    "first_name": "asasd",
+    "last_name": "asdasd"
+  },
   "user_course_resume": {
     "id": 1,
     "pid": 1,
@@ -100,6 +104,17 @@
         "bootstrap_nav": "navbar-light",
         "created_at": "2022-10-25T14:46:48.000000Z",
         "updated_at": null
+      },
+      "user_progress": {
+        "id": 2,
+        "user_id": 1,
+        "course_id": 2,
+        "build_id": 1,
+        "selected_aid": 3964,
+        "created_at": "2022-01-23T14:38:23.000000Z",
+        "updated_at": null,
+        "demo": 0,
+        "total_activities_completed": 0
       }
     },
     {
@@ -150,14 +165,102 @@
         "id": 2,
         "user_id": 1,
         "course_id": 2,
-        "build_id": 1,
-        "correct": 0,
-        "wrong": 0,
+        "selected_aid": 999,
         "missed": 0,
         "created_at": "2022-01-23T14:38:23.000000Z",
         "updated_at": null,
         "demo": 0,
         "total_activities_completed": 0
+      }
+    },
+    {
+      "id": 3,
+      "title": "Open WebCourses Platform: Introduction",
+      "cover": "cover.png",
+      "publisher_id": 1,
+      "completion_time": "0.5",
+      "audience": "Educators, and learners passionate about online learning",
+      "cover_alt": "Open WebCourses logo - three rings forming a triangle, and platform name arranged into a skeleton key shape.",
+      "short_desc": "A quick overview of some key features of the Open WebCourses learning platform. Free access code and details at <a href=\"https://www.webcourses.io/demo\" target=\"_blank\">webcourses.io</a>. A quick overview of some key features of the Open WebCourses learning platform. Free access code and details at",
+      "long_desc": null,
+      "objective": "<p>Introduce and highlight features of the open source online learning platform.</p>",
+      "eval_type": "Online",
+      "price": 1000,
+      "created_at": "2020-05-29T14:30:20.000000Z",
+      "updated_at": "2021-07-26T07:32:43.000000Z",
+      "total_activities": 16,
+      "total_students": 1,
+      "publisher": {
+        "id": 1,
+        "id_alias": "webcourses_io",
+        "name": "Open WebCourses",
+        "website": "https://www.webcourses.io",
+        "contact_fname": "Slawomir",
+        "contact_lname": "Borkowski",
+        "contact_email": "welcome@webcourses.io",
+        "contact_phone": "204-410-2234",
+        "country": "Canada",
+        "province": "MB",
+        "city": "Winnipeg",
+        "settings": [],
+        "created_at": "2021-06-18T15:17:37.000000Z",
+        "updated_at": null
+      },
+      "theme": {
+        "id": 1,
+        "publisher_id": 1,
+        "label": "Webcourses.IO",
+        "path": "webcourses_io",
+        "logo": "publisher-files/1/theme/logo.svg",
+        "css": "publisher-files/1/theme/styles.css",
+        "bootstrap_nav": "navbar-light",
+        "created_at": "2022-10-25T14:46:48.000000Z",
+        "updated_at": null
+      }
+    },
+    {
+      "id": 4,
+      "title": "Open WebCourses Platform: Introduction",
+      "cover": "cover.png",
+      "publisher_id": 1,
+      "completion_time": "0.5",
+      "audience": "Educators, and learners passionate about online learning",
+      "cover_alt": "Open WebCourses logo - three rings forming a triangle, and platform name arranged into a skeleton key shape.",
+      "short_desc": "A quick overview of some key features of the Open WebCourses learning platform. Free access code and details at <a href=\"https://www.webcourses.io/demo\" target=\"_blank\">webcourses.io</a>.",
+      "long_desc": null,
+      "objective": "<p>Introduce and highlight features of the open source online learning platform.</p>",
+      "eval_type": "Online",
+      "price": 1000,
+      "created_at": "2020-05-29T14:30:20.000000Z",
+      "updated_at": "2021-07-26T07:32:43.000000Z",
+      "total_activities": 16,
+      "total_students": 1,
+      "publisher": {
+        "id": 1,
+        "id_alias": "webcourses_io",
+        "name": "Open WebCourses",
+        "website": "https://www.webcourses.io",
+        "contact_fname": "Slawomir",
+        "contact_lname": "Borkowski",
+        "contact_email": "welcome@webcourses.io",
+        "contact_phone": "204-410-2234",
+        "country": "Canada",
+        "province": "MB",
+        "city": "Winnipeg",
+        "settings": [],
+        "created_at": "2021-06-18T15:17:37.000000Z",
+        "updated_at": null
+      },
+      "theme": {
+        "id": 1,
+        "publisher_id": 1,
+        "label": "Webcourses.IO",
+        "path": "webcourses_io",
+        "logo": "publisher-files/1/theme/logo.svg",
+        "css": "publisher-files/1/theme/styles.css",
+        "bootstrap_nav": "navbar-light",
+        "created_at": "2022-10-25T14:46:48.000000Z",
+        "updated_at": null
       }
     }
   ],
@@ -329,9 +432,7 @@
         "user_id": 1,
         "course_id": 1,
         "build_id": 1,
-        "correct": 0,
-        "wrong": 0,
-        "missed": 0,
+        "selected_aid": 3964,
         "created_at": "2022-01-23T14:38:23.000000Z",
         "updated_at": null,
         "demo": 0,
@@ -387,9 +488,7 @@
         "user_id": 1,
         "course_id": 2,
         "build_id": 1,
-        "correct": 0,
-        "wrong": 0,
-        "missed": 0,
+        "selected_aid": 3964,
         "created_at": "2022-01-23T14:38:23.000000Z",
         "updated_at": null,
         "demo": 0,
@@ -604,7 +703,17 @@
       "answers": []
     }
   ],
-  "post_user_answer": [ ],
+  "post_user_answer": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    }
+  ],
   "webcourse_1_chapters": [
     {
       "id": 309,

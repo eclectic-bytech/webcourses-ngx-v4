@@ -54,7 +54,7 @@
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
                                             <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
-                                                {{ $page.props.user.current_team.name }}
+                                                {{ $page.props.auth.user.current_team.name }}
 
                                                 <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                                     <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -72,7 +72,7 @@
                                                 </div>
 
                                                 <!~~ Team Settings ~~>
-                                                <jet-dropdown-link :href="route('teams.show', $page.props.user.current_team)">
+                                                <jet-dropdown-link :href="route('teams.show', $page.props.auth.user.current_team)">
                                                     Team Settings
                                                 </jet-dropdown-link>
 
@@ -87,11 +87,11 @@
                                                     Switch Teams
                                                 </div>
 
-                                                <template v-for="team in $page.props.user.all_teams" :key="team.id">
+                                                <template v-for="team in $page.props.auth.user.all_teams" :key="team.id">
                                                     <form @submit.prevent="switchToTeam(team)">
                                                         <jet-dropdown-link as="button">
                                                             <div class="flex items-center">
-                                                                <svg v-if="team.id == $page.props.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                                <svg v-if="team.id == $page.props.auth.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                                                 <div>{{ team.name }}</div>
                                                             </div>
                                                         </jet-dropdown-link>
@@ -105,12 +105,16 @@
                             -->
 
                             <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
+                                <div class="ml-3 relative inline-flex">
+                                <inertia-link :href="route('profile.show')" class="mr-5 py-3 mt-2 leading-3 text-clip overflow-hidden max-w-[11rem] font-normal">
+                                    <div class="hidden border border-transparent sm:flex justify-end text-amber-500">{{ $page.props.auth.user.username }}</div>
+                                    <div class="hidden border border-transparent sm:flex justify-end text-xs text-blue-900">{{ $page.props.auth.user.email }}</div>
+                                </inertia-link>
+
                                 <jet-dropdown align="right" width="52">
                                     <template #trigger>
                                         <button class="inline-flex items-center py-3 border border-transparent text-sm leading-4 font-medium rounded-md text-amber-500 bg-white focus:outline-none transition">
-                                            <div class="hidden sm:flex text-center mr-2 text-clip overflow-hidden max-w-[11rem]">{{ $page.props.user.username }}</div>
-                                            <img class="h-9 w-auto rounded-full object-cover" :src="$page.props.user.profile_photo_url"/>
+                                            <img class="h-9 w-auto rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"/>
                                             <font-awesome-icon icon="fa-solid fa-caret-down" class="ml-1 text-gray-700" />
                                         </button>
                                     </template>
@@ -122,15 +126,15 @@
                                         </div> -->
                                         <!-- <div class="sm:hidden sm:flex flex items-center px-4">
                                             <div>
-                                               <div class="font-medium text-base text-gray-800">{{ $page.props.user.username }}</div>
-                                               <div class="font-medium text-sm text-gray-500">{{ $page.props.user.email }}</div>
+                                               <div class="font-medium text-base text-gray-800">{{ $page.props.auth.user.username }}</div>
+                                               <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
                                             </div>
                                         </div> -->
 
                                         <!-- Anchor tags for easy routing to the front end -->
 
                                         <!-- System administrator menu items -->
-                                        <div v-if="$page.props.user.user_roles.includes(1)">
+                                        <div v-if="$page.props.auth.user.user_roles.includes(1)">
                                             <a :href="('../webcourses/admin/system/dashboard')" class="items-center block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
                                                 <div class="inline-flex px-2 py-1">
                                                     <div class="fa-icon-container">
@@ -144,7 +148,7 @@
                                         </div>
 
                                         <!-- Publisher menu items -->
-                                        <div v-if="$page.props.user.user_roles.includes(2)">
+                                        <div v-if="$page.props.auth.user.user_roles.includes(2)">
                                             <a :href="('../webcourses/admin/publisher/profile')" class="items-center block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
                                                 <div class="inline-flex px-2 py-1">
                                                     <div class="fa-icon-container">
@@ -247,7 +251,7 @@
                                 </div>
 
                                 <!~~ Team Settings ~~>
-                                <jet-responsive-nav-link :href="route('teams.show', $page.props.user.current_team)" :active="route().current('teams.show')">
+                                <jet-responsive-nav-link :href="route('teams.show', $page.props.auth.user.current_team)" :active="route().current('teams.show')">
                                     Team Settings
                                 </jet-responsive-nav-link>
 
@@ -262,11 +266,11 @@
                                     Switch Teams
                                 </div>
 
-                                <template v-for="team in $page.props.user.all_teams" :key="team.id">
+                                <template v-for="team in $page.props.auth.user.all_teams" :key="team.id">
                                     <form @submit.prevent="switchToTeam(team)">
                                         <jet-responsive-nav-link as="button">
                                             <div class="flex items-center">
-                                                <svg v-if="team.id == $page.props.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                <svg v-if="team.id == $page.props.auth.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                                 <div>{{ team.name }}</div>
                                             </div>
                                         </jet-responsive-nav-link>
