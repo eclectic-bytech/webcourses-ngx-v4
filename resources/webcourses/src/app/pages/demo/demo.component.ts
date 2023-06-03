@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
 
-import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+// WNGX imports
 import { ConfigService } from 'src/app/core/services/config/config.service'
-import { HttpClient } from '@angular/common/http';
-
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-demo',
@@ -12,20 +12,19 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent {
-  htmlContent: string
+  public htmlContent: string
+
   constructor(
     public configService: ConfigService,
-    private http: HttpClient
+    private httpClient: HttpClient
   ) { }
 
   ngOnInit() {
-    this.http.get('/webcourses/publisher-files/default/html/demo.html', { responseType: 'text' }).subscribe(data => {
-      this.htmlContent = data
+    this.httpClient.get(
+      '/webcourses/publisher-files/default/html/demo.html', { responseType: 'text' }
+    ).subscribe( htmlContent => {
+      this.htmlContent = htmlContent
     })
-  }
-
-  demoButton() {
-    window.location.href = `/user/register?code=${this.configService.params.freeAccessCode}`
   }
 
 }
