@@ -16,7 +16,7 @@ export class AboutComponent {
   ) { }
 
   ngOnInit() {
-    this.http.get('/webcourses/publisher-files/default/html/about.html', { responseType: 'text' }).subscribe(data => {
+    this.http.get('/webcourses/publisher-files/default/html/pages/about.html', { responseType: 'text' }).subscribe(data => {
       this.htmlContent = data
     })
   }

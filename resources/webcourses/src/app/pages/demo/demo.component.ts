@@ -21,7 +21,7 @@ export class DemoComponent {
 
   ngOnInit() {
     this.httpClient.get(
-      '/webcourses/publisher-files/default/html/demo.html', { responseType: 'text' }
+      '/webcourses/publisher-files/default/html/pages/demo.html', { responseType: 'text' }
     ).subscribe( htmlContent => {
       this.htmlContent = htmlContent
     })

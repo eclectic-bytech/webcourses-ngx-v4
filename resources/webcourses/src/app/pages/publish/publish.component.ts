@@ -17,7 +17,7 @@ export class PublishComponent {
 
   ngOnInit() {
     this.httpClient.get(
-      '/webcourses/publisher-files/default/html/publish.html', { responseType: 'text' }
+      '/webcourses/publisher-files/default/html/pages/publish.html', { responseType: 'text' }
     ).subscribe( htmlContent => {
       this.htmlContent = htmlContent
     })

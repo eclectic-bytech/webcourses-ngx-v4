@@ -21,8 +21,8 @@ export class ContactComponent {
   ngOnInit() {
     this.http.get('/webcourses/publisher-files/default/html/pages/contact.html', { responseType: 'text' })
       .subscribe(
-        (html: string) => {
-          this.htmlContent = html
+        (htmlContent: string) => {
+          this.htmlContent = htmlContent
         }
       )
   }

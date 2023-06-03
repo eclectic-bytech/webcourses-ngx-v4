@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 
 import { PublishRoutingModule } from './publish-routing.module'
 import { PublishComponent } from './publish.component'
-
+import { PipesModule } from 'src/app/shared/pipes/pipes.module'
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { PublishComponent } from './publish.component'
   ],
   imports: [
     CommonModule,
-    PublishRoutingModule
+    PublishRoutingModule,
+    PipesModule
   ]
 })
 export class PublishModule { }
