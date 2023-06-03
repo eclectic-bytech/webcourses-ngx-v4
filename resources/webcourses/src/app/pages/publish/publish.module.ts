@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common'
 import { PublishRoutingModule } from './publish-routing.module'
 import { PublishComponent } from './publish.component'
 import { PipesModule } from 'src/app/shared/pipes/pipes.module'
+import { ContactBlockModule } from 'src/app/views/default/blocks/contact/contact.module'
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module'
   imports: [
     CommonModule,
     PublishRoutingModule,
-    PipesModule
+    PipesModule,
+    ContactBlockModule
   ]
 })
 export class PublishModule { }
