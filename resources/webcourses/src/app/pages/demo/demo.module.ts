@@ -5,6 +5,8 @@ import { DemoRoutingModule } from './demo-routing.module'
 import { DemoComponent } from './demo.component'
 import { PipesModule } from 'src/app/shared/pipes/pipes.module'
 
+import { ContactBlockModule } from 'src/app/views/default/blocks/contact/contact.module'
+
 @NgModule({
   declarations: [
     DemoComponent
@@ -12,7 +14,8 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module'
   imports: [
     CommonModule,
     DemoRoutingModule,
-    PipesModule
+    PipesModule,
+    ContactBlockModule
   ]
 })
 
