@@ -18,11 +18,6 @@ Everyone is encouraged to contribute, while we ensure high and professional qual
 
 We've now a proper [wiki with documentation](https://github.com/eclectic-bytech/webcourses-ngx-v4/wiki), and some content that was originally here has now been moved there.
 
-## Bytech officially welcomes Collier to the WNGX team and contributors circle
-
-Super thanks to Collier (mrshychip), and his continued interest in and contributions to the Open Webcourses platform.
-
-
 ## Installation
 
 Get the repo onto your machine using your prefered method, e.g. fork, clone, download, retype...  
