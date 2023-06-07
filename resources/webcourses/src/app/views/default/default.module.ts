@@ -14,7 +14,6 @@ import { CatalogueModule } from './../../pages/catalogue/catalogue.module'
 
 // Cultivate Learning Components
 import { DefaultComponent } from './default.component'
-import { LoadingComponent } from './loading.component'
 
 // Cultiavte Learning Services
 import { ThemeService } from '../../core/services/theme/theme.service'
@@ -22,8 +21,7 @@ import { ThemeService } from '../../core/services/theme/theme.service'
 
 @NgModule({
   declarations: [
-    DefaultComponent,
-    LoadingComponent
+    DefaultComponent
   ],
   imports: [
     CommonModule,
