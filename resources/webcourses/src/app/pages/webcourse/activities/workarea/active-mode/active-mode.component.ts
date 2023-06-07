@@ -30,8 +30,9 @@ export class ActiveModeComponent implements OnInit {
         Validators.required, Validators.minLength(3)
       ])]
     }
+    let validator = (this.activity.meta.style == 'image') ? 'radio' : this.activity.meta.activity_type
     this.activeModeService.activityForm = this.fb.group({
-      answer: answerValidators[this.activity.meta.activity_type]
+      answer: answerValidators[validator]
     })
   }
 
