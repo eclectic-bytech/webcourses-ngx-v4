@@ -29,7 +29,6 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@ng-bootstrap/ng-bootstrap": "^14.1.0",
     "@popperjs/core": "^2.11.6",
-    "@types/stripe": "^7.13.24",
     "bootstrap": "~4",
     "core-js": "^3.6.5",
     "eslint": "^8.6.0",
