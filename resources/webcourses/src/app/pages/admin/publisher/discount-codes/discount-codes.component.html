@@ -73,6 +73,19 @@
   </div>
 </div>
 
+
+<form novalidate (ngSubmit)="createToken()" [formGroup]="stripeTest" class="w-25">
+  <input type="text" formControlName="name" placeholder="Jane Doe">
+  <ngx-stripe-card
+    [options]="cardOptions"
+    [elementsOptions]="elementsOptions"
+  ></ngx-stripe-card>
+  <button type="submit">
+    CREATE TOKEN
+  </button>
+</form>
+
+
 <ng-template #loading>
   <app-loading-spinner></app-loading-spinner>
 </ng-template>
