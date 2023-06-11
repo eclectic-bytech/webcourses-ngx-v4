@@ -28,8 +28,8 @@
           <div class="text-dark">ID: {{ courseDiscountCodes.course.id }}</div>
         </div>
         <div class="col-lg-3 p-3 text-lg-right">
-          <button mat-button color="primary" class="border">
-            Purchase access code
+          <button mat-button color="primary" class="border" (click)="addAccessCode(courseDiscountCodes.course.id)">
+            Add code
           </button>
         </div>
       </div>
@@ -75,19 +75,6 @@
 
   </div>
 </div>
-
-
-<form novalidate (ngSubmit)="createToken()" [formGroup]="stripeTest" class="w-25">
-  <input type="text" formControlName="name" placeholder="Jane Doe">
-  <ngx-stripe-card
-    [options]="cardOptions"
-    [elementsOptions]="elementsOptions"
-  ></ngx-stripe-card>
-  <button type="submit">
-    CREATE TOKEN
-  </button>
-</form>
-
 
 <ng-template #loading>
   <app-loading-spinner></app-loading-spinner>
