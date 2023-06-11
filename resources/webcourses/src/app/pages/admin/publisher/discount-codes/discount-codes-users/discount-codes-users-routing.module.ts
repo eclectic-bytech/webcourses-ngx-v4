@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DiscountCodesUsersComponent } from './discount-codes-users.component';
+import { DiscountCodesUsersComponent } from './discount-codes-users.component'
 
 const routes: Routes = [
   {
-    path: 'users',
+    path: '',
     component: DiscountCodesUsersComponent
   }
 ];
