@@ -13,7 +13,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: ':code_id',
+    path: ':code_id/users',
     loadChildren: () => import('./discount-codes-users/discount-codes-users.module').then(m => m.DiscountCodesUsersModule),
   }
 ]
