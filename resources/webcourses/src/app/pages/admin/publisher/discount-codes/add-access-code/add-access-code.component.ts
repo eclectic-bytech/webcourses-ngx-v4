@@ -31,4 +31,7 @@ export class AddAccessCodeComponent {
     this.numberOfSeats = new FormControl('50')
   }
 
+  addCodeButton() {
+    this.router.navigateByUrl('/commerce/stripe/checkout')
+  }
 }
