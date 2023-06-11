@@ -40,13 +40,13 @@
         <tr>
           <th class="text-uppercase">
             code
-            <span class="badge badge-pill badge-light font-weight-light text-capitalize float-right">Available</span>
+            <span class="badge badge-pill badge-success font-weight-light text-capitalize mt-1 float-right">Available</span>
           </th>
           <th class="text-uppercase">label</th>
-          <th class="text-right text-uppercase">used</th>
-          <th class="text-right text-uppercase">max</th>
-          <th class="text-center text-uppercase">created</th>
-          <th class="text-center text-uppercase d-none d-xl-table-cell">last used</th>
+          <th class="text-right text-uppercase d-none d-md-table-cell">used</th>
+          <th class="text-right text-uppercase d-none d-md-table-cell">max</th>
+          <th class="text-center text-uppercase">last used</th>
+          <th class="text-center text-uppercase d-none d-xl-table-cell">created</th>
         </tr>
       </thead>
 
@@ -65,10 +65,10 @@
             </span>
           </td>
           <td>{{ discountCode.label }}</td>
-          <td class="text-right">{{ discountCode.uses }}</td>
-          <td class="text-right">{{ discountCode.uses_max }}</td>
+          <td class="text-right d-none d-md-table-cell">{{ discountCode.uses }}</td>
+          <td class="text-right d-none d-md-table-cell">{{ discountCode.uses_max }}</td>
+          <td class="text-center">{{ discountCode.updated_at | date:'mediumDate' }}</td>
           <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'mediumDate' }}</td>
-          <td class="text-center d-none d-xl-table-cell">{{ discountCode.updated_at | date:'mediumDate' }}</td>
         </tr>
       </tbody>
     </table>
