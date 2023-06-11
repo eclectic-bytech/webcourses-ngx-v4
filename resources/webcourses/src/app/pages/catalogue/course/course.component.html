@@ -17,7 +17,6 @@
           <div class="row">
             <div class="col-12 col-md-10 col-xl-8 mx-auto text-center">
               <p [innerHtml]="course.short_desc" class="lead"></p>
-              <app-buy-button [course]="course" [btnLg]="true" class="my-4"></app-buy-button>
               <div *ngIf="course.audience">
                 <h4 class="card-title common-heading text-center pt-5" [innerHtml]="'Audience'"></h4>
                 <p class="lead" [innerHtml]="course.audience"></p>

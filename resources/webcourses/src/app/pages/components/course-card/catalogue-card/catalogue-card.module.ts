@@ -6,7 +6,6 @@ import { MatButtonModule } from '@angular/material/button'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { CatalogueCardComponent } from './catalogue-card.component'
-import { BuyButtonModule } from '../../buttons/buy-button/buy-button.module'
 import { PipesModule } from './../../../../shared/pipes/pipes.module'
 
 
@@ -18,7 +17,6 @@ import { PipesModule } from './../../../../shared/pipes/pipes.module'
     MatCardModule,
     MatButtonModule,
     FontAwesomeModule,
-    BuyButtonModule,
     PipesModule
   ],
   exports: [CatalogueCardComponent]
