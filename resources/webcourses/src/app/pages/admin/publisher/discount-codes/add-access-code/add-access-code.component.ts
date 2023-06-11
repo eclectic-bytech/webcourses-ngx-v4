@@ -28,7 +28,7 @@ export class AddAccessCodeComponent {
     private httpClient: HttpClient,
     private courseService: CourseService
   ) {
-    this.numberOfSeats = new FormControl('10')
+    this.numberOfSeats = new FormControl('50')
   }
 
 }
