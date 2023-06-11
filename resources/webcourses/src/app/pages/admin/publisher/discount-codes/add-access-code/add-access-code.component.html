@@ -1,5 +1,48 @@
 <div id="fullMainContent">
-  <div class="container">
-    Add access code!
+  <div *ngIf="course$ | async as course">
+    <div class="container mt-5" @fadeInOut>
+
+      <div class="row">
+        <div class="col">
+          <div class="h4">Add access code</div>
+
+          <div class="lead">{{ course.title }}</div>
+          <small class="text-dark text-uppercase">{{ course.total_students }} participants</small>
+
+          <div class="h5 mt-4 mb-3">Define the maximum number of uses for this access code.</div>
+        </div>
+      </div>
+
+      <div class="row justify-content-start">
+        <div class="col-auto my-auto">
+          <mat-form-field appearance="outline" style="width: 6rem; padding-bottom: 0!important;">
+            <mat-label>Seats</mat-label>
+            <input matInput type="number" [min]="1" [max]="5000" id="numberOfSeats" [formControl]="numberOfSeats" style="padding-bottom: 0!important;">
+          </mat-form-field>
+        </div>
+
+        <div class="col-auto my-auto">
+          <div class="pb-4">
+            <span class="text-dark font-weight-bold mr-2">Sub-total:</span>
+            <span [@FadeInOut2]="this.numberOfSeats.value">
+              ${{ this.numberOfSeats.value * 7 | number:'1.0-0':'en-US' }}
+            </span><br>
+            <small>
+              <span [@FadeInOut2]="this.numberOfSeats.value">{{ this.numberOfSeats.value }}</span>
+              participants at $7.00 each
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button mat-button color="primary" class="border mt-3">
+            Add code
+          </button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
