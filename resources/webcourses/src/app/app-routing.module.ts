@@ -62,7 +62,11 @@ const routes: Routes = [
       {
         path: 'pricing',
         loadChildren: () => import('./pages/pricing/pricing.module').then(m => m.PricingModule)
-      }
+      },
+      {
+        path: 'shared',
+        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
+      },
     ]
   }
 ]
@@ -72,7 +76,7 @@ const routes: Routes = [
     anchorScrolling: 'enabled',
     onSameUrlNavigation: 'reload',
     scrollPositionRestoration: 'enabled'
-})],
+  })],
   exports: [RouterModule],
   providers: [
     {
