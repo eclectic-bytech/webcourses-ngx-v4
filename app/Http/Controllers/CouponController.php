@@ -10,6 +10,8 @@ use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
 use App\Models\CodesUse;
 use App\Models\Syllabus;
+use Stripe\Charge;
+use Stripe\StripeClient;
 
 
 class CouponController extends Controller
@@ -69,7 +71,6 @@ class CouponController extends Controller
         return $code;
     }
 
-
     public function validateCode($code_info) {
         // $now = new date('Y-m-d H:i:s');
         $now = date(DATE_ATOM);
@@ -126,6 +127,32 @@ class CouponController extends Controller
         $message['invalid'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Invalid code");
         $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Access code already applied");
         return $message[$status];
+    }
+
+    public function checkout($amount) {
+        // $stripe = new \Stripe\StripeClient('sk_test_uYJ3hVvzpZDL8w4UqRPnapfS00ufvNjXER');
+        // return $stripe->paymentIntents->create([
+        //     'amount' => $amount,
+        //     'currency' => 'cad'
+        // ]);
+
+
+        \Stripe\Stripe::setApiKey('sk_test_uYJ3hVvzpZDL8w4UqRPnapfS00ufvNjXER');
+        header('Content-Type: application/json');
+
+        $checkout_session = \Stripe\Checkout\Session::create([
+        'line_items' => [[
+            # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
+            'price' => 'price_1NIXCgHf0SDPGm8FoBXQA4Cx',
+            'quantity' => $amount,
+        ]],
+        'mode' => 'payment',
+        'success_url' => env('API_URL') . '/success.html',
+        'cancel_url' => env('API_URL') . '/cancel.html',
+        ]);
+
+        header("HTTP/1.1 303 See Other");
+        header("Location: " . $checkout_session->url);
     }
 
 }

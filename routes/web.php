@@ -104,6 +104,11 @@ Route::group(['prefix' => 'v4'], function() {
         Route::get('/profile/{id}', [PublisherController::class, 'index']);
     });
 
+    // Paths grouped as /v4/commerce
+    Route::group(['prefix' => 'commerce'], function() {
+        Route::get('/stripe/charge/{amount}', [CouponController::class, 'checkout']);
+    });
+
     // Paths grouped as /v4/admin
     Route::middleware(['auth:sanctum'])->prefix('admin')->group(function() {
 
