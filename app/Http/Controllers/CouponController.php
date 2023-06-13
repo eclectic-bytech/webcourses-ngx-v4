@@ -147,8 +147,8 @@ class CouponController extends Controller
             'quantity' => $amount,
         ]],
         'mode' => 'payment',
-        'success_url' => env('API_URL') . '/success.html',
-        'cancel_url' => env('API_URL') . '/cancel.html',
+        'success_url' => env('APP_URL') . '/success.html',
+        'cancel_url' => env('APP_URL') . '/cancel.html',
         ]);
 
         header("HTTP/1.1 303 See Other");
