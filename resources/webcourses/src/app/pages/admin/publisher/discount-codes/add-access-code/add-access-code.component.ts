@@ -37,8 +37,11 @@ export class AddAccessCodeComponent {
     this.httpClient.get<string>(
       `${this.configService.params.api.route}/commerce/stripe/charge/${amount}`
     ).subscribe(
-      response => {
-        this.router.navigateByUrl(response)
+      (checkoutUrl) => {
+        this.router.navigateByUrl(checkoutUrl)
+      },
+      (err) => {
+        console.log(err)
       }
     )
   }
