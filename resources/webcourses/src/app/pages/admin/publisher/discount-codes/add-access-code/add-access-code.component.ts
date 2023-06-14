@@ -36,11 +36,8 @@ export class AddAccessCodeComponent {
     this.httpClient.get<string>(
       `${this.configService.params.api.route}/commerce/stripe/charge/${amount}`
     ).subscribe(
-      (checkoutUrl) => {
-        window.location.href = JSON.stringify(checkoutUrl)
-      },
-      (err) => {
-        console.log(err)
+      (checkoutUrl: string) => {
+        window.location.href = checkoutUrl
       }
     )
   }
