@@ -34,13 +34,13 @@ export class AddAccessCodeComponent {
   }
 
   addCodeButton(amount: number) {
-    // this.router.navigateByUrl('/commerce/stripe/checkout')
-    this.httpClient.get<any[]>(
+    this.httpClient.get<string>(
       `${this.configService.params.api.route}/commerce/stripe/charge/${amount}`
     ).subscribe(
       response => {
-        console.log(response)
+        this.router.navigateByUrl(response)
       }
     )
   }
+
 }

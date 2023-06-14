@@ -130,29 +130,19 @@ class CouponController extends Controller
     }
 
     public function checkout($amount) {
-        // $stripe = new \Stripe\StripeClient('sk_test_uYJ3hVvzpZDL8w4UqRPnapfS00ufvNjXER');
-        // return $stripe->paymentIntents->create([
-        //     'amount' => $amount,
-        //     'currency' => 'cad'
-        // ]);
-
-
-        \Stripe\Stripe::setApiKey('sk_test_uYJ3hVvzpZDL8w4UqRPnapfS00ufvNjXER');
-        header('Content-Type: application/json');
+        \Stripe\Stripe::setApiKey( env('STRIPE_SECRET') );
 
         $checkout_session = \Stripe\Checkout\Session::create([
-        'line_items' => [[
-            # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
-            'price' => 'price_1NIXCgHf0SDPGm8FoBXQA4Cx',
-            'quantity' => $amount,
-        ]],
-        'mode' => 'payment',
-        'success_url' => env('APP_URL') . '/success.html',
-        'cancel_url' => env('APP_URL') . '/cancel.html',
+            'line_items' => [[
+                'price' => env('ACCESS_CODE_PRICE_ID'),
+                'quantity' => $amount,
+            ]],
+            'mode' => 'payment',
+            'success_url' => env('APP_URL') . '/success.html',
+            'cancel_url' => env('APP_URL') . '/cancel.html'
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return $checkout_session->url;
     }
 
 }
