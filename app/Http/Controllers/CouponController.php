@@ -142,7 +142,7 @@ class CouponController extends Controller
             'cancel_url' => env('APP_URL') . '/cancel.html'
         ]);
 
-        return $checkout_session->url;
+        return json_encode($checkout_session->url);
     }
 
 }
