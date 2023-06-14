@@ -137,6 +137,7 @@ class CouponController extends Controller
                 'price' => env('ACCESS_CODE_PRICE_ID'),
                 'quantity' => $amount,
             ]],
+            'automatic_tax' => [ 'enabled' => true ],
             'mode' => 'payment',
             'success_url' => env('APP_URL') . '/success.html',
             'cancel_url' => env('APP_URL') . '/cancel.html'
