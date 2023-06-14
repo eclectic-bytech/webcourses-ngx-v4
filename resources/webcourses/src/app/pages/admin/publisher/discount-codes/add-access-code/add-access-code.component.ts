@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Component } from '@angular/core'
 import { FormControl } from '@angular/forms'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { ConfigService } from 'src/app/core/services/config/config.service'
@@ -25,7 +25,6 @@ export class AddAccessCodeComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private httpClient: HttpClient,
     private courseService: CourseService,
     private configService: ConfigService
@@ -38,7 +37,7 @@ export class AddAccessCodeComponent {
       `${this.configService.params.api.route}/commerce/stripe/charge/${amount}`
     ).subscribe(
       (checkoutUrl) => {
-        this.router.navigateByUrl(JSON.stringify(checkoutUrl))
+        window.location.href = JSON.stringify(checkoutUrl)
       },
       (err) => {
         console.log(err)
