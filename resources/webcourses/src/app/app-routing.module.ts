@@ -49,7 +49,7 @@ const routes: Routes = [
       },
       {
         path: 'contact',
-        loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule)
+        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
       },
       {
         path: 'getstarted',

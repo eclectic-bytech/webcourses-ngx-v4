@@ -1,3 +1,4 @@
-<div id="fullMainContent" class="container-fluid" @fadeInOut>
-  <h2>This is my module</h2>
+<div id="fullMainContent">
+  <div [innerHTML]="htmlContent | safehtml: 'html'" @fadeInOut></div>
+  <app-contact-block @fadeInOut></app-contact-block>
 </div>
