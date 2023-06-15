@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule),
+        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule),
         pathMatch: 'full'
       },
       {
@@ -53,18 +53,14 @@ const routes: Routes = [
       },
       {
         path: 'getstarted',
-        loadChildren: () => import('./pages/publish/publish.module').then(m => m.PublishModule)
+        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
       },
       {
         path: 'demo',
-        loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule)
+        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
       },
       {
         path: 'pricing',
-        loadChildren: () => import('./pages/pricing/pricing.module').then(m => m.PricingModule)
-      },
-      {
-        path: 'shared',
         loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
       },
     ]

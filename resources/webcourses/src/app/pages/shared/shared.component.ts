@@ -17,7 +17,10 @@ export class SharedComponent {
   ) { }
 
   ngOnInit() {
-    this.selectedPage = window.location.href.split('/').slice(-1)[0]
+    this.selectedPage = window.location.href.split('/').slice(-1)[0] || 'about'
+    if (this.selectedPage == 'getstarted') {
+      this.selectedPage = 'publish'
+    }
     this.httpClient.get(
       '/webcourses/publisher-files/default/html/pages/' + this.selectedPage + '.html', { responseType: 'text' }
     ).subscribe(htmlContent => {
