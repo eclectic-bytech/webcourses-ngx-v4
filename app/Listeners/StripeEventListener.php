@@ -15,10 +15,8 @@ class StripeEventListener
      */
     public function handle(WebhookReceived $event)
     {
-        Log::channel('daily')->debug('Evalis waz here');
         if ($event->payload['type'] === 'charge.succeeded') {
             Log::channel('daily')->debug('Evalis waz here, 2');
         }
-        Log::channel('daily')->debug($event->payload);
     }
 }
