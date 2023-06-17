@@ -139,7 +139,7 @@ class CouponController extends Controller
             ]],
             'automatic_tax' => [ 'enabled' => true ],
             'mode' => 'payment',
-            'success_url' => env('APP_URL') . '/success.html',
+            'success_url' => env('APP_URL') . '/webcourses/admin/publisher/discount-codes',
             'cancel_url' => env('APP_URL') . '/cancel.html'
         ]);
 
