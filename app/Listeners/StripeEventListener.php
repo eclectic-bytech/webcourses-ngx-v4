@@ -26,7 +26,7 @@ class StripeEventListener
             $coupon->label = "TESTER CODE LABEL";
             $coupon->discount = 0;
             $coupon->cid = 407;
-            $coupon->gid = 0;
+            $coupon->gid = 1;
             $coupon->expiry = "2038-01-19 00:00:00";
             $coupon->uses = 0;
             $coupon->uses_max = 3;
