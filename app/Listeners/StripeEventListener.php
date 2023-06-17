@@ -20,10 +20,10 @@ class StripeEventListener
         if ($event->payload['type'] === 'charge.succeeded') {
             Log::channel('daily')->debug('First save of a coupon =)');
             $coupon = new Coupon();
-            $coupon->id = $event->payload['request']['id'];
-            $coupon->code = "TESTER-CODE";
+            $coupon->id = md5($event->payload['request']['id']);
+            $coupon->code = $event->payload['request']['id'];
             $coupon->active = 1;
-            $coupon->label = "TESTER CODE LABEL";
+            $coupon->label = "MD5 TESTER CODE LABEL";
             $coupon->discount = 0;
             $coupon->cid = 407;
             $coupon->gid = 1;
