@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use Laravel\Cashier\Events\WebhookReceived;
-use IlluminateSupportFacadesLog;
+use Illuminate\Support\Facades\Log;
 
 class StripeEventListener
 {
@@ -15,10 +15,10 @@ class StripeEventListener
      */
     public function handle(WebhookReceived $event)
     {
-        Log::info("Birds can't fly");
-
+        Log::channel('daily')->debug('Evalis waz here');
         if ($event->payload['type'] === 'charge.succeeded') {
-            Log::info('Evalis waz here.');
+            Log::channel('daily')->debug('Evalis waz here, 2');
         }
+        Log::channel('daily')->debug($event->payload);
     }
 }
