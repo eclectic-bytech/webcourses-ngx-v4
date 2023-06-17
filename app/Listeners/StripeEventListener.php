@@ -15,6 +15,8 @@ class StripeEventListener
      */
     public function handle(WebhookReceived $event)
     {
+        Log::info("Birds can't fly");
+
         if ($event->payload['type'] === 'charge.succeeded') {
             Log::info('Evalis waz here.');
         }
