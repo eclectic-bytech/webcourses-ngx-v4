@@ -12,6 +12,7 @@ use Illuminate\Auth\Events\Login;
 use App\Listeners\LoginListener;
 use App\Listeners\RegistrationListener;
 use App\Listeners\StripeEventListener;
+use Laravel\Cashier\Events\WebhookReceived;
 
 class EventServiceProvider extends ServiceProvider
 {
