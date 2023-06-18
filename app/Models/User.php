@@ -72,7 +72,7 @@ class User extends Authenticatable
     /**
      * @return string
      */
-    public function getProfilePhotoUrlAttribute()
+    public function defaultProfilePhotoUrl()
     {
         return 'https://www.gravatar.com/avatar/'.md5($this->email).'?'.'https://www.gravatar.com/avatar/';
     }
