@@ -12,11 +12,6 @@ const routes: Routes = [
     component: DefaultComponent,
     children: [
       {
-        path: '',
-        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule),
-        pathMatch: 'full'
-      },
-      {
         path: 'help',
         loadChildren: () => import('./pages/help/help.module').then(m => m.HelpModule)
       },
@@ -48,19 +43,11 @@ const routes: Routes = [
         loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
       },
       {
-        path: 'contact',
+        path: ':page',
         loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
       },
       {
-        path: 'getstarted',
-        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
-      },
-      {
-        path: 'demo',
-        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
-      },
-      {
-        path: 'pricing',
+        path: '',
         loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
       },
     ]
