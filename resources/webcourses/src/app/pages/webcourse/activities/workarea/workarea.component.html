@@ -13,6 +13,9 @@
         class="col"
       >
 
+      <div>
+        <app-bookmark-button></app-bookmark-button>
+
         <!-- "Make activity part of demo" checkbox (publishers only)  -->
         <div *ngIf="this.selectedCourseService.selectedCourse as selectedCourse">
           <app-demo-flag
@@ -20,6 +23,7 @@
             [activityMeta]="activity.meta"
           ></app-demo-flag>
         </div>
+      </div>
 
         <!--!!!!!!!!!!!!!!!
             ngIf is required on activity.* so 'Fringe' browser doesn't show nulls

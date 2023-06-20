@@ -13,6 +13,7 @@ import { ClickRotateModule } from './activities/click-rotate/click-rotate.module
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { DemoFlagModule } from '../../builder/activity/demo-flag/demo-flag.module';
 import { SpecialActivityModule } from './activities/special-activity/special-activity.module'
+import { BookmarkButtonModule } from 'src/app/pages/components/buttons/bookmark-button/bookmark-button.module'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SpecialActivityModule } from './activities/special-activity/special-act
     ClickRotateModule,
     FontAwesomeModule,
     DemoFlagModule,
-    SpecialActivityModule
+    SpecialActivityModule,
+    BookmarkButtonModule
   ],
   exports: [
     WorkAreaComponent,
