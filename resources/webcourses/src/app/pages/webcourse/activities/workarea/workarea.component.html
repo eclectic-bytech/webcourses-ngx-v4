@@ -13,17 +13,20 @@
         class="col"
       >
 
-      <div class="d-inline-flex my-5">
-        <app-bookmark-button></app-bookmark-button>
+      <div class="container-fluid">
+        <div class="row justify-content-between my-5">
+          <app-bookmark-button></app-bookmark-button>
 
-        <!-- "Make activity part of demo" checkbox (publishers only)  -->
-        <div *ngIf="this.selectedCourseService.selectedCourse as selectedCourse">
-          <app-demo-flag
-            *ngIf="selectedCourse.publisher.owner_uid === this.userService.user.id && activity.meta.cont == false"
-            [activityMeta]="activity.meta"
-          ></app-demo-flag>
+          <!-- "Make activity part of demo" checkbox (publishers only)  -->
+          <div *ngIf="this.selectedCourseService.selectedCourse as selectedCourse">
+            <app-demo-flag
+              *ngIf="selectedCourse.publisher.owner_uid === this.userService.user.id && activity.meta.cont == false"
+              [activityMeta]="activity.meta"
+            ></app-demo-flag>
+          </div>
         </div>
       </div>
+
 
         <!--!!!!!!!!!!!!!!!
             ngIf is required on activity.* so 'Fringe' browser doesn't show nulls
