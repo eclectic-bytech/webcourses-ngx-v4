@@ -19,6 +19,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CourseEditorController;
 use App\Http\Controllers\CodesUseController;
 use App\Http\Controllers\UserProgressController;
+use App\Http\Controllers\SaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +108,7 @@ Route::group(['prefix' => 'v4'], function() {
     // Paths grouped as /v4/commerce
     Route::group(['prefix' => 'commerce'], function() {
         Route::get('/stripe/charge/{amount}', [CouponController::class, 'checkout']);
+        Route::get('/stripe/checkout/course/{id}', [SaleController::class, 'course']);
     });
 
     // Paths grouped as /v4/admin
