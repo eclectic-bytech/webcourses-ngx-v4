@@ -18,15 +18,12 @@ export class BookmarkButtonComponent {
     private configService: ConfigService,
   ) { }
 
-  bookmarkActivity() {
-    console.log(this.activityMeta)
-    const aid = 4764
+  bookmarkActivity(aid: number) {
     this.httpClient.put<number>(
       `${this.configService.params.api.route}/admin/publisher/course-editor/syllabus/${aid}/bookmark`, aid
     ).subscribe(
       (response) => { console.log(response) },
       (err) => { console.log(err) }
     )
-    console.log('hello world')
   }
 }
