@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
+use App\Models\Sale;
 use Stripe\Charge;
 use Stripe\StripeClient;
 
@@ -24,7 +25,16 @@ class SaleController extends Controller
             'cancel_url' => env('APP_URL') . '/webcourses/user/webcourses'
         ]);
 
-        Log::channel('daily')->debug($checkout_session);
+        $sale = new Sale;
+
+        $sale->uid = auth()->user()->id;
+        $sale->service = 'course';
+        $sale->cid = $id;
+        $sale->quantity = 1;
+        $sale->payment_intent = $checkout_session->payment_intent;
+
+        $sale->save();
+
         return json_encode($checkout_session->url);
     }
 }
