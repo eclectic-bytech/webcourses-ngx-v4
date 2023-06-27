@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('activity_bookmarks', function (Blueprint $table) {
-            $table->dropColumn(['auto', 'generated']);
+            $table->dropForeign('wngx_activity_bookmarks_chid_foreign');
+            $table->dropColumn(['auto', 'generated','chid']);
             $table->renameColumn('description', 'label');
         });
     }
