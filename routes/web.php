@@ -136,7 +136,7 @@ Route::group(['prefix' => 'v4'], function() {
             // Paths grouped as /v4/admin/publisher/course-editor
             Route::group(['prefix' => 'course-editor'], function() {
                 Route::put('/syllabus/{aid}/demo', [CourseEditorController::class, 'demo']);
-                Route::put('/syllabus/{aid}/bookmark', [BookmarkController::class, 'show']);
+                Route::put('/syllabus/{aid}/bookmark', [BookmarkController::class, 'bookmark_toggle']);
             });
 
         });
