@@ -6,6 +6,7 @@ use Laravel\Cashier\Events\WebhookReceived;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Coupon;
+use App\Models\Sale;
 
 class StripeEventListener
 {
@@ -18,7 +19,11 @@ class StripeEventListener
     public function handle(WebhookReceived $event)
     {
         if ($event->payload['type'] === 'charge.succeeded') {
-            Log::channel('daily')->debug('First save of a coupon =)');
+            $sale = Sale::where('payment_intent', $event->payload['payment_intent'])->first();
+            $sale->charge_object = $event->payload;
+            $sale->save();
+
+            Log::channel('daily')->debug(`Get UID:`.$sale->uid.` access to CID:` . $sale->cid . '.');
             $coupon = new Coupon();
             $coupon->id = md5($event->payload['request']['id']);
             $coupon->code = $event->payload['request']['id'];
