@@ -11,32 +11,14 @@ use Carbon\Carbon;
 class BookmarkController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * toggles if the user has the activity bookmarked.
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($aid)
+    public function bookmark_toggle($aid)
     {
         $user = auth()->user();
         $pid = UserProgress::where('user_id',$user->id)->where('selected_aid',$aid)->first()->id;
 
-        $isBookmarked = ActivityBookmark::where('pid',$pid)->where('aid',$aid)->first() || null;
-
-        if ($isBookmarked == null){
+        if (!ActivityBookmark::where('pid',$pid)->where('aid',$aid)->first()){
             $bookmark = new ActivityBookmark();
             $bookmark->aid = $aid;
             $bookmark->pid = $pid;
