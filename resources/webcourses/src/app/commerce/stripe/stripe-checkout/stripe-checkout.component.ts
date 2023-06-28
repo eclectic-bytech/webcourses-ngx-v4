@@ -18,12 +18,11 @@ export class StripeCheckoutComponent {
   ) {}
 
   public BuyButton() {
-    this.httpClient.get(`
-      ${this.configService.params.api.route}/commerce/stripe/checkout/course/${this.cid}`
+    this.httpClient.get(
+      `${this.configService.params.api.route}/commerce/stripe/checkout/course/${this.cid}`
     ).subscribe(
-      data => {
-        console.log('Hello, World')
-        console.log(data)
+      (checkoutUrl: string) => {
+        window.location.href = checkoutUrl
       }
     )
   }
