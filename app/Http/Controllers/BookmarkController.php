@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CourseSyllabus;
 use App\Models\ActivityBookmark;
 use App\Models\UserProgress;
 use App\Models\Activity;

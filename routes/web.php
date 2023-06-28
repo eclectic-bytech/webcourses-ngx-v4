@@ -94,6 +94,7 @@ Route::group(['prefix' => 'v4'], function() {
           Route::get('/special/completion-cert/{pid}', [UserProgressController::class, 'completion_cert']);
           Route::get('/help/{type?}', [ActivityController::class, 'help']);
           Route::post('/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
+          Route::put('/bookmark/{aid}', [BookmarkController::class, 'bookmark_toggle']);
         });
 
         Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
@@ -136,7 +137,6 @@ Route::group(['prefix' => 'v4'], function() {
             // Paths grouped as /v4/admin/publisher/course-editor
             Route::group(['prefix' => 'course-editor'], function() {
                 Route::put('/syllabus/{aid}/demo', [CourseEditorController::class, 'demo']);
-                Route::put('/syllabus/{aid}/bookmark', [BookmarkController::class, 'bookmark_toggle']);
             });
 
         });
