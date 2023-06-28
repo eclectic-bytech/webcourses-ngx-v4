@@ -25,6 +25,14 @@ class StripeEventListener
             $sale->charge_object = $event->payload;
             $sale->save();
 
+            if ($sale->type === 'course') {
+                grantAccess($sale->cid, $sale->uid);
+            } elseif ($sale->type === 'access_code') {
+                Log::channel('daily')->info("Create access code.");
+            } else {
+                Log::channel('daily')->info("Unknown product type purchased by user.");
+            }
+
             Log::channel('daily')->info("Get UID:" . $sale->uid . " access to CID:" . $sale->cid . ".");
             // $coupon = new Coupon();
             // $coupon->id = md5($event->payload['request']['id']);
