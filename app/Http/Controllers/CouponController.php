@@ -85,19 +85,6 @@ class CouponController extends Controller
         return $this->couponMessage('valid');
     }
 
-    public function grantAccess($cid, $uid) {
-        $user_progress = new UserProgress;
-
-        $user_progress->user_id = $uid;
-        $user_progress->course_id = $cid;
-        $user_progress->build_id = 0;
-        $user_progress->selected_aid = Syllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
-        $user_progress->demo = 0;
-
-        $user_progress->save();
-        return $user_progress->id;
-    }
-
     public function updateCodesUsesTable($code_id, $pid) {
         // Insert record into codes_uses table
         $codes_uses = new CodesUse;
