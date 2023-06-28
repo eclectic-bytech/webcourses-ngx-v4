@@ -10,6 +10,7 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { faLeaf } from '@fortawesome/free-solid-svg-icons'
+import { faBookBookmark } from '@fortawesome/free-solid-svg-icons'
 
 // WNGX services and components
 import { CollectUserNamesComponent } from './components/collect-user-names/collect-user-names.component'
@@ -34,6 +35,7 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   faQuestionCircle = faQuestionCircle
   faChevronUp = faChevronUp
   faChevronDown = faChevronDown
+  faBookBookmark = faBookBookmark
 
   constructor(
     private activatedRoute: ActivatedRoute,

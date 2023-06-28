@@ -16,11 +16,13 @@ import { LoadingSpinnerModule } from './../../../core/modules/loading-spinner/lo
 
 import { ActivitiesComponent } from './activities.component'
 import { CollectUserNamesComponent } from './components/collect-user-names/collect-user-names.component'
+import { BookmarksComponent } from './sidebar/bookmarks/bookmarks.component'
 
 @NgModule({
   declarations: [
     ActivitiesComponent,
-    CollectUserNamesComponent
+    CollectUserNamesComponent,
+    BookmarksComponent
   ],
   imports: [
     CommonModule,
