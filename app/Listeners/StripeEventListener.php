@@ -26,6 +26,7 @@ class StripeEventListener
             $sale->save();
 
             if ($sale->service === 'course') {
+                Log::channel('daily')->info("Grant course access.");
                 grantAccess($sale->cid, $sale->uid);
             } elseif ($sale->type === 'access_code') {
                 Log::channel('daily')->info("Create access code.");
@@ -47,7 +48,7 @@ class StripeEventListener
             // $coupon->uses_max = 3;
             // $coupon->save();
         } else {
-            Log::channel('daily')->alert("Payment failed, or something.");
+            Log::channel('daily')->alert("Payment failed, or something." . $event->payload['type']);
         }
 
     }
