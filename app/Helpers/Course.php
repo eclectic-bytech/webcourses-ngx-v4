@@ -3,6 +3,8 @@
 use App\Http\Controllers\CourseSyllabusController;
 use App\Http\Controllers\UserProgressController;
 
+use App\Models\UserProgress;
+
 function getActivityMeta(int $aid) {
     $controller = new CourseSyllabusController();
     return $controller->activityMeta($aid);
