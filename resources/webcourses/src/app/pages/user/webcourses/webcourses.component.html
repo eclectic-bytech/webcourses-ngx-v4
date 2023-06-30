@@ -175,7 +175,7 @@
       <div *ngIf="userCourses.length === 0" class="col-xs-12 col-lg-8 col-xxl-9">
         <h1 class="common-heading mb-2 mt-5 text-success">You've not yet enrolled in any courses.</h1>
         <p class="text-dark">Start improving your skills by using a
-          <a href="#" (click)="this.accessCodeModalService.accessCodeModal()" class="font-weight-bold">
+          <a (click)="this.accessCodeModalService.accessCodeModal()" class="font-weight-bold handy">
             Course Access Code
           </a>.<br>
           Visit the <a [routerLink]="['/catalogue']" class="text-nowrap">Webcourse Catalogue</a> to
