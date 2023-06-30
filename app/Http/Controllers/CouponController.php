@@ -56,7 +56,7 @@ class CouponController extends Controller
 
                 if ($code['status']['valid']) {
                     $cid = $code_info['course']['id'];
-                    $pid = $this->grantAccess($cid, $uid);
+                    $pid = grantAccess($cid, $uid);
                     if ($pid) {
                         $this->incrementCodeUses($code_hash);
                         $this->updateCodesUsesTable($code_hash, $pid);
