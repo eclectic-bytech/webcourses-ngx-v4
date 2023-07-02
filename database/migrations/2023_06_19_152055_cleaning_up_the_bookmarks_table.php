@@ -16,6 +16,7 @@ return new class extends Migration
             $table->dropColumn(['auto', 'generated','chid']);
             $table->renameColumn('description', 'label');
         });
+        Schema::rename('activity_bookmarks', 'bookmarks');
     }
 
     /**
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::rename('bookmarks', 'activity_bookmarks');
     }
 };
