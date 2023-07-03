@@ -19,11 +19,12 @@ export class BookmarkButtonComponent {
   ) { }
 
   bookmarkActivity(aid: number) {
-    this.httpClient.put<number>(
-      `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`, aid
-    ).subscribe(
-      (response) => { console.log(response) },
-      (err) => { console.log(err) }
-    )
+    // this.httpClient.put<number>(
+    //   `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`, aid
+    // ).subscribe(
+    //   (response) => { console.log(response) },
+    //   (err) => { console.log(err) }
+    // )
+    console.log(this.activity.bookmarks.id)
   }
 }

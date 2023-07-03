@@ -1,6 +1,6 @@
 <div>
   <form>
-    <i *ngIf="this.activity.meta.activity_id == 4766" (click)="bookmarkActivity(this.activity.meta.activity_id)" class="fa-regular fa-bookmark col"></i>
-    <i *ngIf="this.activity.meta.activity_id !== 4766" (click)="bookmarkActivity(this.activity.meta.activity_id)" class="fa-solid fa-bookmark col"></i>
+    <i *ngIf="!this.activity.bookmarks" (click)="bookmarkActivity(this.activity.meta.activity_id)" class="fa-regular fa-bookmark col"></i>
+    <i *ngIf="!!this.activity.bookmarks" (click)="bookmarkActivity(this.activity.meta.activity_id)" class="fa-solid fa-bookmark col"></i>
   </form>
 </div>
