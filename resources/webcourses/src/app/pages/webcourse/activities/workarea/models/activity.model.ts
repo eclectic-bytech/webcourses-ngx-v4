@@ -1,5 +1,6 @@
 import { ActivityMeta } from './activity-meta.model'
 import { ActivityAnswers } from './activity-answers.model'
+import { Bookmarks } from '../../sidebar/bookmarks/bookmarks.model'
 
 export class Activity {
   constructor(
@@ -14,6 +15,7 @@ export class Activity {
     public user_long_answer: string,
     public answers: ActivityAnswers[],
     public user_answers: any,
-    public default_answer?: string
-  ) {}
+    public bookmarks: Bookmarks,
+    public default_answer?: string,
+  ) { }
 }
