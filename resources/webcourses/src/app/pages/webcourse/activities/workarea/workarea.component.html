@@ -15,7 +15,7 @@
 
       <div class="container-fluid">
         <div class="row justify-content-between my-5">
-          <app-bookmark-button [activityMeta]="activity.meta"></app-bookmark-button>
+          <app-bookmark-button [activity]="activity"></app-bookmark-button>
 
           <!-- "Make activity part of demo" checkbox (publishers only)  -->
           <div *ngIf="this.selectedCourseService.selectedCourse as selectedCourse">

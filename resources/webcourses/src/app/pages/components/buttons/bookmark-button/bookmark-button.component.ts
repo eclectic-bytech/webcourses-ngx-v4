@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { ConfigService } from 'src/app/core/services/config/config.service';
-import { ActivityMeta } from 'src/app/pages/webcourse/activities/workarea/models/activity-meta.model';
+import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model';
 
 @Component({
   selector: 'app-bookmark-button',
@@ -11,7 +11,7 @@ import { ActivityMeta } from 'src/app/pages/webcourse/activities/workarea/models
 
 export class BookmarkButtonComponent {
 
-  @Input() activityMeta: ActivityMeta
+  @Input() activity: Activity
 
   constructor(
     private httpClient: HttpClient,
