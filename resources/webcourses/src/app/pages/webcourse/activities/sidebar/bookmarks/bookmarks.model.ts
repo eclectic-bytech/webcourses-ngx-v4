@@ -4,5 +4,7 @@ export class Bookmarks {
     public aid: number,
     public pid: number,
     public label: string,
+    public created_at: string,
+    public updated_at: string,
   ) { }
 }
