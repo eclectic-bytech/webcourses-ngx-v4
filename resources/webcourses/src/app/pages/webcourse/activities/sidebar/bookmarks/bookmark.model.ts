@@ -1,4 +1,4 @@
-export class Bookmarks {
+export class Bookmark {
   constructor(
     public id: number,
     public aid: number,

@@ -25,6 +25,6 @@ export class BookmarkButtonComponent {
     //   (response) => { console.log(response) },
     //   (err) => { console.log(err) }
     // )
-    console.log(this.activity.bookmarks.id)
+    console.log(this.activity.bookmark.id)
   }
 }
