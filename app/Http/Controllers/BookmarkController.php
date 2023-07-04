@@ -11,14 +11,12 @@ use Carbon\Carbon;
 class BookmarkController extends Controller
 {
     /**
-     * toggles if the user has the activity bookmarked.
+     * creates a new bookmark instance on the bookmark table
      */
-    public function bookmark_toggle($aid)
+    public function bookmark_create($aid)
     {
         $user = auth()->user();
         $pid = UserProgress::where('user_id',$user->id)->where('selected_aid',$aid)->first()->id;
-
-        if (!Bookmark::where('pid',$pid)->where('aid',$aid)->first()){
             $activity = Activity::where('id',$aid)->first();
             $label = strip_tags($activity->prequestion);
             $bookmark = new Bookmark();
@@ -26,8 +24,15 @@ class BookmarkController extends Controller
             $bookmark->pid = $pid;
             $bookmark->label = $label;
             $bookmark->save();
-        }else{
-            Bookmark::where('pid',$pid)->where('aid',$aid)->first()->delete();
-        }
+    }
+
+    /**
+     * deletes selected bookmark instance on the bookmark table
+     */
+    public function bookmark_delete($aid)
+    {
+        $user = auth()->user();
+        $pid = UserProgress::where('user_id',$user->id)->where('selected_aid',$aid)->first()->id;
+        Bookmark::where('pid',$pid)->where('aid',$aid)->first()->delete();
     }
 }

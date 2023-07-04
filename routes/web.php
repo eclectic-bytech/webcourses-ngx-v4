@@ -94,7 +94,8 @@ Route::group(['prefix' => 'v4'], function() {
           Route::get('/special/completion-cert/{pid}', [UserProgressController::class, 'completion_cert']);
           Route::get('/help/{type?}', [ActivityController::class, 'help']);
           Route::post('/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
-          Route::put('/bookmark/{aid}', [BookmarkController::class, 'bookmark_toggle']);
+          Route::post('/bookmark/{aid}/create', [BookmarkController::class, 'bookmark_create']);
+          Route::delete('/bookmark/{aid}/delete', [BookmarkController::class, 'bookmark_delete']);
         });
 
         Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);

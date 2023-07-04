@@ -24,12 +24,21 @@ export class BookmarkButtonComponent implements OnInit {
   }
 
   bookmarkActivity(aid: number) {
-    this.httpClient.put<number>(
-      `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`, aid
-    ).subscribe(
-      (response) => { console.log(response) },
-      (err) => { console.log(err) }
-    )
+    if (!this.isBookMarked) {
+      this.httpClient.post<number>(
+        `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/create`, aid
+      ).subscribe(
+        (response) => { console.log(response) },
+        (err) => { console.log(err) }
+      )
+    } else {
+      this.httpClient.delete<number>(
+        `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/delete`
+      ).subscribe(
+        (response) => { console.log(response) },
+        (err) => { console.log(err) }
+      )
+    }
     this.isBookMarked = !this.isBookMarked
   }
 }
