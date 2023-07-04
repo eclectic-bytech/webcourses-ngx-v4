@@ -12,22 +12,25 @@
   <div *ngFor="let courseDiscountCodes of discountCodes">
 
     <div class="card my-4">
-      <div class="row no-gutters">
-        <div class="col-auto">
-          <img
-            style="max-height: 10rem"
-            src="publisher-files/{{courseDiscountCodes.course.publisher_id}}/courses/{{courseDiscountCodes.course.id}}/images/{{courseDiscountCodes.course.cover}}" alt="{{courseDiscountCodes.course.cover_alt}}"
-          >
-        </div>
-        <div class="col">
-          <div class="card-body">
-            <div class="card-title h4">{{ courseDiscountCodes.course.title }}</div>
-            <div class="card-subtitle">
-              <div>Created: {{ courseDiscountCodes.course.created_at | date:'longDate' }}</div>
-              <div>ID: {{ courseDiscountCodes.course.id }}</div>
-            </div>
-
+      <div class="row no-gutters justify-content-between">
+        <div class="col-lg-3">
+          <div class="card">
+            <img
+              class="card-img-top"
+              style="object-fit: cover; height: 11rem;"
+              src="publisher-files/{{courseDiscountCodes.course.publisher_id}}/courses/{{courseDiscountCodes.course.id}}/images/{{courseDiscountCodes.course.cover}}" alt="{{courseDiscountCodes.course.cover_alt}}"
+            >
           </div>
+        </div>
+        <div class="col-lg-6 p-3">
+          <div class="h4">{{ courseDiscountCodes.course.title }}</div>
+          <div>{{ courseDiscountCodes.course.created_at | date:'longDate' }}</div>
+          <div class="text-dark">ID: {{ courseDiscountCodes.course.id }}</div>
+        </div>
+        <div class="col-lg-3 p-3 text-lg-right">
+          <button mat-button color="primary" class="border" (click)="addAccessCode(courseDiscountCodes.course.id)">
+            Add code
+          </button>
         </div>
       </div>
     </div>
