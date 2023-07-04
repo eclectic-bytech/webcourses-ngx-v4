@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { ConfigService } from 'src/app/core/services/config/config.service';
 import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model';
@@ -9,22 +9,27 @@ import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/act
   styleUrls: ['./bookmark-button.component.sass']
 })
 
-export class BookmarkButtonComponent {
+export class BookmarkButtonComponent implements OnInit {
 
   @Input() activity: Activity
+  isBookMarked: boolean
 
   constructor(
     private httpClient: HttpClient,
     private configService: ConfigService,
   ) { }
 
+  ngOnInit() {
+    this.isBookMarked = !!this.activity.bookmark
+  }
+
   bookmarkActivity(aid: number) {
-    // this.httpClient.put<number>(
-    //   `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`, aid
-    // ).subscribe(
-    //   (response) => { console.log(response) },
-    //   (err) => { console.log(err) }
-    // )
-    console.log(this.activity.bookmark.id)
+    this.httpClient.put<number>(
+      `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`, aid
+    ).subscribe(
+      (response) => { console.log(response) },
+      (err) => { console.log(err) }
+    )
+    this.isBookMarked = !this.isBookMarked
   }
 }
