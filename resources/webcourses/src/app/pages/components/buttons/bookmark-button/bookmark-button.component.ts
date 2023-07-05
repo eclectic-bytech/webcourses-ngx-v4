@@ -14,6 +14,8 @@ export class BookmarkButtonComponent implements OnInit {
   @Input() activity: Activity
   isBookMarked: boolean
 
+  private waitingForAPI = false
+
   constructor(
     private httpClient: HttpClient,
     private configService: ConfigService,
@@ -24,21 +26,27 @@ export class BookmarkButtonComponent implements OnInit {
   }
 
   bookmarkActivity(aid: number) {
-    if (!this.isBookMarked) {
-      this.httpClient.post<number>(
-        `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/create`, aid
-      ).subscribe(
-        (response) => { console.log(response) },
-        (err) => { console.log(err) }
-      )
-    } else {
-      this.httpClient.delete<number>(
-        `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/delete`
-      ).subscribe(
-        (response) => { console.log(response) },
-        (err) => { console.log(err) }
-      )
+    // Didn't test this code, so might need tweaks
+    if (!this.waitingForAPI) {
+      this.waitingForAPI = true
+      if (!this.isBookMarked) {
+        this.httpClient.post<number>(
+          `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/create`, aid
+        ).subscribe(
+          (response) => {console.log(response) },
+          (err) => { console.log(err) },
+          () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
+        )
+      } else {
+        this.httpClient.delete<number>(
+          `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/delete`
+        ).subscribe(
+          (response) => { console.log(response) },
+          (err) => { console.log(err) },
+          () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
+        )
+      }
+      this.isBookMarked = !this.isBookMarked
     }
-    this.isBookMarked = !this.isBookMarked
   }
 }
