@@ -26,14 +26,13 @@ export class BookmarkButtonComponent implements OnInit {
   }
 
   bookmarkActivity(aid: number) {
-    // Didn't test this code, so might need tweaks
     if (!this.waitingForAPI) {
       this.waitingForAPI = true
       if (!this.isBookMarked) {
         this.httpClient.post<number>(
           `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/create`, aid
         ).subscribe(
-          (response) => {console.log(response) },
+          (response) => { console.log(response) },
           (err) => { console.log(err) },
           () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
         )
