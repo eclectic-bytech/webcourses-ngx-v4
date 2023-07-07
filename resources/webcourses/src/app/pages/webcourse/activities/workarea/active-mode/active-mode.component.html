@@ -13,7 +13,7 @@
               [id]="option.id"
               [value]="option.id"
               formControlName="answer"
-              >
+            >
           </div>
 
           <div class="col-sm-10 col-9 my-1">
@@ -107,15 +107,25 @@
       </div>
 
       <div *ngIf="activity.meta.activity_type === 'click' && activity.meta.style === 'image'" class="container-fluid">
-        <img
-          [ngClass]="activity.answers[i].selected ? 'imgSelected' : 'imgFalse'"
-          *ngFor="let image of activity.answers; let i = index"
-          [src]="image.caption.src"
-          [alt]="image.caption.alt"
-          type="button"
-          class="click-img mr-2 mt-2"
-          (click)="updateSelections(i, true)"
-        >
+        <span *ngFor="let option of activity.answers; let i = index">
+          <input
+            type="radio"
+            [id]="option.id"
+            [value]="option.id"
+            formControlName="answer"
+            style="display:none;"
+          >
+          <label [for]="option.id">
+            <img
+              [ngClass]="activity.answers[i].selected ? 'imgSelected' : 'imgFalse'"
+              [src]="option.caption.src"
+              [alt]="option.caption.alt"
+              type="button"
+              class="click-img mr-2 mt-2"
+              (click)="updateSelections(i, true)"
+            >
+          </label>
+        </span>
       </div>
 
   </div>

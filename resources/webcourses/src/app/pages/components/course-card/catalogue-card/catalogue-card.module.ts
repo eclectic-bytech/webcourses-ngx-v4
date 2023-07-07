@@ -6,9 +6,8 @@ import { MatButtonModule } from '@angular/material/button'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { CatalogueCardComponent } from './catalogue-card.component'
-import { BuyButtonModule } from '../../buttons/buy-button/buy-button.module'
+import { StripeCheckoutModule } from 'src/app/commerce/stripe/stripe-checkout/stripe-checkout.module'
 import { PipesModule } from './../../../../shared/pipes/pipes.module'
-
 
 @NgModule({
   declarations: [CatalogueCardComponent],
@@ -18,8 +17,8 @@ import { PipesModule } from './../../../../shared/pipes/pipes.module'
     MatCardModule,
     MatButtonModule,
     FontAwesomeModule,
-    BuyButtonModule,
-    PipesModule
+    PipesModule,
+    StripeCheckoutModule
   ],
   exports: [CatalogueCardComponent]
 })

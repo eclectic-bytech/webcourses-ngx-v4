@@ -7,7 +7,6 @@ use App\Http\Controllers\ActivityController;
 use App\Models\UserAnswer;
 use App\Models\UserLongAnswer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class UserAnswerController extends Controller
@@ -55,18 +54,17 @@ class UserAnswerController extends Controller
                     }
                 }
 
-                // Needs changing from query builder to Eloquent
                 foreach ($answers as $key => $answer) {
-                    $answer_id = DB::table('user_answers')->insertGetId(
-                        array(
-                            'activity_id' => $aid,
-                            'chapter_id' => $chid,
-                            'progress_id' => $pid,
-                            'answer_id' => $answer,
-                            'created_at' => Carbon::now()
-                        )
-                    );
+                    $userAnswer = new UserAnswer();
+                    $userAnswer->activity_id = $aid;
+                    $userAnswer->chapter_id = $chid;
+                    $userAnswer->progress_id = $pid;
+                    $userAnswer->answer_id = $answer;
+                    $userAnswer->save();
+
+                    $answer_id = $userAnswer->id;
                 }
+
                 $controller = new ActivityController();
                 return $controller->build_activity($aid, $pid);
             }

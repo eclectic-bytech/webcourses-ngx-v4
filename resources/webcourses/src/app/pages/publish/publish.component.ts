@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-publish',
@@ -8,7 +9,17 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
   styleUrls: ['./publish.component.scss']
 })
 export class PublishComponent {
+  public htmlContent: string
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
+  ngOnInit() {
+    this.httpClient.get(
+      '/webcourses/publisher-files/default/html/pages/publish.html', { responseType: 'text' }
+    ).subscribe( htmlContent => {
+      this.htmlContent = htmlContent
+    })
+  }
 }
