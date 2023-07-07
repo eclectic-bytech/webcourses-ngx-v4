@@ -14,24 +14,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $userAnswers = UserAnswer::orderBy('created_at', 'ASC')->get();
         $userProgresses = UserProgress::all();
 
-        foreach ($userAnswers as $userAnswer) {
+            foreach ($userProgresses as $userProgress){
             $ccid = null;
-            $pid = $userAnswer->progress_id;
             $user = null;
 
-            foreach ($userProgresses as $userProgress) {
-                if ($pid === $userProgress->id) {
+            $userAnswer = UserAnswer::where('progress_id', $userProgress->id)->orderBy('created_at', 'ASC')->first();
                     $user = User::where('id', $userProgress->user_id)->first();
-                    $ccid = $userProgress->course_id;
-                    $user->current_course_id = $ccid;
-                    $user->save();
-                }
+                    if (!!$user){
+                        $ccid = $userProgress->course_id;
+                        $user->current_course_id = $ccid;
+                        $user->save();
+                    }
             }
         }
-    }
 
     /**
      * Reverse the migrations.
