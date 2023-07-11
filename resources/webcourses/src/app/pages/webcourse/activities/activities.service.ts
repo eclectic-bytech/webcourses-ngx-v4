@@ -47,7 +47,7 @@ export class ActivitiesService {
   propagateActivities(activitySet: Activity[]) {
     console.log('Propagate activities.')
     this.selectedCourseService.selectedActivitySet$.next(activitySet)
-    this.courseChapterIndexService.setChapters(activitySet[0].meta.chapter_id)
+    this.courseChapterIndexService.setChapters(activitySet)
 
     if (activitySet.length === 1) {
       if (activitySet[0].meta.cont) {

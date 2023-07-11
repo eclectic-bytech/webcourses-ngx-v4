@@ -7,6 +7,8 @@ import { ConfigService } from '../config/config.service'
 
 // WNGX models and misc
 import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
+import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
+import { ActivitiesService } from 'src/app/pages/webcourse/activities/activities.service'
 
 @Injectable({
   providedIn: 'root'
@@ -20,20 +22,26 @@ export class CourseChapterIndexService {
 
   constructor(
     private httpClient: HttpClient,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private activitiesService: ActivitiesService
   ) { }
 
-  setChapters(chid: number) {
+  setChapters(activitySet: Activity[]) {
     let i = this.selectedCourseChapters.findIndex( chapter => {
-      return chapter.id === chid
+      return chapter.id === activitySet[0].meta.chapter_id
     })
-    this.selectedChapter = this.chapterIndex[i]
 
-    let nextChapter = (this.chapterIndex.length >= i) ? this.chapterIndex[++i] : null
-    this.nextChapter = nextChapter
+    if (i) {
+      this.selectedChapter = this.chapterIndex[i]
 
-    let previousChapter = (i > 1) ? (this.chapterIndex[--i]) : null
-    this.previousChapter = previousChapter
+      let nextChapter = (this.chapterIndex.length >= i) ? this.chapterIndex[++i] : null
+      this.nextChapter = nextChapter
+
+      let previousChapter = (i > 1) ? (this.chapterIndex[--i]) : null
+      this.previousChapter = previousChapter
+    } else {
+      this.activitiesService.bootstrapCourse(activitySet)
+    }
   }
 
   getChapterIndex(cid: number) {
