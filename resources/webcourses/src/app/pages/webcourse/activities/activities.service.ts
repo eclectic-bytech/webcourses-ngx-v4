@@ -38,8 +38,10 @@ export class ActivitiesService {
   loadActivities(aid) {
     this.getActivities(aid).subscribe(
       (activitySet: Activity[]) => {
-        this.selectedCourseService.selectedCourse ?
-          this.propagateActivities(activitySet) : this.bootstrapCourse(activitySet)
+        // this.selectedCourseService.selectedCourse ?
+        //   this.propagateActivities(activitySet) : this.bootstrapCourse(activitySet)
+        this.bootstrapCourse(activitySet)
+        this.propagateActivities(activitySet)
       }
     )
   }
@@ -47,7 +49,6 @@ export class ActivitiesService {
   propagateActivities(activitySet: Activity[]) {
     console.log('Propagate activities.')
     this.selectedCourseService.selectedActivitySet$.next(activitySet)
-    this.courseChapterIndexService.setChapters(activitySet)
 
     if (activitySet.length === 1) {
       if (activitySet[0].meta.cont) {
@@ -77,9 +78,9 @@ export class ActivitiesService {
         this.themeService.changeTheme(results[0].theme)
 
         this.selectedCourseService.selectedCourse = results[0]
-        this.courseChapterIndexService.selectedCourseChapters = results[1]
         this.selectedCourseService.courseSyllabus = this.generateCourseSyllabus(results[1])
-        this.propagateActivities(activitySet)
+
+        this.courseChapterIndexService.setChapters(activitySet, results[1])
 
         // These shouldn't be here
         this.completionStatsService.totalActivitiesCompleted = results[0].user_progress.total_activities_completed

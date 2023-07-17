@@ -22,26 +22,22 @@ export class CourseChapterIndexService {
 
   constructor(
     private httpClient: HttpClient,
-    private configService: ConfigService,
-    private activitiesService: ActivitiesService
+    private configService: ConfigService
   ) { }
 
-  setChapters(activitySet: Activity[]) {
+  setChapters(activitySet: Activity[], courseChapters: Chapter[]) {
+    this.selectedCourseChapters = courseChapters
     let i = this.selectedCourseChapters.findIndex( chapter => {
       return chapter.id === activitySet[0].meta.chapter_id
     })
 
-    if (i) {
-      this.selectedChapter = this.chapterIndex[i]
+    this.selectedChapter = this.chapterIndex[i]
 
-      let nextChapter = (this.chapterIndex.length >= i) ? this.chapterIndex[++i] : null
-      this.nextChapter = nextChapter
+    let nextChapter = (this.chapterIndex.length >= i) ? this.chapterIndex[++i] : null
+    this.nextChapter = nextChapter
 
-      let previousChapter = (i > 1) ? (this.chapterIndex[--i]) : null
-      this.previousChapter = previousChapter
-    } else {
-      this.activitiesService.bootstrapCourse(activitySet)
-    }
+    let previousChapter = (i > 1) ? (this.chapterIndex[--i]) : null
+    this.previousChapter = previousChapter
   }
 
   getChapterIndex(cid: number) {
