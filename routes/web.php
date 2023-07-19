@@ -87,6 +87,7 @@ Route::group(['prefix' => 'v4'], function() {
     Route::middleware(['auth:sanctum'])->prefix('webcourse')->group(function() {
         Route::get('/access-code/{code_hash}', [CouponController::class, 'applyAccessCode']);
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
+        Route::get('/{cid}/bookmarks', [BookmarkController::class, 'bookmark_Index']);
 
         Route::group(['prefix' => '/activities'], function() {
           Route::get('/{aid?}', [SyllabusController::class, 'activity_set']);
