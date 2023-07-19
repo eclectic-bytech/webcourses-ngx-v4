@@ -1,1 +1,14 @@
-<app-bookmark-card></app-bookmark-card>
+<div
+  *ngIf="this.bookmarksService.selectedBookmark as bookmarkIndex; else loading"
+  @fadeInOut
+  >
+  <li *ngFor="let bookmark of bookmarkIndex" class="h5 font-weight-normal">
+    <app-bookmark-card></app-bookmark-card>
+  </li>
+</div>
+
+<ng-template #loading>
+  <div class="mt-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-template>
