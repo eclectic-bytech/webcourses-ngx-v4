@@ -35,4 +35,14 @@ class BookmarkController extends Controller
         $pid = UserProgress::where('user_id',$user->id)->where('selected_aid',$aid)->first()->id;
         Bookmark::where('pid',$pid)->where('aid',$aid)->first()->delete();
     }
+
+    /**
+     * returns a list of bookmarks
+     */
+    public function bookmark_Index($cid)
+    {
+        $user = auth()->user();
+        $pid = UserProgress::where('user_id', $user->id)->where('course_id', $cid)->first()->id;
+        return Bookmark::where('pid', $pid)->get();
+    }
 }
