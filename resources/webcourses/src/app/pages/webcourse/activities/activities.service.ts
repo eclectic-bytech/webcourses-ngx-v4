@@ -38,9 +38,6 @@ export class ActivitiesService {
   loadActivities(aid) {
     this.getActivities(aid).subscribe(
       (activitySet: Activity[]) => {
-        // this.selectedCourseService.selectedCourse ?
-        //   this.propagateActivities(activitySet) : this.bootstrapCourse(activitySet)
-        this.bootstrapCourse(activitySet)
         this.propagateActivities(activitySet)
       }
     )
@@ -78,9 +75,10 @@ export class ActivitiesService {
         this.themeService.changeTheme(results[0].theme)
 
         this.selectedCourseService.selectedCourse = results[0]
+        this.courseChapterIndexService.selectedCourseChapters = results[1]
         this.selectedCourseService.courseSyllabus = this.generateCourseSyllabus(results[1])
 
-        this.courseChapterIndexService.setChapters(activitySet, results[1])
+        this.courseChapterIndexService.setChapters()
 
         // These shouldn't be here
         this.completionStatsService.totalActivitiesCompleted = results[0].user_progress.total_activities_completed
