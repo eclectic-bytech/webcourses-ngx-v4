@@ -7,6 +7,7 @@
     "api": "npx json-server --watch db.json --routes routes.json",
     "build": "npm run ng build",
     "build:prod": "ng build --configuration production && bash ./after.sh",
+    "build:dev": "ng build --configuration dev && bash ./after.sh",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
