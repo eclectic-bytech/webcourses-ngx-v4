@@ -2,9 +2,9 @@
   *ngIf="this.bookmarksService.selectedBookmark as bookmarkIndex; else loading"
   @fadeInOut
   >
-  <li *ngFor="let bookmark of bookmarkIndex" class="h5 font-weight-normal">
+  <div *ngFor="let bookmark of bookmarkIndex" class="h5">
     <app-bookmark-card></app-bookmark-card>
-  </li>
+  </div>
 </div>
 
 <ng-template #loading>
