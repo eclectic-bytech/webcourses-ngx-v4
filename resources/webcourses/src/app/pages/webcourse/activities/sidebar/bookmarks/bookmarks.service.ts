@@ -15,7 +15,7 @@ export class BookmarksService {
     private configService: ConfigService
   ) { }
 
-  getChapterIndex(cid: number) {
+  getBookmarks(cid: number) {
     console.log(cid)
     return this.httpClient.get<Bookmark[]>(
       `${this.configService.params.api.route}/webcourse/${cid}/bookmarks`

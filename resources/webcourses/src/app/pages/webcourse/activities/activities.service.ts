@@ -10,6 +10,7 @@ import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
 import { ThemeService } from 'src/app/core/services/theme/theme.service'
 import { WebcourseService } from '../webcourse.service'
+import { BookmarksService } from './sidebar/bookmarks/bookmarks.service'
 
 // WNGX models and misc
 import { Activity } from './workarea/models/activity.model'
@@ -33,7 +34,8 @@ export class ActivitiesService {
     private courseService: CourseService,
     private completionStatsService: CompletionStatsService,
     private themeService: ThemeService,
-  ) {}
+    private bookmarksservice: BookmarksService
+  ) { }
 
   loadActivities(aid) {
     this.getActivities(aid).subscribe(
@@ -48,6 +50,7 @@ export class ActivitiesService {
     console.log('Propagate activities.')
     this.selectedCourseService.selectedActivitySet$.next(activitySet)
     this.courseChapterIndexService.setChapters(activitySet[0].meta.chapter_id)
+    this.bookmarksservice.getBookmarks(activitySet[0].meta.course_id)
 
     if (activitySet.length === 1) {
       if (activitySet[0].meta.cont) {
@@ -89,7 +92,7 @@ export class ActivitiesService {
 
   generateCourseSyllabus(courseChapters: Chapter[]) {
     let courseSyllabus: ActivityMeta[] = []
-    courseChapters.forEach( (chapter: Chapter) => {
+    courseChapters.forEach((chapter: Chapter) => {
       courseSyllabus = courseSyllabus.concat(chapter.syllabus)
     })
     return courseSyllabus
@@ -114,9 +117,9 @@ export class ActivitiesService {
       // Length comparison fixes last activity getting re-added when an activity
       // progress bar in the same activity set is clicked (issue #161)
       if (this.activities.length != activities.length) {
-        this.activities.push(activities[activities.length -1])
+        this.activities.push(activities[activities.length - 1])
         setTimeout(() => {
-          let scrollLocation = `activity${activities[activities.length -1].meta.activity_id}`
+          let scrollLocation = `activity${activities[activities.length - 1].meta.activity_id}`
           const element = document.getElementById(scrollLocation);
           if (element) {
             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
