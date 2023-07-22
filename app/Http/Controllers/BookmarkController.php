@@ -46,6 +46,6 @@ class BookmarkController extends Controller
     {
         $user = auth()->user();
         $pid = UserProgress::where('user_id', $user->id)->where('course_id', $cid)->first()->id;
-        return Bookmark::where('pid', $pid)->get();
+        return Bookmark::where('pid', $pid)->orderBy('aid', 'asc')->get();
     }
 }
