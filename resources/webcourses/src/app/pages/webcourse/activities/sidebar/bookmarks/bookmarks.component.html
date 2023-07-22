@@ -2,7 +2,7 @@
   *ngIf="this.bookmarksService.selectedBookmark as bookmarkIndex; else loading"
   @fadeInOut
   >
-  <div *ngFor="let bookmark of bookmarkIndex" class="h5">
+  <div *ngFor="let bookmark of bookmarkIndex">
     <app-bookmark-card></app-bookmark-card>
   </div>
 </div>
