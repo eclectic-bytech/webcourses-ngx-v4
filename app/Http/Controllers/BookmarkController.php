@@ -34,7 +34,8 @@ class BookmarkController extends Controller
     public function bookmark_delete($aid)
     {
         $user = auth()->user();
-        $pid = UserProgress::where('user_id',$user->id)->where('selected_aid',$aid)->first()->id;
+        $course = CourseSyllabus::where('activity_id', $aid)->first()->course_id;
+        $pid = UserProgress::where('user_id',$user->id)->where('course_id',$course)->first()->id;
         Bookmark::where('pid',$pid)->where('aid',$aid)->first()->delete();
     }
 
