@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Bookmark } from '../../bookmarks/bookmark.model';
 
 @Component({
   selector: 'app-bookmark-card',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./bookmark-card.component.sass']
 })
 export class BookmarkCardComponent {
-
+  @Input() bookmark: Bookmark
 }
