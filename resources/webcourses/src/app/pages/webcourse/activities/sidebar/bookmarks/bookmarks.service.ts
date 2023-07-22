@@ -16,13 +16,8 @@ export class BookmarksService {
   ) { }
 
   getBookmarks(cid: number) {
-    console.log(cid)
     return this.httpClient.get<Bookmark[]>(
       `${this.configService.params.api.route}/webcourse/${cid}/bookmarks`
     ).subscribe((response) => { this.selectedBookmark = response })
-  }
-
-  get bookmarkIndex() {
-    return this.selectedBookmark
   }
 }
