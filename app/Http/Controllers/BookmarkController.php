@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bookmark;
 use App\Models\UserProgress;
 use App\Models\Activity;
+use App\Models\CourseSyllabus;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -16,7 +17,8 @@ class BookmarkController extends Controller
     public function bookmark_create($aid)
     {
         $user = auth()->user();
-        $pid = UserProgress::where('user_id',$user->id)->where('selected_aid',$aid)->first()->id;
+        $course = CourseSyllabus::where('activity_id', $aid)->first()->course_id;
+        $pid = UserProgress::where('user_id',$user->id)->where('course_id',$course)->first()->id;
             $activity = Activity::where('id',$aid)->first();
             $label = strip_tags($activity->prequestion);
             $bookmark = new Bookmark();
