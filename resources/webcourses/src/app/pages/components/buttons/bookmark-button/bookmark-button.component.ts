@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { ConfigService } from 'src/app/core/services/config/config.service';
 import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model';
+import { BookmarksService } from 'src/app/pages/webcourse/activities/sidebar/bookmarks/bookmarks.service';
 
 @Component({
   selector: 'app-bookmark-button',
@@ -19,20 +20,21 @@ export class BookmarkButtonComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private configService: ConfigService,
+    private bookmarksService: BookmarksService
   ) { }
 
   ngOnInit() {
     this.isBookMarked = !!this.activity.bookmark
   }
 
-  bookmarkActivity(aid: number) {
+  bookmarkActivity(aid: number, cid: number) {
     if (!this.waitingForAPI) {
       this.waitingForAPI = true
       if (!this.isBookMarked) {
         this.httpClient.post<number>(
           `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/create`, aid
         ).subscribe(
-          (response) => { console.log(response) },
+          (response) => { console.log(response); this.bookmarksService.getChapterIndex(cid) },
           (err) => { console.log(err) },
           () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
         )
@@ -40,7 +42,7 @@ export class BookmarkButtonComponent implements OnInit {
         this.httpClient.delete<number>(
           `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/delete`
         ).subscribe(
-          (response) => { console.log(response) },
+          (response) => { console.log(response); this.bookmarksService.getChapterIndex(cid) },
           (err) => { console.log(err) },
           () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
         )
