@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { UserService } from 'src/app/core/services/user/user.service'
-import { ThemeService } from 'src/app/core/services/theme/theme.service'
+import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
@@ -18,12 +18,12 @@ export class HelpComponent {
     public activatedRoute: ActivatedRoute,
     public configService: ConfigService,
     public userService: UserService,
-    public themeService: ThemeService,
+    public themeResetService: ThemeResetService
   ) {
     this.activatedRoute.data.subscribe(
       (data) => {
         if (data.publisherInfo) {
-          this.themeService.changeTheme(data.publisherInfo.theme)
+          this.themeResetService.changeTheme(data.publisherInfo)
         }
       }
     )
