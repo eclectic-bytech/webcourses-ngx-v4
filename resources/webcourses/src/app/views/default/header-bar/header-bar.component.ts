@@ -3,10 +3,10 @@ import { Router } from '@angular/router'
 import { UserService } from './../../../core/services/user/user.service'
 import { HeaderBarService } from './header-bar.service'
 import { GravatarMd5Service } from '../../../core/services/gravatar-md5/gravatar-md5.service'
-import { ThemeService } from '../../../core/services/theme/theme.service'
 import { DomSanitizer } from '@angular/platform-browser'
 import { faWrench, faGem, faGraduationCap, faSignOutAlt, faPenNib, faBarcode, faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
-import { Theme } from '../../../models/theme.model'
+import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
+import { Publisher } from 'src/app/models/publisher.model'
 
 @Component({
   selector: 'app-header-bar',
@@ -15,7 +15,7 @@ import { Theme } from '../../../models/theme.model'
 })
 export class HeaderBarComponent implements OnInit {
 
-  @Input() theme: Theme
+  @Input() publisher: Publisher
 
   faWrench = faWrench
   faGem = faGem
@@ -34,7 +34,7 @@ export class HeaderBarComponent implements OnInit {
     public userService: UserService,
     public headerbarService: HeaderBarService,
     public gravatarMd5: GravatarMd5Service,
-    public themeService: ThemeService
+    public themeResetService: ThemeResetService
   ) { }
 
   ngOnInit() {}
@@ -43,7 +43,7 @@ export class HeaderBarComponent implements OnInit {
     this.menuCollapsed = this.menuCollapsed2 = true
   }
 
-  logoLink(theme: Theme) {
+  logoLink(publisher: Publisher) {
     this.router.navigateByUrl('/')
     // if (theme.path == "default") {
     //   // CL logo linked to home page
