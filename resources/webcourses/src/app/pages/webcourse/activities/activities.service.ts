@@ -8,8 +8,8 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 import { CourseChapterIndexService } from 'src/app/core/services/course-chapter-index/course-chapter-index.service'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
-import { ThemeService } from 'src/app/core/services/theme/theme.service'
 import { WebcourseService } from '../webcourse.service'
+import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
 
 // WNGX models and misc
 import { Activity } from './workarea/models/activity.model'
@@ -32,7 +32,7 @@ export class ActivitiesService {
     private courseChapterIndexService: CourseChapterIndexService,
     private courseService: CourseService,
     private completionStatsService: CompletionStatsService,
-    private themeService: ThemeService,
+    private themeResetService: ThemeResetService
   ) {}
 
   loadActivities(aid) {
@@ -72,7 +72,7 @@ export class ActivitiesService {
       this.courseChapterIndexService.getChapterIndex(activitySet[0].meta.course_id)
     ]).subscribe(
       results => {
-        this.themeService.changeTheme(results[0].theme)
+        this.themeResetService.changeTheme(results[0].publisher)
 
         this.selectedCourseService.selectedCourse = results[0]
         this.courseChapterIndexService.selectedCourseChapters = results[1]

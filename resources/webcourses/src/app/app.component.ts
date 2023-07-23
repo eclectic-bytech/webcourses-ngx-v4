@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AppService } from './app.service'
 import { SelectedCourseService } from './core/services/selected-course/selected-course.service'
-import { ThemeService } from './core/services/theme/theme.service'
 
 @Component({
   selector: 'app-root',
@@ -11,8 +10,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     public appService: AppService,
-    public selectedCourseService: SelectedCourseService,
-    public themeService: ThemeService
+    public selectedCourseService: SelectedCourseService
   ) {}
 
   ngOnInit() {

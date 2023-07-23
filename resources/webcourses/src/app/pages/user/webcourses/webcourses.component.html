@@ -78,8 +78,8 @@
                   </small>
                 </div>
                 <div class="col-auto">
-                  <a [routerLink]="['/catalogue', 'publisher', userSelectedCourse.theme.path]">
-                    <img src="{{ userSelectedCourse.theme.logo }}" class="pt-2 img-fluid" style="max-height: 4rem;">
+                  <a [routerLink]="['/catalogue', 'publisher', userSelectedCourse.publisher.id_alias ]">
+                    <img [src]="'publisher-files/' + userSelectedCourse.publisher.id_alias + '/theme/logo.png'" class="pt-2 img-fluid" style="max-height: 4rem;">
                   </a>
                 </div>
               </div>
