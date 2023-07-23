@@ -11,11 +11,11 @@ import { CatalogueService } from './catalogue.service'
 import { UserService } from './../../core/services/user/user.service'
 import { TaxStatusService } from '../../core/services/tax-status/tax-status.service'
 import { AppService } from './../../app.service'
-import { ThemeService } from './../../core/services/theme/theme.service'
 import { CourseService } from './course/course.service'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { AccessCodeModalService } from '../components/access-code-modal/access-code-modal.service'
 import { NavService } from '../webcourse/activities/workarea/nav/nav.service'
+import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
 
 // WNGX models and misc
 import { Course } from './../../models/course.model'
@@ -42,7 +42,7 @@ export class CatalogueComponent implements OnInit {
     public userService: UserService,
     public taxService: TaxStatusService,
     private globalService: AppService,
-    public themeService: ThemeService,
+    public themeResetService: ThemeResetService,
     private courseService: CourseService,
     private configService: ConfigService,
     private accessCodeModalService: AccessCodeModalService,
