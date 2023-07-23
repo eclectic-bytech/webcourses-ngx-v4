@@ -1,9 +1,9 @@
 <!-- API progress loader bar and top right corner spinner -->
 <ng-progress #progressBar></ng-progress>
 
-<header *ngIf="this.themeService.activeTheme$ | async as theme" class="fixed-top">
-  <link rel="stylesheet" [href]="this.sanitiser.bypassSecurityTrustResourceUrl(theme.css)">
-  <app-header-bar [theme]="theme"></app-header-bar>
+<header *ngIf="this.themeResetService.activeTheme$ | async as publisher" class="fixed-top">
+  <link rel="stylesheet" [href]="'publisher-files/' + publisher.id + '/theme/styles.css'">
+  <app-header-bar [publisher]="publisher"></app-header-bar>
   <app-nav-admin *ngIf="this.configService.params.devMode"></app-nav-admin>
 </header>
 
