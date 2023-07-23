@@ -8,7 +8,7 @@
           <div
             class="row d-flex justify-content-center my-auto"
             *ngIf="this.publisherInfo$ | async as publisher"
-            [appThemeSet]="publisher.theme"
+            [appThemeSetNew]="publisher"
             @fadeInOut
           >
             <div class="col-auto py-3 my-auto">
