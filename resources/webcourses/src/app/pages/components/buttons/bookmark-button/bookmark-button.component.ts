@@ -27,26 +27,29 @@ export class BookmarkButtonComponent implements OnInit {
     this.isBookMarked = !!this.activity.bookmark
   }
 
-  bookmarkActivity(aid: number, cid: number) {
+  addBookmark(aid: number, cid: number) {
     if (!this.waitingForAPI) {
       this.waitingForAPI = true
-      if (!this.isBookMarked) {
-        this.httpClient.post<number>(
-          `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/create`, aid
-        ).subscribe(
-          (response) => { console.log(response); this.bookmarksService.getBookmarks(cid) },
-          (err) => { console.log(err) },
-          () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
-        )
-      } else {
-        this.httpClient.delete<number>(
-          `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/delete`
-        ).subscribe(
-          (response) => { console.log(response); this.bookmarksService.getBookmarks(cid) },
-          (err) => { console.log(err) },
-          () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
-        )
-      }
+      this.httpClient.post<number>(
+        `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/create`, aid
+      ).subscribe(
+        (response) => { console.log(response); this.bookmarksService.getBookmarks(cid) },
+        (err) => { console.log(err) },
+        () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
+      )
+      this.isBookMarked = !this.isBookMarked
+    }
+  }
+  removeBookmark(aid: number, cid: number) {
+    if (!this.waitingForAPI) {
+      this.waitingForAPI = true
+      this.httpClient.delete<number>(
+        `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/delete`
+      ).subscribe(
+        (response) => { console.log(response); this.bookmarksService.getBookmarks(cid) },
+        (err) => { console.log(err) },
+        () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
+      )
       this.isBookMarked = !this.isBookMarked
     }
   }
