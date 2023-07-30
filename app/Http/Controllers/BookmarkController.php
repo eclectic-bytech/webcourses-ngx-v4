@@ -19,8 +19,8 @@ class BookmarkController extends Controller
         $user = auth()->user();
         $course = CourseSyllabus::where('activity_id', $aid)->first()->course_id;
         $pid = UserProgress::where('user_id',$user->id)->where('course_id',$course)->first()->id;
-            $activity = Activity::where('id',$aid)->first();
-            $label = strip_tags($activity->prequestion);
+        $activity = Activity::where('id',$aid)->first();
+        $label = strip_tags($activity->prequestion);
             $bookmark = new Bookmark();
             $bookmark->aid = $aid;
             $bookmark->pid = $pid;
