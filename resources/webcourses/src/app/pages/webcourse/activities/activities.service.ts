@@ -34,7 +34,7 @@ export class ActivitiesService {
     private courseService: CourseService,
     private completionStatsService: CompletionStatsService,
     private themeService: ThemeService,
-    private bookmarksservice: BookmarksService
+    private bookmarksService: BookmarksService
   ) { }
 
   loadActivities(aid) {
@@ -50,7 +50,7 @@ export class ActivitiesService {
     console.log('Propagate activities.')
     this.selectedCourseService.selectedActivitySet$.next(activitySet)
     this.courseChapterIndexService.setChapters(activitySet[0].meta.chapter_id)
-    this.bookmarksservice.getBookmarks(activitySet[0].meta.course_id)
+    this.bookmarksService.getBookmarks(activitySet[0].meta.course_id)
 
     if (activitySet.length === 1) {
       if (activitySet[0].meta.cont) {
