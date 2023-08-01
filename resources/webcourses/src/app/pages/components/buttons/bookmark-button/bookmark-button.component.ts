@@ -31,7 +31,7 @@ export class BookmarkButtonComponent implements OnInit {
     if (!this.waitingForAPI) {
       this.waitingForAPI = true
       this.httpClient.post<number>(
-        `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/create`, aid
+        `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`, aid
       ).subscribe(
         (response) => { console.log(response); this.bookmarksService.getBookmarks(cid) },
         (err) => { console.log(err) },
@@ -44,7 +44,7 @@ export class BookmarkButtonComponent implements OnInit {
     if (!this.waitingForAPI) {
       this.waitingForAPI = true
       this.httpClient.delete<number>(
-        `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}/delete`
+        `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`
       ).subscribe(
         (response) => { console.log(response); this.bookmarksService.getBookmarks(cid) },
         (err) => { console.log(err) },
