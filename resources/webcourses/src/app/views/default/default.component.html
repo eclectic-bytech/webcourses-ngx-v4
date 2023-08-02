@@ -2,7 +2,7 @@
 <ng-progress #progressBar></ng-progress>
 
 <header *ngIf="this.themeResetService.activeTheme$ | async as publisher" class="fixed-top">
-  <link rel="stylesheet" [href]="'publisher-files/' + publisher.id + '/theme/styles.css'">
+  <link rel="stylesheet" [href]="this.sanitiser.bypassSecurityTrustResourceUrl('publisher-files/' + publisher.id + '/theme/styles.css')">
   <app-header-bar [publisher]="publisher"></app-header-bar>
   <app-nav-admin *ngIf="this.configService.params.devMode"></app-nav-admin>
 </header>
