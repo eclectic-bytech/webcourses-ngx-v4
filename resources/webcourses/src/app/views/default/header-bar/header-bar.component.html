@@ -17,10 +17,8 @@
   </button>
 
   <a class="navbar-brand ml-xs-3 ml-md-5 ml-lg-0" (click)="logoLink(publisher)">
-    <img
-      id="logo"
-      [src]="'publisher-files/' + publisher.id_alias + '/theme/logo.png'"
-    />
+    <!-- using publisher.id instead .id_alias only due to homestead symlinks problem -->
+    <img id="logo" [src]="'publisher-files/' + publisher.id + '/theme/logo.png'"/>
   </a>
 
   <div class="navbar navbar-expand px-0 alwaysVisible">
@@ -180,7 +178,7 @@
     <ul class="navbar-nav mr-auto">
       <!-- STANDARD MAIN NAVIGATION, SYSTEM BRANDED AND LINKED -->
 
-      <ng-container *ngIf="publisher.id == 1; else publisherCustom">
+      <ng-container *ngIf="publisher.id != null; else publisherCustom">
 
         <!-- CATALOGUE / WEBCOURSES LINK -->
         <li
