@@ -13,11 +13,10 @@
           >
             <div class="col-auto py-3 my-auto">
               <!-- This should be a block, with HTML separated out like e.g. the Contact page's -->
-              <img [src]="publisher.theme.logo" alt="Cultivate learning" style="max-height: 6rem;" class="mr-4 img-fluid">
+              <img src="publisher-files/{{publisher.id_alias}}/theme/logo.png" alt="" style="max-height: 6rem;" class="mr-4 img-fluid">
             </div>
             <div class="col-auto py-3 my-auto">
               <div class="lead">{{ publisher.name }} course directory</div>
-
               <div class="text-dark mt-2">
                 Course instructor and support is
                   <a [href]="'mailto:' + publisher.contact_email">
