@@ -30,7 +30,7 @@ export class EnrolMessageComponent implements OnInit {
     this.globalWebCourseService.setTitle(this.route.snapshot.data.title)
     this.publisherService.getPublisher(this.route.snapshot.params.cid, 'cid').subscribe(
       (publisherInfo) => {
-        this.themeResetService.changeTheme(publisherInfo)
+        this.themeResetService.activePublisher$.next(publisherInfo)
       }
     )
   }

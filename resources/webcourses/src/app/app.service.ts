@@ -25,7 +25,7 @@ export class AppService {
   ) {}
 
   init() {
-    this.themeResetService.activeTheme$.next(this.themeResetService.defaultPublisher)
+    this.themeResetService.enableDynamicThemes()
     // Local proxy has a user object, making it impossible to do an anon session
     // The if-check allows us to run getUser via admin menu bar and its "Simulate Login"
     if (!this.configService.params.devMode) {

@@ -72,7 +72,7 @@ export class ActivitiesService {
       this.courseChapterIndexService.getChapterIndex(activitySet[0].meta.course_id)
     ]).subscribe(
       results => {
-        this.themeResetService.changeTheme(results[0].publisher)
+        this.themeResetService.activePublisher$.next(results[0].publisher)
 
         this.selectedCourseService.selectedCourse = results[0]
         this.courseChapterIndexService.selectedCourseChapters = results[1]

@@ -54,6 +54,7 @@ export class CatalogueComponent implements OnInit {
 
     this.webcoursesAll$ = this.route.data.pipe(map(data => data.webcoursesAll))
     this.featuredCourse$ = this.courseService.getCourse(this.configService.params.featuredCID)
+    this.themeResetService.activePublisher$.next(this.themeResetService.defaultPublisher)
   }
 
   freebieAccess(course: Course) {

@@ -16,7 +16,7 @@ export class ThemeResetDirective implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.themeResetService.activeTheme$.next(this.publisher)
+    this.themeResetService.activePublisher$.next(this.publisher)
   }
 
 }

@@ -23,8 +23,9 @@ export class HelpComponent {
     this.activatedRoute.data.subscribe(
       (data) => {
         if (data.publisherInfo) {
-          this.themeResetService.changeTheme(data.publisherInfo)
+          this.themeResetService.activePublisher$.next(data.publisherInfo)
         }
+        console.log(data)
       }
     )
   }
