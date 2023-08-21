@@ -5,7 +5,6 @@ import { map } from 'rxjs/operators'
 
 import { faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { faDiagramProject } from '@fortawesome/free-solid-svg-icons'
-import { faArrowDownShortWide } from '@fortawesome/free-solid-svg-icons'
 
 // WNGX services
 import { CatalogueService } from './catalogue.service'
@@ -36,7 +35,6 @@ export class CatalogueComponent implements OnInit {
 
   public faDiagramProject = faDiagramProject
   public faUserGroup = faUserGroup
-  public faArrowDownShortWide = faArrowDownShortWide
 
   constructor(
     private route: ActivatedRoute,

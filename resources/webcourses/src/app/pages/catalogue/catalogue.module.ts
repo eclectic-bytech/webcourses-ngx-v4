@@ -10,11 +10,13 @@ import { CatalogueCardModule } from './../components/course-card/catalogue-card/
 import { CatalogueComponent } from './catalogue.component'
 import { CatalogueRoutingModule } from './catalogue-routing.module'
 import { ThemeResetModule } from './../../core/directives/theme-reset/theme-reset.module'
-import { PipesModule } from 'src/app/shared/pipes/pipes.module'
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { CourseFilterButtonComponent } from './course-filter-button/course-filter-button.component'
 
 @NgModule({
   declarations: [
-    CatalogueComponent
+    CatalogueComponent,
+    CourseFilterButtonComponent
   ],
   providers: [
     CatalogueComponent
