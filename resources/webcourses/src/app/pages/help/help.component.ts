@@ -1,10 +1,12 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
+import { HttpClient } from '@angular/common/http'
 
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { UserService } from 'src/app/core/services/user/user.service'
 import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { Publisher } from 'src/app/models/publisher.model'
 
 @Component({
   selector: 'app-help',
@@ -12,22 +14,24 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
   styleUrls: ['./help.component.scss'],
   animations: [FadeInOut]
 })
-export class HelpComponent {
+export class HelpComponent implements OnInit {
 
   constructor(
     public activatedRoute: ActivatedRoute,
-    public configService: ConfigService,
     public userService: UserService,
-    public themeResetService: ThemeResetService
-  ) {
-    this.activatedRoute.data.subscribe(
-      (data) => {
-        if (data.publisherInfo) {
-          this.themeResetService.activePublisher$.next(data.publisherInfo)
-        }
-        console.log(data)
-      }
-    )
+    public themeResetService: ThemeResetService,
+    private configService: ConfigService,
+    private httpClient: HttpClient
+  ) {}
+
+  ngOnInit() {
+    if (this.activatedRoute.snapshot.params['pub_id']) {
+      this.httpClient.get<any>(
+        `${this.configService.params.api.route}/publisher/profile/${this.activatedRoute.snapshot.params['pub_id']}`
+      ).subscribe( (publisher: Publisher) => {
+        this.themeResetService.activePublisher$.next(publisher)
+      })
+    }
   }
 
 }
