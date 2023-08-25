@@ -18,7 +18,7 @@
 
   <a class="navbar-brand ml-xs-3 ml-md-5 ml-lg-0" (click)="logoLink(publisher)">
     <!-- using publisher.id instead .id_alias only due to homestead symlinks problem -->
-    <img id="logo" [src]="this.themeResetService.logo"/>
+    <img id="logo" [src]="this.themeResetService.logo" [@FadeInOut2]="this.themeResetService.logo"/>
   </a>
 
   <div class="navbar navbar-expand px-0 alwaysVisible">

@@ -7,10 +7,12 @@ import { DomSanitizer } from '@angular/platform-browser'
 import { faWrench, faGem, faGraduationCap, faSignOutAlt, faPenNib, faBarcode, faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
 import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
 import { Publisher } from 'src/app/models/publisher.model'
+import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
 
 @Component({
   selector: 'app-header-bar',
   templateUrl: './header-bar.component.html',
+  animations: [FadeInOut2],
   styleUrls: ['./header-bar.component.scss']
 })
 export class HeaderBarComponent implements OnInit {
