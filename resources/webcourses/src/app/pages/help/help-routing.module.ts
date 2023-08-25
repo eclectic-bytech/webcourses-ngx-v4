@@ -5,13 +5,6 @@ import { HelpComponent } from './help.component'
 
 const routes: Routes = [
   {
-    path: '',
-    component: HelpComponent,
-    data: {
-      title: 'Cultivate Learning Help'
-    }
-  },
-  {
     path: ':pub_id',
     component: HelpComponent,
     data: {
