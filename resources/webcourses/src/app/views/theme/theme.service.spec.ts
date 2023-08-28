@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ThemeResetService } from './theme-reset.service';
+import { ThemeService } from './theme.service';
 
-describe('ThemeResetService', () => {
-  let service: ThemeResetService;
+describe('ThemeService', () => {
+  let service: ThemeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ThemeResetService);
+    service = TestBed.inject(ThemeService);
   });
 
   it('should be created', () => {

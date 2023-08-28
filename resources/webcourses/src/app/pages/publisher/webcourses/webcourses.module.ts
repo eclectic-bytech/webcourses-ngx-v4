@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { WebcoursesRoutingModule } from './webcourses-routing.module'
 import { WebcoursesComponent } from './webcourses.component'
-import { ThemeResetModule } from '../../../views/theme-reset/theme-reset.module'
+import { ThemeModule } from '../../../views/theme/theme.module'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
@@ -13,7 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     CommonModule,
     FontAwesomeModule,
     WebcoursesRoutingModule,
-    ThemeResetModule
+    ThemeModule
   ]
 })
 export class WebcoursesModule {}

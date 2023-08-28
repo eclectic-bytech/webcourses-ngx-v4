@@ -1,8 +1,8 @@
 <!-- API progress loader bar and top right corner spinner -->
 <ng-progress #progressBar></ng-progress>
 
-<header *ngIf="this.themeResetService.activePublisher$ | async as publisher" class="fixed-top">
-  <link rel="stylesheet" [href]="this.sanitiser.bypassSecurityTrustResourceUrl(this.themeResetService.css)">
+<header *ngIf="this.themeService.activePublisher$ | async as publisher" class="fixed-top">
+  <link rel="stylesheet" [href]="this.sanitiser.bypassSecurityTrustResourceUrl(this.themeService.css)">
   <app-header-bar [publisher]="publisher" [appThemeSetNew]="publisher"></app-header-bar>
   <app-nav-admin *ngIf="this.configService.params.devMode"></app-nav-admin>
 </header>

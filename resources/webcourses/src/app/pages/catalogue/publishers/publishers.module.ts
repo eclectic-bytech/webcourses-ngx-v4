@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { PublishersRoutingModule } from './publishers-routing.module'
 import { PublishersComponent } from './publishers.component'
-import { ThemeResetModule } from '../../../views/theme-reset/theme-reset.module'
+import { ThemeModule } from '../../../views/theme/theme.module'
 
 @NgModule({
   declarations: [PublishersComponent],
   imports: [
     CommonModule,
     PublishersRoutingModule,
-    ThemeResetModule
+    ThemeModule
   ]
 })
 

@@ -8,7 +8,7 @@ import { ConfigService } from '../../core/services/config/config.service'
   providedIn: 'root'
 })
 
-export class ThemeResetService {
+export class ThemeService {
   public defaultPublisher: Publisher
   public activePublisher$ = new BehaviorSubject<Publisher | null>(null)
   public activePublisher: Publisher // used in getters

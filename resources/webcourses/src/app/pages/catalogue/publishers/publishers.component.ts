@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service'
+import { ThemeService } from 'src/app/views/theme/theme.service'
 
 @Component({
   selector: 'app-publishers',
@@ -9,7 +9,7 @@ import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service
 export class PublishersComponent {
 
   constructor(
-    public themeResetService: ThemeResetService
+    public themeService: ThemeService
   ) {}
 
 }

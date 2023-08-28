@@ -1,22 +1,22 @@
 import { Directive, OnInit, Input } from '@angular/core'
 
 // WNGX imports
-import { ThemeResetService } from './theme-reset.service'
+import { ThemeService } from './theme.service'
 import { Publisher } from 'src/app/models/publisher.model'
 
 @Directive({
   selector: '[appThemeSetNew]'
 })
-export class ThemeResetDirective implements OnInit {
+export class ThemeDirective implements OnInit {
 
   @Input('appThemeSetNew') publisher: Publisher
 
   constructor(
-    private themeResetService: ThemeResetService
+    private themeService: ThemeService
   ) { }
 
   ngOnInit() {
-    this.themeResetService.activePublisher$.next(this.publisher)
+    this.themeService.activePublisher$.next(this.publisher)
   }
 
 }

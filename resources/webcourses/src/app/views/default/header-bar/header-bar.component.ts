@@ -5,7 +5,7 @@ import { HeaderBarService } from './header-bar.service'
 import { GravatarMd5Service } from '../../../core/services/gravatar-md5/gravatar-md5.service'
 import { DomSanitizer } from '@angular/platform-browser'
 import { faWrench, faGem, faGraduationCap, faSignOutAlt, faPenNib, faBarcode, faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
-import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service'
+import { ThemeService } from 'src/app/views/theme/theme.service'
 import { Publisher } from 'src/app/models/publisher.model'
 import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
 
@@ -36,7 +36,7 @@ export class HeaderBarComponent implements OnInit {
     public userService: UserService,
     public headerbarService: HeaderBarService,
     public gravatarMd5: GravatarMd5Service,
-    public themeResetService: ThemeResetService
+    public themeService: ThemeService
   ) { }
 
   ngOnInit() {}

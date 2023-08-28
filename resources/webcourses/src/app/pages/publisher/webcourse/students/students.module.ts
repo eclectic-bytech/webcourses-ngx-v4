@@ -6,7 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { StudentsRoutingModule } from './students-routing.module'
 import { FilterPipe } from './filter.pipe'
 import { FormsModule } from '@angular/forms'
-import { ThemeResetModule } from '../../../../views/theme-reset/theme-reset.module'
+import { ThemeModule } from '../../../../views/theme/theme.module'
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { ThemeResetModule } from '../../../../views/theme-reset/theme-reset.modu
     FontAwesomeModule,
     StudentsRoutingModule,
     FormsModule,
-    ThemeResetModule
+    ThemeModule
   ]
 })
 export class StudentsModule { }

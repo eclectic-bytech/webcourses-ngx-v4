@@ -10,8 +10,8 @@ import { HeaderBarModule } from './header-bar/header-bar.module'
 import { NavAdminModule  } from './nav-admin/nav-admin.module'
 import { CatalogueModule } from './../../pages/catalogue/catalogue.module'
 import { DefaultComponent } from './default.component'
-import { ThemeResetModule } from 'src/app/views/theme-reset/theme-reset.module'
-import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service'
+import { ThemeModule } from 'src/app/views/theme/theme.module'
+import { ThemeService } from 'src/app/views/theme/theme.service'
 
 @NgModule({
   declarations: [
@@ -25,10 +25,10 @@ import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service
     NavAdminModule,
     NgProgressModule,
     NgProgressHttpModule,
-    ThemeResetModule
+    ThemeModule
   ],
   providers: [
-    ThemeResetService
+    ThemeService
   ]
 })
 
