@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators'
 import { AppService } from '../../../../app.service'
 import { FadeInOut } from '../../../../core/animations/fade-in-out.animation'
 import { PublisherService } from '../../../catalogue/publisher/publisher.service'
-import { ThemeService } from '../../../../core/services/theme/theme.service'
+import { ThemeService } from 'src/app/views/theme/theme.service'
 
 @Component({
   selector: 'app-enrol-message',
@@ -30,7 +30,7 @@ export class EnrolMessageComponent implements OnInit {
     this.globalWebCourseService.setTitle(this.route.snapshot.data.title)
     this.publisherService.getPublisher(this.route.snapshot.params.cid, 'cid').subscribe(
       (publisherInfo) => {
-        this.themeService.changeTheme(publisherInfo.theme)
+        this.themeService.activePublisher$.next(publisherInfo)
       }
     )
   }

@@ -1,5 +1,3 @@
-import { Theme } from "./theme.model"
-
 export class Publisher {
   public id: number
   public id_alias: string
@@ -14,7 +12,6 @@ export class Publisher {
   public province: string
   public city: string
   public settings: string
-  public theme: Theme
   public created_at: string
   public updated_at: string
 }
