@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http'
 
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { UserService } from 'src/app/core/services/user/user.service'
-import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
+import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { Publisher } from 'src/app/models/publisher.model'
 

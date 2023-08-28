@@ -10,8 +10,8 @@ import { HeaderBarModule } from './header-bar/header-bar.module'
 import { NavAdminModule  } from './nav-admin/nav-admin.module'
 import { CatalogueModule } from './../../pages/catalogue/catalogue.module'
 import { DefaultComponent } from './default.component'
-import { ThemeResetModule } from 'src/app/core/directives/theme-reset/theme-reset.module'
-import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
+import { ThemeResetModule } from 'src/app/views/theme-reset/theme-reset.module'
+import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service'
 
 @NgModule({
   declarations: [

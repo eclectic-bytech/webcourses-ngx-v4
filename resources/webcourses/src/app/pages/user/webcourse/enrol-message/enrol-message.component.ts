@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators'
 import { AppService } from '../../../../app.service'
 import { FadeInOut } from '../../../../core/animations/fade-in-out.animation'
 import { PublisherService } from '../../../catalogue/publisher/publisher.service'
-import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
+import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service'
 
 @Component({
   selector: 'app-enrol-message',

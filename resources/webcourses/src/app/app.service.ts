@@ -6,7 +6,7 @@ import { UserService } from './core/services/user/user.service'
 import { ConfigService } from './core/services/config/config.service'
 import { JetstreamUser } from './core/models/jetstream-user.model'
 import { TaxStatusService } from './core/services/tax-status/tax-status.service'
-import { ThemeResetService } from './core/directives/theme-reset/theme-reset.service'
+import { ThemeResetService } from './views/theme-reset/theme-reset.service'
 
 @Injectable({
   providedIn: 'root'

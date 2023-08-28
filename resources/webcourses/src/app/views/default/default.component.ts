@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
 import { AppService } from './../../app.service'
-import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
+import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 
 @Component({

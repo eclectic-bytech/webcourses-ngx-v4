@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
 
 import { Publisher } from 'src/app/models/publisher.model'
-import { ConfigService } from '../../services/config/config.service'
+import { ConfigService } from '../../core/services/config/config.service'
 
 @Injectable({
   providedIn: 'root'

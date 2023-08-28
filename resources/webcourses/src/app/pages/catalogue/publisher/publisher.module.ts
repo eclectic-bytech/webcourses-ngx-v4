@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 import { PublisherComponent } from './publisher.component'
 import { PublisherRoutingModule } from './publisher-routing.module'
 import { CatalogueCardModule } from '../../components/course-card/catalogue-card/catalogue-card.module'
-import { ThemeResetModule } from './../../../core/directives/theme-reset/theme-reset.module'
+import { ThemeResetModule } from '../../../views/theme-reset/theme-reset.module'
 
 @NgModule({
   declarations: [

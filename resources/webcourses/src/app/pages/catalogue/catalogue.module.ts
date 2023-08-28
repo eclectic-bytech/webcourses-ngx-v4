@@ -9,7 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { CatalogueCardModule } from './../components/course-card/catalogue-card/catalogue-card.module'
 import { CatalogueComponent } from './catalogue.component'
 import { CatalogueRoutingModule } from './catalogue-routing.module'
-import { ThemeResetModule } from 'src/app/core/directives/theme-reset/theme-reset.module'
+import { ThemeResetModule } from 'src/app/views/theme-reset/theme-reset.module'
 import { PipesModule } from 'src/app/shared/pipes/pipes.module'
 
 @NgModule({

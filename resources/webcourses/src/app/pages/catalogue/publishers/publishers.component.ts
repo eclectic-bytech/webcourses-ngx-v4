@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
+import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service'
 
 @Component({
   selector: 'app-publishers',

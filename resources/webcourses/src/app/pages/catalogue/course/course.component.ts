@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 
 // WNGX imports
 import { CourseService } from './course.service'
-import { ThemeResetService } from 'src/app/core/directives/theme-reset/theme-reset.service'
+import { ThemeResetService } from 'src/app/views/theme-reset/theme-reset.service'
 import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
 
 @Component({
