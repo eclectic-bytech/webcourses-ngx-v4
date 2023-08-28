@@ -1,4 +1,4 @@
-<div class="row border justify-content-between bg-light">
+<a class="row border justify-content-between bg-light" (click)="this.navService.NavigateByAid(bookmark.aid)">
     <h6 class="my-1 col-9 text-left ml-2 text-dark w-75">{{bookmark.label}}</h6>
     <p class="my-1 col text-right mr-2 text-secondary">#{{bookmark.aid}}</p>
-</div>
+</a>
