@@ -1,11 +1,13 @@
 <div
-  *ngIf="this.bookmarksService.selectedBookmark as bookmarkIndex; else loading"
+  *ngIf="this.bookmarksService.selectedBookmark as bookmarkIndex"
   @fadeInOut
   >
   <div *ngFor="let bookmark of bookmarkIndex">
     <app-bookmark-card [bookmark]="bookmark"></app-bookmark-card>
   </div>
 </div>
+
+<p *ngIf="!this.bookmarksService.selectedBookmark[0]" class="my-1 text-left ml-2 text-dark">no activities have been bookmarked</p>
 
 <ng-template #loading>
   <div class="mt-5">
