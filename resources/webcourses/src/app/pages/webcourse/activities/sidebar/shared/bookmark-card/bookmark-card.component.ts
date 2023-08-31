@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Bookmark } from '../../bookmarks/bookmark.model';
-import { NavService } from '../../../workarea/nav/nav.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bookmark-card',
@@ -9,7 +9,7 @@ import { NavService } from '../../../workarea/nav/nav.service';
 })
 export class BookmarkCardComponent {
   constructor(
-    public navService: NavService
+    public router: Router
   ) { }
   @Input() bookmark: Bookmark
 }
