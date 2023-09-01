@@ -12,4 +12,6 @@ ____     __                __      __   __  __   ____     __   __
 
 ## Cultivate Learning WNGX Release
 
-This repo requires the `github-wngx-cl` key.
+*__This repo should never be merged into any public WNGX repo.__*  
+It requires the `github-wngx-cl` key for access.  
+
