@@ -10,6 +10,6 @@ ____     __                __      __   __  __   ____     __   __
   
 ```
 
-#Cultivate Learning WNGX Release
+## Cultivate Learning WNGX Release
 
-This repo requires the `github-wngx-cl` key. 
+This repo requires the `github-wngx-cl` key.
