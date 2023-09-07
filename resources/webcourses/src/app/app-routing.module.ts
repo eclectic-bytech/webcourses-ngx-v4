@@ -34,8 +34,9 @@ const routes: Routes = [
         loadChildren: () => import('./pages/publisher/publisher.module').then(m => m.PublisherModule)
       },
       {
-        path: 'stripe/payment',
-        loadChildren: () => import('./pages/stripe/payment/payment.module').then(m => m.PaymentModule)
+        path: 'commerce/stripe/checkout',
+        canActivate: [AuthUserGuard],
+        loadChildren: () => import('./commerce/stripe/stripe-checkout/stripe-checkout.module').then(m => m.StripeCheckoutModule)
       },
       {
         path: 'admin',

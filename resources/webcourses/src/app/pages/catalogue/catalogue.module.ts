@@ -6,12 +6,10 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap'
 import { MatCardModule } from '@angular/material/card'
 import { MatButtonModule } from '@angular/material/button'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-
 import { CatalogueCardModule } from './../components/course-card/catalogue-card/catalogue-card.module'
 import { CatalogueComponent } from './catalogue.component'
-import { BuyButtonModule } from './../components/buttons/buy-button/buy-button.module'
 import { CatalogueRoutingModule } from './catalogue-routing.module'
-import { ThemeResetModule } from './../../core/directives/theme-reset/theme-reset.module'
+import { ThemeModule } from 'src/app/views/theme/theme.module'
 import { PipesModule } from 'src/app/shared/pipes/pipes.module'
 
 @NgModule({
@@ -30,8 +28,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module'
     FontAwesomeModule,
     CatalogueRoutingModule,
     MatButtonModule,
-    ThemeResetModule,
-    BuyButtonModule,
+    ThemeModule,
     CatalogueCardModule,
     PipesModule
   ],

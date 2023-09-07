@@ -21,7 +21,6 @@
     <div
       class="row d-flex justify-content-center"
       *ngIf="this.webcoursesAll$ | async as webcourses"
-      [appThemeSet]="this.themeService.defaultTheme"
       @fadeInOut
     >
       <div id="featuredCID" *ngIf="this.featuredCourse$ | async as course" class="float-left mx-5 mb-5">

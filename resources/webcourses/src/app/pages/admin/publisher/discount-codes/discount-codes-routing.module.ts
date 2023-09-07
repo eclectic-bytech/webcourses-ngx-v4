@@ -13,6 +13,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'add',
+    loadChildren: () => import('./add-access-code/add-access-code.module').then(m => m.AddAccessCodeModule)
+  },
+  {
     path: ':code_id/users',
     loadChildren: () => import('./discount-codes-users/discount-codes-users.module').then(m => m.DiscountCodesUsersModule),
   }

@@ -8,8 +8,8 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 import { CourseChapterIndexService } from 'src/app/core/services/course-chapter-index/course-chapter-index.service'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
-import { ThemeService } from 'src/app/core/services/theme/theme.service'
 import { WebcourseService } from '../webcourse.service'
+import { ThemeService } from 'src/app/views/theme/theme.service'
 
 // WNGX models and misc
 import { Activity } from './workarea/models/activity.model'
@@ -32,14 +32,13 @@ export class ActivitiesService {
     private courseChapterIndexService: CourseChapterIndexService,
     private courseService: CourseService,
     private completionStatsService: CompletionStatsService,
-    private themeService: ThemeService,
+    private themeService: ThemeService
   ) {}
 
   loadActivities(aid) {
     this.getActivities(aid).subscribe(
       (activitySet: Activity[]) => {
-        this.selectedCourseService.selectedCourse ?
-          this.propagateActivities(activitySet) : this.bootstrapCourse(activitySet)
+        this.propagateActivities(activitySet)
       }
     )
   }
@@ -47,7 +46,6 @@ export class ActivitiesService {
   propagateActivities(activitySet: Activity[]) {
     console.log('Propagate activities.')
     this.selectedCourseService.selectedActivitySet$.next(activitySet)
-    this.courseChapterIndexService.setChapters(activitySet[0].meta.chapter_id)
 
     if (activitySet.length === 1) {
       if (activitySet[0].meta.cont) {
@@ -74,12 +72,13 @@ export class ActivitiesService {
       this.courseChapterIndexService.getChapterIndex(activitySet[0].meta.course_id)
     ]).subscribe(
       results => {
-        this.themeService.changeTheme(results[0].theme)
+        this.themeService.activePublisher$.next(results[0].publisher)
 
         this.selectedCourseService.selectedCourse = results[0]
         this.courseChapterIndexService.selectedCourseChapters = results[1]
         this.selectedCourseService.courseSyllabus = this.generateCourseSyllabus(results[1])
-        this.propagateActivities(activitySet)
+
+        this.courseChapterIndexService.setChapters()
 
         // These shouldn't be here
         this.completionStatsService.totalActivitiesCompleted = results[0].user_progress.total_activities_completed

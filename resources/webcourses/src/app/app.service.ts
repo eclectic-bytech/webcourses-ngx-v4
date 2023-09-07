@@ -6,6 +6,7 @@ import { UserService } from './core/services/user/user.service'
 import { ConfigService } from './core/services/config/config.service'
 import { JetstreamUser } from './core/models/jetstream-user.model'
 import { TaxStatusService } from './core/services/tax-status/tax-status.service'
+import { ThemeService } from './views/theme/theme.service'
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,12 @@ export class AppService {
     private configService: ConfigService,
     private titleService: Title,
     private userService: UserService,
-    private taxService: TaxStatusService,
+    private themeService: ThemeService,
+    private taxService: TaxStatusService
   ) {}
 
-  initLogged() {
+  init() {
+    this.themeService.enableDynamicThemes()
     // Local proxy has a user object, making it impossible to do an anon session
     // The if-check allows us to run getUser via admin menu bar and its "Simulate Login"
     if (!this.configService.params.devMode) {

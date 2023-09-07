@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics'
+import { NgxStripeModule } from 'ngx-stripe'
 
 import { AppRoutingModule } from './app-routing.module'
 import { CatalogueModule } from './pages/catalogue/catalogue.module'
@@ -26,6 +27,7 @@ import { ActivitiesService } from './pages/webcourse/activities/activities.servi
     HttpClientModule,
     ReactiveFormsModule,
     NgxGoogleAnalyticsModule.forRoot('G-YFTM077Q4Y'),
+    NgxStripeModule.forRoot('pk_test_0pgZ4oeb3vHRAJn8dhmqHD3b00Y778LkVQ'),
     NgxGoogleAnalyticsRouterModule,
     AppRoutingModule,
     CatalogueModule,

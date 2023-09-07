@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { NgxStripeModule } from 'ngx-stripe'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { MatButtonModule } from '@angular/material/button'
 
 // 3rd party modules
 import { ClipboardModule } from 'ngx-clipboard'
@@ -17,7 +20,11 @@ import { DiscountCodesComponent } from './discount-codes.component'
     CommonModule,
     ClipboardModule,
     DiscountCodesRoutingModule,
-    LoadingSpinnerModule
+    LoadingSpinnerModule,
+    NgxStripeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule
   ]
 })
 

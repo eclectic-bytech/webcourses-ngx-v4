@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 
 import { DiscountCodesService } from './discount-codes.service'
-import { Coupon } from 'src/app/models/coupon.model'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-discount-codes',
@@ -16,11 +16,16 @@ export class DiscountCodesComponent implements OnInit {
   public discountCodes$: Observable<any[]>
 
   constructor(
+    private router: Router,
     private discountCodesService: DiscountCodesService
   ) { }
 
   ngOnInit(): void {
     this.discountCodes$ = this.discountCodesService.getDiscountCodes()
+  }
+
+  addAccessCode(cid) {
+    this.router.navigateByUrl(`/admin/publisher/discount-codes/add?cid=${cid}`)
   }
 
   pillClass(discountCode) {

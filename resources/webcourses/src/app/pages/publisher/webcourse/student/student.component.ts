@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
-import { ActivatedRoute } from '@angular/router'
-import { Publisher } from '../../../../models/publisher.model'
-import { FadeInOut } from '../../../../core/animations/fade-in-out.animation'
+
+// WNGX imports
+import { Publisher } from 'src/app/models/publisher.model'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-student-course-progress',

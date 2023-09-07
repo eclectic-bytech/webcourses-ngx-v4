@@ -11,6 +11,8 @@ use Illuminate\Auth\Events\Login;
 // WNGX imports
 use App\Listeners\LoginListener;
 use App\Listeners\RegistrationListener;
+use App\Listeners\StripeEventListener;
+use Laravel\Cashier\Events\WebhookReceived;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -26,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         Login::class => [
             LoginListener::class,
+        ],
+        WebhookReceived::class => [
+            StripeEventListener::class,
         ],
     ];
 
