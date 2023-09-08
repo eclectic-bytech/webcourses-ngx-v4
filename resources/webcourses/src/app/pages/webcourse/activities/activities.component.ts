@@ -17,6 +17,7 @@ import { CollectUserNamesComponent } from './components/collect-user-names/colle
 import { PublisherService } from './../../catalogue/publisher/publisher.service'
 import { ActivitiesService } from './activities.service'
 import { UserService } from '../../../core/services/user/user.service'
+import { Activity } from './workarea/models/activity.model'
 
 @Component({
   selector: 'app-activities',
@@ -56,6 +57,13 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
       const comp = this.ngbModal.open(CollectUserNamesComponent, this.modalOptions)
       comp.componentInstance.user = this.userService.user
     }
+
+    this.activitiesService.getActivities(this.activatedRoute.snapshot.paramMap.get('aid'))
+      .subscribe(
+        (activitySet: Activity[]) => {
+          this.activitiesService.bootstrapCourse(activitySet)
+        }
+      )
 
     this.sub = this.activatedRoute.params.subscribe(
       data => {

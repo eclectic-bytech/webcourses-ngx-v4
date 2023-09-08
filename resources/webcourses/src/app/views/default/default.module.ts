@@ -5,19 +5,13 @@ import { RouterModule } from '@angular/router'
 import { NgProgressModule } from 'ngx-progressbar'
 import { NgProgressHttpModule } from 'ngx-progressbar/http'
 
-// Cultivate Learning LAYOUT Modules
+// WNGX imports
 import { HeaderBarModule } from './header-bar/header-bar.module'
 import { NavAdminModule  } from './nav-admin/nav-admin.module'
-
-// Cultivate Learning Modules
 import { CatalogueModule } from './../../pages/catalogue/catalogue.module'
-
-// Cultivate Learning Components
 import { DefaultComponent } from './default.component'
-
-// Cultiavte Learning Services
-import { ThemeService } from '../../core/services/theme/theme.service'
-
+import { ThemeModule } from 'src/app/views/theme/theme.module'
+import { ThemeService } from 'src/app/views/theme/theme.service'
 
 @NgModule({
   declarations: [
@@ -30,7 +24,8 @@ import { ThemeService } from '../../core/services/theme/theme.service'
     HeaderBarModule,
     NavAdminModule,
     NgProgressModule,
-    NgProgressHttpModule
+    NgProgressHttpModule,
+    ThemeModule
   ],
   providers: [
     ThemeService

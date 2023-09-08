@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core'
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router'
+import { ActivatedRouteSnapshot } from '@angular/router'
 import { Observable } from 'rxjs'
 import { PublisherService } from './publisher.service'
 
 
 @Injectable()
-export class PublisherResolver implements Resolve<Observable<any>> {
+export class PublisherResolver {
 
   constructor(
     public publisherService: PublisherService

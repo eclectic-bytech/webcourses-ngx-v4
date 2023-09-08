@@ -6,7 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { WorkAreaModule } from './workarea/workarea.module'
-import { ThemeResetModule } from './../../../core/directives/theme-reset/theme-reset.module'
+import { ThemeModule } from '../../../views/theme/theme.module'
 import { PublisherInfoModule } from './sidebar/publisher-info/publisher-info.module'
 import { ChapterIndexModule } from './sidebar/chapter-index/chapter-index.module'
 import { SelectedModule } from './sidebar/selected/selected.module'
@@ -30,7 +30,7 @@ import { BookmarksModule } from './sidebar/bookmarks/bookmarks.module'
     FontAwesomeModule,
     ActivitiesRoutingModule,
     WorkAreaModule,
-    ThemeResetModule,
+    ThemeModule,
     PublisherInfoModule,
     ChapterIndexModule,
     SelectedModule,

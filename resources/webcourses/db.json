@@ -1200,5 +1200,8 @@
         }
       ]
     }
+  ],
+  "access_codes": [
+    {"course":{"id":1,"title":"Open WebCourses Platform: Introduction","cover":"cover.png","publisher_id":1,"private":0,"hide_from_main_catalogue":0,"completion_time":"0.5","audience":"Educators, and learners passionate about online learning","cover_alt":"Open WebCourses logo - three rings forming a triangle, and platform name arranged into a skeleton key shape.","short_desc":"A quick overview of some key features of the Open WebCourses learning platform. Free access code and details at <a href=\"https:\/\/www.webcourses.io\/demo\" target=\"_blank\">webcourses.io<\/a>.","long_desc":null,"objective":"<p>Introduce and highlight features of the open source online learning platform.<\/p>","eval_type":"Online","price":1000,"created_at":"2020-05-29T14:30:20.000000Z","updated_at":"2021-07-26T07:32:43.000000Z"},"coupons":[{"id":"e2sa34asasq33ddt5f","code":"C-alpha","label":"Kay2","active":1,"discount":14800,"cid":1,"gid":null,"expiry":"2024-02-25 11:10:45","uses":13,"uses_max":101,"created_at":"2023-02-25T11:10:53.000000Z","updated_at":"2023-05-21T14:16:40.000000Z"}]}
   ]
 }

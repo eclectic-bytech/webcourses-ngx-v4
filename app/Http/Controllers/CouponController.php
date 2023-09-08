@@ -10,6 +10,8 @@ use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
 use App\Models\CodesUse;
 use App\Models\Syllabus;
+use Stripe\Charge;
+use Stripe\StripeClient;
 
 
 class CouponController extends Controller
@@ -54,7 +56,7 @@ class CouponController extends Controller
 
                 if ($code['status']['valid']) {
                     $cid = $code_info['course']['id'];
-                    $pid = $this->grantAccess($cid, $uid);
+                    $pid = grantAccess($cid, $uid);
                     if ($pid) {
                         $this->incrementCodeUses($code_hash);
                         $this->updateCodesUsesTable($code_hash, $pid);
@@ -69,7 +71,6 @@ class CouponController extends Controller
         return $code;
     }
 
-
     public function validateCode($code_info) {
         // $now = new date('Y-m-d H:i:s');
         $now = date(DATE_ATOM);
@@ -82,19 +83,6 @@ class CouponController extends Controller
         ) return $this->couponMessage('uses_max');
 
         return $this->couponMessage('valid');
-    }
-
-    public function grantAccess($cid, $uid) {
-        $user_progress = new UserProgress;
-
-        $user_progress->user_id = $uid;
-        $user_progress->course_id = $cid;
-        $user_progress->build_id = 0;
-        $user_progress->selected_aid = Syllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
-        $user_progress->demo = 0;
-
-        $user_progress->save();
-        return $user_progress->id;
     }
 
     public function updateCodesUsesTable($code_id, $pid) {
@@ -126,6 +114,23 @@ class CouponController extends Controller
         $message['invalid'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Invalid code");
         $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Access code already applied");
         return $message[$status];
+    }
+
+    public function checkout($amount) {
+        \Stripe\Stripe::setApiKey( env('STRIPE_SECRET') );
+
+        $checkout_session = \Stripe\Checkout\Session::create([
+            'line_items' => [[
+                'price' => env('ACCESS_CODE_PRICE_ID'),
+                'quantity' => $amount,
+            ]],
+            'automatic_tax' => [ 'enabled' => true ],
+            'mode' => 'payment',
+            'success_url' => env('APP_URL') . '/webcourses/admin/publisher/discount-codes',
+            'cancel_url' => env('APP_URL') . '/cancel.html'
+        ]);
+
+        return json_encode($checkout_session->url);
     }
 
 }

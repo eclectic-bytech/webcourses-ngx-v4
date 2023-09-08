@@ -2,7 +2,6 @@ import { Component } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
 
 // WNGX services
-import { ThemeService } from '../../core/services/theme/theme.service'
 import { WebcourseService } from './webcourse.service'
 
 @Component({
@@ -13,7 +12,6 @@ import { WebcourseService } from './webcourse.service'
 export class WebcourseComponent {
 
   constructor(
-    public themeService: ThemeService,
     public sanitizer: DomSanitizer,
     public webcourseService: WebcourseService
   ) {}
