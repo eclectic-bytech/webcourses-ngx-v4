@@ -5,7 +5,9 @@
   <div *ngFor="let bookmark of bookmarkIndex">
     <app-bookmark-card [bookmark]="bookmark"></app-bookmark-card>
   </div>
-  <p *ngIf="bookmarkIndex.length === 0" class="my-1 text-left ml-2 text-dark">no activities have been bookmarked</p>
+  <div class="row">
+   <p *ngIf="bookmarkIndex.length === 0" class="ml-3 col mt-3 primary-text">no activities have been bookmarked</p>
+  </div>
 </div>
 
 <ng-template #loading>
