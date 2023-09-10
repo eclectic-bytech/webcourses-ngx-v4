@@ -19,12 +19,4 @@ export class BookmarkButtonComponent implements OnInit {
     this.bookmarksService.isBookMarked = !!this.activity.bookmark
     this.bookmarksService.getBookmarks(this.activity.meta.course_id)
   }
-
-  addBookmark(aid: number, cid: number) {
-    this.bookmarksService.postBookmark(aid, cid)
-  }
-
-  removeBookmark(aid: number, cid: number) {
-    this.bookmarksService.deleteBookmark(aid, cid)
-  }
 }
