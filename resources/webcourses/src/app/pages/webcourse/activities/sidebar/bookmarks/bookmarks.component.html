@@ -1,5 +1,5 @@
 <div
-  *ngIf="this.bookmarksService.selectedBookmark as bookmarkIndex"
+  *ngIf="this.bookmarksService.selectedBookmark as bookmarkIndex; else loading"
   @fadeInOut
   >
   <div *ngFor="let bookmark of bookmarkIndex">
