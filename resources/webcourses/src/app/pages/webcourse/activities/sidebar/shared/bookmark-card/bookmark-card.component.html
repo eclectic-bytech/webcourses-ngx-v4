@@ -1,4 +1,4 @@
-<a role="button" class="row border justify-content-between bg-light" (click)="this.router.navigateByUrl('/webcourse/activities/'+bookmark.aid)">
-    <h6 class="my-1 col-9 text-left ml-2 text-dark w-75 text-truncate">{{bookmark.label}}</h6>
-    <p class="my-1 col text-right mr-2 text-secondary">#{{bookmark.aid}}</p>
+<a class="row border justify-content-between bg-light">
+    <h6 role="button" (click)="this.router.navigateByUrl('/webcourse/activities/'+bookmark.aid)" class="my-1 col-9 text-left ml-2 text-dark w-75 text-truncate">{{bookmark.label}}</h6>
+    <fa-icon [icon]="faTrash" role="button" class="border-left my-1 col-1 text-secondary" (click)="this.bookmarksService.deleteBookmark(bookmark.aid)"></fa-icon>
 </a>

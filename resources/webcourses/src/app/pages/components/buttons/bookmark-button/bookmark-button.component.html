@@ -1,4 +1,4 @@
 <div class="my-3">
-  <i *ngIf="!this.bookmarksService.isBookMarked" (click)="this.bookmarksService.postBookmark(this.activity.meta.activity_id, this.activity.meta.course_id)" class="fa-regular fa-bookmark col text-secondary" role="button"></i>
-  <i *ngIf="this.bookmarksService.isBookMarked" (click)="this.bookmarksService.deleteBookmark(this.activity.meta.activity_id, this.activity.meta.course_id)" class="fa-solid fa-bookmark col text-dark" role="button"></i>
+  <i *ngIf="!this.bookmarksService.isBookMarked" (click)="this.bookmarksService.postBookmark(this.activity.meta.activity_id)" class="fa-regular fa-bookmark col text-secondary" role="button"></i>
+  <i *ngIf="this.bookmarksService.isBookMarked" (click)="this.bookmarksService.deleteBookmark(this.activity.meta.activity_id)" class="fa-solid fa-bookmark col text-dark" role="button"></i>
 </div>

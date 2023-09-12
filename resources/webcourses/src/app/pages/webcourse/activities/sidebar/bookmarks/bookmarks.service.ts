@@ -11,6 +11,7 @@ export class BookmarksService {
   public selectedBookmark: Bookmark[]
   private waitingForAPI = false
   isBookMarked: boolean
+  current_cid: number
 
   constructor(
     private httpClient: HttpClient,
@@ -23,13 +24,13 @@ export class BookmarksService {
     ).subscribe((response) => { this.selectedBookmark = response })
   }
 
-  postBookmark(aid: number, cid: number) {
+  postBookmark(aid: number) {
     if (!this.waitingForAPI) {
       this.waitingForAPI = true
       this.httpClient.post<number>(
         `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`, aid
       ).subscribe(
-        (response) => { console.log(response); this.getBookmarks(cid) },
+        (response) => { console.log(response); this.getBookmarks(this.current_cid) },
         (err) => { console.log(err) },
         () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
       )
@@ -37,13 +38,13 @@ export class BookmarksService {
     }
   }
 
-  deleteBookmark(aid: number, cid: number) {
+  deleteBookmark(aid: number) {
     if (!this.waitingForAPI) {
       this.waitingForAPI = true
       this.httpClient.delete<number>(
         `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`
       ).subscribe(
-        (response) => { this.getBookmarks(cid) },
+        (response) => { this.getBookmarks(this.current_cid) },
         (err) => { console.log(err) },
         () => { this.waitingForAPI = false } // This executes every time, regardless whether API call succeeded or failed
       )

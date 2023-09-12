@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookmarkCardComponent } from './bookmark-card.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 
 
@@ -9,7 +10,8 @@ import { BookmarkCardComponent } from './bookmark-card.component';
     BookmarkCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FontAwesomeModule
   ],
   exports: [
     BookmarkCardComponent
