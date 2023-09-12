@@ -17,7 +17,7 @@ export class BookmarkButtonComponent implements OnInit {
 
   ngOnInit() {
     this.bookmarksService.isBookMarked = !!this.activity.bookmark
-    this.bookmarksService.current_cid = this.activity.meta.course_id
+    this.bookmarksService.current_activity = this.activity.meta
     this.bookmarksService.getBookmarks(this.activity.meta.course_id)
   }
 }
