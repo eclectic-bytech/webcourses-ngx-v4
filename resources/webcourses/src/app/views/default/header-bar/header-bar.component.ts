@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { UserService } from './../../../core/services/user/user.service'
 import { HeaderBarService } from './header-bar.service'
@@ -15,7 +15,7 @@ import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
   animations: [FadeInOut2],
   styleUrls: ['./header-bar.component.scss']
 })
-export class HeaderBarComponent implements OnInit {
+export class HeaderBarComponent {
 
   @Input() publisher: Publisher
 
@@ -39,7 +39,6 @@ export class HeaderBarComponent implements OnInit {
     public themeService: ThemeService
   ) { }
 
-  ngOnInit() {}
 
   collapseMenus() {
     this.menuCollapsed = this.menuCollapsed2 = true
