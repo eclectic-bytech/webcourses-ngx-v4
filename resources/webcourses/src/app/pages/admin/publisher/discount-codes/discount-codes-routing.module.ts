@@ -10,7 +10,6 @@ const routes: Routes = [
     data: {
       title: 'Discount Codes'
     },
-    pathMatch: 'full'
   },
   {
     path: 'add',

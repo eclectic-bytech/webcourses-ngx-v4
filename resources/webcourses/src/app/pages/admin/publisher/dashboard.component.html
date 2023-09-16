@@ -1,0 +1,33 @@
+<div id="fullMainContent">
+
+  <div class="container">
+    <ul ngbNav #nav="ngbNav" class="nav-pills">
+      <li ngbNavItem>
+        <button ngbNavLink>Overview</button>
+        <ng-template ngbNavContent>
+          Overview
+        </ng-template>
+      </li>
+      <li ngbNavItem>
+        <button ngbNavLink>Courses</button>
+        <ng-template ngbNavContent>
+          Courses listing
+        </ng-template>
+      </li>
+      <li ngbNavItem>
+        <button ngbNavLink>Access Codes</button>
+        <ng-template ngbNavContent>Access code listing</ng-template>
+      </li>
+      <li ngbNavItem>
+        <button ngbNavLink>Profile</button>
+        <ng-template ngbNavContent>
+          <div *ngIf="publisherInfo$ | async as publisher" @fadeInOut>
+            <app-publisher-profile-admin [publisher]="publisher"></app-publisher-profile-admin>
+          </div>
+        </ng-template>
+      </li>
+    </ul>
+    <div [ngbNavOutlet]="nav"></div>
+  </div>
+</div>
+
