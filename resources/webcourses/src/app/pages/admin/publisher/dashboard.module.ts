@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import { NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap'
 
+import { DashboardRoutingModule } from './dashboard-routing.module'
+import { DiscountCodesModule } from './discount-codes/discount-codes.module'
 import { PublisherModule } from '../../publisher/publisher.module'
 import { PublisherProfileModule } from './profile/profile.module'
-import { DashboardRoutingModule } from './dashboard-routing.module'
 import { DashboardComponent } from './dashboard.component'
+import { PublisherCoursesModule } from './courses/courses.module'
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { DashboardComponent } from './dashboard.component'
     PublisherModule,
     PublisherProfileModule,
     NgbModule,
-    NgbNavModule
+    NgbNavModule,
+    DiscountCodesModule,
+    PublisherCoursesModule
   ]
 })
 

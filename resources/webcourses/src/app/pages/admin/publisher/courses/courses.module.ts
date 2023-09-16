@@ -10,6 +10,9 @@ import { PublisherCoursesRoutingModule } from './courses-routing.module'
   imports: [
     CommonModule,
     PublisherCoursesRoutingModule
+  ],
+  exports: [
+    PublisherCoursesComponent
   ]
 })
 

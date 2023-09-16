@@ -25,6 +25,9 @@ import { DiscountCodesComponent } from './discount-codes.component'
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule
+  ],
+  exports: [
+    DiscountCodesComponent
   ]
 })
 

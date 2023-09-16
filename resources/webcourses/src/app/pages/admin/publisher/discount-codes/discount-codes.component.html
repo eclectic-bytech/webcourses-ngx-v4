@@ -1,8 +1,3 @@
-<div class="container mb-5 text-center" style="margin-top: 200px;" @fadeInOut>
-  <div class="h2">All Access Codes</div>
-  <p>A quick overview of all codes generated for your webcourses.</p>
-</div>
-
 <div
   *ngIf="discountCodes$ | async as discountCodes; else loading"
   class="container"

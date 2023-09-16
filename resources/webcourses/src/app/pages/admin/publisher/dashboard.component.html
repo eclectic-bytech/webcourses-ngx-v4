@@ -11,12 +11,18 @@
       <li ngbNavItem>
         <button ngbNavLink>Courses</button>
         <ng-template ngbNavContent>
-          Courses listing
+          <app-courses></app-courses>
         </ng-template>
       </li>
       <li ngbNavItem>
+        <button ngbNavLink>Reports</button>
+        <ng-template ngbNavContent>Reports</ng-template>
+      </li>
+      <li ngbNavItem>
         <button ngbNavLink>Access Codes</button>
-        <ng-template ngbNavContent>Access code listing</ng-template>
+        <ng-template ngbNavContent>
+          <app-discount-codes></app-discount-codes>
+        </ng-template>
       </li>
       <li ngbNavItem>
         <button ngbNavLink>Profile</button>
