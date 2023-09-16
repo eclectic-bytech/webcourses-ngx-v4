@@ -32,9 +32,6 @@ echo
 echo "Seeding default user roles entries...";
 php ~/code/artisan db:seed --class=UserrolesSeeder;
 echo
-echo "Seeding default publisher theme entries...";
-php ~/code/artisan db:seed --class=ThemesSeeder;
-echo
 echo -e "\e[1;32m*******************************************************\e[0m";
 echo -e "\e[1;32m*\e[0m    \e[1mMake sure you have the following DNS entry:\e[0m      \e[1;32m*";
 echo -e "\e[1;32m*\e[0m    \e[34mhomestead.test 192.168.52.52                     \e[1;32m*";
