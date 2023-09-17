@@ -1,4 +1,10 @@
-<a class="row border justify-content-between bg-light">
-    <h6 role="button" (click)="this.router.navigateByUrl('/webcourse/activities/'+bookmark.aid)" class="my-1 col-9 text-left ml-2 text-dark w-75 text-truncate">{{bookmark.label}}</h6>
-    <fa-icon [icon]="faTrash" role="button" class="border-left my-1 col-1 text-secondary" (click)="this.bookmarksService.deleteBookmark(bookmark.aid)"></fa-icon>
+<a class="justify-content-between">
+  <div class="row border-top">
+    <h6 role="button" (click)="this.router.navigateByUrl('/webcourse/activities/'+bookmark.aid)" class="my-1 col-11 text-left ml-2 text-dark w-75 text-truncate">{{bookmark.label}}</h6>
+    <fa-icon [icon]="faTrash" role="button" class="my-1 text-right text-secondary" (click)="this.bookmarksService.deleteBookmark(bookmark.aid)"></fa-icon>
+  </div>
+  <div class="row text-uppercase text-secondary border-bottom">
+    <h6 role="button" (click)="this.router.navigateByUrl('/webcourse/activities/'+bookmark.aid)" class="my-1 col-8 text-left ml-2 w-75">{{bookmark.created_at | date:'dd MMMM,yy at HH:mm'}}</h6>
+    <small class="my-1 col text-right">Activity #{{bookmark.aid}}</small>
+  </div>
 </a>
