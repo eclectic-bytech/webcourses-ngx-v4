@@ -125,6 +125,7 @@ Route::group(['prefix' => 'v4'], function() {
 
             // Lists courses and their access codes
             Route::get('/coupons', [CouponController::class, 'index']);
+            Route::get('/courses', [CourseController::class, 'publisherCourses']);
 
             // Paths grouped as /v4/admin/publisher/access-codes
             Route::group(['prefix' => 'access-codes'], function() {

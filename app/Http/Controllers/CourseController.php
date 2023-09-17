@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 use DB;
 
@@ -33,6 +34,16 @@ class CourseController extends Controller
             ->when($userIsLoggedIn, function($query) {
                 return $query->with('UserProgress');
             })
+            ->get();
+    }
+
+    public function publisherCourses()
+    {
+        $uid = auth()->user()->id;
+        $publisher = Publisher::where('owner_uid', $uid)->first();
+
+        return Course
+            ::where('publisher_id', $publisher['id'])
             ->get();
     }
 

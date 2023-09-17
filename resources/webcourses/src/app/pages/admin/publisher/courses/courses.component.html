@@ -1,6 +1,9 @@
 <div class="container text-center" style="margin-top: 200px;" @fadeInOut>
-  <div style='font-size:100px;'>🐣</div>
   <div class="h1">
-    This area hasn't yet fully hatched.
+    <div *ngIf="publisherCourses$ | async as publisherCourses">
+      <div *ngFor="let publisherCourse of publisherCourses; index as i">
+        {{i}}. {{ publisherCourse.title }} #{{ publisherCourse.id }}
+      </div>
+    </div>
   </div>
 </div>
