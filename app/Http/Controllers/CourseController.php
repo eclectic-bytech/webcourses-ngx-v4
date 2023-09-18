@@ -44,6 +44,9 @@ class CourseController extends Controller
 
         return Course
             ::where('publisher_id', $publisher['id'])
+            ->withCount('courseSyllabus as total_activities')
+            ->withCount('participants as total_students')
+            ->withCount('accessCodes as access_codes')
             ->get();
     }
 

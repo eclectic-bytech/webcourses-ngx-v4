@@ -37,6 +37,10 @@ class Course extends Model
         return $this->hasMany(UserProgress::class);
     }
 
+    public function accessCodes() {
+        return $this->hasMany(Coupon::class, 'cid', 'id');
+    }
+
     public function chapterIndex() {
         return $this->hasManyThrough(
             Chapter::class,

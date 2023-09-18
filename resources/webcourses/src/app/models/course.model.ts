@@ -21,4 +21,5 @@ export class Course {
   public total_students: number
   public publisher: Publisher
   public user_progress?: UserCourseProgress
+  public access_codes?: number
 }
