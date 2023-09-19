@@ -3,8 +3,16 @@ import { RouterModule, Routes } from '@angular/router'
 
 const routes: Routes = [
   {
-    path: 'publisher/dashboard',
-    loadChildren: () => import('./publisher/dashboard.module').then(m => m.DashboardModule),
+    path: 'publisher/courses',
+    loadChildren: () => import('./publisher/courses/courses.module').then(m => m.PublisherCoursesModule)
+  },
+  {
+    path: 'publisher/access-codes',
+    loadChildren: () => import('./publisher/discount-codes/discount-codes.module').then(m => m.DiscountCodesModule)
+  },
+  {
+    path: 'publisher/profile',
+    loadChildren: () => import('./publisher/profile/profile.module').then(m => m.PublisherProfileModule)
   },
   {
     path: 'system/dashboard',
