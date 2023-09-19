@@ -3,7 +3,7 @@ import { Observable } from 'rxjs'
 
 import { DiscountCodesService } from './discount-codes.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-discount-codes',
@@ -17,11 +17,19 @@ export class DiscountCodesComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private discountCodesService: DiscountCodesService
   ) { }
 
   ngOnInit(): void {
-    this.discountCodes$ = this.discountCodesService.getDiscountCodes()
+    // this.activatedRoute.params.subscribe(
+    //   (params) => {
+    //     console.log(params)
+    //   }
+    // )
+    this.discountCodes$ = this.discountCodesService.getDiscountCodes(
+      this.activatedRoute.snapshot.paramMap.get('cid')
+    )
   }
 
   addAccessCode(cid) {

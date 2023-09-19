@@ -10,12 +10,12 @@ export class DiscountCodesService {
 
   constructor(
     private httpClient: HttpClient,
-    private configService: ConfigService
+    private configService: ConfigService,
   ) { }
 
-  getDiscountCodes() {
-    return this.httpClient.get<any[]>(`
-      ${this.configService.params.api.route}/admin/publisher/coupons
-    `).pipe(codes => codes)
+  getDiscountCodes(cid?: string) {
+    let path = `${this.configService.params.api.route}/admin/publisher/coupons`
+    path = (cid) ? `${path}/${cid}` : path
+    return this.httpClient.get<Coupon[]>(path).pipe(codes => codes)
   }
 }
