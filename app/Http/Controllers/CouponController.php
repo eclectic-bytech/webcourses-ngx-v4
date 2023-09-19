@@ -17,17 +17,23 @@ use Stripe\StripeClient;
 class CouponController extends Controller
 {
     // displays in publisher's console all codes including usage level
-    public function index() {
+    public function index($cid = false) {
         $uid = auth()->user()->id;
         $publisher = Publisher::where('owner_uid', $uid)->first();
         $coupons = [];
 
         if (isset($publisher)) {
-            $courses = Course::where('publisher_id', $publisher->id)->get();
-
-            foreach ($courses as $key => $course) {
-                $coupons[$key]['course'] = $course;
-                $coupons[$key]['coupons'] = Coupon::where('cid', $course->id)->orderBy('created_at', 'desc')->get();
+            if ($cid) {
+                $coupons[0]['course'] =
+                    Course::where('publisher_id', $publisher->id)->where('id', $cid)->first();
+                $coupons[0]['coupons'] =
+                    Coupon::where('cid', $cid)->orderBy('created_at', 'desc')->get();
+            } else {
+                $courses = Course::where('publisher_id', $publisher->id)->get();
+                foreach ($courses as $key => $course) {
+                    $coupons[$key]['course'] = $course;
+                    $coupons[$key]['coupons'] = Coupon::where('cid', $course->id)->orderBy('created_at', 'desc')->get();
+                }
             }
         }
 
