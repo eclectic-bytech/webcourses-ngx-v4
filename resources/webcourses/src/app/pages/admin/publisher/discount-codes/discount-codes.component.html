@@ -39,8 +39,8 @@
             <span class="badge badge-pill badge-success font-weight-light text-capitalize mt-1 float-right">Available</span>
           </th>
           <th class="text-uppercase">label</th>
-          <th class="text-right text-uppercase d-none d-md-table-cell">used</th>
-          <th class="text-right text-uppercase d-none d-md-table-cell">max</th>
+          <th class="text-right text-uppercase d-none d-md-table-cell">students</th>
+          <th class="text-right text-uppercase d-none d-md-table-cell">seats</th>
           <th class="text-center text-uppercase">last used</th>
           <th class="text-center text-uppercase d-none d-xl-table-cell">created</th>
         </tr>
@@ -56,7 +56,7 @@
             [title]="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
             class="handy"
           >
-            <span>{{ discountCode.code }}</span>
+            <span class="text-success">{{ discountCode.code }}</span>
             <i class="fa-solid fa-copy mx-2 text-info"></i>
             <span
               class="badge badge-pill font-weight-light mt-1 float-right"
@@ -69,11 +69,11 @@
           <td
             [routerLink]="[discountCode.id, 'users']"
             title="Report"
-            class="text-right d-none d-md-table-cell handy"
+            class="text-right d-none d-md-table-cell handy text-success"
           >
             {{ discountCode.uses }}
           </td>
-          <td class="text-right d-none d-md-table-cell">{{ discountCode.uses_max }}</td>
+          <td class="text-right d-none d-md-table-cell" [innerHTML]="discountCode.uses_max === 0 ? '&#8734;' : discountCode.uses_max"></td>
           <td class="text-center">{{ discountCode.updated_at | date:'mediumDate' }}</td>
           <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'mediumDate' }}</td>
         </tr>
