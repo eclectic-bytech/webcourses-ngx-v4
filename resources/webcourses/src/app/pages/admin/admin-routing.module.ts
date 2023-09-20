@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./publisher/discount-codes/discount-codes.module').then(m => m.DiscountCodesModule)
   },
   {
+    path: 'publisher/access-codes',
+    loadChildren: () => import('./publisher/discount-codes/discount-codes.module').then(m => m.DiscountCodesModule)
+  },
+  {
     path: 'publisher/profile',
     loadChildren: () => import('./publisher/profile/profile.module').then(m => m.PublisherProfileModule)
   },

@@ -50,9 +50,14 @@
         <tr
           *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
         >
-          <td>
+          <td
+            ngxClipboard
+            [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
+            [title]="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
+            class="handy"
+          >
             <span>{{ discountCode.code }}</span>
-            <i class="fa-solid fa-copy mx-2 handy text-info" ngxClipboard [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code" [title]="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"></i>
+            <i class="fa-solid fa-copy mx-2 text-info"></i>
             <span
               class="badge badge-pill font-weight-light mt-1 float-right"
               [ngClass]="pillClass(discountCode)"

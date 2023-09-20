@@ -1,6 +1,27 @@
 <div class="container mt-5 pt-5">
   <div *ngIf="discountCodeUsers$ | async as discountCodeUsers">
-    <table class="table table-bordered table-hover table-striped">
+
+    <div id="fullMainContent" class="container">
+      <div class="h2">{{ discountCodeUsers['course'].title }}</div>
+      <div>
+        <span class="font-weight-bold fw-bold">Code:</span>
+        {{ discountCodeUsers['code'].label }} ({{ discountCodeUsers['code'].code }})
+      </div>
+      <div>
+        <span class="font-weight-bold fw-bold">Seats:</span>
+        {{ discountCodeUsers['code'].uses }} /
+        <span *ngIf="discountCodeUsers['code'].uses_max == 0; else noOfUses">Unlimited</span>
+        <ng-template #noOfUses>
+          {{ discountCodeUsers['code'].uses_max }}
+        </ng-template>
+      </div>
+      <div>
+        <span class="font-weight-bold fw-bold">Expiry:</span>
+        {{ discountCodeUsers['code'].expiry | date:'mediumDate' }}
+      </div>
+    </div>
+
+    <table class="table table-bordered table-hover table-striped mt-5">
       <thead>
         <tr>
           <th class="text-uppercase text-center">id</th>
