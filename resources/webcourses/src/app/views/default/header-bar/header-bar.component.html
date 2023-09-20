@@ -62,6 +62,7 @@
       >
         <!-- USER MENU: SYS ADMIN -->
         <div [ngClass]="this.userService.userHasRole(1) ? '' : 'd-none'">
+          <div class="dropdown-header">System</div>
           <a
             class="dropdown-item py-2"
             [routerLink]="['/admin', 'system', 'dashboard']"
@@ -69,9 +70,9 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <fa-icon [icon]="faScrewdriverWrench" class="text-warning"></fa-icon>
+              <i class="fa-solid fa-screwdriver-wrench text-warning"></i>
             </div>
-            System Dashboard
+            Dashboard
           </a>
 
           <!-- MENU ITEMS DIVIDER -->
@@ -81,17 +82,7 @@
         <!-- USER MENU: PUBLISHER-->
         <div [ngClass]="this.userService.userHasRole(2) ? '' : 'd-none'">
 
-          <a
-            class="dropdown-item py-2"
-            [routerLink]="['/admin', 'publisher', 'profile']"
-            (click)="collapseMenus()"
-            ngbDropdownItem
-          >
-            <div class="menu-icon text-center d-inline-block pr-2">
-              <fa-icon [icon]="faGem" class="text-warning"></fa-icon>
-            </div>
-            Profile
-          </a>
+          <div class="dropdown-header">Publisher</div>
 
           <a
             class="dropdown-item py-2"
@@ -100,7 +91,7 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <!-- <fa-icon [icon]="faPenNib" class="text-warning"></fa-icon> -->
+              <i class="fa-solid fa-pen-nib text-warning"></i>
             </div>
             Courses
           </a>
@@ -112,9 +103,21 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <!-- <fa-icon [icon]="faBarcode" class="text-warning"></fa-icon> -->
+              <i class='fa-sharp fa-solid fa-fingerprint text-warning'></i>
             </div>
             Access Codes
+          </a>
+
+          <a
+            class="dropdown-item py-2"
+            [routerLink]="['/admin', 'publisher', 'profile']"
+            (click)="collapseMenus()"
+            ngbDropdownItem
+          >
+            <div class="menu-icon text-center d-inline-block pr-2">
+              <i class="fa-solid fa-user text-warning"></i>
+            </div>
+            Profile
           </a>
 
           <!-- MENU ITEMS DIVIDER -->
@@ -122,6 +125,9 @@
         </div>
 
         <!-- USER MENU: MY COURSES & PROFILE -->
+
+        <div class="dropdown-header">Student</div>
+
         <a
           class="dropdown-item py-2"
           [routerLink]="['/user', 'webcourses']"
@@ -129,14 +135,14 @@
           ngbDropdownItem
         >
           <div class="menu-icon text-center d-inline-block pr-2">
-            <fa-icon [icon]="faGraduationCap" class="text-warning"></fa-icon>
+            <i class="fa-solid fa-graduation-cap text-warning"></i>
           </div>
-          My Courses
+          Courses
         </a>
 
         <a class="dropdown-item py-2" href="/user/profile" ngbDropdownItem>
           <div class="menu-icon text-center d-inline-block pr-2">
-            <fa-icon [icon]="faWrench" class="text-warning"></fa-icon>
+            <i class="fa-solid fa-user text-warning"></i>
           </div>
           Profile
         </a>
@@ -151,7 +157,7 @@
           ngbDropdownItem
         >
           <div class="menu-icon text-center d-inline-block pr-2">
-            <fa-icon [icon]="faSignOutAlt" class="text-warning"></fa-icon>
+            <i class="fa-solid fa-right-from-bracket text-warning"></i>
           </div>
           Sign out
         </button>

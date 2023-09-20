@@ -4,7 +4,6 @@ import { UserService } from './../../../core/services/user/user.service'
 import { HeaderBarService } from './header-bar.service'
 import { GravatarMd5Service } from '../../../core/services/gravatar-md5/gravatar-md5.service'
 import { DomSanitizer } from '@angular/platform-browser'
-import { faWrench, faGem, faGraduationCap, faSignOutAlt, faPenNib, faBarcode, faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
 import { ThemeService } from 'src/app/views/theme/theme.service'
 import { Publisher } from 'src/app/models/publisher.model'
 import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
@@ -18,14 +17,6 @@ import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
 export class HeaderBarComponent {
 
   @Input() publisher: Publisher
-
-  faWrench = faWrench
-  faGem = faGem
-  faGraduationCap = faGraduationCap
-  faSignOutAlt = faSignOutAlt
-  faPenNib = faPenNib
-  faBarcode = faBarcode
-  faScrewdriverWrench = faScrewdriverWrench
 
   public menuCollapsed = true
   public menuCollapsed2 = true
