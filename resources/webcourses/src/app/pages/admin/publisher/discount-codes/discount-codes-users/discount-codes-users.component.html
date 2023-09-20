@@ -1,23 +1,30 @@
-<div class="container mt-5 pt-5">
+<div id="fullMainContent" class="container mt-5 pt-5">
   <div *ngIf="discountCodeUsers$ | async as discountCodeUsers">
 
-    <div id="fullMainContent" class="container">
-      <div class="h2">{{ discountCodeUsers['course'].title }}</div>
-      <div>
-        <span class="font-weight-bold fw-bold">Code:</span>
-        {{ discountCodeUsers['code'].label }} ({{ discountCodeUsers['code'].code }})
-      </div>
-      <div>
-        <span class="font-weight-bold fw-bold">Seats:</span>
-        {{ discountCodeUsers['code'].uses }} /
-        <span *ngIf="discountCodeUsers['code'].uses_max == 0; else noOfUses">Unlimited</span>
-        <ng-template #noOfUses>
-          {{ discountCodeUsers['code'].uses_max }}
-        </ng-template>
-      </div>
-      <div>
-        <span class="font-weight-bold fw-bold">Expiry:</span>
-        {{ discountCodeUsers['code'].expiry | date:'mediumDate' }}
+    <div class="container">
+      <div class="row">
+        <div class="col-2 display-1">
+          <i class='fa-sharp fa-solid fa-fingerprint text-secondary'></i>
+        </div>
+        <div class="col-10">
+          <div class="h2">{{ discountCodeUsers['course'].title }}</div>
+          <div>
+            <span class="font-weight-bold fw-bold">Code:</span>
+            {{ discountCodeUsers['code'].label }} ({{ discountCodeUsers['code'].code }})
+          </div>
+          <div>
+            <span class="font-weight-bold fw-bold">Seats:</span>
+            {{ discountCodeUsers['code'].uses }} /
+            <span *ngIf="discountCodeUsers['code'].uses_max == 0; else noOfUses">&#8734;</span>
+            <ng-template #noOfUses>
+              {{ discountCodeUsers['code'].uses_max }}
+            </ng-template>
+          </div>
+          <div>
+            <span class="font-weight-bold fw-bold">Expiry:</span>
+            {{ discountCodeUsers['code'].expiry | date:'mediumDate' }}
+          </div>
+        </div>
       </div>
     </div>
 
