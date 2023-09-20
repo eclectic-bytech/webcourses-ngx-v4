@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./publisher/courses/courses.module').then(m => m.PublisherCoursesModule)
   },
   {
-    path: 'publisher/access-codes',
+    path: 'publisher/access-codes/cid',
     loadChildren: () => import('./publisher/discount-codes/discount-codes.module').then(m => m.DiscountCodesModule)
   },
   {
