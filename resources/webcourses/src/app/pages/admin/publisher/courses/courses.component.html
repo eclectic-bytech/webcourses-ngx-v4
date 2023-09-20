@@ -23,7 +23,7 @@
           <i class='fa-sharp fa-solid fa-user-group text-secondary mr-1 me-1'></i>
           {{ publisherCourse.total_students }}
         </div>
-        <div class="col-lg-1 my-auto" [routerLink]="['/admin', 'publisher', 'access-codes', 'cid', publisherCourse.id]">
+        <div class="col-lg-1 my-auto" [routerLink]="['/admin', 'publisher', 'course', publisherCourse.id, 'access-codes']">
           <i class='fa-sharp fa-solid fa-fingerprint text-secondary mr-1 me-1'></i>
           {{ publisherCourse.access_codes}}
         </div>

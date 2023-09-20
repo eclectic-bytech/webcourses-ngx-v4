@@ -13,7 +13,8 @@
             <img
               class="card-img-top"
               style="object-fit: cover; height: 11rem;"
-              src="publisher-files/{{courseDiscountCodes.course.publisher_id}}/courses/{{courseDiscountCodes.course.id}}/images/{{courseDiscountCodes.course.cover}}" alt="{{courseDiscountCodes.course.cover_alt}}"
+              src="publisher-files/{{courseDiscountCodes.course.publisher_id}}/courses/{{courseDiscountCodes.course.id}}/images/{{courseDiscountCodes.course.cover}}"
+              alt="{{courseDiscountCodes.course.cover_alt}}"
             >
           </div>
         </div>
@@ -50,7 +51,7 @@
           *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
         >
           <td>
-            <span [routerLink]="[discountCode.id, 'users']" class="handy" title="Report">{{ discountCode.code }}</span>
+            <span>{{ discountCode.code }}</span>
             <i class="fa-solid fa-copy mx-2 handy text-info" ngxClipboard [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code" [title]="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"></i>
             <span
               class="badge badge-pill font-weight-light mt-1 float-right"
@@ -60,7 +61,13 @@
             </span>
           </td>
           <td>{{ discountCode.label }}</td>
-          <td class="text-right d-none d-md-table-cell">{{ discountCode.uses }}</td>
+          <td
+            [routerLink]="[discountCode.id, 'users']"
+            title="Report"
+            class="text-right d-none d-md-table-cell handy"
+          >
+            {{ discountCode.uses }}
+          </td>
           <td class="text-right d-none d-md-table-cell">{{ discountCode.uses_max }}</td>
           <td class="text-center">{{ discountCode.updated_at | date:'mediumDate' }}</td>
           <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'mediumDate' }}</td>
