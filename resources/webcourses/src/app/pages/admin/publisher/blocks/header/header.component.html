@@ -1,14 +1,12 @@
-<div
-  *ngIf="publisher$ | async as publisher"
-  class="row d-flex justify-content-center my-auto"
-  @fadeInOut
->
-  <div class="col-auto py-3 my-auto">
-    <!-- This should be a block, with HTML separated out like e.g. the Contact page's -->
-    <img src="publisher-files/{{publisher.id}}/theme/logo.png" alt="" style="max-height: 6rem;" class="mr-4 img-fluid">
-  </div>
-  <div class="col-auto py-3 my-auto">
-    <div class="lead">{{ publisher.name }} {{ title }}</div>
-    <div class="text-secondary">Thank you for publishing at Cultivate Learning</div>
+<div class="container" *ngIf="publisher$ | async as publisher" @fadeInOut>
+  <div class="row d-flex justify-content-center my-auto">
+    <div class="col-auto py-3 my-auto">
+      <!-- This should be a block, with HTML separated out like e.g. the Contact page's -->
+      <img src="publisher-files/{{publisher.id}}/theme/logo.png" alt="" style="max-height: 6rem;" class="mr-4 img-fluid">
+    </div>
+    <div class="col-auto py-3 my-auto">
+      <div class="lead">{{ publisher.name }} {{ title }}</div>
+      <div class="text-secondary">Thank you for publishing at Cultivate Learning</div>
+    </div>
   </div>
 </div>
