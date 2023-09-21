@@ -1,7 +1,10 @@
-import { Component, Input } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
 
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
-import { Publisher } from '../../../../models/publisher.model'
+import { PublisherService } from 'src/app/pages/catalogue/publisher/publisher.service'
+import { Publisher } from './../../../../models/publisher.model'
+import { UserService } from 'src/app/core/services/user/user.service'
 
 @Component({
   selector: 'app-publisher-profile-admin',
@@ -9,8 +12,17 @@ import { Publisher } from '../../../../models/publisher.model'
   styleUrls: ['./profile.component.sass'],
   animations: [FadeInOut]
 })
-export class PublisherProfileComponent {
+export class PublisherProfileComponent implements OnInit {
 
-  @Input() publisher: Publisher
+  public publisherInfo$: Observable<Publisher>
+
+  constructor(
+    public publisherService: PublisherService,
+    private userService: UserService
+  ) { }
+
+  ngOnInit(): void {
+    this.publisherInfo$ = this.publisherService.getPublisher(this.userService.user.id);
+  }
 
 }

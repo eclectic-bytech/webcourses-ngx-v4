@@ -1,4 +1,4 @@
-<div id="fullMainContent" class="container mt-5 pt-5" @fadeInOut>
+<div id="fullMainContent" class="container mt-5 pt-5" *ngIf="publisherInfo$ | async as publisher" @fadeInOut>
 
   <div class="row">
     <div class="col h2">Welcome, {{ publisher.contact_fname }}!</div>
@@ -38,8 +38,8 @@
     <div class="col-auto">{{ publisher.province }}</div>
   </div>
 
-  <div class="row mt-3">
-    <div class="col">Publisher since {{ publisher.created_at }}</div>
+  <div class="row mt-4">
+    <div class="col">Publisher since {{ publisher.created_at | date: "longDate"}}</div>
   </div>
 
 </div>
