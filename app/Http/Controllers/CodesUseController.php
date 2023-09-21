@@ -12,7 +12,10 @@ class CodesUseController extends Controller
 {
     public function access_code_users($code_id) {
         $data['code'] = Coupon::find($code_id);
-        $data['course'] = Course::where('id', $data['code']->cid)->with('publisher')->withCount('courseSyllabus as total_activities')->first();
+        $data['course'] = Course::where('id', $data['code']->cid)
+            ->with('publisher')
+            ->withCount('courseSyllabus as total_activities')
+            ->first();
 
         if ($data['code']) {
             if (auth()->user()->id === $data['course']['publisher']['owner_uid'])
