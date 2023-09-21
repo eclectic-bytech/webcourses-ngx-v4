@@ -32,7 +32,7 @@
       <thead>
         <tr>
           <th class="text-uppercase text-center">id</th>
-          <th class="text-uppercase">Name</th>
+          <th class="text-uppercase">name</th>
           <th class="text text-uppercase">email</th>
           <th class="text text-uppercase">started</th>
           <th class="text text-uppercase">completed</th>
@@ -50,7 +50,7 @@
           <td>{{ discountCodeUser.user.email }}</td>
           <td>{{ discountCodeUser.created_at | date:'mediumDate' }}</td>
           <td>
-            <span [innerHtml]="(discountCodeUser.completed_activities_count / total_activities * 100) | number:'1.0-0'"></span>%
+            <span [innerHtml]="(discountCodeUser.completed_activities_count / discountCodeUsers['course'].total_activities * 100) | number:'1.0-0'"></span>%
           </td>
         </tr>
       </tbody>
