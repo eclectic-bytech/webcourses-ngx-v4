@@ -1,12 +1,8 @@
-<div id="fullMainContent" @fadeInOut>
+<div id="fullMainContent" class="container" @fadeInOut>
 
   <app-header [title]="'course access codes'"></app-header>
 
-  <div
-    *ngIf="discountCodes$ | async as discountCodes; else loading"
-    class="container"
-    @fadeInOut
-  >
+  <div *ngIf="discountCodes$ | async as discountCodes; else loading" @fadeInOut>
 
     <div *ngFor="let courseDiscountCodes of discountCodes">
 
@@ -55,25 +51,34 @@
             *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
           >
             <td
-              ngxClipboard
               [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
               [title]="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
-              class="handy"
+              (click)="regLinkCopied('Registration link copied.')"
+              class="handy text-primary"
+              ngxClipboard
             >
-              <span class="text-success">{{ discountCode.code }}</span>
-              <i class="fa-solid fa-copy mx-2 text-info"></i>
-              <span
-                class="badge badge-pill font-weight-light mt-1 float-right"
-                [ngClass]="pillClass(discountCode)"
-                [innerHtml]="(discountCode.uses_max === 0) ? 'Unlimited' : discountCode.uses_max - discountCode.uses"
-              >
-              </span>
+              <!-- (cbOnSuccess)="tooltip.show" -->
+              <!--
+                cbOnSuccess is broken in v16 of ngx-clipboard:
+                https://github.com/maxisam/ngx-clipboard/issues/310
+              -->
+
+              <div>
+                <span>{{ discountCode.code }}</span>
+                <i class="fa-solid fa-copy mx-2 text-secondary"></i>
+                <span
+                  class="badge badge-pill font-weight-light mt-1 float-right"
+                  [ngClass]="pillClass(discountCode)"
+                  [innerHtml]="(discountCode.uses_max === 0) ? 'Unlimited' : discountCode.uses_max - discountCode.uses"
+                >
+                </span>
+              </div>
             </td>
             <td>{{ discountCode.label }}</td>
             <td
               [routerLink]="[discountCode.id, 'users']"
               title="Report"
-              class="text-right d-none d-md-table-cell handy text-success"
+              class="text-right d-none d-md-table-cell handy text-primary"
             >
               {{ discountCode.uses }}
             </td>
@@ -87,6 +92,10 @@
     </div>
   </div>
 </div>
+
+<!-- <ngb-toast [autohide]="true">
+  Registration link copied to clipboard
+</ngb-toast> -->
 
 <ng-template #loading>
   <app-loading-spinner></app-loading-spinner>
