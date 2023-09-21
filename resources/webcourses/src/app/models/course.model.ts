@@ -17,6 +17,7 @@ export class Course {
   public created_at: string
   public updated_at: string
   public private: boolean
+  public published: boolean
   public total_activities: number
   public total_students: number
   public publisher: Publisher
