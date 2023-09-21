@@ -19,7 +19,7 @@
               >
             </div>
           </div>
-          <div class="col-lg-6 pl-3 my-auto">
+          <div class="col-auto pl-3 my-auto">
             <div class="fs-4">
               {{ publisherCourse.title }}
               <div class="fs-6 text-secondary">
@@ -27,19 +27,19 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-1 my-auto">
+          <div class="col-auto my-auto px-2">
             <i class='fa-sharp fa-solid fa-user-group text-secondary mr-1 me-1'></i>
             {{ publisherCourse.total_students }}
           </div>
-          <div class="col-lg-1 my-auto text-success handy" [routerLink]="['/admin', 'publisher', 'course', publisherCourse.id, 'access-codes']">
+          <div class="col-auto my-auto px-2 text-primary handy" [routerLink]="['/admin', 'publisher', 'course', publisherCourse.id, 'access-codes']">
             <i class='fa-sharp fa-solid fa-fingerprint mr-1 me-1'></i>
             {{ publisherCourse.access_codes}}
           </div>
-          <div class="col-lg-1 my-auto">
+          <div class="col-auto my-auto px-2">
             <i class='fa-sharp fa-solid fa-diagram-project text-secondary mr-1 me-1'></i>
             {{ publisherCourse.total_activities }}
           </div>
-          <div class="col-lg-1 my-auto">
+          <div class="col-auto my-auto px-2">
             <span
               class="badge font-weight-light"
               [ngClass]="publisherCourse.published ? 'badge-info' : 'badge-light'"

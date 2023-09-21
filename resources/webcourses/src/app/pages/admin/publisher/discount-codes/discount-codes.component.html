@@ -39,9 +39,9 @@
               <span class="badge badge-pill badge-success font-weight-light text-capitalize mt-1 float-right">Available</span>
             </th>
             <th class="text-uppercase">label</th>
-            <th class="text-right text-uppercase d-none d-md-table-cell">students</th>
+            <th class="text-right text-uppercase">students</th>
             <th class="text-right text-uppercase d-none d-md-table-cell">seats</th>
-            <th class="text-center text-uppercase">last used</th>
+            <th class="text-center text-uppercase d-none d-md-table-cell">last used</th>
             <th class="text-center text-uppercase d-none d-xl-table-cell">created</th>
           </tr>
         </thead>
@@ -69,7 +69,7 @@
                 <span
                   class="badge badge-pill font-weight-light mt-1 float-right"
                   [ngClass]="pillClass(discountCode)"
-                  [innerHtml]="(discountCode.uses_max === 0) ? 'Unlimited' : discountCode.uses_max - discountCode.uses"
+                  [innerHtml]="(discountCode.uses_max === 0) ? '&#8734;' : discountCode.uses_max - discountCode.uses"
                 >
                 </span>
               </div>
@@ -78,12 +78,15 @@
             <td
               [routerLink]="[discountCode.id, 'users']"
               title="Report"
-              class="text-right d-none d-md-table-cell handy text-primary"
+              class="text-right handy text-primary"
             >
               {{ discountCode.uses }}
+              <span class="d-inline d-md-none text-dark">/
+                <span [innerHTML]="(discountCode.uses_max === 0) ? '&#8734;' : discountCode.uses_max"></span>
+              </span>
             </td>
             <td class="text-right d-none d-md-table-cell" [innerHTML]="discountCode.uses_max === 0 ? '&#8734;' : discountCode.uses_max"></td>
-            <td class="text-center">{{ discountCode.updated_at | date:'mediumDate' }}</td>
+            <td class="text-center d-none d-md-table-cell">{{ discountCode.updated_at | date:'mediumDate' }}</td>
             <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'mediumDate' }}</td>
           </tr>
         </tbody>
