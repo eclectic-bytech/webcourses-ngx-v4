@@ -1,85 +1,90 @@
-<div
-  *ngIf="discountCodes$ | async as discountCodes; else loading"
-  id="fullMainContent"
-  class="container"
-  @fadeInOut>
+<div id="fullMainContent" @fadeInOut>
 
-  <div *ngFor="let courseDiscountCodes of discountCodes">
+  <app-header [title]="'course access codes'"></app-header>
 
-    <div class="card my-4">
-      <div class="row no-gutters justify-content-between">
-        <div class="col-lg-3">
-          <div class="card">
-            <img
-              class="card-img-top"
-              style="object-fit: cover; height: 11rem;"
-              src="publisher-files/{{courseDiscountCodes.course.publisher_id}}/courses/{{courseDiscountCodes.course.id}}/images/{{courseDiscountCodes.course.cover}}"
-              alt="{{courseDiscountCodes.course.cover_alt}}"
-            >
+  <div
+    *ngIf="discountCodes$ | async as discountCodes; else loading"
+    class="container"
+    @fadeInOut
+  >
+
+    <div *ngFor="let courseDiscountCodes of discountCodes">
+
+      <div class="card my-4">
+        <div class="row no-gutters justify-content-between">
+          <div class="col-lg-3">
+            <div class="card">
+              <img
+                class="card-img-top"
+                style="object-fit: cover; height: 11rem;"
+                src="publisher-files/{{courseDiscountCodes.course.publisher_id}}/courses/{{courseDiscountCodes.course.id}}/images/{{courseDiscountCodes.course.cover}}"
+                alt="{{courseDiscountCodes.course.cover_alt}}"
+              >
+            </div>
+          </div>
+          <div class="col-lg-6 p-3">
+            <div class="h4">{{ courseDiscountCodes.course.title }}</div>
+            <div>{{ courseDiscountCodes.course.created_at | date:'longDate' }}</div>
+            <div class="text-dark">ID: {{ courseDiscountCodes.course.id }}</div>
+          </div>
+          <div class="col-lg-3 p-3 text-lg-right">
+            <button mat-button color="primary" class="border" (click)="addAccessCode(courseDiscountCodes.course.id)">
+              Add code
+            </button>
           </div>
         </div>
-        <div class="col-lg-6 p-3">
-          <div class="h4">{{ courseDiscountCodes.course.title }}</div>
-          <div>{{ courseDiscountCodes.course.created_at | date:'longDate' }}</div>
-          <div class="text-dark">ID: {{ courseDiscountCodes.course.id }}</div>
-        </div>
-        <div class="col-lg-3 p-3 text-lg-right">
-          <button mat-button color="primary" class="border" (click)="addAccessCode(courseDiscountCodes.course.id)">
-            Add code
-          </button>
-        </div>
       </div>
-    </div>
 
-    <table class="table table-bordered table-hover table-striped">
-      <thead>
-        <tr>
-          <th class="text-uppercase">
-            code
-            <span class="badge badge-pill badge-success font-weight-light text-capitalize mt-1 float-right">Available</span>
-          </th>
-          <th class="text-uppercase">label</th>
-          <th class="text-right text-uppercase d-none d-md-table-cell">students</th>
-          <th class="text-right text-uppercase d-none d-md-table-cell">seats</th>
-          <th class="text-center text-uppercase">last used</th>
-          <th class="text-center text-uppercase d-none d-xl-table-cell">created</th>
-        </tr>
-      </thead>
+      <table class="table table-bordered table-hover table-striped">
+        <thead>
+          <tr>
+            <th class="text-uppercase">
+              code
+              <span class="badge badge-pill badge-success font-weight-light text-capitalize mt-1 float-right">Available</span>
+            </th>
+            <th class="text-uppercase">label</th>
+            <th class="text-right text-uppercase d-none d-md-table-cell">students</th>
+            <th class="text-right text-uppercase d-none d-md-table-cell">seats</th>
+            <th class="text-center text-uppercase">last used</th>
+            <th class="text-center text-uppercase d-none d-xl-table-cell">created</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr
-          *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
-        >
-          <td
-            ngxClipboard
-            [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
-            [title]="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
-            class="handy"
+        <tbody>
+          <tr
+            *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
           >
-            <span class="text-success">{{ discountCode.code }}</span>
-            <i class="fa-solid fa-copy mx-2 text-info"></i>
-            <span
-              class="badge badge-pill font-weight-light mt-1 float-right"
-              [ngClass]="pillClass(discountCode)"
-              [innerHtml]="(discountCode.uses_max === 0) ? 'Unlimited' : discountCode.uses_max - discountCode.uses"
+            <td
+              ngxClipboard
+              [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
+              [title]="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
+              class="handy"
             >
-            </span>
-          </td>
-          <td>{{ discountCode.label }}</td>
-          <td
-            [routerLink]="[discountCode.id, 'users']"
-            title="Report"
-            class="text-right d-none d-md-table-cell handy text-success"
-          >
-            {{ discountCode.uses }}
-          </td>
-          <td class="text-right d-none d-md-table-cell" [innerHTML]="discountCode.uses_max === 0 ? '&#8734;' : discountCode.uses_max"></td>
-          <td class="text-center">{{ discountCode.updated_at | date:'mediumDate' }}</td>
-          <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'mediumDate' }}</td>
-        </tr>
-      </tbody>
-    </table>
+              <span class="text-success">{{ discountCode.code }}</span>
+              <i class="fa-solid fa-copy mx-2 text-info"></i>
+              <span
+                class="badge badge-pill font-weight-light mt-1 float-right"
+                [ngClass]="pillClass(discountCode)"
+                [innerHtml]="(discountCode.uses_max === 0) ? 'Unlimited' : discountCode.uses_max - discountCode.uses"
+              >
+              </span>
+            </td>
+            <td>{{ discountCode.label }}</td>
+            <td
+              [routerLink]="[discountCode.id, 'users']"
+              title="Report"
+              class="text-right d-none d-md-table-cell handy text-success"
+            >
+              {{ discountCode.uses }}
+            </td>
+            <td class="text-right d-none d-md-table-cell" [innerHTML]="discountCode.uses_max === 0 ? '&#8734;' : discountCode.uses_max"></td>
+            <td class="text-center">{{ discountCode.updated_at | date:'mediumDate' }}</td>
+            <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'mediumDate' }}</td>
+          </tr>
+        </tbody>
+      </table>
 
+    </div>
   </div>
 </div>
 

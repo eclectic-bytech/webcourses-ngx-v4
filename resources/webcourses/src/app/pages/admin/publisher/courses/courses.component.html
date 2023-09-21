@@ -1,18 +1,6 @@
-<div id="fullMainContent" class="container">
-  <div
-    *ngIf="publisher$ | async as publisher"
-    class="row d-flex justify-content-center my-auto"
-    @fadeInOut
-  >
-    <div class="col-auto py-3 my-auto">
-      <!-- This should be a block, with HTML separated out like e.g. the Contact page's -->
-      <img src="publisher-files/{{publisher.id}}/theme/logo.png" alt="" style="max-height: 6rem;" class="mr-4 img-fluid">
-    </div>
-    <div class="col-auto py-3 my-auto">
-      <div class="lead">{{ publisher.name }} course directory</div>
-      <div class="text-secondary">Thank you for publishing at Cultivate Learning</div>
-    </div>
-  </div>
+<div id="fullMainContent" class="container" @fadeInOut>
+
+  <app-header [title]="'course directory'"></app-header>
 
   <div
     *ngIf="publisherCourses$ | async as publisherCourses"

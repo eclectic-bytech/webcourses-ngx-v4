@@ -11,6 +11,7 @@ import { ClipboardModule } from 'ngx-clipboard'
 import { DiscountCodesRoutingModule } from './discount-codes-routing.module'
 import { LoadingSpinnerModule } from 'src/app/core/modules/loading-spinner/loading-spinner.module'
 import { DiscountCodesComponent } from './discount-codes.component'
+import { HeaderModule } from '../blocks/header/header.module'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DiscountCodesComponent } from './discount-codes.component'
     NgxStripeModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    HeaderModule
   ],
   exports: [
     DiscountCodesComponent
