@@ -40,7 +40,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let discountCodeUser of discountCodeUsers, let i = 'index + 1'">
+        <tr *ngFor="let discountCodeUser of discountCodeUsers['code-uses'], let i = 'index + 1'">
           <td class="text-center">{{i}}</td>
           <td [routerLink]="[
             '/admin', 'publisher', 'course', 'user_progress', discountCodeUser.user_progress_id
