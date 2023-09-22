@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./publisher/profile/profile.module').then(m => m.PublisherProfileModule)
   },
   {
+    path: 'publisher/builder',
+    loadChildren: () => import('./builder/builder.module').then(m => m.BuilderModule)
+  },
+  {
     path: 'system/dashboard',
     loadChildren: () => import('./system/dashboard/dashboard.module').then(m => m.DashboardModule)
   }

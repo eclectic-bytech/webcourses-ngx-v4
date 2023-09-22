@@ -5,6 +5,7 @@ import { Subject } from 'rxjs'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { Course } from 'src/app/models/course.model'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-courses',
@@ -19,11 +20,15 @@ export class PublisherCoursesComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private configService: ConfigService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getPublisherCourses()
+  }
 
+  addCourseBtn() {
+    this.router.navigate(['/admin', 'publisher', 'builder', 'course'])
   }
 
   getPublisherCourses() {

@@ -1,14 +1,20 @@
 <div id="fullMainContent" class="container" @fadeInOut>
 
+  <div class="d-flex flex-row-reverse my-4" @fadeInOut>
+    <button mat-button color="primary" class="border" (click)="addCourseBtn()">
+      Add course
+    </button>
+  </div>
+
   <app-header [title]="'course directory'"></app-header>
 
   <div
     *ngIf="publisherCourses$ | async as publisherCourses"
-    class="row"
+    class="row mt-3"
     @fadeInOut
   >
     <div *ngFor="let publisherCourse of publisherCourses; index as i" class="col">
-      <div class="card my-4">
+      <div class="card">
         <div class="row no-gutters justify-content-between">
           <div class="col-lg-2">
             <div class="card">
