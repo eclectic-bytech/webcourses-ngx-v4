@@ -103,8 +103,25 @@ class CourseController extends Controller
     public function new_course(Request $request) {
         $uid = auth()->user()->id;
         $publisher = Publisher::where('owner_uid', $uid)->first();
-
         $input = $request->input();
+
+        $course = new Course();
+
+        $course->active_bid = 1;
+        $course->title = $input['title'];
+        $course->publisher_id = $publisher['id'];
+        $course->published = 0;
+        $course->private = $input['private'];
+        $course->hide_from_main_catalogue = 0;
+        $course->completion_time = null;
+        $course->audience = $input['audience'];
+        $course->short_desc = $input['shortDesc'];
+        $course->long_desc = $input['longDesc'];
+        $course->objective = $input['objective'];
+        $course->eval_type = $input['evalType'];
+        $course->price = $input['price'] * 100;
+
+        $course->save();
 
         return $input;
     }
