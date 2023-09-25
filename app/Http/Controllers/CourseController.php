@@ -100,6 +100,15 @@ class CourseController extends Controller
         return $course->chapter_index;
     }
 
+    public function new_course(Request $request) {
+        $uid = auth()->user()->id;
+        $publisher = Publisher::where('owner_uid', $uid)->first();
+
+        $input = $request->input();
+
+        return $input;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

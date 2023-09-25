@@ -135,6 +135,7 @@ Route::group(['prefix' => 'v4'], function() {
 
             // Paths grouped as /v4/admin/publisher/course
             Route::group(['prefix' => 'course'], function() {
+                Route::post('/', [CourseController::class, 'new_course']);
                 Route::get('/user-progress/{pid}', [UserAnswerController::class, 'user_answer_full_report']);
             });
 
