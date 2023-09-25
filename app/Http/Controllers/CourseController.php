@@ -111,7 +111,7 @@ class CourseController extends Controller
         $course->title = $input['title'];
         $course->publisher_id = $publisher['id'];
         $course->published = 0;
-        $course->private = $input['private'];
+        $course->private = $input['private'] ? 1 : 0;
         $course->hide_from_main_catalogue = 0;
         $course->completion_time = null;
         $course->audience = $input['audience'];
