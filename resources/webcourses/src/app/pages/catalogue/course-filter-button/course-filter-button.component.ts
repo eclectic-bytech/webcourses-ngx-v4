@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faArrowDownShortWide } from '@fortawesome/free-solid-svg-icons'
+import { faFilter } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-course-filter-button',
@@ -7,6 +7,10 @@ import { faArrowDownShortWide } from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./course-filter-button.component.sass']
 })
 export class CourseFilterButtonComponent {
-  public faArrowDownShortWide = faArrowDownShortWide
-
+  public menuCollapsed = true
+  public menuCollapsed2 = true
+  public faFilter = faFilter
+  collapseMenus() {
+    this.menuCollapsed = this.menuCollapsed2 = true
+  }
 }
