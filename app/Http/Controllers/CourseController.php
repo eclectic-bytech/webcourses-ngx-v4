@@ -104,6 +104,13 @@ class CourseController extends Controller
         $uid = auth()->user()->id;
         $publisher = Publisher::where('owner_uid', $uid)->first();
         $input = $request->input();
+        $eval_type = "Online & Instructor";
+
+        if ($input['evalType'] == 'i') {
+            $eval_type = "Instructor";
+        } elseif ($input['evalType'] == 'o') {
+            $eval_type = "Online";
+        }
 
         $course = new Course();
 
