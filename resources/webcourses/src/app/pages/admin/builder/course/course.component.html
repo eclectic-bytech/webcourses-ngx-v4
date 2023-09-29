@@ -10,7 +10,14 @@
     <form [formGroup]="course" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" size="32" maxlength="128" formControlName="title">
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          maxlength="128"
+          formControlName="title"
+          [class.border-danger]="course.controls['title'].invalid && course.controls['title'].touched"
+        >
         <div *ngIf="course.controls['title'].errors.required">
           Required
         </div>

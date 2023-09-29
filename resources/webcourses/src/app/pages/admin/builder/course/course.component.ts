@@ -37,7 +37,7 @@ export class CourseComponent {
         [
           Validators.required,
           Validators.minLength(8),
-          Validators.maxLength[256]
+          Validators.maxLength(256)
         ])],
       longDesc: '',
       objective: '',
@@ -45,7 +45,7 @@ export class CourseComponent {
       price: ['', Validators.compose(
         [
           Validators.required,
-          Validators.maxLength[7],
+          Validators.maxLength(7),
           Validators.pattern("^[0-9]*$")
         ]
       )]
