@@ -4,22 +4,17 @@
       Create a new course
     </div>
 
+    <pre>{{ course.value | json }}</pre>
+    <pre>{{ course.status | json }}</pre>
+    <pre>{{ course.errors | json }}</pre>
+
     <form [formGroup]="course" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" size="32" maxlength="128" formControlName="title">
-      </div>
-
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="private" formControlName="private">
-        <label for="private" class="form-check-label" aria-describedby="privateHelp">Private</label>
-        <small id="privateHelp" class="form-text text-muted">Access-code access only; course will not show up in catalogues, and cannot be purchased.</small>
-      </div>
-
-      <div class="form-group">
-        <label for="audience">Audience</label>
-        <input type="text" class="form-control" id="audience" formControlName="audience" size="32" maxlength="128" aria-describedby="audienceHelp">
-        <small id="audienceHelp" class="form-text text-muted">Who might benefit the most from this course? E.g. Business professionals looking to improve leadership skills.</small>
+        <div *ngIf="course.controls['title'].errors.required">
+          Required
+        </div>
       </div>
 
       <div class="form-group">
@@ -28,10 +23,29 @@
         <small id="shortDescHelp" class="form-text text-muted">Used in catalogue directory and on course pages.</small>
       </div>
 
+      <div class="input-group my-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
+        </div>
+        <input type="text" class="form-control" id="price" placeholder="Price" formControlName="price">
+      </div>
+
+      <div class="form-group form-check my-5">
+        <input type="checkbox" class="form-check-input" id="private" formControlName="private">
+        <label for="private" class="form-check-label" aria-describedby="privateHelp">Private</label>
+        <small id="privateHelp" class="form-text text-muted">Access-code access only; course will not show up in catalogues, and cannot be purchased.</small>
+      </div>
+
       <div class="form-group">
         <label for="longDesc">Long description</label>
         <textarea class="form-control" id="longDesc" formControlName="longDesc" row="3" length="128" aria-describedby="longDescHelp"></textarea>
         <small id="longDescHelp" class="form-text text-muted">Used chiefly on course pages.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="audience">Audience</label>
+        <input type="text" class="form-control" id="audience" formControlName="audience" size="32" maxlength="128" aria-describedby="audienceHelp">
+        <small id="audienceHelp" class="form-text text-muted">Who might benefit the most from this course? E.g. Business professionals looking to improve leadership skills.</small>
       </div>
 
       <div class="form-group">
@@ -49,16 +63,8 @@
         </select>
       </div>
 
-      <div class="input-group my-2 mr-sm-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">$</div>
-        </div>
-        <input type="text" class="form-control" id="price" placeholder="Price" formControlName="price">
-      </div>
-
       <button type="submit" class="btn btn-primary my-4">Submit</button>
 
-      # {{ course.value | json }}
     </form>
 
   </div>

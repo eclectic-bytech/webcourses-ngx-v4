@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { HttpClient } from '@angular/common/http'
 
 // WNGX imports
@@ -24,14 +24,30 @@ export class CourseComponent {
     private httpClient: HttpClient
   ) {
     this.course = this.fb.group({
-      title: '',
+      title: ['', Validators.compose(
+        [
+          Validators.required,
+          Validators.minLength(16),
+          Validators.maxLength(128)
+        ])],
       private: '',
       audience: '',
-      shortDesc: '',
+      shortDesc: ['', Validators.compose(
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength[256]
+        ])],
       longDesc: '',
       objective: '',
       evalType: '',
-      price: '',
+      price: ['', Validators.compose(
+        [
+          Validators.required,
+          Validators.maxLength[7],
+          Validators.pattern("^[0-9]*$")
+        ]
+      )]
     })
   }
 
