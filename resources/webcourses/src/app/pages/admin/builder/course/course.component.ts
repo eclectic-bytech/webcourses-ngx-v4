@@ -16,6 +16,7 @@ import { Course } from 'src/app/models/course.model'
 
 export class CourseComponent {
 
+  public hideAdvanced = true
   course: FormGroup
 
   constructor(

@@ -6,7 +6,6 @@
 
     <pre>{{ course.value | json }}</pre>
     <pre>{{ course.status | json }}</pre>
-    <pre>{{ course.errors | json }}</pre>
 
     <form [formGroup]="course" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -23,11 +22,14 @@
         <small id="shortDescHelp" class="form-text text-muted">Used in catalogue directory and on course pages.</small>
       </div>
 
-      <div class="input-group my-2 mr-sm-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">$</div>
+      <div class="form-group">
+        <div class="input-group my-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">$</div>
+          </div>
+          <input type="text" class="form-control" id="price" placeholder="Price" formControlName="price"  aria-describedby="priceCurrency">
         </div>
-        <input type="text" class="form-control" id="price" placeholder="Price" formControlName="price">
+        <small id="priceCurrency" class="form-text text-muted">Canadian Dollards.</small>
       </div>
 
       <div class="form-group form-check my-5">
@@ -36,31 +38,43 @@
         <small id="privateHelp" class="form-text text-muted">Access-code access only; course will not show up in catalogues, and cannot be purchased.</small>
       </div>
 
-      <div class="form-group">
-        <label for="longDesc">Long description</label>
-        <textarea class="form-control" id="longDesc" formControlName="longDesc" row="3" length="128" aria-describedby="longDescHelp"></textarea>
-        <small id="longDescHelp" class="form-text text-muted">Used chiefly on course pages.</small>
+      <div>
+        <button mat-button color="primary" type="button" class="my-4" (click)="collapse.toggle()" [attr.aria-expanded]="hideAdvanced" aria-controls="collapseExample">
+          <div class="text-uppercase">
+            <span [innerHtml]="hideAdvanced ? 'Show' : 'Hide'"></span> <span> advanced</span>
+          </div>
+        </button>
       </div>
 
-      <div class="form-group">
-        <label for="audience">Audience</label>
-        <input type="text" class="form-control" id="audience" formControlName="audience" size="32" maxlength="128" aria-describedby="audienceHelp">
-        <small id="audienceHelp" class="form-text text-muted">Who might benefit the most from this course? E.g. Business professionals looking to improve leadership skills.</small>
-      </div>
+      <div #collapse="ngbCollapse" [(ngbCollapse)]="hideAdvanced">
 
-      <div class="form-group">
-        <label for="objective">Objectives</label>
-        <textarea class="form-control" id="objective" formControlName="objective" row="2" length="128"></textarea>
-      </div>
+        <div class="form-group">
+          <label for="longDesc">Long description</label>
+          <textarea class="form-control" id="longDesc" formControlName="longDesc" row="3" length="128" aria-describedby="longDescHelp"></textarea>
+          <small id="longDescHelp" class="form-text text-muted">Used chiefly on course pages.</small>
+        </div>
 
-      <div class="form-group">
-        <label for="evalType">Evaluation type</label>
-        <select class="custom-select mr-sm-2" id="evalType" formControlName="evalType">
-          <option selected>Choose...</option>
-          <option value="o">Online</option>
-          <option value="i">Instructor</option>
-          <option value="oi">Online & Instructor</option>
-        </select>
+        <div class="form-group">
+          <label for="audience">Audience</label>
+          <input type="text" class="form-control" id="audience" formControlName="audience" size="32" maxlength="128" aria-describedby="audienceHelp">
+          <small id="audienceHelp" class="form-text text-muted">Who might benefit the most from this course? E.g. Business professionals looking to improve leadership skills.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="objective">Objectives</label>
+          <textarea class="form-control" id="objective" formControlName="objective" row="2" length="128"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="evalType">Evaluation type</label>
+          <select class="custom-select mr-sm-2" id="evalType" formControlName="evalType">
+            <option selected>Choose...</option>
+            <option value="o">Online</option>
+            <option value="i">Instructor</option>
+            <option value="oi">Online & Instructor</option>
+          </select>
+        </div>
+
       </div>
 
       <button type="submit" class="btn btn-primary my-4">Submit</button>
