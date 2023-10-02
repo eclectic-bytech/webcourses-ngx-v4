@@ -7,10 +7,8 @@ const routes: Routes = [
   {
     path: '',
     component: PublisherProfileComponent,
-    data: {
-      title: 'Publisher Profile'
-    }
-  },
+    title: 'Publisher Profile'
+  }
 ]
 
 @NgModule({

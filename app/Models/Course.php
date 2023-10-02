@@ -11,7 +11,7 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['active_bid', 'published'];
+    protected $hidden = ['active_bid'];
 
     public function publisher() {
         return $this->belongsTo(Publisher::class);
@@ -35,6 +35,10 @@ class Course extends Model
 
     public function participants() {
         return $this->hasMany(UserProgress::class);
+    }
+
+    public function accessCodes() {
+        return $this->hasMany(Coupon::class, 'cid', 'id');
     }
 
     public function chapterIndex() {

@@ -11,27 +11,26 @@ use Illuminate\Support\Facades\DB;
 class CodesUseController extends Controller
 {
     public function access_code_users($code_id) {
-        $code = Coupon::find($code_id);
+        $data['code'] = Coupon::find($code_id);
+        $data['course'] = Course::where('id', $data['code']->cid)
+            ->with('publisher')
+            ->withCount('courseSyllabus as total_activities')
+            ->first();
 
-        if ($code) {
-            $course = Course::where('id', $code->cid)->with('publisher')->first();
-            if (auth()->user()->id === $course['publisher']['owner_uid'])
+        if ($data['code']) {
+            if (auth()->user()->id === $data['course']['publisher']['owner_uid'])
             {
-                return CodesUse::where('code_id', $code_id)
+                $data['code-uses'] = CodesUse::where('code_id', $code_id)
                     ->with('user')
                     ->withCount(['completed_activities' => function($query) {
                         $query->select(DB::raw('count(distinct(activity_id))'));
                     }])
                     ->orderBy('created_at', 'desc')
                     ->get();
+                return $data;
             }
         }
-
-        return [];
+        return $data;
     }
 
-    public function access_code_course($code_id) {
-        $access_code = Coupon::where('id', $code_id)->first();
-        return Course::where('id', $access_code->cid)->withCount('courseSyllabus as total_activities')->first();
-    }
 }

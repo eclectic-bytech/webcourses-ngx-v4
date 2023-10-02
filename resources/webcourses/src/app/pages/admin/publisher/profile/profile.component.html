@@ -1,46 +1,50 @@
-<div *ngIf="publisherInfo$ | async as publisherInfo" style="margin-top: 200px;" @fadeInOut>
+<div id="fullMainContent" @fadeInOut>
 
-  <div id="fullMainContent" class="container mt-5 pt-5" style="margin-top: 200px;">
+  <app-header [title]="'publisher profile'"></app-header>
+
+  <div class="container mt-5 pt-5" *ngIf="publisherInfo$ | async as publisher" @fadeInOut>
+
     <div class="row">
-      <div class="col h2">Welcome, {{ publisherInfo.contact_fname }}!</div>
+      <div class="col h2">Welcome, {{ publisher.contact_fname }}!</div>
     </div>
     <div class="row mt-4">
       <div class="col-2 fw-bolder">Publisher:</div>
-      <div class="col-auto">{{ publisherInfo.name }}</div>
+      <div class="col-auto">{{ publisher.name }}</div>
     </div>
     <div class="row">
       <div class="col-2 fw-bolder">Website:</div>
-      <div class="col-auto">{{ publisherInfo.website }}</div>
+      <div class="col-auto">{{ publisher.website }}</div>
     </div>
 
     <div class="row mt-3">
       <div class="col-2 fw-bolder">Contact:</div>
-      <div class="col-auto">{{ publisherInfo.contact_fname }} {{ publisherInfo.contact_lname }}</div>
+      <div class="col-auto">{{ publisher.contact_fname }} {{ publisher.contact_lname }}</div>
     </div>
     <div class="row">
       <div class="col-2 fw-bolder">Email:</div>
-      <div class="col-auto">{{ publisherInfo.contact_email }}</div>
+      <div class="col-auto">{{ publisher.contact_email }}</div>
     </div>
     <div class="row">
       <div class="col-2 fw-bolder">Phone:</div>
-      <div class="col-auto">{{ publisherInfo.contact_phone }}</div>
+      <div class="col-auto">{{ publisher.contact_phone }}</div>
     </div>
 
     <div class="row mt-3">
       <div class="col-2 fw-bolder">Country:</div>
-      <div class="col-auto">{{ publisherInfo.country }}</div>
+      <div class="col-auto">{{ publisher.country }}</div>
     </div>
     <div class="row">
       <div class="col-2 fw-bolder">City:</div>
-      <div class="col-auto">{{ publisherInfo.city }}</div>
+      <div class="col-auto">{{ publisher.city }}</div>
     </div>
     <div class="row">
       <div class="col-2 fw-bolder">Prov/State:</div>
-      <div class="col-auto">{{ publisherInfo.province }}</div>
+      <div class="col-auto">{{ publisher.province }}</div>
     </div>
 
-    <div class="row mt-3">
-      <div class="col">Publisher since {{ publisherInfo.created_at }}</div>
+    <div class="row mt-4">
+      <div class="col">Publisher since {{ publisher.created_at | date: "longDate"}}</div>
     </div>
+
   </div>
 </div>

@@ -1,19 +1,19 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { Component, OnInit } from '@angular/core'
 import { Subject } from 'rxjs'
-import { ActivatedRoute } from '@angular/router';
-import { ConfigService } from 'src/app/core/services/config/config.service';
-import { Course } from 'src/app/models/course.model';
+import { ActivatedRoute } from '@angular/router'
+import { ConfigService } from 'src/app/core/services/config/config.service'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-discount-codes-users',
   templateUrl: './discount-codes-users.component.html',
-  styleUrls: ['./discount-codes-users.component.sass']
+  styleUrls: ['./discount-codes-users.component.sass'],
+  animations: [FadeInOut]
 })
 export class DiscountCodesUsersComponent implements OnInit {
 
   public discountCodeUsers$ = new Subject<any[] | null>()
-  public course$ = new Subject<any|null>()
   public total_activities = 0
 
   constructor(
@@ -28,15 +28,6 @@ export class DiscountCodesUsersComponent implements OnInit {
     ).subscribe(
       (data) => {
         this.discountCodeUsers$.next(data)
-      }
-    )
-
-    this.httpClient.get<Course>(
-      `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/course`
-    ).subscribe(
-      (course: Course) => {
-        this.course$.next(course)
-        this.total_activities = course.total_activities
       }
     )
   }

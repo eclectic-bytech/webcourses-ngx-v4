@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { UserService } from './../../../core/services/user/user.service'
 import { HeaderBarService } from './header-bar.service'
 import { GravatarMd5Service } from '../../../core/services/gravatar-md5/gravatar-md5.service'
 import { DomSanitizer } from '@angular/platform-browser'
-import { faWrench, faGem, faGraduationCap, faSignOutAlt, faPenNib, faBarcode, faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
 import { ThemeService } from 'src/app/views/theme/theme.service'
 import { Publisher } from 'src/app/models/publisher.model'
 import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
@@ -15,17 +14,9 @@ import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
   animations: [FadeInOut2],
   styleUrls: ['./header-bar.component.scss']
 })
-export class HeaderBarComponent implements OnInit {
+export class HeaderBarComponent {
 
   @Input() publisher: Publisher
-
-  faWrench = faWrench
-  faGem = faGem
-  faGraduationCap = faGraduationCap
-  faSignOutAlt = faSignOutAlt
-  faPenNib = faPenNib
-  faBarcode = faBarcode
-  faScrewdriverWrench = faScrewdriverWrench
 
   public menuCollapsed = true
   public menuCollapsed2 = true
@@ -39,7 +30,6 @@ export class HeaderBarComponent implements OnInit {
     public themeService: ThemeService
   ) { }
 
-  ngOnInit() {}
 
   collapseMenus() {
     this.menuCollapsed = this.menuCollapsed2 = true
