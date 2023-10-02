@@ -16,11 +16,19 @@
           id="title"
           maxlength="128"
           formControlName="title"
-          [class.border-danger]="course.controls['title'].invalid && course.controls['title'].touched"
+          [class.border-danger]="
+            course.controls['title'].invalid && course.controls['title'].touched
+          "
+          aria-describedby="titleHelp"
         >
-        <div *ngIf="course.controls['title'].errors.required">
-          Required
-        </div>
+        <small id="titleHelp" class="form-text text-danger">
+          <span *ngIf="course.controls['title'].errors?.required && course.controls['title'].touched">
+            Required.
+          </span>
+          <span *ngIf="course.controls['title'].invalid && course.controls['title'].touched">
+            Must be 16 to 128 characters.
+          </span>
+        </small>
       </div>
 
       <div class="form-group">
@@ -36,7 +44,7 @@
           </div>
           <input type="text" class="form-control" id="price" placeholder="Price" formControlName="price"  aria-describedby="priceCurrency">
         </div>
-        <small id="priceCurrency" class="form-text text-muted">Canadian Dollards.</small>
+        <small id="priceCurrency" class="form-text text-muted">Canadian Dollars.</small>
       </div>
 
       <div class="form-group form-check my-5">
@@ -46,7 +54,7 @@
       </div>
 
       <div>
-        <button mat-button color="primary" type="button" class="my-4" (click)="collapse.toggle()" [attr.aria-expanded]="hideAdvanced" aria-controls="collapseExample">
+        <button mat-button color="primary" type="button" class="mb-4" (click)="collapse.toggle()" [attr.aria-expanded]="hideAdvanced" aria-controls="collapseExample">
           <div class="text-uppercase">
             <span [innerHtml]="hideAdvanced ? 'Show' : 'Hide'"></span> <span> advanced</span>
           </div>
