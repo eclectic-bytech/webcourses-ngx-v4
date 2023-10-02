@@ -1,13 +1,13 @@
 <div id="fullMainContent" class="container" @fadeInOut>
 
   <div class="d-flex flex-row-reverse my-4" @fadeInOut>
-    <div class="ml-3" style="line-height: 1.2rem;">
-      <span class="text-success text-uppercase">New feature</span><br>
-      <span class="font-weight-light text-dark">Build a new course</span>
-    </div>
     <button mat-button color="primary" class="border" (click)="addCourseBtn()">
       Add course
     </button>
+    <div class="mr-4" style="line-height: 1.2rem;">
+      <span class="text-success text-uppercase">New feature</span><br>
+      <span class="font-weight-light text-dark">Build a new course</span>
+    </div>
   </div>
 
   <app-header [title]="'course directory'"></app-header>
