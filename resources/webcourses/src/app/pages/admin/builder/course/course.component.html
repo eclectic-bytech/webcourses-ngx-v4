@@ -34,17 +34,32 @@
       <div class="form-group">
         <label for="shortDesc">Short description</label>
         <input type="text" class="form-control" id="shortDesc" formControlName="shortDesc" aria-describedby="shortDescHelp">
-        <small id="shortDescHelp" class="form-text text-muted">Used in catalogue directory and on course pages.</small>
+        <small id="shortDescHelp" class="form-text text-muted">
+          Used in catalogue directory and on course pages.
+          <span *ngIf="course.controls['shortDesc'].touched" class="text-danger">
+            <span *ngIf="course.controls['shortDesc'].errors?.required">
+              Required.
+            </span>
+            <span *ngIf="course.controls['shortDesc'].errors?.minlength">
+              Must be 32 to 256 characters.
+            </span>
+            <span *ngIf="course.controls['shortDesc'].errors?.pattern">
+              Consecutive spaces are not accepted.
+            </span>
+          </span>
+        </small>
       </div>
 
       <div class="form-group">
-        <div class="input-group my-2 mr-sm-2">
+        <label for="price">Price</label>
+        <div class="input-group mr-sm-2">
           <div class="input-group-prepend">
             <div class="input-group-text">$</div>
           </div>
-          <input type="text" class="form-control" id="price" placeholder="Price" formControlName="price"  aria-describedby="priceCurrency">
+          <input type="number" class="form-control col-1" min="0" max="99999" id="price" formControlName="price"  aria-describedby="priceCurrency">
         </div>
-        <small id="priceCurrency" class="form-text text-muted">Canadian Dollars.</small>
+        <small id="priceCurrency" class="form-text text-muted">Canadian Dollars</small>
+
       </div>
 
       <div class="form-group form-check my-2">
@@ -94,8 +109,8 @@
 
       <button type="submit" class="btn btn-primary my-4">Submit</button>
 
-      <pre>{{ course.value | json }}</pre>
       <pre>{{ course.status | json }}</pre>
+      <pre>{{ course.value | json }}</pre>
 
     </form>
 

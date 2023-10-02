@@ -32,25 +32,26 @@ export class CourseComponent {
           Validators.maxLength(128),
           Validators.pattern('\\s?\\S+(?: \\S+)*\\s?') // no consec spaces
         ])],
-      private: '',
-      audience: '',
       shortDesc: ['', Validators.compose(
         [
           Validators.required,
-          Validators.minLength(8),
+          Validators.minLength(32),
           Validators.maxLength(256),
           Validators.pattern('\\s?\\S+(?: \\S+)*\\s?') // no consec spaces
         ])],
+      price: [20, Validators.compose(
+        [
+          Validators.required,
+          Validators.min(0),
+          Validators.max(99999),
+          Validators.pattern("^[0-9]*$")
+        ]
+      )],
+      private: '',
+      audience: '',
       longDesc: '',
       objective: '',
       evalType: '',
-      price: ['', Validators.compose(
-        [
-          Validators.required,
-          Validators.maxLength(7),
-          Validators.pattern("^[0-9]*$")
-        ]
-      )]
     })
   }
 
