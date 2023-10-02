@@ -1,6 +1,9 @@
 <div ngbDropdown>
-  <div role="button" ngbDropdownToggle>
-    <fa-icon [icon]="faFilter" class="text-warning"></fa-icon>
+  <div ngbDropdownToggle>
+    <div class="d-inline-flex">
+    <fa-icon class="text-secondary" [icon]="faFilter"></fa-icon>
+    <h6 class="text-secondary pr-1">Filters</h6>
+    </div>
   </div>
 
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" ngbDropdownMenu>
