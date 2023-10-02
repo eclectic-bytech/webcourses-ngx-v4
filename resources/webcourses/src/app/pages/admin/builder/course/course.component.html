@@ -1,7 +1,7 @@
 <div id="fullMainContent" @fadeInOut>
   <div class="container">
     <div class="display-4 mb-5">
-      Create a new course
+      Build a new course
     </div>
 
     <form [formGroup]="course" (ngSubmit)="onSubmit()">
@@ -9,7 +9,7 @@
         <label for="title">Title</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control col-12 col-lg-8"
           id="title"
           maxlength="128"
           formControlName="title"
@@ -33,7 +33,16 @@
 
       <div class="form-group">
         <label for="shortDesc">Short description</label>
-        <input type="text" class="form-control" id="shortDesc" formControlName="shortDesc" aria-describedby="shortDescHelp">
+        <input
+          type="text"
+          class="form-control"
+          id="shortDesc"
+          formControlName="shortDesc"
+          [class.border-danger]="
+            course.controls['shortDesc'].invalid && course.controls['shortDesc'].touched
+          "
+          aria-describedby="shortDescHelp"
+        >
         <small id="shortDescHelp" class="form-text text-muted">
           Used in catalogue directory and on course pages.
           <span *ngIf="course.controls['shortDesc'].touched" class="text-danger">
@@ -56,7 +65,7 @@
           <div class="input-group-prepend">
             <div class="input-group-text">$</div>
           </div>
-          <input type="number" class="form-control col-1" min="0" max="99999" id="price" formControlName="price"  aria-describedby="priceCurrency">
+          <input type="number" class="form-control col-4 col-md-3 col-lg-1" min="0" max="99999" id="price" formControlName="price"  aria-describedby="priceCurrency">
         </div>
         <small id="priceCurrency" class="form-text text-muted">Canadian Dollars</small>
 
@@ -107,7 +116,7 @@
 
       </div>
 
-      <button type="submit" class="btn btn-primary my-4">Submit</button>
+      <button type="submit" class="btn btn-primary my-4" [disabled]="!course.valid">Submit</button>
 
       <pre>{{ course.status | json }}</pre>
       <pre>{{ course.value | json }}</pre>
