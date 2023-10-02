@@ -29,7 +29,8 @@ export class CourseComponent {
         [
           Validators.required,
           Validators.minLength(16),
-          Validators.maxLength(128)
+          Validators.maxLength(128),
+          Validators.pattern('\\s?\\S+(?: \\S+)*\\s?') // no consec spaces
         ])],
       private: '',
       audience: '',
@@ -37,7 +38,8 @@ export class CourseComponent {
         [
           Validators.required,
           Validators.minLength(8),
-          Validators.maxLength(256)
+          Validators.maxLength(256),
+          Validators.pattern('\\s?\\S+(?: \\S+)*\\s?') // no consec spaces
         ])],
       longDesc: '',
       objective: '',
