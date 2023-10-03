@@ -24,4 +24,21 @@ export class CourseFilterButtonComponent {
       cat.sort((a, b) => a.title.localeCompare(b.title))
     })
   }
+
+  Recent() {
+    this.catalogueService.webcoursesAll$.subscribe((cat) => {
+      cat.sort((a, b) => this.compareDates(a.updated_at, b.updated_at));
+    });
+  }
+
+  private compareDates(dateA: string | undefined, dateB: string | undefined): number {
+    if (!dateA && !dateB) return 0; // Both are empty, consider them equal
+    if (!dateA) return 1; // a is empty, push it to the end
+    if (!dateB) return -1; // b is empty, push it to the end
+
+    const timestampA = new Date(dateA).getTime();
+    const timestampB = new Date(dateB).getTime();
+
+    return timestampB - timestampA; // Sort in descending order
+  }
 }
