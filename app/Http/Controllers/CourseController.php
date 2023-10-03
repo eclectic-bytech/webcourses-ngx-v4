@@ -125,7 +125,7 @@ class CourseController extends Controller
         $course->short_desc = $input['shortDesc'];
         $course->long_desc = $input['longDesc'];
         $course->objective = $input['objective'];
-        $course->eval_type = $input['evalType'];
+        $course->eval_type = $eval_type;
         $course->price = $input['price'] * 100;
 
         $course->save();
