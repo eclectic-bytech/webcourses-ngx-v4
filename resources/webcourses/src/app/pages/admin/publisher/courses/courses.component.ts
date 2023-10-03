@@ -31,8 +31,8 @@ export class PublisherCoursesComponent implements OnInit {
     this.router.navigate(['/admin', 'publisher', 'builder', 'course'])
   }
 
-  editCourseBtn($cid) {
-    this.router.navigate(['/admin', 'publisher', 'builder', 'course', 'edit', $cid])
+  deleteCourseBtn(cid: number) {
+    console.log(`DELETE ${cid} BUTTON`)
   }
 
   getPublisherCourses() {

@@ -59,10 +59,17 @@
           <i class='fa-sharp fa-solid fa-diagram-project text-secondary mr-1 me-1'></i>
           {{ publisherCourse.total_activities }}
         </div>
-        <div class="d-inline-block ml-auto my-auto px-3">
-          <button mat-button color="primary" class="border" (click)="editCourseBtn(publisherCourse.id)">
-            Edit
-          </button>
+        <div class="d-inline-block ml-auto align-middle px-3">
+          <div type="button" class="text-danger d-inline d-lg-block mx-3 mx-lg-0">
+            <small class="text-uppercase">
+              <a [routerLink]="['/admin', 'publisher', 'builder', 'course', 'edit', publisherCourse.id]" class="text-primary">Edit</a>
+            </small>
+          </div>
+          <div type="button" class="text-danger d-inline d-lg-block mx-3 mx-lg-0">
+            <small class="text-uppercase text-danger" (click)="deleteCourseBtn(publisherCourse.id)">
+              Delete
+            </small>
+          </div>
         </div>
       </div>
     </div>
