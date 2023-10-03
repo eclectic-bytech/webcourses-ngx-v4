@@ -53,6 +53,17 @@ export class CourseFilterButtonComponent {
     return timestampB - timestampA // Sort in descending order
   }
 
+  sortbyPopular() {
+    if (this.sortID !== 3) {
+      this.catalogueService.webcoursesAll$.subscribe((cat) => {
+        cat.sort((a, b) => b.total_students - a.total_students)
+      })
+      this.sortID = 3
+    } else {
+      this.sortbyID()
+    }
+  }
+
   sortbyID() {
     this.catalogueService.webcoursesAll$.subscribe((cat) => {
       cat.sort((a, b) => a.id - b.id)
