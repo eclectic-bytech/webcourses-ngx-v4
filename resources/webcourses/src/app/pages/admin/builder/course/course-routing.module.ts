@@ -6,6 +6,12 @@ const routes: Routes = [
   {
     path: '',
     component: CourseComponent,
+    title: 'Build a new course (Cultivate Learning)'
+  },
+  {
+    path: 'edit/:cid',
+    component: CourseComponent,
+    title: 'Edit Course (Cultivate Learning)'
   }
 ]
 

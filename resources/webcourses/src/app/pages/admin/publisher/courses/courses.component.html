@@ -33,8 +33,16 @@
       <div class="col-auto pl-3 my-auto mr-auto">
         <div class="fs-4 my-2 my-lg-0">
           {{ publisherCourse.title }}
-          <div class="fs-6 text-secondary">
-            {{ publisherCourse.created_at | date:'longDate' }} #{{ publisherCourse.id }}
+          <div class="fs-6 text-secondary my-auto">
+            <span
+              class="badge font-weight-light"
+              [ngClass]="publisherCourse.published ? 'badge-info' : 'badge-light'"
+              [innerHtml]="publisherCourse.published ? 'Published' : 'Not published'"
+            >
+            </span>
+            <small>
+              Created {{ publisherCourse.created_at | date:'longDate' }} #{{ publisherCourse.id }}
+            </small>
           </div>
         </div>
       </div>
@@ -51,13 +59,10 @@
           <i class='fa-sharp fa-solid fa-diagram-project text-secondary mr-1 me-1'></i>
           {{ publisherCourse.total_activities }}
         </div>
-        <div class="d-inline-block my-auto px-3 pr-md-3 pr-lg-5">
-          <span
-            class="badge font-weight-light"
-            [ngClass]="publisherCourse.published ? 'badge-info' : 'badge-light'"
-            [innerHtml]="publisherCourse.published ? 'Published' : 'Not published'"
-          >
-          </span>
+        <div class="d-inline-block ml-auto my-auto px-3">
+          <button mat-button color="primary" class="border" (click)="editCourseBtn(publisherCourse.id)">
+            Edit
+          </button>
         </div>
       </div>
     </div>

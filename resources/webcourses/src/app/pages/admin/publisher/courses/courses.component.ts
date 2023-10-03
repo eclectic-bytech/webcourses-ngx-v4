@@ -31,6 +31,10 @@ export class PublisherCoursesComponent implements OnInit {
     this.router.navigate(['/admin', 'publisher', 'builder', 'course'])
   }
 
+  editCourseBtn($cid) {
+    this.router.navigate(['/admin', 'publisher', 'builder', 'course', 'edit', $cid])
+  }
+
   getPublisherCourses() {
     this.httpClient.get<Course[]>(
       `${this.configService.params.api.route}/admin/publisher/courses`
