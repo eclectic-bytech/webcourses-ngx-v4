@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Course } from './../../models/course.model'
 import { ConfigService } from '../../core/services/config/config.service'
+import { Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatalogueService {
+  public webcoursesAll$: Observable<Course[]>
 
   constructor(
     private http: HttpClient,

@@ -23,7 +23,7 @@
     </div>
     <div
       class="row d-flex justify-content-center"
-      *ngIf="this.webcoursesAll$ | async as webcourses"
+      *ngIf="this.localService.webcoursesAll$| async as webcourses"
       [appThemeSet]="this.themeService.defaultTheme"
       @fadeInOut
     >

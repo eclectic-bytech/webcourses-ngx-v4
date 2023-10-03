@@ -29,7 +29,6 @@ import { FadeInOut } from '../../core/animations/fade-in-out.animation'
 })
 export class CatalogueComponent implements OnInit {
 
-  public webcoursesAll$: Observable<Course[]>
   public featuredCourse$: Observable<Course>
   public themeId: number
 
@@ -52,7 +51,7 @@ export class CatalogueComponent implements OnInit {
   ngOnInit() {
     this.globalService.setTitle(this.route.snapshot.data.title)
 
-    this.webcoursesAll$ = this.route.data.pipe(map(data => data.webcoursesAll))
+    this.localService.webcoursesAll$ = this.route.data.pipe(map(data => data.webcoursesAll))
     this.featuredCourse$ = this.courseService.getCourse(this.configService.params.featuredCID)
   }
 
