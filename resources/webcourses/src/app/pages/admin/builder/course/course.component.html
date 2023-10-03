@@ -95,8 +95,18 @@
 
         <div class="form-group">
           <label for="audience">Audience</label>
-          <input type="text" class="form-control" id="audience" formControlName="audience" size="32" maxlength="128" aria-describedby="audienceHelp">
-          <small id="audienceHelp" class="form-text text-muted">Who might benefit the most from this course? E.g. Business professionals looking to improve leadership skills.</small>
+          <input
+            type="text"
+            class="form-control col-12 col-lg-8"
+            id="audience"
+            maxlength="128"
+            formControlName="audience"
+            aria-describedby="audienceHelp"
+          >
+          <small id="audienceHelp" class="form-text text-muted">
+            Who might benefit the most from this course?
+            E.g. Business professionals looking to improve leadership skills.
+          </small>
         </div>
 
         <div class="form-group">
@@ -106,20 +116,19 @@
 
         <div class="form-group">
           <label for="evalType">Evaluation type</label>
-          <select class="custom-select mr-sm-2" id="evalType" formControlName="evalType">
-            <option selected>Choose...</option>
-            <option value="o">Online</option>
-            <option value="i">Instructor</option>
-            <option value="oi">Online & Instructor</option>
-          </select>
+          <div>
+            <select class="custom-select mr-sm-2 col-12 col-lg-8" id="evalType" formControlName="evalType">
+              <option selected>Choose...</option>
+              <option value="o">Online</option>
+              <option value="i">Instructor</option>
+              <option value="oi">Online & Instructor</option>
+            </select>
+          </div>
         </div>
 
       </div>
 
       <button type="submit" class="btn btn-primary my-4" [disabled]="!course.valid">Submit</button>
-
-      <pre>{{ course.status | json }}</pre>
-      <pre>{{ course.value | json }}</pre>
 
     </form>
 
