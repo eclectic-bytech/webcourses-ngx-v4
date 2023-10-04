@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 
+// WNGX imports
 import { CourseService } from './course.service'
+import { ThemeService } from 'src/app/views/theme/theme.service'
 import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
 
 @Component({
@@ -14,7 +16,9 @@ export class CourseComponent implements OnInit {
 
   constructor(
     public courseService: CourseService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public themeService: ThemeService
+
   ) { }
 
   ngOnInit(): void {

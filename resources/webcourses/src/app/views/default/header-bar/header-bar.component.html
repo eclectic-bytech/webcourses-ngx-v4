@@ -1,7 +1,7 @@
 <nav
   id="header-menu"
   class="navbar navbar-expand-xl justify-content-between"
-  [ngClass]="theme.bootstrap_nav"
+  [ngClass]="'navbar-light'"
 >
   <button
     (click)="menuCollapsed = !menuCollapsed"
@@ -16,12 +16,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <a class="navbar-brand ml-xs-3 ml-md-5 ml-lg-0" (click)="logoLink(theme)">
-    <img
-      id="logo"
-      *ngIf="theme.logo"
-      [src]="this.sanit.bypassSecurityTrustResourceUrl(theme.logo)"
-    />
+  <a class="navbar-brand ml-xs-3 ml-md-5 ml-lg-0" (click)="logoLink(publisher)">
+    <!-- using publisher.id instead .id_alias only due to homestead symlinks problem -->
+    <img id="logo" [src]="this.themeService.logo" [@FadeInOut2]="this.themeService.logo"/>
   </a>
 
   <div class="navbar navbar-expand px-0 alwaysVisible">
@@ -180,7 +177,7 @@
     <ul class="navbar-nav mr-auto">
       <!-- STANDARD MAIN NAVIGATION, SYSTEM BRANDED AND LINKED -->
 
-      <ng-container *ngIf="theme.publisher_id == 1; else publisherCustom">
+      <ng-container *ngIf="publisher.id == 1; else publisherCustom">
 
         <!-- CATALOGUE / WEBCOURSES LINK -->
         <li
@@ -255,8 +252,8 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" [routerLink]="['/catalogue', 'publisher', theme.path]" (click)="collapseMenus()">
-            {{ theme.label }} Webcourses
+          <a class="nav-link" [routerLink]="['/catalogue', 'publisher', publisher.id_alias]" (click)="collapseMenus()">
+            {{ publisher.name }} Webcourses
           </a>
         </li>
 
@@ -266,7 +263,7 @@
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a class="nav-link" [routerLink]="['/help', theme.path]" (click)="collapseMenus()">Help</a>
+          <a class="nav-link" [routerLink]="['/help', publisher.id_alias]" (click)="collapseMenus()">Help</a>
         </li>
 
         <!-- EXIT TO MAIN CATALOGUE LINK -->
@@ -276,7 +273,7 @@
           [routerLinkActiveOptions]="{ exact: true }"
         >
           <a class="nav-link" [routerLink]="['/catalogue']" (click)="collapseMenus()">
-            Exit {{ theme.label }}
+            Exit {{ publisher.name }}
           </a>
         </li>
       </ng-template>

@@ -1,5 +1,4 @@
 import { Publisher } from './publisher.model'
-import { Theme } from './theme.model'
 import { UserCourseProgress } from './user.course.progress.model'
 
 export class Course {
@@ -21,6 +20,5 @@ export class Course {
   public total_activities: number
   public total_students: number
   public publisher: Publisher
-  public theme: Theme
   public user_progress?: UserCourseProgress
 }

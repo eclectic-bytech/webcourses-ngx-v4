@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { ThemeService } from '../../../core/services/theme/theme.service'
+import { ThemeService } from 'src/app/views/theme/theme.service'
 
 @Component({
   selector: 'app-publishers',

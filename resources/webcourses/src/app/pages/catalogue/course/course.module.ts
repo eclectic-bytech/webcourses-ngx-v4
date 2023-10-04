@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 import { CourseComponent } from './course.component'
 import { CourseRoutingModule } from './course-routing.module'
 import { LoadingSpinnerModule } from '../../../core/modules/loading-spinner/loading-spinner.module'
-import { ThemeResetModule } from '../../../core/directives/theme-reset/theme-reset.module'
+import { ThemeModule } from '../../../views/theme/theme.module'
 
 @NgModule({
   declarations: [CourseComponent],
@@ -11,7 +11,7 @@ import { ThemeResetModule } from '../../../core/directives/theme-reset/theme-res
     CommonModule,
     CourseRoutingModule,
     LoadingSpinnerModule,
-    ThemeResetModule
+    ThemeModule
   ]
 })
 

@@ -94,14 +94,14 @@
 
           <div class="row mt-5">
             <div class="col-12 col-lg-10 mx-auto text-center">
-              <div [appThemeSet]="course.theme"></div>
+              <div [appThemeSetNew]="course.publisher"></div>
               <div>
                 <a [href]="course.publisher.website" target="_blank">
                   <img
                     class="mb-3"
                     width="250"
-                    [src]="course.theme.logo"
-                    [alt]="course.publisher.name + 'logo'"
+                    [src]="this.themeService.logo"
+                    [alt]=""
                   >
                   <p class="text-secondary" style="line-height: 1.1">
                     <span class="text-uppercase">{{course.publisher.name}}</span><br>

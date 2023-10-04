@@ -9,8 +9,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { CatalogueCardModule } from './../components/course-card/catalogue-card/catalogue-card.module'
 import { CatalogueComponent } from './catalogue.component'
 import { CatalogueRoutingModule } from './catalogue-routing.module'
-import { ThemeResetModule } from './../../core/directives/theme-reset/theme-reset.module'
-import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { ThemeModule } from 'src/app/views/theme/theme.module'
+import { PipesModule } from 'src/app/shared/pipes/pipes.module'
 import { CourseFilterButtonModule } from './course-filter-button/course-filter-button.module'
 
 @NgModule({
@@ -29,7 +29,7 @@ import { CourseFilterButtonModule } from './course-filter-button/course-filter-b
     FontAwesomeModule,
     CatalogueRoutingModule,
     MatButtonModule,
-    ThemeResetModule,
+    ThemeModule,
     CatalogueCardModule,
     PipesModule,
     CourseFilterButtonModule

@@ -18,13 +18,11 @@ class PublisherController extends Controller
         if ($uidInt != 0)
         {
             return Publisher::where('owner_uid', $uidInt)
-                ->with(['theme'])
                 ->sole();
         }
         else
         {
             return Publisher::where('id_alias', $id)
-                ->with(['theme'])
                 ->sole();
         }
     }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 import { ReviewModeModule } from '../../../webcourse/activities/workarea/review-mode/review-mode.module'
 import { StudentComponent } from './student.component'
 import { StudentRoutingModule } from './student-routing.module'
-import { ThemeResetModule } from '../../../../core/directives/theme-reset/theme-reset.module'
+import { ThemeModule } from '../../../../views/theme/theme.module'
 
 @NgModule({
   declarations: [StudentComponent],
@@ -11,7 +11,7 @@ import { ThemeResetModule } from '../../../../core/directives/theme-reset/theme-
     CommonModule,
     ReviewModeModule,
     StudentRoutingModule,
-    ThemeResetModule
+    ThemeModule
   ]
 })
 export class StudentModule { }

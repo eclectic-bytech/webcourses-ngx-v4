@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { ThemeResetDirective } from './theme-reset.directive'
+import { ThemeDirective } from './theme.directive'
 
 
 @NgModule({
   declarations: [
-    ThemeResetDirective
+    ThemeDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    ThemeResetDirective
+    ThemeDirective
   ]
 })
-export class ThemeResetModule { }
+export class ThemeModule { }
