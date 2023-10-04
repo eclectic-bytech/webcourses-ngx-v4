@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'
-import { faFilter } from '@fortawesome/free-solid-svg-icons'
 import { CatalogueService } from '../catalogue.service'
 
 @Component({
@@ -10,7 +9,6 @@ import { CatalogueService } from '../catalogue.service'
 export class CourseFilterButtonComponent {
   public menuCollapsed = true
   public menuCollapsed2 = true
-  public faFilter = faFilter
   private sortID = 0
 
   constructor(
