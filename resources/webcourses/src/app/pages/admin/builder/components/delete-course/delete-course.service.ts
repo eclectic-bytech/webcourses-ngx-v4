@@ -35,12 +35,8 @@ export class DeleteCourseService {
           elem.parentNode.removeChild(elem)
         }
       },
-      (err) => {
-        console.log(err)
-      },
-      () => {
-        this.ngbModal.dismissAll()
-      }
+      (err) => { console.log(err) },
+      () => { this.ngbModal.dismissAll() }
     )
   }
 
