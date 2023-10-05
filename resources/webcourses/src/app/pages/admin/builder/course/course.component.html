@@ -1,10 +1,10 @@
 <div id="fullMainContent" @fadeInOut>
-  <div class="container">
+  <div class="container" *ngIf="!courseAdded; else whatNext">
     <div class="display-4 mb-5">
       Build a new course
     </div>
 
-    <form [formGroup]="course" (ngSubmit)="onSubmit()">
+    <form [formGroup]="courseAddForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="title">Title</label>
         <input
@@ -14,18 +14,18 @@
           maxlength="128"
           formControlName="title"
           [class.border-danger]="
-            course.controls['title'].invalid && course.controls['title'].touched
+            courseAddForm.controls['title'].invalid && courseAddForm.controls['title'].touched
           "
           aria-describedby="titleHelp"
         >
-        <small *ngIf="course.controls['title'].touched" id="titleHelp" class="form-text text-danger">
-          <span *ngIf="course.controls['title'].errors?.required">
+        <small *ngIf="courseAddForm.controls['title'].touched" id="titleHelp" class="form-text text-danger">
+          <span *ngIf="courseAddForm.controls['title'].errors?.required">
             Required.
           </span>
-          <span *ngIf="course.controls['title'].errors?.minlength">
+          <span *ngIf="courseAddForm.controls['title'].errors?.minlength">
             Must be 16 to 128 characters.
           </span>
-          <span *ngIf="course.controls['title'].errors?.pattern">
+          <span *ngIf="courseAddForm.controls['title'].errors?.pattern">
             Consecutive spaces are not accepted.
           </span>
         </small>
@@ -39,20 +39,20 @@
           id="shortDesc"
           formControlName="shortDesc"
           [class.border-danger]="
-            course.controls['shortDesc'].invalid && course.controls['shortDesc'].touched
+            courseAddForm.controls['shortDesc'].invalid && courseAddForm.controls['shortDesc'].touched
           "
           aria-describedby="shortDescHelp"
         >
         <small id="shortDescHelp" class="form-text text-muted">
           Used in catalogue directory and on course pages.
-          <span *ngIf="course.controls['shortDesc'].touched" class="text-danger">
-            <span *ngIf="course.controls['shortDesc'].errors?.required">
+          <span *ngIf="courseAddForm.controls['shortDesc'].touched" class="text-danger">
+            <span *ngIf="courseAddForm.controls['shortDesc'].errors?.required">
               Required.
             </span>
-            <span *ngIf="course.controls['shortDesc'].errors?.minlength">
+            <span *ngIf="courseAddForm.controls['shortDesc'].errors?.minlength">
               Must be 32 to 256 characters.
             </span>
-            <span *ngIf="course.controls['shortDesc'].errors?.pattern">
+            <span *ngIf="courseAddForm.controls['shortDesc'].errors?.pattern">
               Consecutive spaces are not accepted.
             </span>
           </span>
@@ -128,9 +128,36 @@
 
       </div>
 
-      <button type="submit" class="btn btn-primary my-4" [disabled]="!course.valid">Submit</button>
+      <button type="submit" class="btn btn-primary my-4" [disabled]="!courseAddForm.valid">Submit</button>
 
     </form>
 
   </div>
+
+  <ng-template #whatNext>
+    <div class="container mt-5 lead" @fadeInOut>
+      <div>
+        <p>Added <span class="font-weight-bold">{{ course.title }}</span> course.</p>
+      </div>
+      <div class="text-danger">
+        Content builder still in development.
+        <button
+          type="button"
+          class="btn btn-secondary d-block mb-5 mt-1"
+          [disabled]="true"
+        >
+          Add content
+        </button>
+      </div>
+      <div>
+        Return to your
+        <a
+          [routerLink]="['/admin', 'publisher', 'courses']"
+          type="button"
+          class="text-info mt-5"
+        >course directory</a>.
+      </div>
+    </div>
+  </ng-template>
+
 </div>

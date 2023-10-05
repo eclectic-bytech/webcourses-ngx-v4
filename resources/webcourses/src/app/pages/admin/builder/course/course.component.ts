@@ -17,14 +17,16 @@ import { Course } from 'src/app/models/course.model'
 export class CourseComponent {
 
   public hideAdvanced = true
-  course: FormGroup
+  public courseAdded = false
+  public courseAddForm: FormGroup
+  public course: Course
 
   constructor(
     public fb: FormBuilder,
     private configService: ConfigService,
     private httpClient: HttpClient
   ) {
-    this.course = this.fb.group({
+    this.courseAddForm = this.fb.group({
       title: ['', Validators.compose(
         [
           Validators.required,
@@ -58,10 +60,11 @@ export class CourseComponent {
   onSubmit(): void {
     this.httpClient.post(
       `${this.configService.params.api.route}/admin/publisher/course`,
-      this.course.value
+      this.courseAddForm.value
     ).subscribe(
       (course: Course) => {
-        console.log(course)
+        this.courseAdded = true
+        this.course = course
       },
       (err) => {
         console.log(err)
