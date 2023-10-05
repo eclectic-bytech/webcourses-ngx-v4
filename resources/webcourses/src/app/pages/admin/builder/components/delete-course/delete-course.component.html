@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">Delete course</h4>
+  <h4 class="modal-title text-danger">Danger zone</h4>
   <button
     (click)="ngbActiveModal.dismiss('Cross click')"
     type="button"
@@ -10,8 +10,70 @@
   </button>
 </div>
 <div class="modal-body">
-  <p>Hello, World!</p>
+
+  <!-- COURSE HAS NO STUDENTS AND CAN BE DELETED -->
+
+  <div class="container" *ngIf="!hasStudents; else unavailable">
+    <div class="row">
+      <div class="col-auto mt-3">
+        <i class="fa-solid fa-triangle-exclamation fa-beat fa-2xl text-danger mt-3"></i>
+      </div>
+      <div class="col">
+        <p class="lead">
+          Do you really want to delete<br>
+          <span class="font-weight-bold">{{ this.deleteCourseService.course.title }}</span>
+        </p>
+        <form class="container m-1">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="confirmation"
+            (change)="deleteLock = !deleteLock"
+            >
+          <label for="confirmation">
+            <span class="font-weight-bold">Yes, </span> I really wish to delete the
+            <span class="font-italic">{{ this.deleteCourseService.course.title}}</span>
+            course.
+          </label>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- COURSE HAS STUDENTS AND CANNOT BE DELETED -->
+
+  <ng-template #unavailable>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto my-auto">
+          <i class="fa-solid fa-ban fa-2xl text-warning"></i>
+        </div>
+        <div class="col my-auto lead">
+          The <span class="font-weight-bold">{{ this.deleteCourseService.course.title }}</span> course
+          has students. It cannot be deleted.
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
 </div>
+
 <div class="modal-footer">
-  <button type="button" class="btn btn-danger" (click)="ngbActiveModal.close('Delete click')">Delete</button>
+  <button
+    type="button"
+    class="btn btn-primary mx-2"
+    (click)="ngbActiveModal.close('Abort click')"
+  >
+    Abort
+  </button>
+  <button
+    type="button"
+    class="btn btn-danger mx-2"
+    (click)="ngbActiveModal.close('Delete click')"
+    [disabled]="deleteLock"
+    [ngClass]="hasStudents ? 'd-none' : ''"
+  >
+    Delete
+  </button>
 </div>
