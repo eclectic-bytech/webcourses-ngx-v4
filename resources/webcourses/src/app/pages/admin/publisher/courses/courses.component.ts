@@ -6,6 +6,8 @@ import { ConfigService } from 'src/app/core/services/config/config.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { Course } from 'src/app/models/course.model'
 import { Router } from '@angular/router'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { DeleteCourseComponent } from '../../builder/components/delete-course/delete-course.component'
 
 @Component({
   selector: 'app-courses',
@@ -19,8 +21,9 @@ export class PublisherCoursesComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private configService: ConfigService,
-    private router: Router
+    public ngbModal: NgbModal,
+    private router: Router,
+    private configService: ConfigService
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +35,9 @@ export class PublisherCoursesComponent implements OnInit {
   }
 
   deleteCourseBtn(cid: number) {
-    console.log(`DELETE ${cid} BUTTON`)
+    this.ngbModal.open(DeleteCourseComponent, {
+      size: 'md', centered: true
+    })
   }
 
   getPublisherCourses() {
