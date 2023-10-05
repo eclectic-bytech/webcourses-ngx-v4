@@ -16,10 +16,11 @@
     </div>
   </div>
 
-  <div *ngIf="publisherCourses$ | async as publisherCourses" @fadeInOut>
+  <div *ngIf="publisherCourses$ | async as publisherCourses" id="courses" @fadeInOut>
     <div
       *ngFor="let publisherCourse of publisherCourses; index as i"
       class="row no-gutters justify-content-between mb-2 border"
+      id="course-id-{{publisherCourse.id}}"
     >
       <div class="col-lg-2">
         <div class="card">

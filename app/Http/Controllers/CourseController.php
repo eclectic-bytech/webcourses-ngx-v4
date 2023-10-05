@@ -133,6 +133,31 @@ class CourseController extends Controller
         return $input;
     }
 
+    public function edit_course() {
+        $uid = auth()->user()->id;
+        $publisher = Publisher::where('owner_uid', $uid)->first();
+        return $publisher;
+    }
+
+    public function delete_course($cid) {
+        $uid = auth()->user()->id;
+        $publisher = Publisher::where('owner_uid', $uid)->first();
+
+        $course = Course
+            ::where('id', $cid)
+            ->withCount('participants as total_students')
+            ->first();
+
+        if (
+            $publisher['id'] === $course['publisher_id']
+            && $course['total_students'] === 0
+        ) {
+            return Course::find($cid)->delete();
+        }
+
+        return 0;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

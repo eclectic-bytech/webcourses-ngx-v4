@@ -70,7 +70,7 @@
   <button
     type="button"
     class="btn btn-danger mx-2"
-    (click)="ngbActiveModal.close('Delete click')"
+    (click)="this.deleteCourseService.deleteCourse()"
     [disabled]="deleteLock"
     [ngClass]="hasStudents ? 'd-none' : ''"
   >

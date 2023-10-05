@@ -114,6 +114,8 @@ Route::group(['prefix' => 'v4'], function() {
     // Paths grouped as /v4/admin
     Route::middleware(['auth:sanctum'])->prefix('admin')->group(function() {
 
+        Route::delete('/course/{cid}', [CourseController::class, 'delete_course']);
+
         // Paths gruped as /v4/admin/system
         Route::middleware(['is_admin'])->prefix('system')->group(function() {
             Route::get('recent-code-uses', [CouponController::class, 'recent_code_uses']);
