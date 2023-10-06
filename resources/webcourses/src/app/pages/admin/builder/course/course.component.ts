@@ -63,12 +63,11 @@ export class CourseComponent implements OnInit {
 
   ngOnInit() {
     let cid = this.activatedRoute.snapshot.paramMap.get('cid')
-    this.courseService.getCourse(cid).subscribe(
+    this.courseService.getAdminCourse(cid).subscribe(
       (course: Course) => {
         this.course = course
         this.courseAddForm.value.title = this.course.title
         this.courseAddForm.setValue({ ...this.courseAddForm.value, title: this.course.title });
-        console.log(this.courseAddForm.value)
       }
     )
   }

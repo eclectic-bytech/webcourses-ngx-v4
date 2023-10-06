@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\AngularController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\AdminCourseController;
 use App\Http\Controllers\UserCourseController;
 use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\PublisherController;
@@ -147,6 +148,12 @@ Route::group(['prefix' => 'v4'], function() {
             });
 
         });
+
+        // Paths groupped as /v4/admin/course
+        Route::group(['prefix' => 'course'], function() {
+            Route::get('/{cid}', [AdminCourseController::class, 'course']);
+        });
+
     });
 
 });

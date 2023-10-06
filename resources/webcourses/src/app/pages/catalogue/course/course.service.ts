@@ -23,4 +23,10 @@ export class CourseService {
     `).pipe(course => course)
   }
 
+  getAdminCourse(cid: any) {
+    return this.http.get<Course>(`
+      ${this.config.params.api.route}/admin/course/${cid}
+    `).pipe(course => course)
+  }
+
 }
