@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { HttpClient } from '@angular/common/http'
@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http'
 // WNGX imports
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { Course } from 'src/app/models/course.model'
+import { ActivatedRoute } from '@angular/router'
+import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 
 @Component({
   selector: 'app-course',
@@ -14,7 +16,7 @@ import { Course } from 'src/app/models/course.model'
   animations: [FadeInOut]
 })
 
-export class CourseComponent {
+export class CourseComponent implements OnInit {
 
   public hideAdvanced = true
   public courseAdded = false
@@ -24,7 +26,9 @@ export class CourseComponent {
   constructor(
     public fb: FormBuilder,
     private configService: ConfigService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private activatedRoute: ActivatedRoute,
+    private courseService: CourseService
   ) {
     this.courseAddForm = this.fb.group({
       title: ['', Validators.compose(
@@ -55,6 +59,18 @@ export class CourseComponent {
       objective: '',
       evalType: '',
     })
+  }
+
+  ngOnInit() {
+    let cid = this.activatedRoute.snapshot.paramMap.get('cid')
+    this.courseService.getCourse(cid).subscribe(
+      (course: Course) => {
+        this.course = course
+        this.courseAddForm.value.title = this.course.title
+        this.courseAddForm.setValue({ ...this.courseAddForm.value, title: this.course.title });
+        console.log(this.courseAddForm.value)
+      }
+    )
   }
 
   onSubmit(): void {
