@@ -60,6 +60,17 @@
           </li> -->
           <li ngbNavItem>
             <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
+              <fa-icon [icon]="faBookBookmark" size="lg" class="d-block text-center"></fa-icon>
+              <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+                <small>Bookmarks</small>
+              </div>
+            </a>
+            <ng-template ngbNavContent>
+              <app-bookmarks></app-bookmarks>
+            </ng-template>
+          </li>
+          <li ngbNavItem>
+            <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
               <fa-icon [icon]="faQuestionCircle" size="lg" class="d-block text-center"></fa-icon>
               <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
                 <small>Help</small>
@@ -69,12 +80,6 @@
               <app-activity-help></app-activity-help>
             </ng-template>
           </li>
-          <!-- <li ngbNavItem [disabled]='true'>
-            <a ngbNavLink>Bookmarks</a>
-            <ng-template ngbNavContent>
-              <p class="text-light mt-3">Coming Summer 2020.</p>
-            </ng-template>
-          </li> -->
         </ul>
       </div>
 

@@ -32,8 +32,7 @@ export class ActivitiesService {
     private courseChapterIndexService: CourseChapterIndexService,
     private courseService: CourseService,
     private completionStatsService: CompletionStatsService,
-    private themeService: ThemeService
-  ) {}
+    private themeService: ThemeService) { }
 
   loadActivities(aid) {
     this.getActivities(aid).subscribe(
@@ -88,7 +87,7 @@ export class ActivitiesService {
 
   generateCourseSyllabus(courseChapters: Chapter[]) {
     let courseSyllabus: ActivityMeta[] = []
-    courseChapters.forEach( (chapter: Chapter) => {
+    courseChapters.forEach((chapter: Chapter) => {
       courseSyllabus = courseSyllabus.concat(chapter.syllabus)
     })
     return courseSyllabus
@@ -113,9 +112,9 @@ export class ActivitiesService {
       // Length comparison fixes last activity getting re-added when an activity
       // progress bar in the same activity set is clicked (issue #161)
       if (this.activities.length != activities.length) {
-        this.activities.push(activities[activities.length -1])
+        this.activities.push(activities[activities.length - 1])
         setTimeout(() => {
-          let scrollLocation = `activity${activities[activities.length -1].meta.activity_id}`
+          let scrollLocation = `activity${activities[activities.length - 1].meta.activity_id}`
           const element = document.getElementById(scrollLocation);
           if (element) {
             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
