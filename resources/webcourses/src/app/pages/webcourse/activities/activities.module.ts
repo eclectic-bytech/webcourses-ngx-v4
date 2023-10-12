@@ -16,6 +16,7 @@ import { LoadingSpinnerModule } from './../../../core/modules/loading-spinner/lo
 
 import { ActivitiesComponent } from './activities.component'
 import { CollectUserNamesComponent } from './components/collect-user-names/collect-user-names.component'
+import { BookmarksModule } from './sidebar/bookmarks/bookmarks.module'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CollectUserNamesComponent } from './components/collect-user-names/colle
     SelectedModule,
     ActivityHelpModule,
     PipesModule,
-    LoadingSpinnerModule
+    LoadingSpinnerModule,
+    BookmarksModule
   ],
   providers: [
   ],

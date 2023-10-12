@@ -1,26 +1,20 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-
-      <div class="text-right text-secondary m-5">
-        <form #demoActivity="ngForm">
-          <div class="form-check my-auto">
-            <label class="form-check-label user-select-none font-weight-light" for="demoActivityCheck">
-              Make this <span class="font-weight-normal">Activity Set</span>
-              part of a free <span class="font-weight-normal">Demo Course</span>
-            </label>
-            <input
-              type="checkbox"
-              class="form-check-input ml-3 mt-2"
-              name="demoActivityCheck"
-              id="demoActivityCheck"
-              (ngModelChange)="activityDemoFlagToggle()"
-              [ngModel]="activityMeta.demo"
-            >
-          </div>
-        </form>
+<div class="col">
+  <div class="text-right text-secondary mx-auto">
+    <form #demoActivity="ngForm">
+      <div class="form-check my-auto">
+        <label class="form-check-label user-select-none font-weight-light" for="demoActivityCheck">
+          Make this <span class="font-weight-normal">Activity Set<br></span>
+          part of a free <span class="font-weight-normal">Demo Course</span>
+        </label>
+        <input
+          type="checkbox"
+          class="form-check-input ml-3 mt-3"
+          name="demoActivityCheck"
+          id="demoActivityCheck"
+          (ngModelChange)="activityDemoFlagToggle()"
+          [ngModel]="activityMeta.demo"
+        >
       </div>
-
-    </div>
+    </form>
   </div>
 </div>

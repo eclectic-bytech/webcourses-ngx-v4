@@ -7,10 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: DiscountCodesComponent,
-    data: {
-      title: 'Discount Codes'
-    },
-    pathMatch: 'full'
+    title: 'Courses access codes (Cultivate Learning)'
+  },
+  {
+    path: ':cid',
+    component: DiscountCodesComponent,
+    title: 'Course access codes (Cultivate Learning)'
   },
   {
     path: 'add',

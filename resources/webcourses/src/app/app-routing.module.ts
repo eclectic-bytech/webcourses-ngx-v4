@@ -12,11 +12,6 @@ const routes: Routes = [
     component: DefaultComponent,
     children: [
       {
-        path: '',
-        loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule),
-        pathMatch: 'full'
-      },
-      {
         path: 'help',
         loadChildren: () => import('./pages/help/help.module').then(m => m.HelpModule)
       },
@@ -49,21 +44,13 @@ const routes: Routes = [
         loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
       },
       {
-        path: 'contact',
-        loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule)
+        path: ':page',
+        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
       },
       {
-        path: 'getstarted',
-        loadChildren: () => import('./pages/publish/publish.module').then(m => m.PublishModule)
+        path: '',
+        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
       },
-      {
-        path: 'demo',
-        loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule)
-      },
-      {
-        path: 'pricing',
-        loadChildren: () => import('./pages/pricing/pricing.module').then(m => m.PricingModule)
-      }
     ]
   }
 ]
@@ -73,7 +60,7 @@ const routes: Routes = [
     anchorScrolling: 'enabled',
     onSameUrlNavigation: 'reload',
     scrollPositionRestoration: 'enabled'
-})],
+  })],
   exports: [RouterModule],
   providers: [
     {

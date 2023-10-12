@@ -1,6 +1,56 @@
-<div class="container text-center" style="margin-top: 200px;" @fadeInOut>
-  <div style='font-size:100px;'>🐣</div>
-  <div class="h1">
-    This area hasn't yet fully hatched.
+<div id="fullMainContent" class="container" @fadeInOut>
+
+  <div class="row mb-3">
+    <div class="col-12">
+      <app-header [title]="'course directory'"></app-header>
+    </div>
   </div>
+
+  <div *ngIf="publisherCourses$ | async as publisherCourses" @fadeInOut>
+    <div
+      *ngFor="let publisherCourse of publisherCourses; index as i"
+      class="row no-gutters justify-content-between mb-2 border"
+    >
+      <div class="col-lg-2">
+        <div class="card">
+          <img
+            class="card-img-top"
+            style="object-fit: cover; height: 6rem;"
+            src="publisher-files/{{publisherCourse.publisher_id}}/courses/{{publisherCourse.id}}/images/{{publisherCourse.cover}}" alt="{{publisherCourse.cover_alt}}"
+          >
+        </div>
+      </div>
+      <div class="col-auto pl-3 my-auto mr-auto">
+        <div class="fs-4 my-2 my-lg-0">
+          {{ publisherCourse.title }}
+          <div class="fs-6 text-secondary">
+            {{ publisherCourse.created_at | date:'longDate' }} #{{ publisherCourse.id }}
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-auto my-lg-auto my-2 my-lg-0">
+        <div class="d-inline-block ml-auto my-auto px-3">
+          <i class='fa-sharp fa-solid fa-user-group text-secondary mr-1 me-1'></i>
+          {{ publisherCourse.total_students }}
+        </div>
+        <div class="d-inline-block my-auto px-3 text-primary handy" [routerLink]="['/admin', 'publisher', 'course', publisherCourse.id, 'access-codes']">
+          <i class='fa-sharp fa-solid fa-fingerprint mr-1 me-1'></i>
+          {{ publisherCourse.access_codes}}
+        </div>
+        <div class="d-inline-block my-auto px-3">
+          <i class='fa-sharp fa-solid fa-diagram-project text-secondary mr-1 me-1'></i>
+          {{ publisherCourse.total_activities }}
+        </div>
+        <div class="d-inline-block my-auto px-3 pr-md-3 pr-lg-5">
+          <span
+            class="badge font-weight-light"
+            [ngClass]="publisherCourse.published ? 'badge-info' : 'badge-light'"
+            [innerHtml]="publisherCourse.published ? 'Published' : 'Not published'"
+          >
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

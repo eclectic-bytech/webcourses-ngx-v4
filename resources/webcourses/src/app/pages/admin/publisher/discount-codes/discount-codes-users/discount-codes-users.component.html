@@ -1,10 +1,38 @@
-<div class="container mt-5 pt-5">
-  <div *ngIf="discountCodeUsers$ | async as discountCodeUsers">
-    <table class="table table-bordered table-hover table-striped">
+<div id="fullMainContent" class="container">
+  <div *ngIf="discountCodeUsers$ | async as discountCodeUsers" @fadeInOut>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-2 display-1">
+          <i class='fa-sharp fa-solid fa-fingerprint text-secondary'></i>
+        </div>
+        <div class="col-10">
+          <div class="h2">{{ discountCodeUsers['course'].title }}</div>
+          <div>
+            <span class="font-weight-bold fw-bold">Code:</span>
+            {{ discountCodeUsers['code'].label }} ({{ discountCodeUsers['code'].code }})
+          </div>
+          <div>
+            <span class="font-weight-bold fw-bold">Seats:</span>
+            {{ discountCodeUsers['code'].uses }} /
+            <span *ngIf="discountCodeUsers['code'].uses_max == 0; else noOfUses">&#8734;</span>
+            <ng-template #noOfUses>
+              {{ discountCodeUsers['code'].uses_max }}
+            </ng-template>
+          </div>
+          <div>
+            <span class="font-weight-bold fw-bold">Expiry:</span>
+            {{ discountCodeUsers['code'].expiry | date:'mediumDate' }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-bordered table-hover table-striped mt-5">
       <thead>
         <tr>
           <th class="text-uppercase text-center">id</th>
-          <th class="text-uppercase">Name</th>
+          <th class="text-uppercase">name</th>
           <th class="text text-uppercase">email</th>
           <th class="text text-uppercase">started</th>
           <th class="text text-uppercase">completed</th>
@@ -12,7 +40,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let discountCodeUser of discountCodeUsers, let i = 'index + 1'">
+        <tr *ngFor="let discountCodeUser of discountCodeUsers['code-uses'], let i = 'index + 1'">
           <td class="text-center">{{i}}</td>
           <td [routerLink]="[
             '/admin', 'publisher', 'course', 'user_progress', discountCodeUser.user_progress_id
@@ -22,7 +50,7 @@
           <td>{{ discountCodeUser.user.email }}</td>
           <td>{{ discountCodeUser.created_at | date:'mediumDate' }}</td>
           <td>
-            <span [innerHtml]="(discountCodeUser.completed_activities_count / total_activities * 100) | number:'1.0-0'"></span>%
+            <span [innerHtml]="(discountCodeUser.completed_activities_count / discountCodeUsers['course'].total_activities * 100) | number:'1.0-0'"></span>%
           </td>
         </tr>
       </tbody>

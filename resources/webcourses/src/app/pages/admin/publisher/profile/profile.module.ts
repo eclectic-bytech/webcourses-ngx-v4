@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+
 import { PublisherProfileRoutingModule } from './profile-routing.module'
 import { PublisherProfileComponent } from './profile.component'
+import { HeaderModule } from '../blocks/header/header.module'
 
 @NgModule({
   declarations: [
@@ -9,7 +11,11 @@ import { PublisherProfileComponent } from './profile.component'
   ],
   imports: [
     CommonModule,
-    PublisherProfileRoutingModule
+    PublisherProfileRoutingModule,
+    HeaderModule
+  ],
+  exports: [
+    PublisherProfileComponent
   ]
 })
 

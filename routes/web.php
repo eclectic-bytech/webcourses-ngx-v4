@@ -19,6 +19,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CourseEditorController;
 use App\Http\Controllers\CodesUseController;
 use App\Http\Controllers\UserProgressController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\SaleController;
 
 /*
@@ -87,6 +88,7 @@ Route::group(['prefix' => 'v4'], function() {
     Route::middleware(['auth:sanctum'])->prefix('webcourse')->group(function() {
         Route::get('/access-code/{code_hash}', [CouponController::class, 'applyAccessCode']);
         Route::get('/{cid}/chapters', [CourseController::class, 'chapterIndex']);
+        Route::get('/{cid}/bookmarks', [BookmarkController::class, 'bookmark_Index']);
 
         Route::group(['prefix' => '/activities'], function() {
           Route::get('/{aid?}', [SyllabusController::class, 'activity_set']);
@@ -94,6 +96,8 @@ Route::group(['prefix' => 'v4'], function() {
           Route::get('/special/completion-cert/{pid}', [UserProgressController::class, 'completion_cert']);
           Route::get('/help/{type?}', [ActivityController::class, 'help']);
           Route::post('/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
+          Route::post('/bookmark/{aid}', [BookmarkController::class, 'bookmark_create']);
+          Route::delete('/bookmark/{aid}', [BookmarkController::class, 'bookmark_delete']);
         });
 
         Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
@@ -124,12 +128,11 @@ Route::group(['prefix' => 'v4'], function() {
         Route::group(['prefix' => 'publisher'], function() {
 
             // Lists courses and their access codes
-            Route::get('/coupons', [CouponController::class, 'index']);
+            Route::get('/coupons/{cid?}', [CouponController::class, 'index']);
+            Route::get('/courses', [CourseController::class, 'publisherCourses']);
 
             // Paths grouped as /v4/admin/publisher/access-codes
             Route::group(['prefix' => 'access-codes'], function() {
-                // returns Course for code_id
-                Route::get('/{code_id}/course', [CodesUseController::class, 'access_code_course']);
                 // Lists all users that applied a code
                 Route::get('/{code_id}/users', [CodesUseController::class, 'access_code_users']);
             });

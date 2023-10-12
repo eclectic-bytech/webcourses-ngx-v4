@@ -3,12 +3,13 @@ import { Observable } from 'rxjs'
 
 import { DiscountCodesService } from './discount-codes.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-discount-codes',
   templateUrl: './discount-codes.component.html',
-  styleUrls: ['./discount-codes.component.sass'],
+  styleUrls: ['./discount-codes.component.scss'],
   animations: [FadeInOut]
 })
 export class DiscountCodesComponent implements OnInit {
@@ -17,11 +18,26 @@ export class DiscountCodesComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private discountCodesService: DiscountCodesService
+    private activatedRoute: ActivatedRoute,
+    private discountCodesService: DiscountCodesService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-    this.discountCodes$ = this.discountCodesService.getDiscountCodes()
+    // this.activatedRoute.params.subscribe(
+    //   (params) => {
+    //     console.log(params)
+    //   }
+    // )
+    this.discountCodes$ = this.discountCodesService.getDiscountCodes(
+      this.activatedRoute.snapshot.paramMap.get('cid')
+    )
+  }
+
+  regLinkCopied(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000
+    })
   }
 
   addAccessCode(cid) {
