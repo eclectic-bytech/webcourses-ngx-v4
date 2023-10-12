@@ -25,4 +25,8 @@ class Activity extends Model
     public function default_answer() {
         return $this->hasOne(ActivityDefaults::class);
     }
+
+    public function bookmark() {
+        return $this->hasOne(Bookmark::class, 'aid');
+    }
 }

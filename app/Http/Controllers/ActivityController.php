@@ -22,7 +22,7 @@ class ActivityController extends Controller
         $userProgress->save();
 
         return Activity
-            ::with('meta', 'answers', 'default_answer')
+            ::with('meta', 'answers', 'default_answer', 'bookmark')
             ->with(['user_answers' => function ($query) use ($pid) {
                 $query->where('progress_id', $pid);
             }])

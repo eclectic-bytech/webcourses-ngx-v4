@@ -1,0 +1,58 @@
+<div
+  id="bookmarks-tab"
+  class="px-4"
+  @fadeInOut
+>
+  <div class="container-fluid my-3">
+    <div class="row">
+      <div class="col h5 mt-3">
+        Bookmarks
+      </div>
+    </div>
+    <div
+      *ngFor="let bookmark of this.bookmarksService.bookmarks$ | async"
+      class="bookmark"
+      [ngClass]="'bookmark-id-' + bookmark.id"
+      [@fadeInOut]="'fadeInOut'"
+    >
+      <div
+        class="row border rounded bg-light my-3 p-2 shadow-sm"
+        *ngIf="!bookmark.deleted"
+        [@fadeInOut]="'fadeInOut'"
+      >
+        <div class="col text-dark text-truncate">
+          <div class="container-fluid">
+            <div
+              class="row lead text-truncate"
+              role="button"
+              (click)="this.loadBookmarkedActivity(bookmark.aid)"
+            >
+              {{ bookmark.label }}
+            </div>
+            <div class="row text-secondary text-uppercase">
+              <div class="col p-0">
+                <small>{{ bookmark.created_at | date:'hh:mm, MMM d, y' }}</small>
+              </div>
+              <div class="col-auto text-right p-0">
+                <small>Activity #{{bookmark.aid}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto my-auto">
+          <i
+            role="button"
+            class="fa-solid fa-trash fa-lg text-right text-secondary"
+            (click)="this.deleteBookmarkBtn(bookmark)"
+          ></i>
+        </div>
+      </div>
+    </div>
+    <div class="row my-2">
+      <div class="col primary-text lead">
+        Click the <i class="fa-regular fa-bookmark mx-1"></i>
+        icon at the top of any activity set to add a bookmark.
+      </div>
+    </div>
+  </div>
+</div>
