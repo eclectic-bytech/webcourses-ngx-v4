@@ -1,0 +1,15 @@
+<div
+  *ngIf="this.selectedCourseService.selectedActivitySet$ | async as activitySet"
+  class="my-3 text-dark text-uppercase"
+  role="button"
+>
+  <div *ngIf="!activitySet[0].bookmark" (click)="addBookmarkBtn(activitySet)">
+    <i class="fa-regular fa-bookmark"></i>
+    <small class="ml-2">Bookmark</small>
+  </div>
+
+  <div *ngIf="activitySet[0].bookmark" (click)="deleteBookmarkBtn(activitySet)">
+    <i class="fa-solid fa-bookmark text-primary"></i>
+    <small class="ml-2">Bookmarked</small>
+  </div>
+</div>
