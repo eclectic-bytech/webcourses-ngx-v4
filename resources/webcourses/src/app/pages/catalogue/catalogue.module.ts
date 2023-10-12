@@ -11,6 +11,7 @@ import { CatalogueComponent } from './catalogue.component'
 import { CatalogueRoutingModule } from './catalogue-routing.module'
 import { ThemeModule } from 'src/app/views/theme/theme.module'
 import { PipesModule } from 'src/app/shared/pipes/pipes.module'
+import { CatalogueSorterComponent } from './components/sorter/sorter.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module'
     MatButtonModule,
     ThemeModule,
     CatalogueCardModule,
-    PipesModule
+    PipesModule,
+    CatalogueSorterComponent
   ],
   exports: []
 })

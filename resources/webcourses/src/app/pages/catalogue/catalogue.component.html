@@ -19,69 +19,77 @@
       </div>
     </div>
     <div
-      class="row d-flex justify-content-center"
       *ngIf="this.webcoursesAll$ | async as webcourses"
       @fadeInOut
     >
-      <div id="featuredCID" *ngIf="this.featuredCourse$ | async as course" class="float-left mx-5 mb-5">
-        <mat-card id="featured-card" tabindex="0">
-          <!-- <small class="d-inline-block text-secondary float-right"> #{{ course.id }}</small> -->
-          <mat-card-header>
-            <mat-card-title [innerHTML]="course.title" class="text-dark"></mat-card-title>
-            <mat-card-subtitle [innerHtml]="'FREE'"></mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image
-            class="image-featured rounded"
-            src="publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}"
-            alt="{{course.cover_alt}}"
-          >
-          <mat-card-content [innerHtml]="course.short_desc | safehtml: 'html'" class="text-dark overflow-auto"></mat-card-content>
-          <mat-card-actions>
-            <!-- <app-buy-button [course]="course" class="d-inline-block"></app-buy-button> -->
-            <button mat-button (click)="freebieAccess(course)" color="primary" class="border">Free</button>
-            <button mat-button color="primary" [routerLink]="['/catalogue', 'course', course.id]">Details</button>
-          </mat-card-actions>
-          <mat-card-footer class="text-secondary text-uppercase">
-            <div class="container-fluid">
-              <div class="row p-1">
-                <div class="col pl-2">
-                  <small>
-                    {{ course.total_activities }}
-                    <fa-icon [icon]="faDiagramProject" class="mx-1" title="Activities"></fa-icon>
-                  </small>
-                  <small class="mx-1">
-                    {{ course.total_students }}
-                    <fa-icon [icon]="faUserGroup" class="mx-1" title="Participants"></fa-icon>
-                  </small>
-                </div>
-                <div class="col pr-2 text-right">
-                  <a class="card-link">
-                    <small class="text-secondary text-nowrap">
-                      Publisher:
-                      <span
-                        [routerLink]="['/catalogue', 'publisher', course.publisher.id_alias]"
-                        class="text-uppercase text-primary handy"
-                        >
-                        {{ course.publisher.name }}
-                      </span>
-                    </small>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </mat-card-footer>
-        </mat-card>
-        <div class="m-2 text-secondary d-block text-right">
-          <small>Featured</small>
+      <div class="container mb-4">
+        <div class="row">
+          <div class="col">
+            <wngx-catalogue-sorter [courses]="webcourses"></wngx-catalogue-sorter>
+          </div>
         </div>
       </div>
-      <!-- <div class="text-center mb-3">
-        <h1 class="common-heading mb-0 mb-lg-2">Web Course Catalogue</h1>
-        <small class="text-dark text-uppercase">All {{webcourses.length}} Publicly Available Courses</small>
-      </div> -->
 
-      <div *ngFor="let course of webcourses, let i = index, let l = last" class="col-auto mb-3 align-top" @fadeInOut>
-        <app-catalogue-card [course]="course"></app-catalogue-card>
+      <div class="row d-flex justify-content-center">
+        <div id="featuredCID" *ngIf="this.featuredCourse$ | async as course" class="float-left mx-5 mb-5">
+          <mat-card id="featured-card" tabindex="0">
+            <!-- <small class="d-inline-block text-secondary float-right"> #{{ course.id }}</small> -->
+            <mat-card-header>
+              <mat-card-title [innerHTML]="course.title" class="text-dark"></mat-card-title>
+              <mat-card-subtitle [innerHtml]="'FREE'"></mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image
+              class="image-featured rounded"
+              src="publisher-files/{{course.publisher.id}}/courses/{{course.id}}/images/{{course.cover}}"
+              alt="{{course.cover_alt}}"
+            >
+            <mat-card-content [innerHtml]="course.short_desc | safehtml: 'html'" class="text-dark overflow-auto"></mat-card-content>
+            <mat-card-actions>
+              <!-- <app-buy-button [course]="course" class="d-inline-block"></app-buy-button> -->
+              <button mat-button (click)="freebieAccess(course)" color="primary" class="border">Free</button>
+              <button mat-button color="primary" [routerLink]="['/catalogue', 'course', course.id]">Details</button>
+            </mat-card-actions>
+            <mat-card-footer class="text-secondary text-uppercase">
+              <div class="container-fluid">
+                <div class="row p-1">
+                  <div class="col pl-2">
+                    <small>
+                      {{ course.total_activities }}
+                      <fa-icon [icon]="faDiagramProject" class="mx-1" title="Activities"></fa-icon>
+                    </small>
+                    <small class="mx-1">
+                      {{ course.total_students }}
+                      <fa-icon [icon]="faUserGroup" class="mx-1" title="Participants"></fa-icon>
+                    </small>
+                  </div>
+                  <div class="col pr-2 text-right">
+                    <a class="card-link">
+                      <small class="text-secondary text-nowrap">
+                        Publisher:
+                        <span
+                          [routerLink]="['/catalogue', 'publisher', course.publisher.id_alias]"
+                          class="text-uppercase text-primary handy"
+                          >
+                          {{ course.publisher.name }}
+                        </span>
+                      </small>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </mat-card-footer>
+          </mat-card>
+          <div class="m-2 text-secondary d-block text-right">
+            <small>Featured</small>
+          </div>
+        </div>
+        <!-- <div class="text-center mb-3">
+          <h1 class="common-heading mb-0 mb-lg-2">Web Course Catalogue</h1>
+          <small class="text-dark text-uppercase">All {{webcourses.length}} Publicly Available Courses</small>
+        </div> -->
+        <div *ngFor="let course of webcourses, let i = index, let l = last" class="col-auto mb-3 align-top" @fadeInOut>
+          <app-catalogue-card [course]="course"></app-catalogue-card>
+        </div>
       </div>
 
     </div>
