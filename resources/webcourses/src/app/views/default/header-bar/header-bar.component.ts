@@ -50,4 +50,8 @@ export class HeaderBarComponent {
     }
   }
 
+  pubPowerUp() {
+    console.log('Display modal')
+  }
+
 }

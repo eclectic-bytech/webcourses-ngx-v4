@@ -79,6 +79,26 @@
           <div class="dropdown-divider"></div>
         </div>
 
+        <!-- PUB POWER UP! -->
+        <div [ngClass]="!this.userService.userHasRole(4) ? '' : 'd-none'">
+          <div class="dropdown-header text-uppercase font-weight-bold">Power up</div>
+
+          <a
+            role="button"
+            class="dropdown-item py-2"
+            (click)="pubPowerUp()"
+            ngbDropdownItem
+          >
+            <div class="menu-icon text-center d-inline-block pr-2">
+              <i class="fa-solid fa-bolt text-success"></i>
+            </div>
+            Become a publisher
+          </a>
+
+          <!-- MENU ITEMS DIVIDER -->
+          <div class="dropdown-divider"></div>
+        </div>
+
         <!-- USER MENU: PUBLISHER-->
         <div [ngClass]="this.userService.userHasRole(2) ? '' : 'd-none'">
 
@@ -105,7 +125,7 @@
             <div class="menu-icon text-center d-inline-block pr-2">
               <i class='fa-sharp fa-solid fa-fingerprint text-warning'></i>
             </div>
-            Access Codes
+            Access codes
           </a>
 
           <a
