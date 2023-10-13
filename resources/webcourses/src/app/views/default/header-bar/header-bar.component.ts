@@ -30,7 +30,7 @@ export class HeaderBarComponent {
     public gravatarMd5: GravatarMd5Service,
     public headerbarService: HeaderBarService,
     public userService: UserService,
-    private pubPowerUpService: PubPowerUpService,
+    public pubPowerUpService: PubPowerUpService,
     public themeService: ThemeService
   ) { }
 

@@ -80,7 +80,12 @@
         </div>
 
         <!-- PUB POWER UP! -->
-        <div [ngClass]="!this.userService.userHasRole(4) ? '' : 'd-none'">
+        <div [ngClass]="
+          this.userService.userHasRole(4) ||
+          this.userService.userHasRole(2) ||
+          this.pubPowerUpService.requestSuccess
+          ? 'd-none' : ''
+        ">
           <div class="dropdown-header text-uppercase font-weight-bold">Power up</div>
 
           <a

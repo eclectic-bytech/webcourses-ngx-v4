@@ -9,6 +9,9 @@ import { ConfigService } from 'src/app/core/services/config/config.service'
 })
 export class PubPowerUpService {
 
+  public waitingForAPI = false
+  public requestSuccess = false
+
   constructor(
     private httpClient: HttpClient,
     private ngbModal: NgbModal,
@@ -22,11 +25,13 @@ export class PubPowerUpService {
   }
 
   requestUpgradeBtn() {
+    this.waitingForAPI = true
     this.httpClient.post(
       `${this.configService.params.api.route}/publisher/request-access`, ''
     ).subscribe(
-      () => { console.log('Access granted!') },
-      (err) => { console.error(err) }
+      () => { this.requestSuccess = true },
+      (err) => { console.error(err) },
+      () => { this.waitingForAPI = false}
     )
   }
 }
