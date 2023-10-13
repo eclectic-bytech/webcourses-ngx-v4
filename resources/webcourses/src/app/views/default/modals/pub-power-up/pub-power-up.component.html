@@ -1,6 +1,12 @@
 <div class="modal-header">
   <h5 class="modal-title text-dark">Power up</h5>
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <button
+    (click)="ngbActiveModal.dismiss('Cross click')"
+    type="button"
+    class="close"
+    data-dismiss="modal"
+    aria-label="Close"
+  >
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -17,6 +23,18 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  <button type="button" class="btn btn-success">Request upgrade</button>
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="ngbActiveModal.dismiss('Close')" data-dismiss="modal"
+  >
+    Close
+  </button>
+  <button
+    type="button"
+    class="btn btn-success"
+    (click)="this.pubPowerUpService.requestUpgradeBtn()"
+  >
+    Request upgrade
+  </button>
 </div>

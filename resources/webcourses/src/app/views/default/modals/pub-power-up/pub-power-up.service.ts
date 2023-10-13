@@ -16,4 +16,8 @@ export class PubPowerUpService {
       size: 'md', centered: true
     })
   }
+
+  requestUpgradeBtn() {
+    console.log('Request upgrade')
+  }
 }
