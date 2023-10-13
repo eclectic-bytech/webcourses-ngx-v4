@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Publisher;
 use Illuminate\Http\Request;
+
+use App\Models\Publisher;
+use App\Models\UserRole;
 
 class PublisherController extends Controller
 {
@@ -25,6 +27,15 @@ class PublisherController extends Controller
             return Publisher::where('id_alias', $id)
                 ->sole();
         }
+    }
+
+    public function request_access()
+    {
+        $uid = auth()->user()->id;
+        $user_role = new UserRole();
+        $user_role->user_id = $uid;
+        $user_role->role_id = 4;
+        $user_role->save();
     }
 
     /**

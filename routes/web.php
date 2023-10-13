@@ -107,6 +107,7 @@ Route::group(['prefix' => 'v4'], function() {
 
     // Paths grouped as /v4/publisher
     Route::group(['prefix' => 'publisher'], function() {
+        Route::post('/request-access', [PublisherController::class, 'request_access']);
         Route::get('/profile/{id}', [PublisherController::class, 'index']);
     });
 
