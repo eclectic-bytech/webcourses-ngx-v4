@@ -27,4 +27,10 @@ export class DashboardService {
       .get<JetstreamUser[]>(`${this.configService.params.api.route}/admin/system/recent-logins`)
       .pipe(users => users)
   }
+
+  publisherInterest() {
+    return this.httpClient
+      .get(`${this.configService.params.api.route}/admin/system/publisher-interest`)
+      .pipe(users => users)
+  }
 }
