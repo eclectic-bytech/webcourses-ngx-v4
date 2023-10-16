@@ -21,6 +21,7 @@ use App\Http\Controllers\CodesUseController;
 use App\Http\Controllers\UserProgressController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\UserRoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,6 +125,7 @@ Route::group(['prefix' => 'v4'], function() {
         Route::middleware(['is_admin'])->prefix('system')->group(function() {
             Route::get('recent-code-uses', [CouponController::class, 'recent_code_uses']);
             Route::get('recent-logins', [UserController::class, 'recent_logins']);
+            Route::get('publisher-interest', [UserRoleController::class, 'publisher_interest']);
         });
 
         // Paths grouped as /v4/admin/publisher
