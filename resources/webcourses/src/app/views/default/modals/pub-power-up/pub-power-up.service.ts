@@ -19,6 +19,7 @@ export class PubPowerUpService {
   ) { }
 
   pubPowerUp() {
+    this.interestExpressed()
     this.ngbModal.open(PubPowerUpComponent, {
       size: 'md', centered: true
     })
@@ -33,5 +34,11 @@ export class PubPowerUpService {
       (err) => { console.error(err) },
       () => { this.waitingForAPI = false}
     )
+  }
+
+  interestExpressed() {
+    this.httpClient.post(
+      `${this.configService.params.api.route}/publisher/interest-expressed`, ''
+    ).subscribe(() => {})
   }
 }
