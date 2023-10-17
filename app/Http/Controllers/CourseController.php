@@ -133,10 +133,28 @@ class CourseController extends Controller
         return $input;
     }
 
-    public function edit_course() {
+    public function edit_course(Request $request, $cid) {
         $uid = auth()->user()->id;
         $publisher = Publisher::where('owner_uid', $uid)->first();
-        return $publisher;
+
+        $validatedRata = $request->validate([
+            'title' => ['required', 'min:16', 'max:128'],
+            'short_desc' => ['required', 'min:32', 'max:256'],
+            'private' => 'boolean',
+            'audience' => '',
+            'long_desc' => '',
+            'objective' => '',
+            'price' => ['required', 'integer', 'min:0', 'max:99999']
+        ]);
+
+        if ($publisher['owner_uid'] === $uid) {
+            $course = Course::find($cid);
+            $course->update($validatedRata);
+            return $course;
+        }
+
+        // $course = $request->input();
+        return $course_update;
     }
 
     public function delete_course($cid) {

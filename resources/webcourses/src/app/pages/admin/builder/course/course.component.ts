@@ -81,7 +81,15 @@ export class CourseComponent implements OnInit {
   }
 
   onUpdate() {
-    console.log('Update course')
+    this.httpClient.patch<Course>(
+      `${this.configService.params.api.route}/admin/publisher/course/edit/${this.cid}`,
+      this.courseAddForm.value
+    ).subscribe(
+      (course: Course) => {
+        console.log(course)
+        console.log('Update course completed')
+      }
+    )
   }
 
   get cid() {

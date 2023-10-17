@@ -13,6 +13,10 @@ class Course extends Model
 
     protected $hidden = ['active_bid'];
 
+    protected $fillable = [
+        'title', 'published', 'private', 'audience', 'short_desc', 'long_desc', 'objective', 'eval_type', 'price'
+    ];
+
     public function publisher() {
         return $this->belongsTo(Publisher::class);
     }
