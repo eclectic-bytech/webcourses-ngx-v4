@@ -80,6 +80,10 @@ export class CourseComponent implements OnInit {
     )
   }
 
+  onUpdate() {
+    console.log('Update course')
+  }
+
   get cid() {
     return this.activatedRoute.snapshot.paramMap.get('cid')
   }

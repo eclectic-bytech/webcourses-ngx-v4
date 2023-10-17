@@ -1,10 +1,14 @@
 <div id="fullMainContent" @fadeInOut>
   <div class="container" *ngIf="!courseAdded; else whatNext">
-    <div class="display-4 mb-5">
+    <div class="display-4 my-5" *ngIf="!cid">
       Build a new course
     </div>
+    <div class="display-4 my-5" *ngIf="cid" style="line-height: 3rem;">
+      Update course<br>
+      <span class="h5">{{ courseAddForm.value.title }}</span>
+    </div>
 
-    <form [formGroup]="courseAddForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="courseAddForm" (ngSubmit)="cid ? onUpdate() : onSubmit()">
       <div class="form-group">
         <label for="title">Title</label>
         <input
@@ -128,7 +132,16 @@
 
       </div>
 
-      <button type="submit" class="btn btn-primary my-4" [disabled]="!courseAddForm.valid">Submit</button>
+      <button
+        type="submit"
+        class="btn my-4 mr-4"
+        [ngClass]="cid ? 'btn-primary' : 'btn-success'"
+        [disabled]="!courseAddForm.valid"
+        [innerHtml]="cid ? 'Update' : 'Create'"
+      ></button>
+      <a type="button" class="text-primary" [routerLink]="['/admin', 'publisher', 'courses']">
+        Return to your course directory
+      </a>
 
     </form>
 
