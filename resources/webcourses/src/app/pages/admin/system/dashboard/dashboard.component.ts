@@ -22,6 +22,8 @@ export class DashboardComponent {
 
   public recentCodeUses$: Observable<Coupon[]> = this.dashboardService.recentCodeUses()
   public recentLogins$: Observable<JetstreamUser[]> = this.dashboardService.recentLogins()
+  public publisherInterest$: Observable<any> = this.dashboardService.publisherInterest()
+
   public lastRefresh = new Date()
   public lastLatestLoginsRefresh = new Date()
 

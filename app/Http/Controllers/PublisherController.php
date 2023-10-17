@@ -32,10 +32,28 @@ class PublisherController extends Controller
     public function request_access()
     {
         $uid = auth()->user()->id;
-        $user_role = new UserRole();
-        $user_role->user_id = $uid;
-        $user_role->role_id = 4;
-        $user_role->save();
+
+        // Role #5 is added to user when they confirm wanting publisher access
+        if (UserRole::where('user_id', $uid )->where('role_id', 5)->doesntExist()) {
+            $user_role = new UserRole();
+            $user_role->user_id = $uid;
+            $user_role->role_id = 5;
+            $user_role->save();
+        }
+        UserRole::where('user_id', $uid )->where('role_id', 4)->delete();
+    }
+
+    public function interest_expressed()
+    {
+        $uid = auth()->user()->id;
+
+        // Role #4 is added to user when they click Become a publisher menu item
+        if (UserRole::where('user_id', $uid )->where('role_id', 4)->doesntExist()) {
+            $user_role = new UserRole();
+            $user_role->user_id = $uid;
+            $user_role->role_id = 4;
+            $user_role->save();
+        }
     }
 
     /**

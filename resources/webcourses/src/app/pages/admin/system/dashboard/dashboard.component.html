@@ -96,4 +96,32 @@
       <span class="text-secondary text-uppercase small">{{ this.lastLatestLoginsRefresh | date: 'E H:mm:ss' }}</span>
     </div>
   </div>
+  <div *ngIf="publisherInterest$ | async as users">
+    <div class="row">
+      <div class="col">
+        <div class="h3 text-uppercase d-inline-block mt-4">
+          Potential Publishers
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Lead Level</th>
+              <th scope="col">Email</th>
+              <th scope="col">Country</th>
+              <th scope="col">Member since</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td *ngIf="user.role_id == 4">Cold</td>
+              <td *ngIf="user.role_id == 5">Warm</td>
+              <td>{{ user.user.email }}</td>
+              <td>{{ user.user.country }}</td>
+              <td>{{ user.user.created_at | date: 'medium' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
