@@ -106,9 +106,9 @@ class CourseController extends Controller
         $input = $request->input();
         $eval_type = "Online & Instructor";
 
-        if ($input['evalType'] == 'i') {
+        if ($input['eval_type'] == 'i') {
             $eval_type = "Instructor";
-        } elseif ($input['evalType'] == 'o') {
+        } elseif ($input['eval_type'] == 'o') {
             $eval_type = "Online";
         }
 
@@ -122,8 +122,8 @@ class CourseController extends Controller
         $course->hide_from_main_catalogue = 0;
         $course->completion_time = null;
         $course->audience = $input['audience'];
-        $course->short_desc = $input['shortDesc'];
-        $course->long_desc = $input['longDesc'];
+        $course->short_desc = $input['short_desc'];
+        $course->long_desc = $input['long_desc'];
         $course->objective = $input['objective'];
         $course->eval_type = $eval_type;
         $course->price = $input['price'] * 100;

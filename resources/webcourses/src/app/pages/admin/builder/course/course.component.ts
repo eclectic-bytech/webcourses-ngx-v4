@@ -18,10 +18,9 @@ import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 
 export class CourseComponent implements OnInit {
 
+  public courseAddForm: FormGroup
   public hideAdvanced = true
   public courseAdded = false
-  public courseAddForm: FormGroup
-  public course: Course
 
   constructor(
     public fb: FormBuilder,
@@ -38,7 +37,7 @@ export class CourseComponent implements OnInit {
           Validators.maxLength(128),
           Validators.pattern('\\s?\\S+(?: \\S+)*\\s?') // no consec spaces
         ])],
-      shortDesc: ['', Validators.compose(
+      short_desc: ['', Validators.compose(
         [
           Validators.required,
           Validators.minLength(32),
@@ -55,36 +54,34 @@ export class CourseComponent implements OnInit {
       )],
       private: '',
       audience: '',
-      longDesc: '',
+      long_desc: '',
       objective: '',
-      evalType: '',
+      eval_type: '',
     })
   }
 
   ngOnInit() {
-    let cid = this.activatedRoute.snapshot.paramMap.get('cid')
-    this.courseService.getAdminCourse(cid).subscribe(
+    this.courseService.getAdminCourse(this.cid).subscribe(
       (course: Course) => {
-        this.course = course
-        this.courseAddForm.value.title = this.course.title
-        this.courseAddForm.setValue({ ...this.courseAddForm.value, title: this.course.title });
+        this.courseAddForm.patchValue(course)
+        this.courseAddForm.controls.price.patchValue(course.price / 100)
       }
     )
   }
 
   onSubmit(): void {
-    this.httpClient.post(
+    this.httpClient.post<Course>(
       `${this.configService.params.api.route}/admin/publisher/course`,
       this.courseAddForm.value
     ).subscribe(
       (course: Course) => {
         this.courseAdded = true
-        this.course = course
-      },
-      (err) => {
-        console.log(err)
       }
     )
+  }
+
+  get cid() {
+    return this.activatedRoute.snapshot.paramMap.get('cid')
   }
 
 }

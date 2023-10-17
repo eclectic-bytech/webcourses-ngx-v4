@@ -32,27 +32,27 @@
       </div>
 
       <div class="form-group">
-        <label for="shortDesc">Short description</label>
+        <label for="short_desc">Short description</label>
         <input
           type="text"
           class="form-control"
-          id="shortDesc"
-          formControlName="shortDesc"
+          id="short_desc"
+          formControlName="short_desc"
           [class.border-danger]="
-            courseAddForm.controls['shortDesc'].invalid && courseAddForm.controls['shortDesc'].touched
+            courseAddForm.controls['short_desc'].invalid && courseAddForm.controls['short_desc'].touched
           "
-          aria-describedby="shortDescHelp"
+          aria-describedby="short_descHelp"
         >
-        <small id="shortDescHelp" class="form-text text-muted">
+        <small id="short_descHelp" class="form-text text-muted">
           Used in catalogue directory and on course pages.
-          <span *ngIf="courseAddForm.controls['shortDesc'].touched" class="text-danger">
-            <span *ngIf="courseAddForm.controls['shortDesc'].errors?.required">
+          <span *ngIf="courseAddForm.controls['short_desc'].touched" class="text-danger">
+            <span *ngIf="courseAddForm.controls['short_desc'].errors?.required">
               Required.
             </span>
-            <span *ngIf="courseAddForm.controls['shortDesc'].errors?.minlength">
+            <span *ngIf="courseAddForm.controls['short_desc'].errors?.minlength">
               Must be 32 to 256 characters.
             </span>
-            <span *ngIf="courseAddForm.controls['shortDesc'].errors?.pattern">
+            <span *ngIf="courseAddForm.controls['short_desc'].errors?.pattern">
               Consecutive spaces are not accepted.
             </span>
           </span>
@@ -88,9 +88,9 @@
       <div #collapse="ngbCollapse" [(ngbCollapse)]="hideAdvanced">
 
         <div class="form-group">
-          <label for="longDesc">Long description</label>
-          <textarea class="form-control" id="longDesc" formControlName="longDesc" row="3" length="128" aria-describedby="longDescHelp"></textarea>
-          <small id="longDescHelp" class="form-text text-muted">Used chiefly on course pages.</small>
+          <label for="long_desc">Long description</label>
+          <textarea class="form-control" id="long_desc" formControlName="long_desc" row="3" length="128" aria-describedby="long_descHelp"></textarea>
+          <small id="long_descHelp" class="form-text text-muted">Used chiefly on course pages.</small>
         </div>
 
         <div class="form-group">
@@ -115,9 +115,9 @@
         </div>
 
         <div class="form-group">
-          <label for="evalType">Evaluation type</label>
+          <label for="eval_type">Evaluation type</label>
           <div>
-            <select class="custom-select mr-sm-2 col-12 col-lg-8" id="evalType" formControlName="evalType">
+            <select class="custom-select mr-sm-2 col-12 col-lg-8" id="eval_type" formControlName="eval_type">
               <option selected>Choose...</option>
               <option value="o">Online</option>
               <option value="i">Instructor</option>
@@ -137,7 +137,7 @@
   <ng-template #whatNext>
     <div class="container mt-5 lead" @fadeInOut>
       <div>
-        <p>Added <span class="font-weight-bold">{{ course.title }}</span> course.</p>
+        <p>Added <span class="font-weight-bold">{{ courseAddForm.value.title }}</span> course.</p>
       </div>
       <div class="text-danger">
         Content builder still in development.
