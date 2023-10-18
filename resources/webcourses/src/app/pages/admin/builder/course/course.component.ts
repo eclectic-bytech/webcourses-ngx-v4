@@ -94,6 +94,7 @@ export class CourseComponent implements OnInit {
 
   onUpdate() {
     this.waitingForApi = true
+    this.courseAddForm.value.price = this.courseAddForm.value.price * 100
     this.httpClient.patch<Course>(
       `${this.configService.params.api.route}/admin/publisher/course/edit/${this.cid}`,
       this.courseAddForm.value
