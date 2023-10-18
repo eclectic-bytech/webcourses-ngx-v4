@@ -129,26 +129,27 @@ class CourseController extends Controller
     public function edit_course(Request $request, $cid) {
         $uid = auth()->user()->id;
         $publisher = Publisher::where('owner_uid', $uid)->first();
+        $course = Course::find($cid);
 
-        $validatedRata = $request->validate([
-            'title' => ['required', 'min:16', 'max:128'],
-            'short_desc' => ['required', 'min:32', 'max:256'],
-            'private' => 'boolean',
-            'audience' => '',
-            'long_desc' => '',
-            'objective' => '',
-            'eval_type' => 'max:64',
-            'price' => ['required', 'integer', 'min:0', 'max:99999']
-        ]);
+        if ( $course->publisher_id === $publisher->id ) {
 
-        if ($publisher['owner_uid'] === $uid) {
-            $course = Course::find($cid);
-            $course->update($validatedRata);
+            $validatedData = $request->validate([
+                'title' => ['required', 'min:16', 'max:128'],
+                'short_desc' => ['required', 'min:32', 'max:256'],
+                'private' => 'boolean',
+                'audience' => '',
+                'long_desc' => '',
+                'objective' => '',
+                'eval_type' => 'in:"Online", "Instructor", "Online + Instructor"',
+                'price' => ['required', 'integer', 'min:0', 'max:99999']
+            ]);
+
+            $course->update($validatedData);
+
             return $course;
         }
 
-        // $course = $request->input();
-        return $course_update;
+        abort(403, 'Unauthorised');
     }
 
     public function delete_course($cid) {
