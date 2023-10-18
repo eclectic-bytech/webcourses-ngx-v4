@@ -100,21 +100,21 @@ export class CourseComponent implements OnInit {
     ).subscribe(
       (course: Course) => {
         this.course = course
-        this._snackbar.open('Course updated.', '', {
-          duration: 3000
-        })
+        this.snackbarNotify('Course updated.')
       },
-      (err) => {
-        this._snackbar.open('Failed to update course.', '', {
-          duration: 3000
-        })
-      },
+      (err) => { this.snackbarNotify('Failed to update course.') },
       () => { this.waitingForApi = false }
     )
   }
 
   deleteCourseBtn() {
     this.deleteCourseService.deleteCourseModal(this.course)
+  }
+
+  snackbarNotify(message: string) {
+    this._snackbar.open(message, '', {
+      duration: 3000
+    })
   }
 
   get cid() {
