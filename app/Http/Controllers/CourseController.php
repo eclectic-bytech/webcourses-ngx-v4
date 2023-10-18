@@ -104,13 +104,6 @@ class CourseController extends Controller
         $uid = auth()->user()->id;
         $publisher = Publisher::where('owner_uid', $uid)->first();
         $input = $request->input();
-        $eval_type = "Online & Instructor";
-
-        if ($input['eval_type'] == 'i') {
-            $eval_type = "Instructor";
-        } elseif ($input['eval_type'] == 'o') {
-            $eval_type = "Online";
-        }
 
         $course = new Course();
 
@@ -125,7 +118,7 @@ class CourseController extends Controller
         $course->short_desc = $input['short_desc'];
         $course->long_desc = $input['long_desc'];
         $course->objective = $input['objective'];
-        $course->eval_type = $eval_type;
+        $course->eval_type = $input['eval_type'];
         $course->price = $input['price'] * 100;
 
         $course->save();
@@ -144,6 +137,7 @@ class CourseController extends Controller
             'audience' => '',
             'long_desc' => '',
             'objective' => '',
+            'eval_type' => 'max:64',
             'price' => ['required', 'integer', 'min:0', 'max:99999']
         ]);
 
