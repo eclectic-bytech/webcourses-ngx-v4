@@ -110,6 +110,7 @@ Route::group(['prefix' => 'v4'], function() {
     Route::group(['prefix' => 'publisher'], function() {
         Route::post('/request-access', [PublisherController::class, 'request_access']);
         Route::post('/interest-expressed', [PublisherController::class, 'interest_expressed']);
+        Route::post('/builder-sub', [PublisherController::class, 'builder_sub']);
         Route::get('/profile/{id}', [PublisherController::class, 'index']);
     });
 

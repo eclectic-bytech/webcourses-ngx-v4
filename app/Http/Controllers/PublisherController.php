@@ -56,6 +56,19 @@ class PublisherController extends Controller
         }
     }
 
+    public function builder_sub()
+    {
+        $uid = auth()->user()->id;
+        $role_id = 6;
+
+        if (UserRole::where('user_id', $uid )->where('role_id', $role_id)->doesntExist()) {
+            $user_role = new UserRole();
+            $user_role->user_id = $uid;
+            $user_role->role_id = $role_id;
+            $user_role->save();
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *

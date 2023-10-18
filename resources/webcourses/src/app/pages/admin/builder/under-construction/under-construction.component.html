@@ -13,14 +13,19 @@
     </p>
 
     <p class="mt-4 text-light">
-      <input type="checkbox" id="newsletter" class="form-check-input ml-0">
+      <input type="checkbox" id="newsletter" class="form-check-input ml-0" (change)="subscribe = !subscribe">
       <label for="newsletter" class="form-check-label ml-4 pl-2" aria-describedby="newsletterHelp">
         Let me know about status changes to this tearful reality.
       </label>
       <small id="newsletterHelp" class="form-text ml-4 pl-2">We'll email you at {{ this.userService.user.email }} with occasional updates and launch status.</small>
     </p>
 
-    <button class="btn btn-primary btn-lg mt-4">Continue</button>
+    <button
+      (click)="continueBtn()"
+      class="btn btn-primary btn-lg mt-4"
+    >
+      Continue
+    </button>
   </div>
 </div>
 </div>
