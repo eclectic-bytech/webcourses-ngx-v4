@@ -129,7 +129,7 @@ class CourseController extends Controller
     public function edit_course(Request $request, $cid) {
         $uid = auth()->user()->id;
         $publisher = Publisher::where('owner_uid', $uid)->first();
-        $course = Course::find($cid);
+        $course = Course::withCount('participants as total_students')->find($cid);
 
         if ( $course->publisher_id === $publisher->id ) {
 
