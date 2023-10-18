@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { HttpClient } from '@angular/common/http'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 // WNGX imports
 import { ConfigService } from 'src/app/core/services/config/config.service'
@@ -26,11 +27,12 @@ export class CourseComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    private configService: ConfigService,
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private _snackbar: MatSnackBar,
     private courseService: CourseService,
+    private configService: ConfigService,
     public deleteCourseService: DeleteCourseService
   ) {
     this.courseAddForm = this.fb.group({
@@ -98,8 +100,15 @@ export class CourseComponent implements OnInit {
     ).subscribe(
       (course: Course) => {
         this.course = course
+        this._snackbar.open('Course updated.', '', {
+          duration: 3000
+        })
       },
-      (err) => {},
+      (err) => {
+        this._snackbar.open('Failed to update course.', '', {
+          duration: 3000
+        })
+      },
       () => { this.waitingForApi = false }
     )
   }
