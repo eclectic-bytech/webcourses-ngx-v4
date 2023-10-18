@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
 // WNGX imports
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { Course } from 'src/app/models/course.model'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { DeleteCourseService } from '../components/delete-course/delete-course.service'
 
@@ -22,7 +22,6 @@ export class CourseComponent implements OnInit {
   public courseAddForm: FormGroup
   public course = new Course
   public hideAdvanced = true
-  public courseAdded = false
   public waitingForApi = false
 
   constructor(
@@ -30,6 +29,7 @@ export class CourseComponent implements OnInit {
     private configService: ConfigService,
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private courseService: CourseService,
     public deleteCourseService: DeleteCourseService
   ) {
@@ -83,8 +83,7 @@ export class CourseComponent implements OnInit {
       this.courseAddForm.value
     ).subscribe(
       (course: Course) => {
-        this.courseAdded = true
-        this.course = course
+        this.router.navigate(['/admin', 'publisher', 'builder', 'sorry'])
       },
       (err) => {},
       () => { this.waitingForApi = false }

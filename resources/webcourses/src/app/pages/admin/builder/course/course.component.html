@@ -1,5 +1,5 @@
 <div id="fullMainContent" @fadeInOut>
-  <div class="container" *ngIf="!courseAdded; else whatNext">
+  <div class="container">
     <div class="display-4 my-5" *ngIf="!cid">
       Build a new course
     </div>
@@ -156,31 +156,5 @@
       </div>
     </div>
   </div>
-
-  <ng-template #whatNext>
-    <div class="container mt-5 lead" @fadeInOut>
-      <div>
-        <p>Added <span class="font-weight-bold">{{ courseAddForm.value.title }}</span> course.</p>
-      </div>
-      <div class="text-danger">
-        Content builder still in development.
-        <button
-          type="button"
-          class="btn btn-secondary d-block mb-5 mt-1"
-          [disabled]="true"
-        >
-          Add content
-        </button>
-      </div>
-      <div>
-        Return to your
-        <a
-          [routerLink]="['/admin', 'publisher', 'courses']"
-          type="button"
-          class="text-info mt-5"
-        >course directory</a>.
-      </div>
-    </div>
-  </ng-template>
 
 </div>

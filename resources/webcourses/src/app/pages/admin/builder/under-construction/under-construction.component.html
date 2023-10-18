@@ -1,0 +1,25 @@
+<div id="fullMainContent" @fadeInOut>
+  <div class="container mt-5 lead">
+    <div>
+      <p>Added <span class="font-weight-bold"> Title </span> course.</p>
+    </div>
+    <div class="text-danger">
+      Content builder still in development.
+      <button
+        type="button"
+        class="btn btn-secondary d-block mb-5 mt-1"
+        [disabled]="true"
+      >
+        Add content
+      </button>
+    </div>
+    <div>
+      Return to your
+      <a
+        [routerLink]="['/admin', 'publisher', 'courses']"
+        type="button"
+        class="text-info mt-5"
+      >course directory</a>.
+    </div>
+  </div>
+</div>
