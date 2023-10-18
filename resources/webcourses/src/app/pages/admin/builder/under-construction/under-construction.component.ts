@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { UserService } from 'src/app/core/services/user/user.service'
 
 @Component({
   selector: 'wngx-under-construction',
@@ -9,4 +10,9 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 })
 export class UnderConstructionComponent {
 
+  constructor(
+    public userService: UserService
+  ) {
+
+  }
 }

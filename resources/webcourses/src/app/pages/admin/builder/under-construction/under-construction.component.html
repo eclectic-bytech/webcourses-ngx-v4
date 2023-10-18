@@ -1,25 +1,26 @@
-<div id="fullMainContent" @fadeInOut>
-  <div class="container mt-5 lead">
-    <div>
-      <p>Added <span class="font-weight-bold"> Title </span> course.</p>
-    </div>
-    <div class="text-danger">
-      Content builder still in development.
-      <button
-        type="button"
-        class="btn btn-secondary d-block mb-5 mt-1"
-        [disabled]="true"
-      >
-        Add content
-      </button>
-    </div>
-    <div>
-      Return to your
-      <a
-        [routerLink]="['/admin', 'publisher', 'courses']"
-        type="button"
-        class="text-info mt-5"
-      >course directory</a>.
-    </div>
+<div class="bg" @fadeInOut>
+<div id="fullMainContent">
+  <div class="container-flex m-5">
+    <p class="h4 my-4 text-light">
+      Course added to your
+      <a [routerLink]="['/admin', 'publisher', 'courses']" type="button">
+        publisher course directory</a>.
+    </p>
+
+    <p class="lead text-light">
+      We're still working on the web course builder.<br>
+      The features for adding chapter and activities are not yet available.
+    </p>
+
+    <p class="mt-4 text-light">
+      <input type="checkbox" id="newsletter" class="form-check-input ml-0">
+      <label for="newsletter" class="form-check-label ml-4 pl-2" aria-describedby="newsletterHelp">
+        Let me know about status changes to this tearful reality.
+      </label>
+      <small id="newsletterHelp" class="form-text ml-4 pl-2">We'll email you at {{ this.userService.user.email }} with occasional updates and launch status.</small>
+    </p>
+
+    <button class="btn btn-primary btn-lg mt-4">Continue</button>
   </div>
+</div>
 </div>
