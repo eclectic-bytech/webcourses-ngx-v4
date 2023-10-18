@@ -4,6 +4,7 @@ import { DeleteCourseComponent } from './delete-course.component'
 import { Course } from 'src/app/models/course.model'
 import { HttpClient } from '@angular/common/http'
 import { ConfigService } from 'src/app/core/services/config/config.service'
+import { Router } from '@angular/router'
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class DeleteCourseService {
   constructor(
     private ngbModal: NgbModal,
     private httpClient: HttpClient,
+    private router: Router,
     private configService: ConfigService
   ) { }
 
@@ -32,7 +34,14 @@ export class DeleteCourseService {
       (success) => {
         if (success) {
           let elem = document.getElementById('course-id-' + this.course.id)
-          elem.parentNode.removeChild(elem)
+
+          // if elem, we were on course index page: remove course from index
+          // otherwise, return to course index on course delete
+          if (elem) {
+            elem.parentNode.removeChild(elem)
+          } else {
+            this.router.navigate(['/admin', 'publisher', 'courses'])
+          }
         }
       },
       (err) => { console.log(err) },
