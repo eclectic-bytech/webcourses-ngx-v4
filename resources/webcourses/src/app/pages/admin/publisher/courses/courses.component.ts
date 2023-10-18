@@ -4,9 +4,9 @@ import { Subject } from 'rxjs'
 import { Router } from '@angular/router'
 
 import { ConfigService } from 'src/app/core/services/config/config.service'
+import { DeleteCourseService } from '../../builder/components/delete-course/delete-course.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { Course } from 'src/app/models/course.model'
-import { DeleteCourseService } from '../../builder/components/delete-course/delete-course.service'
 
 @Component({
   selector: 'app-courses',
@@ -33,7 +33,7 @@ export class PublisherCoursesComponent implements OnInit {
     this.router.navigate(['/admin', 'publisher', 'builder', 'course'])
   }
 
-  deleteCourseBtn(course) {
+  deleteCourseBtn(course: Course) {
     this.deleteCourseService.deleteCourseModal(course)
   }
 

@@ -147,6 +147,16 @@
 
   </div>
 
+  <div class="container border border-rounded border-secondary my-4" *ngIf="cid">
+    <div class="row">
+      <div class="col m-4">
+        <div class="h5">Danger zone</div>
+        <div class="lead my-3">Irreversible action - don't do it.</div>
+        <button class="btn btn-danger" (click)="deleteCourseBtn()">Delete</button>
+      </div>
+    </div>
+  </div>
+
   <ng-template #whatNext>
     <div class="container mt-5 lead" @fadeInOut>
       <div>

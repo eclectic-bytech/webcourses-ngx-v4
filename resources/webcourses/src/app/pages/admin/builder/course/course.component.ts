@@ -8,6 +8,7 @@ import { ConfigService } from 'src/app/core/services/config/config.service'
 import { Course } from 'src/app/models/course.model'
 import { ActivatedRoute } from '@angular/router'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
+import { DeleteCourseService } from '../components/delete-course/delete-course.service'
 
 @Component({
   selector: 'app-course',
@@ -19,6 +20,7 @@ import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 export class CourseComponent implements OnInit {
 
   public courseAddForm: FormGroup
+  public course = new Course
   public hideAdvanced = true
   public courseAdded = false
 
@@ -27,7 +29,8 @@ export class CourseComponent implements OnInit {
     private configService: ConfigService,
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
-    private courseService: CourseService
+    private courseService: CourseService,
+    public deleteCourseService: DeleteCourseService
   ) {
     this.courseAddForm = this.fb.group({
       title: ['', Validators.compose(
@@ -61,12 +64,15 @@ export class CourseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.courseService.getAdminCourse(this.cid).subscribe(
-      (course: Course) => {
-        this.courseAddForm.patchValue(course)
-        this.courseAddForm.controls.price.patchValue(course.price / 100)
-      }
-    )
+    if (this.cid) {
+      this.courseService.getAdminCourse(this.cid).subscribe(
+        (course: Course) => {
+          this.course = course
+          this.courseAddForm.patchValue(course)
+          this.courseAddForm.controls.price.patchValue(course.price / 100)
+        }
+      )
+    }
   }
 
   onSubmit(): void {
@@ -76,6 +82,7 @@ export class CourseComponent implements OnInit {
     ).subscribe(
       (course: Course) => {
         this.courseAdded = true
+        this.course = course
       }
     )
   }
@@ -86,10 +93,13 @@ export class CourseComponent implements OnInit {
       this.courseAddForm.value
     ).subscribe(
       (course: Course) => {
-        console.log(course)
-        console.log('Update course completed')
+        this.course = course
       }
     )
+  }
+
+  deleteCourseBtn() {
+    this.deleteCourseService.deleteCourseModal(this.course)
   }
 
   get cid() {
