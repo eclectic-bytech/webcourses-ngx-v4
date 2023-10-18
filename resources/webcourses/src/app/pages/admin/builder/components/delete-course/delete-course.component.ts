@@ -13,7 +13,7 @@ import { DeleteCourseService } from './delete-course.service'
 
 export class DeleteCourseComponent {
 
-  public deleteLock = true
+  public deleteLock = true // flipped when user selects delete confirmation checkbox
 
   constructor(
     public ngbActiveModal: NgbActiveModal,

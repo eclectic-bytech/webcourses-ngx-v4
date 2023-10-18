@@ -17,12 +17,14 @@ export class CourseService {
     private config: ConfigService
   ) { }
 
+  // won't fetch any course marked as private
   getCourse(cid: any) {
     return this.http.get<Course>(`
       ${this.config.params.api.route}/catalogue/course/${cid}
     `).pipe(course => course)
   }
 
+  // fetches courses, including those marked as private
   getAdminCourse(cid: any) {
     return this.http.get<Course>(`
       ${this.config.params.api.route}/admin/course/${cid}
