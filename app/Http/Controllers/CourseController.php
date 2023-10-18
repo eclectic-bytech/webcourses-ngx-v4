@@ -140,7 +140,7 @@ class CourseController extends Controller
                 'audience' => '',
                 'long_desc' => '',
                 'objective' => '',
-                'eval_type' => 'in:"Online", "Instructor", "Online + Instructor"',
+                'eval_type' => 'in:"Online", "Instructor", "Online + Instructor", ""',
                 'price' => ['required', 'integer', 'min:0', 'max:99999']
             ]);
 
