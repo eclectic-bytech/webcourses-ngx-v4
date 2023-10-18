@@ -23,6 +23,7 @@ export class CourseComponent implements OnInit {
   public course = new Course
   public hideAdvanced = true
   public courseAdded = false
+  public waitingForApi = false
 
   constructor(
     public fb: FormBuilder,
@@ -76,6 +77,7 @@ export class CourseComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.waitingForApi = true
     this.httpClient.post<Course>(
       `${this.configService.params.api.route}/admin/publisher/course`,
       this.courseAddForm.value
@@ -83,18 +85,23 @@ export class CourseComponent implements OnInit {
       (course: Course) => {
         this.courseAdded = true
         this.course = course
-      }
+      },
+      (err) => {},
+      () => { this.waitingForApi = false }
     )
   }
 
   onUpdate() {
+    this.waitingForApi = true
     this.httpClient.patch<Course>(
       `${this.configService.params.api.route}/admin/publisher/course/edit/${this.cid}`,
       this.courseAddForm.value
     ).subscribe(
       (course: Course) => {
         this.course = course
-      }
+      },
+      (err) => {},
+      () => { this.waitingForApi = false }
     )
   }
 

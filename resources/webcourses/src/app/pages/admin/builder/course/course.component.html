@@ -5,7 +5,7 @@
     </div>
     <div class="display-4 my-5" *ngIf="cid" style="line-height: 3rem;">
       Update course<br>
-      <span class="h5">{{ courseAddForm.value.title }}</span>
+      <span class="h5">{{ course.title }}</span>
     </div>
 
     <form [formGroup]="courseAddForm" (ngSubmit)="cid ? onUpdate() : onSubmit()">
@@ -136,7 +136,7 @@
         type="submit"
         class="btn my-4 mr-4"
         [ngClass]="cid ? 'btn-primary' : 'btn-success'"
-        [disabled]="!courseAddForm.valid"
+        [disabled]="!courseAddForm.valid || waitingForApi"
         [innerHtml]="cid ? 'Update' : 'Create'"
       ></button>
       <a type="button" class="text-primary" [routerLink]="['/admin', 'publisher', 'courses']">
