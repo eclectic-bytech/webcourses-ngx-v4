@@ -1,4 +1,21 @@
-<button class="btn btn-primary mx-1" (click)="quickSort('alpha')">Alpha</button>
-<button class="btn btn-primary mx-1" (click)="quickSort('alpha-reverse')">AlphaReverse</button>
-<button class="btn btn-primary mx-1" (click)="quickSort('pop')">Pop</button>
-<button class="btn btn-primary mx-1" (click)="quickSort('pop-reverse')">PopReverse</button>
+<div ngbDropdown>
+  <div ngbDropdownToggle>
+    <div  class="d-inline-flex" role="button">
+    <h6 class="text-secondary pr-1">Sort</h6>
+    </div>
+  </div>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" ngbDropdownMenu>
+    <button class="py-2" ngbDropdownItem (click)="collapseMenus(); quickSort('alpha')">
+      Alphabetical
+    </button>
+
+    <button class="py-2" ngbDropdownItem (click)="collapseMenus(); quickSort('new')">
+      Recent
+    </button>
+
+    <button class="py-2" ngbDropdownItem (click)="collapseMenus(); quickSort('pop')">
+      Popular
+    </button>
+  </div>
+</div>
