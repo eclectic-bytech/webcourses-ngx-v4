@@ -24,6 +24,8 @@ use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserRoleController;
 
+use App\Http\Controllers\PublisherAdmin\CoursePAController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,7 +125,7 @@ Route::group(['prefix' => 'v4'], function() {
     // Paths grouped as /v4/admin
     Route::middleware(['auth:sanctum'])->prefix('admin')->group(function() {
 
-        Route::delete('/course/{cid}', [CourseController::class, 'delete_course']);
+        Route::delete('/course/{cid}', [CoursePAController::class, 'delete_course']);
 
         // Paths gruped as /v4/admin/system
         Route::middleware(['is_admin'])->prefix('system')->group(function() {
@@ -147,8 +149,8 @@ Route::group(['prefix' => 'v4'], function() {
 
             // Paths grouped as /v4/admin/publisher/course
             Route::group(['prefix' => 'course'], function() {
-                Route::post('/', [CourseController::class, 'new_course']);
-                Route::patch('/edit/{cid?}', [CourseController::class, 'edit_course']);
+                Route::post('/', [CoursePAController::class, 'new_course']);
+                Route::patch('/edit/{cid?}', [CoursePAController::class, 'edit_course']);
                 Route::get('/user-progress/{pid}', [UserAnswerController::class, 'user_answer_full_report']);
             });
 
