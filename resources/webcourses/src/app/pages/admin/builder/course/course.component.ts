@@ -87,7 +87,10 @@ export class CourseComponent implements OnInit {
       (course: Course) => {
         this.router.navigate(['/admin', 'publisher', 'builder', 'sorry'])
       },
-      (err) => {},
+      (err) => {
+        // it looks like the function in third () => {} does not get called when err is received
+        this.waitingForApi = false
+      },
       () => { this.waitingForApi = false }
     )
   }
