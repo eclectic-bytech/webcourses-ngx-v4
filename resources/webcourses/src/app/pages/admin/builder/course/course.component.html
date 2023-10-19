@@ -15,6 +15,7 @@
           type="text"
           class="form-control col-12 col-lg-8"
           id="title"
+          minLength="16"
           maxlength="128"
           formControlName="title"
           [class.border-danger]="
@@ -41,6 +42,8 @@
           type="text"
           class="form-control"
           id="short_desc"
+          minLength="32"
+          maxLength="256"
           formControlName="short_desc"
           [class.border-danger]="
             courseAddForm.controls['short_desc'].invalid && courseAddForm.controls['short_desc'].touched
