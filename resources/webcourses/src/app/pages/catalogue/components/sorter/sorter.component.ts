@@ -31,7 +31,7 @@ export class CatalogueSorterComponent {
   private sortFunctions = {
     [this.SORT_ALPHA]: (a: Course, b: Course) => a.title.localeCompare(b.title),
     [this.SORT_POP]: (a: Course, b: Course) => b.total_students - a.total_students,
-    [this.SORT_NEW]: (a: Course, b: Course) => this.compareDates(b.updated_at, a.updated_at),
+    [this.SORT_NEW]: (a: Course, b: Course) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
     [this.SORT_ID]: (a: Course, b: Course) => b.id - a.id,
   }
 
@@ -59,16 +59,5 @@ export class CatalogueSorterComponent {
     return this.isDescending
       ? (a: Course, b: Course) => this.sortFunctions[sortType](b, a)
       : this.sortFunctions[sortType]
-  }
-
-  private compareDates(dateA: string | undefined, dateB: string | undefined): number {
-    if (!dateA && !dateB) return 0 // Both are empty, consider them equal
-    if (!dateA) return 1 // 'a' is empty, push it to the end
-    if (!dateB) return -1 // 'b' is empty, push it to the end
-
-    const timestampA = new Date(dateA!).getTime()
-    const timestampB = new Date(dateB!).getTime()
-
-    return timestampB - timestampA // Sort in descending order
   }
 }
