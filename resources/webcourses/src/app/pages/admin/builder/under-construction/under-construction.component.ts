@@ -35,7 +35,7 @@ export class UnderConstructionComponent {
 
   newSubscriber() {
     this.httpClient.post(
-      `${this.configService.params.api.route}/publisher/builder-sub`, ''
+      `${this.configService.params.api.route}/user/role/builder-sub`, ''
     ).subscribe(
       () => {
         this._snackBar.open('Thank you for subscribing!', '', {

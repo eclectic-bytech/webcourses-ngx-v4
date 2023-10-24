@@ -21,8 +21,9 @@ Route::group(['prefix' => 'user'], function() {
     Route::post('/profile/user_name', [UserController::class, 'save_name']);
 
     Route::group(['prefix' => 'role'], function() {
-        Route::post('/request-access', [UserRoleController::class, 'builder_sub']);
         Route::post('/interest-expressed', [UserRoleController::class, 'interest_expressed']);
+        Route::post('/request-access', [UserRoleController::class, 'request_access']);
+        Route::post('/builder-sub', [UserRoleController::class, 'builder_sub']);
     });
 
 });

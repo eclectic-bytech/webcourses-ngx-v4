@@ -12,16 +12,23 @@ class UserRoleController extends Controller
     //     $user_role = new UserRole();
     // }
 
-    public function builder_sub() {
+    public function interest_expressed() {
+        UserRole::firstOrCreate(
+            ['user_id' => auth()->user()->id, 'role_id' => 4]
+        );
+    }
+
+    public function request_access() {
         UserRole::updateOrCreate(
             ['user_id' => auth()->user()->id, 'role_id' => 4],
             ['user_id' => auth()->user()->id, 'role_id' => 6]
         );
     }
 
-    public function interest_expressed() {
-        UserRole::firstOrCreate(
-            ['user_id' => auth()->user()->id, 'role_id' => 4]
+    public function builder_sub() {
+        UserRole::updateOrCreate(
+            ['user_id' => auth()->user()->id, 'role_id' => 5],
+            ['user_id' => auth()->user()->id, 'role_id' => 6]
         );
     }
 
