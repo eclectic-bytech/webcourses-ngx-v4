@@ -28,7 +28,7 @@ export class PubPowerUpService {
   requestUpgradeBtn() {
     this.waitingForAPI = true
     this.httpClient.post(
-      `${this.configService.params.api.route}/publisher/request-access`, ''
+      `${this.configService.params.api.route}/user/role/request-access`, ''
     ).subscribe(
       () => { this.requestSuccess = true },
       (err) => { console.error(err) },
@@ -38,7 +38,7 @@ export class PubPowerUpService {
 
   interestExpressed() {
     this.httpClient.post(
-      `${this.configService.params.api.route}/publisher/interest-expressed`, ''
+      `${this.configService.params.api.route}/user/role/interest-expressed`, ''
     ).subscribe(() => {})
   }
 }

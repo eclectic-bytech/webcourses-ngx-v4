@@ -21,10 +21,6 @@ class Course extends Model
         return $this->belongsTo(Publisher::class);
     }
 
-    public function theme() {
-        return $this->hasOne(Theme::class, 'publisher_id', 'publisher_id');
-    }
-
     // used in all course catalogues
     public function userProgress() {
         $user = auth()->user();

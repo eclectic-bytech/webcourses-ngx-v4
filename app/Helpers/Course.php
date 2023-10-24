@@ -33,3 +33,10 @@ function grantAccess($cid, $uid) {
     $user_progress->save();
     return $user_progress->id;
 }
+
+function studentOfPrivate($cid) {
+    if (Auth::check()) {
+        $pid = UserProgress::where('user_id', auth()->user()->id)->where('course_id', $cid)->first();
+        return $pid ? true : false;
+    }
+}

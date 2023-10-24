@@ -8,6 +8,23 @@ use App\Models\User;
 
 class UserRoleController extends Controller
 {
+    // public function store($role_id?) {
+    //     $user_role = new UserRole();
+    // }
+
+    public function builder_sub() {
+        UserRole::updateOrCreate(
+            ['user_id' => auth()->user()->id, 'role_id' => 4],
+            ['user_id' => auth()->user()->id, 'role_id' => 6]
+        );
+    }
+
+    public function interest_expressed() {
+        UserRole::firstOrCreate(
+            ['user_id' => auth()->user()->id, 'role_id' => 4]
+        );
+    }
+
     public function publisher_interest()
     {
         return UserRole

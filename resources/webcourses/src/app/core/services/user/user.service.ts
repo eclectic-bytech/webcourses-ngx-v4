@@ -27,7 +27,7 @@ export class UserService {
 
   getUserCourses$(): Observable<Course[]> {
     this.userCourses$ = this.httpClient
-      .get<Course[]>(`${this.configService.params.api.route}/catalogue/user`)
+      .get<Course[]>(`${this.configService.params.api.route}/user/courses`)
       .pipe()
     return this.userCourses$
   }
