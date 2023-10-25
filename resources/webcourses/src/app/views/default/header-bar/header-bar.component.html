@@ -111,6 +111,18 @@
 
           <a
             class="dropdown-item py-2"
+            [routerLink]="['/admin', 'publisher', 'builder', 'course']"
+            (click)="collapseMenus()"
+            ngbDropdownItem
+          >
+            <div class="menu-icon text-center d-inline-block pr-2">
+              <i class="fa-regular fa-square-plus text-success"></i>
+            </div>
+            Add course <sup class="text-success text-uppercase">New</sup>
+          </a>
+
+          <a
+            class="dropdown-item py-2"
             [routerLink]="['/admin', 'publisher', 'courses']"
             (click)="collapseMenus()"
             ngbDropdownItem
