@@ -18,6 +18,10 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'builder/sorry',
+    loadChildren: () => import('./../admin/builder/under-construction/under-construction.module').then(m => m.UnderConstructionModule)
+  }
 ]
 
 @NgModule({

@@ -15,23 +15,15 @@
     <div class="row">
       <div class="col-auto my-auto"><i class="fa-solid fa-bolt fa-beat fa-2xl text-success"></i></div>
       <div class="col text-dark" @fadeInOut>
-          <div *ngIf="!this.pubPowerUpService.requestSuccess; else requestSuccess">
-            Upgrading to publisher unlocks publisher features and the course builder.
-            Student access to unlocked courses will remain unaffected.
-            <small class="d-block text-primary mt-2">Many publisher features are still in development.</small>
-          </div>
-          <ng-template #requestSuccess>
-            <div @fadeInOut>
-              Request for upgrade to publisher access submitted. We'll email you at
-              <span class="font-weight-bold">{{ this.userService.user.email }}</span> when we've reviewed it.
-            </div>
-          </ng-template>
+        Upgrading to publisher unlocks publisher features and the course builder.
+        Student access to unlocked courses will remain unaffected.
+        <small class="d-block text-primary mt-2">Many publisher features are still in development.</small>
       </div>
     </div>
   </div>
 </div>
 <div class="modal-footer">
-  <div *ngIf="!this.pubPowerUpService.requestSuccess; else okButton">
+  <div>
     <button
       type="button"
       class="btn btn-secondary mx-2"
@@ -44,18 +36,6 @@
       class="btn btn-success"
       (click)="this.pubPowerUpService.requestUpgradeBtn()"
       [disabled]="this.pubPowerUpService.waitingForAPI"
-    >
-      Request upgrade
-    </button>
+    >Request upgrade</button>
   </div>
-  <ng-template #okButton>
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="ngbActiveModal.dismiss('Close')" data-dismiss="modal"
-      @fadeInOut
-    >
-      Ok
-    </button>
-  </ng-template>
 </div>

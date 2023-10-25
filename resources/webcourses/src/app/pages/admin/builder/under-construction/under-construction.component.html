@@ -1,7 +1,7 @@
 <div class="bg" @fadeInOut>
 <div id="fullMainContent">
   <div class="container-flex m-5">
-    <p class="h4 my-4 text-light">
+    <p class="h4 my-4 text-light" *ngIf="this.userService.userHasRole(2)">
       Course added to your
       <a [routerLink]="['/admin', 'publisher', 'courses']" type="button">
         publisher course directory</a>.

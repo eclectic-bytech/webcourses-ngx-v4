@@ -21,13 +21,12 @@ class UserRoleController extends Controller
     public function request_access() {
         UserRole::updateOrCreate(
             ['user_id' => auth()->user()->id, 'role_id' => 4],
-            ['user_id' => auth()->user()->id, 'role_id' => 6]
+            ['user_id' => auth()->user()->id, 'role_id' => 5]
         );
     }
 
     public function builder_sub() {
-        UserRole::updateOrCreate(
-            ['user_id' => auth()->user()->id, 'role_id' => 5],
+        UserRole::firstOrCreate(
             ['user_id' => auth()->user()->id, 'role_id' => 6]
         );
     }
@@ -37,6 +36,7 @@ class UserRoleController extends Controller
         return UserRole
             ::where('role_id', 4)
             ->orWhere('role_id', 5)
+            ->orWhere('role_id', 6)
             ->with(['user'])
             ->get();
     }

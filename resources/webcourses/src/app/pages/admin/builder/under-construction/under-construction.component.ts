@@ -26,26 +26,22 @@ export class UnderConstructionComponent {
   ) {}
 
   continueBtn() {
-    if (this.subscribe) {
-      this.newSubscriber()
-    } else {
-      this.router.navigateByUrl('/admin/publisher/courses')
-    }
+    this.subscribe ? this.newSubscriber() : this.redirectUser()
   }
 
   newSubscriber() {
     this.httpClient.post(
       `${this.configService.params.api.route}/user/role/builder-sub`, ''
     ).subscribe(
-      () => {
-        this._snackBar.open('Thank you for subscribing!', '', {
-          duration: 3000
-        })
-      },
+      () => { this._snackBar.open('Thank you for subscribing!', '', { duration: 3000 }) },
       (err) => {},
-      () => {
-        this.router.navigateByUrl('/admin/publisher/courses')
-      }
+      () => { this.redirectUser() }
     )
+  }
+
+  redirectUser() {
+    this.userService.userHasRole(2) ?
+      this.router.navigateByUrl('/admin/publisher/courses') :
+      this.router.navigateByUrl('/user/webcourses')
   }
 }
