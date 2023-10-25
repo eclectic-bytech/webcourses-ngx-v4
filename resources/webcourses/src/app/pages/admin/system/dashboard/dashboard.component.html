@@ -99,25 +99,54 @@
   <div *ngIf="publisherInterest$ | async as users">
     <div class="row">
       <div class="col">
-        <div class="h3 text-uppercase d-inline-block mt-4">
-          Potential Publishers
+        <div class="h3 text-uppercase d-inline-block mt-4 mb-2">
+          Users interested in the web course builder
         </div>
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Lead Level</th>
+              <th scope="col">ID</th>
               <th scope="col">Email</th>
               <th scope="col">Country</th>
               <th scope="col">Member since</th>
+              <th scope="col">Level of interest*</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let user of users">
-              <td *ngIf="user.role_id == 4">Cold</td>
-              <td *ngIf="user.role_id == 5">Warm</td>
+              <td>{{ user.user.id }}</td>
               <td>{{ user.user.email }}</td>
               <td>{{ user.user.country }}</td>
               <td>{{ user.user.created_at | date: 'medium' }}</td>
+              <td>{{ user.user.user_roles | json }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="h3 text-uppercase d-inline-block mt-4 mb-2">
+          * Level of interest
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <th scope="col">ID</th>
+            <th scope="col">Definition</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2</td>
+              <td>Existing publisher</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Interested</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Requested access</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Subscribed to builder news</td>
             </tr>
           </tbody>
         </table>

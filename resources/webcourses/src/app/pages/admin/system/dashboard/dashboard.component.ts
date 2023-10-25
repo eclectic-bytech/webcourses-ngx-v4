@@ -8,6 +8,7 @@ import { DashboardService } from './dashboard.service'
 
 import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 import { Coupon } from 'src/app/models/coupon.model'
+import { UserService } from 'src/app/core/services/user/user.service'
 
 @Component({
   selector: 'app-dashboard',
@@ -28,7 +29,8 @@ export class DashboardComponent {
   public lastLatestLoginsRefresh = new Date()
 
   constructor(
-    public dashboardService: DashboardService
+    public dashboardService: DashboardService,
+    public userService: UserService
   ) { }
 
   refresh() {
