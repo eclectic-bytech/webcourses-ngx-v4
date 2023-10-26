@@ -29,6 +29,12 @@ export class PublisherCoursesComponent implements OnInit {
     this.getPublisherCourses()
   }
 
+  coverImage(course: Course) {
+    return (course.cover === 'default') ?
+      'assets/cl-logo.png' :
+      `publisher-files/${course.publisher_id}/courses/${course.id}/images/${course.cover}`
+  }
+
   addCourseBtn() {
     this.router.navigate(['/admin', 'publisher', 'builder', 'course'])
   }

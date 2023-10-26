@@ -39,6 +39,7 @@ class CoursePAController extends Controller
         $course->objective = $input['objective'];
         $course->eval_type = $input['eval_type'];
         $course->price = $input['price'] * 100;
+        $course->cover = 'default';
 
         $course->save();
 
