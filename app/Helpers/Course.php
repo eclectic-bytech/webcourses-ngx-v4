@@ -40,3 +40,16 @@ function studentOfPrivate($cid) {
         return $pid ? true : false;
     }
 }
+
+function validateCourseData($course) {
+    return $course->validate([
+        'title' => ['required', 'min:16', 'max:128'],
+        'short_desc' => ['required', 'min:32', 'max:256'],
+        'private' => 'boolean',
+        'audience' => '',
+        'long_desc' => '',
+        'objective' => '',
+        'eval_type' => 'in:"Online", "Instructor", "Online + Instructor", ""',
+        'price' => ['required', 'integer', 'min:0', 'max:99999']
+    ]);
+}

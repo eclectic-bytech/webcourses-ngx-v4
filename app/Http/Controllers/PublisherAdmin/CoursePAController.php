@@ -23,6 +23,7 @@ class CoursePAController extends Controller
         $publisher = Publisher::where('owner_uid', $uid)->first();
         $input = $request->input();
 
+        // $input = validate_course_data($input);
         $course = new Course();
 
         $course->active_bid = 1;
@@ -47,24 +48,13 @@ class CoursePAController extends Controller
     public function edit_course(Request $request, $cid)
     {
         $uid = auth()->user()->id;
-        $publisher = Publisher::where('owner_uid', $uid)->first();
-        $course = Course::withCount('participants as total_students')->find($cid);
+        $pub_id = Publisher::where('owner_uid', $uid)->first()->id;
+        $course = Course::withCount('participants as total_students')
+            ->where('publisher_id', $pub_id)
+            ->find($cid);
 
-        if ( $course->publisher_id === $publisher->id ) {
-
-            $validatedData = $request->validate([
-                'title' => ['required', 'min:16', 'max:128'],
-                'short_desc' => ['required', 'min:32', 'max:256'],
-                'private' => 'boolean',
-                'audience' => '',
-                'long_desc' => '',
-                'objective' => '',
-                'eval_type' => 'in:"Online", "Instructor", "Online + Instructor", ""',
-                'price' => ['required', 'integer', 'min:0', 'max:99999']
-            ]);
-
-            $course->update($validatedData);
-
+        if ($course) {
+            $course->update(validateCourseData($request));
             return $course;
         }
 
@@ -74,20 +64,17 @@ class CoursePAController extends Controller
     public function delete_course($cid)
     {
         $uid = auth()->user()->id;
-        $publisher = Publisher::where('owner_uid', $uid)->first();
+        $pub_id = Publisher::where('owner_uid', $uid)->first()->id;
 
         $course = Course
             ::where('id', $cid)
+            ->where('publisher_id', $pub_id)
             ->withCount('participants as total_students')
             ->first();
 
-        if (
-            $publisher['id'] === $course['publisher_id']
-            && $course['total_students'] === 0
-        ) {
-            return Course::find($cid)->delete();
+        if ($course && $course['total_students'] === 1) {
+            return $course->delete();
         }
-
         return 0;
     }
 
