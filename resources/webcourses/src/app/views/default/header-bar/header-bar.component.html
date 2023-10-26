@@ -95,7 +95,7 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <i class="fa-solid fa-bolt text-success"></i>
+              <i class="fa-solid fa-bolt publisher-icon"></i>
             </div>
             Become a publisher
           </a>
@@ -111,26 +111,26 @@
 
           <a
             class="dropdown-item py-2"
-            [routerLink]="['/admin', 'publisher', 'builder', 'course']"
-            (click)="collapseMenus()"
-            ngbDropdownItem
-          >
-            <div class="menu-icon text-center d-inline-block pr-2">
-              <i class="fa-regular fa-square-plus text-success"></i>
-            </div>
-            Add course <sup class="text-success text-uppercase">New</sup>
-          </a>
-
-          <a
-            class="dropdown-item py-2"
             [routerLink]="['/admin', 'publisher', 'courses']"
             (click)="collapseMenus()"
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <i class="fa-solid fa-pen-nib text-warning"></i>
+              <i class="fa-solid fa-pen-nib publisher-icon"></i>
             </div>
             Courses
+          </a>
+
+          <a
+            class="dropdown-item py-2"
+            [routerLink]="['/admin', 'publisher', 'builder', 'course']"
+            (click)="collapseMenus()"
+            ngbDropdownItem
+          >
+            <div class="menu-icon text-center d-inline-block pr-2">
+              <i class="fa-regular fa-square-plus fa-beat-fade publisher-icon"></i>
+            </div>
+            Add course <sup class="text-success text-uppercase">New</sup>
           </a>
 
           <a
@@ -140,7 +140,7 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <i class='fa-sharp fa-solid fa-fingerprint text-warning'></i>
+              <i class="fa-sharp fa-solid fa-fingerprint publisher-icon"></i>
             </div>
             Access codes
           </a>
@@ -152,7 +152,7 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <i class="fa-solid fa-user text-warning"></i>
+              <i class="fa-solid fa-user publisher-icon"></i>
             </div>
             Profile
           </a>
