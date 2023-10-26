@@ -20,6 +20,7 @@ Route::group(['prefix' => 'publisher'], function() {
     // Lists all users that applied a code
     Route::get('/access-codes/{code_id}/users', [CodesUseController::class, 'access_code_users']);
 
+    Route::get('/course/{cid}', [CoursePAController::class, 'course']);
     Route::get('/courses', [CourseController::class, 'publisherCourses']);
     Route::put('/course-editor/syllabus/{aid}/demo', [CourseEditorController::class, 'demo']);
 

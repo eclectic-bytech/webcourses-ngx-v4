@@ -9,6 +9,14 @@ use App\Models\Publisher;
 
 class CoursePAController extends Controller
 {
+    public function course($cid) {
+        $uid = auth()->user()->id;
+        $pub_id = Publisher::where('owner_uid', $uid)->first()->id;
+        return Course::where('publisher_id', $pub_id)
+            ->withCount('participants as total_students')
+            ->find($cid);
+    }
+
     public function new_course(Request $request)
     {
         $uid = auth()->user()->id;
