@@ -1,12 +1,25 @@
 <div id="fullMainContent" @fadeInOut>
   <div class="container">
-    <div class="display-4 my-5" *ngIf="!cid">
-      Build a new course
-    </div>
-    <div class="display-4 my-5" *ngIf="cid" style="line-height: 3rem;">
+    <div class="display-4 my-5" style="line-height: 3rem;" *ngIf="cid; else newCourse">
       Update course<br>
       <span class="h5">{{ course.title }}</span>
     </div>
+    <ng-template #newCourse>
+      <div class="display-4 my-5">
+        Create a new course
+      </div>
+      <p class="lead">Though you can create a course, the course builder is still in development.</p>
+      <p class="lead">
+        Create a course today to lock in the discounted $5 / participant charge.<br>
+        The per participant charge on courses created after the builder launches is $7.
+      </p>
+      <p class="mb-5">
+        <small class="text-dark">
+          Flat fees are for courses priced at $50 or less.
+          Charges for courses priced higher are 10%, and 15% for courses created after builder launch.
+        </small>
+      </p>
+    </ng-template>
 
     <form [formGroup]="courseAddForm" (ngSubmit)="cid ? onUpdate() : onSubmit()">
       <div class="form-group">
