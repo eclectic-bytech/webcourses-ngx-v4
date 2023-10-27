@@ -73,10 +73,10 @@ class CoursePAController extends Controller
             ->withCount('participants as total_students')
             ->first();
 
-        if ($course && $course['total_students'] === 1) {
+        if ($course && $course['total_students'] === 0) {
             return $course->delete();
         }
-        return 0;
+        abort(404);
     }
 
 }
