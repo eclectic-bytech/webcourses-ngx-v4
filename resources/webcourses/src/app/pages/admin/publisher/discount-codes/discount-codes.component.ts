@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
-
-import { DiscountCodesService } from './discount-codes.service'
-import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { Router, ActivatedRoute } from '@angular/router'
 import { MatSnackBar } from '@angular/material/snack-bar'
+
+// WNGX imports
+import { DiscountCodesService } from './discount-codes.service'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { CoursesService } from '../courses/courses.service'
 
 @Component({
   selector: 'app-discount-codes',
@@ -20,15 +22,11 @@ export class DiscountCodesComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private discountCodesService: DiscountCodesService,
+    public coursesService: CoursesService,
     private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-    // this.activatedRoute.params.subscribe(
-    //   (params) => {
-    //     console.log(params)
-    //   }
-    // )
     this.discountCodes$ = this.discountCodesService.getDiscountCodes(
       this.activatedRoute.snapshot.paramMap.get('cid')
     )

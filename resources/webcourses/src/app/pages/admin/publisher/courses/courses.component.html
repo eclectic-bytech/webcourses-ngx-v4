@@ -27,7 +27,7 @@
           <img
             class="card-img-top"
             style="object-fit: cover; height: 6rem;"
-            [src]="coverImage(publisherCourse)"
+            [src]="this.coursesService.coverImage(publisherCourse)"
             alt="{{publisherCourse.cover_alt}}"
           >
         </div>

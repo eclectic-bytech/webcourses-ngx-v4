@@ -13,7 +13,7 @@
               <img
                 class="card-img-top"
                 style="object-fit: cover; height: 11rem;"
-                src="publisher-files/{{courseDiscountCodes.course.publisher_id}}/courses/{{courseDiscountCodes.course.id}}/images/{{courseDiscountCodes.course.cover}}"
+                [src]="this.coursesService.coverImage(courseDiscountCodes.course)"
                 alt="{{courseDiscountCodes.course.cover_alt}}"
               >
             </div>
@@ -95,10 +95,6 @@
     </div>
   </div>
 </div>
-
-<!-- <ngb-toast [autohide]="true">
-  Registration link copied to clipboard
-</ngb-toast> -->
 
 <ng-template #loading>
   <app-loading-spinner></app-loading-spinner>

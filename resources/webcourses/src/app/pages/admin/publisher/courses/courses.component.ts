@@ -3,15 +3,17 @@ import { HttpClient } from '@angular/common/http'
 import { Subject } from 'rxjs'
 import { Router } from '@angular/router'
 
+// WNGX imports
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { DeleteCourseService } from '../../builder/components/delete-course/delete-course.service'
+import { CoursesService } from './courses.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { Course } from 'src/app/models/course.model'
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.sass'],
+  styleUrls: ['./courses.component.scss'],
   animations: [FadeInOut]
 })
 export class PublisherCoursesComponent implements OnInit {
@@ -22,17 +24,12 @@ export class PublisherCoursesComponent implements OnInit {
     private httpClient: HttpClient,
     private router: Router,
     private configService: ConfigService,
-    private deleteCourseService: DeleteCourseService
+    private deleteCourseService: DeleteCourseService,
+    public coursesService: CoursesService
   ) { }
 
   ngOnInit(): void {
     this.getPublisherCourses()
-  }
-
-  coverImage(course: Course) {
-    return (course.cover === 'default') ?
-      'assets/cl-logo.png' :
-      `publisher-files/${course.publisher_id}/courses/${course.id}/images/${course.cover}`
   }
 
   addCourseBtn() {
