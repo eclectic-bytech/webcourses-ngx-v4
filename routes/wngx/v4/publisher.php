@@ -14,11 +14,12 @@ use App\Http\Controllers\PublisherAdmin\CoursePAController;
 // Paths grouped as /v4/admin/publisher
 Route::group(['prefix' => 'publisher'], function() {
 
-    // Lists courses and their access codes
-    Route::get('/coupons/{cid?}', [CouponController::class, 'index']);
-
-    // Lists all users that applied a code
-    Route::get('/access-codes/{code_id}/users', [CodesUseController::class, 'access_code_users']);
+    Route::group(['prefix' => 'access-codes'], function() {
+        // Lists courses with associated access codes
+        Route::get('/{cid?}', [CouponController::class, 'index']);
+        // Lists all users that applied a code
+        Route::get('/{code_id}/users', [CodesUseController::class, 'access_code_users']);
+    });
 
     Route::get('/course/{cid}', [CoursePAController::class, 'course']);
     Route::get('/courses', [CourseController::class, 'publisherCourses']);

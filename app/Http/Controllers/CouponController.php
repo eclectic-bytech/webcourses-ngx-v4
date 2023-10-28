@@ -20,24 +20,26 @@ class CouponController extends Controller
     public function index($cid = false) {
         $uid = auth()->user()->id;
         $publisher = Publisher::where('owner_uid', $uid)->first();
-        $coupons = [];
+        $courses_with_codes = [];
 
         if (isset($publisher)) {
             if ($cid) {
-                $coupons[0]['course'] =
-                    Course::where('publisher_id', $publisher->id)->where('id', $cid)->first();
-                $coupons[0]['coupons'] =
-                    Coupon::where('cid', $cid)->orderBy('created_at', 'desc')->get();
+                $course = Course::where('publisher_id', $publisher->id)->where('id', $cid)->first();
+                $codes = Coupon::where('cid', $cid)->orderBy('created_at', 'desc')->get();
+                array_push($courses_with_codes, array("course" => $course, "coupons" => $codes));
             } else {
                 $courses = Course::where('publisher_id', $publisher->id)->get();
+
                 foreach ($courses as $key => $course) {
-                    $coupons[$key]['course'] = $course;
-                    $coupons[$key]['coupons'] = Coupon::where('cid', $course->id)->orderBy('created_at', 'desc')->get();
+                    $codes = Coupon::where('cid', $course->id)->orderBy('created_at', 'desc')->get();
+                    if ($codes->isNotEmpty()) {
+                        array_push($courses_with_codes, array("course" => $course, "coupons" => $codes));
+                    }
                 }
             }
         }
 
-        return $coupons;
+        return $courses_with_codes;
     }
 
     public function recent_code_uses() {
