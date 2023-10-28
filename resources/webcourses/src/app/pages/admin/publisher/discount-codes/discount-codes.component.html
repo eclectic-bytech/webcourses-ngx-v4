@@ -35,67 +35,72 @@
         </div>
       </div>
 
-      <table class="table table-bordered table-hover table-striped">
-        <thead>
-          <tr>
-            <th class="text-uppercase">
-              code
-              <span class="badge badge-pill badge-success font-weight-light text-capitalize mt-1 float-right">Available</span>
-            </th>
-            <th class="text-uppercase">label</th>
-            <th class="text-right text-uppercase">students</th>
-            <th class="text-right text-uppercase d-none d-md-table-cell">seats</th>
-            <th class="text-center text-uppercase d-none d-md-table-cell">last used</th>
-            <th class="text-center text-uppercase d-none d-xl-table-cell">created</th>
-          </tr>
-        </thead>
+      <div *ngIf="courseDiscountCodes.coupons.length === 0; else showCodes" class="container lead text-center my-5">
+        This course does not have any access codes.
+      </div>
 
-        <tbody>
-          <tr
-            *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
-          >
-            <td
-              [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
-              [title]="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
-              (click)="regLinkCopied('Registration link copied.')"
-              class="handy text-primary"
-              ngxClipboard
+      <ng-template #showCodes>
+        <table class="table table-bordered table-hover table-striped">
+          <thead>
+            <tr>
+              <th class="text-uppercase">
+                code
+                <span class="badge badge-pill badge-success font-weight-light text-capitalize mt-1 float-right">Available</span>
+              </th>
+              <th class="text-uppercase">label</th>
+              <th class="text-right text-uppercase">students</th>
+              <th class="text-right text-uppercase d-none d-md-table-cell">seats</th>
+              <th class="text-center text-uppercase d-none d-md-table-cell">last used</th>
+              <th class="text-center text-uppercase d-none d-xl-table-cell">created</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr
+              *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
             >
-              <!-- (cbOnSuccess)="tooltip.show" -->
-              <!--
-                cbOnSuccess is broken in v16 of ngx-clipboard:
-                https://github.com/maxisam/ngx-clipboard/issues/310
-              -->
+              <td
+                [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
+                [title]="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
+                (click)="regLinkCopied('Registration link copied.')"
+                class="handy text-primary"
+                ngxClipboard
+              >
+                <!-- (cbOnSuccess)="tooltip.show" -->
+                <!--
+                  cbOnSuccess is broken in v16 of ngx-clipboard:
+                  https://github.com/maxisam/ngx-clipboard/issues/310
+                -->
 
-              <div>
-                <span>{{ discountCode.code }}</span>
-                <i class="fa-solid fa-copy mx-2 text-secondary"></i>
-                <span
-                  class="badge badge-pill font-weight-light mt-1 float-right"
-                  [ngClass]="pillClass(discountCode)"
-                  [innerHtml]="(discountCode.uses_max === 0) ? '&#8734;' : discountCode.uses_max - discountCode.uses"
-                >
+                <div>
+                  <span>{{ discountCode.code }}</span>
+                  <i class="fa-solid fa-copy mx-2 text-secondary"></i>
+                  <span
+                    class="badge badge-pill font-weight-light mt-1 float-right"
+                    [ngClass]="pillClass(discountCode)"
+                    [innerHtml]="(discountCode.uses_max === 0) ? '&#8734;' : discountCode.uses_max - discountCode.uses"
+                  >
+                  </span>
+                </div>
+              </td>
+              <td>{{ discountCode.label }}</td>
+              <td
+                [routerLink]="[discountCode.id, 'users']"
+                title="Report"
+                class="text-right handy text-primary"
+              >
+                {{ discountCode.uses }}
+                <span class="d-inline d-md-none text-dark">/
+                  <span [innerHTML]="(discountCode.uses_max === 0) ? '&#8734;' : discountCode.uses_max"></span>
                 </span>
-              </div>
-            </td>
-            <td>{{ discountCode.label }}</td>
-            <td
-              [routerLink]="[discountCode.id, 'users']"
-              title="Report"
-              class="text-right handy text-primary"
-            >
-              {{ discountCode.uses }}
-              <span class="d-inline d-md-none text-dark">/
-                <span [innerHTML]="(discountCode.uses_max === 0) ? '&#8734;' : discountCode.uses_max"></span>
-              </span>
-            </td>
-            <td class="text-right d-none d-md-table-cell" [innerHTML]="discountCode.uses_max === 0 ? '&#8734;' : discountCode.uses_max"></td>
-            <td class="text-center d-none d-md-table-cell">{{ discountCode.updated_at | date:'mediumDate' }}</td>
-            <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'mediumDate' }}</td>
-          </tr>
-        </tbody>
-      </table>
-
+              </td>
+              <td class="text-right d-none d-md-table-cell" [innerHTML]="discountCode.uses_max === 0 ? '&#8734;' : discountCode.uses_max"></td>
+              <td class="text-center d-none d-md-table-cell">{{ discountCode.updated_at | date:'mediumDate' }}</td>
+              <td class="text-center d-none d-xl-table-cell">{{ discountCode.created_at | date:'mediumDate' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
     </div>
   </div>
 </div>
