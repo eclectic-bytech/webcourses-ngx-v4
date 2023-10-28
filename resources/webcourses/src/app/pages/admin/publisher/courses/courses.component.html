@@ -17,6 +17,11 @@
   </div>
 
   <div *ngIf="publisherCourses$ | async as publisherCourses" id="courses" @fadeInOut>
+
+    <div *ngIf="publisherCourses.length === 0" class="container lead text-center my-5">
+      You haven't yet created any courses.
+    </div>
+
     <div
       *ngFor="let publisherCourse of publisherCourses; index as i"
       class="row no-gutters justify-content-between my-3 border"
@@ -75,6 +80,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
 </div>

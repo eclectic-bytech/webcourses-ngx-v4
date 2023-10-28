@@ -1,8 +1,12 @@
-<div id="fullMainContent" class="container" @fadeInOut>
+<div id="fullMainContent" class="container my-5" @fadeInOut>
 
   <app-header [title]="'course access codes'"></app-header>
 
   <div *ngIf="discountCodes$ | async as discountCodes; else loading" @fadeInOut>
+
+    <div *ngIf="discountCodes.length === 0" class="container lead text-center my-5">
+      You don't have any courses with access codes.
+    </div>
 
     <div *ngFor="let courseDiscountCodes of discountCodes">
 
