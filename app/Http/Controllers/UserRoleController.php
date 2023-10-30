@@ -31,13 +31,4 @@ class UserRoleController extends Controller
         );
     }
 
-    public function publisher_interest()
-    {
-        return UserRole
-            ::where('role_id', 4)
-            ->orWhere('role_id', 5)
-            ->orWhere('role_id', 6)
-            ->with(['user'])
-            ->get();
-    }
 }

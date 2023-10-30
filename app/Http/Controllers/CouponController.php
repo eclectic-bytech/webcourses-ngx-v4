@@ -38,10 +38,6 @@ class CouponController extends Controller
         return $courses_with_codes;
     }
 
-    public function recent_code_uses() {
-        return Coupon::orderByDesc('updated_at')->limit(5)->get();
-    }
-
     public function coupon() {
         return $this->belongsTo(Course::class);
     }
