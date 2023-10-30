@@ -11,8 +11,7 @@ use App\Http\Controllers\CourseEditorController;
 use App\Http\Controllers\PublisherAdmin\CoursePAController;
 
 // Paths grouped as /v4/admin/publisher
-Route::group(['prefix' => 'publisher', 'middleware' => 'is_publisher'], function() {
-
+Route::middleware('is_publisher')->prefix('publisher')->group(function() {
     Route::group(['prefix' => 'access-codes'], function() {
         // Lists course(s) with associated access codes
         Route::get('/{cid?}', [CouponController::class, 'index']);
