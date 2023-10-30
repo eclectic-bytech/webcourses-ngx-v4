@@ -42,12 +42,11 @@ class CouponController extends Controller
         return $this->belongsTo(Course::class);
     }
 
-    public function applyAccessCode($code_hash) {
-        $uid = auth()->user()->id;
-
+    public function applyAccessCode($code_hash)
+    {
         $code_info = Coupon::with(['course', 'publisher'])->find($code_hash);
         if ($code_info) {
-            if ($this->userAlreadyEnrolled($uid, $code_info['cid'])) {
+            if ($this->userAlreadyEnrolled(resolve('uid'), $code_info['cid'])) {
                 $code['status'] = $this->couponMessage('enrolled');
             } else {
                 $code['status'] = $this->validateCode($code_info);
@@ -55,7 +54,7 @@ class CouponController extends Controller
 
                 if ($code['status']['valid']) {
                     $cid = $code_info['course']['id'];
-                    $pid = grantAccess($cid, $uid);
+                    $pid = grantAccess($cid, resolve('uid'));
                     if ($pid) {
                         $this->incrementCodeUses($code_hash);
                         $this->updateCodesUsesTable($code_hash, $pid);
