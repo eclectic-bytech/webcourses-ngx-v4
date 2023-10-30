@@ -12,7 +12,7 @@ use App\Http\Controllers\CourseEditorController;
 use App\Http\Controllers\PublisherAdmin\CoursePAController;
 
 // Paths grouped as /v4/admin/publisher
-Route::group(['prefix' => 'publisher'], function() {
+Route::group(['prefix' => 'publisher', 'middleware' => 'is_publisher'], function() {
 
     Route::group(['prefix' => 'access-codes'], function() {
         // Lists courses with associated access codes
