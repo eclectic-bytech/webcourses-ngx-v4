@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Models\UserRole;
 use App\Models\Publisher;
 
-class isPublisher
+class IsPublisher
 {
     /**
      * Handle an incoming request.
