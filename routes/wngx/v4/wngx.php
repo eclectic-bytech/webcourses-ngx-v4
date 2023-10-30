@@ -11,7 +11,7 @@ require base_path('routes/wngx/v4/guest.php');
 
 Route::get('user/profile', [UserController::class, 'loggedInUser']);
 
-Route::middleware(['auth:sanctum'])->group(function() {
+Route::middleware('is_user')->group(function() {
 
     require base_path('routes/wngx/v4/user.php');
     require base_path('routes/wngx/v4/commerce.php');
