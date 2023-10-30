@@ -12,8 +12,6 @@ use Carbon\Carbon;
 class UserAnswerController extends Controller
 {
     public function save_user_answer(Request $request, int $aid) {
-        $uid = auth()->user()->id;
-
         // This should probably be turned into a HasCourseWriteAccess Guard...
         // Maybe two: courseReadAccess, and activityWriteAnswerAccess.
         $activity_meta = getActivityMeta($aid); // global helper defined in app/Helpers/Course.php
@@ -22,7 +20,7 @@ class UserAnswerController extends Controller
         $chid = $activity_meta->chapter_id;
 
         // Why do we need json_decode here, but not on $activity_meta?
-        $pid = json_decode(getUserProgress($uid, $cid))->id;
+        $pid = json_decode(getUserProgress(resolve('uid'), $cid))->id;
 
         if (isset($pid)) {
         // End Guard?

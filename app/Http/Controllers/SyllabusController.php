@@ -80,13 +80,11 @@ class SyllabusController extends Controller
     }
 
     private function requestedActivity($aid) {
-        $uid = auth()->user()->id;
-
         // get meta data on requested activity
         $requestedActivity['meta'] = Syllabus::where('activity_id', $aid)->first();
 
         // get user's course progress id
-        $requestedActivity['pid'] = getUserProgress($uid, $requestedActivity['meta']->course_id)->id;
+        $requestedActivity['pid'] = getUserProgress(resolve('uid'), $requestedActivity['meta']->course_id)->id;
 
         return $requestedActivity;
     }
