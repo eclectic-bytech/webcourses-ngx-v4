@@ -29,7 +29,7 @@ export class DeleteCourseService {
 
   deleteCourse() {
     this.httpClient.delete(`
-      ${this.configService.params.api.route}/admin/publisher/course/${this.course.id}`
+      ${this.configService.params.api.route}/admin/publisher/courses/${this.course.id}`
     ).subscribe(
       (success) => {
         if (success) {

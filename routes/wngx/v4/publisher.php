@@ -20,14 +20,10 @@ Route::group(['prefix' => 'publisher', 'middleware' => 'is_publisher'], function
         Route::get('/{code_id}/users', [CodesUseController::class, 'access_code_users']);
     });
 
-    Route::get('/course/{cid}', [CoursePAController::class, 'course']);
-    Route::get('/courses', [CoursePAController::class, 'index']);
+    Route::resource('/courses', CoursePAController::class);
     Route::put('/course-editor/syllabus/{aid}/demo', [CourseEditorController::class, 'demo']);
 
     Route::group(['prefix' => 'course'], function() {
-        Route::post('/', [CoursePAController::class, 'new_course']);
-        Route::patch('/edit/{cid?}', [CoursePAController::class, 'edit_course']);
-        Route::delete('/{cid}', [CoursePAController::class, 'delete_course']);
         Route::get('/user-progress/{pid}', [UserAnswerController::class, 'user_answer_full_report']);
     });
 

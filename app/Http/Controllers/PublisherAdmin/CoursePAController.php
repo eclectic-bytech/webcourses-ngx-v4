@@ -11,21 +11,20 @@ class CoursePAController extends Controller
 {
     public function index()
     {
-        return Course
-                ::where('publisher_id', resolve('pub_id'))
-                ->withCount('courseSyllabus as total_activities')
-                ->withCount('participants as total_students')
-                ->withCount('accessCodes as access_codes')
-                ->get();
+        return Course::where('publisher_id', resolve('pub_id'))
+            ->withCount('courseSyllabus as total_activities')
+            ->withCount('participants as total_students')
+            ->withCount('accessCodes as access_codes')
+            ->get();
     }
 
-    public function course($cid) {
+    public function show($cid) {
         return Course::where('publisher_id', resolve('pub_id'))
             ->withCount('participants as total_students')
             ->find($cid);
     }
 
-    public function new_course(Request $request)
+    public function store(Request $request)
     {
         $input = $request->input();
 
@@ -52,7 +51,7 @@ class CoursePAController extends Controller
         return $input;
     }
 
-    public function edit_course(Request $request, $cid)
+    public function update(Request $request, $cid)
     {
         $course = Course::withCount('participants as total_students')
             ->where('publisher_id', resolve('pub_id'))
@@ -62,11 +61,9 @@ class CoursePAController extends Controller
             $course->update(validateCourseData($request));
             return $course;
         }
-
-        abort(403, 'Unauthorised');
     }
 
-    public function delete_course($cid)
+    public function destroy($cid)
     {
         $course = Course
             ::where('id', $cid)
@@ -77,7 +74,6 @@ class CoursePAController extends Controller
         if ($course && $course['total_students'] === 0) {
             return $course->delete();
         }
-        abort(404);
     }
 
 }

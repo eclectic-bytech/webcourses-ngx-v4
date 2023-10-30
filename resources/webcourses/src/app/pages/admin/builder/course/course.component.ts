@@ -81,7 +81,7 @@ export class CourseComponent implements OnInit {
   onSubmit(): void {
     this.waitingForApi = true
     this.httpClient.post<Course>(
-      `${this.configService.params.api.route}/admin/publisher/course`,
+      `${this.configService.params.api.route}/admin/publisher/courses`,
       this.courseAddForm.value
     ).subscribe(
       (course: Course) => {
@@ -99,7 +99,7 @@ export class CourseComponent implements OnInit {
     this.waitingForApi = true
     this.courseAddForm.value.price = this.courseAddForm.value.price * 100
     this.httpClient.patch<Course>(
-      `${this.configService.params.api.route}/admin/publisher/course/edit/${this.cid}`,
+      `${this.configService.params.api.route}/admin/publisher/courses/${this.cid}`,
       this.courseAddForm.value
     ).subscribe(
       (course: Course) => {

@@ -27,7 +27,7 @@ export class CourseService {
   // fetches courses, including those marked as private
   getAdminCourse(cid: any) {
     return this.http.get<Course>(`
-      ${this.config.params.api.route}/admin/publisher/course/${cid}
+      ${this.config.params.api.route}/admin/publisher/courses/${cid}
     `).pipe(course => course)
   }
 
