@@ -20,7 +20,7 @@ Route::group(['prefix' => 'publisher', 'middleware' => 'is_publisher'], function
         Route::get('/{code_id}/users', [CodesUseController::class, 'access_code_users']);
     });
 
-    Route::resource('/courses', CoursePAController::class);
+    Route::resource('/courses', CoursePAController::class)->except(['create', 'edit']);
     Route::put('/course-editor/syllabus/{aid}/demo', [CourseEditorController::class, 'demo']);
 
     Route::group(['prefix' => 'course'], function() {
