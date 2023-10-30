@@ -37,18 +37,6 @@ class CourseController extends Controller
             ->get();
     }
 
-    public function publisherCourses()
-    {
-        $uid = auth()->user()->id;
-        $publisher = Publisher::where('owner_uid', $uid)->first();
-
-        return Course
-            ::where('publisher_id', $publisher['id'])
-            ->withCount('courseSyllabus as total_activities')
-            ->withCount('participants as total_students')
-            ->withCount('accessCodes as access_codes')
-            ->get();
-    }
 
 
     public function indexUser($userId = false)

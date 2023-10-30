@@ -18,23 +18,19 @@ class CouponController extends Controller
 {
     // displays in publisher's console all codes including usage level
     public function index($cid = false) {
-        $uid = auth()->user()->id;
-        $publisher = Publisher::where('owner_uid', $uid)->first();
         $courses_with_codes = [];
 
-        if (isset($publisher)) {
-            if ($cid) {
-                $course = Course::where('publisher_id', $publisher->id)->where('id', $cid)->first();
-                $codes = Coupon::where('cid', $cid)->orderBy('created_at', 'desc')->get();
-                array_push($courses_with_codes, array("course" => $course, "coupons" => $codes));
-            } else {
-                $courses = Course::where('publisher_id', $publisher->id)->get();
+        if ($cid) {
+            $course = Course::where('publisher_id', resolve('pub_id'))->where('id', $cid)->first();
+            $codes = Coupon::where('cid', $cid)->orderBy('created_at', 'desc')->get();
+            array_push($courses_with_codes, array("course" => $course, "coupons" => $codes));
+        } else {
+            $courses = Course::where('publisher_id', resolve('pub_id'))->get();
 
-                foreach ($courses as $key => $course) {
-                    $codes = Coupon::where('cid', $course->id)->orderBy('created_at', 'desc')->get();
-                    if ($codes->isNotEmpty()) {
-                        array_push($courses_with_codes, array("course" => $course, "coupons" => $codes));
-                    }
+            foreach ($courses as $key => $course) {
+                $codes = Coupon::where('cid', $course->id)->orderBy('created_at', 'desc')->get();
+                if ($codes->isNotEmpty()) {
+                    array_push($courses_with_codes, array("course" => $course, "coupons" => $codes));
                 }
             }
         }
@@ -51,8 +47,7 @@ class CouponController extends Controller
     }
 
     public function applyAccessCode($code_hash) {
-        $user = auth()->user();
-        $uid = $user->id;
+        $uid = auth()->user()->id;
 
         $code_info = Coupon::with(['course', 'publisher'])->find($code_hash);
         if ($code_info) {

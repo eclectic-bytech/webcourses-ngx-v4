@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\UserRole;
+use App\Models\Publisher;
 
 class isPublisher
 {
@@ -17,7 +18,11 @@ class isPublisher
     public function handle(Request $request, Closure $next): Response
     {
         if (UserRole::where('user_id', auth()->user()->id)->where('role_id', 2)->exists()) {
-            return $next($request);
+            $publisher = Publisher::where('owner_uid', auth()->user()->id)->firstOrFail();
+            if ($publisher) {
+                app()->instance('pub_id', $publisher->id);
+                return $next($request);
+            }
         }
 
     }
