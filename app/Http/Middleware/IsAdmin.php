@@ -17,9 +17,8 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!UserRole::where('user_id', auth()->user()->id)->where('role_id', 1)->exists()) {
-            abort(code:403);
+        if (UserRole::where('user_id', auth()->user()->id)->where('role_id', 1)->exists()) {
+            return $next($request);
         }
-        return $next($request);
     }
 }
