@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
-use DB;
+// use DB;
 
 class CourseController extends Controller
 {
@@ -36,25 +36,6 @@ class CourseController extends Controller
             })
             ->get();
     }
-
-
-
-    public function indexUser($userId = false)
-    {
-        // Passed userId is intended for admin seeing what courses a user has access to.
-        // Currently unused, added as documentation for future features.
-        return Course
-            ::where('courses.published', 1)
-            ->whereHas('UserProgress')
-            ->withCount('courseSyllabus as total_activities')
-            ->withCount('participants as total_students')
-            ->with(['publisher'])
-            ->when(auth()->check(), function($query) {
-                return $query->with('userProgress');
-            })
-            ->get();
-    }
-
 
     public function course($cid) {
         // Course details page

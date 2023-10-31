@@ -22,11 +22,10 @@ class Course extends Model
     }
 
     // used in all course catalogues
-    public function userProgress() {
-        $user = auth()->user();
-        return $this
-            ->belongsTo(UserProgress::class, 'id', 'course_id')
-            ->where('user_id', $user['id']);
+    public function userProgress()
+    {
+        return $this->belongsTo(UserProgress::class, 'id', 'course_id')
+                    ->where('user_id', auth()->user()->id);
     }
 
     public function courseSyllabus() {

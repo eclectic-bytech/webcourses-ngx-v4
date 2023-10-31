@@ -13,11 +13,11 @@ use App\Http\Controllers\UserProgressController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\UserRoleController;
-use App\Http\Controllers\CourseController;
+use App\Http\Controllers\User\CourseUserController;
 
 Route::prefix('user')->group(function() {
 
-    Route::get('/courses', [CourseController::class, 'indexUser']);
+    Route::resource('/courses', CourseUserController::class)->only(['index']);
     Route::post('/profile/user_name', [UserController::class, 'save_name']);
 
     Route::group(['prefix' => 'role'], function() {
