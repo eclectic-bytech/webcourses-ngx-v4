@@ -32,7 +32,7 @@ class CourseController extends Controller
             ->withCount('courseSyllabus as total_activities')
             ->withCount('participants as total_students')
             ->when($userIsLoggedIn, function($query) {
-                return $query->with('UserProgress');
+                return $query->with('userProgress');
             })
             ->get();
     }
