@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CouponController;
+use App\Http\Controllers\User\CouponUserController;
 use App\Http\Controllers\User\BookmarkUserController;
 use App\Http\Controllers\SyllabusController;
 use App\Http\Controllers\ActivityController;
@@ -31,7 +31,7 @@ Route::prefix('user')->group(function() {
 // Paths grouped as /v4/webcourse
 Route::prefix('webcourse')->group(function() {
 
-    Route::get('/access-code/{code_hash}', [CouponController::class, 'applyAccessCode']);
+    Route::get('/access-code/{code_hash}', [CouponUserController::class, 'applyAccessCode']);
 
     Route::group(['prefix' => '/activities'], function() {
         Route::resource('/bookmarks', BookmarkUserController::class)->only(['store', 'destroy', 'index']);

@@ -1,8 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use Stripe\Charge;
+use Stripe\StripeClient;
+
 use App\Models\Coupon;
 use App\Models\Course;
 use App\Models\Publisher;
@@ -10,11 +15,8 @@ use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
 use App\Models\CodesUse;
 use App\Models\Syllabus;
-use Stripe\Charge;
-use Stripe\StripeClient;
 
-
-class CouponController extends Controller
+class CouponUserController extends Controller
 {
     // displays in publisher's console all codes including usage level
     public function index($cid = false) {

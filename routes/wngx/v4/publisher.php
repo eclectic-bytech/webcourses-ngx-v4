@@ -4,7 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-use App\Http\Controllers\CouponController;
+use App\Http\Controllers\User\CouponUserController;
 use App\Http\Controllers\CodesUseController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\CourseEditorController;
@@ -15,7 +15,7 @@ Route::middleware('is_publisher')->prefix('publisher')->group(function() {
 
     Route::group(['prefix' => 'access-codes'], function() {
         // Lists course(s) with associated access codes
-        Route::get('/{cid?}', [CouponController::class, 'index']);
+        Route::get('/{cid?}', [CouponUserController::class, 'index']);
         // Lists all users that applied a code
         Route::get('/{code_id}/users', [CodesUseController::class, 'access_code_users']);
     });
