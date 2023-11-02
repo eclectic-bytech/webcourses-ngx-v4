@@ -11,10 +11,8 @@ use App\Models\CourseSyllabus;
 class CourseEditorController extends Controller
 {
     public function demo(int $aid) {
-        $uid = auth()->user()->id;
-
         // get user's publisher id
-        $uid_pub_id = Publisher::where('owner_uid', $uid)->first();
+        $uid_pub_id = Publisher::where('owner_uid', resolve['uid'])->first();
 
         if ($uid_pub_id) {
 
