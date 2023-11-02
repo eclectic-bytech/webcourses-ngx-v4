@@ -32,15 +32,14 @@ Route::prefix('user')->group(function() {
 Route::prefix('webcourse')->group(function() {
 
     Route::get('/access-code/{code_hash}', [CouponController::class, 'applyAccessCode']);
-    Route::get('/{cid}/bookmarks', [BookmarkController::class, 'bookmark_Index']);
 
     Route::group(['prefix' => '/activities'], function() {
+        Route::resource('/bookmarks', BookmarkController::class)->only(['store', 'destroy', 'index']);
         Route::get('/{aid?}', [SyllabusController::class, 'activity_set']);
         Route::get('/special/before-and-after/{aid}', [ActivityController::class, 'before_and_after_activity']);
         Route::get('/special/completion-cert/{pid}', [UserProgressController::class, 'completion_cert']);
         Route::get('/help/{type?}', [ActivityController::class, 'help']);
         Route::post('/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
-        Route::resource('/bookmark', BookmarkController::class)->only(['store', 'destroy']);
     });
 
     Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);

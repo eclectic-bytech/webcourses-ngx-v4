@@ -21,7 +21,7 @@ export class BookmarksService {
 
   getBookmarks(cid: number) {
     this.httpClient.get<Bookmark[]>(
-      `${this.configService.params.api.route}/webcourse/${cid}/bookmarks`
+      `${this.configService.params.api.route}/webcourse/activities/bookmarks?cid=${cid}`
     ).subscribe(
       (bookmarks) => {
         this.bookmarksSubject.next(bookmarks)
@@ -31,13 +31,13 @@ export class BookmarksService {
 
   deleteBookmark(aid: number): Observable<any> {
     return this.httpClient.delete(
-      `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`
+      `${this.configService.params.api.route}/webcourse/activities/bookmarks/${aid}`
     )
   }
 
   addBookmark(aid: number): Observable<any> {
     return this.httpClient.post(
-      `${this.configService.params.api.route}/webcourse/activities/bookmark`, {aid: aid}
+      `${this.configService.params.api.route}/webcourse/activities/bookmarks`, {aid: aid}
     )
   }
 }

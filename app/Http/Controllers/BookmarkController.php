@@ -42,9 +42,16 @@ class BookmarkController extends Controller
     /**
      * returns a list of bookmarks
      */
-    public function bookmark_Index($cid)
+    public function index(Request $request)
     {
-        $pid = UserProgress::where('user_id', resolve('uid'))->where('course_id', $cid)->first()->id;
-        return Bookmark::where('pid', $pid)->orderBy('aid', 'asc')->get();
+        $cid = ( $request->input('cid') ) ? (int)$request->input('cid') : false;
+
+        // For now, only when a CID is provided do we want to return a bookmark index.
+        // We'll need to address this differently when we allow user to see ALL their bookmarks,
+        // e.g. on their profile or courses pages.
+        if ($cid) {
+            $pid = UserProgress::where('user_id', resolve('uid'))->where('course_id', $cid)->first()->id;
+            return Bookmark::where('pid', $pid)->orderBy('aid', 'asc')->get();
+        }
     }
 }
