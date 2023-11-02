@@ -18,28 +18,6 @@ use App\Models\Syllabus;
 
 class CouponUserController extends Controller
 {
-    // displays in publisher's console all codes including usage level
-    public function index($cid = false) {
-        $courses_with_codes = [];
-
-        if ($cid) {
-            $course = Course::where('publisher_id', resolve('pub_id'))->where('id', $cid)->first();
-            $codes = Coupon::where('cid', $cid)->orderBy('created_at', 'desc')->get();
-            array_push($courses_with_codes, array("course" => $course, "coupons" => $codes));
-        } else {
-            $courses = Course::where('publisher_id', resolve('pub_id'))->get();
-
-            foreach ($courses as $key => $course) {
-                $codes = Coupon::where('cid', $course->id)->orderBy('created_at', 'desc')->get();
-                if ($codes->isNotEmpty()) {
-                    array_push($courses_with_codes, array("course" => $course, "coupons" => $codes));
-                }
-            }
-        }
-
-        return $courses_with_codes;
-    }
-
     public function coupon() {
         return $this->belongsTo(Course::class);
     }

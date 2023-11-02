@@ -15,7 +15,7 @@ export class DiscountCodesService {
 
   getDiscountCodes(cid?: string) {
     let path = `${this.configService.params.api.route}/admin/publisher/access-codes`
-    path = (cid) ? `${path}/${cid}` : path
+    path = (cid) ? `${path}?cid=${cid}` : path
     return this.httpClient.get<Coupon[]>(path).pipe(codes => codes)
   }
 }

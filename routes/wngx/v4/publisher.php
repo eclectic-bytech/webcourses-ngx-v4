@@ -4,7 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-use App\Http\Controllers\User\CouponUserController;
+use App\Http\Controllers\PublisherAdmin\CouponPAController;
 use App\Http\Controllers\CodesUseController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\CourseEditorController;
@@ -13,12 +13,8 @@ use App\Http\Controllers\PublisherAdmin\CoursePAController;
 // Paths grouped as /v4/admin/publisher
 Route::middleware('is_publisher')->prefix('publisher')->group(function() {
 
-    Route::group(['prefix' => 'access-codes'], function() {
-        // Lists course(s) with associated access codes
-        Route::get('/{cid?}', [CouponUserController::class, 'index']);
-        // Lists all users that applied a code
-        Route::get('/{code_id}/users', [CodesUseController::class, 'access_code_users']);
-    });
+    Route::resource('/access-codes', CouponPAController::class)->only(['index']);
+    Route::get('/access-codes/{code_id}/users', [CodesUseController::class, 'access_code_users']);
 
     Route::resource('/courses', CoursePAController::class)->except(['create', 'edit']);
     Route::put('/course-editor/syllabus/{aid}/demo', [CourseEditorController::class, 'demo']);
