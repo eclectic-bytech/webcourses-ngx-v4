@@ -34,8 +34,8 @@ class BookmarkController extends Controller
      */
     public function destroy($aid)
     {
-        $course = CourseSyllabus::where('activity_id', $aid)->first()->course_id;
-        $pid = UserProgress::where('user_id', resolve('uid'))->where('course_id',$course)->first()->id;
+        $cid = CourseSyllabus::where('activity_id', $aid)->first()->course_id;
+        $pid = UserProgress::where('user_id', resolve('uid'))->where('course_id',$cid)->first()->id;
         Bookmark::where('pid',$pid)->where('aid',$aid)->first()->delete();
     }
 
