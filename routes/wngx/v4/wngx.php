@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserCourseController;
 
 require base_path('routes/wngx/v4/guest.php');
 
