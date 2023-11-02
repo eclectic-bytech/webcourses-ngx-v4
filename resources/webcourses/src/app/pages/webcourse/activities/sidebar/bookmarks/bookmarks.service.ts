@@ -37,7 +37,7 @@ export class BookmarksService {
 
   addBookmark(aid: number): Observable<any> {
     return this.httpClient.post(
-      `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`, aid
+      `${this.configService.params.api.route}/webcourse/activities/bookmark`, {aid: aid}
     )
   }
 }

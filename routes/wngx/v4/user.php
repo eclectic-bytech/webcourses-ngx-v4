@@ -40,8 +40,7 @@ Route::prefix('webcourse')->group(function() {
         Route::get('/special/completion-cert/{pid}', [UserProgressController::class, 'completion_cert']);
         Route::get('/help/{type?}', [ActivityController::class, 'help']);
         Route::post('/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
-        Route::post('/bookmark/{aid}', [BookmarkController::class, 'bookmark_create']);
-        Route::delete('/bookmark/{aid}', [BookmarkController::class, 'bookmark_delete']);
+        Route::resource('/bookmark', BookmarkController::class)->only(['store', 'destroy']);
     });
 
     Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);

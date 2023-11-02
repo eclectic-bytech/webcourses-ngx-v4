@@ -14,12 +14,12 @@ class BookmarkController extends Controller
     /**
      * creates a new bookmark instance on the bookmark table
      */
-    public function bookmark_create($aid)
+    public function store(Request $request)
     {
-        $aid = (int)$aid; // Cast to int, else $bookmark->aid will be string
+        $aid = (int)$request->input()['aid'];
+        $cid = CourseSyllabus::where('activity_id', $aid)->first()->course_id;
+        $pid = UserProgress::where('user_id', resolve('uid'))->where('course_id',$cid)->first()->id;
 
-        $course = CourseSyllabus::where('activity_id', $aid)->first()->course_id;
-        $pid = UserProgress::where('user_id', resolve('uid'))->where('course_id',$course)->first()->id;
         $activity = Activity::where('id',$aid)->first();
         $label = (strip_tags($activity->prequestion)) ? strip_tags($activity->prequestion) : 'No description';
 
@@ -35,7 +35,7 @@ class BookmarkController extends Controller
     /**
      * deletes selected bookmark instance on the bookmark table
      */
-    public function bookmark_delete($aid)
+    public function destroy($aid)
     {
         $course = CourseSyllabus::where('activity_id', $aid)->first()->course_id;
         $pid = UserProgress::where('user_id', resolve('uid'))->where('course_id',$course)->first()->id;
