@@ -12,20 +12,13 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\UserProgressController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\ChapterController;
-use App\Http\Controllers\UserRoleController;
+use App\Http\Controllers\User\UserRoleUserController;
 use App\Http\Controllers\User\CourseUserController;
 
 Route::prefix('user')->group(function() {
-
-    Route::resource('/courses', CourseUserController::class)->only(['index']);
+    Route::resource('courses', CourseUserController::class)->only(['index']);
+    Route::resource('role', UserRoleUserController::class)->only(['store']);
     Route::post('/profile/user_name', [UserController::class, 'save_name']);
-
-    Route::group(['prefix' => 'role'], function() {
-        Route::post('/interest-expressed', [UserRoleController::class, 'interest_expressed']);
-        Route::post('/request-access', [UserRoleController::class, 'request_access']);
-        Route::post('/builder-sub', [UserRoleController::class, 'builder_sub']);
-    });
-
 });
 
 // Paths grouped as /v4/webcourse
