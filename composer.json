@@ -39,7 +39,6 @@
         [
             "app/Helpers/Course.php",
             "app/Helpers/Publisher.php",
-            "app/Helpers/Activity.php",
             "app/Helpers/Bookmark.php"
         ]
     },

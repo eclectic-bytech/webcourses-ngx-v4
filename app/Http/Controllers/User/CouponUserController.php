@@ -14,7 +14,6 @@ use App\Models\Publisher;
 use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
 use App\Models\CodesUse;
-use App\Models\Syllabus;
 
 class CouponUserController extends Controller
 {

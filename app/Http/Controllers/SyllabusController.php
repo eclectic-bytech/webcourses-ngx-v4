@@ -41,7 +41,9 @@ class SyllabusController extends Controller
         // get preceding activities: requested activity is not first in set
         $aid_meta = $requested_aid_meta;
         while ($aid_meta->cont === 1) {
-            $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq - 1);
+            $aid_meta = CourseSyllabus::where('course_id', $cid)
+                ->where('seq', $aid_meta->seq - 1)
+                ->first();
             array_unshift($activities_meta_set, $aid_meta);
         }
 
@@ -52,7 +54,9 @@ class SyllabusController extends Controller
         $aid_meta = $requested_aid_meta;
 
         do {
-            $aid_meta = getActivityMetaBySeq($cid, $aid_meta->seq + 1);
+            $aid_meta = CourseSyllabus::where('course_id', $cid)
+                ->where('seq', $aid_meta->seq + 1)
+                ->first();
             // is_null checks required on last activity of a course
             if (!is_null($aid_meta) && $aid_meta->cont === 1) {
                 array_push($activities_meta_set, $aid_meta);

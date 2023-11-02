@@ -11,7 +11,7 @@ use App\Models\Help;
 use App\Models\UserAnswer;
 use App\Models\UserLongAnswer;
 use App\Models\ActivityDefaultAnswer;
-use App\Models\Syllabus;
+use App\Models\CourseSyllabus;
 use App\Models\UserProgress;
 
 class ActivityController extends Controller
@@ -30,7 +30,7 @@ class ActivityController extends Controller
     }
 
     public function before_and_after_activity($aid) {
-        $aid_meta = Syllabus::where('activity_id', $aid)->first();
+        $aid_meta = CourseSyllabus::where('activity_id', $aid)->first();
         $user_progress = UserProgress
             ::where('course_id', $aid_meta->course_id)
             ->where('user_id', auth()->user()->id)

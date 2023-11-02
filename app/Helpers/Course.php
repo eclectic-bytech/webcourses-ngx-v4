@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\UserProgress;
-use App\Models\Syllabus;
+use App\Models\CourseSyllabus;
 
 // isJSON Source: https://ankiths.com.np/check-if-the-data-is-json-encoded-or-not/
 function isJSON($string){
@@ -14,7 +14,7 @@ function grantAccess($cid, $uid) {
     $user_progress->user_id = $uid;
     $user_progress->course_id = $cid;
     $user_progress->build_id = 0;
-    $user_progress->selected_aid = Syllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
+    $user_progress->selected_aid = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
     $user_progress->demo = 0;
 
     $user_progress->save();
