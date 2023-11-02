@@ -6,7 +6,7 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CouponController;
-use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\User\BookmarkUserController;
 use App\Http\Controllers\SyllabusController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\UserProgressController;
@@ -34,7 +34,7 @@ Route::prefix('webcourse')->group(function() {
     Route::get('/access-code/{code_hash}', [CouponController::class, 'applyAccessCode']);
 
     Route::group(['prefix' => '/activities'], function() {
-        Route::resource('/bookmarks', BookmarkController::class)->only(['store', 'destroy', 'index']);
+        Route::resource('/bookmarks', BookmarkUserController::class)->only(['store', 'destroy', 'index']);
         Route::get('/{aid?}', [SyllabusController::class, 'activity_set']);
         Route::get('/special/before-and-after/{aid}', [ActivityController::class, 'before_and_after_activity']);
         Route::get('/special/completion-cert/{pid}', [UserProgressController::class, 'completion_cert']);
