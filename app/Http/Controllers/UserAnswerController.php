@@ -6,6 +6,8 @@ use App\Http\Controllers\ActivityController;
 
 use App\Models\UserAnswer;
 use App\Models\UserLongAnswer;
+use App\Models\CourseSyllabus;
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -14,7 +16,7 @@ class UserAnswerController extends Controller
     public function save_user_answer(Request $request, int $aid) {
         // This should probably be turned into a HasCourseWriteAccess Guard...
         // Maybe two: courseReadAccess, and activityWriteAnswerAccess.
-        $activity_meta = getActivityMeta($aid); // global helper defined in app/Helpers/Course.php
+        $activity_meta = CourseSyllabus::where('activity_id', $aid)->first();
         $activity_type = $activity_meta->activity_type;
         $cid = $activity_meta->course_id;
         $chid = $activity_meta->chapter_id;
