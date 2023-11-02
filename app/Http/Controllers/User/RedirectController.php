@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\URL;
 
-class UserRedirectController extends Controller
+class RedirectController extends Controller
 {
     public function user_login_redirect(Request $request) {
         // Resolves issue #185 - retains course access code in URL after reg/login

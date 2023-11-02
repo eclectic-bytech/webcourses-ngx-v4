@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\AngularController;
-use App\Http\Controllers\UserRedirectController;
+use App\Http\Controllers\User\RedirectController;
 
 use App\Http\Controllers\PublisherAdmin\CoursePAController;
 
@@ -39,7 +39,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::group(['prefix' => 'user'], function() {
-    Route::get('/redirect', [UserRedirectController::class, 'user_login_redirect']);
+    Route::get('/redirect', [RedirectController::class, 'user_login_redirect']);
     Route::middleware(['auth:sanctum'])->get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
