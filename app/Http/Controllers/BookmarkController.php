@@ -20,13 +20,10 @@ class BookmarkController extends Controller
         $cid = CourseSyllabus::where('activity_id', $aid)->first()->course_id;
         $pid = UserProgress::where('user_id', resolve('uid'))->where('course_id',$cid)->first()->id;
 
-        $activity = Activity::where('id',$aid)->first();
-        $label = (strip_tags($activity->prequestion)) ? strip_tags($activity->prequestion) : 'No description';
-
         $bookmark = new Bookmark();
         $bookmark->aid = $aid;
         $bookmark->pid = $pid;
-        $bookmark->label = $label;
+        $bookmark->label = bookmarkDesc($aid);
         $bookmark->save();
 
         return $bookmark;
