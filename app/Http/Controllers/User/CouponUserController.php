@@ -18,10 +18,6 @@ use App\Models\Syllabus;
 
 class CouponUserController extends Controller
 {
-    public function coupon() {
-        return $this->belongsTo(Course::class);
-    }
-
     public function applyAccessCode($code_hash)
     {
         $code_info = Coupon::with(['course', 'publisher'])->find($code_hash);
