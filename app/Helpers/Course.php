@@ -1,15 +1,7 @@
 <?php
 
-use App\Http\Controllers\UserProgressController;
-
 use App\Models\UserProgress;
 use App\Models\Syllabus;
-
-
-function getUserProgress(int $uid, int $cid) {
-    $controller = new UserProgressController();
-    return $controller->userProgress($uid, $cid);
-}
 
 // isJSON Source: https://ankiths.com.np/check-if-the-data-is-json-encoded-or-not/
 function isJSON($string){

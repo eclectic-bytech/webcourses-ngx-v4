@@ -7,6 +7,7 @@ use App\Http\Controllers\ActivityController;
 use App\Models\UserAnswer;
 use App\Models\UserLongAnswer;
 use App\Models\CourseSyllabus;
+use App\Models\UserProgress;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -21,10 +22,11 @@ class UserAnswerController extends Controller
         $cid = $activity_meta->course_id;
         $chid = $activity_meta->chapter_id;
 
-        // Why do we need json_decode here, but not on $activity_meta?
-        $pid = json_decode(getUserProgress(resolve('uid'), $cid))->id;
+        $pid = UserProgress::where('user_id', resolve('uid'))
+            ->where('course_id', $cid)
+            ->firstOrFail()->id;
 
-        if (isset($pid)) {
+        if ($pid) {
         // End Guard?
             $controller = new UserAnswerController();
             $existing_answer = $controller->user_answers($pid, $aid);

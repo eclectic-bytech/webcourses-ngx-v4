@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\ActivityController;
-use App\Models\Syllabus;
+use App\Models\CourseSyllabus;
+use App\Models\UserProgress;
 
 class SyllabusController extends Controller
 {
@@ -79,14 +80,18 @@ class SyllabusController extends Controller
         return $activity_set;
     }
 
-    private function requestedActivity($aid) {
-        // get meta data on requested activity
-        $requestedActivity['meta'] = Syllabus::where('activity_id', $aid)->first();
+    private function requestedActivity($aid)
+    {
+        $activity['meta'] = CourseSyllabus::where('activity_id', $aid)->first();
 
-        // get user's course progress id
-        $requestedActivity['pid'] = getUserProgress(resolve('uid'), $requestedActivity['meta']->course_id)->id;
+        $pid = UserProgress::where('user_id', resolve('uid'))
+            ->where('course_id', $activity['meta']->course_id)
+            ->first()->id;
 
-        return $requestedActivity;
+        if ($pid) {
+            $activity['pid'] = $pid;
+            return $activity;
+        }
     }
 }
 
