@@ -9,7 +9,7 @@ use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\CourseController;
 
 Route::resource('/webcourse/{cid}/chapters', ChapterController::class)->whereNumber('cid')->only(['index']);
-Route::resource('/publisher/profile', PublisherController::class)->only(['show']);
+Route::resource('publisher/profile', PublisherController::class)->name('show', 'pub-profile')->only(['show']);
 
 // Paths grouped /v4/catalogue: Web course catalogues
 Route::group(['prefix' => 'catalogue'], function() {
