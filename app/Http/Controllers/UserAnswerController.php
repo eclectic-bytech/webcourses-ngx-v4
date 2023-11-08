@@ -66,13 +66,4 @@ class UserAnswerController extends Controller
             ->get();
     }
 
-    // public function total_user_answers_in_chapter(int $chid) {
-    public function total_user_answers_in_chapter(int $chid) {
-        $answers = UserAnswer
-            ::where('progress_id', 1)
-            ->where('chapter_id', 309)
-            // ->groupBy('activity_id')
-            ->get();
-        return $answers->count();
-    }
 }

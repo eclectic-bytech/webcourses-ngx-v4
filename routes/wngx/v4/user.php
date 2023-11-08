@@ -42,6 +42,5 @@ Route::prefix('webcourse')->group(function()
     });
 
     Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
-    Route::get('/chapter/{chid}/user_answer_count', [UserAnswerController::class, 'total_user_answers_in_chapter']);
 
 });
