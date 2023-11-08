@@ -11,7 +11,6 @@ use App\Http\Controllers\User\ActivityUserController;
 use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\UserProgressController;
 use App\Http\Controllers\UserAnswerController;
-use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\User\UserRoleUserController;
 use App\Http\Controllers\User\CourseUserController;
 
@@ -31,6 +30,7 @@ Route::prefix('webcourse')->group(function()
     {
         Route::resource('/bookmarks', BookmarkUserController::class)->only(['store', 'destroy', 'index']);
         Route::get('/help/{type?}', [ActivityTypeController::class, 'help']);
+
         Route::middleware('is_student')->group( function()
         {
             Route::post('/{activity}/user_answer', [UserAnswerController::class, 'save_user_answer']);
