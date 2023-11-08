@@ -19,8 +19,9 @@ class UserAnswerController extends Controller
         $cid = resolve('activityMeta')->course_id;
         $chid = resolve('activityMeta')->chapter_id;
 
-        $controller = new UserAnswerController();
-        $existing_answer = $controller->user_answers(resolve('pid'), $aid);
+        $existing_answer = UserAnswer::where('progress_id', resolve('pid'))
+            ->where('activity_id', $aid)
+            ->firstOrFail();
 
         // If user has no answer for this activity, we continue...
         if ($existing_answer->isEmpty()) {
@@ -57,13 +58,6 @@ class UserAnswerController extends Controller
             return $service->build_activity($aid, resolve('pid'));
         }
         return 0;
-    }
-
-    public function user_answers(int $pid, int $aid) {
-        return UserAnswer
-            ::where('progress_id', $pid)
-            ->where('activity_id', $aid)
-            ->get();
     }
 
 }
