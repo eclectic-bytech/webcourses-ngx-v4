@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
+use App\Http\Controllers\Controller;
 
 use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
@@ -9,7 +10,7 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use setasign\Fpdi\Fpdi;
 
-class UserProgressController extends Controller
+class UserProgressUserController extends Controller
 {
     public function completion_cert(int $aid)
     {
