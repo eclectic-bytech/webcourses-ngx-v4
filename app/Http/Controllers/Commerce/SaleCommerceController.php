@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Commerce;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Sale;
 use Stripe\Charge;
 use Stripe\StripeClient;
 
-class SaleController extends Controller
+class SaleCommerceController extends Controller
 {
     public function course($id) {
         \Stripe\Stripe::setApiKey( env('STRIPE_SECRET') );

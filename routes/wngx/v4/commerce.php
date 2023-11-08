@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\User\CouponUserController;
-use App\Http\Controllers\SaleController;
+use App\Http\Controllers\Commerce\SaleCommerceController;
 
 Route::group(['prefix' => 'commerce'], function() {
     Route::get('/stripe/charge/{amount}', [CouponUserController::class, 'checkout']);
-    Route::get('/stripe/checkout/course/{id}', [SaleController::class, 'course']);
+    Route::get('/stripe/checkout/course/{id}', [SaleCommerceController::class, 'course']);
 });
