@@ -10,7 +10,7 @@ use App\Http\Controllers\User\BookmarkUserController;
 use App\Http\Controllers\User\ActivityUserController;
 use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\User\UserProgressUserController;
-use App\Http\Controllers\UserAnswerController;
+use App\Http\Controllers\User\UserAnswerUserController;
 use App\Http\Controllers\User\UserRoleUserController;
 use App\Http\Controllers\User\CourseUserController;
 
@@ -33,7 +33,7 @@ Route::prefix('webcourse')->group(function()
 
         Route::middleware('is_student')->group( function()
         {
-            Route::post('/{activity}/user_answer', [UserAnswerController::class, 'save_user_answer']);
+            Route::post('/{activity}/user_answer', [UserAnswerUserController::class, 'save_user_answer']);
             Route::prefix('special')->group( function() {
                 Route::get('completion-cert/{activity}', [UserProgressUserController::class, 'completion_cert']);
                 Route::get('before-and-after/{activity}', [ActivityUserController::class, 'before_and_after_activity']);

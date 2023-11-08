@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+// use Carbon\Carbon;
 use App\Services\ActivityService;
 
 use App\Models\UserAnswer;
@@ -9,10 +12,8 @@ use App\Models\UserLongAnswer;
 use App\Models\CourseSyllabus;
 use App\Models\UserProgress;
 
-use Illuminate\Http\Request;
-use Carbon\Carbon;
 
-class UserAnswerController extends Controller
+class UserAnswerUserController extends Controller
 {
     public function save_user_answer(Request $request, int $aid) {
         $activity_type = resolve('activityMeta')->activity_type;
@@ -21,7 +22,7 @@ class UserAnswerController extends Controller
 
         $existing_answer = UserAnswer::where('progress_id', resolve('pid'))
             ->where('activity_id', $aid)
-            ->firstOrFail();
+            ->get();
 
         // If user has no answer for this activity, we continue...
         if ($existing_answer->isEmpty()) {
