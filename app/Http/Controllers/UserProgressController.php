@@ -18,10 +18,11 @@ class UserProgressController extends Controller
             ->first();
     }
 
-    public function completion_cert(int $pid) {
-        $user_progress = UserProgress::find($pid);
+    public function completion_cert(int $aid)
+    {
+        $user_progress = UserProgress::findOrFail(resolve('pid'));
 
-        if ($user_progress->user_id == resolve('uid'))
+        if ($user_progress)
         {
             $certificate_activity = CourseSyllabus
                 ::where('style', 'completion-cert')
@@ -29,7 +30,7 @@ class UserProgressController extends Controller
                 ->first();
 
             if ($user_progress->total_activities_completed < $certificate_activity->seq - 2) {
-                // user did not complete enough activities for completion cert. why $certificate->seq-2?
+                // user did not complete enough activities for completion cert. why ..seq-2?
                 // seq starts at 0; activity with cert doesn't need to be completed for user to qualify.
                 abort(code:403);
             };
