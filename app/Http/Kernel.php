@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsPublisher;
 use App\Http\Middleware\IsUser;
+use App\Http\Middleware\IsStudent;
 
 class Kernel extends HttpKernel
 {
@@ -68,6 +69,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'is_admin' => IsAdmin::class,
         'is_publisher' => IsPublisher::class,
-        'is_user' => IsUser::class
+        'is_user' => IsUser::class,
+        'is_student' => IsStudent::class
     ];
 }
