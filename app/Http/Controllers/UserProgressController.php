@@ -11,13 +11,6 @@ use setasign\Fpdi\Fpdi;
 
 class UserProgressController extends Controller
 {
-    public function userProgress(int $uid, int $cid) {
-        return UserProgress
-            ::where('user_id', $uid)
-            ->where('course_id', $cid)
-            ->first();
-    }
-
     public function completion_cert(int $aid)
     {
         $user_progress = UserProgress::findOrFail(resolve('pid'));
