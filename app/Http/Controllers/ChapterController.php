@@ -32,10 +32,4 @@ class ChapterController extends Controller
         return $course->chapter_index;
     }
 
-    public function chapter($chid) {
-        return Chapter
-            ::where('id', $chid)
-            ->with('syllabus')
-            ->first();
-    }
 }

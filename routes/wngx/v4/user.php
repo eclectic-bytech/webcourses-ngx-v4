@@ -41,6 +41,4 @@ Route::prefix('webcourse')->group(function()
         });
     });
 
-    Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
-
 });
