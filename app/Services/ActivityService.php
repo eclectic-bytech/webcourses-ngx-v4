@@ -146,4 +146,20 @@ class ActivityService {
         }
         return $activity;
     }
+
+    function perform_count($aids_set) {
+        $total['correct'] = $total['wrong'] = $total['total'] = 0;
+
+        foreach ($aids_set as $key => $aid) {
+            $activity = $this->build_activity($aid, resolve('pid'));
+            foreach ($activity['answers'] as $j => $answer) {
+                if ($answer['correct']) $total['total']++;
+                if (isset($answer['selected'])) {
+                    $answer['correct'] ? $total['correct']++ : $total['wrong']++;
+                }
+            }
+        }
+        $total['missed'] = $total['total'] - $total['correct'];
+        return $total;
+    }
 }
