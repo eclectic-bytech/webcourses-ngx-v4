@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\UserAnswerController;
@@ -11,7 +12,7 @@ use App\Models\UserProgress;
 
 use App\Services\ActivityService;
 
-class ActivityController extends Controller
+class ActivityUserController extends Controller
 {
 
     public function show(int $aid, ActivityService $aS)

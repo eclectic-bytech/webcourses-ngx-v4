@@ -7,7 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\User\CouponUserController;
 use App\Http\Controllers\User\BookmarkUserController;
-use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\User\ActivityUserController;
 use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\UserProgressController;
 use App\Http\Controllers\UserAnswerController;
@@ -24,7 +24,7 @@ Route::prefix('user')->group(function() {
 // Paths grouped as /v4/webcourse
 Route::prefix('webcourse')->group(function()
 {
-    Route::resource('activities', ActivityController::class)->middleware('is_student')->only(['show']);
+    Route::resource('activities', ActivityUserController::class)->middleware('is_student')->only(['show']);
     Route::get('/access-code/{code_hash}', [CouponUserController::class, 'applyAccessCode']);
 
     Route::prefix('activities')->group(function()
@@ -36,7 +36,7 @@ Route::prefix('webcourse')->group(function()
             Route::post('/{activity}/user_answer', [UserAnswerController::class, 'save_user_answer']);
             Route::prefix('special')->group( function() {
                 Route::get('completion-cert/{activity}', [UserProgressController::class, 'completion_cert']);
-                Route::get('before-and-after/{activity}', [ActivityController::class, 'before_and_after_activity']);
+                Route::get('before-and-after/{activity}', [ActivityUserController::class, 'before_and_after_activity']);
             });
         });
     });
