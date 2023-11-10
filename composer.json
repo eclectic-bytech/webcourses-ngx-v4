@@ -2,7 +2,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0|^8.1",
@@ -12,7 +15,7 @@
         "inertiajs/inertia-laravel": "^0.6",
         "laravel/cashier": "^14.8",
         "laravel/framework": "^10.0",
-        "laravel/jetstream": "^3.0",
+        "laravel/jetstream": "^4.0",
         "laravel/sanctum": "^3.2",
         "laravel/slack-notification-channel": "^2.5",
         "laravel/tinker": "^2.5",
@@ -35,8 +38,7 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "files":
-        [
+        "files": [
             "app/Helpers/Course.php",
             "app/Helpers/Publisher.php",
             "app/Helpers/Activity.php"
