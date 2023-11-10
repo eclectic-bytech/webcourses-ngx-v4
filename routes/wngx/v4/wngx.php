@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 
 require base_path('routes/wngx/v4/guest.php');
 
+// NGX calls here to determine if user is logged in. Don't is_user middleware-it.
 Route::get('user/profile', [UserController::class, 'loggedInUser']);
 
 Route::middleware('is_user')->group(function() {
