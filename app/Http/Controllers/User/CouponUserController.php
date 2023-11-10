@@ -9,8 +9,6 @@ use Stripe\Charge;
 use Stripe\StripeClient;
 
 use App\Models\Coupon;
-use App\Models\Course;
-use App\Models\Publisher;
 use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
 use App\Models\CodesUse;
