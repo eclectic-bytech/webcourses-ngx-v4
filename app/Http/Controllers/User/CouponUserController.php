@@ -83,7 +83,7 @@ class CouponUserController extends Controller
         $message['uses_max'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Code maximum uses reached");
         $message['valid'] = array("valid" => true, "cssClass" => "text-success", "message" => "Access Granted");
         $message['invalid'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Invalid code");
-        $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Access code already applied");
+        $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Course already unlocked");
         return $message[$status];
     }
 
