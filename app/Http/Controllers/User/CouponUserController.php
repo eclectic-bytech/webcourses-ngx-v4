@@ -13,7 +13,6 @@ use App\Models\UserProgress;
 use App\Models\CourseSyllabus;
 use App\Models\CodesUse;
 
-use Illuminate\Support\Facades\Notification;
 use App\Notifications\AccessGrantedNotification;
 
 class CouponUserController extends Controller
@@ -36,7 +35,7 @@ class CouponUserController extends Controller
                         $this->updateCodesUsesTable($code_hash, $pid);
                         $code['first_aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
 
-                        Notification::send(auth()->user(), new AccessGrantedNotification($cid));
+                        auth()->user()->notify(new AccessGrantedNotification($cid));
                     }
                 }
             }
