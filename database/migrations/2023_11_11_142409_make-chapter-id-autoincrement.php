@@ -12,7 +12,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-
         Schema::table('course_syllabus', function (Blueprint $table) {
             $table->dropForeign('wngx_course_syllabus_chapter_id_foreign');
         });
@@ -41,63 +40,6 @@ return new class extends Migration
             REFERENCES `wngx_chapters` (`id`)
             ON UPDATE CASCADE ON DELETE CASCADE;
         ');
-
-
-
-
-
-
-
-
-
-        // Schema::table('chapters', function (Blueprint $table) {
-        //     $table->dropPrimary('id');
-        // });
-
-        // // Step 1: Create a new temporary column
-        // Schema::table('chapters', function (Blueprint $table) {
-        //     $table->unsignedMediumInteger('new_id2')->increments()->first();
-        // });
-
-        // // Migrate data from old id to new_id
-        // DB::statement('UPDATE wngx_chapters SET new_id2 = id');
-
-        // Schema::table('chapters', function (Blueprint $table) {
-        //     $table->primary('new_id2');
-        // });
-
-        // Schema::table('chapters', function (Blueprint $table) {
-        //     $table->dropColumn('id');
-        // });
-
-
-
-
-
-
-
-
-
-
-
-        // Schema::table('chapters', function (Blueprint $table) {
-        //     $table->renameColumn('new_id2', 'id')->mediumInteger()->change();
-        // });
-
-        // Schema::table('chapters', function (Blueprint $table) {
-        //     $table->mediumInteger('id')->change();
-        // });
-
-        // ALTER TABLE `wngx_chapters`
-	    // CHANGE COLUMN `id` `id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT FIRST;
-
-        // Schema::table('course_syllabus', function (Blueprint $table) {
-        //     $table->integer('chapter_id')->unsigned()->change();
-        // });
-
-        // Schema::table('user_answers', function (Blueprint $table) {
-        //     $table->integer('chapter_id')->unsigned()->change();
-        // });
     }
 
     /**
