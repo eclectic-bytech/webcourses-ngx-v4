@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
 use NotificationChannels\Telegram\TelegramMessage;
+use App\Models\CourseSyllabus;
 
 class AccessGrantedNotification extends Notification
 {
@@ -23,7 +24,7 @@ class AccessGrantedNotification extends Notification
     public function __construct($cid, $ct)
     {
         $this->cid = $cid;
-        $this->ct = $ct;
+        $this->ct = CourseSyllabus::where('course_id', $cid);
     }
 
     /**
