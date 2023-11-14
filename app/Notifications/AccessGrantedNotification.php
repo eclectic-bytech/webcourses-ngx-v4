@@ -4,51 +4,55 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\SlackMessage;
+use NotificationChannels\Telegram\TelegramMessage;
 
 class AccessGrantedNotification extends Notification
 {
     use Queueable;
 
+    protected $cid;
+    protected $ct;
+
     /**
      * Create a new notification instance.
+     *
+     * @return void
      */
-    public function __construct()
+    public function __construct($cid, $ct)
     {
-        //
+        $this->cid = $cid;
+        $this->ct = $ct;
     }
 
     /**
      * Get the notification's delivery channels.
      *
-     * @return array<int, string>
+     * @param  mixed  $notifiable
+     * @return array
      */
-    public function via(object $notifiable): array
+    public function via($notifiable)
     {
-        return ['mail'];
+        return ['slack',"telegram"];
     }
 
     /**
-     * Get the mail representation of the notification.
-     */
-    public function toMail(object $notifiable): MailMessage
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
+     * Get the Slack representation of the notification.
      *
-     * @return array<string, mixed>
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\SlackMessage
      */
-    public function toArray(object $notifiable): array
+    public function toSlack($notifiable)
     {
-        return [
-            //
-        ];
+        return (new SlackMessage)
+        ->content("$notifiable->email Used A Coupon For Course #$this->cid $this->ct");
+    }
+
+    public function toTelegram($notifiable)
+    {
+        return TelegramMessage::create()
+        ->to(env('TELEGRAM_ACCESS_GRANTED_CHAT_ID'))
+            ->content("$notifiable->email Used A Coupon For Course #$this->cid $this->ct");
     }
 }
