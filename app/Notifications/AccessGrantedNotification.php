@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
 use NotificationChannels\Telegram\TelegramMessage;
-use App\Models\CourseSyllabus;
+use App\Models\Course;
 
 class AccessGrantedNotification extends Notification
 {
@@ -21,10 +21,9 @@ class AccessGrantedNotification extends Notification
      *
      * @return void
      */
-    public function __construct($cid, $ct)
+    public function __construct($cid)
     {
         $this->cid = $cid;
-        $this->ct = CourseSyllabus::where('course_id', $cid);
     }
 
     /**
@@ -46,14 +45,16 @@ class AccessGrantedNotification extends Notification
      */
     public function toSlack($notifiable)
     {
+        $ct = Course::where('id', $this->cid)->first()->title;
         return (new SlackMessage)
-        ->content("$notifiable->email Used A Coupon For Course #$this->cid $this->ct");
+        ->content("$notifiable->email Used A Coupon For Course #$this->cid $ct");
     }
 
     public function toTelegram($notifiable)
     {
+        $ct = Course::where('id', $this->cid)->first()->title;
         return TelegramMessage::create()
         ->to(env('TELEGRAM_ACCESS_GRANTED_CHAT_ID'))
-            ->content("$notifiable->email Used A Coupon For Course #$this->cid $this->ct");
+            ->content("$notifiable->email Used A Coupon For Course #$this->cid $ct");
     }
 }
