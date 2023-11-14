@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
+use NotificationChannels\Telegram\TelegramMessage;
 
 class RegistrationNotification extends Notification
 {
@@ -30,7 +31,7 @@ class RegistrationNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['slack'];
+        return ['slack',"telegram"];
     }
 
     /**
@@ -42,5 +43,13 @@ class RegistrationNotification extends Notification
     public function toSlack($notifiable)
     {
         return (new SlackMessage)->content("New User: $notifiable->email");
+        return (new SlackMessage)
+        ->content("New User: $notifiable->email");
+    }
+    public function toTelegram($notifiable)
+    {
+        return TelegramMessage::create()
+        ->to(env('TELEGRAM_REGISTRATION_CHAT_ID'))
+            ->content("New User: $notifiable->email");
     }
 }
