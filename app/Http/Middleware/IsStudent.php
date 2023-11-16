@@ -18,7 +18,7 @@ class IsStudent
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $activityMeta = CourseSyllabus::where('activity_id', $request->route('activity'))->firstOrFail();
+        $activityMeta = CourseSyllabus::where('activity_id', $request->route('aid'))->firstOrFail();
 
         if ($activityMeta)
         {
