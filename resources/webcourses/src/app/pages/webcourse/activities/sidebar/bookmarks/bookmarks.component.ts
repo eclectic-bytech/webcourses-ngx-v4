@@ -1,6 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Router } from '@angular/router'
-import { Subscription } from 'rxjs'
 
 import { BookmarksService } from './bookmarks.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
@@ -16,8 +15,7 @@ import { Activity } from '../../workarea/models/activity.model'
 })
 export class BookmarksComponent {
 
-  private sub: Subscription
-  private firstActivity: Activity
+  @Input() firstActivity: Activity
 
   constructor(
     public bookmarksService: BookmarksService,
@@ -26,11 +24,6 @@ export class BookmarksComponent {
   ) {
     this.bookmarksService.getBookmarks(
       this.selectedCourseService.selectedCourse.id
-    )
-    this.sub = this.selectedCourseService.selectedActivitySet$.subscribe(
-      (activitySet) => {
-        this.firstActivity = activitySet[0]
-      }
     )
   }
 
@@ -47,10 +40,6 @@ export class BookmarksComponent {
         }
       }
     )
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe()
   }
 
 }

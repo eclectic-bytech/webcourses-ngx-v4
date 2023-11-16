@@ -3,6 +3,26 @@
 
 <div *ngIf="!this.webcourseService.endOfChapter && !this.webcourseService.endOfCourse">
 
+  <div class="container">
+    <div
+      *ngIf="this.selectedCourseService.selectedActivitySet$ | async as activitySet"
+      class="row justify-content-between my-3"
+    >
+      <div class="col">
+        <app-bookmark-button [firstActivity]="activitySet[0]"></app-bookmark-button>
+        <!-- "Make activity part of demo" checkbox (publishers only)  -->
+        <div *ngIf="this.selectedCourseService.selectedCourse as selectedCourse">
+          <app-demo-flag></app-demo-flag>
+          <!--
+          <app-demo-flag
+            *ngIf="selectedCourse.publisher.owner_uid === this.userService.user.id"
+          ></app-demo-flag>
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container" *ngIf="this.activitiesService.activities" id="workarea-activities">
 
     <div *ngFor="let activity of this.activitiesService.activities" class="row activity mt-4" @fadeInOut>
@@ -12,20 +32,6 @@
         [ngClass]="(activity.user_answers) ? 'reviewModeActivity' : 'activeModeActivity'"
         class="col"
       >
-
-      <div class="container-fluid">
-        <div *ngIf="activity.meta.cont == false" class="row justify-content-between my-3">
-          <app-bookmark-button></app-bookmark-button>
-          <!-- "Make activity part of demo" checkbox (publishers only)  -->
-          <div *ngIf="this.selectedCourseService.selectedCourse as selectedCourse">
-            <app-demo-flag
-              *ngIf="selectedCourse.publisher.owner_uid === this.userService.user.id"
-              [activityMeta]="activity.meta"
-            ></app-demo-flag>
-          </div>
-        </div>
-      </div>
-
 
         <!--!!!!!!!!!!!!!!!
             ngIf is required on activity.* so 'Fringe' browser doesn't show nulls
