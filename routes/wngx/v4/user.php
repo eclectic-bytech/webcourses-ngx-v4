@@ -23,21 +23,22 @@ Route::prefix('user')->group(function() {
 // Paths grouped as /v4/webcourse
 Route::prefix('webcourse')->group(function()
 {
-    Route::resource('activities', ActivityUserController::class)->middleware('is_student')->only(['show']);
     Route::get('/access-code/{code_hash}', [CouponUserController::class, 'applyAccessCode']);
 
     Route::prefix('activities')->group(function()
     {
-        Route::resource('/bookmarks', BookmarkUserController::class)->only(['store', 'destroy', 'index']);
-        Route::get('/help/{type?}', [ActivityTypeController::class, 'help']);
+        // bookmarks is not part of is_student middleware group, because it requires an {aid} in the url
+        Route::resource('bookmarks', BookmarkUserController::class)->only(['store', 'destroy', 'index']);
+        Route::get('help/{type?}', [ActivityTypeController::class, 'help']);
 
         Route::middleware('is_student')->group( function()
         {
-            Route::post('/{activity}/user_answer', [UserAnswerUserController::class, 'save_user_answer']);
             Route::prefix('special')->group( function() {
                 Route::get('completion-cert/{activity}', [UserProgressUserController::class, 'completion_cert']);
                 Route::get('before-and-after/{activity}', [ActivityUserController::class, 'before_and_after_activity']);
             });
+            Route::get('{aid}', [ActivityUserController::class, 'show']);
+            Route::post('{aid}/user_answer', [UserAnswerUserController::class, 'save_user_answer']);
         });
     });
 

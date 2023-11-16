@@ -15,7 +15,7 @@ use App\Services\ActivityService;
 class ActivityUserController extends Controller
 {
 
-    public function show(int $aid, ActivityService $aS)
+    public function show(ActivityService $aS)
     {
         $activitiesMetaSet = $aS->build_activities_meta_set(resolve('activityMeta'));
         $activitiesSet = $aS->get_activities($activitiesMetaSet, resolve('pid'));
@@ -27,7 +27,7 @@ class ActivityUserController extends Controller
         return $activitiesSet;
     }
 
-    public function before_and_after_activity(int $aid, ActivityService $aS) {
+    public function before_and_after_activity(ActivityService $aS) {
         return json_encode(array(
             "before" => $aS->perform_count([2122, 2538, 2539, 3475]),
             "after" => $aS->perform_count([3527, 3528, 3529, 3530])
