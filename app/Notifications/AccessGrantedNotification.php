@@ -13,8 +13,6 @@ class AccessGrantedNotification extends Notification
 {
     use Queueable;
 
-    protected $cid;
-    protected $ct;
 
     /**
      * Create a new notification instance.
@@ -34,7 +32,7 @@ class AccessGrantedNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['slack',"telegram"];
+        return ['slack', 'telegram'];
     }
 
     /**
@@ -45,16 +43,16 @@ class AccessGrantedNotification extends Notification
      */
     public function toSlack($notifiable)
     {
-        $ct = Course::where('id', $this->cid)->first()->title;
+        $course = Course::find($this->cid);
         return (new SlackMessage)
-        ->content("$notifiable->email Used A Coupon For Course #$this->cid $ct");
+            ->content("$notifiable->email used an access code for course $course->title (#$course->id)");
     }
 
     public function toTelegram($notifiable)
     {
-        $ct = Course::where('id', $this->cid)->first()->title;
+        $course = Course::find($this->cid);
         return TelegramMessage::create()
-        ->to(env('TELEGRAM_ACCESS_GRANTED_CHAT_ID'))
-            ->content("$notifiable->email Used A Coupon For Course #$this->cid $ct");
+            ->to(env('TELEGRAM_ACCESS_GRANTED_CHAT_ID'))
+            ->content("$notifiable->email used an access code for course $course->title (#$course->id)");
     }
 }
