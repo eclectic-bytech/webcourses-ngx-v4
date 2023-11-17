@@ -3,21 +3,21 @@
 
 <div *ngIf="!this.webcourseService.endOfChapter && !this.webcourseService.endOfCourse">
 
-  <div class="container">
+  <div class="container pb-3">
     <div
       *ngIf="this.selectedCourseService.selectedActivitySet$ | async as activitySet"
       class="row justify-content-between my-3"
     >
       <div class="col">
         <app-bookmark-button [firstActivity]="activitySet[0]"></app-bookmark-button>
+      </div>
+      <div class="col">
         <!-- "Make activity part of demo" checkbox (publishers only)  -->
         <div *ngIf="this.selectedCourseService.selectedCourse as selectedCourse">
-          <app-demo-flag></app-demo-flag>
-          <!--
           <app-demo-flag
+            [firstActivity]="activitySet[0]"
             *ngIf="selectedCourse.publisher.owner_uid === this.userService.user.id"
           ></app-demo-flag>
-          -->
         </div>
       </div>
     </div>

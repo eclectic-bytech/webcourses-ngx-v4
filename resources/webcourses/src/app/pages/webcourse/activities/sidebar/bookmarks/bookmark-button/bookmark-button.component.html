@@ -1,11 +1,11 @@
 <div role="button" class="my-3 text-dark text-uppercase">
   <div *ngIf="!firstActivity.bookmark" (click)="addBookmarkBtn()">
     <i class="fa-regular fa-bookmark"></i>
-    <small class="ml-2">Bookmark</small>
+    <span class="ml-2">Bookmark</span>
   </div>
 
   <div *ngIf="firstActivity.bookmark" (click)="deleteBookmarkBtn()">
     <i class="fa-solid fa-bookmark text-primary"></i>
-    <small class="ml-2">Bookmarked</small>
+    <span class="ml-2">Bookmarked</span>
   </div>
 </div>

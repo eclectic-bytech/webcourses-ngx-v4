@@ -14,14 +14,13 @@ export class DemoFlagService {
     private configService: ConfigService
   ) { }
 
-  saveActivityDemoStatus() {
-    console.log('Yo.')
-    // this.httpClient.put<number>(
-    //   `${this.configService.params.api.route}/admin/publisher/course-editor/syllabus/${aid}/demo`, aid
-    // ).subscribe(
-    //   (response) => { console.log(response) },
-    //   (err) => { console.log(err) }
-    // )
+  saveActivityDemoStatus(aid: number) {
+    this.httpClient.put<number>(
+      `${this.configService.params.api.route}/admin/publisher/course-editor/syllabus/${aid}/demo`, aid
+    ).subscribe(
+      (response) => { console.log(response) },
+      (err) => { console.log(err) }
+    )
   }
 
 }
