@@ -7,6 +7,7 @@ use App\Models\UserLongAnswer;
 use App\Models\ActivityDefaultAnswer;
 use App\Models\UserProgress;
 use App\Models\Activity;
+use App\Models\UserAnswer;
 
 
 class ActivityService {
@@ -64,8 +65,6 @@ class ActivityService {
             $activity = $this->build_activity($activities_meta_set[$i]->activity_id, $pid);
             $getNext = isset($activity['user_answers']) ? TRUE : FALSE;
 
-            // we're pushing $activity. unlike $unassociated_activity, it has its empty user_answer keys unset
-            // when it goes throgh build_activity()
             array_push($activity_set, $activity);
             $i++;
         } while ( isset($activities_meta_set[$i]) && $getNext );
@@ -97,8 +96,8 @@ class ActivityService {
         $activityy = $this->json_decode_activity_answers($activityy);
         $activityy = $this->user_long_answer($activityy);
         $activityy = $this->activity_default_answer($activityy, $pid);
-        return $activityy;
 
+        return $activityy;
     }
 
     private function json_decode_activity_answers($activity) {
