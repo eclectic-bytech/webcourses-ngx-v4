@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, OnInit, OnDestroy } from '@angular/core'
+import { Subscription } from 'rxjs'
 
 // WNGX imports
 import { BookmarksService } from 'src/app/pages/webcourse/activities/sidebar/bookmarks/bookmarks.service'
@@ -12,14 +13,25 @@ import { Bookmark } from 'src/app/pages/webcourse/activities/sidebar/bookmarks/b
   styleUrls: ['./bookmark-button.component.scss']
 })
 
-export class BookmarkButtonComponent {
+export class BookmarkButtonComponent implements OnInit, OnDestroy {
 
   @Input() firstActivity: Activity
+  private sub: Subscription
 
   constructor(
     public bookmarksService: BookmarksService,
     public selectedCourseService: SelectedCourseService
   ) { }
+
+  ngOnInit() {
+    this.sub = this.bookmarksService.deletedBookmarkAid$.subscribe(
+      (aid) => {
+        if (this.firstActivity.meta.activity_id === aid) {
+          this.firstActivity.bookmark = null
+        }
+      }
+    )
+  }
 
   deleteBookmarkBtn(): void {
     this.bookmarksService.deleteBookmark(
@@ -61,6 +73,10 @@ export class BookmarkButtonComponent {
     if (i !== -1) {
       existingBookmarks[i].deleted = true
     }
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe()
   }
 
   get existingBookmarks() {

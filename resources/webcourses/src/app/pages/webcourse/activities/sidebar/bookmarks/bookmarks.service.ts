@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { Bookmark } from './bookmark.model'
-import { BehaviorSubject, Observable } from 'rxjs'
+import { BehaviorSubject, Observable, Subject } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class BookmarksService {
 
   public bookmarksSubject: BehaviorSubject<any[]> = new BehaviorSubject([])
   public bookmarks$: Observable<Bookmark[]> = this.bookmarksSubject.asObservable()
+  public deletedBookmarkAid$ = new Subject<number>
 
   public selectedBookmark: Bookmark[]
 
