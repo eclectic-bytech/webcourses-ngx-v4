@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\PublisherAdmin;
 
+use App\Services\PublisherServices\ChapterPublisherService;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
@@ -24,7 +26,7 @@ class CoursePAController extends Controller
             ->find($cid);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, ChapterPublisherService $chPubService)
     {
         $input = $request->input();
 
@@ -47,6 +49,8 @@ class CoursePAController extends Controller
         $course->cover = 'default';
 
         $course->save();
+
+        $chPubService->initCourse($course->id);
 
         return $input;
     }
