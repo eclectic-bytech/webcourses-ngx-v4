@@ -2,9 +2,28 @@
 
 namespace App\Services\PublisherServices;
 
+use App\Services\PublisherServices\ChapterPublisherService;
+use App\Services\PublisherServices\ActivityPublisherService;
+use App\Services\PublisherServices\CourseSyllabusPublisherService;
+
 use App\Models\Course;
 
 class CoursePublisherService {
+
+    protected $chapterPublisherService;
+    protected $activityPublisherService;
+    protected $courseSyllabusPublisherService;
+
+    public function __construct(
+        ChapterPublisherService $chapterPublisherService,
+        ActivityPublisherService $activityPublisherService,
+        CourseSyllabusPublisherService $courseSyllabusPublisherService
+    )
+    {
+        $this->chapterPublisherService = $chapterPublisherService;
+        $this->activityPublisherService = $activityPublisherService;
+        $this->courseSyllabusPublisherService = $courseSyllabusPublisherService;
+    }
 
     public function storeCourse($courseDetails)
     {
@@ -28,7 +47,14 @@ class CoursePublisherService {
 
         $course->save();
 
+        $this->initNewCourse($course->id);
+
         return $course->id;
     }
 
+    public function initNewCourse(int $cid) {
+        $chid = $this->chapterPublisherService->storeChapter();
+        $aid = $this->activityPublisherService->storeActivity();
+        $csid = $this->courseSyllabusPublisherService->storeCourseSyllabus($cid, $chid, $aid);
+    }
 }

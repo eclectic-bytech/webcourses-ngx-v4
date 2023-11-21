@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\PublisherAdmin;
 
-use App\Services\PublisherServices\ChapterPublisherService;
 use App\Services\PublisherServices\CoursePublisherService;
 
 use App\Http\Controllers\Controller;
@@ -27,14 +26,9 @@ class CoursePAController extends Controller
             ->find($cid);
     }
 
-    public function store(
-        Request $request,
-        ChapterPublisherService $chPubService,
-        CoursePublisherService $coursePubService
-    )
+    public function store(Request $request, CoursePublisherService $coursePubService)
     {
         $cid = $coursePubService->storeCourse( $request->input() );
-        $chPubService->initCourse($cid);
         return $request->input();
     }
 
