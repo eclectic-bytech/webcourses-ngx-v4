@@ -29,7 +29,7 @@ class CoursePAController extends Controller
 
     public function store(Request $request, CoursePublisherService $coursePubService)
     {
-        $cid = $coursePubService->storeCourse( $request->input() );
+        $coursePubService->storeCourse($request->input());
         return $request->input();
     }
 
