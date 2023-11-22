@@ -20,7 +20,8 @@ class CoursePAController extends Controller
             ->get();
     }
 
-    public function show($cid) {
+    public function show($cid)
+    {
         return Course::where('publisher_id', resolve('pub_id'))
             ->withCount('participants as total_students')
             ->find($cid);
