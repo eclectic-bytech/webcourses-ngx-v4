@@ -18,8 +18,7 @@ class CoursePublisherService {
         ChapterPublisherService $chapterPublisherService,
         ActivityPublisherService $activityPublisherService,
         CourseSyllabusPublisherService $courseSyllabusPublisherService
-    )
-    {
+    ) {
         $this->chapterPublisherService = $chapterPublisherService;
         $this->activityPublisherService = $activityPublisherService;
         $this->courseSyllabusPublisherService = $courseSyllabusPublisherService;
