@@ -35,7 +35,17 @@ class RegistrationNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['slack', 'telegram'];
+        $validChannels = [];
+
+        if (env('SLACK_BOT_USER_OAUTH_TOKEN') && env('SLACK_BOT_USER_DEFAULT_CHANNEL')) {
+            array_push($validChannels, 'slack');
+        }
+
+        if (env('TELEGRAM_BOT_TOKEN') && env('TELEGRAM_REGISTRATION_CHAT_ID')) {
+            array_push($validChannels, 'telegram');
+        }
+
+        return $validChannels;
     }
 
     /**
