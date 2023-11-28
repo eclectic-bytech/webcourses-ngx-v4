@@ -5,8 +5,12 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Messages\SlackMessage;
 use NotificationChannels\Telegram\TelegramMessage;
+
+use Illuminate\Notifications\Slack\BlockKit\Blocks\ContextBlock;
+use Illuminate\Notifications\Slack\BlockKit\Blocks\SectionBlock;
+use Illuminate\Notifications\Slack\BlockKit\Composites\ConfirmObject;
+use Illuminate\Notifications\Slack\SlackMessage;
 
 class RegistrationNotification extends Notification
 {
@@ -36,13 +40,15 @@ class RegistrationNotification extends Notification
 
     /**
      * Get the Slack representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\SlackMessage
      */
-    public function toSlack($notifiable)
+    public function toSlack(object $notifiable): SlackMessage
     {
-        return (new SlackMessage)->content("New user: $notifiable->email");
+        return (new SlackMessage)
+            ->headerBlock('A new user has registered!')
+            ->SectionBlock(function (SectionBlock $block) use ($notifiable) {
+            $block->field("*User #:*\n$notifiable->id")->markdown();
+            $block->field("*New User:*\n$notifiable->email")->markdown();
+        });
     }
 
     public function toTelegram($notifiable)
