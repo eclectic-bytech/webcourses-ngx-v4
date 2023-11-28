@@ -31,7 +31,7 @@ class RegistrationNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['slack',"telegram"];
+        return ['slack', 'telegram'];
     }
 
     /**
@@ -42,14 +42,13 @@ class RegistrationNotification extends Notification
      */
     public function toSlack($notifiable)
     {
-        return (new SlackMessage)->content("New User: $notifiable->email");
-        return (new SlackMessage)
-        ->content("New User: $notifiable->email");
+        return (new SlackMessage)->content("New user: $notifiable->email");
     }
+
     public function toTelegram($notifiable)
     {
         return TelegramMessage::create()
-        ->to(env('TELEGRAM_REGISTRATION_CHAT_ID'))
-            ->content("New User: $notifiable->email");
+            ->to(env('TELEGRAM_REGISTRATION_CHAT_ID'))
+            ->content("New user: $notifiable->email");
     }
 }
