@@ -15,7 +15,7 @@
         "laravel/framework": "^10.0",
         "laravel/jetstream": "^3.0",
         "laravel/sanctum": "^3.2",
-        "laravel/slack-notification-channel": "^2.5",
+        "laravel/slack-notification-channel": "^3.1",
         "laravel/tinker": "^2.5",
         "setasign/fpdf": "^1.8",
         "setasign/fpdi": "^2.3",
