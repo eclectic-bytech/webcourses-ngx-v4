@@ -5,26 +5,23 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\SlackMessage;
 use NotificationChannels\Telegram\TelegramMessage;
+use App\Models\Course;
 
-use Illuminate\Notifications\Slack\BlockKit\Blocks\ContextBlock;
-use Illuminate\Notifications\Slack\BlockKit\Blocks\SectionBlock;
-use Illuminate\Notifications\Slack\BlockKit\Composites\ConfirmObject;
-use Illuminate\Notifications\Slack\SlackMessage;
-
-class RegistrationNotification extends Notification
+class AccessGrantedNotification extends Notification
 {
-
     use Queueable;
+
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($cid)
     {
-        //
+        $this->cid = $cid;
     }
 
     /**
@@ -50,21 +47,22 @@ class RegistrationNotification extends Notification
 
     /**
      * Get the Slack representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\SlackMessage
      */
-    public function toSlack(object $notifiable): SlackMessage
+    public function toSlack($notifiable)
     {
+        $course = Course::find($this->cid);
         return (new SlackMessage)
-            ->headerBlock('A new user has registered!')
-            ->SectionBlock(function (SectionBlock $block) use ($notifiable) {
-            $block->field("*User #:*\n$notifiable->id")->markdown();
-            $block->field("*New User:*\n$notifiable->email")->markdown();
-        });
+            ->text("$notifiable->email used an access code for course $course->title (#$course->id)");
     }
 
     public function toTelegram($notifiable)
     {
+        $course = Course::find($this->cid);
         return TelegramMessage::create()
-            ->to(env('TELEGRAM_REGISTRATION_CHAT_ID'))
-            ->content("New user: $notifiable->email");
+            ->to(env('TELEGRAM_ACCESS_GRANTED_CHAT_ID'))
+            ->content("$notifiable->email used an access code for course $course->title (#$course->id)");
     }
 }

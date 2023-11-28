@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Slack\SlackRoute;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
@@ -59,14 +61,16 @@ class User extends Authenticatable
         'profile_photo_url', 'user_roles'
     ];
 
+
+    use Notifiable;
+
     /**
-     * The webhook for slack notifications.
-     *
-     * @var string
+     * Route notifications for the Slack channel.
      */
-    public function routeNotificationForSlack($notification)
+    public function routeNotificationForSlack(Notification $notification): mixed
     {
-        return env('SLACK_HOOK_NOTIFICATION_URL_NEW_USER_REGISTRATION');
+        //change this to the channel name you want to send notifications to
+        return '#testing';
     }
 
     /**
