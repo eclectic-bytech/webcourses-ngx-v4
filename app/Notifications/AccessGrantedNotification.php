@@ -45,7 +45,7 @@ class AccessGrantedNotification extends Notification
     {
         $course = Course::find($this->cid);
         return (new SlackMessage)
-            ->content("$notifiable->email used an access code for course $course->title (#$course->id)");
+            ->text("$notifiable->email used an access code for course $course->title (#$course->id)");
     }
 
     public function toTelegram($notifiable)
