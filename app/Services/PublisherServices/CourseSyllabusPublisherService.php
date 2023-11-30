@@ -8,7 +8,7 @@ class CourseSyllabusPublisherService {
 
     public function storeCourseSyllabus($cid, $chid, $aid, $seq = 0)
     {
-        $seq = $seq ? $seq : $this->getNextSeq($cid);
+        $seq = $seq ? $seq : $this->nextSeq($cid);
 
         $courseSyllabus = new CourseSyllabus();
 
@@ -23,7 +23,7 @@ class CourseSyllabusPublisherService {
         return $courseSyllabus->id;
     }
 
-    function getNextSeq($cid)
+    function nextSeq($cid)
     {
         $seq = CourseSyllabus::where('course_id', $cid)->max('seq');
         return $seq ? ++$seq : 1;
