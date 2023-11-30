@@ -23,9 +23,8 @@ class UserProgressUserController extends Controller
                 ->where('course_id', $user_progress->course_id)
                 ->first();
 
-            if ($user_progress->total_activities_completed < $certificate_activity->seq - 2) {
-                // user did not complete enough activities for completion cert. why ..seq-2?
-                // seq starts at 0; activity with cert doesn't need to be completed for user to qualify.
+            if ($user_progress->total_activities_completed < $certificate_activity->seq - 1) {
+                // course not completed (cert activity need not be completed, hence seq-1)
                 abort(code:403);
             };
 

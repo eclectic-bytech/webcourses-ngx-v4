@@ -6,7 +6,7 @@ use App\Models\CourseSyllabus;
 
 class CourseSyllabusPublisherService {
 
-    public function storeCourseSyllabus($cid, $chid, $aid, $seq = 0)
+    public function storeCourseSyllabus($cid, $chid, $aid, $seq = 1)
     {
         $seq = $seq ? $seq : $this->getNextSeq($cid);
 

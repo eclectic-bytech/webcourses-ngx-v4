@@ -31,7 +31,7 @@ class CouponUserController extends Controller
                     if ($pid) {
                         $this->incrementCodeUses($code_hash);
                         $this->updateCodesUsesTable($code_hash, $pid);
-                        $code['first_aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
+                        $code['first_aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 1)->first()->activity_id;
                     }
                 }
             }

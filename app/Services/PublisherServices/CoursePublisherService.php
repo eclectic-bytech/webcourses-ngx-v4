@@ -54,6 +54,6 @@ class CoursePublisherService {
     public function initNewCourse(int $cid) {
         $chid = $this->chapterPublisherService->storeChapter();
         $aid = $this->activityPublisherService->storeActivity();
-        $csid = $this->courseSyllabusPublisherService->storeCourseSyllabus($cid, $chid, $aid, 1);
+        $csid = $this->courseSyllabusPublisherService->storeCourseSyllabus($cid, $chid, $aid);
     }
 }

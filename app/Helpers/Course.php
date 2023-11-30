@@ -14,7 +14,7 @@ function grantAccess($cid, $uid) {
     $user_progress->user_id = $uid;
     $user_progress->course_id = $cid;
     $user_progress->build_id = 0;
-    $user_progress->selected_aid = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
+    $user_progress->selected_aid = CourseSyllabus::where('course_id', $cid)->where('seq', 1)->first()->activity_id;
     $user_progress->demo = 0;
 
     $user_progress->save();
