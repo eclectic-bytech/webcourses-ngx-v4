@@ -5,46 +5,41 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CouponController;
-use App\Http\Controllers\BookmarkController;
-use App\Http\Controllers\SyllabusController;
-use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\UserProgressController;
-use App\Http\Controllers\UserAnswerController;
-use App\Http\Controllers\ChapterController;
-use App\Http\Controllers\UserRoleController;
-use App\Http\Controllers\CourseController;
+use App\Http\Controllers\User\CouponUserController;
+use App\Http\Controllers\User\BookmarkUserController;
+use App\Http\Controllers\User\ActivityUserController;
+use App\Http\Controllers\ActivityTypeController;
+use App\Http\Controllers\User\UserProgressUserController;
+use App\Http\Controllers\User\UserAnswerUserController;
+use App\Http\Controllers\User\UserRoleUserController;
+use App\Http\Controllers\User\CourseUserController;
 
-Route::group(['prefix' => 'user'], function() {
-
-    Route::get('/courses', [CourseController::class, 'indexUser']);
+Route::prefix('user')->group(function() {
+    Route::resource('courses', CourseUserController::class)->only(['index']);
+    Route::resource('role', UserRoleUserController::class)->only(['store']);
     Route::post('/profile/user_name', [UserController::class, 'save_name']);
-
-    Route::group(['prefix' => 'role'], function() {
-        Route::post('/interest-expressed', [UserRoleController::class, 'interest_expressed']);
-        Route::post('/request-access', [UserRoleController::class, 'request_access']);
-        Route::post('/builder-sub', [UserRoleController::class, 'builder_sub']);
-    });
-
 });
 
 // Paths grouped as /v4/webcourse
-Route::prefix('webcourse')->group(function() {
+Route::prefix('webcourse')->group(function()
+{
+    Route::get('/access-code/{code_hash}', [CouponUserController::class, 'applyAccessCode']);
 
-    Route::get('/access-code/{code_hash}', [CouponController::class, 'applyAccessCode']);
-    Route::get('/{cid}/bookmarks', [BookmarkController::class, 'bookmark_Index']);
+    Route::prefix('activities')->group(function()
+    {
+        // bookmarks is not part of is_student middleware group, because it requires an {aid} in the url
+        Route::resource('bookmarks', BookmarkUserController::class)->only(['store', 'destroy', 'index']);
+        Route::get('help/{type?}', [ActivityTypeController::class, 'help']);
 
-    Route::group(['prefix' => '/activities'], function() {
-        Route::get('/{aid?}', [SyllabusController::class, 'activity_set']);
-        Route::get('/special/before-and-after/{aid}', [ActivityController::class, 'before_and_after_activity']);
-        Route::get('/special/completion-cert/{pid}', [UserProgressController::class, 'completion_cert']);
-        Route::get('/help/{type?}', [ActivityController::class, 'help']);
-        Route::post('/{aid}/user_answer', [UserAnswerController::class, 'save_user_answer']);
-        Route::post('/bookmark/{aid}', [BookmarkController::class, 'bookmark_create']);
-        Route::delete('/bookmark/{aid}', [BookmarkController::class, 'bookmark_delete']);
+        Route::middleware('is_student')->group( function()
+        {
+            Route::prefix('special')->group( function() {
+                Route::get('completion-cert/{activity}', [UserProgressUserController::class, 'completion_cert']);
+                Route::get('before-and-after/{activity}', [ActivityUserController::class, 'before_and_after_activity']);
+            });
+            Route::get('{aid}', [ActivityUserController::class, 'show']);
+            Route::post('{aid}/user_answer', [UserAnswerUserController::class, 'save_user_answer']);
+        });
     });
-
-    Route::get('/chapter/{chid}', [ChapterController::class, 'chapter']);
-    Route::get('/chapter/{chid}/user_answer_count', [UserAnswerController::class, 'total_user_answers_in_chapter']);
 
 });

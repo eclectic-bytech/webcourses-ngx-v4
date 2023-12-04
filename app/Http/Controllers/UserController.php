@@ -23,19 +23,15 @@ class UserController extends Controller
         }
     }
 
-    public function save_name(Request $request) {
+    public function save_name(Request $request)
+    {
         $input = $request->input();
-        $user = auth()->user();
-        return tap(User::where('id', $user['id']))
+        return tap(User::where('id', resolve('uid')))
             ->update([
                 'first_name' => $input['first_name'],
                 'last_name' => $input['last_name']
             ])
-            ->first()
-        ;
+            ->first();
     }
 
-    public function recent_logins() {
-        return User::orderByDesc('updated_at')->limit(10)->get();
-    }
 }

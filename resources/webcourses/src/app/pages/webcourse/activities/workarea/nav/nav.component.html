@@ -5,7 +5,7 @@
     <div *ngIf="!this.webcourseService.endOfChapter && !this.webcourseService.endOfCourse; else eo">
       <button class="btn btn-primary mr-3"
         (click)="calcFollowingAid(-1)"
-        [disabled]="this.webcourseService.waitingForApi || activity[activity.length -1].meta.seq == 0"
+        [disabled]="this.webcourseService.waitingForApi || activity[activity.length -1].meta.seq == 1"
         >
         <fa-icon [icon]="faStepBackward"></fa-icon>
       </button>

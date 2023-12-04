@@ -20,7 +20,7 @@ export class CourseService {
   // won't fetch any course marked as private
   getCourse(cid: any) {
     return this.http.get<Course>(`
-      ${this.config.params.api.route}/catalogue/course/${cid}
+      ${this.config.params.api.route}/catalogue/${cid}
     `).pipe(course => course)
   }
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\PublisherAdmin;
 
+use App\Services\PublisherServices\CoursePublisherService;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
@@ -18,37 +20,17 @@ class CoursePAController extends Controller
             ->get();
     }
 
-    public function show($cid) {
+    public function show($cid)
+    {
         return Course::where('publisher_id', resolve('pub_id'))
             ->withCount('participants as total_students')
             ->find($cid);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, CoursePublisherService $coursePubService)
     {
-        $input = $request->input();
-
-        // $input = validate_course_data($input);
-        $course = new Course();
-
-        $course->active_bid = 1;
-        $course->title = $input['title'];
-        $course->publisher_id = resolve('pub_id');
-        $course->published = 0;
-        $course->private = $input['private'] ? 1 : 0;
-        $course->hide_from_main_catalogue = 0;
-        $course->completion_time = 1;
-        $course->audience = $input['audience'];
-        $course->short_desc = $input['short_desc'];
-        $course->long_desc = $input['long_desc'];
-        $course->objective = $input['objective'];
-        $course->eval_type = $input['eval_type'];
-        $course->price = $input['price'] * 100;
-        $course->cover = 'default';
-
-        $course->save();
-
-        return $input;
+        $coursePubService->storeCourse($request->input());
+        return $request->input();
     }
 
     public function update(Request $request, $cid)

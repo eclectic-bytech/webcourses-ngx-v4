@@ -1,2 +1,9 @@
-<app-before-and-after *ngIf="activity.meta.style === 'before-and-after'" [activity]="activity"></app-before-and-after>
-<app-completion-cert *ngIf="activity.meta.style === 'completion-cert'"></app-completion-cert>
+<app-before-and-after
+  *ngIf="activity.meta.style === 'before-and-after'"
+  [activity]="activity"
+></app-before-and-after>
+
+<app-completion-cert
+  *ngIf="activity.meta.style === 'completion-cert'"
+  [activity]="activity"
+></app-completion-cert>

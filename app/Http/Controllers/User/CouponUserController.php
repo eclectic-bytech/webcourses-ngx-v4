@@ -1,57 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Coupon;
-use App\Models\Course;
-use App\Models\Publisher;
-use App\Models\UserProgress;
-use App\Models\CourseSyllabus;
-use App\Models\CodesUse;
-use App\Models\Syllabus;
+
 use Stripe\Charge;
 use Stripe\StripeClient;
 
+use App\Models\Coupon;
+use App\Models\UserProgress;
+use App\Models\CourseSyllabus;
+use App\Models\CodesUse;
 
-class CouponController extends Controller
+class CouponUserController extends Controller
 {
-    // displays in publisher's console all codes including usage level
-    public function index($cid = false) {
-        $courses_with_codes = [];
-
-        if ($cid) {
-            $course = Course::where('publisher_id', resolve('pub_id'))->where('id', $cid)->first();
-            $codes = Coupon::where('cid', $cid)->orderBy('created_at', 'desc')->get();
-            array_push($courses_with_codes, array("course" => $course, "coupons" => $codes));
-        } else {
-            $courses = Course::where('publisher_id', resolve('pub_id'))->get();
-
-            foreach ($courses as $key => $course) {
-                $codes = Coupon::where('cid', $course->id)->orderBy('created_at', 'desc')->get();
-                if ($codes->isNotEmpty()) {
-                    array_push($courses_with_codes, array("course" => $course, "coupons" => $codes));
-                }
-            }
-        }
-
-        return $courses_with_codes;
-    }
-
-    public function recent_code_uses() {
-        return Coupon::orderByDesc('updated_at')->limit(5)->get();
-    }
-
-    public function coupon() {
-        return $this->belongsTo(Course::class);
-    }
-
-    public function applyAccessCode($code_hash) {
-        $uid = auth()->user()->id;
-
+    public function applyAccessCode($code_hash)
+    {
         $code_info = Coupon::with(['course', 'publisher'])->find($code_hash);
         if ($code_info) {
-            if ($this->userAlreadyEnrolled($uid, $code_info['cid'])) {
+            if ($this->userAlreadyEnrolled(resolve('uid'), $code_info['cid'])) {
                 $code['status'] = $this->couponMessage('enrolled');
             } else {
                 $code['status'] = $this->validateCode($code_info);
@@ -59,11 +27,11 @@ class CouponController extends Controller
 
                 if ($code['status']['valid']) {
                     $cid = $code_info['course']['id'];
-                    $pid = grantAccess($cid, $uid);
+                    $pid = grantAccess($cid, resolve('uid'));
                     if ($pid) {
                         $this->incrementCodeUses($code_hash);
                         $this->updateCodesUsesTable($code_hash, $pid);
-                        $code['first_aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
+                        $code['first_aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 1)->first()->activity_id;
                     }
                 }
             }
@@ -115,7 +83,7 @@ class CouponController extends Controller
         $message['uses_max'] = array("valid" => false, "cssClass" => "text-danger", "message" => "Code maximum uses reached");
         $message['valid'] = array("valid" => true, "cssClass" => "text-success", "message" => "Access Granted");
         $message['invalid'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Invalid code");
-        $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Access code already applied");
+        $message['enrolled'] = array("valid" => false, "cssClass" => "text-warning", "message" => "Course already unlocked");
         return $message[$status];
     }
 

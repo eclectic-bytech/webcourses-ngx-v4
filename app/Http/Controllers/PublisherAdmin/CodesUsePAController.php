@@ -1,16 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\PublisherAdmin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use App\Http\Controllers\Controller;
+
 use App\Models\CodesUse;
 use App\Models\Course;
 use App\Models\Coupon;
-use Illuminate\Support\Facades\DB;
 
-class CodesUseController extends Controller
+class CodesUsePAController extends Controller
 {
-    public function access_code_users($code_id) {
+    public function index($code_id) {
         $data['code'] = Coupon::find($code_id);
         $data['course'] = Course::where('id', $data['code']->cid)
             ->with('publisher')

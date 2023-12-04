@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { Bookmark } from './bookmark.model'
-import { BehaviorSubject, Observable } from 'rxjs'
+import { BehaviorSubject, Observable, Subject } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class BookmarksService {
 
   public bookmarksSubject: BehaviorSubject<any[]> = new BehaviorSubject([])
   public bookmarks$: Observable<Bookmark[]> = this.bookmarksSubject.asObservable()
+  public deletedBookmarkAid$ = new Subject<number>
 
   public selectedBookmark: Bookmark[]
 
@@ -21,7 +22,7 @@ export class BookmarksService {
 
   getBookmarks(cid: number) {
     this.httpClient.get<Bookmark[]>(
-      `${this.configService.params.api.route}/webcourse/${cid}/bookmarks`
+      `${this.configService.params.api.route}/webcourse/activities/bookmarks?cid=${cid}`
     ).subscribe(
       (bookmarks) => {
         this.bookmarksSubject.next(bookmarks)
@@ -31,13 +32,13 @@ export class BookmarksService {
 
   deleteBookmark(aid: number): Observable<any> {
     return this.httpClient.delete(
-      `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`
+      `${this.configService.params.api.route}/webcourse/activities/bookmarks/${aid}`
     )
   }
 
   addBookmark(aid: number): Observable<any> {
     return this.httpClient.post(
-      `${this.configService.params.api.route}/webcourse/activities/bookmark/${aid}`, aid
+      `${this.configService.params.api.route}/webcourse/activities/bookmarks`, {aid: aid}
     )
   }
 }

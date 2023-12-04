@@ -1,24 +1,18 @@
 <div id="completion-certificate" class="text-center">
 
-  <div *ngIf="this.selectedCourseService.selectedCourse as selectedCourse; else error">
-    <button class="btn btn-primary mt-1 mb-2"
-      [ngClass]="this.completionCertService.downloadCertificateLoading ? 'btn-secondary' : 'btn-primary'"
-      [disabled]="this.completionCertService.downloadCertificateLoading ? true : false"
-      (click)="this.completionCertService.downloadCertificate(selectedCourse.user_progress.id)"
-    >
+  <button class="btn btn-primary mt-1 mb-2"
+    [disabled]="this.completionCertService.downloadCertificateLoading ? true : false"
+    (click)="downloadCertificateBtn(activity.id)"
+  >
 
-      <span *ngIf="!this.completionCertService.downloadCertificateLoading; else preparing">
-        <fa-icon [icon]="faFileArrowDown" class="mr-3"></fa-icon>
-        Download <span class="small font-weight-light">(PDF)</span>
-      </span>
+    <span *ngIf="!this.completionCertService.downloadCertificateLoading; else preparing">
+      <fa-icon [icon]="faFileArrowDown" class="mr-3"></fa-icon>
+      Download <span class="small font-weight-light">(PDF)</span>
+    </span>
 
-      <ng-template #preparing>
-        <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true"></fa-icon>
-      </ng-template>
-    </button>
-  </div>
+    <ng-template #preparing>
+      <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true"></fa-icon>
+    </ng-template>
+  </button>
 
-  <ng-template #error>
-    <p class="lead">Error #177: Certificate could not load <strong>=(</strong></p>
-  </ng-template>
 </div>

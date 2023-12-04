@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Syllabus extends Model
+class ActivityType extends Model
 {
     use HasFactory;
-    protected $table = 'course_syllabus';
 }
