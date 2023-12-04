@@ -1,25 +1,42 @@
 <template>
     <div>
         <jet-banner />
-
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
+                           <!-- Hamburger -->
+                           <div class="-mr-2 flex items-center lg:hidden">
+                            <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
+                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                    <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    <path :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="flex-shrink-0 flex items-center">
-                                <inertia-link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
+                            <div class="flex-shrink-0 flex items-center lg:-my-px lg:flex">
+                                <inertia-link :href="route('profile.show')">
+                                    <!--
+                                        Preserving this link to help understand Vue, when we move to
+                                        writing our of componenets
+                                        <jet-application-mark class="block h-9 w-auto" />
+                                    -->
+                                    <div class="block h-9 w-auto">
+                                        <img src="/webcourses/publisher-files/1/theme/logo.svg" alt="System Logo" style="max-height: 2.3rem;">
+                                    </div>
                                 </inertia-link>
                             </div>
-
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
+                                <!--
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
+                                -->
+                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/catalogue">Catalogue</a>
                             </div>
                         </div>
 
