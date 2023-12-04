@@ -7,49 +7,25 @@
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
-                           <!-- Hamburger -->
-                           <div class="-mr-2 flex items-center lg:hidden">
-                            <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
-                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                    <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                                    <path :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                        </div>
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="flex-shrink-0 flex items-center lg:-my-px lg:flex">
-                                <inertia-link :href="route('profile.show')">
-                                    <!--
-                                        Preserving this link to help understand Vue, when we move to
-                                        writing our of componenets
-                                        <jet-application-mark class="block h-9 w-auto" />
-                                    -->
-                                    <div class="block h-9 w-auto">
-                                        <img src="/webcourses/publisher-files/1/theme/logo.svg" alt="System Logo" style="max-height: 2.3rem;">
-                                    </div>
+                            <div class="flex-shrink-0 flex items-center">
+                                <inertia-link :href="route('dashboard')">
+                                    <jet-application-mark class="block h-9 w-auto" />
                                 </inertia-link>
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 lg:-my-px lg:ml-10 lg:flex">
-                                <!--
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                                -->
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/catalogue">Webcourses</a>
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/demo">Demo</a>
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="https://publish.cultivatelearning.ca/">Publish</a>
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/">About</a>
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/contact">Contact</a>
-                                <a class="inline-flex items-center px-1 py-3 border-b-2 border-transparent font-medium leading-5 text-blue-900 hover:text-blue-950 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:border-gray-300 transition" href="/webcourses/help">Help</a>
                             </div>
                         </div>
-                        <div class="sm:flex sm:items-center sm:ml-6">
-                            <!--
+
+                        <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <div class="ml-3 relative">
-                                <!~~ Teams Dropdown ~~>
+                                <!-- Teams Dropdown -->
                                 <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
@@ -65,13 +41,13 @@
 
                                     <template #content>
                                         <div class="w-60">
-                                            <!~~ Team Management ~~>
+                                            <!-- Team Management -->
                                             <template v-if="$page.props.jetstream.hasTeamFeatures">
                                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                                     Manage Team
                                                 </div>
 
-                                                <!~~ Team Settings ~~>
+                                                <!-- Team Settings -->
                                                 <jet-dropdown-link :href="route('teams.show', $page.props.auth.user.current_team)">
                                                     Team Settings
                                                 </jet-dropdown-link>
@@ -82,7 +58,7 @@
 
                                                 <div class="border-t border-gray-100"></div>
 
-                                                <!~~ Team Switcher ~~>
+                                                <!-- Team Switcher -->
                                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                                     Switch Teams
                                                 </div>
@@ -102,147 +78,103 @@
                                     </template>
                                 </jet-dropdown>
                             </div>
-                            -->
 
                             <!-- Settings Dropdown -->
-                                <div class="ml-3 relative inline-flex">
-                                <inertia-link :href="route('profile.show')" class="mr-5 py-3 mt-2 leading-3 text-clip overflow-hidden max-w-[11rem] font-normal">
-                                    <div class="hidden border border-transparent sm:flex justify-end text-amber-500">{{ $page.props.auth.user.username }}</div>
-                                    <div class="hidden border border-transparent sm:flex justify-end text-xs text-blue-900">{{ $page.props.auth.user.email }}</div>
-                                </inertia-link>
-
-                                <jet-dropdown align="right" width="52">
+                            <div class="ml-3 relative">
+                                <jet-dropdown align="right" width="48">
                                     <template #trigger>
-                                        <button class="inline-flex items-center py-3 border border-transparent text-sm leading-4 font-medium rounded-md text-amber-500 bg-white focus:outline-none transition">
-                                            <img class="h-9 w-auto rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"/>
-                                            <font-awesome-icon icon="fa-solid fa-caret-down" class="ml-1 text-gray-700" />
+                                        <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                            <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name" />
                                         </button>
+
+                                        <span v-else class="inline-flex rounded-md">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                                {{ $page.props.auth.user.name }}
+
+                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </span>
                                     </template>
 
                                     <template #content>
                                         <!-- Account Management -->
-                                        <!-- <div class="block px-4 py-2 text-xs text-gray-400">
+                                        <div class="block px-4 py-2 text-xs text-gray-400">
                                             Manage Account
-                                        </div> -->
-                                        <!-- <div class="sm:hidden sm:flex flex items-center px-4">
-                                            <div>
-                                               <div class="font-medium text-base text-gray-800">{{ $page.props.auth.user.username }}</div>
-                                               <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
-                                            </div>
-                                        </div> -->
-
-                                        <!-- Anchor tags for easy routing to the front end -->
-
-                                        <!-- System administrator menu items -->
-                                        <div v-if="$page.props.auth.user.user_roles.includes(1)">
-                                            <a :href="('../webcourses/admin/system/dashboard')" class="items-center block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
-                                                <div class="inline-flex px-2 py-1">
-                                                    <div class="fa-icon-container">
-                                                        <font-awesome-icon icon="fa-solid fa-screwdriver-wrench" class="text-amber-400 text-xlg" />
-                                                    </div>
-                                                    System Dashboard
-                                                </div>
-                                            </a>
-
-                                            <div class="border-t border-gray-100"></div>
                                         </div>
 
-                                        <!-- Publisher menu items -->
-                                        <div v-if="$page.props.auth.user.user_roles.includes(2)">
-                                            <a :href="('../webcourses/admin/publisher/profile')" class="items-center block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
-                                                <div class="inline-flex px-2 py-1">
-                                                    <div class="fa-icon-container">
-                                                        <font-awesome-icon icon="fa-solid fa-gem" class="text-amber-400 text-xlg" />
-                                                    </div>
-                                                    Publisher
-                                                </div>
-                                            </a>
-
-                                            <a :href="('../webcourses/admin/publisher/courses')" class="items-center block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
-                                                <div class="inline-flex px-2 py-1 pl-9">
-                                                    <!-- <div class="fa-icon-container">
-                                                        <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
-                                                    </div> -->
-                                                    Reports
-                                                </div>
-                                            </a>
-
-                                            <a :href="('../webcourses/admin/publisher/discount-codes')" class="items-center block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
-                                                <div class="inline-flex px-2 py-1 pl-9">
-                                                    <!-- <div class="fa-icon-container">
-                                                        <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
-                                                    </div> -->
-                                                    Access Codes
-                                                </div>
-                                            </a>
-
-                                            <div class="border-t border-gray-100"></div>
-                                        </div>
-
-                                        <!-- Learner and profile menu items -->
-
-                                        <jet-dropdown-link :href="('/user/redirect')" class="items-center">
-                                            <div class="inline-flex px-2 py-1">
-                                                <div class="fa-icon-container">
-                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
-                                                </div>
-                                                My Courses
-                                            </div>
+                                        <jet-dropdown-link :href="route('profile.show')">
+                                            Profile
                                         </jet-dropdown-link>
 
-                                        <jet-dropdown-link :href="route('profile.show')" class="items-center">
-                                            <div class="inline-flex px-2 py-1">
-                                                <div class="fa-icon-container">
-                                                    <font-awesome-icon icon="fa-solid fa-wrench" class="text-amber-400 text-xlg" />
-                                                </div>
-                                                Profile
-                                            </div>
-                                        </jet-dropdown-link>
-
-                                        <jet-dropdown-link :href="route('api-tokens.index')" class="items-center"  v-if="$page.props.jetstream.hasApiFeatures">
-                                            <div class="inline-flex px-2 py-1">
-                                                <div class="fa-icon-container">
-                                                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-amber-400 text-xlg" />
-                                                </div>
-                                                API Tokens
-                                            </div>
+                                        <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
+                                            API Tokens
                                         </jet-dropdown-link>
 
                                         <div class="border-t border-gray-100"></div>
 
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
-                                            <jet-dropdown-link as="button" class="items-center"  >
-                                                <div class="inline-flex px-2 py-1">
-                                                    <div class="fa-icon-container">
-                                                        <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="text-amber-400 text-xlg" />
-                                                    </div>
-                                                    Sign Out
-                                                </div>
+                                            <jet-dropdown-link as="button">
+                                                Log Out
                                             </jet-dropdown-link>
                                         </form>
                                     </template>
                                 </jet-dropdown>
                             </div>
                         </div>
+
+                        <!-- Hamburger -->
+                        <div class="-mr-2 flex items-center sm:hidden">
+                            <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
+                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                    <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    <path :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
+                    <div class="pt-2 pb-3 space-y-1">
+                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                            Dashboard
+                        </jet-responsive-nav-link>
+                    </div>
 
                     <!-- Responsive Settings Options -->
-                    <div class="pt-1 pb-2 border-b border-gray-200">
-                        <div class="mt-3 space-y-1">
-                            <a href="/webcourses/catalogue" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">Webcourses</a>
-                            <a href="/webcourses/demo" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">Demo</a>
-                            <a href="https://publish.cultivatelearning.ca/" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">Publish</a>
-                            <a href="/webcourses/" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">About</a>
-                            <a href="/webcourses/contact" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">Contact</a>
-                            <a href="/webcourses/help" class="py-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-blue-900 hover:text-blue-950 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-blue-950 focus:bg-gray-50 focus:border-gray-300 transition">Help</a>
+                    <div class="pt-4 pb-1 border-t border-gray-200">
+                        <div class="flex items-center px-4">
+                            <div v-if="$page.props.jetstream.managesProfilePhotos" class="flex-shrink-0 mr-3" >
+                                <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name" />
+                            </div>
 
-                            <!-- Team management in hamburger menu
-                            <!~~ Team Management ~~>
+                            <div>
+                                <div class="font-medium text-base text-gray-800">{{ $page.props.auth.user.name }}</div>
+                                <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 space-y-1">
+                            <jet-responsive-nav-link :href="route('profile.show')" :active="route().current('profile.show')">
+                                Profile
+                            </jet-responsive-nav-link>
+
+                            <jet-responsive-nav-link :href="route('api-tokens.index')" :active="route().current('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
+                                API Tokens
+                            </jet-responsive-nav-link>
+
+                            <!-- Authentication -->
+                            <form method="POST" @submit.prevent="logout">
+                                <jet-responsive-nav-link as="button">
+                                    Log Out
+                                </jet-responsive-nav-link>
+                            </form>
+
+                            <!-- Team Management -->
                             <template v-if="$page.props.jetstream.hasTeamFeatures">
                                 <div class="border-t border-gray-200"></div>
 
@@ -250,7 +182,7 @@
                                     Manage Team
                                 </div>
 
-                                <!~~ Team Settings ~~>
+                                <!-- Team Settings -->
                                 <jet-responsive-nav-link :href="route('teams.show', $page.props.auth.user.current_team)" :active="route().current('teams.show')">
                                     Team Settings
                                 </jet-responsive-nav-link>
@@ -261,7 +193,7 @@
 
                                 <div class="border-t border-gray-200"></div>
 
-                                <!~~ Team Switcher ~~>
+                                <!-- Team Switcher -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     Switch Teams
                                 </div>
@@ -277,8 +209,6 @@
                                     </form>
                                 </template>
                             </template>
-                            -->
-
                         </div>
                     </div>
                 </div>
@@ -293,40 +223,22 @@
 
             <!-- Page Content -->
             <main>
-
                 <slot></slot>
-                <div class="py-8"><div class="border-t border-gray-200"></div></div>
-
-                <!-- <div class="p-6">
-                    <h1>$PAGE VARIABLE</h1>
-                    <pre>{{ $page }}</pre>
-                </div>
-
-                <div class="py-8"><div class="border-t border-gray-200"></div></div>
-
-                <div class="p-6">
-                    <h1>$TEAM VARIABLE</h1>
-                    <pre>{{ $team }}</pre>
-                </div>
-                -->
             </main>
         </div>
     </div>
-
 </template>
 
 <script>
-    // import JetApplicationMark from '@/Jetstream/ApplicationMark'
+    import JetApplicationMark from '@/Jetstream/ApplicationMark'
     import JetBanner from '@/Jetstream/Banner'
     import JetDropdown from '@/Jetstream/Dropdown'
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
-
     export default {
-        // name: 'App',
         components: {
-            // JetApplicationMark,
+            JetApplicationMark,
             JetBanner,
             JetDropdown,
             JetDropdownLink,
@@ -338,7 +250,6 @@
                 showingNavigationDropdown: false,
             }
         },
-
         methods: {
             switchToTeam(team) {
                 this.$inertia.put(route('current-team.update'), {
@@ -347,7 +258,6 @@
                     preserveState: false
                 })
             },
-
             logout() {
                 this.$inertia.post(route('logout'));
             },
