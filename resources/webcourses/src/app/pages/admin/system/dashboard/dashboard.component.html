@@ -36,9 +36,9 @@
               class="mr-4 pull-left"
             />
             <div class="d-block">{{ recentLogin.email}} ({{ recentLogin.login_count }})</div>
-            <div class="d-block text-secondary text-uppercase small">
-              <span class="fi fi-{{recentLogin.country | lowercase}}"></span>
-              {{ recentLogin.updated_at | date: 'E d MMM H:mm' }}
+            <div class="d-block">
+              <span class="fi fi-{{recentLogin.country | lowercase}} rounded border mr-2" style="line-height: .9rem;"></span>
+              <span class="text-secondary text-uppercase small">{{ recentLogin.updated_at | date: 'E d MMM H:mm' }}</span>
             </div>
           </div>
         </div>
@@ -108,7 +108,9 @@
             <tr *ngFor="let user of users">
               <td>{{ user.user.id }}</td>
               <td>{{ user.user.email }}</td>
-              <td>{{ user.user.country }}</td>
+              <td>
+                <span class="fi fi-{{user.user.country | lowercase}} rounded border mr-2" style="line-height: .9rem;"></span>
+              </td>
               <td>{{ user.user.created_at | date: 'medium' }}</td>
               <td>{{ user.user.user_roles | json }}</td>
             </tr>
