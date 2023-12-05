@@ -17,6 +17,7 @@
                             </div>
                         </div>
 
+                        <div align="right" class="inline-flex">
                         <div class="sm:flex sm:items-center sm:ml-6">
                             <inertia-link :href="route('profile.show')" class="mr-5 py-3 mt-2 leading-3 text-clip overflow-hidden max-w-[11rem] font-normal">
                                 <div class="hidden border border-transparent sm:flex justify-end text-amber-500">{{ $page.props.auth.user.username }}</div>
@@ -24,7 +25,7 @@
                             </inertia-link>
                         </div>
 
-                        <jet-dropdown align="right" width="52">
+                        <jet-dropdown width="52">
                             <template #trigger>
                                 <button class="inline-flex items-center py-3 border border-transparent text-sm leading-4 font-medium rounded-md text-amber-500 bg-white focus:outline-none transition">
                                     <img class="h-9 w-auto rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"/>
@@ -52,6 +53,7 @@
                             </template>
                         </jet-dropdown>
                     </div>
+                </div>
                 </div>
             </nav>
 
