@@ -9,7 +9,7 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center lg:-my-px lg:flex">
-                                <inertia-link :href="route('profile.show')">
+                                <inertia-link :href="('/user/redirect')">
                                     <div class="block h-9 w-auto">
                                         <img src="/webcourses/publisher-files/1/theme/logo.svg" alt="System Logo" style="max-height: 2.3rem;">
                                     </div>
@@ -32,13 +32,15 @@
                                 </button>
                             </template>
                             <template #content>
-                                <!-- Learner and profile menu items -->
+
                                 <jet-dropdown-link :href="('/user/redirect')" class="items-center">
                                     <div class="inline-flex px-2 py-1">
                                         Webcourses
                                     </div>
                                 </jet-dropdown-link>
+
                                 <div class="border-t border-gray-100"></div>
+
                                 <!-- Authentication -->
                                 <form @submit.prevent="logout">
                                     <jet-dropdown-link as="button" class="items-center"  >
