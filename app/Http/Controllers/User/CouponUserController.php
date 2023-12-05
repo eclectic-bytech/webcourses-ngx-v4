@@ -35,7 +35,7 @@ class CouponUserController extends Controller
                         $this->updateCodesUsesTable($code_hash, $pid);
                         $code['first_aid'] = CourseSyllabus::where('course_id', $cid)->where('seq', 0)->first()->activity_id;
 
-                        auth()->user()->notify(new AccessGrantedNotification($cid));
+                        resolve('uid')->notify(new AccessGrantedNotification($cid));
                     }
                 }
             }
