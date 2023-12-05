@@ -34,22 +34,23 @@
                             </template>
                             <template #content>
 
-                                <jet-dropdown-link as="button" :href="('/user/redirect')" class="items-center">
-                                    <div class="inline-flex px-2 py-1">
+                                <jet-dropdown-link :href="('/user/redirect')">
+                                    <button class="block w-full text-left px-4 py-2">
                                         Webcourses
-                                    </div>
+                                    </button>
                                 </jet-dropdown-link>
 
                                 <div class="border-t border-gray-100"></div>
 
                                 <!-- Authentication -->
                                 <form @submit.prevent="logout">
-                                    <jet-dropdown-link as="button" class="items-center"  >
-                                        <div class="inline-flex px-2 py-1">
+                                    <jet-dropdown-link as="button" class="items-start">
+                                        <div class="block w-full text-left px-4 py-2">
                                             Sign Out
                                         </div>
                                     </jet-dropdown-link>
                                 </form>
+
                             </template>
                         </jet-dropdown>
                     </div>
