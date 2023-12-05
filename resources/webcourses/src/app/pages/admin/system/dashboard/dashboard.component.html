@@ -111,7 +111,7 @@
               <td>
                 <span class="fi fi-{{user.user.country | lowercase}} rounded border mr-2" style="line-height: .9rem;"></span>
               </td>
-              <td>{{ user.user.created_at | date: 'medium' }}</td>
+              <td>{{ user.user.created_at | date: 'E d MMM H:mm' }}</td>
               <td>{{ user.user.user_roles | json }}</td>
             </tr>
           </tbody>
