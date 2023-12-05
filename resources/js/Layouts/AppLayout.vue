@@ -34,7 +34,7 @@
                             </template>
                             <template #content>
 
-                                <jet-dropdown-link :href="('/user/redirect')" class="items-center">
+                                <jet-dropdown-link as="button" :href="('/user/redirect')" class="items-center">
                                     <div class="inline-flex px-2 py-1">
                                         Webcourses
                                     </div>
