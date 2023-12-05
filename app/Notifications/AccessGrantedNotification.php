@@ -24,6 +24,15 @@ class AccessGrantedNotification extends Notification
         $this->cid = $cid;
     }
 
+    private function getCourse()
+    {
+        if (!$this->course) {
+            $this->course = Course::find($this->cid);
+        }
+
+        return $this->course;
+    }
+
     /**
      * Get the notification's delivery channels.
      *
@@ -51,16 +60,15 @@ class AccessGrantedNotification extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\SlackMessage
      */
-    public function toSlack($notifiable)
-    {
-        $course = Course::find($this->cid);
+    public function toSlack($notifiable, $course)
+    $course = $this->getCourse();
         return (new SlackMessage)
             ->text("$notifiable->email used an access code for course $course->title (#$course->id)");
     }
 
     public function toTelegram($notifiable)
     {
-        $course = Course::find($this->cid);
+        $course = $this->getCourse();
         return TelegramMessage::create()
             ->to(env('TELEGRAM_ACCESS_GRANTED_CHAT_ID'))
             ->content("$notifiable->email used an access code for course $course->title (#$course->id)");
