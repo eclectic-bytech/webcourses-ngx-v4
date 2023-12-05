@@ -8,29 +8,49 @@
       <img src="assets/starfleet.png" class="my-3">
     </div>
   </div>
+  <div class="row my-3">
+    <div class="col">0 publishers</div>
+    <div class="col">0 courses</div>
+    <div class="col">0 activities</div>
+    <div class="col">0 user completed activities</div>
+  </div>
   <div class="row my-5">
-    <div class="col">
-      <div class="h3 text-uppercase pb-2">System overview</div>
-      <div class="container-fluid">
-        <div class="row my-1">
-          <div class="col-2">N/A</div>
-          <div class="col-10">Publishers</div>
-        </div>
-        <div class="row my-1">
-          <div class="col-2">N/A</div>
-          <div class="col-10">Courses</div>
-        </div>
-        <div class="row my-1">
-          <div class="col-2">N/A</div>
-          <div class="col-10">Activities</div>
-        </div>
-        <div class="row my-1">
-          <div class="col-2">N/A</div>
-          <div class="col-10">User completed activities</div>
+    <div class="col col-lg-6">
+      <div class="h3 text-uppercase">Latest logins
+        <button type="button" class="btn btn-link btn-sm ml-3" (click)="refreshLatestLogins()">
+          <fa-icon [icon]="faRepeat" class="text-primary mr-2"></fa-icon>Refresh
+        </button>
+      </div>
+
+      <div
+        class="container-fluid"
+        *ngIf="(recentLogins$ | async) as recentLogins; else LoadingSpinner"
+        @fadeInOut
+      >
+        <div *ngFor="let recentLogin of recentLogins" class="font-weight-normal row my-2">
+          <div class="col px-0">
+            <img
+              ngxGravatar
+              [src]="this.gravatarMd5Service.gravatarMD5src(recentLogin.email)"
+              [size]="50"
+              class="mr-4 pull-left"
+            />
+            <div class="d-block">{{ recentLogin.email}} ({{ recentLogin.login_count }})</div>
+            <div class="d-block text-secondary text-uppercase small">
+              {{ recentLogin.updated_at | date: 'E d MMM H:mm' }}
+            </div>
+          </div>
         </div>
       </div>
+
+      <ng-template #LoadingSpinner>
+        <div class="text-center d-block">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+      </ng-template>
     </div>
-    <div class="col">
+
+    <div class="col col-lg-6">
       <div class="d-block my-auto">
         <div class="h3 text-uppercase d-inline-block">
           Latest access-code uses
@@ -66,36 +86,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <div class="d-block my-auto">
-        <div class="h3 text-uppercase d-inline-block">
-          Latest logins
-          <button type="button" class="btn btn-link btn-sm ml-3" (click)="refreshLatestLogins()">
-            <fa-icon [icon]="faRepeat" class="text-primary mr-2"></fa-icon>Refresh
-          </button>
-        </div>
-      </div>
-      <div class="alert alert-primary mb-1" role="alert">
-        <div *ngIf="(recentLogins$ | async) as recentLogins; else LoadingSpinner" @fadeInOut>
-          <div *ngFor="let recentLogin of recentLogins" class="d-inline-block">
-            <span class="h6 font-weight-normal">
-              <a href="mailto:{{recentLogin.email}}" target="_blank">{{recentLogin.email}}</a>
-            </span>
-            <span> ({{ recentLogin.login_count }})</span>
-            <span class="text-secondary text-uppercase small"> {{ recentLogin.updated_at | date: 'E d MMM H:mm' }}</span>
-            <span class="px-2 font-weight-bold">-</span>
-          </div>
-        </div>
-        <ng-template #LoadingSpinner>
-          <div class="text-center d-block">
-            <app-loading-spinner></app-loading-spinner>
-          </div>
-        </ng-template>
-      </div>
-      <span class="text-secondary text-uppercase small">{{ this.lastLatestLoginsRefresh | date: 'E H:mm:ss' }}</span>
-    </div>
-  </div>
+
   <div *ngIf="publisherInterest$ | async as users">
     <div class="row">
       <div class="col">
