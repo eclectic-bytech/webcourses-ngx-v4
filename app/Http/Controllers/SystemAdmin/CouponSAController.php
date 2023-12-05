@@ -9,6 +9,6 @@ use App\Models\Coupon;
 class CouponSAController extends Controller
 {
     public function recent_code_uses() {
-        return Coupon::orderByDesc('updated_at')->limit(5)->get();
+        return Coupon::orderByDesc('updated_at')->limit(7)->get();
     }
 }

@@ -9,6 +9,6 @@ use App\Models\User;
 class UserSAController extends Controller
 {
     public function recent_logins() {
-        return User::orderByDesc('updated_at')->limit(10)->get();
+        return User::orderByDesc('updated_at')->limit(7)->get();
     }
 }
