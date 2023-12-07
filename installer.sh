@@ -1,10 +1,13 @@
-echo -e "\033[1;35mWNGX Installer v1.1.0a\033[1;34m";
+echo -e "\033[1;35mWNGX Installer v1.2.0a\033[1;34m";
 
 echo -e "Running Composer...";
 composer install;
 
 echo -e "Creating a copy of .env file...";
 cp .env.example .env;
+
+echo -e "Creating a copy of .htaccess file...";
+cp public/.htaccess_default public/.htaccess;
 
 echo -e "Installing NPM packages needed by Vue...";
 npm install;
