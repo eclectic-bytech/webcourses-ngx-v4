@@ -11,14 +11,12 @@
 docker-compose.override.yml
 Homestead.json
 Homestead.yaml
-# npm-debug.log
-# yarn-error.log
 
 # Ignore compiled version of WNGX and related items
-# /public/webcourses
-/resources/views/angular.blade.php
 /resources/webcourses/src/publisher-files
-/public/webcourses
+/public/webcourses/publisher-files
+# /resources/views/angular.blade.php
+# /public/webcourses
 
 # Copied from resources/webcourses:
 # Angular's own .ignore
@@ -47,10 +45,7 @@ Homestead.yaml
 /connect.lock
 /coverage
 *.log
-# /libpeerconnection.log
-# npm-debug.log
-# yarn-error.log
-# testem.log
+
 /typings
 
 # System Files
