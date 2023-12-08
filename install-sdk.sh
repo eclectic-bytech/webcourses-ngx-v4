@@ -1,4 +1,4 @@
-echo -e "\033[1;35mWNGX Installer v1.2.0a\033[1;34m";
+echo -e "\033[1;35mWNGX Installer (SDK) v1.2.0a\033[1;34m";
 
 echo -e "Running Composer...";
 composer install;
