@@ -29,7 +29,7 @@ class CodesUsePAController extends Controller
                         $query->select(DB::raw('count(distinct(activity_id))'));
                     }])
                     ->orderBy('created_at', 'desc')
-                    ->get();
+                    ->paginate(50);
                 return $data;
             }
         }
