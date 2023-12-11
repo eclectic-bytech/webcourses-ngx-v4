@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
-import { Subject } from 'rxjs'
 import { ActivatedRoute } from '@angular/router'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
@@ -13,8 +12,7 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 })
 export class DiscountCodesUsersComponent implements OnInit {
 
-  public discountCodeUsers$ = new Subject<any[] | null>()
-  public total_activities = 0
+  public discountCodeUsers: any | null = null
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +25,7 @@ export class DiscountCodesUsersComponent implements OnInit {
       `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/users`
     ).subscribe(
       (data) => {
-        this.discountCodeUsers$.next(data)
+        this.discountCodeUsers = data
       }
     )
   }

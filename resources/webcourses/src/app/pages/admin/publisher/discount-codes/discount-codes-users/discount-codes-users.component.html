@@ -1,5 +1,5 @@
 <div id="fullMainContent" class="container">
-  <div *ngIf="discountCodeUsers$ | async as discountCodeUsers" @fadeInOut>
+  <div *ngIf="this.discountCodeUsers" @fadeInOut>
 
     <div class="container">
       <div class="row">
@@ -7,22 +7,22 @@
           <i class='fa-sharp fa-solid fa-fingerprint text-secondary'></i>
         </div>
         <div class="col-10">
-          <div class="h2">{{ discountCodeUsers['course'].title }}</div>
+          <div class="h2">{{ this.discountCodeUsers.course.title }}</div>
           <div>
             <span class="font-weight-bold fw-bold">Code:</span>
-            {{ discountCodeUsers['code'].label }} ({{ discountCodeUsers['code'].code }})
+            {{ this.discountCodeUsers.code.label }} ({{ this.discountCodeUsers.code.code }})
           </div>
           <div>
             <span class="font-weight-bold fw-bold">Seats:</span>
-            {{ discountCodeUsers['code'].uses }} /
-            <span *ngIf="discountCodeUsers['code'].uses_max == 0; else noOfUses">&#8734;</span>
+            {{ this.discountCodeUsers.code.uses }} /
+            <span *ngIf="this.discountCodeUsers.code.uses_max == 0; else noOfUses">&#8734;</span>
             <ng-template #noOfUses>
-              {{ discountCodeUsers['code'].uses_max }}
+              {{ this.discountCodeUsers.code.uses_max }}
             </ng-template>
           </div>
           <div>
             <span class="font-weight-bold fw-bold">Expiry:</span>
-            {{ discountCodeUsers['code'].expiry | date:'mediumDate' }}
+            {{ this.discountCodeUsers.code.expiry | date:'mediumDate' }}
           </div>
         </div>
       </div>
@@ -40,17 +40,17 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let discountCodeUser of discountCodeUsers['code-uses'], let i = 'index + 1'">
-          <td class="text-center">{{i}}</td>
+        <tr *ngFor="let codeUse of this.discountCodeUsers.code_uses.data">
+          <td class="text-center">1</td>
           <td [routerLink]="[
-            '/admin', 'publisher', 'course', 'user_progress', discountCodeUser.user_progress_id
+            '/admin', 'publisher', 'course', 'user_progress', codeUse.user_progress_id
           ]">
-            {{ discountCodeUser.user.first_name }} {{ discountCodeUser.user.last_name }}
+            {{ codeUse.user.first_name }} {{ codeUse.user.last_name }}
           </td>
-          <td>{{ discountCodeUser.user.email }}</td>
-          <td>{{ discountCodeUser.created_at | date:'mediumDate' }}</td>
+          <td>{{ codeUse.user.email }}</td>
+          <td>{{ codeUse.user.created_at | date:'mediumDate' }}</td>
           <td>
-            <span [innerHtml]="(discountCodeUser.completed_activities_count / discountCodeUsers['course'].total_activities * 100) | number:'1.0-0'"></span>%
+            <span [innerHtml]="( codeUse.completed_activities_count / this.discountCodeUsers.course.total_activities * 100) | number:'1.0-0'"></span>%
           </td>
         </tr>
       </tbody>
@@ -58,4 +58,3 @@
 
   </div>
 </div>
-
