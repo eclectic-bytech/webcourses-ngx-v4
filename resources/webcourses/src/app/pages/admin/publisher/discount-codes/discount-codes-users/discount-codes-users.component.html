@@ -55,6 +55,7 @@
 
       <tbody>
         <tr *ngFor="let codeUse of this.discountCodeUsers.code_uses.data">
+          <div @FadeInOut2>
           <td class="text-center">{{codeUse.id}}</td>
           <td [routerLink]="[
             '/admin', 'publisher', 'course', 'user_progress', codeUse.user_progress_id
@@ -66,6 +67,7 @@
           <td>
             <span [innerHtml]="( codeUse.completed_activities_count / this.discountCodeUsers.course.total_activities * 100) | number:'1.0-0'"></span>%
           </td>
+          </div>
         </tr>
       </tbody>
     </table>

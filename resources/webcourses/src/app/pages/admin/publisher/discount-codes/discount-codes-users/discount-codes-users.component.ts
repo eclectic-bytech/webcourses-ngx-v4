@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
 
 @Component({
   selector: 'app-discount-codes-users',
   templateUrl: './discount-codes-users.component.html',
   styleUrls: ['./discount-codes-users.component.sass'],
-  animations: [FadeInOut]
+  animations: [FadeInOut, FadeInOut2]
 })
 export class DiscountCodesUsersComponent implements OnInit {
 
