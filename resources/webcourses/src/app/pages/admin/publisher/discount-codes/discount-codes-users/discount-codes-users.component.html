@@ -41,7 +41,14 @@
         <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 1)">&raquo;</a></li>
       </ul>
     </nav>
-    <p>showing results {{this.discountCodeUsers.code_uses.from}} - {{this.discountCodeUsers.code_uses.to}}</p>
+    <nav>
+      <ul class="pagination">
+        <li class="page-item"><a role="button" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 1)">&laquo;</a></li>
+        <li class="px-1">showing results {{this.discountCodeUsers.code_uses.from}} - {{this.discountCodeUsers.code_uses.to}}</li>
+        <li class="page-item"><a role="button" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 1)">&raquo;</a></li>
+      </ul>
+    </nav>
+
     <table class="table table-bordered table-hover table-striped mt-5">
       <thead>
         <tr>
