@@ -22,24 +22,20 @@ export class DiscountCodesUsersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any[]>(
-      `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/users`
-    ).subscribe(
-      (data) => {
-        this.discountCodeUsers = data
-      }
-    )
+    this.selectPage(1)
   }
 
-  switchPage(Destiny: Number) {
-    if (Destiny > this.discountCodeUsers.code_uses.last_page) {
-      Destiny = this.discountCodeUsers.code_uses.last_page
+  selectPage(Destiny: Number) {
+    if (this.discountCodeUsers) {
+      if (Destiny > this.discountCodeUsers.code_uses.last_page) {
+        Destiny = this.discountCodeUsers.code_uses.last_page
+      }
     }
     this.httpClient.get<any[]>(
       `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/users?page=${Destiny}`
     ).subscribe(
       (data) => {
-        this.discountCodeUsers = data; // Updated property name
+        this.discountCodeUsers = data
       }
     )
   }

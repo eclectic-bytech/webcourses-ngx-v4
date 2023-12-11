@@ -30,15 +30,15 @@
 
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(this.discountCodeUsers.code_uses.current_page - 1)">&laquo;</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(1)">1</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(this.discountCodeUsers.code_uses.current_page - 2)">{{this.discountCodeUsers.code_uses.current_page - 2}}</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(this.discountCodeUsers.code_uses.current_page - 1)">{{this.discountCodeUsers.code_uses.current_page - 1}}</a></li>
+        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page - 1)">&laquo;</a></li>
+        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(1)">1</a></li>
+        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page - 2)">{{this.discountCodeUsers.code_uses.current_page - 2}}</a></li>
+        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page - 1)">{{this.discountCodeUsers.code_uses.current_page - 1}}</a></li>
         <li class="page-item"><a role="button" class="page-link disabled">{{this.discountCodeUsers.code_uses.current_page}}</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(this.discountCodeUsers.code_uses.current_page + 1)">{{this.discountCodeUsers.code_uses.current_page + 1}}</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(this.discountCodeUsers.code_uses.current_page + 2)">{{this.discountCodeUsers.code_uses.current_page + 2}}</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(this.discountCodeUsers.code_uses.last_page)">{{this.discountCodeUsers.code_uses.last_page}}</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(this.discountCodeUsers.code_uses.current_page + 1)">&raquo;</a></li>
+        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 1)">{{this.discountCodeUsers.code_uses.current_page + 1}}</a></li>
+        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 2)">{{this.discountCodeUsers.code_uses.current_page + 2}}</a></li>
+        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.last_page)">{{this.discountCodeUsers.code_uses.last_page}}</a></li>
+        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 1)">&raquo;</a></li>
       </ul>
     </nav>
     <p>showing results {{this.discountCodeUsers.code_uses.from}} - {{this.discountCodeUsers.code_uses.to}}</p>
