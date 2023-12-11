@@ -31,6 +31,16 @@
     <table class="table table-bordered table-hover table-striped mt-5">
       <thead>
         <tr>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(this.discountCodeUsers.code_uses.current_page - 1)">&#60;--</a></li>
+              <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(1)">1</a></li>
+              <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(this.discountCodeUsers.code_uses.last_page)">{{this.discountCodeUsers.code_uses.last_page}}</a></li>
+              <li class="page-item"><a role="button" class="page-link" (click)="this.switchPage(this.discountCodeUsers.code_uses.current_page + 1)">--&#62;</a></li>
+            </ul>
+          </nav>
+        </tr>
+        <tr>
           <th class="text-uppercase text-center">id</th>
           <th class="text-uppercase">name</th>
           <th class="text text-uppercase">email</th>
@@ -41,7 +51,7 @@
 
       <tbody>
         <tr *ngFor="let codeUse of this.discountCodeUsers.code_uses.data">
-          <td class="text-center">1</td>
+          <td class="text-center">{{codeUse.id}}</td>
           <td [routerLink]="[
             '/admin', 'publisher', 'course', 'user_progress', codeUse.user_progress_id
           ]">
