@@ -17,8 +17,8 @@ cd resources/webcourses/;
 npm install;
 
 echo
-echo -e "Installing /publisher-files Git submodule";
-git submodule update;
+echo -e "Initialising demo publisher-files git submodule...";
+git submodule add -f https://github.com/eclectic-bytech/publisher-files ./public/webcourses/publisher-files
 
 echo
 echo -e "Compiling webcourses (Angular framework)...";
