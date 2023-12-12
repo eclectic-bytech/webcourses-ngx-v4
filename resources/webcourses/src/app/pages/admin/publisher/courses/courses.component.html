@@ -1,4 +1,14 @@
-<div id="fullMainContent" class="container" @fadeInOut>
+<div id="fullMainContent" class="container mb-5 pb-5" @fadeInOut>
+
+  <div class="d-flex flex-row-reverse my-4" @fadeInOut>
+    <button mat-button color="primary" class="border" (click)="addCourseBtn()">
+      Add course
+    </button>
+    <div class="mr-4" style="line-height: 1.2rem;">
+      <span class="text-success text-uppercase">New feature</span><br>
+      <span class="font-weight-light text-dark">Build a new course</span>
+    </div>
+  </div>
 
   <div class="row mb-3">
     <div class="col-12">
@@ -6,25 +16,40 @@
     </div>
   </div>
 
-  <div *ngIf="publisherCourses$ | async as publisherCourses" @fadeInOut>
+  <div *ngIf="publisherCourses$ | async as publisherCourses" id="courses" @fadeInOut>
+
+    <div *ngIf="publisherCourses.length === 0" class="container lead text-center my-5">
+      You haven't yet created any courses.
+    </div>
+
     <div
       *ngFor="let publisherCourse of publisherCourses; index as i"
-      class="row no-gutters justify-content-between mb-2 border"
+      class="row no-gutters justify-content-between my-3 border"
+      id="course-id-{{publisherCourse.id}}"
     >
       <div class="col-lg-2">
         <div class="card">
           <img
             class="card-img-top"
             style="object-fit: cover; height: 6rem;"
-            src="publisher-files/{{publisherCourse.publisher_id}}/courses/{{publisherCourse.id}}/images/{{publisherCourse.cover}}" alt="{{publisherCourse.cover_alt}}"
+            [src]="this.coursesService.coverImage(publisherCourse)"
+            alt="{{publisherCourse.cover_alt}}"
           >
         </div>
       </div>
-      <div class="col-auto pl-3 my-auto mr-auto">
+      <div class="col px-3 my-auto mr-auto">
         <div class="fs-4 my-2 my-lg-0">
           {{ publisherCourse.title }}
-          <div class="fs-6 text-secondary">
-            {{ publisherCourse.created_at | date:'longDate' }} #{{ publisherCourse.id }}
+          <div class="fs-6 text-secondary my-auto">
+            <span
+              class="badge font-weight-light"
+              [ngClass]="publisherCourse.published ? 'badge-info' : 'badge-light'"
+              [innerHtml]="publisherCourse.published ? 'Published' : 'Not published'"
+            >
+            </span>
+            <small>
+              Created {{ publisherCourse.created_at | date:'longDate' }} #{{ publisherCourse.id }}
+            </small>
           </div>
         </div>
       </div>
@@ -41,16 +66,21 @@
           <i class='fa-sharp fa-solid fa-diagram-project text-secondary mr-1 me-1'></i>
           {{ publisherCourse.total_activities }}
         </div>
-        <div class="d-inline-block my-auto px-3 pr-md-3 pr-lg-5">
-          <span
-            class="badge font-weight-light"
-            [ngClass]="publisherCourse.published ? 'badge-info' : 'badge-light'"
-            [innerHtml]="publisherCourse.published ? 'Published' : 'Not published'"
-          >
-          </span>
+        <div class="d-inline-block ml-auto align-middle pl-3 pr-4">
+          <div type="button" class="text-danger d-inline d-lg-block mx-3 mx-lg-0">
+            <small class="text-uppercase">
+              <a [routerLink]="['/admin', 'publisher', 'builder', 'course', 'edit', publisherCourse.id]" class="text-primary">Edit</a>
+            </small>
+          </div>
+          <div type="button" class="text-danger d-inline d-lg-block mx-3 mx-lg-0">
+            <small class="text-uppercase text-danger" (click)="deleteCourseBtn(publisherCourse)">
+              Delete
+            </small>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 
 </div>

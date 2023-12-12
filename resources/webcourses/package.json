@@ -34,6 +34,7 @@
     "bootstrap": "~4",
     "core-js": "^3.6.5",
     "eslint": "^8.6.0",
+    "flag-icons": "^7.0.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "ngx-clipboard": "^16.0.0",

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, Input, OnInit, OnDestroy } from '@angular/core'
+import { Subscription } from 'rxjs'
 
 // WNGX imports
 import { BookmarksService } from 'src/app/pages/webcourse/activities/sidebar/bookmarks/bookmarks.service'
@@ -12,28 +13,41 @@ import { Bookmark } from 'src/app/pages/webcourse/activities/sidebar/bookmarks/b
   styleUrls: ['./bookmark-button.component.scss']
 })
 
-export class BookmarkButtonComponent {
+export class BookmarkButtonComponent implements OnInit, OnDestroy {
+
+  @Input() firstActivity: Activity
+  private sub: Subscription
 
   constructor(
     public bookmarksService: BookmarksService,
     public selectedCourseService: SelectedCourseService
   ) { }
 
-  deleteBookmarkBtn(activitySet: Activity[]): void {
+  ngOnInit() {
+    this.sub = this.bookmarksService.deletedBookmarkAid$.subscribe(
+      (aid) => {
+        if (this.firstActivity.meta.activity_id === aid) {
+          this.firstActivity.bookmark = null
+        }
+      }
+    )
+  }
+
+  deleteBookmarkBtn(): void {
     this.bookmarksService.deleteBookmark(
-      activitySet[0].meta.activity_id
+      this.firstActivity.meta.activity_id
     ).subscribe( () => {
-        activitySet[0].bookmark = null
-        this.updateSidebarBookmarksTabOnDelete(activitySet, this.existingBookmarks)
+        this.firstActivity.bookmark = null
+        this.updateSidebarBookmarksTabOnDelete(this.existingBookmarks)
     })
   }
 
-  addBookmarkBtn(activitySet: Activity[]): void {
+  addBookmarkBtn(): void {
     this.bookmarksService.addBookmark(
-      activitySet[0].meta.activity_id
+      this.firstActivity.meta.activity_id
     ).subscribe(
       (bookmark) => {
-        activitySet[0].bookmark = bookmark
+        this.firstActivity.bookmark = bookmark
         this.updateSidebarBookmarksTabOnAdd(bookmark)
       }
     )
@@ -45,13 +59,13 @@ export class BookmarkButtonComponent {
     )
   }
 
-  updateSidebarBookmarksTabOnDelete(activitySet: Activity[], existingBookmarks: Bookmark[]): void {
+  updateSidebarBookmarksTabOnDelete(existingBookmarks: Bookmark[]): void {
     let i = existingBookmarks.findIndex( bookmark => {
       // For nice fade effects on delete, bookmarks.delete = true is set instead true delete.
       // When user clicks bookmark tab repeatedly, the same bookmark will be present multiple times.
       // The if !bookmark.deleted ensures findIndex finds the active bookmark
       if (!bookmark.deleted) {
-        return bookmark.aid === activitySet[0].meta.activity_id
+        return bookmark.aid === this.firstActivity.meta.activity_id
       }
     })
 
@@ -59,6 +73,10 @@ export class BookmarkButtonComponent {
     if (i !== -1) {
       existingBookmarks[i].deleted = true
     }
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe()
   }
 
   get existingBookmarks() {

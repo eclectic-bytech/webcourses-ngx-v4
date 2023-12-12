@@ -1,0 +1,176 @@
+<div id="fullMainContent" @fadeInOut>
+  <div class="container">
+    <div class="display-4 my-5" style="line-height: 3rem;" *ngIf="cid; else newCourse">
+      Update course<br>
+      <span class="h5">{{ course.title }}</span>
+    </div>
+    <ng-template #newCourse>
+      <div class="display-4 my-5">
+        Create a new course
+      </div>
+      <p class="lead">Though you can create a course, the course builder is still in development.</p>
+      <p class="lead">
+        Create a course today to lock in the discounted $5 / participant charge.<br>
+        The per participant charge on courses created after the builder launches is $7.
+      </p>
+      <p class="mb-5">
+        <small class="text-dark">
+          Flat fees are for courses priced at $50 or less.
+          Charges for courses priced higher are 10%, and 15% for courses created after builder launch.
+        </small>
+      </p>
+    </ng-template>
+
+    <form [formGroup]="courseAddForm" (ngSubmit)="cid ? onUpdate() : onSubmit()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control col-12 col-lg-8"
+          id="title"
+          minLength="16"
+          maxlength="128"
+          formControlName="title"
+          [class.border-danger]="
+            courseAddForm.controls['title'].invalid && courseAddForm.controls['title'].touched
+          "
+          aria-describedby="titleHelp"
+        >
+        <small *ngIf="courseAddForm.controls['title'].touched" id="titleHelp" class="form-text text-danger">
+          <span *ngIf="courseAddForm.controls['title'].errors?.required">
+            Required.
+          </span>
+          <span *ngIf="courseAddForm.controls['title'].errors?.minlength">
+            Must be 16 to 128 characters.
+          </span>
+          <span *ngIf="courseAddForm.controls['title'].errors?.pattern">
+            Consecutive spaces are not accepted.
+          </span>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="short_desc">Short description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="short_desc"
+          minLength="32"
+          maxLength="256"
+          formControlName="short_desc"
+          [class.border-danger]="
+            courseAddForm.controls['short_desc'].invalid && courseAddForm.controls['short_desc'].touched
+          "
+          aria-describedby="short_descHelp"
+        >
+        <small id="short_descHelp" class="form-text text-muted">
+          Used in catalogue directory and on course pages.
+          <span *ngIf="courseAddForm.controls['short_desc'].touched" class="text-danger">
+            <span *ngIf="courseAddForm.controls['short_desc'].errors?.required">
+              Required.
+            </span>
+            <span *ngIf="courseAddForm.controls['short_desc'].errors?.minlength">
+              Must be 32 to 256 characters.
+            </span>
+            <span *ngIf="courseAddForm.controls['short_desc'].errors?.pattern">
+              Consecutive spaces are not accepted.
+            </span>
+          </span>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <div class="input-group mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">$</div>
+          </div>
+          <input type="number" class="form-control col-4 col-md-3 col-lg-1" min="0" max="99999" id="price" formControlName="price"  aria-describedby="priceCurrency">
+        </div>
+        <small id="priceCurrency" class="form-text text-muted">Canadian Dollars</small>
+
+      </div>
+
+      <div class="form-group form-check my-2">
+        <input type="checkbox" class="form-check-input" id="private" formControlName="private">
+        <label for="private" class="form-check-label" aria-describedby="privateHelp">Private</label>
+        <small id="privateHelp" class="form-text text-muted">Access-code access only; course will not show up in catalogues, and cannot be purchased.</small>
+      </div>
+
+      <div>
+        <button mat-button color="primary" type="button" class="my-3 border" (click)="collapse.toggle()" [attr.aria-expanded]="hideAdvanced" aria-controls="collapseExample">
+          <div class="text-uppercase">
+            <span [innerHtml]="hideAdvanced ? 'Show' : 'Hide'"></span> <span> advanced</span>
+          </div>
+        </button>
+      </div>
+
+      <div #collapse="ngbCollapse" [(ngbCollapse)]="hideAdvanced">
+
+        <div class="form-group">
+          <label for="long_desc">Long description</label>
+          <textarea class="form-control" id="long_desc" formControlName="long_desc" row="3" length="128" aria-describedby="long_descHelp"></textarea>
+          <small id="long_descHelp" class="form-text text-muted">Used chiefly on course pages.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="audience">Audience</label>
+          <input
+            type="text"
+            class="form-control col-12 col-lg-8"
+            id="audience"
+            maxlength="128"
+            formControlName="audience"
+            aria-describedby="audienceHelp"
+          >
+          <small id="audienceHelp" class="form-text text-muted">
+            Who might benefit the most from this course?
+            E.g. Business professionals looking to improve leadership skills.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="objective">Objectives</label>
+          <textarea class="form-control" id="objective" formControlName="objective" row="2" length="128"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="eval_type">Evaluation type</label>
+          <div>
+            <select class="custom-select mr-sm-2 col-12 col-lg-8" id="eval_type" formControlName="eval_type">
+              <option selected>Choose...</option>
+              <option value="Online">Online</option>
+              <option value="Instructor">Instructor</option>
+              <option value="Online + Instructor">Online + Instructor</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <button
+        type="submit"
+        class="btn my-4 mr-4"
+        [ngClass]="cid ? 'btn-primary' : 'btn-success'"
+        [disabled]="!courseAddForm.valid || waitingForApi"
+        [innerHtml]="cid ? 'Update' : 'Create'"
+      ></button>
+      <a type="button" class="text-primary" [routerLink]="['/admin', 'publisher', 'courses']">
+        Return to your course directory
+      </a>
+
+    </form>
+
+  </div>
+
+  <div class="container border border-rounded border-secondary my-4" *ngIf="cid">
+    <div class="row">
+      <div class="col m-4">
+        <div class="h5">Danger zone</div>
+        <div class="lead my-3">Irreversible action - don't do it.</div>
+        <button class="btn btn-danger" (click)="deleteCourseBtn()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+</div>

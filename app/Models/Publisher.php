@@ -11,8 +11,4 @@ class Publisher extends Model
 
     use HasFactory;
 
-    public function theme() {
-        return $this->hasOne(Theme::class, 'publisher_id', 'id');
-    }
-
 }

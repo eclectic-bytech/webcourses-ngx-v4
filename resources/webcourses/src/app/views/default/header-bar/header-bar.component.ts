@@ -1,12 +1,15 @@
 import { Component, Input } from '@angular/core'
 import { Router } from '@angular/router'
-import { UserService } from './../../../core/services/user/user.service'
-import { HeaderBarService } from './header-bar.service'
-import { GravatarMd5Service } from '../../../core/services/gravatar-md5/gravatar-md5.service'
 import { DomSanitizer } from '@angular/platform-browser'
+import { GravatarMd5Service } from '../../../core/services/gravatar-md5/gravatar-md5.service'
+
+import { HeaderBarService } from './header-bar.service'
+import { UserService } from './../../../core/services/user/user.service'
 import { ThemeService } from 'src/app/views/theme/theme.service'
-import { Publisher } from 'src/app/models/publisher.model'
+import { PubPowerUpService } from '../modals/pub-power-up/pub-power-up.service'
+
 import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
+import { Publisher } from 'src/app/models/publisher.model'
 
 @Component({
   selector: 'app-header-bar',
@@ -24,9 +27,10 @@ export class HeaderBarComponent {
   constructor(
     private router: Router,
     public sanit: DomSanitizer,
-    public userService: UserService,
-    public headerbarService: HeaderBarService,
     public gravatarMd5: GravatarMd5Service,
+    public headerbarService: HeaderBarService,
+    public userService: UserService,
+    public pubPowerUpService: PubPowerUpService,
     public themeService: ThemeService
   ) { }
 
@@ -48,6 +52,10 @@ export class HeaderBarComponent {
         this.router.navigateByUrl(`/catalogue/publisher/${publisher.id_alias}`)
       }
     }
+  }
+
+  pubPowerUp() {
+    this.pubPowerUpService.pubPowerUp()
   }
 
 }

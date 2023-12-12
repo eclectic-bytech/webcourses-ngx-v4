@@ -4,6 +4,7 @@ export class JetstreamUser {
   first_name: string
   last_name: string
   email: string
+  country: string
   email_verified_at: string
   current_course_id: number
   current_team_id: number

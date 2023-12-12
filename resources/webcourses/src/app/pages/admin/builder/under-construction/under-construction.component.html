@@ -1,0 +1,40 @@
+<div class="bg" @fadeInOut>
+<div id="fullMainContent">
+  <div class="container-flex m-5">
+    <div *ngIf="this.userService.userHasRole(2)">
+      <p class="h4 my-4 text-light">
+        Course added to your
+        <a [routerLink]="['/admin', 'publisher', 'courses']" type="button">
+          publisher course directory</a>.
+      </p>
+
+      <div class="my-2">
+        <p class="lead text-light">
+          <span class="font-weight-bolder text-uppercase">Congratulations</span><br>
+          <span class="font-italic">You've locked in reduced pricing for this course.</span>
+        </p>
+      </div>
+    </div>
+
+    <p class="lead text-light">
+      We're still working on the web course builder.<br>
+      The features for adding activities and chapters are not yet available.
+    </p>
+
+    <p class="mt-4 text-light">
+      <input type="checkbox" id="newsletter" class="form-check-input ml-0" (change)="subscribe = !subscribe">
+      <label for="newsletter" class="form-check-label ml-4 pl-2" aria-describedby="newsletterHelp">
+        Let me know about status changes to this tearful reality.
+      </label>
+      <small id="newsletterHelp" class="form-text ml-4 pl-2">We'll email you at {{ this.userService.user.email }} with occasional updates and launch status.</small>
+    </p>
+
+    <button
+      (click)="continueBtn()"
+      class="btn btn-primary btn-lg mt-4"
+    >
+      Continue
+    </button>
+  </div>
+</div>
+</div>

@@ -13,20 +13,19 @@ class Course extends Model
 
     protected $hidden = ['active_bid'];
 
+    protected $fillable = [
+        'title', 'published', 'private', 'audience', 'short_desc', 'long_desc', 'objective', 'eval_type', 'price'
+    ];
+
     public function publisher() {
         return $this->belongsTo(Publisher::class);
     }
 
-    public function theme() {
-        return $this->hasOne(Theme::class, 'publisher_id', 'publisher_id');
-    }
-
     // used in all course catalogues
-    public function userProgress() {
-        $user = auth()->user();
-        return $this
-            ->belongsTo(UserProgress::class, 'id', 'course_id')
-            ->where('user_id', $user['id']);
+    public function userProgress()
+    {
+        return $this->belongsTo(UserProgress::class, 'id', 'course_id')
+                    ->where('user_id', auth()->user()->id);
     }
 
     public function courseSyllabus() {

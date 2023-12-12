@@ -70,9 +70,34 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <i class="fa-solid fa-screwdriver-wrench text-warning"></i>
+              <i class="fa-solid fa-screwdriver-wrench admin-icon"></i>
             </div>
             Dashboard
+          </a>
+
+          <!-- MENU ITEMS DIVIDER -->
+          <div class="dropdown-divider"></div>
+        </div>
+
+        <!-- PUB POWER UP! -->
+        <div [ngClass]="
+          this.userService.userHasRole(5) ||
+          this.userService.userHasRole(2) ||
+          this.pubPowerUpService.requestSuccess
+          ? 'd-none' : ''
+        ">
+          <div class="dropdown-header text-uppercase font-weight-bold">Power up</div>
+
+          <a
+            role="button"
+            class="dropdown-item py-2"
+            (click)="pubPowerUp()"
+            ngbDropdownItem
+          >
+            <div class="menu-icon text-center d-inline-block pr-2">
+              <i class="fa-solid fa-bolt publisher-icon"></i>
+            </div>
+            Become a publisher
           </a>
 
           <!-- MENU ITEMS DIVIDER -->
@@ -91,9 +116,21 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <i class="fa-solid fa-pen-nib text-warning"></i>
+              <i class="fa-solid fa-pen-nib publisher-icon"></i>
             </div>
             Courses
+          </a>
+
+          <a
+            class="dropdown-item py-2"
+            [routerLink]="['/admin', 'publisher', 'builder', 'course']"
+            (click)="collapseMenus()"
+            ngbDropdownItem
+          >
+            <div class="menu-icon text-center d-inline-block pr-2">
+              <i class="fa-regular fa-square-plus fa-beat-fade publisher-icon"></i>
+            </div>
+            Add course <sup class="text-success text-uppercase">New</sup>
           </a>
 
           <a
@@ -103,9 +140,9 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <i class='fa-sharp fa-solid fa-fingerprint text-warning'></i>
+              <i class="fa-sharp fa-solid fa-fingerprint publisher-icon"></i>
             </div>
-            Access Codes
+            Access codes
           </a>
 
           <a
@@ -115,7 +152,7 @@
             ngbDropdownItem
           >
             <div class="menu-icon text-center d-inline-block pr-2">
-              <i class="fa-solid fa-user text-warning"></i>
+              <i class="fa-solid fa-user publisher-icon"></i>
             </div>
             Profile
           </a>
