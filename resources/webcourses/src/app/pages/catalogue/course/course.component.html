@@ -17,7 +17,7 @@
           <div class="row">
             <div class="col-12 col-md-10 col-xl-8 mx-auto text-center">
               <p [innerHtml]="course.short_desc" class="lead"></p>
-              <mat-card-actions [ngClass]="'px-2'">
+              <mat-card-actions [ngClass]="'px-2 my-4'">
                 <!-- BUY Button -->
                 <app-stripe-checkout
                   [cid]="course.id"
