@@ -12,3 +12,7 @@ cp public/.htaccess_default public/.htaccess;
 echo
 echo -e "Initialising demo publisher-files git submodule...";
 git submodule add -f https://github.com/eclectic-bytech/publisher-files ./public/webcourses/publisher-files
+
+echo
+echo "Copying config.default.json to config.json....";
+cp resources/webcourses/src/config.default.json ./public/webcourses/config.json;
