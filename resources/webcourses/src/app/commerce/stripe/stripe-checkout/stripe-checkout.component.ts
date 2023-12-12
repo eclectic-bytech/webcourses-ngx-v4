@@ -12,12 +12,13 @@ import { UserService } from 'src/app/core/services/user/user.service'
 export class StripeCheckoutComponent {
 
   @Input() public cid: number
+  @Input() btnLg: boolean
 
   constructor(
     private httpClient: HttpClient,
     private configService: ConfigService,
     private userService: UserService
-  ) {}
+  ) { }
 
   public BuyButton() {
     if (!this.userService.user) {

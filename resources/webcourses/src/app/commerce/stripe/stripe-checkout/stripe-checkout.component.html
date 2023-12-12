@@ -1,3 +1,7 @@
-<button mat-button class="border" color="primary" (click)="BuyButton()">
+<button
+mat-button class="border"
+color="primary"
+[ngClass]="btnLg ? 'btn-lg' : ''"
+(click)="BuyButton()">
   Buy
 </button>
