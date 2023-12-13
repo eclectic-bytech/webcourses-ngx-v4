@@ -61,8 +61,8 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let codeUse of this.discountCodeUsers.code_uses.data" @FadeInOut2>
-          <td class="text-center">{{codeUse.id}}</td>
+        <tr *ngFor="let codeUse of this.discountCodeUsers.code_uses.data; let i = index" @FadeInOut2>
+          <td class="text-center">{{this.discountCodeUsers.code_uses.from + i}}</td>
           <td [routerLink]="[
             '/admin', 'publisher', 'course', 'user_progress', codeUse.user_progress_id
           ]">
