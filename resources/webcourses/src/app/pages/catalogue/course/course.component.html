@@ -18,24 +18,21 @@
             <div class="col-12 col-md-10 col-xl-8 mx-auto text-center">
               <p [innerHtml]="course.short_desc" class="lead"></p>
 
-              <mat-card-actions [ngClass]="'px-2 my-4'">
-                <!-- BUY Button -->
-                <app-stripe-checkout
-                  [cid]="course.id"
-                  *ngIf="course?.user_progress == null; else courseUnlocked"
-                  [btnLg]="true"
-                ></app-stripe-checkout>
+              <div class="my-4">
 
-                <!-- RESUME Button -->
-                <ng-template #courseUnlocked>
-                  <button
-                    mat-button
-                    color="primary"
-                    class="border"
-                    [routerLink]="['/webcourse', 'activities', course?.user_progress.selected_aid]"
-                  >Resume</button>
+                <button
+                  *ngIf="course?.user_progress; else buyButton"
+                  [routerLink]="['/webcourse', 'activities', course?.user_progress.selected_aid]"
+                  mat-button
+                  color="primary"
+                  class="border"
+                >Resume</button>
+
+                <ng-template #buyButton>
+                  <app-stripe-checkout [cid]="course.id" [btnLg]="true"></app-stripe-checkout>
                 </ng-template>
-              </mat-card-actions>
+
+              </div>
 
               <div *ngIf="course.audience">
                 <h4 class="card-title common-heading text-center pt-5" [innerHtml]="'Audience'"></h4>
