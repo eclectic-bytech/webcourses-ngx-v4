@@ -12,7 +12,8 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 })
 export class DiscountCodesUsersComponent implements OnInit {
 
-  public discountCodeUsers: any | null = null
+  public discountCodeUsers: any = {}
+  itemsPerPage: number = 25; // This will make it easier to change collection size in the future
 
   constructor(
     private route: ActivatedRoute,
@@ -21,15 +22,10 @@ export class DiscountCodesUsersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.selectPage(1)
+    this.selectPage()
   }
 
-  selectPage(Destiny: Number) {
-    if (this.discountCodeUsers) {
-      if (Destiny > this.discountCodeUsers.code_uses.last_page) {
-        Destiny = this.discountCodeUsers.code_uses.last_page
-      }
-    }
+  selectPage(Destiny: Number = 1) {
     this.httpClient.get<any[]>(
       `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/users?page=${Destiny}`
     ).subscribe(

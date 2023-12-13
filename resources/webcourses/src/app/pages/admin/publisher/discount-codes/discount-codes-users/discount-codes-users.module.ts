@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { DiscountCodesUsersRoutingModule } from './discount-codes-users-routing.module';
 import { DiscountCodesUsersComponent } from './discount-codes-users.component';
 
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { DiscountCodesUsersComponent } from './discount-codes-users.component';
   ],
   imports: [
     CommonModule,
-    DiscountCodesUsersRoutingModule
+    DiscountCodesUsersRoutingModule,
+    NgbPaginationModule
   ]
 })
 export class DiscountCodesUsersModule { }

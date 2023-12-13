@@ -28,19 +28,6 @@
       </div>
     </div>
 
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page - 1)">&laquo;</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(1)">1</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page - 2)">{{this.discountCodeUsers.code_uses.current_page - 2}}</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page - 1)">{{this.discountCodeUsers.code_uses.current_page - 1}}</a></li>
-        <li class="page-item"><a role="button" class="page-link disabled">{{this.discountCodeUsers.code_uses.current_page}}</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 1)">{{this.discountCodeUsers.code_uses.current_page + 1}}</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 2)">{{this.discountCodeUsers.code_uses.current_page + 2}}</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.last_page)">{{this.discountCodeUsers.code_uses.last_page}}</a></li>
-        <li class="page-item"><a role="button" class="page-link" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 1)">&raquo;</a></li>
-      </ul>
-    </nav>
     <nav>
       <ul class="pagination">
         <li class="page-item"><a role="button" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 1)">&laquo;</a></li>
@@ -76,6 +63,17 @@
         </tr>
       </tbody>
     </table>
+
+    <ngb-pagination
+    [collectionSize]="this.discountCodeUsers.code_uses.total"
+    [(page)]="this.discountCodeUsers.code_uses.current_page"
+    [maxSize]="5"
+    [rotate]="true"
+    [ellipses]="false"
+    [boundaryLinks]="true"
+    [pageSize]="itemsPerPage"
+    (pageChange)="selectPage($event)"
+  />
 
   </div>
 </div>
