@@ -20,16 +20,24 @@
 
               <div class="my-4">
 
-                <button
-                  *ngIf="course?.user_progress; else buyButton"
-                  [routerLink]="['/webcourse', 'activities', course?.user_progress.selected_aid]"
-                  mat-button
-                  color="primary"
-                  class="border"
-                >Resume</button>
+
+                <div *ngIf="course?.user_progress; else buyButton">
+                  <div class="lead font-weight-normal my-2">
+                    Joined {{ course.user_progress.created_at | date: 'longDate' }}
+                  </div>
+
+                  <wngx-enter-course [cid]="course.user_progress.selected_aid"></wngx-enter-course>
+
+                  <div class="my-2">
+                    <small class="text-secondary">
+                      Completed {{ course.user_progress.total_activities_completed }}/{{ course.total_activities }} activities
+                    </small>
+                  </div>
+                </div>
 
                 <ng-template #buyButton>
-                  <app-stripe-checkout [cid]="course.id" [btnLg]="true"></app-stripe-checkout>
+                  <div class="display-4 text-center my-4">${{ course.price / 100 }}</div>
+                  <app-stripe-checkout [cid]="course.id" [btnSize]="'wide'"></app-stripe-checkout>
                 </ng-template>
 
               </div>
