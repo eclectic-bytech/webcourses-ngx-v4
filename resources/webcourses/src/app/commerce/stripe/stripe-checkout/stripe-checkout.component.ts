@@ -6,18 +6,19 @@ import { UserService } from 'src/app/core/services/user/user.service'
 @Component({
   selector: 'app-stripe-checkout',
   templateUrl: './stripe-checkout.component.html',
-  styleUrls: ['./stripe-checkout.component.sass']
+  styleUrls: ['./stripe-checkout.component.scss']
 })
 
 export class StripeCheckoutComponent {
 
   @Input() public cid: number
+  @Input() public btnSize: string
 
   constructor(
     private httpClient: HttpClient,
     private configService: ConfigService,
     private userService: UserService
-  ) {}
+  ) { }
 
   public BuyButton() {
     if (!this.userService.user) {
