@@ -26,15 +26,17 @@ export class DiscountCodesUsersComponent implements OnInit {
   }
 
   selectPage(Destiny: Number = 1) {
-    if (Destiny <= this.discountCodeUsers.code_uses.last_page) { //this is for the showing pages nav
-      this.httpClient.get<any[]>(
-        `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/users?page=${Destiny}`
-      ).subscribe(
-        (data) => {
-          this.discountCodeUsers = data
-        }
-      )
+    if (this.discountCodeUsers) {
+      if (Destiny <= this.discountCodeUsers.code_uses.last_page) { //this is for the showing pages nav
+      }
     }
+    this.httpClient.get<any[]>(
+      `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/users?page=${Destiny}`
+    ).subscribe(
+      (data) => {
+        this.discountCodeUsers = data
+      }
+    )
   }
 
   get code_id() {
