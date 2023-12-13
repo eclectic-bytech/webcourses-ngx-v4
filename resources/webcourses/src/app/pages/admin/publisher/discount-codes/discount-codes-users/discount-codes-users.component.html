@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <nav>
+    <nav class="mt-5">
       <ul class="pagination">
         <li class="page-item"><a role="button" (click)="this.selectPage(this.discountCodeUsers.code_uses.current_page + 1)">&laquo;</a></li>
         <li class="px-1">showing results {{this.discountCodeUsers.code_uses.from}} to {{this.discountCodeUsers.code_uses.to}} of {{this.discountCodeUsers.code_uses.total}}</li>
@@ -36,7 +36,7 @@
       </ul>
     </nav>
 
-    <table class="table table-bordered table-hover table-striped mt-5">
+    <table class="table table-bordered table-hover table-striped mt-1">
       <thead>
         <tr>
           <th class="text-uppercase text-center">id</th>
