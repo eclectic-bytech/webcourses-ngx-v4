@@ -151,7 +151,8 @@
               "src/favicon.ico",
               "src/config.json",
               "src/images",
-              "src/assets"
+              "src/assets",
+              "src/publisher-files"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
