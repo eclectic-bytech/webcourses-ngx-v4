@@ -28,18 +28,18 @@
       </div>
     </div>
 
-    <nav class="mt-5">
+    <div class="mt-5 lead">
       <ul class="pagination">
         <li class="page-item"><a role="button" (click)="selectPage(discountCodeUsers.code_uses.current_page - 1)">&laquo;</a></li>
-        <li class="px-1">showing results {{discountCodeUsers.code_uses.from}} to {{discountCodeUsers.code_uses.to}} of {{discountCodeUsers.code_uses.total}}</li>
+        <li class="px-1">Showing results {{discountCodeUsers.code_uses.from}} to {{discountCodeUsers.code_uses.to}} of {{discountCodeUsers.code_uses.total}}</li>
         <li class="page-item"><a role="button" (click)="selectPage(discountCodeUsers.code_uses.current_page + 1)">&raquo;</a></li>
       </ul>
-    </nav>
+    </div>
 
     <table class="table table-bordered table-hover table-striped mt-1">
       <thead>
         <tr>
-          <th class="text-uppercase text-center">id</th>
+          <th class="text-uppercase text-center">#</th>
           <th class="text-uppercase">name</th>
           <th class="text text-uppercase">email</th>
           <th class="text text-uppercase">started</th>
@@ -64,16 +64,18 @@
       </tbody>
     </table>
 
-    <ngb-pagination
-    [collectionSize]="discountCodeUsers.code_uses.total"
-    [(page)]="discountCodeUsers.code_uses.current_page"
-    [maxSize]="5"
-    [rotate]="true"
-    [ellipses]="false"
-    [boundaryLinks]="true"
-    [pageSize]="itemsPerPage"
-    (pageChange)="selectPage($event)"
-  />
+    <div class="mb-5">
+      <ngb-pagination
+        [collectionSize]="discountCodeUsers.code_uses.total"
+        [(page)]="discountCodeUsers.code_uses.current_page"
+        [maxSize]="5"
+        [rotate]="true"
+        [ellipses]="false"
+        [boundaryLinks]="true"
+        [pageSize]="itemsPerPage"
+        (pageChange)="selectPage($event)"
+      />
+    </div>
 
   </div>
 </div>
