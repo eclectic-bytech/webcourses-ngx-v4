@@ -1,5 +1,5 @@
 <div id="fullMainContent" class="container">
-  <div *ngIf="this.discountCodeUsers" @fadeInOut>
+  <div *ngIf="discountCodeUsers$ | async as discountCodeUsers" @fadeInOut>
 
     <div class="container">
       <div class="row">
