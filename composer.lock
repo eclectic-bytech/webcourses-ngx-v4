@@ -62,16 +62,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.293.6",
+            "version": "3.293.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1e01734856f8ec2b6d525d1c99c5a34029217598"
+                "reference": "9ae3bfd036190847dd0a5c3cdc4681dbb0994f5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1e01734856f8ec2b6d525d1c99c5a34029217598",
-                "reference": "1e01734856f8ec2b6d525d1c99c5a34029217598",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9ae3bfd036190847dd0a5c3cdc4681dbb0994f5a",
+                "reference": "9ae3bfd036190847dd0a5c3cdc4681dbb0994f5a",
                 "shasum": ""
             },
             "require": {
@@ -151,9 +151,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.293.6"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.293.10"
             },
-            "time": "2023-12-07T19:29:50+00:00"
+            "time": "2023-12-13T19:41:27+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -266,16 +266,16 @@
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon-doctrine-types.git",
-                "reference": "67a77972b9f398ae7068dabacc39c08aeee170d5"
+                "reference": "99f76ffa36cce3b70a4a6abce41dba15ca2e84cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/67a77972b9f398ae7068dabacc39c08aeee170d5",
-                "reference": "67a77972b9f398ae7068dabacc39c08aeee170d5",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/99f76ffa36cce3b70a4a6abce41dba15ca2e84cb",
+                "reference": "99f76ffa36cce3b70a4a6abce41dba15ca2e84cb",
                 "shasum": ""
             },
             "require": {
@@ -315,7 +315,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CarbonPHP/carbon-doctrine-types/issues",
-                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/2.0.0"
+                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/2.1.0"
             },
             "funding": [
                 {
@@ -331,7 +331,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-10-01T14:29:01+00:00"
+            "time": "2023-12-11T17:09:12+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -2068,16 +2068,16 @@
         },
         {
             "name": "laravel/fortify",
-            "version": "v1.19.0",
+            "version": "v1.19.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/fortify.git",
-                "reference": "2da721fead1f3bc18af983e4903c4e1df67177e7"
+                "reference": "1dde858a520f679b4a2f453fa68f8a0e98751875"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/2da721fead1f3bc18af983e4903c4e1df67177e7",
-                "reference": "2da721fead1f3bc18af983e4903c4e1df67177e7",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/1dde858a520f679b4a2f453fa68f8a0e98751875",
+                "reference": "1dde858a520f679b4a2f453fa68f8a0e98751875",
                 "shasum": ""
             },
             "require": {
@@ -2128,20 +2128,20 @@
                 "issues": "https://github.com/laravel/fortify/issues",
                 "source": "https://github.com/laravel/fortify"
             },
-            "time": "2023-11-27T22:01:18+00:00"
+            "time": "2023-12-11T16:16:45+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v10.35.0",
+            "version": "v10.37.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "91ec2d92d2f6007e9084fe06438b99c91845da69"
+                "reference": "996375dd61f8c6e4ac262b57ed485655d71fcbdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/91ec2d92d2f6007e9084fe06438b99c91845da69",
-                "reference": "91ec2d92d2f6007e9084fe06438b99c91845da69",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/996375dd61f8c6e4ac262b57ed485655d71fcbdc",
+                "reference": "996375dd61f8c6e4ac262b57ed485655d71fcbdc",
                 "shasum": ""
             },
             "require": {
@@ -2330,7 +2330,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-12-05T14:50:33+00:00"
+            "time": "2023-12-13T20:10:58+00:00"
         },
         {
             "name": "laravel/jetstream",
@@ -3539,16 +3539,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.72.0",
+            "version": "2.72.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "a6885fcbad2ec4360b0e200ee0da7d9b7c90786b"
+                "reference": "2b3b3db0a2d0556a177392ff1a3bf5608fa09f78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/a6885fcbad2ec4360b0e200ee0da7d9b7c90786b",
-                "reference": "a6885fcbad2ec4360b0e200ee0da7d9b7c90786b",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/2b3b3db0a2d0556a177392ff1a3bf5608fa09f78",
+                "reference": "2b3b3db0a2d0556a177392ff1a3bf5608fa09f78",
                 "shasum": ""
             },
             "require": {
@@ -3642,7 +3642,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-28T10:13:25+00:00"
+            "time": "2023-12-08T23:47:49+00:00"
         },
         {
             "name": "nette/schema",
@@ -3794,16 +3794,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.17.1",
+            "version": "v4.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "a6303e50c90c355c7eeee2c4a8b27fe8dc8fef1d"
+                "reference": "1bcbb2179f97633e98bbbc87044ee2611c7d7999"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/a6303e50c90c355c7eeee2c4a8b27fe8dc8fef1d",
-                "reference": "a6303e50c90c355c7eeee2c4a8b27fe8dc8fef1d",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1bcbb2179f97633e98bbbc87044ee2611c7d7999",
+                "reference": "1bcbb2179f97633e98bbbc87044ee2611c7d7999",
                 "shasum": ""
             },
             "require": {
@@ -3844,9 +3844,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.17.1"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.18.0"
             },
-            "time": "2023-08-13T19:53:39+00:00"
+            "time": "2023-12-10T21:03:43+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -4938,16 +4938,16 @@
         },
         {
             "name": "setasign/fpdi",
-            "version": "v2.5.0",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Setasign/FPDI.git",
-                "reference": "ecf0459643ec963febfb9a5d529dcd93656006a4"
+                "reference": "a6db878129ec6c7e141316ee71872923e7f1b7ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/ecf0459643ec963febfb9a5d529dcd93656006a4",
-                "reference": "ecf0459643ec963febfb9a5d529dcd93656006a4",
+                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/a6db878129ec6c7e141316ee71872923e7f1b7ad",
+                "reference": "a6db878129ec6c7e141316ee71872923e7f1b7ad",
                 "shasum": ""
             },
             "require": {
@@ -4959,8 +4959,8 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "~5.7",
-                "setasign/fpdf": "~1.8",
-                "setasign/tfpdf": "~1.31",
+                "setasign/fpdf": "~1.8.6",
+                "setasign/tfpdf": "~1.33",
                 "squizlabs/php_codesniffer": "^3.5",
                 "tecnickcom/tcpdf": "~6.2"
             },
@@ -4998,7 +4998,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Setasign/FPDI/issues",
-                "source": "https://github.com/Setasign/FPDI/tree/v2.5.0"
+                "source": "https://github.com/Setasign/FPDI/tree/v2.6.0"
             },
             "funding": [
                 {
@@ -5006,7 +5006,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-28T10:46:27+00:00"
+            "time": "2023-12-11T16:03:32+00:00"
         },
         {
             "name": "stevebauman/location",
@@ -7550,23 +7550,23 @@
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
-            "version": "2.2.6",
+            "version": "v2.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
-                "reference": "c42125b83a4fa63b187fdf29f9c93cb7733da30c"
+                "reference": "83ee6f38df0a63106a9e4536e3060458b74ccedb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/c42125b83a4fa63b187fdf29f9c93cb7733da30c",
-                "reference": "c42125b83a4fa63b187fdf29f9c93cb7733da30c",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/83ee6f38df0a63106a9e4536e3060458b74ccedb",
+                "reference": "83ee6f38df0a63106a9e4536e3060458b74ccedb",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
                 "php": "^5.5 || ^7.0 || ^8.0",
-                "symfony/css-selector": "^2.7 || ^3.0 || ^4.0 || ^5.0 || ^6.0"
+                "symfony/css-selector": "^2.7 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0 || ^7.5 || ^8.5.21 || ^9.5.10"
@@ -7597,9 +7597,9 @@
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "support": {
                 "issues": "https://github.com/tijsverkoyen/CssToInlineStyles/issues",
-                "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.6"
+                "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.2.7"
             },
-            "time": "2023-01-03T09:29:04+00:00"
+            "time": "2023-12-08T13:03:43+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -8200,16 +8200,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.6.6",
+            "version": "1.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "b8e0bb7d8c604046539c1115994632c74dcb361e"
+                "reference": "0cc058854b3195ba21dc6b1f7b1f60f4ef3a9c06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/b8e0bb7d8c604046539c1115994632c74dcb361e",
-                "reference": "b8e0bb7d8c604046539c1115994632c74dcb361e",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/0cc058854b3195ba21dc6b1f7b1f60f4ef3a9c06",
+                "reference": "0cc058854b3195ba21dc6b1f7b1f60f4ef3a9c06",
                 "shasum": ""
             },
             "require": {
@@ -8222,9 +8222,7 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5 || ^9.6.10",
-                "psalm/plugin-phpunit": "^0.18.4",
-                "symplify/easy-coding-standard": "^11.5.0",
-                "vimeo/psalm": "^4.30"
+                "symplify/easy-coding-standard": "^12.0.8"
             },
             "type": "library",
             "autoload": {
@@ -8281,7 +8279,7 @@
                 "security": "https://github.com/mockery/mockery/security/advisories",
                 "source": "https://github.com/mockery/mockery"
             },
-            "time": "2023-08-09T00:03:52+00:00"
+            "time": "2023-12-10T02:24:34+00:00"
         },
         {
             "name": "myclabs/deep-copy",
