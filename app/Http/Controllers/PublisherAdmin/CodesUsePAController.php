@@ -23,13 +23,13 @@ class CodesUsePAController extends Controller
         if ($data['code']) {
             if (auth()->user()->id === $data['course']['publisher']['owner_uid'])
             {
-                $data['code-uses'] = CodesUse::where('code_id', $code_id)
+                $data['code_uses'] = CodesUse::where('code_id', $code_id)
                     ->with('user')
                     ->withCount(['completed_activities' => function($query) {
                         $query->select(DB::raw('count(distinct(activity_id))'));
                     }])
                     ->orderBy('created_at', 'desc')
-                    ->get();
+                    ->paginate(25);
                 return $data;
             }
         }

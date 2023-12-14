@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
-import { Subject } from 'rxjs'
 import { ActivatedRoute } from '@angular/router'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { Subject } from 'rxjs'
 
 @Component({
   selector: 'app-discount-codes-users',
@@ -13,8 +13,8 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 })
 export class DiscountCodesUsersComponent implements OnInit {
 
-  public discountCodeUsers$ = new Subject<any[] | null>()
-  public total_activities = 0
+  public discountCodeUsers$: Subject<any> = new Subject<any>()
+  public itemsPerPage: number = 25; // This will make it easier to change collection size in the future
 
   constructor(
     private route: ActivatedRoute,
@@ -23,11 +23,15 @@ export class DiscountCodesUsersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.selectPage()
+  }
+
+  selectPage(page: number = 1) {
     this.httpClient.get<any[]>(
-      `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/users`
+      `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/users?page=${page}`
     ).subscribe(
       (data) => {
-        this.discountCodeUsers$.next(data)
+        this.discountCodeUsers$.next(data); // Emit the new data using the subject
       }
     )
   }

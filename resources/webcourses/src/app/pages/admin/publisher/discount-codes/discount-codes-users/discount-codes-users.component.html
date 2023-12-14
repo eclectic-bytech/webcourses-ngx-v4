@@ -7,31 +7,39 @@
           <i class='fa-sharp fa-solid fa-fingerprint text-secondary'></i>
         </div>
         <div class="col-10">
-          <div class="h2">{{ discountCodeUsers['course'].title }}</div>
+          <div class="h2">{{ discountCodeUsers.course.title }}</div>
           <div>
             <span class="font-weight-bold fw-bold">Code:</span>
-            {{ discountCodeUsers['code'].label }} ({{ discountCodeUsers['code'].code }})
+            {{ discountCodeUsers.code.label }} ({{ discountCodeUsers.code.code }})
           </div>
           <div>
             <span class="font-weight-bold fw-bold">Seats:</span>
-            {{ discountCodeUsers['code'].uses }} /
-            <span *ngIf="discountCodeUsers['code'].uses_max == 0; else noOfUses">&#8734;</span>
+            {{ discountCodeUsers.code.uses }} /
+            <span *ngIf="discountCodeUsers.code.uses_max == 0; else noOfUses">&#8734;</span>
             <ng-template #noOfUses>
-              {{ discountCodeUsers['code'].uses_max }}
+              {{ discountCodeUsers.code.uses_max }}
             </ng-template>
           </div>
           <div>
             <span class="font-weight-bold fw-bold">Expiry:</span>
-            {{ discountCodeUsers['code'].expiry | date:'mediumDate' }}
+            {{ discountCodeUsers.code.expiry | date:'mediumDate' }}
           </div>
         </div>
       </div>
     </div>
 
-    <table class="table table-bordered table-hover table-striped mt-5">
+    <div class="mt-5 lead">
+      <ul class="pagination">
+        <li class="page-item"><a role="button" (click)="selectPage(discountCodeUsers.code_uses.current_page - 1)">&laquo;</a></li>
+        <li class="px-1">Showing results {{discountCodeUsers.code_uses.from}} to {{discountCodeUsers.code_uses.to}} of {{discountCodeUsers.code_uses.total}}</li>
+        <li class="page-item"><a role="button" (click)="selectPage(discountCodeUsers.code_uses.current_page + 1)">&raquo;</a></li>
+      </ul>
+    </div>
+
+    <table class="table table-bordered table-hover table-striped mt-1">
       <thead>
         <tr>
-          <th class="text-uppercase text-center">id</th>
+          <th class="text-uppercase text-center">#</th>
           <th class="text-uppercase">name</th>
           <th class="text text-uppercase">email</th>
           <th class="text text-uppercase">started</th>
@@ -40,22 +48,34 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let discountCodeUser of discountCodeUsers['code-uses'], let i = 'index + 1'">
-          <td class="text-center">{{i}}</td>
+        <tr *ngFor="let codeUse of discountCodeUsers.code_uses.data; let i = index" @fadeInOut>
+          <td class="text-center">{{discountCodeUsers.code_uses.from + i}}</td>
           <td [routerLink]="[
-            '/admin', 'publisher', 'course', 'user_progress', discountCodeUser.user_progress_id
+            '/admin', 'publisher', 'course', 'user_progress', codeUse.user_progress_id
           ]">
-            {{ discountCodeUser.user.first_name }} {{ discountCodeUser.user.last_name }}
+            {{ codeUse.user.first_name }} {{ codeUse.user.last_name }}
           </td>
-          <td>{{ discountCodeUser.user.email }}</td>
-          <td>{{ discountCodeUser.created_at | date:'mediumDate' }}</td>
+          <td>{{ codeUse.user.email }}</td>
+          <td>{{ codeUse.user.created_at | date:'mediumDate' }}</td>
           <td>
-            <span [innerHtml]="(discountCodeUser.completed_activities_count / discountCodeUsers['course'].total_activities * 100) | number:'1.0-0'"></span>%
+            <span [innerHtml]="( codeUse.completed_activities_count / discountCodeUsers.course.total_activities * 100) | number:'1.0-0'"></span>%
           </td>
         </tr>
       </tbody>
     </table>
 
+    <div class="mb-5">
+      <ngb-pagination
+        [collectionSize]="discountCodeUsers.code_uses.total"
+        [(page)]="discountCodeUsers.code_uses.current_page"
+        [maxSize]="5"
+        [rotate]="true"
+        [ellipses]="false"
+        [boundaryLinks]="true"
+        [pageSize]="itemsPerPage"
+        (pageChange)="selectPage($event)"
+      />
+    </div>
+
   </div>
 </div>
-
