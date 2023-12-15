@@ -6,6 +6,18 @@ composer install;
 echo -e "Creating a copy of .env file...";
 cp .env.example .env;
 
+# Insert nice notice that "the database needs to exist - provide connection details and credential next"
+#
+# <----- HERE WE WANT TO PROMPT USER FOR DB DETAILS
+#
+# Example code:
+# read -p $'\e[94mDatabase name\e[0m   : ' database
+# read -p $'\e[94mDB user name\e[0m   : ' db_user
+# read -p $'\e[94mDB user pass\e[0m   : ' db_pass
+# echo $database
+# echo $db_user
+# echo $db_pass
+
 echo "Copying config.default.json to config.json....";
 cp resources/webcourses/src/config.default.json ./public/webcourses/config.json;
 
