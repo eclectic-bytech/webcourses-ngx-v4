@@ -40,7 +40,7 @@
       <thead>
         <tr>
           <th class="text-uppercase text-center">#</th>
-          <th class="text-uppercase">name</th>
+          <th class="text-uppercase">name (id)</th>
           <th class="text text-uppercase">email</th>
           <th class="text text-uppercase">started</th>
           <th class="text text-uppercase">completed</th>
@@ -53,10 +53,10 @@
           <td [routerLink]="[
             '/admin', 'publisher', 'course', 'user_progress', codeUse.user_progress_id
           ]">
-            {{ codeUse.user.first_name }} {{ codeUse.user.last_name }}
+            {{ codeUse.user.first_name }} {{ codeUse.user.last_name }} <small>({{ codeUse.user.id }})</small>
           </td>
           <td>{{ codeUse.user.email }}</td>
-          <td>{{ codeUse.user.created_at | date:'mediumDate' }}</td>
+          <td>{{ codeUse.created_at | date:'mediumDate' }}</td>
           <td>
             <span [innerHtml]="( codeUse.completed_activities_count / discountCodeUsers.course.total_activities * 100) | number:'1.0-0'"></span>%
           </td>
