@@ -1,0 +1,14 @@
+@media only screen {
+  #workareaContent {
+    overflow-y: auto;
+    height: calc(100vh - 67px);
+    margin-top: 67px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  #workareaContent {
+    height: auto!important;
+    margin-top: 0;
+  }
+}

@@ -9,22 +9,9 @@
   color: #ddd;
 }
 
-@media only screen {
-  #workareaContent {
-    overflow-y: auto;
-    height: calc(100vh - 67px);
-    margin-top: 67px;
-  }
-}
-
 @media only screen and (max-width: 992px) {
-  #activity-menu-outlet, #workareaContent {
-    height: auto!important;
-  }
-  #workareaContent {
-    margin-top: 0;
-  }
   #activity-menu-outlet {
+    height: auto!important;
     max-height: 55vh; // Prevent full screen tabs to Ensure tab close button is visible
   }
 }
