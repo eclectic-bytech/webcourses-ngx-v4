@@ -1,6 +1,6 @@
 import { ActivityMeta } from './activity-meta.model'
 import { ActivityAnswers } from './activity-answers.model'
-import { Bookmark } from '../../sidebar/bookmarks/bookmark.model'
+import { Bookmark } from '../../sidebar/tabs/student/bookmarks/bookmark.model'
 
 export class Activity {
   constructor(

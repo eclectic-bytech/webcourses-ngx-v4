@@ -1,0 +1,77 @@
+<!--
+  Combo of none/block classes supports up to six icons on most resolutions,
+  with a likely exception for widths of ~1200 through 1250px.
+  At xs, despite being full width, screen is too small for labels.
+  At sm & md, menu is full width, with room for labels.
+  At lg the sidebar appears, the menu now spanning only its width:
+  No room for labels until xl.
+-->
+
+<div id="activity-menu" class="py-2 container-fluid shadow-sm">
+  <ul ngbNav #nav="ngbNav" class="nav-pills" id="menu">
+    <li ngbNavItem>
+      <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
+        <i class="fa-sharp fa-solid fa-user-graduate fa-lg d-block text-center my-2"></i>
+
+        <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+          <small>Progress</small>
+        </div>
+      </a>
+      <ng-template ngbNavContent>
+        <app-selected></app-selected>
+      </ng-template>
+    </li>
+
+    <li ngbNavItem>
+      <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
+        <i class="fa-sharp fa-solid fa-list fa-lg d-block text-center my-2"></i>
+        <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+          <small>Index</small>
+        </div>
+      </a>
+      <ng-template ngbNavContent>
+        <app-chapter-index></app-chapter-index>
+      </ng-template>
+    </li>
+
+    <li ngbNavItem>
+      <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
+        <i class="fa-sharp fa-solid fa-leaf fa-lg d-block text-center my-2"></i>
+        <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+          <small>Publisher</small>
+        </div>
+      </a>
+      <ng-template ngbNavContent>
+        <app-publisher-info></app-publisher-info>
+      </ng-template>
+    </li>
+
+    <li ngbNavItem>
+      <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
+        <i class="fa-sharp fa-solid fa-book-bookmark fa-lg d-block text-center my-2"></i>
+        <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+          <small>Bookmarks</small>
+        </div>
+      </a>
+      <ng-template ngbNavContent>
+        <app-bookmarks></app-bookmarks>
+      </ng-template>
+    </li>
+
+    <li ngbNavItem>
+      <a ngbNavLink (click)="this.activitiesService.showSideMenu = true">
+        <i class="fa-sharp fa-solid fa-question-circle fa-lg d-block text-center my-2"></i>
+        <div class="d-none d-sm-block d-lg-none d-xl-block mt-1 text-uppercase activity-menu-label">
+          <small>Help</small>
+        </div>
+      </a>
+      <ng-template ngbNavContent>
+        <app-activity-help></app-activity-help>
+      </ng-template>
+    </li>
+  </ul>
+</div>
+
+<div id="activity-menu-outlet">
+  <div *ngIf="this.activitiesService.showSideMenu" [ngbNavOutlet]="nav"></div>
+</div>

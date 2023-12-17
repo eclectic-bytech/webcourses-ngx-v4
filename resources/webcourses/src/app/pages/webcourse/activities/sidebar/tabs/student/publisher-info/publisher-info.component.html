@@ -1,0 +1,50 @@
+<div id="publisher-info-tab" class="px-4"
+  *ngIf="this.selectedCourseService.selectedCourse as sc; else loading"
+  @fadeInOut
+  >
+
+  <div class="container-fluid my-3">
+
+    <!-- Publisher Name -->
+    <div class="row">
+      <div class="col mt-3 h5 primary-text" [innerHtml]="sc.publisher.name"></div>
+    </div>
+
+    <!-- Contact and email address -->
+    <div class="row py-2">
+      <div class="col-1 mx-auto">
+        <fa-icon [icon]="faEnvelope" class="primary-text"></fa-icon>
+      </div>
+      <div class="col">
+        <div class="primary-text">
+          {{ sc.publisher.contact_fname }}
+          {{ sc.publisher.contact_lname }}
+        </div>
+        <a target="_blank"
+          [href]="'mailto:' + sc.publisher.contact_email"
+          *ngIf="sc.publisher.contact_email"
+          >
+          {{ sc.publisher.contact_email }}
+        </a>
+      </div>
+    </div>
+
+    <!-- Hotlinked website address -->
+    <div class="row py-2" *ngIf="sc.publisher.website">
+      <div class="col-1 mx-auto"><fa-icon [icon]="faGlobe" class="primary-text"></fa-icon></div>
+      <div class="col">
+        <div class="primary-text">Website</div>
+        <a target="_blank" [href]="sc.publisher.website">
+          {{ sc.publisher.website.replace('https://', '')}}
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #loading>
+  <div class="mt-5">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</ng-template>

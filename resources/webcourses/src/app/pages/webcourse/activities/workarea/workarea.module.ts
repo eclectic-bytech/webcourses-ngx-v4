@@ -13,7 +13,7 @@ import { ClickRotateModule } from './activities/click-rotate/click-rotate.module
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { DemoFlagModule } from '../../builder/activity/demo-flag/demo-flag.module';
 import { SpecialActivityModule } from './activities/special-activity/special-activity.module'
-import { BookmarkButtonModule } from '../sidebar/bookmarks/bookmark-button/bookmark-button.module'
+import { BookmarkButtonModule } from '../sidebar/tabs/student/bookmarks/bookmark-button/bookmark-button.module'
 
 @NgModule({
   declarations: [
