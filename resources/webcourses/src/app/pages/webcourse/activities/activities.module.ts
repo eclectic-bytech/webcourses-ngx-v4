@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common'
 import { ActivitiesRoutingModule } from './activities-routing.module'
 import { FormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { WorkAreaModule } from './workarea/workarea.module'
 import { ThemeModule } from '../../../views/theme/theme.module'
@@ -25,7 +24,6 @@ import { BookmarksModule } from './sidebar/tabs/student/bookmarks/bookmarks.modu
     CommonModule,
     NgbModule,
     FormsModule,
-    FontAwesomeModule,
     ActivitiesRoutingModule,
     WorkAreaModule,
     ThemeModule,

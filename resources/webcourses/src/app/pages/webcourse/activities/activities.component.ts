@@ -3,10 +3,6 @@ import { ActivatedRoute } from '@angular/router'
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap'
 import { Subscription } from 'rxjs'
 
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
-
 // WNGX services and components
 import { CollectUserNamesComponent } from './components/collect-user-names/collect-user-names.component'
 import { PublisherService } from './../../catalogue/publisher/publisher.service'
@@ -24,10 +20,6 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
 
   private modalOptions: NgbModalOptions
   private sub: Subscription
-
-  faInfoCircle = faInfoCircle
-  faChevronUp = faChevronUp
-  faChevronDown = faChevronDown
 
   constructor(
     private activatedRoute: ActivatedRoute,
