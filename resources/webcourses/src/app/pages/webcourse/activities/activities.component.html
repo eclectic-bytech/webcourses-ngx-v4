@@ -1,19 +1,22 @@
 <div class="container-fluid" id="activities-global">
   <div class="row">
-    <div class="col-lg-5 px-0 sticky-top d-print-none" style="background-color: transparent;">
+    <div class="col-lg-5 px-0 sticky-top d-print-none">
 
-      <wngx-student-menu *ngIf="!this.webcourseService.builderMode"></wngx-student-menu>
+      <wngx-menu></wngx-menu>
 
       <!-- Roll-up button for hiding ngbNavOutlet. Displayed when sidebar is hidden due to lack of space. -->
-      <div class="d-lg-none">
-        <div class="border-top border-warning text-center">
-          <fa-icon
-            [icon]="this.activitiesService.showSideMenu ? faChevronUp : faChevronDown"
-            (click)="this.activitiesService.showSideMenu = !this.activitiesService.showSideMenu"
-            class="handy text-warning"
-            size="sm"
-          ></fa-icon>
+      <div
+        role="button"
+        class="d-lg-none border-top border-warning text-center"
+        (click)="this.activitiesService.showSideMenu = !this.activitiesService.showSideMenu"
+      >
+        <div *ngIf="this.activitiesService.showSideMenu; else noSideMenu">
+          <i class="fa-sharp fa-solid fa-chevron-up fa-sm text-warning"></i>
         </div>
+
+        <ng-template #noSideMenu>
+          <i class="fa-sharp fa-solid fa-chevron-down fa-sm text-warning"></i>
+        </ng-template>
       </div>
 
     </div>

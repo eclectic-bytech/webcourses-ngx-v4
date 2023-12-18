@@ -10,7 +10,7 @@ import { ThemeModule } from '../../../views/theme/theme.module'
 import { ActivityHelpModule } from './sidebar/tabs/student/activity-help/activity-help.module'
 import { PipesModule } from './../../../shared/pipes/pipes.module'
 import { LoadingSpinnerModule } from './../../../core/modules/loading-spinner/loading-spinner.module'
-import { StudentMenuModule } from './sidebar/menu/student/student-menu.module'
+import { MenuModule } from './sidebar/menu/menu.module'
 
 import { ActivitiesComponent } from './activities.component'
 import { CollectUserNamesComponent } from './components/collect-user-names/collect-user-names.component'
@@ -32,7 +32,7 @@ import { BookmarksModule } from './sidebar/tabs/student/bookmarks/bookmarks.modu
     ActivityHelpModule,
     PipesModule,
     LoadingSpinnerModule,
-    StudentMenuModule,
+    MenuModule,
     BookmarksModule
   ],
   providers: [

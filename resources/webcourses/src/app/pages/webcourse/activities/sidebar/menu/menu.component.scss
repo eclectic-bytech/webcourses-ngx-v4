@@ -3,10 +3,11 @@
 }
 
 #activity-menu-outlet {
-  height: calc(100vh - 140px);
+  height: calc(100vh - 157px); // takes into account tabs exceeding viewport height
   background-color: #385f72;
   overflow-y: auto;
   color: #ddd;
+  scrollbar-width: thin;
 }
 
 @media only screen and (max-width: 992px) {
