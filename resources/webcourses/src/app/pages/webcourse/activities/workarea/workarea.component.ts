@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'
-import { faPrint, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 // WNGX services
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
@@ -20,9 +19,6 @@ import { FadeInOut } from './../../../../core/animations/fade-in-out.animation'
 
 export class WorkAreaComponent {
 
-  public faPrint = faPrint
-  public faSpinner = faSpinner
-
   constructor(
     public selectedCourseService: SelectedCourseService,
     public userService: UserService,
@@ -30,7 +26,4 @@ export class WorkAreaComponent {
     public activitiesService: ActivitiesService
   ) {}
 
-  printButton() {
-    window.print()
-  }
 }
