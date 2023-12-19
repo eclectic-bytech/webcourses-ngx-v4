@@ -1,5 +1,15 @@
 <div [routerLink]="['/webcourse', 'activities', course.user_progress.id]" class="my-1">
-  <button mat-raised-button color="primary">Enter</button>
-  <button mat-button color="primary" class="border">Resume</button>
-  <button mat-raised-button color="primary">Start</button>
+  <ng-container *ngTemplateOutlet="enterButton"></ng-container>
 </div>
+
+<ng-template #enterButton>
+  <button mat-raised-button color="primary">Enter</button>
+</ng-template>
+
+<ng-template #resumeButton>
+  <button mat-button color="primary" class="border">Resume</button>
+</ng-template>
+
+<ng-template #startButton>
+  <button mat-raised-button color="primary">Start</button>
+</ng-template>
