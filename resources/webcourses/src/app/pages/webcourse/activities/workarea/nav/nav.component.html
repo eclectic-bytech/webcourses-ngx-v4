@@ -1,104 +1,94 @@
+
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-5 d-none d-lg-block">
-      <!-- This area is hidden under the activity sidebar -->
+  <div class="row justify-content-between">
+    <div class="col-auto my-auto">
+      <div class="handy" (click)="printButton()">
+        <i class="fa-solid fa-print text-secondary mx-2"></i>
+        <span class="text-dark h6">Print</span>
+      </div>
     </div>
-    <div class="col-lg-7 my-auto">
-
-      <div class="container-fluid">
-        <div class="row justify-content-between">
-          <div class="col-auto my-auto">
-            <div class="handy" (click)="printButton()">
-              <i class="fa-solid fa-print text-secondary mx-2"></i>
-              <span class="text-dark h6">Print</span>
-            </div>
-          </div>
-          <div class="col-auto my-auto text-center">
-            <i class="fa-solid fa-spinner fa-spin fa-lg ml-2 mr-1 text-dark fa-fade" *ngIf="this.webcourseService.waitingForApi"></i>
-          </div>
-          <div class="col-auto">
-            <div class="my-2">
+    <div class="col-auto my-auto text-center">
+      <i class="fa-solid fa-spinner fa-spin fa-lg ml-2 mr-1 text-dark fa-fade" *ngIf="this.webcourseService.waitingForApi"></i>
+    </div>
+    <div class="col-auto">
+      <div class="my-2">
 
 
-              <div class="pr-lg-4 pr-md-1 pr-sm-0"
-                *ngIf="this.selectedCourseService.selectedActivitySet$ | async as activity"
+        <div class="pr-lg-4 pr-md-1 pr-sm-0"
+          *ngIf="this.selectedCourseService.selectedActivitySet$ | async as activity"
+          >
+          <div [@FadeInOut2]="this.webcourseService.endOfChapter || this.webcourseService.endOfCourse || activity">
+            <div *ngIf="!this.webcourseService.endOfChapter && !this.webcourseService.endOfCourse; else eo">
+              <button class="btn btn-primary mr-3"
+                (click)="calcFollowingAid(-1)"
+                [disabled]="this.webcourseService.waitingForApi || activity[activity.length -1].meta.seq == 1"
                 >
-                <div [@FadeInOut2]="this.webcourseService.endOfChapter || this.webcourseService.endOfCourse || activity">
-                  <div *ngIf="!this.webcourseService.endOfChapter && !this.webcourseService.endOfCourse; else eo">
-                    <button class="btn btn-primary mr-3"
-                      (click)="calcFollowingAid(-1)"
-                      [disabled]="this.webcourseService.waitingForApi || activity[activity.length -1].meta.seq == 1"
-                      >
-                      <i class="fa-solid fa-backward-step"></i>
-                    </button>
+                <i class="fa-solid fa-backward-step"></i>
+              </button>
 
-                    <button type="button" class="btn btn-primary"
-                      *ngIf="activity[activity.length -1].user_answers"
-                      (click)="calcFollowingAid(1)"
-                      [disabled]="this.webcourseService.waitingForApi"
-                      >
-                      Next
-                      <i class="fa-solid fa-forward-step ml-2 mr-1"></i>
-                    </button>
+              <button type="button" class="btn btn-primary"
+                *ngIf="activity[activity.length -1].user_answers"
+                (click)="calcFollowingAid(1)"
+                [disabled]="this.webcourseService.waitingForApi"
+                >
+                Next
+                <i class="fa-solid fa-forward-step ml-2 mr-1"></i>
+              </button>
 
-                    <button type="submit" class="btn btn-success"
-                      *ngIf="!activity[activity.length -1].user_answers"
-                      (click)="SaveButton()"
-                      [disabled]="this.webcourseService.waitingForApi || !this.activeModeService.activityForm.valid"
-                    >
+              <button type="submit" class="btn btn-success"
+                *ngIf="!activity[activity.length -1].user_answers"
+                (click)="SaveButton()"
+                [disabled]="this.webcourseService.waitingForApi || !this.activeModeService.activityForm.valid"
+              >
 
-                      <span class="ml-2 mr-1 text-uppercase" *ngIf="
-                        activity[activity.length -1].meta.activity_type === 'info' ||
-                        activity[activity.length -1].meta.activity_type === 'special';
-                        else SaveBtn
-                      ">
-                        Mark Read
-                        <i class="fa-solid fa-check"></i>
-                      </span>
+                <span class="ml-2 mr-1 text-uppercase" *ngIf="
+                  activity[activity.length -1].meta.activity_type === 'info' ||
+                  activity[activity.length -1].meta.activity_type === 'special';
+                  else SaveBtn
+                ">
+                  Mark Read
+                  <i class="fa-solid fa-check"></i>
+                </span>
 
-                      <ng-template #SaveBtn>
-                        <span>
-                          Save
-                          <i
-                            class="fa-solid fa-pen-nib mx-1"
-                            [ngClass]="this.activeModeService.activityForm.valid ? 'fa-fade' : ''"
-                          ></i>
-                        </span>
-                      </ng-template>
+                <ng-template #SaveBtn>
+                  <span>
+                    Save
+                    <i
+                      class="fa-solid fa-pen-nib mx-1"
+                      [ngClass]="this.activeModeService.activityForm.valid ? 'fa-fade' : ''"
+                    ></i>
+                  </span>
+                </ng-template>
 
-                    </button>
-                  </div>
-
-                  <ng-template #eo>
-                    <button
-                      *ngIf="this.webcourseService.endOfChapter"
-                      [disabled]="this.webcourseService.waitingForApi"
-                      (click)="ContinueButton()"
-                      class="btn btn-primary"
-                    >
-                      Continue
-                      <i class="fa-solid fa-forward-step ml-2 mr-1"></i>
-                    </button>
-
-                    <button
-                      *ngIf="this.webcourseService.endOfCourse"
-                      [disabled]="this.webcourseService.waitingForApi"
-                      (click)="ReviewButton()"
-                      class="btn btn-primary"
-                    >
-                      REVIEW
-                      <i class="fa-solid fa-forward-step ml-2 mr-1"></i>
-                    </button>
-                  </ng-template>
-                </div>
-              </div>
-
-
+              </button>
             </div>
+
+            <ng-template #eo>
+              <button
+                *ngIf="this.webcourseService.endOfChapter"
+                [disabled]="this.webcourseService.waitingForApi"
+                (click)="ContinueButton()"
+                class="btn btn-primary"
+              >
+                Continue
+                <i class="fa-solid fa-forward-step ml-2 mr-1"></i>
+              </button>
+
+              <button
+                *ngIf="this.webcourseService.endOfCourse"
+                [disabled]="this.webcourseService.waitingForApi"
+                (click)="ReviewButton()"
+                class="btn btn-primary"
+              >
+                REVIEW
+                <i class="fa-solid fa-forward-step ml-2 mr-1"></i>
+              </button>
+            </ng-template>
           </div>
         </div>
-      </div>
 
+
+      </div>
     </div>
   </div>
 </div>
