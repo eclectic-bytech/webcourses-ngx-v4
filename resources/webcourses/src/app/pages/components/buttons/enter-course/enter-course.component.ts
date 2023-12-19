@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core'
   styleUrls: ['./enter-course.component.scss']
 })
 export class EnterCourseComponent {
-  @Input() cid: number
+  @Input() course: any
 
 }
