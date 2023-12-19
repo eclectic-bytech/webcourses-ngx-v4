@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core'
 export class EnterCourseComponent implements OnInit {
   @Input() course: any
   @Input() buttonStyle: string = 'raised'
+  @Input() public btnSize: string
+
   buttonToDisplay: 'Start' | 'Review' | 'Continue'
 
   ngOnInit() {
