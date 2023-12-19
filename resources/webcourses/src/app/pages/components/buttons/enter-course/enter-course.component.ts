@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core'
 export class EnterCourseComponent implements OnInit {
   @Input() course: any
   @Input() buttonStyle: string = 'raised'
-  buttonToDisplay: 'Start' | 'Review' | 'Resume'
+  buttonToDisplay: 'Start' | 'Review' | 'Continue'
 
   ngOnInit() {
     this.displayedButton()
@@ -20,7 +20,7 @@ export class EnterCourseComponent implements OnInit {
     } else if (this.course.user_progress.total_activities_completed === this.course.total_activities) {
       this.buttonToDisplay = 'Review'
     } else {
-      this.buttonToDisplay = 'Resume'
+      this.buttonToDisplay = 'Continue'
     }
   }
 }
