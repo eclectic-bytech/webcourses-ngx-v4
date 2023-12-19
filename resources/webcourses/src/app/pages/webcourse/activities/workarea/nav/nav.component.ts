@@ -43,8 +43,6 @@ export class NavComponent {
     window.print()
   }
 
-
-
   calcFollowingAid(offset: number) {
     // Offset should be 1 for next activity, -1 for previous activity
 
