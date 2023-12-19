@@ -4,12 +4,12 @@ import { BehaviorSubject } from 'rxjs'
 import { shareReplay } from 'rxjs/operators'
 
 // WNGX Services
-import { ConfigService } from '../../../../../../../core/services/config/config.service'
+import { ConfigService } from 'src/app/core/services/config/config.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 // WNGX Models and Misc
-import { Activity } from '../../../../workarea/models/activity.model'
-import { FadeInOut } from '../../../../../../../core/animations/fade-in-out.animation'
+import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { ActivityHelp } from './activity-help.model'
 
 @Component({
