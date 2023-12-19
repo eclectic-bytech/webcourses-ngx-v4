@@ -56,12 +56,10 @@
                   <div class="card-title text-dark">{{ userSelectedCourse.title }}</div>
                 </div>
                 <div class="col-auto">
-                  <button
-                    mat-button color="primary" class="border my-3"
-                    (click)="enterButton(userSelectedCourse.user_progress.selected_aid)"
-                  >
-                    Resume
-                  </button>
+                  <div class="my-3 d-inline-flex">
+                    <wngx-enter-course [course]="userSelectedCourse" [buttonStyle]="'flat'"></wngx-enter-course>
+                  </div>
+
                   <button
                     mat-button color="primary" class="my-3 mx-1"
                     [routerLink]="['/catalogue', 'course', userSelectedCourse.id]"
