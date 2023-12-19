@@ -16,4 +16,4 @@ import { EnterCourseComponent } from './enter-course.component'
   ],
   exports: [EnterCourseComponent]
 })
-export class EnterCourseModule { }
+export class EnterCourseButtonModule { }

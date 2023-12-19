@@ -9,7 +9,7 @@ import { WebcoursesComponent } from './webcourses.component'
 import { WebcoursesRoutingModule } from './webcourses-routing.module'
 import { CatalogueCardModule } from '../../components/course-card/catalogue-card/catalogue-card.module'
 import { LoadingSpinnerModule } from '../../../core/modules/loading-spinner/loading-spinner.module'
-import { EnterCourseModule } from '../../components/buttons/enter-course/enter-course.module'
+import { EnterCourseButtonModule } from '../../components/buttons/enter-course/enter-course-button.module'
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { EnterCourseModule } from '../../components/buttons/enter-course/enter-c
     CatalogueCardModule,
     LoadingSpinnerModule,
     FontAwesomeModule,
-    EnterCourseModule
+    EnterCourseButtonModule
   ]
 })
 
