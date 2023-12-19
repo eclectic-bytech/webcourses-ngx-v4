@@ -37,14 +37,9 @@
       *ngIf="course?.user_progress == null; else courseUnlocked"
     ></app-stripe-checkout>
 
-    <!-- RESUME Button -->
+    <!-- Enter Button -->
     <ng-template #courseUnlocked>
-      <button
-        mat-button
-        color="primary"
-        class="border"
-        [routerLink]="['/webcourse', 'activities', course?.user_progress.selected_aid]"
-      >Resume</button>
+    <wngx-enter-course [course]="course" [buttonStyle]="'flat'"></wngx-enter-course>
     </ng-template>
 
     <!-- ABOUT Button -->
