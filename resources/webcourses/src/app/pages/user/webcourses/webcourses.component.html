@@ -56,6 +56,8 @@
                   <div class="card-title text-dark">{{ userSelectedCourse.title }}</div>
                 </div>
                 <div class="col-auto">
+
+                  <!-- Enter course button -->
                   <div class="my-3 d-inline-flex">
                     <wngx-enter-course [course]="userSelectedCourse" [buttonStyle]="'flat'"></wngx-enter-course>
                   </div>
@@ -137,12 +139,12 @@
               <div class="text-dark">
                 Joined: {{ course.user_progress.created_at | date:'longDate' }}
               </div>
-              <button
-                mat-button color="primary" class="border my-3"
-                (click)="enterButton(course.user_progress.selected_aid)"
-              >
-                Enter
-              </button>
+
+              <!-- Enter course button -->
+              <div class="my-3 d-inline-flex">
+              <wngx-enter-course [course]="course" [buttonStyle]="'flat'"></wngx-enter-course>
+              </div>
+
               <button
                 mat-button color="primary" class="mt-3 ml-2"
                 [routerLink]="['/catalogue', 'course', course.id]"
