@@ -30,7 +30,7 @@
     <span class="text-dark" [innerHtml]="course.short_desc | safehtml: 'html'"></span>
   </mat-card-content>
 
-  <mat-card-actions [ngClass]="'px-2'">
+  <mat-card-actions [ngClass]="'px-2 d-inline-flex'">
     <!-- BUY Button -->
     <app-stripe-checkout
       [cid]="course.id"
