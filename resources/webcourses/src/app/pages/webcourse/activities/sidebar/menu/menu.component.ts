@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { WebcourseService } from '../../../webcourse.service'
+import { ActivitiesService } from '../../activities.service'
 
 @Component({
   selector: 'wngx-menu',
@@ -9,7 +10,8 @@ import { WebcourseService } from '../../../webcourse.service'
 export class MenuComponent {
 
   constructor(
-    public webcourseService: WebcourseService
+    public webcourseService: WebcourseService,
+    public activitiesService: ActivitiesService
   ) {}
 
 }

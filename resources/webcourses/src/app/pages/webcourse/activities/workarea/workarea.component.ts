@@ -11,7 +11,7 @@ import { FadeInOut } from './../../../../core/animations/fade-in-out.animation'
 
 
 @Component({
-  selector: 'app-workarea',
+  selector: 'wngx-workarea',
   templateUrl: './workarea.component.html',
   styleUrls: ['./workarea.component.scss'],
   animations: [FadeInOut]

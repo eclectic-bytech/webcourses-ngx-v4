@@ -1,1 +1,16 @@
 <wngx-student-menu></wngx-student-menu>
+
+<!-- Roll-up button for hiding ngbNavOutlet. Displayed when sidebar is hidden due to lack of space. -->
+<div
+  role="button"
+  class="d-lg-none border-top border-warning text-center"
+  (click)="this.activitiesService.showSideMenu = !this.activitiesService.showSideMenu"
+>
+  <div *ngIf="this.activitiesService.showSideMenu; else noSideMenu">
+    <i class="fa-sharp fa-solid fa-chevron-up fa-sm text-warning"></i>
+  </div>
+
+  <ng-template #noSideMenu>
+    <i class="fa-sharp fa-solid fa-chevron-down fa-sm text-warning"></i>
+  </ng-template>
+</div>

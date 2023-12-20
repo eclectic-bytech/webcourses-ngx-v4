@@ -24,7 +24,7 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private ngbModal: NgbModal,
-    public activitiesService: ActivitiesService,
+    private activitiesService: ActivitiesService,
     private userService: UserService,
     public publisherService: PublisherService,
     public webcourseService: WebcourseService
