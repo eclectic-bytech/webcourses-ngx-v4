@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ReactiveFormsModule } from '@angular/forms'
 import { ActiveModeComponent } from './active-mode.component'
-import { PipesModule } from './../../../../../shared/pipes/pipes.module'
+import { PipesModule } from 'src/app/shared/pipes/pipes.module'
 
 @NgModule({
   declarations: [

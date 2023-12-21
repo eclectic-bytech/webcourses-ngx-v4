@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { UntypedFormBuilder, Validators } from '@angular/forms'
+
 import { ActiveModeService } from './active-mode.service'
-import { UserService } from '../../../../../core/services/user/user.service'
-import { Activity } from '../models/activity.model'
+import { UserService } from 'src/app/core/services/user/user.service'
+import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
 
 @Component({
   selector: 'app-active-mode',

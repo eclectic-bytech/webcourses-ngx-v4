@@ -3,15 +3,15 @@ import { HttpClient } from '@angular/common/http'
 import { FormGroup } from '@angular/forms'
 
 // WNGX services
-import { UserService } from '../../../../../core/services/user/user.service'
-import { CompletionStatsService } from './../../../../../core/services/user/completion-stats.service'
-import { ConfigService } from '../../../../../core/services/config/config.service'
-import { DndService } from './../activities/dnd/dnd.service'
-import { ClickRotateService } from '../activities/click-rotate/click-rotate.service'
-import { ActivitiesService } from '../../activities.service'
+import { UserService } from 'src/app/core/services/user/user.service'
+import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
+import { ConfigService } from 'src/app/core/services/config/config.service'
+import { DndService } from 'src/app/pages/webcourse/activities/workarea/activities/dnd/dnd.service'
+import { ClickRotateService } from 'src/app/pages/webcourse/activities/workarea/activities/click-rotate/click-rotate.service'
+import { ActivitiesService } from 'src/app/pages/webcourse/activities/activities.service'
 
 // WNGX models and misc
-import { Activity } from './../models/activity.model'
+import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
 
 @Injectable({
   providedIn: 'root'
