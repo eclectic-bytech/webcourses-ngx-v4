@@ -3,15 +3,6 @@ import { ActivatedRoute } from '@angular/router'
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap'
 import { Subscription } from 'rxjs'
 
-import { faUserGraduate } from '@fortawesome/free-solid-svg-icons'
-import { faList } from '@fortawesome/free-solid-svg-icons'
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
-import { faLeaf } from '@fortawesome/free-solid-svg-icons'
-import { faBookBookmark } from '@fortawesome/free-solid-svg-icons'
-
 // WNGX services and components
 import { CollectUserNamesComponent } from './components/collect-user-names/collect-user-names.component'
 import { PublisherService } from './../../catalogue/publisher/publisher.service'
@@ -29,19 +20,10 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   private modalOptions: NgbModalOptions
   private sub: Subscription
 
-  faUserGraduate = faUserGraduate
-  faList = faList
-  faLeaf = faLeaf
-  faInfoCircle = faInfoCircle
-  faQuestionCircle = faQuestionCircle
-  faChevronUp = faChevronUp
-  faChevronDown = faChevronDown
-  faBookBookmark = faBookBookmark
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private ngbModal: NgbModal,
-    public activitiesService: ActivitiesService,
+    private activitiesService: ActivitiesService,
     private userService: UserService,
     public publisherService: PublisherService
   ) {

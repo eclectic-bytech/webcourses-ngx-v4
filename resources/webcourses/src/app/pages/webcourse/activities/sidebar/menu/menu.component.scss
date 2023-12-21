@@ -1,0 +1,62 @@
+#activities-global {
+  height: 100vh;
+}
+
+#activity-menu-outlet {
+  height: calc(100vh - 157px); // takes into account tabs exceeding viewport height
+  background-color: #385f72;
+  overflow-y: auto;
+  color: #ddd;
+  scrollbar-width: thin;
+}
+
+@media only screen and (max-width: 992px) {
+  #activity-menu-outlet {
+    height: auto!important;
+    max-height: 55vh; // Prevent full screen tabs to Ensure tab close button is visible
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #activities-global {
+    overflow-y: hidden;
+  }
+}
+
+#activity-menu {
+  background-color: white;
+  box-shadow: #CDD inset -2px -2px 7px 1px;
+  margin-top: 69px;
+}
+
+#menu>li>a.active {
+  background-color: #385f72;
+  color: #e3ebeb;
+}
+
+a fa-icon {
+  color: #666;
+}
+
+a.active fa-icon {
+  color: #ddd;
+}
+
+.tab-content {
+  background-color: transparent;
+}
+
+#menu>li>a {
+  color: #385f72;
+}
+
+/* IMPORT FROM ACTIVITIE SECTION v1 */
+#activeWebcourse {
+  border-bottom: 1px dashed lightgray;
+  z-index: 1000; // Prevent covering of main menu dropdown
+  top: 4.2rem;
+}
+
+.activity-menu-label {
+  color: orange;
+}

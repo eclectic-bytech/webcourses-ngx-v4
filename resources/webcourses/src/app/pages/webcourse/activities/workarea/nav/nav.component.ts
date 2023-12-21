@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'
-import { faStepBackward, faCheck, faStepForward, faPenNib } from '@fortawesome/free-solid-svg-icons'
 
 // WNGX services
 import { NavService } from './nav.service'
@@ -12,7 +11,7 @@ import { Activity } from '../models/activity.model'
 import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
 
 @Component({
-  selector: 'app-nav',
+  selector: 'wngx-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.sass'],
   animations: [FadeInOut2]
@@ -23,12 +22,6 @@ export class NavComponent {
   get activitySet() { return this.activitiesService.activities }
 
   private nextAid: number
-
-  // FontAwesome icons
-  faStepBackward = faStepBackward
-  faCheck = faCheck
-  faStepForward = faStepForward
-  faPenNib = faPenNib
 
   constructor(
     public navService: NavService,
@@ -42,6 +35,10 @@ export class NavComponent {
     this.activeModeService.userAnswerPOST(
       this.activeModeService.extractAnswers()
     )
+  }
+
+  printButton() {
+    window.print()
   }
 
   calcFollowingAid(offset: number) {

@@ -84,26 +84,8 @@
         <!-- This area is hidden under the activity sidebar -->
       </div>
       <div class="col-lg-7 my-auto">
-
-        <div class="container-fluid">
-          <div class="row justify-content-between">
-            <div class="col-auto my-auto">
-              <div class="handy" (click)="printButton()">
-                <fa-icon [icon]="faPrint" class="text-secondary mx-2"></fa-icon>
-                <span class="text-dark h6">Print</span>
-              </div>
-            </div>
-            <div class="col-auto my-auto text-center">
-              <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="ml-2 mr-1 text-dark fa-fade" size="2x" *ngIf="this.activitiesService.waitingForApi"></fa-icon>
-            </div>
-            <div class="col-auto">
-              <div class="my-2">
-                <app-nav class="my-2"></app-nav>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <!-- here be work area nav menu -->
+        <wngx-nav class="my-2"></wngx-nav>
       </div>
     </div>
   </div>
