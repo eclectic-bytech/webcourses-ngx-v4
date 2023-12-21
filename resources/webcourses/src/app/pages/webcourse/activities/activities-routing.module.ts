@@ -5,11 +5,6 @@ import { ActivitiesComponent } from './activities.component'
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'selected',
-    pathMatch: 'full'
-  },
-  {
     path: ':aid',
     component: ActivitiesComponent
   }
