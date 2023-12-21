@@ -5,7 +5,6 @@ import { faStepBackward, faCheck, faStepForward, faPenNib } from '@fortawesome/f
 import { NavService } from './nav.service'
 import { ActiveModeService } from '../active-mode/active-mode.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
-import { WebcourseService } from '../../../webcourse.service'
 import { ActivitiesService } from '../../activities.service'
 
 import { ActivityMeta } from '../models/activity-meta.model'
@@ -33,14 +32,13 @@ export class NavComponent {
 
   constructor(
     public navService: NavService,
-    private activitiesService: ActivitiesService,
+    public activitiesService: ActivitiesService,
     public activeModeService: ActiveModeService,
-    public selectedCourseService: SelectedCourseService,
-    public webcourseService: WebcourseService
+    public selectedCourseService: SelectedCourseService
   ) { }
 
   SaveButton() {
-    this.webcourseService.waitingForApi = true
+    this.activitiesService.waitingForApi = true
     this.activeModeService.userAnswerPOST(
       this.activeModeService.extractAnswers()
     )
@@ -62,13 +60,13 @@ export class NavComponent {
     )
 
     if (seq === this.selectedCourseService.courseSyllabus.length-1) {
-      this.webcourseService.endOfCourse = true
+      this.activitiesService.endOfCourse = true
     } else {
       var activityMeta: ActivityMeta = this.selectedCourseService.courseSyllabus[seq + offset]
       if (activityMeta.chapter_id != this.selectedCourseService.courseSyllabus[seq].chapter_id) {
         if (offset === 1) {
           // Show next chapter screer only if user clicked Next button, not back button
-          this.webcourseService.endOfChapter = true
+          this.activitiesService.endOfChapter = true
           this.nextAid = activityMeta.activity_id
         } else {
           // When user clicks back button, proceed to previous activity from previous chapter

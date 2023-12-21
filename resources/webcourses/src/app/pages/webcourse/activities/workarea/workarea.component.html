@@ -1,7 +1,7 @@
-<app-chapter-end *ngIf="this.webcourseService.endOfChapter"></app-chapter-end>
-<app-course-end *ngIf="this.webcourseService.endOfCourse && !this.webcourseService.endOfChapter"></app-course-end>
+<app-chapter-end *ngIf="this.activitiesService.endOfChapter"></app-chapter-end>
+<app-course-end *ngIf="this.activitiesService.endOfCourse && !this.activitiesService.endOfChapter"></app-course-end>
 
-<div *ngIf="!this.webcourseService.endOfChapter && !this.webcourseService.endOfCourse">
+<div *ngIf="!this.activitiesService.endOfChapter && !this.activitiesService.endOfCourse">
 
   <div class="container pb-3">
     <div
@@ -94,7 +94,7 @@
               </div>
             </div>
             <div class="col-auto my-auto text-center">
-              <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="ml-2 mr-1 text-dark fa-fade" size="2x" *ngIf="this.webcourseService.waitingForApi"></fa-icon>
+              <fa-icon [icon]="faSpinner" [spin]="true" [pulse]="true" class="ml-2 mr-1 text-dark fa-fade" size="2x" *ngIf="this.activitiesService.waitingForApi"></fa-icon>
             </div>
             <div class="col-auto">
               <div class="my-2">

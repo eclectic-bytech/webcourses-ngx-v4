@@ -4,7 +4,6 @@ import { faPrint, faSpinner } from '@fortawesome/free-solid-svg-icons'
 // WNGX services
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 import { UserService } from 'src/app/core/services/user/user.service'
-import { WebcourseService } from '../../webcourse.service'
 import { ActivitiesService } from '../activities.service'
 
 //WNGX models and misc
@@ -26,7 +25,6 @@ export class WorkAreaComponent {
   constructor(
     public selectedCourseService: SelectedCourseService,
     public userService: UserService,
-    public webcourseService: WebcourseService,
     public activitiesService: ActivitiesService
   ) {}
 

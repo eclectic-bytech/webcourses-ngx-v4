@@ -8,7 +8,6 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 import { CourseChapterIndexService } from 'src/app/core/services/course-chapter-index/course-chapter-index.service'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
-import { WebcourseService } from '../webcourse.service'
 import { ThemeService } from 'src/app/views/theme/theme.service'
 
 // WNGX models and misc
@@ -22,12 +21,15 @@ import { Chapter } from './models/chapter.model'
 export class ActivitiesService {
 
   public showSideMenu = true
+  public waitingForApi = false
+  public endOfChapter = false
+  public endOfCourse = false
+
   public activities: Activity[]
 
   constructor(
     private httpClient: HttpClient,
     private configService: ConfigService,
-    private webcourseService: WebcourseService,
     private selectedCourseService: SelectedCourseService,
     private courseChapterIndexService: CourseChapterIndexService,
     private courseService: CourseService,
@@ -60,9 +62,9 @@ export class ActivitiesService {
         this.hackAroundBackendLimitation(activitySet)
       }
     }
-    this.webcourseService.endOfChapter = false
-    this.webcourseService.endOfCourse = false
-    this.webcourseService.waitingForApi = false
+    this.endOfChapter = false
+    this.endOfCourse = false
+    this.waitingForApi = false
   }
 
   bootstrapCourse(activitySet: Activity[]) {

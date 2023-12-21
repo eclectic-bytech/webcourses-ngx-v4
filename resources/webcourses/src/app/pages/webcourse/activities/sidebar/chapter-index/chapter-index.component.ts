@@ -4,7 +4,6 @@ import { Component } from '@angular/core'
 import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 import { CourseChapterIndexService } from 'src/app/core/services/course-chapter-index/course-chapter-index.service'
-import { WebcourseService } from '../../../webcourse.service'
 
 // WNGX models and misc
 import { Chapter } from '../../models/chapter.model'
@@ -23,7 +22,6 @@ export class ChapterIndexComponent {
     public selectedCourseService: SelectedCourseService,
     public courseChapterIndexService: CourseChapterIndexService,
     private completionStatsService: CompletionStatsService,
-    public webcourseService: WebcourseService,
     public navService: NavService
   ) { }
 

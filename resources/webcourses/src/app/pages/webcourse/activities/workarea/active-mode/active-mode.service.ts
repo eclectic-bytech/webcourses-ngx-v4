@@ -9,7 +9,6 @@ import { ConfigService } from '../../../../../core/services/config/config.servic
 import { DndService } from './../activities/dnd/dnd.service'
 import { ClickRotateService } from '../activities/click-rotate/click-rotate.service'
 import { ActivitiesService } from '../../activities.service'
-import { WebcourseService } from '../../../webcourse.service'
 
 // WNGX models and misc
 import { Activity } from './../models/activity.model'
@@ -29,8 +28,7 @@ export class ActiveModeService {
     private completionStatsService: CompletionStatsService,
     private dndService: DndService,
     private clickRotateService: ClickRotateService,
-    private activitiesService: ActivitiesService,
-    private webcourseService: WebcourseService
+    private activitiesService: ActivitiesService
   ) { }
 
   extractAnswers() {
@@ -63,7 +61,7 @@ export class ActiveModeService {
     ).subscribe(
       (activity_supplemental) => {
         this.completionStatsService.totalActivitiesCompleted++
-        this.webcourseService.waitingForApi = false
+        this.activitiesService.waitingForApi = false
 
         if (activity_supplemental['after_word']) {
           this.lastActivityInSet.after_word = activity_supplemental['after_word']
@@ -100,7 +98,7 @@ export class ActiveModeService {
       },
       (err) => {
         console.log('ERROR #2334.')
-        this.webcourseService.waitingForApi = false
+        this.activitiesService.waitingForApi = false
       }
     )
   }
