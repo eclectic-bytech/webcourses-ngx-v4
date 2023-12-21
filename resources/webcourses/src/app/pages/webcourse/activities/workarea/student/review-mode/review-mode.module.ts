@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ReviewModeComponent } from './review-mode.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-import { PipesModule } from './../../../../../shared/pipes/pipes.module'
+import { PipesModule } from 'src/app/shared/pipes/pipes.module'
 
 @NgModule({
   declarations: [

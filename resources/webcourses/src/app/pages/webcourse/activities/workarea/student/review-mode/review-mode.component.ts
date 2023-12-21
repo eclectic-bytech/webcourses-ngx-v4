@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core'
-import { Activity } from './../models/activity.model'
+import { Component, Input } from '@angular/core'
+import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
-import { FadeInOut } from '../../../../../core/animations/fade-in-out.animation'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-review-mode',
@@ -10,7 +10,7 @@ import { FadeInOut } from '../../../../../core/animations/fade-in-out.animation'
   styleUrls: ['./review-mode.component.scss'],
   animations: [FadeInOut]
 })
-export class ReviewModeComponent implements OnInit {
+export class ReviewModeComponent {
 
   @Input() activity: Activity
 
@@ -20,9 +20,6 @@ export class ReviewModeComponent implements OnInit {
   public colours: string
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
   markColours(option) {
 
