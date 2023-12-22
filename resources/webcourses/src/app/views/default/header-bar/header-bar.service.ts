@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 import { HttpClient } from '@angular/common/http'
-import { ConfigService } from './../../../core/services/config/config.service'
+import { ConfigService } from 'src/app/core/services/config/config.service'
 
 @Injectable({
   providedIn: 'root'

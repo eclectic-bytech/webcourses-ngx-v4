@@ -7,8 +7,8 @@ import { ConfigService } from 'src/app/core/services/config/config.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 // WNGX models and misc
-import { Chapter } from 'src/app/pages/webcourse/models/chapter.model'
-import { Activity } from 'src/app/pages/webcourse/models/activity.model'
+import { Chapter } from 'src/app/webcourse/models/chapter.model'
+import { Activity } from 'src/app/webcourse/models/activity.model'
 
 @Injectable({
   providedIn: 'root'

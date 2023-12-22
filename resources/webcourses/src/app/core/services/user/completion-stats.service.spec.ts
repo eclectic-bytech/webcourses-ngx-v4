@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing'
 
-import { CompletionStatsService } from './completion-stats.service';
+import { CompletionStatsService } from './completion-stats.service'
 
 describe('CompletionStatsService', () => {
-  let service: CompletionStatsService;
+  let service: CompletionStatsService
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(CompletionStatsService);
-  });
+    TestBed.configureTestingModule({})
+    service = TestBed.inject(CompletionStatsService)
+  })
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+    expect(service).toBeTruthy()
+  })
+})

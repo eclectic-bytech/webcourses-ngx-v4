@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
-import { SharedRoutingModule } from './shared-routing.module';
-import { SharedComponent } from './shared.component';
+import { SharedRoutingModule } from './shared-routing.module'
+import { SharedComponent } from './shared.component'
 
-import { PipesModule } from 'src/app/shared/pipes/pipes.module'
+import { PipesModule } from 'src/app/pipes/pipes.module'
 import { ContactBlockModule } from 'src/app/views/default/blocks/contact/contact.module'
 
 

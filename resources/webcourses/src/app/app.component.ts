@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AppService } from './app.service'
-import { SelectedCourseService } from './core/services/selected-course/selected-course.service'
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 @Component({
   selector: 'app-root',

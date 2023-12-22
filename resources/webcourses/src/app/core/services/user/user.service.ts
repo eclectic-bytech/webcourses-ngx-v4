@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 
-import { ConfigService } from '../config/config.service'
-import { Course } from '../../../models/course.model'
-import { JetstreamUser } from '../../models/jetstream-user.model'
+import { ConfigService } from 'src/app/core/services/config/config.service'
+import { Course } from 'src/app/models/course.model'
+import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 
 @Injectable({
   providedIn: 'root'

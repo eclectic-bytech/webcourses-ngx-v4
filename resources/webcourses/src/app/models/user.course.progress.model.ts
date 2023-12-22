@@ -1,5 +1,3 @@
-import { Course } from "./course.model"
-
 export class UserCourseProgress {
   public id: number
   public user_id: number

@@ -8,7 +8,7 @@ import { NgProgressHttpModule } from 'ngx-progressbar/http'
 // WNGX imports
 import { HeaderBarModule } from './header-bar/header-bar.module'
 import { NavAdminModule  } from './nav-admin/nav-admin.module'
-import { CatalogueModule } from './../../pages/catalogue/catalogue.module'
+import { CatalogueModule } from 'src/app/catalogue/catalogue.module'
 import { DefaultComponent } from './default.component'
 import { ThemeModule } from 'src/app/views/theme/theme.module'
 import { ThemeService } from 'src/app/views/theme/theme.service'

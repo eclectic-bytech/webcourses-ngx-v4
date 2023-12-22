@@ -5,7 +5,6 @@ import { AuthUserGuard } from './core/auth/auth-user.guard'
 import { DefaultComponent } from './views/default/default.component'
 import { CultivateLearningSessionInterceptor } from './core/interceptors/cultivate-learning-session.interceptor'
 import { UserSessionExpiredInterceptor } from './core/interceptors/user-session-expired.interceptor'
-import { ActivitiesModule } from './pages/webcourse/activities.module'
 
 const routes: Routes = [
   {
@@ -18,26 +17,26 @@ const routes: Routes = [
       },
       {
         path: 'catalogue',
-        loadChildren: () => import('./pages/catalogue/catalogue.module').then(m => m.CatalogueModule)
+        loadChildren: () => import('./catalogue/catalogue.module').then(m => m.CatalogueModule)
       },
       {
         path: 'user',
         canActivate: [AuthUserGuard],
-        loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
+        loadChildren: () => import('./catalogue/directories/user/user.module').then(m => m.UserModule)
       },
       {
         path: 'webcourse/activities',
         canActivate: [AuthUserGuard],
-        loadChildren: () => import('./pages/webcourse/activities.module').then(m => m.ActivitiesModule)
+        loadChildren: () => import('./webcourse/activities.module').then(m => m.ActivitiesModule)
       },
       {
         path: 'webcourse/builder/sorry',
         canActivate: [AuthUserGuard],
-        loadChildren: () => import('./pages/admin/builder/under-construction/under-construction.module').then(m => m.UnderConstructionModule)
+        loadChildren: () => import('./admin/builder/under-construction/under-construction.module').then(m => m.UnderConstructionModule)
       },
       {
         path: 'publisher/:pub_id',
-        loadChildren: () => import('./pages/publisher/publisher.module').then(m => m.PublisherModule)
+        loadChildren: () => import('./catalogue/directories/publisher/publisher.module').then(m => m.PublisherModule)
       },
       {
         path: 'commerce/stripe/checkout',
@@ -47,7 +46,7 @@ const routes: Routes = [
       {
         path: 'admin',
         canActivate: [AuthUserGuard],
-        loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
       },
       {
         path: ':page',

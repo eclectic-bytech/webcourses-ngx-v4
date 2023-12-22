@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ConfigService } from './../../core/services/config/config.service'
+import { ConfigService } from 'src/app/core/services/config/config.service'
 
 @Component({
   selector: 'app-home',

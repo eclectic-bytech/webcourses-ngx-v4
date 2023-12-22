@@ -8,14 +8,14 @@ import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-go
 import { NgxStripeModule } from 'ngx-stripe'
 
 import { AppRoutingModule } from './app-routing.module'
-import { CatalogueModule } from './pages/catalogue/catalogue.module'
+import { CatalogueModule } from 'src/app/catalogue/catalogue.module'
 
 import { AppComponent } from './app.component'
 import { DefaultModule } from './views/default/default.module'
 
 import { UserService } from './core/services/user/user.service'
 import { ConfigService } from './core/services/config/config.service'
-import { ActivitiesService } from './pages/webcourse/activities.service'
+import { ActivitiesService } from 'src/app/webcourse/activities.service'
 
 @NgModule({
   declarations: [

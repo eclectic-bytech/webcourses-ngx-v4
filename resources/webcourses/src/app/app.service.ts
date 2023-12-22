@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 
 // WNGX services and models
-import { UserService } from './core/services/user/user.service'
-import { ConfigService } from './core/services/config/config.service'
-import { JetstreamUser } from './core/models/jetstream-user.model'
-import { TaxStatusService } from './core/services/tax-status/tax-status.service'
-import { ThemeService } from './views/theme/theme.service'
+import { UserService } from 'src/app/core/services/user/user.service'
+import { ConfigService } from 'src/app/core/services/config/config.service'
+import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
+import { ThemeService } from 'src/app/views/theme/theme.service'
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +19,7 @@ export class AppService {
     private configService: ConfigService,
     private titleService: Title,
     private userService: UserService,
-    private themeService: ThemeService,
-    private taxService: TaxStatusService
+    private themeService: ThemeService
   ) {}
 
   init() {
@@ -39,7 +37,6 @@ export class AppService {
         // Call will return empty response if user is not logged in.
         // We check for that before overwriting anon user.
         if (user) this.userService.user = user
-        this.taxService.taxesApply(user)
       },
       (err) => { console.log(err) }
     )
