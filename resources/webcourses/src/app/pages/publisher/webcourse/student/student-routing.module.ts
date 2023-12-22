@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { StudentComponent } from './student.component'
 import { StudentResolver } from './student.resolver'
-import { PublisherResolver } from '../../../catalogue/publisher/publisher.resolver'
+import { PublisherResolver } from 'src/app/pages/catalogue/publisher/publisher.resolver'
 
 const routes: Routes = [
   {

@@ -15,7 +15,7 @@ import { DefaultModule } from './views/default/default.module'
 
 import { UserService } from './core/services/user/user.service'
 import { ConfigService } from './core/services/config/config.service'
-import { ActivitiesService } from './pages/webcourse/activities/activities.service'
+import { ActivitiesService } from './pages/webcourse/activities.service'
 
 @NgModule({
   declarations: [

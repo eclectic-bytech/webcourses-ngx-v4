@@ -7,8 +7,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { WebcoursesComponent } from './webcourses.component'
 import { WebcoursesRoutingModule } from './webcourses-routing.module'
-import { CatalogueCardModule } from '../../components/course-card/catalogue-card/catalogue-card.module'
-import { LoadingSpinnerModule } from '../../../core/modules/loading-spinner/loading-spinner.module'
+import { CatalogueCardModule } from 'src/app/pages/components/course-card/catalogue-card/catalogue-card.module'
+import { LoadingSpinnerModule } from 'src/app/core/modules/loading-spinner/loading-spinner.module'
 
 @NgModule({
   declarations: [

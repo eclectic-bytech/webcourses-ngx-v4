@@ -5,7 +5,7 @@ import { AuthUserGuard } from './core/auth/auth-user.guard'
 import { DefaultComponent } from './views/default/default.component'
 import { CultivateLearningSessionInterceptor } from './core/interceptors/cultivate-learning-session.interceptor'
 import { UserSessionExpiredInterceptor } from './core/interceptors/user-session-expired.interceptor'
-import { ActivitiesModule } from './pages/webcourse/activities/activities.module'
+import { ActivitiesModule } from './pages/webcourse/activities.module'
 
 const routes: Routes = [
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
       {
         path: 'webcourse/activities',
         canActivate: [AuthUserGuard],
-        loadChildren: () => import('./pages/webcourse/activities/activities.module').then(m => m.ActivitiesModule)
+        loadChildren: () => import('./pages/webcourse/activities.module').then(m => m.ActivitiesModule)
       },
       {
         path: 'webcourse/builder/sorry',

@@ -14,7 +14,7 @@ import { AppService } from 'src/app/app.service'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { AccessCodeModalService } from 'src/app/pages/components/access-code-modal/access-code-modal.service'
-import { NavService } from 'src/app/pages/webcourse/activities/workarea/nav/student/nav.service'
+import { NavService } from 'src/app/pages/webcourse/workarea/nav/student/nav.service'
 import { ThemeService } from 'src/app/views/theme/theme.service'
 
 // WNGX models and misc

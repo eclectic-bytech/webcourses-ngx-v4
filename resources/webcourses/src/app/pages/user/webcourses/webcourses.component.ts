@@ -10,7 +10,7 @@ import { UserService } from 'src/app/core/services/user/user.service'
 import { AccessCodeModalService } from 'src/app/pages/components/access-code-modal/access-code-modal.service'
 import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { WebcoursesService } from './webcourses.service'
-import { NavService } from 'src/app/pages/webcourse/activities/workarea/nav/student/nav.service'
+import { NavService } from 'src/app/pages/webcourse/workarea/nav/student/nav.service'
 
 // WNGX models and misc
 import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
