@@ -5,7 +5,7 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 
 // WNGX models and misc
 import { Router } from '@angular/router'
-import { ActivitiesService } from '../../activities.service'
+import { ActivitiesService } from '../../../activities.service'
 
 @Injectable({
   providedIn: 'root'

@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs'
 // WNGX imports
 import { BookmarksService } from 'src/app/pages/webcourse/activities/sidebar/tabs/student/bookmarks/bookmarks.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
-import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 import { Bookmark } from 'src/app/pages/webcourse/activities/sidebar/tabs/student/bookmarks/bookmark.model'
 
 @Component({

@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core'
-import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
+
+// WNGX imports
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({

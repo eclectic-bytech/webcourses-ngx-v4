@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 import { CompletionCertService } from './completion-cert.service'
 import { faSpinner, faFileArrowDown } from '@fortawesome/free-solid-svg-icons'
-import { Activity } from '../../../models/activity.model'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 
 @Component({
   selector: 'app-completion-cert',

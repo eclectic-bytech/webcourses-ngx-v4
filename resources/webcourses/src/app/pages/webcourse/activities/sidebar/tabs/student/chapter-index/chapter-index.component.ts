@@ -6,9 +6,9 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 import { CourseChapterIndexService } from 'src/app/core/services/course-chapter-index/course-chapter-index.service'
 
 // WNGX models and misc
-import { Chapter } from '../../../../models/chapter.model'
+import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
-import { NavService } from '../../../../workarea/nav/nav.service'
+import { NavService } from 'src/app/pages/webcourse/activities/workarea/nav/student/nav.service'
 
 @Component({
   selector: 'app-chapter-index',

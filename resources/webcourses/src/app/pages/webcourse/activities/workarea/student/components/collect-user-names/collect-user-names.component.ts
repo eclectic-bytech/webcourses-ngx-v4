@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { HttpClient } from '@angular/common/http'
 
-import { ConfigService } from './../../../../../core/services/config/config.service'
+import { ConfigService } from 'src/app/core/services/config/config.service'
 import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 

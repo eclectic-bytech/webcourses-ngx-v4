@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 
 // WNGX imports
-import { Activity } from '../../../models/activity.model'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 

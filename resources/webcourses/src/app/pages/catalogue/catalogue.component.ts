@@ -8,18 +8,18 @@ import { faDiagramProject } from '@fortawesome/free-solid-svg-icons'
 
 // WNGX services
 import { CatalogueService } from './catalogue.service'
-import { UserService } from './../../core/services/user/user.service'
-import { TaxStatusService } from '../../core/services/tax-status/tax-status.service'
-import { AppService } from './../../app.service'
-import { CourseService } from './course/course.service'
+import { UserService } from 'src/app/core/services/user/user.service'
+import { TaxStatusService } from 'src/app/core/services/tax-status/tax-status.service'
+import { AppService } from 'src/app/app.service'
+import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { ConfigService } from 'src/app/core/services/config/config.service'
-import { AccessCodeModalService } from '../components/access-code-modal/access-code-modal.service'
-import { NavService } from '../webcourse/activities/workarea/nav/nav.service'
+import { AccessCodeModalService } from 'src/app/pages/components/access-code-modal/access-code-modal.service'
+import { NavService } from 'src/app/pages/webcourse/activities/workarea/nav/student/nav.service'
 import { ThemeService } from 'src/app/views/theme/theme.service'
 
 // WNGX models and misc
-import { Course } from './../../models/course.model'
-import { FadeInOut } from '../../core/animations/fade-in-out.animation'
+import { Course } from 'src/app/models/course.model'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-catalogue',

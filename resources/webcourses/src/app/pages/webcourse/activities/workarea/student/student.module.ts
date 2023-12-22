@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { StudentComponent } from './student.component';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
-
+// WNGX imports
+import { StudentComponent } from './student.component'
 
 @NgModule({
   declarations: [
@@ -12,4 +12,5 @@ import { StudentComponent } from './student.component';
     CommonModule
   ]
 })
+
 export class StudentModule { }

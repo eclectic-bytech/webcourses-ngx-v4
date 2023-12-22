@@ -3,10 +3,10 @@ import { Component, Input } from '@angular/core'
 // WNGX services
 import { UserService } from 'src/app/core/services/user/user.service'
 import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
-import { NavService } from '../../../workarea/nav/nav.service'
+import { NavService } from 'src/app/pages/webcourse/activities/workarea/nav/student/nav.service'
 
 // WNGX models and misc
-import { ActivityMeta } from '../../../workarea/models/activity-meta.model'
+import { ActivityMeta } from 'src/app/pages/webcourse/activities/models/activity-meta.model'
 import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
 
 @Component({

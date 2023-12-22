@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { DemoFlagService } from './demo-flag.service'
-import { Activity } from '../../../activities/workarea/models/activity.model'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 
 @Component({
   selector: 'app-demo-flag',

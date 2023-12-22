@@ -2,12 +2,12 @@ import { Component } from '@angular/core'
 
 // WNGX services
 import { NavService } from './nav.service'
-import { ActiveModeService } from '../active-mode/active-mode.service'
+import { ActiveModeService } from 'src/app/pages/webcourse/activities/workarea/student/active-mode/active-mode.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
-import { ActivitiesService } from '../../activities.service'
+import { ActivitiesService } from 'src/app/pages/webcourse/activities/activities.service'
 
-import { ActivityMeta } from '../models/activity-meta.model'
-import { Activity } from '../models/activity.model'
+import { ActivityMeta } from 'src/app/pages/webcourse/activities/models/activity-meta.model'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
 
 @Component({

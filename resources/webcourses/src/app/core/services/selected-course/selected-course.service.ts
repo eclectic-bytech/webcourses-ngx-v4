@@ -3,10 +3,10 @@ import { BehaviorSubject } from 'rxjs'
 
 // WNGX services
 // WNGX models and misc
-import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
-import { ActivityMeta } from 'src/app/pages/webcourse/activities/workarea/models/activity-meta.model'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
+import { ActivityMeta } from 'src/app/pages/webcourse/activities/models/activity-meta.model'
 import { Course } from 'src/app/models/course.model'
-import { CompletionStatsService } from '../user/completion-stats.service'
+import { CompletionStatsService } from 'src/app/core/services/user/completion-stats.service'
 
 @Injectable({
   providedIn: 'root'

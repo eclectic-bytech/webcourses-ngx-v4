@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core'
-import { FadeInOut } from '../../../../../../core/animations/fade-in-out.animation'
-import { ActivityAnswers } from '../../models/activity-answers.model'
-import { Activity } from '../../models/activity.model'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { ActivityAnswers } from 'src/app/pages/webcourse/activities/workarea/models/activity-answers.model'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 import { ClickRotateService } from './click-rotate.service'
 
 @Component({

@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 
 import { WorkAreaComponent } from './workarea.component'
-import { ActiveModeModule } from './active-mode/active-mode.module'
-import { ReviewModeModule } from './review-mode/review-mode.module'
-import { PipesModule } from './../../../../shared/pipes/pipes.module'
-import { NavModule } from './nav/nav.module'
-import { DndModule } from './activities/dnd/dnd.module'
-import { ChapterEndComponent } from './components/chapter-end/chapter-end.component'
-import { CourseEndComponent } from './components/course-end/course-end.component'
-import { ClickRotateModule } from './activities/click-rotate/click-rotate.module'
-import { DemoFlagModule } from '../../builder/activity/demo-flag/demo-flag.module';
-import { SpecialActivityModule } from './activities/special-activity/special-activity.module'
-import { BookmarkButtonModule } from '../sidebar/tabs/student/bookmarks/bookmark-button/bookmark-button.module'
+import { ActiveModeModule } from 'src/app/pages/webcourse/activities/workarea/student/active-mode/active-mode.module'
+import { ReviewModeModule } from 'src/app/pages/webcourse/activities/workarea/student/review-mode/review-mode.module'
+import { PipesModule } from 'src/app/shared/pipes/pipes.module'
+import { NavModule } from 'src/app/pages/webcourse/activities/workarea/nav/student/nav.module'
+import { DndModule } from 'src/app/pages/webcourse/activities/workarea/student/activities/dnd/dnd.module'
+import { ChapterEndComponent } from 'src/app/pages/webcourse/activities/workarea/student/components/chapter-end/chapter-end.component'
+import { CourseEndComponent } from 'src/app/pages/webcourse/activities/workarea/student/components/course-end/course-end.component'
+import { ClickRotateModule } from 'src/app/pages/webcourse/activities/workarea/student/activities/click-rotate/click-rotate.module'
+import { DemoFlagModule } from 'src/app/pages/webcourse/builder/activity/demo-flag/demo-flag.module'
+import { SpecialActivityModule } from 'src/app/pages/webcourse/activities/workarea/student/activities/special-activity/special-activity.module'
+import { BookmarkButtonModule } from 'src/app/pages/webcourse/activities/sidebar/tabs/student/bookmarks/bookmark-button/bookmark-button.module'
 
 @NgModule({
   declarations: [

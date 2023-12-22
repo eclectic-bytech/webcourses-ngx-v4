@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
-import { Activity } from './../../models/activity.model'
-import { ActivityAnswers } from './../../models/activity-answers.model'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
+import { ActivityAnswers } from 'src/app/pages/webcourse/activities/workarea/models/activity-answers.model'
 
 @Injectable({
   providedIn: 'root'

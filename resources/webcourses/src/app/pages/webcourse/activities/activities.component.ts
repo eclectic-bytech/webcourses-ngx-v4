@@ -4,11 +4,11 @@ import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap'
 import { Subscription } from 'rxjs'
 
 // WNGX services and components
-import { CollectUserNamesComponent } from './components/collect-user-names/collect-user-names.component'
-import { PublisherService } from './../../catalogue/publisher/publisher.service'
-import { ActivitiesService } from './activities.service'
-import { UserService } from '../../../core/services/user/user.service'
-import { Activity } from './workarea/models/activity.model'
+import { CollectUserNamesComponent } from 'src/app/pages/webcourse/activities/workarea/student/components/collect-user-names/collect-user-names.component'
+import { PublisherService } from 'src/app/pages/catalogue/publisher/publisher.service'
+import { ActivitiesService } from 'src/app/pages/webcourse/activities/activities.service'
+import { UserService } from 'src/app/core/services/user/user.service'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 
 @Component({
   selector: 'app-activities',

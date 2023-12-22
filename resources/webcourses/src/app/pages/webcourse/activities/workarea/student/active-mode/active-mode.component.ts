@@ -3,7 +3,7 @@ import { UntypedFormBuilder, Validators } from '@angular/forms'
 
 import { ActiveModeService } from './active-mode.service'
 import { UserService } from 'src/app/core/services/user/user.service'
-import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 
 @Component({
   selector: 'app-active-mode',

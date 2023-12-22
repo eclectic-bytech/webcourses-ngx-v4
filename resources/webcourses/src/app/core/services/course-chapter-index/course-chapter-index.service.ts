@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core'
 import { shareReplay } from 'rxjs/operators'
 
 // WNGX services
-import { ConfigService } from '../config/config.service'
-import { SelectedCourseService } from '../selected-course/selected-course.service'
+import { ConfigService } from 'src/app/core/services/config/config.service'
+import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 
 // WNGX models and misc
 import { Chapter } from 'src/app/pages/webcourse/activities/models/chapter.model'
-import { Activity } from 'src/app/pages/webcourse/activities/workarea/models/activity.model'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 
 @Injectable({
   providedIn: 'root'

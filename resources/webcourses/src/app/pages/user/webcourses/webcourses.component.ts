@@ -5,17 +5,17 @@ import { GravatarMd5Service } from 'src/app/core/services/gravatar-md5/gravatar-
 import { faDiagramProject } from '@fortawesome/free-solid-svg-icons'
 
 // WNGX services
-import { AppService } from '../../../app.service'
-import { UserService } from '../../../core/services/user/user.service'
-import { AccessCodeModalService } from '../../components/access-code-modal/access-code-modal.service'
-import { CourseService } from '../../catalogue/course/course.service'
+import { AppService } from 'src/app/app.service'
+import { UserService } from 'src/app/core/services/user/user.service'
+import { AccessCodeModalService } from 'src/app/pages/components/access-code-modal/access-code-modal.service'
+import { CourseService } from 'src/app/pages/catalogue/course/course.service'
 import { WebcoursesService } from './webcourses.service'
-import { NavService } from '../../webcourse/activities/workarea/nav/nav.service'
+import { NavService } from 'src/app/pages/webcourse/activities/workarea/nav/student/nav.service'
 
 // WNGX models and misc
 import { JetstreamUser } from 'src/app/core/models/jetstream-user.model'
 import { Course } from 'src/app/models/course.model'
-import { FadeInOut } from '../../../core/animations/fade-in-out.animation'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 
 @Component({
   selector: 'app-webcourses',

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop'
 
-import { FadeInOut } from './../../../../../../core/animations/fade-in-out.animation'
-import { Activity } from '../../models/activity.model'
+import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { Activity } from 'src/app/pages/webcourse/activities/models/activity.model'
 import { DndService } from './dnd.service'
 
 @Component({

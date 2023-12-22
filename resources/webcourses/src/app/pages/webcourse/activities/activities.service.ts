@@ -11,8 +11,8 @@ import { CompletionStatsService } from 'src/app/core/services/user/completion-st
 import { ThemeService } from 'src/app/views/theme/theme.service'
 
 // WNGX models and misc
-import { Activity } from './workarea/models/activity.model'
-import { ActivityMeta } from './workarea/models/activity-meta.model'
+import { Activity } from './models/activity.model'
+import { ActivityMeta } from './models/activity-meta.model'
 import { Chapter } from './models/chapter.model'
 
 @Injectable({
