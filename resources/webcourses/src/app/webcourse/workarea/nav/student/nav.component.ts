@@ -4,7 +4,7 @@ import { Component } from '@angular/core'
 import { NavService } from './nav.service'
 import { ActiveModeService } from 'src/app/webcourse/workarea/student/active-mode/active-mode.service'
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
-import { ActivitiesService } from 'src/app/webcourse/activities.service'
+import { WebcourseService } from 'src/app/webcourse/webcourse.service'
 
 import { ActivityMeta } from 'src/app/webcourse/models/activity-meta.model'
 import { Activity } from 'src/app/webcourse/models/activity.model'
@@ -19,19 +19,19 @@ import { FadeInOut2 } from 'src/app/core/animations/fade-in-out-2.animation'
 
 export class NavComponent {
 
-  get activitySet() { return this.activitiesService.activities }
+  get activitySet() { return this.webcourseService.activities }
 
   private nextAid: number
 
   constructor(
     public navService: NavService,
-    public activitiesService: ActivitiesService,
+    public webcourseService: WebcourseService,
     public activeModeService: ActiveModeService,
     public selectedCourseService: SelectedCourseService
   ) { }
 
   SaveButton() {
-    this.activitiesService.waitingForApi = true
+    this.webcourseService.waitingForApi = true
     this.activeModeService.userAnswerPOST(
       this.activeModeService.extractAnswers()
     )
@@ -57,13 +57,13 @@ export class NavComponent {
     )
 
     if (seq === this.selectedCourseService.courseSyllabus.length-1) {
-      this.activitiesService.endOfCourse = true
+      this.webcourseService.endOfCourse = true
     } else {
       var activityMeta: ActivityMeta = this.selectedCourseService.courseSyllabus[seq + offset]
       if (activityMeta.chapter_id != this.selectedCourseService.courseSyllabus[seq].chapter_id) {
         if (offset === 1) {
           // Show next chapter screer only if user clicked Next button, not back button
-          this.activitiesService.endOfChapter = true
+          this.webcourseService.endOfChapter = true
           this.nextAid = activityMeta.activity_id
         } else {
           // When user clicks back button, proceed to previous activity from previous chapter

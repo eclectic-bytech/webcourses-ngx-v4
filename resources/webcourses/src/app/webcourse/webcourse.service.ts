@@ -18,7 +18,7 @@ import { Chapter } from './models/chapter.model'
 @Injectable({
   providedIn: 'root'
 })
-export class ActivitiesService {
+export class WebcourseService {
 
   public showSideMenu = true
   public waitingForApi = false

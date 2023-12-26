@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="col-auto my-auto text-center">
-      <i class="fa-solid fa-spinner fa-spin fa-lg ml-2 mr-1 text-dark fa-fade" *ngIf="this.activitiesService.waitingForApi"></i>
+      <i class="fa-solid fa-spinner fa-spin fa-lg ml-2 mr-1 text-dark fa-fade" *ngIf="this.webcourseService.waitingForApi"></i>
     </div>
     <div class="col-auto">
       <div class="my-2">
@@ -16,11 +16,11 @@
         <div class="pr-lg-4 pr-md-1 pr-sm-0"
           *ngIf="this.selectedCourseService.selectedActivitySet$ | async as activity"
           >
-          <div [@FadeInOut2]="this.activitiesService.endOfChapter || this.activitiesService.endOfCourse || activity">
-            <div *ngIf="!this.activitiesService.endOfChapter && !this.activitiesService.endOfCourse; else eo">
+          <div [@FadeInOut2]="this.webcourseService.endOfChapter || this.webcourseService.endOfCourse || activity">
+            <div *ngIf="!this.webcourseService.endOfChapter && !this.webcourseService.endOfCourse; else eo">
               <button class="btn btn-primary mr-3"
                 (click)="calcFollowingAid(-1)"
-                [disabled]="this.activitiesService.waitingForApi || activity[activity.length -1].meta.seq == 1"
+                [disabled]="this.webcourseService.waitingForApi || activity[activity.length -1].meta.seq == 1"
                 >
                 <i class="fa-solid fa-backward-step"></i>
               </button>
@@ -28,7 +28,7 @@
               <button type="button" class="btn btn-primary"
                 *ngIf="activity[activity.length -1].user_answers"
                 (click)="calcFollowingAid(1)"
-                [disabled]="this.activitiesService.waitingForApi"
+                [disabled]="this.webcourseService.waitingForApi"
                 >
                 Next
                 <i class="fa-solid fa-forward-step ml-2 mr-1"></i>
@@ -37,7 +37,7 @@
               <button type="submit" class="btn btn-success"
                 *ngIf="!activity[activity.length -1].user_answers"
                 (click)="SaveButton()"
-                [disabled]="this.activitiesService.waitingForApi || !this.activeModeService.activityForm.valid"
+                [disabled]="this.webcourseService.waitingForApi || !this.activeModeService.activityForm.valid"
               >
 
                 <span class="ml-2 mr-1 text-uppercase" *ngIf="
@@ -64,8 +64,8 @@
 
             <ng-template #eo>
               <button
-                *ngIf="this.activitiesService.endOfChapter"
-                [disabled]="this.activitiesService.waitingForApi"
+                *ngIf="this.webcourseService.endOfChapter"
+                [disabled]="this.webcourseService.waitingForApi"
                 (click)="ContinueButton()"
                 class="btn btn-primary"
               >
@@ -74,8 +74,8 @@
               </button>
 
               <button
-                *ngIf="this.activitiesService.endOfCourse"
-                [disabled]="this.activitiesService.waitingForApi"
+                *ngIf="this.webcourseService.endOfCourse"
+                [disabled]="this.webcourseService.waitingForApi"
                 (click)="ReviewButton()"
                 class="btn btn-primary"
               >

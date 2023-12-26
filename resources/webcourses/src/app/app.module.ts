@@ -15,7 +15,7 @@ import { DefaultModule } from './views/default/default.module'
 
 import { UserService } from './core/services/user/user.service'
 import { ConfigService } from './core/services/config/config.service'
-import { ActivitiesService } from 'src/app/webcourse/activities.service'
+import { WebcourseService } from 'src/app/webcourse/webcourse.service'
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { ActivitiesService } from 'src/app/webcourse/activities.service'
     },
     Title,
     UserService,
-    ActivitiesService
+    WebcourseService
   ],
   bootstrap: [
     AppComponent

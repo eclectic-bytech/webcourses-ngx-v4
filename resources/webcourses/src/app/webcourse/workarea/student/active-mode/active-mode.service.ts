@@ -8,7 +8,7 @@ import { CompletionStatsService } from 'src/app/core/services/user/completion-st
 import { ConfigService } from 'src/app/core/services/config/config.service'
 import { DndService } from 'src/app/webcourse/workarea/student/activities/dnd/dnd.service'
 import { ClickRotateService } from 'src/app/webcourse/workarea/student/activities/click-rotate/click-rotate.service'
-import { ActivitiesService } from 'src/app/webcourse/activities.service'
+import { WebcourseService } from 'src/app/webcourse/webcourse.service'
 
 // WNGX models and misc
 import { Activity } from 'src/app/webcourse/models/activity.model'
@@ -28,7 +28,7 @@ export class ActiveModeService {
     private completionStatsService: CompletionStatsService,
     private dndService: DndService,
     private clickRotateService: ClickRotateService,
-    private activitiesService: ActivitiesService
+    private webcourseService: WebcourseService
   ) { }
 
   extractAnswers() {
@@ -40,7 +40,7 @@ export class ActiveModeService {
     if (activityType === 'checkbox' || activityType === 'click') {
       extractedAnswer = this.extractOnlySelectedOptions()
     } else if (activityType === 'dnd' || activityType === 'dnd-match') {
-      extractedAnswer = this.dndExtract(this.activitiesService.activities)
+      extractedAnswer = this.dndExtract(this.webcourseService.activities)
     } else if (activityType === 'click2') {
       extractedAnswer = JSON.stringify(this.clickRotateService.userSelections)
     } else if (activityType === 'radio') {
@@ -61,7 +61,7 @@ export class ActiveModeService {
     ).subscribe(
       (activity_supplemental) => {
         this.completionStatsService.totalActivitiesCompleted++
-        this.activitiesService.waitingForApi = false
+        this.webcourseService.waitingForApi = false
 
         if (activity_supplemental['after_word']) {
           this.lastActivityInSet.after_word = activity_supplemental['after_word']
@@ -91,14 +91,14 @@ export class ActiveModeService {
 
         // Afterword, correct answers, etc might be returned when saving user answers
         // If they do, merge them back into the activities object
-        this.activitiesService.activities[this.activitiesService.activities.length - 1] = {
-          ...this.activitiesService.activities[this.activitiesService.activities.length - 1], ...activity_supplemental
+        this.webcourseService.activities[this.webcourseService.activities.length - 1] = {
+          ...this.webcourseService.activities[this.webcourseService.activities.length - 1], ...activity_supplemental
         }
 
       },
       (err) => {
         console.log('ERROR #2334.')
-        this.activitiesService.waitingForApi = false
+        this.webcourseService.waitingForApi = false
       }
     )
   }
@@ -120,15 +120,15 @@ export class ActiveModeService {
   dndExtract(activities: Activity[]) {
     let extractedAnswer = []
     // Loop through activity answers, build array of AIDs only, in user selected order
-    activities[this.activitiesService.activities.length - 1].answers.forEach(answer => {
+    activities[this.webcourseService.activities.length - 1].answers.forEach(answer => {
       extractedAnswer.push(answer.id)
     })
     return extractedAnswer
   }
 
   get lastActivityInSet() {
-    return <Activity>this.activitiesService.activities[
-      this.activitiesService.activities.length - 1
+    return <Activity>this.webcourseService.activities[
+      this.webcourseService.activities.length - 1
     ]
   }
 }

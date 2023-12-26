@@ -10,7 +10,7 @@ import { ActivityMeta } from 'src/app/webcourse/models/activity-meta.model'
 import { Chapter } from 'src/app/webcourse/models/chapter.model'
 
 @Component({
-  selector: 'app-activities-bar',
+  selector: 'wngx-webcourse-bar',
   templateUrl: './activities-bar.component.html',
   styleUrls: ['./activities-bar.component.scss']
 })

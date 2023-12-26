@@ -1,7 +1,7 @@
-<app-chapter-end *ngIf="this.activitiesService.endOfChapter"></app-chapter-end>
-<app-course-end *ngIf="this.activitiesService.endOfCourse && !this.activitiesService.endOfChapter"></app-course-end>
+<app-chapter-end *ngIf="this.webcourseService.endOfChapter"></app-chapter-end>
+<app-course-end *ngIf="this.webcourseService.endOfCourse && !this.webcourseService.endOfChapter"></app-course-end>
 
-<div *ngIf="!this.activitiesService.endOfChapter && !this.activitiesService.endOfCourse">
+<div *ngIf="!this.webcourseService.endOfChapter && !this.webcourseService.endOfCourse">
 
   <div class="container pb-3">
     <div
@@ -23,9 +23,9 @@
     </div>
   </div>
 
-  <div class="container" *ngIf="this.activitiesService.activities" id="workarea-activities">
+  <div class="container" *ngIf="this.webcourseService.activities" id="workarea-activities">
 
-    <div *ngFor="let activity of this.activitiesService.activities" class="row activity mt-4" @fadeInOut>
+    <div *ngFor="let activity of this.webcourseService.activities" class="row activity mt-4" @fadeInOut>
 
       <div
         [id]="'activity' + activity.meta.activity_id"

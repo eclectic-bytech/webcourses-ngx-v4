@@ -27,7 +27,7 @@ const routes: Routes = [
       {
         path: 'webcourse/activities',
         canActivate: [AuthUserGuard],
-        loadChildren: () => import('./webcourse/activities.module').then(m => m.ActivitiesModule)
+        loadChildren: () => import('./webcourse/webcourse.module').then(m => m.WebcourseModule)
       },
       {
         path: 'webcourse/builder/sorry',

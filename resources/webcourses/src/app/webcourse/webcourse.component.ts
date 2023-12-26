@@ -6,16 +6,16 @@ import { Subscription } from 'rxjs'
 // WNGX services and components
 import { CollectUserNamesComponent } from 'src/app/webcourse/workarea/student/components/collect-user-names/collect-user-names.component'
 import { PublisherService } from 'src/app/catalogue/directories/publisher/publisher.service'
-import { ActivitiesService } from 'src/app/webcourse/activities.service'
+import { WebcourseService } from 'src/app/webcourse/webcourse.service'
 import { UserService } from 'src/app/core/services/user/user.service'
 import { Activity } from 'src/app/webcourse/models/activity.model'
 
 @Component({
-  selector: 'app-activities',
-  templateUrl: './activities.component.html',
-  styleUrls: ['./activities.component.scss']
+  selector: 'wngx-webcourse',
+  templateUrl: './webcourse.component.html',
+  styleUrls: ['./webcourse.component.scss']
 })
-export class ActivitiesComponent implements OnInit, OnDestroy {
+export class WebcourseComponent implements OnInit, OnDestroy {
 
   private modalOptions: NgbModalOptions
   private sub: Subscription
@@ -23,7 +23,7 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private ngbModal: NgbModal,
-    private activitiesService: ActivitiesService,
+    private webcourseService: WebcourseService,
     private userService: UserService,
     public publisherService: PublisherService
   ) {
@@ -40,16 +40,16 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
       comp.componentInstance.user = this.userService.user
     }
 
-    this.activitiesService.getActivities(this.activatedRoute.snapshot.paramMap.get('aid'))
+    this.webcourseService.getActivities(this.activatedRoute.snapshot.paramMap.get('aid'))
       .subscribe(
         (activitySet: Activity[]) => {
-          this.activitiesService.bootstrapCourse(activitySet)
+          this.webcourseService.bootstrapCourse(activitySet)
         }
       )
 
     this.sub = this.activatedRoute.params.subscribe(
       data => {
-        this.activitiesService.loadActivities(data.aid)
+        this.webcourseService.loadActivities(data.aid)
       }
     )
   }

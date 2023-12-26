@@ -4,9 +4,9 @@
 <div
   role="button"
   class="d-lg-none border-top border-warning text-center"
-  (click)="this.activitiesService.showSideMenu = !this.activitiesService.showSideMenu"
+  (click)="this.webcourseService.showSideMenu = !this.webcourseService.showSideMenu"
 >
-  <div *ngIf="this.activitiesService.showSideMenu; else noSideMenu">
+  <div *ngIf="this.webcourseService.showSideMenu; else noSideMenu">
     <i class="fa-sharp fa-solid fa-chevron-up fa-sm text-warning"></i>
   </div>
 

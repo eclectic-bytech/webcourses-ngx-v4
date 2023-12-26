@@ -5,7 +5,7 @@ import { SelectedCourseService } from 'src/app/core/services/selected-course/sel
 
 // WNGX models and misc
 import { Router } from '@angular/router'
-import { ActivitiesService } from 'src/app/webcourse/activities.service'
+import { WebcourseService } from 'src/app/webcourse/webcourse.service'
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,11 @@ export class NavService {
   constructor(
     private router: Router,
     public selectedCourseService: SelectedCourseService,
-    private activitiesService: ActivitiesService
+    private webcourseService: WebcourseService
   ) { }
 
   NavigateByAid(aid: number) {
-    this.activitiesService.waitingForApi = true
+    this.webcourseService.waitingForApi = true
     this.router.navigateByUrl(`/webcourse/activities/${aid}`)
   }
 
