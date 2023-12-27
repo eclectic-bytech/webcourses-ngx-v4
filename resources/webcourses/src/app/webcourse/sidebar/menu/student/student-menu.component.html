@@ -73,5 +73,10 @@
 </div>
 
 <div id="activity-menu-outlet">
-  <div *ngIf="this.webcourseService.showSideMenu" [ngbNavOutlet]="nav"></div>
+  <div
+    *ngIf="this.webcourseService.showSideMenu"
+    [ngbNavOutlet]="nav"
+    class="m-4"
+    @fadeInOut
+  ></div>
 </div>

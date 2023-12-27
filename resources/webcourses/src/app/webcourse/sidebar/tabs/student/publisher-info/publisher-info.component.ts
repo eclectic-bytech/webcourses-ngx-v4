@@ -1,8 +1,8 @@
-import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { Component } from '@angular/core'
 
 import { SelectedCourseService } from 'src/app/core/services/selected-course/selected-course.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
+import { Publisher } from 'src/app/models/publisher.model'
 
 @Component({
   selector: 'app-publisher-info',
@@ -12,11 +12,13 @@ import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 })
 export class PublisherInfoComponent {
 
-  faGlobe = faGlobe
-  faEnvelope = faEnvelope
 
   constructor(
     public selectedCourseService: SelectedCourseService
   ) { }
+
+  firstLastName(publisher: Publisher) {
+    return `${publisher.contact_fname} ${publisher.contact_lname}`
+  }
 
 }
