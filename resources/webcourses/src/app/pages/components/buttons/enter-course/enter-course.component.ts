@@ -1,28 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'wngx-enter-course',
   templateUrl: './enter-course.component.html',
   styleUrls: ['./enter-course.component.scss']
 })
-export class EnterCourseComponent implements OnInit {
+export class EnterCourseComponent {
   @Input() course: any
   @Input() buttonStyle: string = 'raised'
   @Input() public btnSize: string
 
-  buttonToDisplay: 'Start' | 'Review' | 'Continue'
-
-  ngOnInit() {
-    this.displayedButton()
-  }
-
   displayedButton() {
     if (this.course.user_progress.total_activities_completed === 0) {
-      this.buttonToDisplay = 'Start'
+      return 'Start'
     } else if (this.course.user_progress.total_activities_completed === this.course.total_activities) {
-      this.buttonToDisplay = 'Review'
+      return 'Review'
     } else {
-      this.buttonToDisplay = 'Continue'
+      return 'Continue'
     }
   }
 }
