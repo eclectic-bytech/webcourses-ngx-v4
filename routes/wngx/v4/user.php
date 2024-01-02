@@ -34,8 +34,8 @@ Route::prefix('webcourse')->group(function()
         Route::middleware('is_student')->group( function()
         {
             Route::prefix('special')->group( function() {
-                Route::get('completion-cert/{activity}', [UserProgressUserController::class, 'completion_cert']);
-                Route::get('before-and-after/{activity}', [ActivityUserController::class, 'before_and_after_activity']);
+                Route::get('completion-cert/{aid}', [UserProgressUserController::class, 'completion_cert']);
+                Route::get('before-and-after/{aid}', [ActivityUserController::class, 'before_and_after_activity']);
             });
             Route::get('{aid}', [ActivityUserController::class, 'show']);
             Route::post('{aid}/user_answer', [UserAnswerUserController::class, 'save_user_answer']);
