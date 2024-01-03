@@ -10,7 +10,7 @@ export class EnterCourseComponent {
   @Input() buttonStyle: string = 'raised'
   @Input() public btnSize: string
 
-  displayedButton() {
+  buttonName() {
     if (this.course.user_progress.total_activities_completed === 0) {
       return 'Start'
     } else if (this.course.user_progress.total_activities_completed === this.course.total_activities) {
