@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { CatalogueCardComponent } from './catalogue-card.component'
 import { StripeCheckoutModule } from 'src/app/commerce/stripe/stripe-checkout/stripe-checkout.module'
 import { PipesModule } from 'src/app/pipes/pipes.module'
+import { EnterCourseButtonModule } from 'src/app/components/buttons/enter-course/enter-course-button.module'
 
 @NgModule({
   declarations: [CatalogueCardComponent],
@@ -18,7 +19,8 @@ import { PipesModule } from 'src/app/pipes/pipes.module'
     MatButtonModule,
     FontAwesomeModule,
     PipesModule,
-    StripeCheckoutModule
+    StripeCheckoutModule,
+    EnterCourseButtonModule
   ],
   exports: [CatalogueCardComponent]
 })
