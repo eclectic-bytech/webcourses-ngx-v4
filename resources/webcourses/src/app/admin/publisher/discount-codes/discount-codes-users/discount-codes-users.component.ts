@@ -14,7 +14,7 @@ import { Subject } from 'rxjs'
 export class DiscountCodesUsersComponent implements OnInit {
 
   public discountCodeUsers$: Subject<any> = new Subject<any>()
-  public itemsPerPage: number = 25; // This will make it easier to change collection size in the future
+  public itemsPerPage: number = 25 // This will make it easier to change collection size in the future
 
   constructor(
     private route: ActivatedRoute,
@@ -23,10 +23,10 @@ export class DiscountCodesUsersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.selectPage()
+    this.getDiscountCodeUsers()
   }
 
-  selectPage(page: number = 1) {
+  getDiscountCodeUsers(page: number = 1) {
     this.httpClient.get<any[]>(
       `${this.configService.params.api.route}/admin/publisher/access-codes/${this.code_id}/users?page=${page}`
     ).subscribe(
