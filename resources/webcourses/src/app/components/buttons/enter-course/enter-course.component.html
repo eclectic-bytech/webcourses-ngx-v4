@@ -1,4 +1,3 @@
 <div [routerLink]="['/webcourse', 'activities', course?.user_progress.selected_aid]" class="my-1">
-  <button [ngClass]="btnSize" color="primary" mat-raised-button *ngIf="this.buttonStyle == 'raised'">{{ buttonName() }}</button>
-  <button [ngClass]="btnSize" color="primary" mat-button class="border" *ngIf="this.buttonStyle == 'flat'">{{ buttonName() }}</button>
+  <button [ngClass]="btnSize" color="primary" mat-raised-button>{{ buttonName() }}</button>
 </div>

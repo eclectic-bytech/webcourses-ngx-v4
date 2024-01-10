@@ -8,7 +8,6 @@ import { Component, Input } from '@angular/core'
 export class EnterCourseComponent {
   @Input() cid: number
   @Input() course: any
-  @Input() buttonStyle: string = 'raised'
   @Input() public btnSize: string
 
   buttonName() {
