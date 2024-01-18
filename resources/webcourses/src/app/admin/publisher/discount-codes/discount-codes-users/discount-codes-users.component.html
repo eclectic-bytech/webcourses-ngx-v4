@@ -46,7 +46,7 @@
         (pageChange)="getDiscountCodeUsers($event)"
       >
         <ng-template ngbPaginationPages>
-          <wngx-pagination-custom></wngx-pagination-custom>
+          <wngx-pagination-custom [codeUses]="discountCodeUsers.code_uses"></wngx-pagination-custom>
         </ng-template>
       </ngb-pagination>
     </div>
