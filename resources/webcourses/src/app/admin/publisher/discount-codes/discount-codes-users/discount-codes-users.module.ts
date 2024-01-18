@@ -5,6 +5,7 @@ import { DiscountCodesUsersRoutingModule } from './discount-codes-users-routing.
 import { DiscountCodesUsersComponent } from './discount-codes-users.component'
 
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap'
+import { PaginationCustomModule } from 'src/app/core/components/pagination-custom/pagination-custom.module'
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap'
   imports: [
     CommonModule,
     DiscountCodesUsersRoutingModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    PaginationCustomModule
   ]
 })
 export class DiscountCodesUsersModule { }
