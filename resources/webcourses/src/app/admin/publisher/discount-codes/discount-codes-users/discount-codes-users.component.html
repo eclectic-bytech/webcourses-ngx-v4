@@ -28,17 +28,7 @@
       </div>
     </div>
 
-    <!--
-    <div class="mt-5 lead">
-      <ul class="pagination">
-        <li class="page-item"><a role="button" (click)="selectPage(discountCodeUsers.code_uses.current_page - 1)">&laquo;</a></li>
-        <li class="px-1">Showing results {{discountCodeUsers.code_uses.from}} to {{discountCodeUsers.code_uses.to}} of {{discountCodeUsers.code_uses.total}}</li>
-        <li class="page-item"><a role="button" (click)="selectPage(discountCodeUsers.code_uses.current_page + 1)">&raquo;</a></li>
-      </ul>
-    </div>
-    -->
-
-    <div class="mt-4" *ngIf="discountCodeUsers.code_uses.to > 0">
+    <div class="mt-5 mb-4" *ngIf="discountCodeUsers.code_uses.to > 0">
       <ngb-pagination
         [collectionSize]="discountCodeUsers.code_uses.total"
         [(page)]="discountCodeUsers.code_uses.current_page"
