@@ -30,21 +30,16 @@
     <span class="text-dark" [innerHtml]="course.short_desc | safehtml: 'html'"></span>
   </mat-card-content>
 
-  <mat-card-actions [ngClass]="'px-2'">
+  <mat-card-actions [ngClass]="'px-2 d-inline-flex'">
     <!-- BUY Button -->
     <app-stripe-checkout
       [cid]="course.id"
       *ngIf="course?.user_progress == null; else courseUnlocked"
     ></app-stripe-checkout>
 
-    <!-- RESUME Button -->
+    <!-- Enter Button -->
     <ng-template #courseUnlocked>
-      <button
-        mat-button
-        color="primary"
-        class="border"
-        [routerLink]="['/webcourse', 'activities', course?.user_progress.selected_aid]"
-      >Resume</button>
+      <wngx-enter-course [course]="course"></wngx-enter-course>
     </ng-template>
 
     <!-- ABOUT Button -->
