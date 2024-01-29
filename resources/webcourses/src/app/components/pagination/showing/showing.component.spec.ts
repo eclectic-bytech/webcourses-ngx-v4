@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowingXyzComponent } from './showing-xyz.component';
+import { ShowingComponent } from './showing.component';
 
-describe('ShowingXyzComponent', () => {
-  let component: ShowingXyzComponent;
-  let fixture: ComponentFixture<ShowingXyzComponent>;
+describe('ShowingComponent', () => {
+  let component: ShowingComponent;
+  let fixture: ComponentFixture<ShowingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowingXyzComponent ]
+      declarations: [ ShowingComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ShowingXyzComponent);
+    fixture = TestBed.createComponent(ShowingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
