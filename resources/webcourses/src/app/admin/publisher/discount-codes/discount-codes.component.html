@@ -60,8 +60,8 @@
               *ngFor="let discountCode of courseDiscountCodes.coupons, let i = index, let l = last"
             >
               <td
-                [cbContent]="'https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
-                [title]="'Copy https://www.cultivatelearning.ca/user/register?code=' + discountCode.code"
+              [cbContent]="this.configService.params.domain + '/user/register?code=' + discountCode.code"
+              [title]="'Copy ' + this.configService.params.domain + '/user/register?code=' + discountCode.code"
                 (click)="regLinkCopied('Registration link copied.')"
                 class="handy text-primary"
                 ngxClipboard

@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 import { DiscountCodesService } from './discount-codes.service'
 import { FadeInOut } from 'src/app/core/animations/fade-in-out.animation'
 import { CoursesService } from '../courses/courses.service'
+import { ConfigService } from 'src/app/core/services/config/config.service'
 
 @Component({
   selector: 'app-discount-codes',
@@ -23,7 +24,8 @@ export class DiscountCodesComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private discountCodesService: DiscountCodesService,
     public coursesService: CoursesService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public configService: ConfigService
   ) { }
 
   ngOnInit(): void {
