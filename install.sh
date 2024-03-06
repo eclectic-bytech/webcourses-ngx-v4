@@ -6,6 +6,46 @@ composer install;
 echo -e "Creating a copy of .env file...";
 cp .env.example .env;
 
+# --- Database -----------------------------------------
+echo -e "Installer requires an existing database";
+echo
+read -p $'\e[94mDatabase name\e[0m: ' DB_DATABASE
+read -p $'\e[94mUser\e[0m: ' DB_USERNAME
+read -p $'\e[94mPassword\e[0m: ' DB_PASSWORD
+echo
+echo -e "Updating the .env with the database credentials...";
+
+env=".env"
+
+if grep -q "^DB_DATABASE=" $env; then
+    sed -i "s|^DB_DATABASE=.*$|DB_DATABASE=$DB_DATABASE|" $env
+else
+    echo "DB_DATABASE=$DB_DATABASE" >> $env
+fi
+
+echo "Updated .env file with DB_DATABASE=$DB_DATABASE"
+
+if grep -q "^DB_USERNAME=" $env; then
+    sed -i "s|^DB_USERNAME=.*$|DB_USERNAME=$DB_USERNAME|" $env
+else
+    echo "DB_USERNAME=$DB_USERNAME" >> $env
+fi
+
+echo "Updated .env file with DB_USERNAME=$DB_USERNAME"
+
+if grep -q "^DB_PASSWORD=" $env; then
+    sed -i "s|^DB_PASSWORD=.*$|DB_PASSWORD=$DB_PASSWORD|" $env
+else
+    echo "DB_PASSWORD=$DB_PASSWORD" >> $env
+fi
+
+echo "Updated .env file with database password"
+
+echo -e "Successfully updated the .env with the database credentials.";
+echo -e "The installation will now continue.";
+echo
+# --- Configs, Access, & Modules -----------------------------------------
+
 echo "Copying config.default.json to config.json....";
 cp resources/webcourses/src/config.default.json ./public/webcourses/config.json;
 
