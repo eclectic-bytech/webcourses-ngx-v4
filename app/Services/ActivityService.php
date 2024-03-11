@@ -18,9 +18,12 @@ class ActivityService {
         $userProgress->save();
 
         return Activity
-            ::with('meta', 'answers', 'default_answer', 'bookmark')
+            ::with('meta', 'answers', 'default_answer')
             ->with(['user_answers' => function ($query) use ($pid) {
                 $query->where('progress_id', $pid);
+            }])
+            ->with(['bookmark' => function ($query) use ($pid, $aid) {
+                $query->where('pid', $pid)->where('aid', $aid);
             }])
             ->find($aid)->toArray();
     }
